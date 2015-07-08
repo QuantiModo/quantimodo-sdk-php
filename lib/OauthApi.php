@@ -59,44 +59,31 @@ class OauthApi {
    *
    * Access Token
    *
-   * @param string $response_type Response type (required)
-   * @param string $redirect_uri Redirect uri (required)
-   * @param string $realm Realm (required)
    * @param string $client_id Client id (required)
+   * @param string $client_secret Client secret (required)
+   * @param string $grant_type Grant Type can be &#39;authorization_code&#39; or &#39;refresh_token&#39; (required)
+   * @param string $response_type Response type (required)
    * @param string $scope Scope (required)
+   * @param string $redirect_uri Redirect uri (required)
    * @param string $state State (required)
+   * @param string $realm Realm (required)
    * @return void
    */
-   public function oauth2AccesstokenGet($response_type, $redirect_uri, $realm, $client_id, $scope, $state) {
-      
-      // verify the required parameter 'response_type' is set
-      if ($response_type === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $response_type when calling oauth2AccesstokenGet');
-      }
-      
-      // verify the required parameter 'redirect_uri' is set
-      if ($redirect_uri === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $redirect_uri when calling oauth2AccesstokenGet');
-      }
-      
-      // verify the required parameter 'realm' is set
-      if ($realm === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $realm when calling oauth2AccesstokenGet');
-      }
+   public function oauth2AccesstokenGet($client_id, $client_secret, $grant_type, $response_type, $scope, $redirect_uri, $state, $realm) {
       
       // verify the required parameter 'client_id' is set
       if ($client_id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $client_id when calling oauth2AccesstokenGet');
       }
       
-      // verify the required parameter 'scope' is set
-      if ($scope === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $scope when calling oauth2AccesstokenGet');
+      // verify the required parameter 'client_secret' is set
+      if ($client_secret === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $client_secret when calling oauth2AccesstokenGet');
       }
       
-      // verify the required parameter 'state' is set
-      if ($state === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $state when calling oauth2AccesstokenGet');
+      // verify the required parameter 'grant_type' is set
+      if ($grant_type === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $grant_type when calling oauth2AccesstokenGet');
       }
       
 
@@ -115,23 +102,29 @@ class OauthApi {
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
       // query params
-      if($response_type !== null) {
-        $queryParams['response_type'] = $this->apiClient->toQueryValue($response_type);
-      }// query params
-      if($redirect_uri !== null) {
-        $queryParams['redirect_uri'] = $this->apiClient->toQueryValue($redirect_uri);
-      }// query params
-      if($realm !== null) {
-        $queryParams['realm'] = $this->apiClient->toQueryValue($realm);
-      }// query params
       if($client_id !== null) {
         $queryParams['client_id'] = $this->apiClient->toQueryValue($client_id);
+      }// query params
+      if($client_secret !== null) {
+        $queryParams['client_secret'] = $this->apiClient->toQueryValue($client_secret);
+      }// query params
+      if($grant_type !== null) {
+        $queryParams['grant_type'] = $this->apiClient->toQueryValue($grant_type);
+      }// query params
+      if($response_type !== null) {
+        $queryParams['response_type'] = $this->apiClient->toQueryValue($response_type);
       }// query params
       if($scope !== null) {
         $queryParams['scope'] = $this->apiClient->toQueryValue($scope);
       }// query params
+      if($redirect_uri !== null) {
+        $queryParams['redirect_uri'] = $this->apiClient->toQueryValue($redirect_uri);
+      }// query params
       if($state !== null) {
         $queryParams['state'] = $this->apiClient->toQueryValue($state);
+      }// query params
+      if($realm !== null) {
+        $queryParams['realm'] = $this->apiClient->toQueryValue($realm);
       }
       
       
@@ -163,28 +156,24 @@ class OauthApi {
    * Authorize
    *
    * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do. (required)
-   * @param string $realm Name of the realm representing the users of your distributed applications and services. A \&quot;realm\&quot; attribute MAY be included to indicate the scope of protection. (required)
-   * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (required)
+   * @param string $client_secret This is the secret for your obtained clietn_id. QuantiModo uses this to validate that only your application uses the client_id. (required)
    * @param string $response_type If the value is code, launches a Basic flow, requiring a POST to the token endpoint to obtain the tokens. If the value is token id_token or id_token token, launches an Implicit flow, requiring the use of Javascript at the redirect URI to retrieve tokens from the URI #fragment. (required)
    * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (required)
+   * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (required)
    * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (required)
+   * @param string $realm Name of the realm representing the users of your distributed applications and services. A \&quot;realm\&quot; attribute MAY be included to indicate the scope of protection. (required)
    * @return void
    */
-   public function oauth2AuthorizeGet($client_id, $realm, $redirect_uri, $response_type, $scope, $state) {
+   public function oauth2AuthorizeGet($client_id, $client_secret, $response_type, $scope, $redirect_uri, $state, $realm) {
       
       // verify the required parameter 'client_id' is set
       if ($client_id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $client_id when calling oauth2AuthorizeGet');
       }
       
-      // verify the required parameter 'realm' is set
-      if ($realm === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $realm when calling oauth2AuthorizeGet');
-      }
-      
-      // verify the required parameter 'redirect_uri' is set
-      if ($redirect_uri === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $redirect_uri when calling oauth2AuthorizeGet');
+      // verify the required parameter 'client_secret' is set
+      if ($client_secret === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $client_secret when calling oauth2AuthorizeGet');
       }
       
       // verify the required parameter 'response_type' is set
@@ -195,11 +184,6 @@ class OauthApi {
       // verify the required parameter 'scope' is set
       if ($scope === null) {
         throw new \InvalidArgumentException('Missing the required parameter $scope when calling oauth2AuthorizeGet');
-      }
-      
-      // verify the required parameter 'state' is set
-      if ($state === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $state when calling oauth2AuthorizeGet');
       }
       
 
@@ -221,11 +205,8 @@ class OauthApi {
       if($client_id !== null) {
         $queryParams['client_id'] = $this->apiClient->toQueryValue($client_id);
       }// query params
-      if($realm !== null) {
-        $queryParams['realm'] = $this->apiClient->toQueryValue($realm);
-      }// query params
-      if($redirect_uri !== null) {
-        $queryParams['redirect_uri'] = $this->apiClient->toQueryValue($redirect_uri);
+      if($client_secret !== null) {
+        $queryParams['client_secret'] = $this->apiClient->toQueryValue($client_secret);
       }// query params
       if($response_type !== null) {
         $queryParams['response_type'] = $this->apiClient->toQueryValue($response_type);
@@ -233,8 +214,14 @@ class OauthApi {
       if($scope !== null) {
         $queryParams['scope'] = $this->apiClient->toQueryValue($scope);
       }// query params
+      if($redirect_uri !== null) {
+        $queryParams['redirect_uri'] = $this->apiClient->toQueryValue($redirect_uri);
+      }// query params
       if($state !== null) {
         $queryParams['state'] = $this->apiClient->toQueryValue($state);
+      }// query params
+      if($realm !== null) {
+        $queryParams['realm'] = $this->apiClient->toQueryValue($realm);
       }
       
       
