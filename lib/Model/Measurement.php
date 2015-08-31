@@ -57,7 +57,7 @@ class Measurement implements ArrayAccess
         'value' => 'double',
         'unit' => 'string',
         'stored_value' => 'double',
-        'stored_unit' => 'string'
+        'stored_abbreviated_unit_name' => 'string'
     );
   
     /** 
@@ -71,7 +71,7 @@ class Measurement implements ArrayAccess
         'value' => 'value',
         'unit' => 'unit',
         'stored_value' => 'storedValue',
-        'stored_unit' => 'storedUnit'
+        'stored_abbreviated_unit_name' => 'storedAbbreviatedUnitName'
     );
   
     /**
@@ -85,7 +85,7 @@ class Measurement implements ArrayAccess
         'value' => 'setValue',
         'unit' => 'setUnit',
         'stored_value' => 'setStoredValue',
-        'stored_unit' => 'setStoredUnit'
+        'stored_abbreviated_unit_name' => 'setStoredAbbreviatedUnitName'
     );
   
     /**
@@ -99,7 +99,7 @@ class Measurement implements ArrayAccess
         'value' => 'getValue',
         'unit' => 'getUnit',
         'stored_value' => 'getStoredValue',
-        'stored_unit' => 'getStoredUnit'
+        'stored_abbreviated_unit_name' => 'getStoredAbbreviatedUnitName'
     );
   
     
@@ -140,10 +140,10 @@ class Measurement implements ArrayAccess
     protected $stored_value;
     
     /**
-      * $stored_unit Unit of measurement as originally submitted
+      * $stored_abbreviated_unit_name Unit of measurement as originally submitted
       * @var string
       */
-    protected $stored_unit;
+    protected $stored_abbreviated_unit_name;
     
 
     /**
@@ -159,7 +159,7 @@ class Measurement implements ArrayAccess
             $this->value = $data["value"];
             $this->unit = $data["unit"];
             $this->stored_value = $data["stored_value"];
-            $this->stored_unit = $data["stored_unit"];
+            $this->stored_abbreviated_unit_name = $data["stored_abbreviated_unit_name"];
         }
     }
     
@@ -290,23 +290,23 @@ class Measurement implements ArrayAccess
     }
     
     /**
-     * Gets stored_unit
+     * Gets stored_abbreviated_unit_name
      * @return string
      */
-    public function getStoredUnit()
+    public function getStoredAbbreviatedUnitName()
     {
-        return $this->stored_unit;
+        return $this->stored_abbreviated_unit_name;
     }
   
     /**
-     * Sets stored_unit
-     * @param string $stored_unit Unit of measurement as originally submitted
+     * Sets stored_abbreviated_unit_name
+     * @param string $stored_abbreviated_unit_name Unit of measurement as originally submitted
      * @return $this
      */
-    public function setStoredUnit($stored_unit)
+    public function setStoredAbbreviatedUnitName($stored_abbreviated_unit_name)
     {
         
-        $this->stored_unit = $stored_unit;
+        $this->stored_abbreviated_unit_name = $stored_abbreviated_unit_name;
         return $this;
     }
     

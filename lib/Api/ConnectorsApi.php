@@ -92,19 +92,19 @@ class ConnectorsApi
   
     
     /**
-     * connectorsListGet
+     * v1ConnectorsListGet
      *
      * List of Connectors
      *
      * @return \Swagger\Client\Model\Connector[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function connectorsListGet()
+    public function v1ConnectorsListGet()
     {
         
   
         // parse inputs
-        $resourcePath = "/connectors/list";
+        $resourcePath = "/v1/connectors/list";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -161,7 +161,7 @@ class ConnectorsApi
     }
     
     /**
-     * connectorsConnectorConnectGet
+     * v1ConnectorsConnectorConnectGet
      *
      * Obtain a token from 3rd party data source
      *
@@ -169,16 +169,16 @@ class ConnectorsApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function connectorsConnectorConnectGet($connector)
+    public function v1ConnectorsConnectorConnectGet($connector)
     {
         
         // verify the required parameter 'connector' is set
         if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling connectorsConnectorConnectGet');
+            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorConnectGet');
         }
   
         // parse inputs
-        $resourcePath = "/connectors/{connector}/connect";
+        $resourcePath = "/v1/connectors/{connector}/connect";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -232,221 +232,7 @@ class ConnectorsApi
     }
     
     /**
-     * connectorsConnectorConnectInstructionsGet
-     *
-     * Get connection parameters
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $url URL which should be used to enable the connector (required)
-     * @param string[] $parameters Array of Parameters for the request to enable connector (required)
-     * @param bool $use_popup Should use popup when enabling connector (required)
-     * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function connectorsConnectorConnectInstructionsGet($connector, $url, $parameters, $use_popup)
-    {
-        
-        // verify the required parameter 'connector' is set
-        if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling connectorsConnectorConnectInstructionsGet');
-        }
-        // verify the required parameter 'url' is set
-        if ($url === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $url when calling connectorsConnectorConnectInstructionsGet');
-        }
-        // verify the required parameter 'parameters' is set
-        if ($parameters === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $parameters when calling connectorsConnectorConnectInstructionsGet');
-        }
-        // verify the required parameter 'use_popup' is set
-        if ($use_popup === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $use_popup when calling connectorsConnectorConnectInstructionsGet');
-        }
-  
-        // parse inputs
-        $resourcePath = "/connectors/{connector}/connectInstructions";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
-  
-        // query params
-        if ($url !== null) {
-            $queryParams['url'] = $this->apiClient->getSerializer()->toQueryValue($url);
-        }// query params
-        if ($parameters !== null) {
-            $queryParams['parameters'] = $this->apiClient->getSerializer()->toQueryValue($parameters);
-        }// query params
-        if ($use_popup !== null) {
-            $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
-        }
-        
-        // path params
-        if ($connector !== null) {
-            $resourcePath = str_replace(
-                "{" . "connector" . "}",
-                $this->apiClient->getSerializer()->toPathValue($connector),
-                $resourcePath
-            );
-        }
-        
-        
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        
-        //TODO support oauth
-        
-        // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
-                $queryParams, $httpBody,
-                $headerParams
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            }
-  
-            throw $e;
-        }
-        
-    }
-    
-    /**
-     * connectorsConnectorConnectParameterGet
-     *
-     * Get connection parameters
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $display_name Name of the parameter that is user visible in the form (required)
-     * @param string $key Name of the property that the user has to enter such as username or password Connector (used in HTTP request) TODO What&#39;s a connector key? (required)
-     * @param bool $use_popup Should use popup when enabling connector (required)
-     * @param string $type Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp (required)
-     * @param string $placeholder Placeholder hint value for the parameter input tag (required)
-     * @param string $default_value Default parameter value (required)
-     * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function connectorsConnectorConnectParameterGet($connector, $display_name, $key, $use_popup, $type, $placeholder, $default_value)
-    {
-        
-        // verify the required parameter 'connector' is set
-        if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling connectorsConnectorConnectParameterGet');
-        }
-        // verify the required parameter 'display_name' is set
-        if ($display_name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $display_name when calling connectorsConnectorConnectParameterGet');
-        }
-        // verify the required parameter 'key' is set
-        if ($key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $key when calling connectorsConnectorConnectParameterGet');
-        }
-        // verify the required parameter 'use_popup' is set
-        if ($use_popup === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $use_popup when calling connectorsConnectorConnectParameterGet');
-        }
-        // verify the required parameter 'type' is set
-        if ($type === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $type when calling connectorsConnectorConnectParameterGet');
-        }
-        // verify the required parameter 'placeholder' is set
-        if ($placeholder === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $placeholder when calling connectorsConnectorConnectParameterGet');
-        }
-        // verify the required parameter 'default_value' is set
-        if ($default_value === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $default_value when calling connectorsConnectorConnectParameterGet');
-        }
-  
-        // parse inputs
-        $resourcePath = "/connectors/{connector}/connectParameter";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
-  
-        // query params
-        if ($display_name !== null) {
-            $queryParams['displayName'] = $this->apiClient->getSerializer()->toQueryValue($display_name);
-        }// query params
-        if ($key !== null) {
-            $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
-        }// query params
-        if ($use_popup !== null) {
-            $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
-        }// query params
-        if ($type !== null) {
-            $queryParams['type'] = $this->apiClient->getSerializer()->toQueryValue($type);
-        }// query params
-        if ($placeholder !== null) {
-            $queryParams['placeholder'] = $this->apiClient->getSerializer()->toQueryValue($placeholder);
-        }// query params
-        if ($default_value !== null) {
-            $queryParams['defaultValue'] = $this->apiClient->getSerializer()->toQueryValue($default_value);
-        }
-        
-        // path params
-        if ($connector !== null) {
-            $resourcePath = str_replace(
-                "{" . "connector" . "}",
-                $this->apiClient->getSerializer()->toPathValue($connector),
-                $resourcePath
-            );
-        }
-        
-        
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        
-        //TODO support oauth
-        
-        // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
-                $queryParams, $httpBody,
-                $headerParams
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            }
-  
-            throw $e;
-        }
-        
-    }
-    
-    /**
-     * connectorsConnectorDisconnectGet
+     * v1ConnectorsConnectorDisconnectGet
      *
      * Delete stored connection info
      *
@@ -454,16 +240,16 @@ class ConnectorsApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function connectorsConnectorDisconnectGet($connector)
+    public function v1ConnectorsConnectorDisconnectGet($connector)
     {
         
         // verify the required parameter 'connector' is set
         if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling connectorsConnectorDisconnectGet');
+            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorDisconnectGet');
         }
   
         // parse inputs
-        $resourcePath = "/connectors/{connector}/disconnect";
+        $resourcePath = "/v1/connectors/{connector}/disconnect";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -517,24 +303,24 @@ class ConnectorsApi
     }
     
     /**
-     * connectorsConnectorInfoGet
+     * v1ConnectorsConnectorInfoGet
      *
      * Get connector info for user
      *
      * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @return void
+     * @return \Swagger\Client\Model\ConnectorInfo
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function connectorsConnectorInfoGet($connector)
+    public function v1ConnectorsConnectorInfoGet($connector)
     {
         
         // verify the required parameter 'connector' is set
         if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling connectorsConnectorInfoGet');
+            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorInfoGet');
         }
   
         // parse inputs
-        $resourcePath = "/connectors/{connector}/info";
+        $resourcePath = "/v1/connectors/{connector}/info";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -576,19 +362,29 @@ class ConnectorsApi
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams
+                $headerParams, '\Swagger\Client\Model\ConnectorInfo'
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
+            case 200:
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ConnectorInfo', $httpHeader);
+                $e->setResponseObject($data);
+                break;
             }
   
             throw $e;
         }
         
+        if (!$response) {
+            return null;
+        }
+  
+        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\ConnectorInfo');
+        
     }
     
     /**
-     * connectorsConnectorUpdateGet
+     * v1ConnectorsConnectorUpdateGet
      *
      * Sync with data source
      *
@@ -596,16 +392,16 @@ class ConnectorsApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function connectorsConnectorUpdateGet($connector)
+    public function v1ConnectorsConnectorUpdateGet($connector)
     {
         
         // verify the required parameter 'connector' is set
         if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling connectorsConnectorUpdateGet');
+            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorUpdateGet');
         }
   
         // parse inputs
-        $resourcePath = "/connectors/{connector}/update";
+        $resourcePath = "/v1/connectors/{connector}/update";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';

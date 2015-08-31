@@ -349,6 +349,74 @@ class VariablesApi
     }
     
     /**
+     * v1UserVariablesPost
+     *
+     * Update User Settings for a Variable
+     *
+     * @param \Swagger\Client\Model\UserVariables $sharing_data Variable user settings data (required)
+     * @return void
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1UserVariablesPost($sharing_data)
+    {
+        
+        // verify the required parameter 'sharing_data' is set
+        if ($sharing_data === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $sharing_data when calling v1UserVariablesPost');
+        }
+  
+        // parse inputs
+        $resourcePath = "/v1/userVariables";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+  
+        
+        
+        
+        
+        // body params
+        $_tempBody = null;
+        if (isset($sharing_data)) {
+            $_tempBody = $sharing_data;
+        }
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } else if (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        
+        //TODO support oauth
+        
+        // make the API Call
+        try
+        {
+            list($response, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, $method,
+                $queryParams, $httpBody,
+                $headerParams
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            }
+  
+            throw $e;
+        }
+        
+    }
+    
+    /**
      * variableCategoriesGet
      *
      * Variable categories
@@ -414,74 +482,6 @@ class VariablesApi
         }
   
         return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\VariableCategory[]');
-        
-    }
-    
-    /**
-     * variableUserSettingsPost
-     *
-     * Update User Settings for a Variable
-     *
-     * @param \Swagger\Client\Model\VariableUserSettings $sharing_data Variable user settings data (required)
-     * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function variableUserSettingsPost($sharing_data)
-    {
-        
-        // verify the required parameter 'sharing_data' is set
-        if ($sharing_data === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $sharing_data when calling variableUserSettingsPost');
-        }
-  
-        // parse inputs
-        $resourcePath = "/variableUserSettings";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
-  
-        
-        
-        
-        
-        // body params
-        $_tempBody = null;
-        if (isset($sharing_data)) {
-            $_tempBody = $sharing_data;
-        }
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        
-        //TODO support oauth
-        
-        // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
-                $queryParams, $httpBody,
-                $headerParams
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            }
-  
-            throw $e;
-        }
         
     }
     

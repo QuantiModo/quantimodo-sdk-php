@@ -59,7 +59,7 @@ class Connector implements ArrayAccess
         'connected' => 'string',
         'connect_instructions' => 'string',
         'last_update' => 'int',
-        'latest_data' => 'int',
+        'total_measurements_in_last_update' => 'int',
         'no_data_yet' => 'bool'
     );
   
@@ -76,7 +76,7 @@ class Connector implements ArrayAccess
         'connected' => 'connected',
         'connect_instructions' => 'connectInstructions',
         'last_update' => 'lastUpdate',
-        'latest_data' => 'latestData',
+        'total_measurements_in_last_update' => 'totalMeasurementsInLastUpdate',
         'no_data_yet' => 'noDataYet'
     );
   
@@ -93,7 +93,7 @@ class Connector implements ArrayAccess
         'connected' => 'setConnected',
         'connect_instructions' => 'setConnectInstructions',
         'last_update' => 'setLastUpdate',
-        'latest_data' => 'setLatestData',
+        'total_measurements_in_last_update' => 'setTotalMeasurementsInLastUpdate',
         'no_data_yet' => 'setNoDataYet'
     );
   
@@ -110,7 +110,7 @@ class Connector implements ArrayAccess
         'connected' => 'getConnected',
         'connect_instructions' => 'getConnectInstructions',
         'last_update' => 'getLastUpdate',
-        'latest_data' => 'getLatestData',
+        'total_measurements_in_last_update' => 'getTotalMeasurementsInLastUpdate',
         'no_data_yet' => 'getNoDataYet'
     );
   
@@ -164,10 +164,10 @@ class Connector implements ArrayAccess
     protected $last_update;
     
     /**
-      * $latest_data Number of measurements obtained during latest update
+      * $total_measurements_in_last_update Number of measurements obtained during latest update
       * @var int
       */
-    protected $latest_data;
+    protected $total_measurements_in_last_update;
     
     /**
       * $no_data_yet True if user has no measurements for this connector
@@ -191,7 +191,7 @@ class Connector implements ArrayAccess
             $this->connected = $data["connected"];
             $this->connect_instructions = $data["connect_instructions"];
             $this->last_update = $data["last_update"];
-            $this->latest_data = $data["latest_data"];
+            $this->total_measurements_in_last_update = $data["total_measurements_in_last_update"];
             $this->no_data_yet = $data["no_data_yet"];
         }
     }
@@ -365,23 +365,23 @@ class Connector implements ArrayAccess
     }
     
     /**
-     * Gets latest_data
+     * Gets total_measurements_in_last_update
      * @return int
      */
-    public function getLatestData()
+    public function getTotalMeasurementsInLastUpdate()
     {
-        return $this->latest_data;
+        return $this->total_measurements_in_last_update;
     }
   
     /**
-     * Sets latest_data
-     * @param int $latest_data Number of measurements obtained during latest update
+     * Sets total_measurements_in_last_update
+     * @param int $total_measurements_in_last_update Number of measurements obtained during latest update
      * @return $this
      */
-    public function setLatestData($latest_data)
+    public function setTotalMeasurementsInLastUpdate($total_measurements_in_last_update)
     {
         
-        $this->latest_data = $latest_data;
+        $this->total_measurements_in_last_update = $total_measurements_in_last_update;
         return $this;
     }
     
