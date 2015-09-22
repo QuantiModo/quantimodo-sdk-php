@@ -92,7 +92,7 @@ class CorrelationsApi
   
     
     /**
-     * correlationsGet
+     * v1CorrelationsGet
      *
      * Get correlations
      *
@@ -104,12 +104,12 @@ class CorrelationsApi
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function correlationsGet($effect=null, $cause=null, $limit=null, $offset=null, $sort=null)
+    public function v1CorrelationsGet($effect=null, $cause=null, $limit=null, $offset=null, $sort=null)
     {
         
   
         // parse inputs
-        $resourcePath = "/correlations";
+        $resourcePath = "/v1/correlations";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -181,98 +181,9 @@ class CorrelationsApi
     }
     
     /**
-     * publicCorrelationsSearchSearchGet
-     *
-     * Get average correlations for variables containing search term
-     *
-     * @param string $search Name of the variable that you want to know the causes or effects of. (required)
-     * @param string $effect_or_cause Specifies whether to return the effects or causes of the searched variable. (required)
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function publicCorrelationsSearchSearchGet($search, $effect_or_cause)
-    {
-        
-        // verify the required parameter 'search' is set
-        if ($search === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $search when calling publicCorrelationsSearchSearchGet');
-        }
-        // verify the required parameter 'effect_or_cause' is set
-        if ($effect_or_cause === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $effect_or_cause when calling publicCorrelationsSearchSearchGet');
-        }
-  
-        // parse inputs
-        $resourcePath = "/public/correlations/search/{search}";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
-  
-        // query params
-        if ($effect_or_cause !== null) {
-            $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
-        }
-        
-        // path params
-        if ($search !== null) {
-            $resourcePath = str_replace(
-                "{" . "search" . "}",
-                $this->apiClient->getSerializer()->toPathValue($search),
-                $resourcePath
-            );
-        }
-        
-        
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        
-        //TODO support oauth
-        
-        // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
-                $queryParams, $httpBody,
-                $headerParams, '\Swagger\Client\Model\Correlation[]'
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
-                $e->setResponseObject($data);
-                break;
-            }
-  
-            throw $e;
-        }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
-    }
-    
-    /**
      * v1CorrelationsPost
      *
-     * Add correlation or/and vote for it
+     * Store or Update a Correlation
      *
      * @param \Swagger\Client\Model\PostCorrelation $body Provides correlation data (required)
      * @return void
@@ -344,7 +255,7 @@ class CorrelationsApi
     /**
      * v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet
      *
-     * Search user correlations for a given effect
+     * Search user correlations for a given cause
      *
      * @param int $organization_id Organization ID (required)
      * @param int $user_id User id (required)
@@ -572,6 +483,95 @@ class CorrelationsApi
         }
   
         return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommonResponse[]');
+        
+    }
+    
+    /**
+     * v1PublicCorrelationsSearchSearchGet
+     *
+     * Get average correlations for variables containing search term
+     *
+     * @param string $search Name of the variable that you want to know the causes or effects of. (required)
+     * @param string $effect_or_cause Specifies whether to return the effects or causes of the searched variable. (required)
+     * @return \Swagger\Client\Model\Correlation[]
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause)
+    {
+        
+        // verify the required parameter 'search' is set
+        if ($search === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $search when calling v1PublicCorrelationsSearchSearchGet');
+        }
+        // verify the required parameter 'effect_or_cause' is set
+        if ($effect_or_cause === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $effect_or_cause when calling v1PublicCorrelationsSearchSearchGet');
+        }
+  
+        // parse inputs
+        $resourcePath = "/v1/public/correlations/search/{search}";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+  
+        // query params
+        if ($effect_or_cause !== null) {
+            $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
+        }
+        
+        // path params
+        if ($search !== null) {
+            $resourcePath = str_replace(
+                "{" . "search" . "}",
+                $this->apiClient->getSerializer()->toPathValue($search),
+                $resourcePath
+            );
+        }
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } else if (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        
+        //TODO support oauth
+        
+        // make the API Call
+        try
+        {
+            list($response, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, $method,
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\Correlation[]'
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
+        
+        if (!$response) {
+            return null;
+        }
+  
+        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
         
     }
     
@@ -906,11 +906,12 @@ class CorrelationsApi
      *
      * @param string $cause Cause variable name (required)
      * @param string $effect Effect variable name (required)
+     * @param Number $correlation Correlation value (required)
      * @param bool $vote Vote: 0 (for implausible) or 1 (for plausible) (optional)
      * @return \Swagger\Client\Model\CommonResponse
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VotesPost($cause, $effect, $vote=null)
+    public function v1VotesPost($cause, $effect, $correlation, $vote=null)
     {
         
         // verify the required parameter 'cause' is set
@@ -920,6 +921,10 @@ class CorrelationsApi
         // verify the required parameter 'effect' is set
         if ($effect === null) {
             throw new \InvalidArgumentException('Missing the required parameter $effect when calling v1VotesPost');
+        }
+        // verify the required parameter 'correlation' is set
+        if ($correlation === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $correlation when calling v1VotesPost');
         }
   
         // parse inputs
@@ -942,6 +947,9 @@ class CorrelationsApi
         }// query params
         if ($effect !== null) {
             $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
+        }// query params
+        if ($correlation !== null) {
+            $queryParams['correlation'] = $this->apiClient->getSerializer()->toQueryValue($correlation);
         }// query params
         if ($vote !== null) {
             $queryParams['vote'] = $this->apiClient->getSerializer()->toQueryValue($vote);

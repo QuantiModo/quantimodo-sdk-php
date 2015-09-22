@@ -56,8 +56,8 @@ class UserVariables implements ArrayAccess
         'duration_of_action' => 'int',
         'filling_value' => 'int',
         'join_with' => 'string',
-        'maximum_value' => 'float',
-        'minimum_value' => 'float',
+        'maximum_allowed_value' => 'float',
+        'minimum_allowed_value' => 'float',
         'name' => 'string',
         'onset_delay' => 'int',
         'unit' => 'string'
@@ -73,8 +73,8 @@ class UserVariables implements ArrayAccess
         'duration_of_action' => 'durationOfAction',
         'filling_value' => 'fillingValue',
         'join_with' => 'joinWith',
-        'maximum_value' => 'maximumValue',
-        'minimum_value' => 'minimumValue',
+        'maximum_allowed_value' => 'maximumAllowedValue',
+        'minimum_allowed_value' => 'minimumAllowedValue',
         'name' => 'name',
         'onset_delay' => 'onsetDelay',
         'unit' => 'unit'
@@ -90,8 +90,8 @@ class UserVariables implements ArrayAccess
         'duration_of_action' => 'setDurationOfAction',
         'filling_value' => 'setFillingValue',
         'join_with' => 'setJoinWith',
-        'maximum_value' => 'setMaximumValue',
-        'minimum_value' => 'setMinimumValue',
+        'maximum_allowed_value' => 'setMaximumAllowedValue',
+        'minimum_allowed_value' => 'setMinimumAllowedValue',
         'name' => 'setName',
         'onset_delay' => 'setOnsetDelay',
         'unit' => 'setUnit'
@@ -107,8 +107,8 @@ class UserVariables implements ArrayAccess
         'duration_of_action' => 'getDurationOfAction',
         'filling_value' => 'getFillingValue',
         'join_with' => 'getJoinWith',
-        'maximum_value' => 'getMaximumValue',
-        'minimum_value' => 'getMinimumValue',
+        'maximum_allowed_value' => 'getMaximumAllowedValue',
+        'minimum_allowed_value' => 'getMinimumAllowedValue',
         'name' => 'getName',
         'onset_delay' => 'getOnsetDelay',
         'unit' => 'getUnit'
@@ -146,16 +146,16 @@ class UserVariables implements ArrayAccess
     protected $join_with;
     
     /**
-      * $maximum_value maximumValue
+      * $maximum_allowed_value maximumAllowedValue
       * @var float
       */
-    protected $maximum_value;
+    protected $maximum_allowed_value;
     
     /**
-      * $minimum_value minimumValue
+      * $minimum_allowed_value minimumAllowedValue
       * @var float
       */
-    protected $minimum_value;
+    protected $minimum_allowed_value;
     
     /**
       * $name name
@@ -188,8 +188,8 @@ class UserVariables implements ArrayAccess
             $this->duration_of_action = $data["duration_of_action"];
             $this->filling_value = $data["filling_value"];
             $this->join_with = $data["join_with"];
-            $this->maximum_value = $data["maximum_value"];
-            $this->minimum_value = $data["minimum_value"];
+            $this->maximum_allowed_value = $data["maximum_allowed_value"];
+            $this->minimum_allowed_value = $data["minimum_allowed_value"];
             $this->name = $data["name"];
             $this->onset_delay = $data["onset_delay"];
             $this->unit = $data["unit"];
@@ -302,44 +302,44 @@ class UserVariables implements ArrayAccess
     }
     
     /**
-     * Gets maximum_value
+     * Gets maximum_allowed_value
      * @return float
      */
-    public function getMaximumValue()
+    public function getMaximumAllowedValue()
     {
-        return $this->maximum_value;
+        return $this->maximum_allowed_value;
     }
   
     /**
-     * Sets maximum_value
-     * @param float $maximum_value maximumValue
+     * Sets maximum_allowed_value
+     * @param float $maximum_allowed_value maximumAllowedValue
      * @return $this
      */
-    public function setMaximumValue($maximum_value)
+    public function setMaximumAllowedValue($maximum_allowed_value)
     {
         
-        $this->maximum_value = $maximum_value;
+        $this->maximum_allowed_value = $maximum_allowed_value;
         return $this;
     }
     
     /**
-     * Gets minimum_value
+     * Gets minimum_allowed_value
      * @return float
      */
-    public function getMinimumValue()
+    public function getMinimumAllowedValue()
     {
-        return $this->minimum_value;
+        return $this->minimum_allowed_value;
     }
   
     /**
-     * Sets minimum_value
-     * @param float $minimum_value minimumValue
+     * Sets minimum_allowed_value
+     * @param float $minimum_allowed_value minimumAllowedValue
      * @return $this
      */
-    public function setMinimumValue($minimum_value)
+    public function setMinimumAllowedValue($minimum_allowed_value)
     {
         
-        $this->minimum_value = $minimum_value;
+        $this->minimum_allowed_value = $minimum_allowed_value;
         return $this;
     }
     

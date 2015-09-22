@@ -92,75 +92,6 @@ class UserApi
   
     
     /**
-     * userMeGet
-     *
-     * Get all available units for variableGet authenticated user
-     *
-     * @return \Swagger\Client\Model\User
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function userMeGet()
-    {
-        
-  
-        // parse inputs
-        $resourcePath = "/user/me";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
-  
-        
-        
-        
-        
-        
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        
-        //TODO support oauth
-        
-        // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
-                $queryParams, $httpBody,
-                $headerParams, '\Swagger\Client\Model\User'
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\User', $httpHeader);
-                $e->setResponseObject($data);
-                break;
-            }
-  
-            throw $e;
-        }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\User');
-        
-    }
-    
-    /**
      * v1OrganizationsOrganizationIdUsersPost
      *
      * Get user tokens for existing users, create new users
@@ -256,6 +187,75 @@ class UserApi
         }
   
         return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\UserTokenSuccessfulResponse');
+        
+    }
+    
+    /**
+     * v1UserMeGet
+     *
+     * Get all available units for variableGet authenticated user
+     *
+     * @return \Swagger\Client\Model\User
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1UserMeGet()
+    {
+        
+  
+        // parse inputs
+        $resourcePath = "/v1/user/me";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+  
+        
+        
+        
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } else if (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        
+        //TODO support oauth
+        
+        // make the API Call
+        try
+        {
+            list($response, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, $method,
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\User'
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\User', $httpHeader);
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
+        
+        if (!$response) {
+            return null;
+        }
+  
+        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\User');
         
     }
     

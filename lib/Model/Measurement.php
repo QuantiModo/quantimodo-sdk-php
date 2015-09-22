@@ -54,10 +54,16 @@ class Measurement implements ArrayAccess
         'variable' => 'string',
         'source' => 'string',
         'timestamp' => 'int',
+        'start_time' => 'string',
+        'human_time' => '\Swagger\Client\Model\HumanTime',
         'value' => 'double',
         'unit' => 'string',
+        'original_value' => 'int',
         'stored_value' => 'double',
-        'stored_abbreviated_unit_name' => 'string'
+        'stored_abbreviated_unit_name' => 'string',
+        'original_abbreviated_unit_name' => 'string',
+        'abbreviated_unit_name' => 'string',
+        'note' => 'string'
     );
   
     /** 
@@ -68,10 +74,16 @@ class Measurement implements ArrayAccess
         'variable' => 'variable',
         'source' => 'source',
         'timestamp' => 'timestamp',
+        'start_time' => 'startTime',
+        'human_time' => 'humanTime',
         'value' => 'value',
         'unit' => 'unit',
+        'original_value' => 'originalValue',
         'stored_value' => 'storedValue',
-        'stored_abbreviated_unit_name' => 'storedAbbreviatedUnitName'
+        'stored_abbreviated_unit_name' => 'storedAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'originalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'abbreviatedUnitName',
+        'note' => 'note'
     );
   
     /**
@@ -82,10 +94,16 @@ class Measurement implements ArrayAccess
         'variable' => 'setVariable',
         'source' => 'setSource',
         'timestamp' => 'setTimestamp',
+        'start_time' => 'setStartTime',
+        'human_time' => 'setHumanTime',
         'value' => 'setValue',
         'unit' => 'setUnit',
+        'original_value' => 'setOriginalValue',
         'stored_value' => 'setStoredValue',
-        'stored_abbreviated_unit_name' => 'setStoredAbbreviatedUnitName'
+        'stored_abbreviated_unit_name' => 'setStoredAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'setOriginalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
+        'note' => 'setNote'
     );
   
     /**
@@ -96,10 +114,16 @@ class Measurement implements ArrayAccess
         'variable' => 'getVariable',
         'source' => 'getSource',
         'timestamp' => 'getTimestamp',
+        'start_time' => 'getStartTime',
+        'human_time' => 'getHumanTime',
         'value' => 'getValue',
         'unit' => 'getUnit',
+        'original_value' => 'getOriginalValue',
         'stored_value' => 'getStoredValue',
-        'stored_abbreviated_unit_name' => 'getStoredAbbreviatedUnitName'
+        'stored_abbreviated_unit_name' => 'getStoredAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'getOriginalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
+        'note' => 'getNote'
     );
   
     
@@ -122,6 +146,18 @@ class Measurement implements ArrayAccess
     protected $timestamp;
     
     /**
+      * $start_time Start Time for the measurement event in ISO 8601
+      * @var string
+      */
+    protected $start_time;
+    
+    /**
+      * $human_time Start Time for the measurement event in ISO 8601
+      * @var \Swagger\Client\Model\HumanTime
+      */
+    protected $human_time;
+    
+    /**
       * $value Converted measurement value in requested unit
       * @var double
       */
@@ -132,6 +168,12 @@ class Measurement implements ArrayAccess
       * @var string
       */
     protected $unit;
+    
+    /**
+      * $original_value Original value
+      * @var int
+      */
+    protected $original_value;
     
     /**
       * $stored_value Measurement value in the unit as orignally submitted
@@ -145,6 +187,24 @@ class Measurement implements ArrayAccess
       */
     protected $stored_abbreviated_unit_name;
     
+    /**
+      * $original_abbreviated_unit_name Original Unit of measurement as originally submitted
+      * @var string
+      */
+    protected $original_abbreviated_unit_name;
+    
+    /**
+      * $abbreviated_unit_name Unit of measurement as originally submitted
+      * @var string
+      */
+    protected $abbreviated_unit_name;
+    
+    /**
+      * $note Note of measurement
+      * @var string
+      */
+    protected $note;
+    
 
     /**
      * Constructor
@@ -156,10 +216,16 @@ class Measurement implements ArrayAccess
             $this->variable = $data["variable"];
             $this->source = $data["source"];
             $this->timestamp = $data["timestamp"];
+            $this->start_time = $data["start_time"];
+            $this->human_time = $data["human_time"];
             $this->value = $data["value"];
             $this->unit = $data["unit"];
+            $this->original_value = $data["original_value"];
             $this->stored_value = $data["stored_value"];
             $this->stored_abbreviated_unit_name = $data["stored_abbreviated_unit_name"];
+            $this->original_abbreviated_unit_name = $data["original_abbreviated_unit_name"];
+            $this->abbreviated_unit_name = $data["abbreviated_unit_name"];
+            $this->note = $data["note"];
         }
     }
     
@@ -227,6 +293,48 @@ class Measurement implements ArrayAccess
     }
     
     /**
+     * Gets start_time
+     * @return string
+     */
+    public function getStartTime()
+    {
+        return $this->start_time;
+    }
+  
+    /**
+     * Sets start_time
+     * @param string $start_time Start Time for the measurement event in ISO 8601
+     * @return $this
+     */
+    public function setStartTime($start_time)
+    {
+        
+        $this->start_time = $start_time;
+        return $this;
+    }
+    
+    /**
+     * Gets human_time
+     * @return \Swagger\Client\Model\HumanTime
+     */
+    public function getHumanTime()
+    {
+        return $this->human_time;
+    }
+  
+    /**
+     * Sets human_time
+     * @param \Swagger\Client\Model\HumanTime $human_time Start Time for the measurement event in ISO 8601
+     * @return $this
+     */
+    public function setHumanTime($human_time)
+    {
+        
+        $this->human_time = $human_time;
+        return $this;
+    }
+    
+    /**
      * Gets value
      * @return double
      */
@@ -269,6 +377,27 @@ class Measurement implements ArrayAccess
     }
     
     /**
+     * Gets original_value
+     * @return int
+     */
+    public function getOriginalValue()
+    {
+        return $this->original_value;
+    }
+  
+    /**
+     * Sets original_value
+     * @param int $original_value Original value
+     * @return $this
+     */
+    public function setOriginalValue($original_value)
+    {
+        
+        $this->original_value = $original_value;
+        return $this;
+    }
+    
+    /**
      * Gets stored_value
      * @return double
      */
@@ -307,6 +436,69 @@ class Measurement implements ArrayAccess
     {
         
         $this->stored_abbreviated_unit_name = $stored_abbreviated_unit_name;
+        return $this;
+    }
+    
+    /**
+     * Gets original_abbreviated_unit_name
+     * @return string
+     */
+    public function getOriginalAbbreviatedUnitName()
+    {
+        return $this->original_abbreviated_unit_name;
+    }
+  
+    /**
+     * Sets original_abbreviated_unit_name
+     * @param string $original_abbreviated_unit_name Original Unit of measurement as originally submitted
+     * @return $this
+     */
+    public function setOriginalAbbreviatedUnitName($original_abbreviated_unit_name)
+    {
+        
+        $this->original_abbreviated_unit_name = $original_abbreviated_unit_name;
+        return $this;
+    }
+    
+    /**
+     * Gets abbreviated_unit_name
+     * @return string
+     */
+    public function getAbbreviatedUnitName()
+    {
+        return $this->abbreviated_unit_name;
+    }
+  
+    /**
+     * Sets abbreviated_unit_name
+     * @param string $abbreviated_unit_name Unit of measurement as originally submitted
+     * @return $this
+     */
+    public function setAbbreviatedUnitName($abbreviated_unit_name)
+    {
+        
+        $this->abbreviated_unit_name = $abbreviated_unit_name;
+        return $this;
+    }
+    
+    /**
+     * Gets note
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+  
+    /**
+     * Sets note
+     * @param string $note Note of measurement
+     * @return $this
+     */
+    public function setNote($note)
+    {
+        
+        $this->note = $note;
         return $this;
     }
     

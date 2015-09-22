@@ -92,19 +92,19 @@ class MeasurementsApi
   
     
     /**
-     * measurementSourcesGet
+     * v1MeasurementSourcesGet
      *
      * Get measurement sources
      *
      * @return \Swagger\Client\Model\MeasurementSource
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function measurementSourcesGet()
+    public function v1MeasurementSourcesGet()
     {
         
   
         // parse inputs
-        $resourcePath = "/measurementSources";
+        $resourcePath = "/v1/measurementSources";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -161,7 +161,7 @@ class MeasurementsApi
     }
     
     /**
-     * measurementSourcesPost
+     * v1MeasurementSourcesPost
      *
      * Add a data source
      *
@@ -169,16 +169,16 @@ class MeasurementsApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function measurementSourcesPost($name)
+    public function v1MeasurementSourcesPost($name)
     {
         
         // verify the required parameter 'name' is set
         if ($name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $name when calling measurementSourcesPost');
+            throw new \InvalidArgumentException('Missing the required parameter $name when calling v1MeasurementSourcesPost');
         }
   
         // parse inputs
-        $resourcePath = "/measurementSources";
+        $resourcePath = "/v1/measurementSources";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
         $httpBody = '';
@@ -229,11 +229,11 @@ class MeasurementsApi
     }
     
     /**
-     * measurementsGet
+     * v1MeasurementsGet
      *
      * Get measurements for this user
      *
-     * @param string $variable_name Name of the variable you want measurements for (required)
+     * @param string $variable_name Name of the variable you want measurements for (optional)
      * @param string $unit The unit your want the measurements in (optional)
      * @param string $start_time The lower limit of measurements returned (Epoch) (optional)
      * @param string $end_time The upper limit of measurements returned (Epoch) (optional)
@@ -245,16 +245,12 @@ class MeasurementsApi
      * @return \Swagger\Client\Model\Measurement
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function measurementsGet($variable_name, $unit=null, $start_time=null, $end_time=null, $grouping_width=null, $grouping_timezone=null, $limit=null, $offset=null, $sort=null)
+    public function v1MeasurementsGet($variable_name=null, $unit=null, $start_time=null, $end_time=null, $grouping_width=null, $grouping_timezone=null, $limit=null, $offset=null, $sort=null)
     {
         
-        // verify the required parameter 'variable_name' is set
-        if ($variable_name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling measurementsGet');
-        }
   
         // parse inputs
-        $resourcePath = "/measurements";
+        $resourcePath = "/v1/measurements";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -338,7 +334,7 @@ class MeasurementsApi
     }
     
     /**
-     * measurementsV2Post
+     * v1MeasurementsPost
      *
      * Post a new set or update existing measurements to the database
      *
@@ -346,16 +342,16 @@ class MeasurementsApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function measurementsV2Post($measurements)
+    public function v1MeasurementsPost($measurements)
     {
         
         // verify the required parameter 'measurements' is set
         if ($measurements === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $measurements when calling measurementsV2Post');
+            throw new \InvalidArgumentException('Missing the required parameter $measurements when calling v1MeasurementsPost');
         }
   
         // parse inputs
-        $resourcePath = "/measurements/v2";
+        $resourcePath = "/v1/measurements";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
         $httpBody = '';
@@ -406,7 +402,116 @@ class MeasurementsApi
     }
     
     /**
-     * measurementsRangeGet
+     * v1MeasurementsDailyGet
+     *
+     * Get daily measurements for this user
+     *
+     * @param string $variable_name Name of the variable you want measurements for (required)
+     * @param string $abbreviated_unit_name The unit your want the measurements in (optional)
+     * @param string $start_time The lower limit of measurements returned (Iso8601) (optional)
+     * @param string $end_time The upper limit of measurements returned (Iso8601) (optional)
+     * @param int $grouping_width The time (in seconds) over which measurements are grouped together (optional)
+     * @param string $grouping_timezone The time (in seconds) over which measurements are grouped together (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return \Swagger\Client\Model\Measurement
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1MeasurementsDailyGet($variable_name, $abbreviated_unit_name=null, $start_time=null, $end_time=null, $grouping_width=null, $grouping_timezone=null, $limit=null, $offset=null, $sort=null)
+    {
+        
+        // verify the required parameter 'variable_name' is set
+        if ($variable_name === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1MeasurementsDailyGet');
+        }
+  
+        // parse inputs
+        $resourcePath = "/v1/measurements/daily";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+  
+        // query params
+        if ($variable_name !== null) {
+            $queryParams['variableName'] = $this->apiClient->getSerializer()->toQueryValue($variable_name);
+        }// query params
+        if ($abbreviated_unit_name !== null) {
+            $queryParams['abbreviatedUnitName'] = $this->apiClient->getSerializer()->toQueryValue($abbreviated_unit_name);
+        }// query params
+        if ($start_time !== null) {
+            $queryParams['startTime'] = $this->apiClient->getSerializer()->toQueryValue($start_time);
+        }// query params
+        if ($end_time !== null) {
+            $queryParams['endTime'] = $this->apiClient->getSerializer()->toQueryValue($end_time);
+        }// query params
+        if ($grouping_width !== null) {
+            $queryParams['groupingWidth'] = $this->apiClient->getSerializer()->toQueryValue($grouping_width);
+        }// query params
+        if ($grouping_timezone !== null) {
+            $queryParams['groupingTimezone'] = $this->apiClient->getSerializer()->toQueryValue($grouping_timezone);
+        }// query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }// query params
+        if ($offset !== null) {
+            $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
+        }// query params
+        if ($sort !== null) {
+            $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
+        }
+        
+        
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } else if (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        
+        //TODO support oauth
+        
+        // make the API Call
+        try
+        {
+            list($response, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, $method,
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\Measurement'
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Measurement', $httpHeader);
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
+        
+        if (!$response) {
+            return null;
+        }
+  
+        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Measurement');
+        
+    }
+    
+    /**
+     * v1MeasurementsRangeGet
      *
      * Get measurements range for this user
      *
@@ -415,12 +520,12 @@ class MeasurementsApi
      * @return \Swagger\Client\Model\MeasurementRange
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function measurementsRangeGet($sources=null, $user=null)
+    public function v1MeasurementsRangeGet($sources=null, $user=null)
     {
         
   
         // parse inputs
-        $resourcePath = "/measurementsRange";
+        $resourcePath = "/v1/measurementsRange";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';

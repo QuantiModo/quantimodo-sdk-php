@@ -234,7 +234,10 @@ class Unit implements ArrayAccess
      */
     public function setMinimum($minimum)
     {
-        
+        $allowed_values = array("-Infinity");
+        if (!in_array($minimum, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'minimum', must be one of '-Infinity'");
+        }
         $this->minimum = $minimum;
         return $this;
     }
@@ -255,7 +258,10 @@ class Unit implements ArrayAccess
      */
     public function setMaximum($maximum)
     {
-        
+        $allowed_values = array("Infinity");
+        if (!in_array($maximum, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'maximum', must be one of 'Infinity'");
+        }
         $this->maximum = $maximum;
         return $this;
     }

@@ -92,19 +92,19 @@ class UnitsApi
   
     
     /**
-     * unitCategoriesGet
+     * v1UnitCategoriesGet
      *
      * Get unit categories
      *
      * @return \Swagger\Client\Model\UnitCategory
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function unitCategoriesGet()
+    public function v1UnitCategoriesGet()
     {
         
   
         // parse inputs
-        $resourcePath = "/unitCategories";
+        $resourcePath = "/v1/unitCategories";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -161,7 +161,7 @@ class UnitsApi
     }
     
     /**
-     * unitsGet
+     * v1UnitsGet
      *
      * Get all available units
      *
@@ -171,12 +171,12 @@ class UnitsApi
      * @return \Swagger\Client\Model\Unit[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function unitsGet($unit_name=null, $abbreviated_unit_name=null, $category_name=null)
+    public function v1UnitsGet($unit_name=null, $abbreviated_unit_name=null, $category_name=null)
     {
         
   
         // parse inputs
-        $resourcePath = "/units";
+        $resourcePath = "/v1/units";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -242,7 +242,7 @@ class UnitsApi
     }
     
     /**
-     * unitsVariableGet
+     * v1UnitsVariableGet
      *
      * Units for Variable
      *
@@ -253,12 +253,12 @@ class UnitsApi
      * @return \Swagger\Client\Model\Unit[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function unitsVariableGet($unit_name=null, $abbreviated_unit_name=null, $category_name=null, $variable=null)
+    public function v1UnitsVariableGet($unit_name=null, $abbreviated_unit_name=null, $category_name=null, $variable=null)
     {
         
   
         // parse inputs
-        $resourcePath = "/unitsVariable";
+        $resourcePath = "/v1/unitsVariable";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';

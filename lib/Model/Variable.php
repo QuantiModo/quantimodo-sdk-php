@@ -55,7 +55,8 @@ class Variable implements ArrayAccess
         'name' => 'string',
         'original_name' => 'string',
         'category' => 'string',
-        'unit' => 'string',
+        'abbreviated_unit_name' => 'string',
+        'abbreviated_unit_id' => 'int',
         'sources' => 'string',
         'minimum_value' => 'double',
         'maximum_value' => 'double',
@@ -75,10 +76,10 @@ class Variable implements ArrayAccess
         'outcome' => 'int',
         'measurements_at_last_analysis' => 'int',
         'number_of_measurements' => 'int',
-        'last_unit' => 'int',
+        'last_unit' => 'string',
         'last_value' => 'int',
         'most_common_value' => 'int',
-        'most_common_unit' => 'int',
+        'most_common_unit' => 'string',
         'last_source' => 'int'
     );
   
@@ -91,7 +92,8 @@ class Variable implements ArrayAccess
         'name' => 'name',
         'original_name' => 'originalName',
         'category' => 'category',
-        'unit' => 'unit',
+        'abbreviated_unit_name' => 'abbreviatedUnitName',
+        'abbreviated_unit_id' => 'abbreviatedUnitId',
         'sources' => 'sources',
         'minimum_value' => 'minimumValue',
         'maximum_value' => 'maximumValue',
@@ -127,7 +129,8 @@ class Variable implements ArrayAccess
         'name' => 'setName',
         'original_name' => 'setOriginalName',
         'category' => 'setCategory',
-        'unit' => 'setUnit',
+        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
+        'abbreviated_unit_id' => 'setAbbreviatedUnitId',
         'sources' => 'setSources',
         'minimum_value' => 'setMinimumValue',
         'maximum_value' => 'setMaximumValue',
@@ -163,7 +166,8 @@ class Variable implements ArrayAccess
         'name' => 'getName',
         'original_name' => 'getOriginalName',
         'category' => 'getCategory',
-        'unit' => 'getUnit',
+        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
+        'abbreviated_unit_id' => 'getAbbreviatedUnitId',
         'sources' => 'getSources',
         'minimum_value' => 'getMinimumValue',
         'maximum_value' => 'getMaximumValue',
@@ -216,10 +220,16 @@ class Variable implements ArrayAccess
     protected $category;
     
     /**
-      * $unit Abbreviated name of the default unit for the variable
+      * $abbreviated_unit_name Abbreviated name of the default unit for the variable
       * @var string
       */
-    protected $unit;
+    protected $abbreviated_unit_name;
+    
+    /**
+      * $abbreviated_unit_id Id of the default unit for the variable
+      * @var int
+      */
+    protected $abbreviated_unit_id;
     
     /**
       * $sources Comma-separated list of source names to limit variables to those sources
@@ -337,7 +347,7 @@ class Variable implements ArrayAccess
     
     /**
       * $last_unit Last unit
-      * @var int
+      * @var string
       */
     protected $last_unit;
     
@@ -355,7 +365,7 @@ class Variable implements ArrayAccess
     
     /**
       * $most_common_unit Most common unit
-      * @var int
+      * @var string
       */
     protected $most_common_unit;
     
@@ -377,7 +387,8 @@ class Variable implements ArrayAccess
             $this->name = $data["name"];
             $this->original_name = $data["original_name"];
             $this->category = $data["category"];
-            $this->unit = $data["unit"];
+            $this->abbreviated_unit_name = $data["abbreviated_unit_name"];
+            $this->abbreviated_unit_id = $data["abbreviated_unit_id"];
             $this->sources = $data["sources"];
             $this->minimum_value = $data["minimum_value"];
             $this->maximum_value = $data["maximum_value"];
@@ -490,23 +501,44 @@ class Variable implements ArrayAccess
     }
     
     /**
-     * Gets unit
+     * Gets abbreviated_unit_name
      * @return string
      */
-    public function getUnit()
+    public function getAbbreviatedUnitName()
     {
-        return $this->unit;
+        return $this->abbreviated_unit_name;
     }
   
     /**
-     * Sets unit
-     * @param string $unit Abbreviated name of the default unit for the variable
+     * Sets abbreviated_unit_name
+     * @param string $abbreviated_unit_name Abbreviated name of the default unit for the variable
      * @return $this
      */
-    public function setUnit($unit)
+    public function setAbbreviatedUnitName($abbreviated_unit_name)
     {
         
-        $this->unit = $unit;
+        $this->abbreviated_unit_name = $abbreviated_unit_name;
+        return $this;
+    }
+    
+    /**
+     * Gets abbreviated_unit_id
+     * @return int
+     */
+    public function getAbbreviatedUnitId()
+    {
+        return $this->abbreviated_unit_id;
+    }
+  
+    /**
+     * Sets abbreviated_unit_id
+     * @param int $abbreviated_unit_id Id of the default unit for the variable
+     * @return $this
+     */
+    public function setAbbreviatedUnitId($abbreviated_unit_id)
+    {
+        
+        $this->abbreviated_unit_id = $abbreviated_unit_id;
         return $this;
     }
     
@@ -914,7 +946,7 @@ class Variable implements ArrayAccess
     
     /**
      * Gets last_unit
-     * @return int
+     * @return string
      */
     public function getLastUnit()
     {
@@ -923,7 +955,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets last_unit
-     * @param int $last_unit Last unit
+     * @param string $last_unit Last unit
      * @return $this
      */
     public function setLastUnit($last_unit)
@@ -977,7 +1009,7 @@ class Variable implements ArrayAccess
     
     /**
      * Gets most_common_unit
-     * @return int
+     * @return string
      */
     public function getMostCommonUnit()
     {
@@ -986,7 +1018,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets most_common_unit
-     * @param int $most_common_unit Most common unit
+     * @param string $most_common_unit Most common unit
      * @return $this
      */
     public function setMostCommonUnit($most_common_unit)

@@ -98,11 +98,12 @@ class VotesApi
      *
      * @param string $cause Cause variable name (required)
      * @param string $effect Effect variable name (required)
+     * @param Number $correlation Correlation value (required)
      * @param bool $vote Vote: 0 (for implausible) or 1 (for plausible) (optional)
      * @return \Swagger\Client\Model\CommonResponse
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VotesPost($cause, $effect, $vote=null)
+    public function v1VotesPost($cause, $effect, $correlation, $vote=null)
     {
         
         // verify the required parameter 'cause' is set
@@ -112,6 +113,10 @@ class VotesApi
         // verify the required parameter 'effect' is set
         if ($effect === null) {
             throw new \InvalidArgumentException('Missing the required parameter $effect when calling v1VotesPost');
+        }
+        // verify the required parameter 'correlation' is set
+        if ($correlation === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $correlation when calling v1VotesPost');
         }
   
         // parse inputs
@@ -134,6 +139,9 @@ class VotesApi
         }// query params
         if ($effect !== null) {
             $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
+        }// query params
+        if ($correlation !== null) {
+            $queryParams['correlation'] = $this->apiClient->getSerializer()->toQueryValue($correlation);
         }// query params
         if ($vote !== null) {
             $queryParams['vote'] = $this->apiClient->getSerializer()->toQueryValue($vote);

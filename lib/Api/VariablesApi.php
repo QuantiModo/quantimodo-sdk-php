@@ -92,110 +92,19 @@ class VariablesApi
   
     
     /**
-     * correlationsPost
-     *
-     * Store or Update a Correlation
-     *
-     * @param string $cause  (required)
-     * @param string $effect  (required)
-     * @param string $correlationcoefficient  (required)
-     * @param string $vote  (required)
-     * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function correlationsPost($cause, $effect, $correlationcoefficient, $vote)
-    {
-        
-        // verify the required parameter 'cause' is set
-        if ($cause === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $cause when calling correlationsPost');
-        }
-        // verify the required parameter 'effect' is set
-        if ($effect === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $effect when calling correlationsPost');
-        }
-        // verify the required parameter 'correlationcoefficient' is set
-        if ($correlationcoefficient === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $correlationcoefficient when calling correlationsPost');
-        }
-        // verify the required parameter 'vote' is set
-        if ($vote === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $vote when calling correlationsPost');
-        }
-  
-        // parse inputs
-        $resourcePath = "/correlations";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
-  
-        // query params
-        if ($cause !== null) {
-            $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
-        }// query params
-        if ($effect !== null) {
-            $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
-        }// query params
-        if ($correlationcoefficient !== null) {
-            $queryParams['correlationcoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlationcoefficient);
-        }// query params
-        if ($vote !== null) {
-            $queryParams['vote'] = $this->apiClient->getSerializer()->toQueryValue($vote);
-        }
-        
-        
-        
-        
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        
-        //TODO support oauth
-        
-        // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
-                $queryParams, $httpBody,
-                $headerParams
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            }
-  
-            throw $e;
-        }
-        
-    }
-    
-    /**
-     * publicVariablesGet
+     * v1PublicVariablesGet
      *
      * Get public variables
      *
      * @return \Swagger\Client\Model\Variable
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function publicVariablesGet()
+    public function v1PublicVariablesGet()
     {
         
   
         // parse inputs
-        $resourcePath = "/public/variables";
+        $resourcePath = "/v1/public/variables";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -252,7 +161,7 @@ class VariablesApi
     }
     
     /**
-     * publicVariablesSearchSearchGet
+     * v1PublicVariablesSearchSearchGet
      *
      * Get top 5 PUBLIC variables with the most correlations
      *
@@ -264,16 +173,16 @@ class VariablesApi
      * @return \Swagger\Client\Model\Variable
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function publicVariablesSearchSearchGet($search, $effect_or_cause=null, $limit=null, $offset=null, $sort=null)
+    public function v1PublicVariablesSearchSearchGet($search, $effect_or_cause=null, $limit=null, $offset=null, $sort=null)
     {
         
         // verify the required parameter 'search' is set
         if ($search === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $search when calling publicVariablesSearchSearchGet');
+            throw new \InvalidArgumentException('Missing the required parameter $search when calling v1PublicVariablesSearchSearchGet');
         }
   
         // parse inputs
-        $resourcePath = "/public/variables/search/{search}";
+        $resourcePath = "/v1/public/variables/search/{search}";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -417,19 +326,19 @@ class VariablesApi
     }
     
     /**
-     * variableCategoriesGet
+     * v1VariableCategoriesGet
      *
      * Variable categories
      *
      * @return \Swagger\Client\Model\VariableCategory[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function variableCategoriesGet()
+    public function v1VariableCategoriesGet()
     {
         
   
         // parse inputs
-        $resourcePath = "/variableCategories";
+        $resourcePath = "/v1/variableCategories";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -486,7 +395,7 @@ class VariablesApi
     }
     
     /**
-     * variablesGet
+     * v1VariablesGet
      *
      * Get variables by the category name
      *
@@ -498,12 +407,12 @@ class VariablesApi
      * @return \Swagger\Client\Model\Variable
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function variablesGet($user_id=null, $category=null, $limit=null, $offset=null, $sort=null)
+    public function v1VariablesGet($user_id=null, $category=null, $limit=null, $offset=null, $sort=null)
     {
         
   
         // parse inputs
-        $resourcePath = "/variables";
+        $resourcePath = "/v1/variables";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -578,7 +487,7 @@ class VariablesApi
     }
     
     /**
-     * variablesPost
+     * v1VariablesPost
      *
      * Create Variables
      *
@@ -586,16 +495,16 @@ class VariablesApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function variablesPost($variable_name)
+    public function v1VariablesPost($variable_name)
     {
         
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling variablesPost');
+            throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1VariablesPost');
         }
   
         // parse inputs
-        $resourcePath = "/variables";
+        $resourcePath = "/v1/variables";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "POST";
         $httpBody = '';
@@ -646,7 +555,7 @@ class VariablesApi
     }
     
     /**
-     * variablesSearchSearchGet
+     * v1VariablesSearchSearchGet
      *
      * Get variables by search query
      *
@@ -658,16 +567,16 @@ class VariablesApi
      * @return \Swagger\Client\Model\Variable[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function variablesSearchSearchGet($search, $category_name=null, $source=null, $limit=null, $offset=null)
+    public function v1VariablesSearchSearchGet($search, $category_name=null, $source=null, $limit=null, $offset=null)
     {
         
         // verify the required parameter 'search' is set
         if ($search === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $search when calling variablesSearchSearchGet');
+            throw new \InvalidArgumentException('Missing the required parameter $search when calling v1VariablesSearchSearchGet');
         }
   
         // parse inputs
-        $resourcePath = "/variables/search/{search}";
+        $resourcePath = "/v1/variables/search/{search}";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -743,7 +652,7 @@ class VariablesApi
     }
     
     /**
-     * variablesVariableNameGet
+     * v1VariablesVariableNameGet
      *
      * Get info about a variable
      *
@@ -751,16 +660,16 @@ class VariablesApi
      * @return \Swagger\Client\Model\Variable
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function variablesVariableNameGet($variable_name)
+    public function v1VariablesVariableNameGet($variable_name)
     {
         
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling variablesVariableNameGet');
+            throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1VariablesVariableNameGet');
         }
   
         // parse inputs
-        $resourcePath = "/variables/{variableName}";
+        $resourcePath = "/v1/variables/{variableName}";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';

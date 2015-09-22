@@ -53,7 +53,9 @@ class Correlation implements ArrayAccess
     static $swaggerTypes = array(
         'correlation_coefficient' => 'Number',
         'cause' => 'string',
+        'original_cause' => 'string',
         'effect' => 'string',
+        'original_effect' => 'string',
         'onset_delay' => 'double',
         'duration_of_action' => 'Number',
         'number_of_pairs' => 'Number',
@@ -63,7 +65,14 @@ class Correlation implements ArrayAccess
         'reverse_correlation' => 'Number',
         'causality_factor' => 'Number',
         'cause_category' => 'string',
-        'effect_category' => 'string'
+        'effect_category' => 'string',
+        'value_predicting_high_outcome' => 'Number',
+        'value_predicting_low_outcome' => 'Number',
+        'optimal_pearson_product' => 'Number',
+        'average_vote' => 'Number',
+        'user_vote' => 'Number',
+        'cause_unit' => 'string',
+        'cause_unit_id' => 'int'
     );
   
     /** 
@@ -73,7 +82,9 @@ class Correlation implements ArrayAccess
     static $attributeMap = array(
         'correlation_coefficient' => 'correlationCoefficient',
         'cause' => 'cause',
+        'original_cause' => 'originalCause',
         'effect' => 'effect',
+        'original_effect' => 'originalEffect',
         'onset_delay' => 'onsetDelay',
         'duration_of_action' => 'durationOfAction',
         'number_of_pairs' => 'numberOfPairs',
@@ -83,7 +94,14 @@ class Correlation implements ArrayAccess
         'reverse_correlation' => 'reverseCorrelation',
         'causality_factor' => 'causalityFactor',
         'cause_category' => 'causeCategory',
-        'effect_category' => 'effectCategory'
+        'effect_category' => 'effectCategory',
+        'value_predicting_high_outcome' => 'valuePredictingHighOutcome',
+        'value_predicting_low_outcome' => 'valuePredictingLowOutcome',
+        'optimal_pearson_product' => 'optimalPearsonProduct',
+        'average_vote' => 'averageVote',
+        'user_vote' => 'userVote',
+        'cause_unit' => 'causeUnit',
+        'cause_unit_id' => 'causeUnitId'
     );
   
     /**
@@ -93,7 +111,9 @@ class Correlation implements ArrayAccess
     static $setters = array(
         'correlation_coefficient' => 'setCorrelationCoefficient',
         'cause' => 'setCause',
+        'original_cause' => 'setOriginalCause',
         'effect' => 'setEffect',
+        'original_effect' => 'setOriginalEffect',
         'onset_delay' => 'setOnsetDelay',
         'duration_of_action' => 'setDurationOfAction',
         'number_of_pairs' => 'setNumberOfPairs',
@@ -103,7 +123,14 @@ class Correlation implements ArrayAccess
         'reverse_correlation' => 'setReverseCorrelation',
         'causality_factor' => 'setCausalityFactor',
         'cause_category' => 'setCauseCategory',
-        'effect_category' => 'setEffectCategory'
+        'effect_category' => 'setEffectCategory',
+        'value_predicting_high_outcome' => 'setValuePredictingHighOutcome',
+        'value_predicting_low_outcome' => 'setValuePredictingLowOutcome',
+        'optimal_pearson_product' => 'setOptimalPearsonProduct',
+        'average_vote' => 'setAverageVote',
+        'user_vote' => 'setUserVote',
+        'cause_unit' => 'setCauseUnit',
+        'cause_unit_id' => 'setCauseUnitId'
     );
   
     /**
@@ -113,7 +140,9 @@ class Correlation implements ArrayAccess
     static $getters = array(
         'correlation_coefficient' => 'getCorrelationCoefficient',
         'cause' => 'getCause',
+        'original_cause' => 'getOriginalCause',
         'effect' => 'getEffect',
+        'original_effect' => 'getOriginalEffect',
         'onset_delay' => 'getOnsetDelay',
         'duration_of_action' => 'getDurationOfAction',
         'number_of_pairs' => 'getNumberOfPairs',
@@ -123,7 +152,14 @@ class Correlation implements ArrayAccess
         'reverse_correlation' => 'getReverseCorrelation',
         'causality_factor' => 'getCausalityFactor',
         'cause_category' => 'getCauseCategory',
-        'effect_category' => 'getEffectCategory'
+        'effect_category' => 'getEffectCategory',
+        'value_predicting_high_outcome' => 'getValuePredictingHighOutcome',
+        'value_predicting_low_outcome' => 'getValuePredictingLowOutcome',
+        'optimal_pearson_product' => 'getOptimalPearsonProduct',
+        'average_vote' => 'getAverageVote',
+        'user_vote' => 'getUserVote',
+        'cause_unit' => 'getCauseUnit',
+        'cause_unit_id' => 'getCauseUnitId'
     );
   
     
@@ -140,10 +176,22 @@ class Correlation implements ArrayAccess
     protected $cause;
     
     /**
+      * $original_cause original name of the cause.
+      * @var string
+      */
+    protected $original_cause;
+    
+    /**
       * $effect ORIGINAL variable name of the effect variable for which the user desires correlations.
       * @var string
       */
     protected $effect;
+    
+    /**
+      * $original_effect effect variable original name.
+      * @var string
+      */
+    protected $original_effect;
     
     /**
       * $onset_delay User estimated or default time after cause measurement before a perceivable effect is observed
@@ -205,6 +253,48 @@ class Correlation implements ArrayAccess
       */
     protected $effect_category;
     
+    /**
+      * $value_predicting_high_outcome cause value that predicts an above average effect value (in default unit for cause variable)
+      * @var Number
+      */
+    protected $value_predicting_high_outcome;
+    
+    /**
+      * $value_predicting_low_outcome cause value that predicts a below average effect value (in default unit for cause variable)
+      * @var Number
+      */
+    protected $value_predicting_low_outcome;
+    
+    /**
+      * $optimal_pearson_product Optimal Pearson Product
+      * @var Number
+      */
+    protected $optimal_pearson_product;
+    
+    /**
+      * $average_vote Average Vote
+      * @var Number
+      */
+    protected $average_vote;
+    
+    /**
+      * $user_vote User Vote
+      * @var Number
+      */
+    protected $user_vote;
+    
+    /**
+      * $cause_unit Unit of Cause
+      * @var string
+      */
+    protected $cause_unit;
+    
+    /**
+      * $cause_unit_id Unit Id of Cause
+      * @var int
+      */
+    protected $cause_unit_id;
+    
 
     /**
      * Constructor
@@ -215,7 +305,9 @@ class Correlation implements ArrayAccess
         if ($data != null) {
             $this->correlation_coefficient = $data["correlation_coefficient"];
             $this->cause = $data["cause"];
+            $this->original_cause = $data["original_cause"];
             $this->effect = $data["effect"];
+            $this->original_effect = $data["original_effect"];
             $this->onset_delay = $data["onset_delay"];
             $this->duration_of_action = $data["duration_of_action"];
             $this->number_of_pairs = $data["number_of_pairs"];
@@ -226,6 +318,13 @@ class Correlation implements ArrayAccess
             $this->causality_factor = $data["causality_factor"];
             $this->cause_category = $data["cause_category"];
             $this->effect_category = $data["effect_category"];
+            $this->value_predicting_high_outcome = $data["value_predicting_high_outcome"];
+            $this->value_predicting_low_outcome = $data["value_predicting_low_outcome"];
+            $this->optimal_pearson_product = $data["optimal_pearson_product"];
+            $this->average_vote = $data["average_vote"];
+            $this->user_vote = $data["user_vote"];
+            $this->cause_unit = $data["cause_unit"];
+            $this->cause_unit_id = $data["cause_unit_id"];
         }
     }
     
@@ -272,6 +371,27 @@ class Correlation implements ArrayAccess
     }
     
     /**
+     * Gets original_cause
+     * @return string
+     */
+    public function getOriginalCause()
+    {
+        return $this->original_cause;
+    }
+  
+    /**
+     * Sets original_cause
+     * @param string $original_cause original name of the cause.
+     * @return $this
+     */
+    public function setOriginalCause($original_cause)
+    {
+        
+        $this->original_cause = $original_cause;
+        return $this;
+    }
+    
+    /**
      * Gets effect
      * @return string
      */
@@ -289,6 +409,27 @@ class Correlation implements ArrayAccess
     {
         
         $this->effect = $effect;
+        return $this;
+    }
+    
+    /**
+     * Gets original_effect
+     * @return string
+     */
+    public function getOriginalEffect()
+    {
+        return $this->original_effect;
+    }
+  
+    /**
+     * Sets original_effect
+     * @param string $original_effect effect variable original name.
+     * @return $this
+     */
+    public function setOriginalEffect($original_effect)
+    {
+        
+        $this->original_effect = $original_effect;
         return $this;
     }
     
@@ -499,6 +640,153 @@ class Correlation implements ArrayAccess
     {
         
         $this->effect_category = $effect_category;
+        return $this;
+    }
+    
+    /**
+     * Gets value_predicting_high_outcome
+     * @return Number
+     */
+    public function getValuePredictingHighOutcome()
+    {
+        return $this->value_predicting_high_outcome;
+    }
+  
+    /**
+     * Sets value_predicting_high_outcome
+     * @param Number $value_predicting_high_outcome cause value that predicts an above average effect value (in default unit for cause variable)
+     * @return $this
+     */
+    public function setValuePredictingHighOutcome($value_predicting_high_outcome)
+    {
+        
+        $this->value_predicting_high_outcome = $value_predicting_high_outcome;
+        return $this;
+    }
+    
+    /**
+     * Gets value_predicting_low_outcome
+     * @return Number
+     */
+    public function getValuePredictingLowOutcome()
+    {
+        return $this->value_predicting_low_outcome;
+    }
+  
+    /**
+     * Sets value_predicting_low_outcome
+     * @param Number $value_predicting_low_outcome cause value that predicts a below average effect value (in default unit for cause variable)
+     * @return $this
+     */
+    public function setValuePredictingLowOutcome($value_predicting_low_outcome)
+    {
+        
+        $this->value_predicting_low_outcome = $value_predicting_low_outcome;
+        return $this;
+    }
+    
+    /**
+     * Gets optimal_pearson_product
+     * @return Number
+     */
+    public function getOptimalPearsonProduct()
+    {
+        return $this->optimal_pearson_product;
+    }
+  
+    /**
+     * Sets optimal_pearson_product
+     * @param Number $optimal_pearson_product Optimal Pearson Product
+     * @return $this
+     */
+    public function setOptimalPearsonProduct($optimal_pearson_product)
+    {
+        
+        $this->optimal_pearson_product = $optimal_pearson_product;
+        return $this;
+    }
+    
+    /**
+     * Gets average_vote
+     * @return Number
+     */
+    public function getAverageVote()
+    {
+        return $this->average_vote;
+    }
+  
+    /**
+     * Sets average_vote
+     * @param Number $average_vote Average Vote
+     * @return $this
+     */
+    public function setAverageVote($average_vote)
+    {
+        
+        $this->average_vote = $average_vote;
+        return $this;
+    }
+    
+    /**
+     * Gets user_vote
+     * @return Number
+     */
+    public function getUserVote()
+    {
+        return $this->user_vote;
+    }
+  
+    /**
+     * Sets user_vote
+     * @param Number $user_vote User Vote
+     * @return $this
+     */
+    public function setUserVote($user_vote)
+    {
+        
+        $this->user_vote = $user_vote;
+        return $this;
+    }
+    
+    /**
+     * Gets cause_unit
+     * @return string
+     */
+    public function getCauseUnit()
+    {
+        return $this->cause_unit;
+    }
+  
+    /**
+     * Sets cause_unit
+     * @param string $cause_unit Unit of Cause
+     * @return $this
+     */
+    public function setCauseUnit($cause_unit)
+    {
+        
+        $this->cause_unit = $cause_unit;
+        return $this;
+    }
+    
+    /**
+     * Gets cause_unit_id
+     * @return int
+     */
+    public function getCauseUnitId()
+    {
+        return $this->cause_unit_id;
+    }
+  
+    /**
+     * Sets cause_unit_id
+     * @param int $cause_unit_id Unit Id of Cause
+     * @return $this
+     */
+    public function setCauseUnitId($cause_unit_id)
+    {
+        
+        $this->cause_unit_id = $cause_unit_id;
         return $this;
     }
     

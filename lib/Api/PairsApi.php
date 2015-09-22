@@ -92,7 +92,7 @@ class PairsApi
   
     
     /**
-     * pairsGet
+     * v1PairsGet
      *
      * Get pairs
      *
@@ -112,20 +112,20 @@ class PairsApi
      * @return \Swagger\Client\Model\Pairs[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function pairsGet($cause, $effect, $cause_source=null, $cause_unit=null, $delay=null, $duration=null, $effect_source=null, $effect_unit=null, $end_time=null, $start_time=null, $limit=null, $offset=null, $sort=null)
+    public function v1PairsGet($cause, $effect, $cause_source=null, $cause_unit=null, $delay=null, $duration=null, $effect_source=null, $effect_unit=null, $end_time=null, $start_time=null, $limit=null, $offset=null, $sort=null)
     {
         
         // verify the required parameter 'cause' is set
         if ($cause === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $cause when calling pairsGet');
+            throw new \InvalidArgumentException('Missing the required parameter $cause when calling v1PairsGet');
         }
         // verify the required parameter 'effect' is set
         if ($effect === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $effect when calling pairsGet');
+            throw new \InvalidArgumentException('Missing the required parameter $effect when calling v1PairsGet');
         }
   
         // parse inputs
-        $resourcePath = "/pairs";
+        $resourcePath = "/v1/pairs";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
