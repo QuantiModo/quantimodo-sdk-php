@@ -98,13 +98,17 @@ class CorrelationsApi
      *
      * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
      * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
+     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
+     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
+     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1CorrelationsGet($effect=null, $cause=null, $limit=null, $offset=null, $sort=null)
+    public function v1CorrelationsGet($effect=null, $cause=null, $correlation_coefficient=null, $onset_delay=null, $duration_of_action=null, $last_updated=null, $limit=null, $offset=null, $sort=null)
     {
         
   
@@ -128,6 +132,18 @@ class CorrelationsApi
         }// query params
         if ($cause !== null) {
             $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
+        }// query params
+        if ($correlation_coefficient !== null) {
+            $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
+        }// query params
+        if ($onset_delay !== null) {
+            $queryParams['onsetDelay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
+        }// query params
+        if ($duration_of_action !== null) {
+            $queryParams['durationOfAction'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
+        }// query params
+        if ($last_updated !== null) {
+            $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
         }// query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);

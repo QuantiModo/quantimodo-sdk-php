@@ -96,13 +96,18 @@ class ConnectorsApi
      *
      * Get embeddable connect javascript
      *
-     * @param string $t User token (optional)
+     * @param string $access_token User&#39;s access token (required)
+     * @param string $mashape_key Mashape API key (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectJsGet($t=null)
+    public function v1ConnectJsGet($access_token, $mashape_key=null)
     {
         
+        // verify the required parameter 'access_token' is set
+        if ($access_token === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $access_token when calling v1ConnectJsGet');
+        }
   
         // parse inputs
         $resourcePath = "/v1/connect.js";
@@ -119,8 +124,11 @@ class ConnectorsApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
   
         // query params
-        if ($t !== null) {
-            $queryParams['t'] = $this->apiClient->getSerializer()->toQueryValue($t);
+        if ($access_token !== null) {
+            $queryParams['access token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        if ($mashape_key !== null) {
+            $queryParams['mashape key'] = $this->apiClient->getSerializer()->toQueryValue($mashape_key);
         }
         
         

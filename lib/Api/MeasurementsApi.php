@@ -234,7 +234,10 @@ class MeasurementsApi
      * Get measurements for this user
      *
      * @param string $variable_name Name of the variable you want measurements for (optional)
-     * @param string $unit The unit your want the measurements in (optional)
+     * @param string $source Name of the source you want measurements for (supports exact name match only) (optional)
+     * @param string $value Value of measurement (optional)
+     * @param string $last_updated The time that this measurement was created or last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $unit The unit you want the measurements in (optional)
      * @param string $start_time The lower limit of measurements returned (Epoch) (optional)
      * @param string $end_time The upper limit of measurements returned (Epoch) (optional)
      * @param int $grouping_width The time (in seconds) over which measurements are grouped together (optional)
@@ -245,7 +248,7 @@ class MeasurementsApi
      * @return \Swagger\Client\Model\Measurement
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1MeasurementsGet($variable_name=null, $unit=null, $start_time=null, $end_time=null, $grouping_width=null, $grouping_timezone=null, $limit=null, $offset=null, $sort=null)
+    public function v1MeasurementsGet($variable_name=null, $source=null, $value=null, $last_updated=null, $unit=null, $start_time=null, $end_time=null, $grouping_width=null, $grouping_timezone=null, $limit=null, $offset=null, $sort=null)
     {
         
   
@@ -266,6 +269,15 @@ class MeasurementsApi
         // query params
         if ($variable_name !== null) {
             $queryParams['variableName'] = $this->apiClient->getSerializer()->toQueryValue($variable_name);
+        }// query params
+        if ($source !== null) {
+            $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
+        }// query params
+        if ($value !== null) {
+            $queryParams['value'] = $this->apiClient->getSerializer()->toQueryValue($value);
+        }// query params
+        if ($last_updated !== null) {
+            $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
         }// query params
         if ($unit !== null) {
             $queryParams['unit'] = $this->apiClient->getSerializer()->toQueryValue($unit);
