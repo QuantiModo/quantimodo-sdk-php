@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * Credential
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * Credential Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,15 +44,16 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class Credential implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
+        'connector_id' => 'int',
+        'attr_key' => 'string',
+        'attr_value' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     );
@@ -62,8 +63,9 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
+        'connector_id' => 'connector_id',
+        'attr_key' => 'attr_key',
+        'attr_value' => 'attr_value',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -73,8 +75,9 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
+        'connector_id' => 'setConnectorId',
+        'attr_key' => 'setAttrKey',
+        'attr_value' => 'setAttrValue',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -84,24 +87,31 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
+        'connector_id' => 'getConnectorId',
+        'attr_key' => 'getAttrKey',
+        'attr_value' => 'getAttrValue',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
   
     
     /**
-      * $id id
+      * $connector_id connector_id
       * @var int
       */
-    protected $id;
+    protected $connector_id;
     
     /**
-      * $name Unit category name
+      * $attr_key attr_key
       * @var string
       */
-    protected $name;
+    protected $attr_key;
+    
+    /**
+      * $attr_value attr_value
+      * @var string
+      */
+    protected $attr_value;
     
     /**
       * $created_at created_at
@@ -123,52 +133,74 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->name = $data["name"];
+            $this->connector_id = $data["connector_id"];
+            $this->attr_key = $data["attr_key"];
+            $this->attr_value = $data["attr_value"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
         }
     }
     
     /**
-     * Gets id
+     * Gets connector_id
      * @return int
      */
-    public function getId()
+    public function getConnectorId()
     {
-        return $this->id;
+        return $this->connector_id;
     }
   
     /**
-     * Sets id
-     * @param int $id id
+     * Sets connector_id
+     * @param int $connector_id connector_id
      * @return $this
      */
-    public function setId($id)
+    public function setConnectorId($connector_id)
     {
         
-        $this->id = $id;
+        $this->connector_id = $connector_id;
         return $this;
     }
     
     /**
-     * Gets name
+     * Gets attr_key
      * @return string
      */
-    public function getName()
+    public function getAttrKey()
     {
-        return $this->name;
+        return $this->attr_key;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets attr_key
+     * @param string $attr_key attr_key
      * @return $this
      */
-    public function setName($name)
+    public function setAttrKey($attr_key)
     {
         
-        $this->name = $name;
+        $this->attr_key = $attr_key;
+        return $this;
+    }
+    
+    /**
+     * Gets attr_value
+     * @return string
+     */
+    public function getAttrValue()
+    {
+        return $this->attr_value;
+    }
+  
+    /**
+     * Sets attr_value
+     * @param string $attr_value attr_value
+     * @return $this
+     */
+    public function setAttrValue($attr_value)
+    {
+        
+        $this->attr_value = $attr_value;
         return $this;
     }
     

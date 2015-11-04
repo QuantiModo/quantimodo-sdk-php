@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * Vote
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * Vote Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,7 +44,7 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class Vote implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
@@ -52,7 +52,11 @@ class UnitCategory implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'int',
-        'name' => 'string',
+        'client_id' => 'string',
+        'user_id' => 'int',
+        'cause_id' => 'int',
+        'effect_id' => 'int',
+        'value' => 'int',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     );
@@ -63,7 +67,11 @@ class UnitCategory implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'name' => 'name',
+        'client_id' => 'client_id',
+        'user_id' => 'user_id',
+        'cause_id' => 'cause_id',
+        'effect_id' => 'effect_id',
+        'value' => 'value',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -74,7 +82,11 @@ class UnitCategory implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'name' => 'setName',
+        'client_id' => 'setClientId',
+        'user_id' => 'setUserId',
+        'cause_id' => 'setCauseId',
+        'effect_id' => 'setEffectId',
+        'value' => 'setValue',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -85,7 +97,11 @@ class UnitCategory implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'name' => 'getName',
+        'client_id' => 'getClientId',
+        'user_id' => 'getUserId',
+        'cause_id' => 'getCauseId',
+        'effect_id' => 'getEffectId',
+        'value' => 'getValue',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
@@ -98,10 +114,34 @@ class UnitCategory implements ArrayAccess
     protected $id;
     
     /**
-      * $name Unit category name
+      * $client_id client_id
       * @var string
       */
-    protected $name;
+    protected $client_id;
+    
+    /**
+      * $user_id ID of User
+      * @var int
+      */
+    protected $user_id;
+    
+    /**
+      * $cause_id ID of cause variable
+      * @var int
+      */
+    protected $cause_id;
+    
+    /**
+      * $effect_id ID of effect variable
+      * @var int
+      */
+    protected $effect_id;
+    
+    /**
+      * $value Value of Vote
+      * @var int
+      */
+    protected $value;
     
     /**
       * $created_at created_at
@@ -124,7 +164,11 @@ class UnitCategory implements ArrayAccess
     {
         if ($data != null) {
             $this->id = $data["id"];
-            $this->name = $data["name"];
+            $this->client_id = $data["client_id"];
+            $this->user_id = $data["user_id"];
+            $this->cause_id = $data["cause_id"];
+            $this->effect_id = $data["effect_id"];
+            $this->value = $data["value"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
         }
@@ -152,23 +196,107 @@ class UnitCategory implements ArrayAccess
     }
     
     /**
-     * Gets name
+     * Gets client_id
      * @return string
      */
-    public function getName()
+    public function getClientId()
     {
-        return $this->name;
+        return $this->client_id;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets client_id
+     * @param string $client_id client_id
      * @return $this
      */
-    public function setName($name)
+    public function setClientId($client_id)
     {
         
-        $this->name = $name;
+        $this->client_id = $client_id;
+        return $this;
+    }
+    
+    /**
+     * Gets user_id
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+  
+    /**
+     * Sets user_id
+     * @param int $user_id ID of User
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        
+        $this->user_id = $user_id;
+        return $this;
+    }
+    
+    /**
+     * Gets cause_id
+     * @return int
+     */
+    public function getCauseId()
+    {
+        return $this->cause_id;
+    }
+  
+    /**
+     * Sets cause_id
+     * @param int $cause_id ID of cause variable
+     * @return $this
+     */
+    public function setCauseId($cause_id)
+    {
+        
+        $this->cause_id = $cause_id;
+        return $this;
+    }
+    
+    /**
+     * Gets effect_id
+     * @return int
+     */
+    public function getEffectId()
+    {
+        return $this->effect_id;
+    }
+  
+    /**
+     * Sets effect_id
+     * @param int $effect_id ID of effect variable
+     * @return $this
+     */
+    public function setEffectId($effect_id)
+    {
+        
+        $this->effect_id = $effect_id;
+        return $this;
+    }
+    
+    /**
+     * Gets value
+     * @return int
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+  
+    /**
+     * Sets value
+     * @param int $value Value of Vote
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        
+        $this->value = $value;
         return $this;
     }
     

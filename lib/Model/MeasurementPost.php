@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * MeasurementPost
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * MeasurementPost Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,17 +44,17 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class MeasurementPost implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'variable_id' => 'int',
+        'source_id' => 'int',
+        'unit_id' => 'int',
+        'measurements' => '\Swagger\Client\Model\MeasurementValue[]'
     );
   
     /** 
@@ -62,10 +62,10 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'variable_id' => 'variable_id',
+        'source_id' => 'source_id',
+        'unit_id' => 'unit_id',
+        'measurements' => 'measurements'
     );
   
     /**
@@ -73,10 +73,10 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'variable_id' => 'setVariableId',
+        'source_id' => 'setSourceId',
+        'unit_id' => 'setUnitId',
+        'measurements' => 'setMeasurements'
     );
   
     /**
@@ -84,36 +84,36 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'variable_id' => 'getVariableId',
+        'source_id' => 'getSourceId',
+        'unit_id' => 'getUnitId',
+        'measurements' => 'getMeasurements'
     );
   
     
     /**
-      * $id id
+      * $variable_id variable_id
       * @var int
       */
-    protected $id;
+    protected $variable_id;
     
     /**
-      * $name Unit category name
-      * @var string
+      * $source_id source_id
+      * @var int
       */
-    protected $name;
+    protected $source_id;
     
     /**
-      * $created_at created_at
-      * @var \DateTime
+      * $unit_id unit_id
+      * @var int
       */
-    protected $created_at;
+    protected $unit_id;
     
     /**
-      * $updated_at updated_at
-      * @var \DateTime
+      * $measurements measurements
+      * @var \Swagger\Client\Model\MeasurementValue[]
       */
-    protected $updated_at;
+    protected $measurements;
     
 
     /**
@@ -123,94 +123,94 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->name = $data["name"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
+            $this->variable_id = $data["variable_id"];
+            $this->source_id = $data["source_id"];
+            $this->unit_id = $data["unit_id"];
+            $this->measurements = $data["measurements"];
         }
     }
     
     /**
-     * Gets id
+     * Gets variable_id
      * @return int
      */
-    public function getId()
+    public function getVariableId()
     {
-        return $this->id;
+        return $this->variable_id;
     }
   
     /**
-     * Sets id
-     * @param int $id id
+     * Sets variable_id
+     * @param int $variable_id variable_id
      * @return $this
      */
-    public function setId($id)
+    public function setVariableId($variable_id)
     {
         
-        $this->id = $id;
+        $this->variable_id = $variable_id;
         return $this;
     }
     
     /**
-     * Gets name
-     * @return string
+     * Gets source_id
+     * @return int
      */
-    public function getName()
+    public function getSourceId()
     {
-        return $this->name;
+        return $this->source_id;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets source_id
+     * @param int $source_id source_id
      * @return $this
      */
-    public function setName($name)
+    public function setSourceId($source_id)
     {
         
-        $this->name = $name;
+        $this->source_id = $source_id;
         return $this;
     }
     
     /**
-     * Gets created_at
-     * @return \DateTime
+     * Gets unit_id
+     * @return int
      */
-    public function getCreatedAt()
+    public function getUnitId()
     {
-        return $this->created_at;
+        return $this->unit_id;
     }
   
     /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
+     * Sets unit_id
+     * @param int $unit_id unit_id
      * @return $this
      */
-    public function setCreatedAt($created_at)
+    public function setUnitId($unit_id)
     {
         
-        $this->created_at = $created_at;
+        $this->unit_id = $unit_id;
         return $this;
     }
     
     /**
-     * Gets updated_at
-     * @return \DateTime
+     * Gets measurements
+     * @return \Swagger\Client\Model\MeasurementValue[]
      */
-    public function getUpdatedAt()
+    public function getMeasurements()
     {
-        return $this->updated_at;
+        return $this->measurements;
     }
   
     /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
+     * Sets measurements
+     * @param \Swagger\Client\Model\MeasurementValue[] $measurements measurements
      * @return $this
      */
-    public function setUpdatedAt($updated_at)
+    public function setMeasurements($measurements)
     {
         
-        $this->updated_at = $updated_at;
+        $this->measurements = $measurements;
         return $this;
     }
     

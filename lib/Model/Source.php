@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * Source
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * Source Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,7 +44,7 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class Source implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
@@ -52,6 +52,7 @@ class UnitCategory implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'int',
+        'client_id' => 'string',
         'name' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
@@ -63,6 +64,7 @@ class UnitCategory implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
+        'client_id' => 'client_id',
         'name' => 'name',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
@@ -74,6 +76,7 @@ class UnitCategory implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
+        'client_id' => 'setClientId',
         'name' => 'setName',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
@@ -85,6 +88,7 @@ class UnitCategory implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
+        'client_id' => 'getClientId',
         'name' => 'getName',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
@@ -98,7 +102,13 @@ class UnitCategory implements ArrayAccess
     protected $id;
     
     /**
-      * $name Unit category name
+      * $client_id client_id
+      * @var string
+      */
+    protected $client_id;
+    
+    /**
+      * $name Name of the application or device
       * @var string
       */
     protected $name;
@@ -124,6 +134,7 @@ class UnitCategory implements ArrayAccess
     {
         if ($data != null) {
             $this->id = $data["id"];
+            $this->client_id = $data["client_id"];
             $this->name = $data["name"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
@@ -152,6 +163,27 @@ class UnitCategory implements ArrayAccess
     }
     
     /**
+     * Gets client_id
+     * @return string
+     */
+    public function getClientId()
+    {
+        return $this->client_id;
+    }
+  
+    /**
+     * Sets client_id
+     * @param string $client_id client_id
+     * @return $this
+     */
+    public function setClientId($client_id)
+    {
+        
+        $this->client_id = $client_id;
+        return $this;
+    }
+    
+    /**
      * Gets name
      * @return string
      */
@@ -162,7 +194,7 @@ class UnitCategory implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name Unit category name
+     * @param string $name Name of the application or device
      * @return $this
      */
     public function setName($name)

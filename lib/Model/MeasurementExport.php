@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * MeasurementExport
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * MeasurementExport Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,7 +44,7 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class MeasurementExport implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
@@ -52,7 +52,9 @@ class UnitCategory implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'int',
-        'name' => 'string',
+        'user_id' => 'int',
+        'status' => 'string',
+        'error_message' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     );
@@ -63,7 +65,9 @@ class UnitCategory implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'name' => 'name',
+        'user_id' => 'user_id',
+        'status' => 'status',
+        'error_message' => 'error_message',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -74,7 +78,9 @@ class UnitCategory implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'name' => 'setName',
+        'user_id' => 'setUserId',
+        'status' => 'setStatus',
+        'error_message' => 'setErrorMessage',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -85,7 +91,9 @@ class UnitCategory implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'name' => 'getName',
+        'user_id' => 'getUserId',
+        'status' => 'getStatus',
+        'error_message' => 'getErrorMessage',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
@@ -98,10 +106,22 @@ class UnitCategory implements ArrayAccess
     protected $id;
     
     /**
-      * $name Unit category name
+      * $user_id ID of User
+      * @var int
+      */
+    protected $user_id;
+    
+    /**
+      * $status Status of Measurement Export
       * @var string
       */
-    protected $name;
+    protected $status;
+    
+    /**
+      * $error_message Error message
+      * @var string
+      */
+    protected $error_message;
     
     /**
       * $created_at created_at
@@ -124,7 +144,9 @@ class UnitCategory implements ArrayAccess
     {
         if ($data != null) {
             $this->id = $data["id"];
-            $this->name = $data["name"];
+            $this->user_id = $data["user_id"];
+            $this->status = $data["status"];
+            $this->error_message = $data["error_message"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
         }
@@ -152,23 +174,65 @@ class UnitCategory implements ArrayAccess
     }
     
     /**
-     * Gets name
-     * @return string
+     * Gets user_id
+     * @return int
      */
-    public function getName()
+    public function getUserId()
     {
-        return $this->name;
+        return $this->user_id;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets user_id
+     * @param int $user_id ID of User
      * @return $this
      */
-    public function setName($name)
+    public function setUserId($user_id)
     {
         
-        $this->name = $name;
+        $this->user_id = $user_id;
+        return $this;
+    }
+    
+    /**
+     * Gets status
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+  
+    /**
+     * Sets status
+     * @param string $status Status of Measurement Export
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        
+        $this->status = $status;
+        return $this;
+    }
+    
+    /**
+     * Gets error_message
+     * @return string
+     */
+    public function getErrorMessage()
+    {
+        return $this->error_message;
+    }
+  
+    /**
+     * Sets error_message
+     * @param string $error_message Error message
+     * @return $this
+     */
+    public function setErrorMessage($error_message)
+    {
+        
+        $this->error_message = $error_message;
         return $this;
     }
     

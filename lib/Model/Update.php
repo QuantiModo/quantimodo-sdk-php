@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * Update
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * Update Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,7 +44,7 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class Update implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
@@ -52,7 +52,11 @@ class UnitCategory implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'int',
-        'name' => 'string',
+        'user_id' => 'int',
+        'connector_id' => 'int',
+        'number_of_measurements' => 'int',
+        'success' => 'bool',
+        'message' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     );
@@ -63,7 +67,11 @@ class UnitCategory implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'name' => 'name',
+        'user_id' => 'user_id',
+        'connector_id' => 'connector_id',
+        'number_of_measurements' => 'number_of_measurements',
+        'success' => 'success',
+        'message' => 'message',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -74,7 +82,11 @@ class UnitCategory implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'name' => 'setName',
+        'user_id' => 'setUserId',
+        'connector_id' => 'setConnectorId',
+        'number_of_measurements' => 'setNumberOfMeasurements',
+        'success' => 'setSuccess',
+        'message' => 'setMessage',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -85,7 +97,11 @@ class UnitCategory implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'name' => 'getName',
+        'user_id' => 'getUserId',
+        'connector_id' => 'getConnectorId',
+        'number_of_measurements' => 'getNumberOfMeasurements',
+        'success' => 'getSuccess',
+        'message' => 'getMessage',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
@@ -98,10 +114,34 @@ class UnitCategory implements ArrayAccess
     protected $id;
     
     /**
-      * $name Unit category name
+      * $user_id user_id
+      * @var int
+      */
+    protected $user_id;
+    
+    /**
+      * $connector_id connector_id
+      * @var int
+      */
+    protected $connector_id;
+    
+    /**
+      * $number_of_measurements number_of_measurements
+      * @var int
+      */
+    protected $number_of_measurements;
+    
+    /**
+      * $success success
+      * @var bool
+      */
+    protected $success;
+    
+    /**
+      * $message message
       * @var string
       */
-    protected $name;
+    protected $message;
     
     /**
       * $created_at created_at
@@ -124,7 +164,11 @@ class UnitCategory implements ArrayAccess
     {
         if ($data != null) {
             $this->id = $data["id"];
-            $this->name = $data["name"];
+            $this->user_id = $data["user_id"];
+            $this->connector_id = $data["connector_id"];
+            $this->number_of_measurements = $data["number_of_measurements"];
+            $this->success = $data["success"];
+            $this->message = $data["message"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
         }
@@ -152,23 +196,107 @@ class UnitCategory implements ArrayAccess
     }
     
     /**
-     * Gets name
-     * @return string
+     * Gets user_id
+     * @return int
      */
-    public function getName()
+    public function getUserId()
     {
-        return $this->name;
+        return $this->user_id;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets user_id
+     * @param int $user_id user_id
      * @return $this
      */
-    public function setName($name)
+    public function setUserId($user_id)
     {
         
-        $this->name = $name;
+        $this->user_id = $user_id;
+        return $this;
+    }
+    
+    /**
+     * Gets connector_id
+     * @return int
+     */
+    public function getConnectorId()
+    {
+        return $this->connector_id;
+    }
+  
+    /**
+     * Sets connector_id
+     * @param int $connector_id connector_id
+     * @return $this
+     */
+    public function setConnectorId($connector_id)
+    {
+        
+        $this->connector_id = $connector_id;
+        return $this;
+    }
+    
+    /**
+     * Gets number_of_measurements
+     * @return int
+     */
+    public function getNumberOfMeasurements()
+    {
+        return $this->number_of_measurements;
+    }
+  
+    /**
+     * Sets number_of_measurements
+     * @param int $number_of_measurements number_of_measurements
+     * @return $this
+     */
+    public function setNumberOfMeasurements($number_of_measurements)
+    {
+        
+        $this->number_of_measurements = $number_of_measurements;
+        return $this;
+    }
+    
+    /**
+     * Gets success
+     * @return bool
+     */
+    public function getSuccess()
+    {
+        return $this->success;
+    }
+  
+    /**
+     * Sets success
+     * @param bool $success success
+     * @return $this
+     */
+    public function setSuccess($success)
+    {
+        
+        $this->success = $success;
+        return $this;
+    }
+    
+    /**
+     * Gets message
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+  
+    /**
+     * Sets message
+     * @param string $message message
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        
+        $this->message = $message;
         return $this;
     }
     

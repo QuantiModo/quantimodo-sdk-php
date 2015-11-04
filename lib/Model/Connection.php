@@ -1,6 +1,6 @@
 <?php
 /**
- * Unit
+ * Connection
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * Unit Class Doc Comment
+ * Connection Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,7 +44,7 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Unit implements ArrayAccess
+class Connection implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
@@ -52,16 +52,14 @@ class Unit implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'int',
-        'client_id' => 'string',
-        'name' => 'string',
-        'abbreviated_name' => 'string',
-        'category_id' => 'int',
-        'minimum_value' => 'float',
-        'maximum_value' => 'float',
-        'updated' => 'int',
-        'default_unit_id' => 'int',
-        'multiply' => 'float',
-        'add' => 'float',
+        'user_id' => 'int',
+        'connector_id' => 'int',
+        'connect_status' => 'string',
+        'connect_error' => 'string',
+        'update_requested_at' => '\DateTime',
+        'update_status' => 'string',
+        'update_error' => 'string',
+        'last_successful_updated_at' => '\DateTime',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     );
@@ -72,16 +70,14 @@ class Unit implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'client_id' => 'client_id',
-        'name' => 'name',
-        'abbreviated_name' => 'abbreviated_name',
-        'category_id' => 'category_id',
-        'minimum_value' => 'minimum_value',
-        'maximum_value' => 'maximum_value',
-        'updated' => 'updated',
-        'default_unit_id' => 'default_unit_id',
-        'multiply' => 'multiply',
-        'add' => 'add',
+        'user_id' => 'user_id',
+        'connector_id' => 'connector_id',
+        'connect_status' => 'connect_status',
+        'connect_error' => 'connect_error',
+        'update_requested_at' => 'update_requested_at',
+        'update_status' => 'update_status',
+        'update_error' => 'update_error',
+        'last_successful_updated_at' => 'last_successful_updated_at',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -92,16 +88,14 @@ class Unit implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'client_id' => 'setClientId',
-        'name' => 'setName',
-        'abbreviated_name' => 'setAbbreviatedName',
-        'category_id' => 'setCategoryId',
-        'minimum_value' => 'setMinimumValue',
-        'maximum_value' => 'setMaximumValue',
-        'updated' => 'setUpdated',
-        'default_unit_id' => 'setDefaultUnitId',
-        'multiply' => 'setMultiply',
-        'add' => 'setAdd',
+        'user_id' => 'setUserId',
+        'connector_id' => 'setConnectorId',
+        'connect_status' => 'setConnectStatus',
+        'connect_error' => 'setConnectError',
+        'update_requested_at' => 'setUpdateRequestedAt',
+        'update_status' => 'setUpdateStatus',
+        'update_error' => 'setUpdateError',
+        'last_successful_updated_at' => 'setLastSuccessfulUpdatedAt',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -112,16 +106,14 @@ class Unit implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'client_id' => 'getClientId',
-        'name' => 'getName',
-        'abbreviated_name' => 'getAbbreviatedName',
-        'category_id' => 'getCategoryId',
-        'minimum_value' => 'getMinimumValue',
-        'maximum_value' => 'getMaximumValue',
-        'updated' => 'getUpdated',
-        'default_unit_id' => 'getDefaultUnitId',
-        'multiply' => 'getMultiply',
-        'add' => 'getAdd',
+        'user_id' => 'getUserId',
+        'connector_id' => 'getConnectorId',
+        'connect_status' => 'getConnectStatus',
+        'connect_error' => 'getConnectError',
+        'update_requested_at' => 'getUpdateRequestedAt',
+        'update_status' => 'getUpdateStatus',
+        'update_error' => 'getUpdateError',
+        'last_successful_updated_at' => 'getLastSuccessfulUpdatedAt',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
@@ -134,64 +126,52 @@ class Unit implements ArrayAccess
     protected $id;
     
     /**
-      * $client_id client_id
-      * @var string
-      */
-    protected $client_id;
-    
-    /**
-      * $name Unit name
-      * @var string
-      */
-    protected $name;
-    
-    /**
-      * $abbreviated_name Unit abbreviation
-      * @var string
-      */
-    protected $abbreviated_name;
-    
-    /**
-      * $category_id Unit category ID
+      * $user_id user_id
       * @var int
       */
-    protected $category_id;
+    protected $user_id;
     
     /**
-      * $minimum_value Unit minimum value
-      * @var float
-      */
-    protected $minimum_value;
-    
-    /**
-      * $maximum_value Unit maximum value
-      * @var float
-      */
-    protected $maximum_value;
-    
-    /**
-      * $updated updated
+      * $connector_id connector_id
       * @var int
       */
-    protected $updated;
+    protected $connector_id;
     
     /**
-      * $default_unit_id ID of default unit
-      * @var int
+      * $connect_status connect_status
+      * @var string
       */
-    protected $default_unit_id;
+    protected $connect_status;
     
     /**
-      * $multiply Value multiplied to
-      * @var float
+      * $connect_error connect_error
+      * @var string
       */
-    protected $multiply;
+    protected $connect_error;
     
     /**
-      * $add Value which should be added to convert to default unit
-      * @var float
+      * $update_requested_at update_requested_at
+      * @var \DateTime
       */
-    protected $add;
+    protected $update_requested_at;
+    
+    /**
+      * $update_status update_status
+      * @var string
+      */
+    protected $update_status;
+    
+    /**
+      * $update_error update_error
+      * @var string
+      */
+    protected $update_error;
+    
+    /**
+      * $last_successful_updated_at last_successful_updated_at
+      * @var \DateTime
+      */
+    protected $last_successful_updated_at;
     
     /**
       * $created_at created_at
@@ -214,16 +194,14 @@ class Unit implements ArrayAccess
     {
         if ($data != null) {
             $this->id = $data["id"];
-            $this->client_id = $data["client_id"];
-            $this->name = $data["name"];
-            $this->abbreviated_name = $data["abbreviated_name"];
-            $this->category_id = $data["category_id"];
-            $this->minimum_value = $data["minimum_value"];
-            $this->maximum_value = $data["maximum_value"];
-            $this->updated = $data["updated"];
-            $this->default_unit_id = $data["default_unit_id"];
-            $this->multiply = $data["multiply"];
-            $this->add = $data["add"];
+            $this->user_id = $data["user_id"];
+            $this->connector_id = $data["connector_id"];
+            $this->connect_status = $data["connect_status"];
+            $this->connect_error = $data["connect_error"];
+            $this->update_requested_at = $data["update_requested_at"];
+            $this->update_status = $data["update_status"];
+            $this->update_error = $data["update_error"];
+            $this->last_successful_updated_at = $data["last_successful_updated_at"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
         }
@@ -251,212 +229,170 @@ class Unit implements ArrayAccess
     }
     
     /**
-     * Gets client_id
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->client_id;
-    }
-  
-    /**
-     * Sets client_id
-     * @param string $client_id client_id
-     * @return $this
-     */
-    public function setClientId($client_id)
-    {
-        
-        $this->client_id = $client_id;
-        return $this;
-    }
-    
-    /**
-     * Gets name
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-  
-    /**
-     * Sets name
-     * @param string $name Unit name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        
-        $this->name = $name;
-        return $this;
-    }
-    
-    /**
-     * Gets abbreviated_name
-     * @return string
-     */
-    public function getAbbreviatedName()
-    {
-        return $this->abbreviated_name;
-    }
-  
-    /**
-     * Sets abbreviated_name
-     * @param string $abbreviated_name Unit abbreviation
-     * @return $this
-     */
-    public function setAbbreviatedName($abbreviated_name)
-    {
-        
-        $this->abbreviated_name = $abbreviated_name;
-        return $this;
-    }
-    
-    /**
-     * Gets category_id
+     * Gets user_id
      * @return int
      */
-    public function getCategoryId()
+    public function getUserId()
     {
-        return $this->category_id;
+        return $this->user_id;
     }
   
     /**
-     * Sets category_id
-     * @param int $category_id Unit category ID
+     * Sets user_id
+     * @param int $user_id user_id
      * @return $this
      */
-    public function setCategoryId($category_id)
+    public function setUserId($user_id)
     {
         
-        $this->category_id = $category_id;
+        $this->user_id = $user_id;
         return $this;
     }
     
     /**
-     * Gets minimum_value
-     * @return float
-     */
-    public function getMinimumValue()
-    {
-        return $this->minimum_value;
-    }
-  
-    /**
-     * Sets minimum_value
-     * @param float $minimum_value Unit minimum value
-     * @return $this
-     */
-    public function setMinimumValue($minimum_value)
-    {
-        
-        $this->minimum_value = $minimum_value;
-        return $this;
-    }
-    
-    /**
-     * Gets maximum_value
-     * @return float
-     */
-    public function getMaximumValue()
-    {
-        return $this->maximum_value;
-    }
-  
-    /**
-     * Sets maximum_value
-     * @param float $maximum_value Unit maximum value
-     * @return $this
-     */
-    public function setMaximumValue($maximum_value)
-    {
-        
-        $this->maximum_value = $maximum_value;
-        return $this;
-    }
-    
-    /**
-     * Gets updated
+     * Gets connector_id
      * @return int
      */
-    public function getUpdated()
+    public function getConnectorId()
     {
-        return $this->updated;
+        return $this->connector_id;
     }
   
     /**
-     * Sets updated
-     * @param int $updated updated
+     * Sets connector_id
+     * @param int $connector_id connector_id
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setConnectorId($connector_id)
     {
         
-        $this->updated = $updated;
+        $this->connector_id = $connector_id;
         return $this;
     }
     
     /**
-     * Gets default_unit_id
-     * @return int
+     * Gets connect_status
+     * @return string
      */
-    public function getDefaultUnitId()
+    public function getConnectStatus()
     {
-        return $this->default_unit_id;
+        return $this->connect_status;
     }
   
     /**
-     * Sets default_unit_id
-     * @param int $default_unit_id ID of default unit
+     * Sets connect_status
+     * @param string $connect_status connect_status
      * @return $this
      */
-    public function setDefaultUnitId($default_unit_id)
+    public function setConnectStatus($connect_status)
     {
         
-        $this->default_unit_id = $default_unit_id;
+        $this->connect_status = $connect_status;
         return $this;
     }
     
     /**
-     * Gets multiply
-     * @return float
+     * Gets connect_error
+     * @return string
      */
-    public function getMultiply()
+    public function getConnectError()
     {
-        return $this->multiply;
+        return $this->connect_error;
     }
   
     /**
-     * Sets multiply
-     * @param float $multiply Value multiplied to
+     * Sets connect_error
+     * @param string $connect_error connect_error
      * @return $this
      */
-    public function setMultiply($multiply)
+    public function setConnectError($connect_error)
     {
         
-        $this->multiply = $multiply;
+        $this->connect_error = $connect_error;
         return $this;
     }
     
     /**
-     * Gets add
-     * @return float
+     * Gets update_requested_at
+     * @return \DateTime
      */
-    public function getAdd()
+    public function getUpdateRequestedAt()
     {
-        return $this->add;
+        return $this->update_requested_at;
     }
   
     /**
-     * Sets add
-     * @param float $add Value which should be added to convert to default unit
+     * Sets update_requested_at
+     * @param \DateTime $update_requested_at update_requested_at
      * @return $this
      */
-    public function setAdd($add)
+    public function setUpdateRequestedAt($update_requested_at)
     {
         
-        $this->add = $add;
+        $this->update_requested_at = $update_requested_at;
+        return $this;
+    }
+    
+    /**
+     * Gets update_status
+     * @return string
+     */
+    public function getUpdateStatus()
+    {
+        return $this->update_status;
+    }
+  
+    /**
+     * Sets update_status
+     * @param string $update_status update_status
+     * @return $this
+     */
+    public function setUpdateStatus($update_status)
+    {
+        
+        $this->update_status = $update_status;
+        return $this;
+    }
+    
+    /**
+     * Gets update_error
+     * @return string
+     */
+    public function getUpdateError()
+    {
+        return $this->update_error;
+    }
+  
+    /**
+     * Sets update_error
+     * @param string $update_error update_error
+     * @return $this
+     */
+    public function setUpdateError($update_error)
+    {
+        
+        $this->update_error = $update_error;
+        return $this;
+    }
+    
+    /**
+     * Gets last_successful_updated_at
+     * @return \DateTime
+     */
+    public function getLastSuccessfulUpdatedAt()
+    {
+        return $this->last_successful_updated_at;
+    }
+  
+    /**
+     * Sets last_successful_updated_at
+     * @param \DateTime $last_successful_updated_at last_successful_updated_at
+     * @return $this
+     */
+    public function setLastSuccessfulUpdatedAt($last_successful_updated_at)
+    {
+        
+        $this->last_successful_updated_at = $last_successful_updated_at;
         return $this;
     }
     

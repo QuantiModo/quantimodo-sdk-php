@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * MeasurementValue
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * MeasurementValue Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,17 +44,15 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class MeasurementValue implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'start_time' => 'int',
+        'value' => 'float'
     );
   
     /** 
@@ -62,10 +60,8 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'start_time' => 'start_time',
+        'value' => 'value'
     );
   
     /**
@@ -73,10 +69,8 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'start_time' => 'setStartTime',
+        'value' => 'setValue'
     );
   
     /**
@@ -84,36 +78,22 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'start_time' => 'getStartTime',
+        'value' => 'getValue'
     );
   
     
     /**
-      * $id id
+      * $start_time start_time
       * @var int
       */
-    protected $id;
+    protected $start_time;
     
     /**
-      * $name Unit category name
-      * @var string
+      * $value value
+      * @var float
       */
-    protected $name;
-    
-    /**
-      * $created_at created_at
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at updated_at
-      * @var \DateTime
-      */
-    protected $updated_at;
+    protected $value;
     
 
     /**
@@ -123,94 +103,50 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->name = $data["name"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
+            $this->start_time = $data["start_time"];
+            $this->value = $data["value"];
         }
     }
     
     /**
-     * Gets id
+     * Gets start_time
      * @return int
      */
-    public function getId()
+    public function getStartTime()
     {
-        return $this->id;
+        return $this->start_time;
     }
   
     /**
-     * Sets id
-     * @param int $id id
+     * Sets start_time
+     * @param int $start_time start_time
      * @return $this
      */
-    public function setId($id)
+    public function setStartTime($start_time)
     {
         
-        $this->id = $id;
+        $this->start_time = $start_time;
         return $this;
     }
     
     /**
-     * Gets name
-     * @return string
+     * Gets value
+     * @return float
      */
-    public function getName()
+    public function getValue()
     {
-        return $this->name;
+        return $this->value;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets value
+     * @param float $value value
      * @return $this
      */
-    public function setName($name)
+    public function setValue($value)
     {
         
-        $this->name = $name;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
+        $this->value = $value;
         return $this;
     }
     

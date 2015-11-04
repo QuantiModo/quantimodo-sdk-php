@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * VariableUserSource
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * VariableUserSource Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,15 +44,19 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class VariableUserSource implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
+        'user_id' => 'int',
+        'variable_id' => 'int',
+        'source_id' => 'int',
+        'timestamp' => 'int',
+        'earliest_measurement_time' => 'int',
+        'latest_measurement_time' => 'int',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     );
@@ -62,8 +66,12 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
+        'user_id' => 'user_id',
+        'variable_id' => 'variable_id',
+        'source_id' => 'source_id',
+        'timestamp' => 'timestamp',
+        'earliest_measurement_time' => 'earliest_measurement_time',
+        'latest_measurement_time' => 'latest_measurement_time',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -73,8 +81,12 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
+        'user_id' => 'setUserId',
+        'variable_id' => 'setVariableId',
+        'source_id' => 'setSourceId',
+        'timestamp' => 'setTimestamp',
+        'earliest_measurement_time' => 'setEarliestMeasurementTime',
+        'latest_measurement_time' => 'setLatestMeasurementTime',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -84,24 +96,52 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
+        'user_id' => 'getUserId',
+        'variable_id' => 'getVariableId',
+        'source_id' => 'getSourceId',
+        'timestamp' => 'getTimestamp',
+        'earliest_measurement_time' => 'getEarliestMeasurementTime',
+        'latest_measurement_time' => 'getLatestMeasurementTime',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
   
     
     /**
-      * $id id
+      * $user_id ID of User
       * @var int
       */
-    protected $id;
+    protected $user_id;
     
     /**
-      * $name Unit category name
-      * @var string
+      * $variable_id ID of variable
+      * @var int
       */
-    protected $name;
+    protected $variable_id;
+    
+    /**
+      * $source_id ID of source
+      * @var int
+      */
+    protected $source_id;
+    
+    /**
+      * $timestamp Time that this measurement occurred Uses epoch minute (epoch time divided by 60)
+      * @var int
+      */
+    protected $timestamp;
+    
+    /**
+      * $earliest_measurement_time Earliest measurement time
+      * @var int
+      */
+    protected $earliest_measurement_time;
+    
+    /**
+      * $latest_measurement_time Latest measurement time
+      * @var int
+      */
+    protected $latest_measurement_time;
     
     /**
       * $created_at created_at
@@ -123,52 +163,140 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->name = $data["name"];
+            $this->user_id = $data["user_id"];
+            $this->variable_id = $data["variable_id"];
+            $this->source_id = $data["source_id"];
+            $this->timestamp = $data["timestamp"];
+            $this->earliest_measurement_time = $data["earliest_measurement_time"];
+            $this->latest_measurement_time = $data["latest_measurement_time"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
         }
     }
     
     /**
-     * Gets id
+     * Gets user_id
      * @return int
      */
-    public function getId()
+    public function getUserId()
     {
-        return $this->id;
+        return $this->user_id;
     }
   
     /**
-     * Sets id
-     * @param int $id id
+     * Sets user_id
+     * @param int $user_id ID of User
      * @return $this
      */
-    public function setId($id)
+    public function setUserId($user_id)
     {
         
-        $this->id = $id;
+        $this->user_id = $user_id;
         return $this;
     }
     
     /**
-     * Gets name
-     * @return string
+     * Gets variable_id
+     * @return int
      */
-    public function getName()
+    public function getVariableId()
     {
-        return $this->name;
+        return $this->variable_id;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets variable_id
+     * @param int $variable_id ID of variable
      * @return $this
      */
-    public function setName($name)
+    public function setVariableId($variable_id)
     {
         
-        $this->name = $name;
+        $this->variable_id = $variable_id;
+        return $this;
+    }
+    
+    /**
+     * Gets source_id
+     * @return int
+     */
+    public function getSourceId()
+    {
+        return $this->source_id;
+    }
+  
+    /**
+     * Sets source_id
+     * @param int $source_id ID of source
+     * @return $this
+     */
+    public function setSourceId($source_id)
+    {
+        
+        $this->source_id = $source_id;
+        return $this;
+    }
+    
+    /**
+     * Gets timestamp
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+  
+    /**
+     * Sets timestamp
+     * @param int $timestamp Time that this measurement occurred Uses epoch minute (epoch time divided by 60)
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        
+        $this->timestamp = $timestamp;
+        return $this;
+    }
+    
+    /**
+     * Gets earliest_measurement_time
+     * @return int
+     */
+    public function getEarliestMeasurementTime()
+    {
+        return $this->earliest_measurement_time;
+    }
+  
+    /**
+     * Sets earliest_measurement_time
+     * @param int $earliest_measurement_time Earliest measurement time
+     * @return $this
+     */
+    public function setEarliestMeasurementTime($earliest_measurement_time)
+    {
+        
+        $this->earliest_measurement_time = $earliest_measurement_time;
+        return $this;
+    }
+    
+    /**
+     * Gets latest_measurement_time
+     * @return int
+     */
+    public function getLatestMeasurementTime()
+    {
+        return $this->latest_measurement_time;
+    }
+  
+    /**
+     * Sets latest_measurement_time
+     * @param int $latest_measurement_time Latest measurement time
+     * @return $this
+     */
+    public function setLatestMeasurementTime($latest_measurement_time)
+    {
+        
+        $this->latest_measurement_time = $latest_measurement_time;
         return $this;
     }
     

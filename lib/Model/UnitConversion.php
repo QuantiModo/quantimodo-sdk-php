@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * UnitConversion
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * UnitConversion Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,15 +44,17 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class UnitConversion implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
+        'unit_id' => 'int',
+        'step_number' => 'bool',
+        'operation' => 'bool',
+        'value' => 'float',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     );
@@ -62,8 +64,10 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
+        'unit_id' => 'unit_id',
+        'step_number' => 'step_number',
+        'operation' => 'operation',
+        'value' => 'value',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -73,8 +77,10 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
+        'unit_id' => 'setUnitId',
+        'step_number' => 'setStepNumber',
+        'operation' => 'setOperation',
+        'value' => 'setValue',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -84,24 +90,38 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
+        'unit_id' => 'getUnitId',
+        'step_number' => 'getStepNumber',
+        'operation' => 'getOperation',
+        'value' => 'getValue',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
   
     
     /**
-      * $id id
+      * $unit_id unit_id
       * @var int
       */
-    protected $id;
+    protected $unit_id;
     
     /**
-      * $name Unit category name
-      * @var string
+      * $step_number step in the conversion process
+      * @var bool
       */
-    protected $name;
+    protected $step_number;
+    
+    /**
+      * $operation 0 is add and 1 is multiply
+      * @var bool
+      */
+    protected $operation;
+    
+    /**
+      * $value number used in the operation
+      * @var float
+      */
+    protected $value;
     
     /**
       * $created_at created_at
@@ -123,52 +143,96 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->name = $data["name"];
+            $this->unit_id = $data["unit_id"];
+            $this->step_number = $data["step_number"];
+            $this->operation = $data["operation"];
+            $this->value = $data["value"];
             $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
         }
     }
     
     /**
-     * Gets id
+     * Gets unit_id
      * @return int
      */
-    public function getId()
+    public function getUnitId()
     {
-        return $this->id;
+        return $this->unit_id;
     }
   
     /**
-     * Sets id
-     * @param int $id id
+     * Sets unit_id
+     * @param int $unit_id unit_id
      * @return $this
      */
-    public function setId($id)
+    public function setUnitId($unit_id)
     {
         
-        $this->id = $id;
+        $this->unit_id = $unit_id;
         return $this;
     }
     
     /**
-     * Gets name
-     * @return string
+     * Gets step_number
+     * @return bool
      */
-    public function getName()
+    public function getStepNumber()
     {
-        return $this->name;
+        return $this->step_number;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets step_number
+     * @param bool $step_number step in the conversion process
      * @return $this
      */
-    public function setName($name)
+    public function setStepNumber($step_number)
     {
         
-        $this->name = $name;
+        $this->step_number = $step_number;
+        return $this;
+    }
+    
+    /**
+     * Gets operation
+     * @return bool
+     */
+    public function getOperation()
+    {
+        return $this->operation;
+    }
+  
+    /**
+     * Sets operation
+     * @param bool $operation 0 is add and 1 is multiply
+     * @return $this
+     */
+    public function setOperation($operation)
+    {
+        
+        $this->operation = $operation;
+        return $this;
+    }
+    
+    /**
+     * Gets value
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+  
+    /**
+     * Sets value
+     * @param float $value number used in the operation
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        
+        $this->value = $value;
         return $this;
     }
     

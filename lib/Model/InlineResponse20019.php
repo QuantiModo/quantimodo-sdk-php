@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitCategory
+ * InlineResponse20019
  *
  * PHP version 5
  *
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * UnitCategory Class Doc Comment
+ * InlineResponse20019 Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,17 +44,15 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UnitCategory implements ArrayAccess
+class InlineResponse20019 implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'data' => '\Swagger\Client\Model\Update[]',
+        'success' => 'bool'
     );
   
     /** 
@@ -62,10 +60,8 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'data' => 'data',
+        'success' => 'success'
     );
   
     /**
@@ -73,10 +69,8 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'data' => 'setData',
+        'success' => 'setSuccess'
     );
   
     /**
@@ -84,36 +78,22 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'data' => 'getData',
+        'success' => 'getSuccess'
     );
   
     
     /**
-      * $id id
-      * @var int
+      * $data 
+      * @var \Swagger\Client\Model\Update[]
       */
-    protected $id;
+    protected $data;
     
     /**
-      * $name Unit category name
-      * @var string
+      * $success 
+      * @var bool
       */
-    protected $name;
-    
-    /**
-      * $created_at created_at
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at updated_at
-      * @var \DateTime
-      */
-    protected $updated_at;
+    protected $success;
     
 
     /**
@@ -123,94 +103,50 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->name = $data["name"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
+            $this->data = $data["data"];
+            $this->success = $data["success"];
         }
     }
     
     /**
-     * Gets id
-     * @return int
+     * Gets data
+     * @return \Swagger\Client\Model\Update[]
      */
-    public function getId()
+    public function getData()
     {
-        return $this->id;
+        return $this->data;
     }
   
     /**
-     * Sets id
-     * @param int $id id
+     * Sets data
+     * @param \Swagger\Client\Model\Update[] $data 
      * @return $this
      */
-    public function setId($id)
+    public function setData($data)
     {
         
-        $this->id = $id;
+        $this->data = $data;
         return $this;
     }
     
     /**
-     * Gets name
-     * @return string
+     * Gets success
+     * @return bool
      */
-    public function getName()
+    public function getSuccess()
     {
-        return $this->name;
+        return $this->success;
     }
   
     /**
-     * Sets name
-     * @param string $name Unit category name
+     * Sets success
+     * @param bool $success 
      * @return $this
      */
-    public function setName($name)
+    public function setSuccess($success)
     {
         
-        $this->name = $name;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
+        $this->success = $success;
         return $this;
     }
     
