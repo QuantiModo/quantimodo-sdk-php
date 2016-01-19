@@ -1,4 +1,10 @@
-# QuantiModo-PHP-SDK
+# QuantiModo-SDK-PHP
 Better living through data.
 
-This package is a simple PHP library for interacting with the QuantiModo endpoints. It provides simple methods for grabbing information from a number of data sources collected by QuantiModo. 
+# Try it Out
+Sign up to use the QuantiModo API for free at https://www.mashape.com/quantimodo
+
+# API Explorer
+https://app.quantimo.do/api/docs/
+
+For more information, contact api@quantimo.do.
