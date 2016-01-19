@@ -10,7 +10,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -101,12 +101,25 @@ class VariablesApi
      */
     public function v1PublicVariablesGet()
     {
+        list($response, $statusCode, $httpHeader) = $this->v1PublicVariablesGetWithHttpInfo ();
+        return $response; 
+    }
+
+
+    /**
+     * v1PublicVariablesGetWithHttpInfo
+     *
+     * Get public variables
+     *
+     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1PublicVariablesGetWithHttpInfo()
+    {
         
   
         // parse inputs
         $resourcePath = "/v1/public/variables";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -115,49 +128,53 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Variable'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable');
-        
     }
     
     /**
@@ -166,13 +183,38 @@ class VariablesApi
      * Get top 5 PUBLIC variables with the most correlations
      *
      * @param string $search Search query can be some fraction of a variable name. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
      * @return \Swagger\Client\Model\Variable
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1PublicVariablesSearchSearchGet($search, $limit=null, $offset=null, $sort=null)
+    public function v1PublicVariablesSearchSearchGet($search, $access_token = null, $category_name = null, $source = null, $limit = null, $offset = null, $sort = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1PublicVariablesSearchSearchGetWithHttpInfo ($search, $access_token, $category_name, $source, $limit, $offset, $sort);
+        return $response; 
+    }
+
+
+    /**
+     * v1PublicVariablesSearchSearchGetWithHttpInfo
+     *
+     * Get top 5 PUBLIC variables with the most correlations
+     *
+     * @param string $search Search query can be some fraction of a variable name. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1PublicVariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $category_name = null, $source = null, $limit = null, $offset = null, $sort = null)
     {
         
         // verify the required parameter 'search' is set
@@ -182,8 +224,6 @@ class VariablesApi
   
         // parse inputs
         $resourcePath = "/v1/public/variables/search/{search}";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -192,20 +232,36 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
+        if ($category_name !== null) {
+            $queryParams['categoryName'] = $this->apiClient->getSerializer()->toQueryValue($category_name);
+        }// query params
+        
+        if ($source !== null) {
+            $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
+        }// query params
+        
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }// query params
+        
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }// query params
+        
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
         
         // path params
+        
         if ($search !== null) {
             $resourcePath = str_replace(
                 "{" . "search" . "}",
@@ -213,44 +269,48 @@ class VariablesApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Variable'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable');
-        
     }
     
     /**
@@ -258,22 +318,36 @@ class VariablesApi
      *
      * Update User Settings for a Variable
      *
-     * @param \Swagger\Client\Model\UserVariables $sharing_data Variable user settings data (required)
+     * @param \Swagger\Client\Model\UserVariables $user_variables Variable user settings data (required)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1UserVariablesPost($sharing_data)
+    public function v1UserVariablesPost($user_variables)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1UserVariablesPostWithHttpInfo ($user_variables);
+        return $response; 
+    }
+
+
+    /**
+     * v1UserVariablesPostWithHttpInfo
+     *
+     * Update User Settings for a Variable
+     *
+     * @param \Swagger\Client\Model\UserVariables $user_variables Variable user settings data (required)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1UserVariablesPostWithHttpInfo($user_variables)
     {
         
-        // verify the required parameter 'sharing_data' is set
-        if ($sharing_data === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $sharing_data when calling v1UserVariablesPost');
+        // verify the required parameter 'user_variables' is set
+        if ($user_variables === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $user_variables when calling v1UserVariablesPost');
         }
   
         // parse inputs
         $resourcePath = "/v1/userVariables";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -282,43 +356,49 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         // body params
         $_tempBody = null;
-        if (isset($sharing_data)) {
-            $_tempBody = $sharing_data;
+        if (isset($user_variables)) {
+            $_tempBody = $user_variables;
         }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -331,12 +411,25 @@ class VariablesApi
      */
     public function v1VariableCategoriesGet()
     {
+        list($response, $statusCode, $httpHeader) = $this->v1VariableCategoriesGetWithHttpInfo ();
+        return $response; 
+    }
+
+
+    /**
+     * v1VariableCategoriesGetWithHttpInfo
+     *
+     * Variable categories
+     *
+     * @return Array of \Swagger\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariableCategoriesGetWithHttpInfo()
+    {
         
   
         // parse inputs
         $resourcePath = "/v1/variableCategories";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -345,49 +438,53 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\VariableCategory[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\VariableCategory[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\VariableCategory[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\VariableCategory[]');
-        
     }
     
     /**
@@ -395,6 +492,8 @@ class VariablesApi
      *
      * Get variables by the category name
      *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $id Common variable id (optional)
      * @param int $user_id User id (optional)
      * @param string $category Filter data by category (optional)
      * @param string $name Original name of the variable (supports exact name match only) (optional)
@@ -409,14 +508,40 @@ class VariablesApi
      * @return \Swagger\Client\Model\Variable
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VariablesGet($user_id=null, $category=null, $name=null, $last_updated=null, $source=null, $latest_measurement_time=null, $number_of_measurements=null, $last_source=null, $limit=null, $offset=null, $sort=null)
+    public function v1VariablesGet($access_token = null, $id = null, $user_id = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesGetWithHttpInfo ($access_token, $id, $user_id, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesGetWithHttpInfo
+     *
+     * Get variables by the category name
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $id Common variable id (optional)
+     * @param int $user_id User id (optional)
+     * @param string $category Filter data by category (optional)
+     * @param string $name Original name of the variable (supports exact name match only) (optional)
+     * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $source The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
+     * @param string $latest_measurement_time Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $number_of_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
+     * @param string $last_source Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesGetWithHttpInfo($access_token = null, $id = null, $user_id = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
         
   
         // parse inputs
         $resourcePath = "/v1/variables";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -425,85 +550,105 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
+        if ($id !== null) {
+            $queryParams['id'] = $this->apiClient->getSerializer()->toQueryValue($id);
+        }// query params
+        
         if ($user_id !== null) {
             $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }// query params
+        
         if ($category !== null) {
             $queryParams['category'] = $this->apiClient->getSerializer()->toQueryValue($category);
         }// query params
+        
         if ($name !== null) {
             $queryParams['name'] = $this->apiClient->getSerializer()->toQueryValue($name);
         }// query params
+        
         if ($last_updated !== null) {
             $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
         }// query params
+        
         if ($source !== null) {
             $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
         }// query params
+        
         if ($latest_measurement_time !== null) {
             $queryParams['latestMeasurementTime'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
         }// query params
+        
         if ($number_of_measurements !== null) {
             $queryParams['numberOfMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_measurements);
         }// query params
+        
         if ($last_source !== null) {
             $queryParams['lastSource'] = $this->apiClient->getSerializer()->toQueryValue($last_source);
         }// query params
+        
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }// query params
+        
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }// query params
+        
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        $headerParams['Authorization'] = 'Basic '.base64_encode($this->apiClient->getConfig()->getUsername().":".$this->apiClient->getConfig()->getPassword());
-        
-        
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Variable'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable');
-        
     }
     
     /**
@@ -512,10 +657,28 @@ class VariablesApi
      * Create Variables
      *
      * @param \Swagger\Client\Model\VariablesNew $variable_name Original name for the variable. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VariablesPost($variable_name)
+    public function v1VariablesPost($variable_name, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesPostWithHttpInfo ($variable_name, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesPostWithHttpInfo
+     *
+     * Create Variables
+     *
+     * @param \Swagger\Client\Model\VariablesNew $variable_name Original name for the variable. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesPostWithHttpInfo($variable_name, $access_token = null)
     {
         
         // verify the required parameter 'variable_name' is set
@@ -525,8 +688,6 @@ class VariablesApi
   
         // parse inputs
         $resourcePath = "/v1/variables";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -535,11 +696,18 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         
-        
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         // body params
         $_tempBody = null;
@@ -550,28 +718,31 @@ class VariablesApi
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -580,14 +751,40 @@ class VariablesApi
      * Get variables by search query
      *
      * @param string $search Search query which may be an entire variable name or a fragment of one. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param bool $include_public Set to true if you would like to include public variables when no user variables are found. (optional)
+     * @param bool $manual_tracking Set to true if you would like to exlude variables like apps and website names. (optional)
      * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @return \Swagger\Client\Model\Variable[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VariablesSearchSearchGet($search, $category_name=null, $source=null, $limit=null, $offset=null)
+    public function v1VariablesSearchSearchGet($search, $access_token = null, $category_name = null, $include_public = null, $manual_tracking = null, $source = null, $limit = null, $offset = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesSearchSearchGetWithHttpInfo ($search, $access_token, $category_name, $include_public, $manual_tracking, $source, $limit, $offset);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesSearchSearchGetWithHttpInfo
+     *
+     * Get variables by search query
+     *
+     * @param string $search Search query which may be an entire variable name or a fragment of one. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param bool $include_public Set to true if you would like to include public variables when no user variables are found. (optional)
+     * @param bool $manual_tracking Set to true if you would like to exlude variables like apps and website names. (optional)
+     * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @return Array of \Swagger\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $category_name = null, $include_public = null, $manual_tracking = null, $source = null, $limit = null, $offset = null)
     {
         
         // verify the required parameter 'search' is set
@@ -597,8 +794,6 @@ class VariablesApi
   
         // parse inputs
         $resourcePath = "/v1/variables/search/{search}";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -607,23 +802,40 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($category_name !== null) {
             $queryParams['categoryName'] = $this->apiClient->getSerializer()->toQueryValue($category_name);
         }// query params
+        
+        if ($include_public !== null) {
+            $queryParams['includePublic'] = $this->apiClient->getSerializer()->toQueryValue($include_public);
+        }// query params
+        
+        if ($manual_tracking !== null) {
+            $queryParams['manualTracking'] = $this->apiClient->getSerializer()->toQueryValue($manual_tracking);
+        }// query params
+        
         if ($source !== null) {
             $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
         }// query params
+        
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }// query params
+        
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }
         
         // path params
+        
         if ($search !== null) {
             $resourcePath = str_replace(
                 "{" . "search" . "}",
@@ -631,44 +843,48 @@ class VariablesApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Variable[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable[]');
-        
     }
     
     /**
@@ -677,10 +893,28 @@ class VariablesApi
      * Get info about a variable
      *
      * @param string $variable_name Variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\Variable
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VariablesVariableNameGet($variable_name)
+    public function v1VariablesVariableNameGet($variable_name, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesVariableNameGetWithHttpInfo ($variable_name, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesVariableNameGetWithHttpInfo
+     *
+     * Get info about a variable
+     *
+     * @param string $variable_name Variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesVariableNameGetWithHttpInfo($variable_name, $access_token = null)
     {
         
         // verify the required parameter 'variable_name' is set
@@ -690,8 +924,6 @@ class VariablesApi
   
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -700,11 +932,16 @@ class VariablesApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -712,44 +949,48 @@ class VariablesApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Variable'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable');
-        
     }
     
 }

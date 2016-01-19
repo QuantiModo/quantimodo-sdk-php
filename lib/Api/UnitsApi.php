@@ -10,7 +10,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -101,12 +101,25 @@ class UnitsApi
      */
     public function v1UnitCategoriesGet()
     {
+        list($response, $statusCode, $httpHeader) = $this->v1UnitCategoriesGetWithHttpInfo ();
+        return $response; 
+    }
+
+
+    /**
+     * v1UnitCategoriesGetWithHttpInfo
+     *
+     * Get unit categories
+     *
+     * @return Array of \Swagger\Client\Model\UnitCategory, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1UnitCategoriesGetWithHttpInfo()
+    {
         
   
         // parse inputs
         $resourcePath = "/v1/unitCategories";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -115,49 +128,53 @@ class UnitsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\UnitCategory'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\UnitCategory', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\UnitCategory', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\UnitCategory', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\UnitCategory');
-        
     }
     
     /**
@@ -165,20 +182,40 @@ class UnitsApi
      *
      * Get all available units
      *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $id Unit id (optional)
      * @param string $unit_name Unit name (optional)
      * @param string $abbreviated_unit_name Restrict the results to a specific unit by providing the unit abbreviation. (optional)
      * @param string $category_name Restrict the results to a specific unit category by providing the unit category name. (optional)
      * @return \Swagger\Client\Model\Unit[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1UnitsGet($unit_name=null, $abbreviated_unit_name=null, $category_name=null)
+    public function v1UnitsGet($access_token = null, $id = null, $unit_name = null, $abbreviated_unit_name = null, $category_name = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1UnitsGetWithHttpInfo ($access_token, $id, $unit_name, $abbreviated_unit_name, $category_name);
+        return $response; 
+    }
+
+
+    /**
+     * v1UnitsGetWithHttpInfo
+     *
+     * Get all available units
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $id Unit id (optional)
+     * @param string $unit_name Unit name (optional)
+     * @param string $abbreviated_unit_name Restrict the results to a specific unit by providing the unit abbreviation. (optional)
+     * @param string $category_name Restrict the results to a specific unit category by providing the unit category name. (optional)
+     * @return Array of \Swagger\Client\Model\Unit[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1UnitsGetWithHttpInfo($access_token = null, $id = null, $unit_name = null, $abbreviated_unit_name = null, $category_name = null)
     {
         
   
         // parse inputs
         $resourcePath = "/v1/units";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -187,58 +224,73 @@ class UnitsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
+        if ($id !== null) {
+            $queryParams['id'] = $this->apiClient->getSerializer()->toQueryValue($id);
+        }// query params
+        
         if ($unit_name !== null) {
             $queryParams['unitName'] = $this->apiClient->getSerializer()->toQueryValue($unit_name);
         }// query params
+        
         if ($abbreviated_unit_name !== null) {
             $queryParams['abbreviatedUnitName'] = $this->apiClient->getSerializer()->toQueryValue($abbreviated_unit_name);
         }// query params
+        
         if ($category_name !== null) {
             $queryParams['categoryName'] = $this->apiClient->getSerializer()->toQueryValue($category_name);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Unit[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Unit[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Unit[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Unit[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Unit[]');
-        
     }
     
     /**
@@ -246,6 +298,7 @@ class UnitsApi
      *
      * Units for Variable
      *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $unit_name Name of Unit you want to retrieve (optional)
      * @param string $abbreviated_unit_name Abbreviated Unit Name of the unit you want (optional)
      * @param string $category_name Name of the category you want units for (optional)
@@ -253,14 +306,32 @@ class UnitsApi
      * @return \Swagger\Client\Model\Unit[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1UnitsVariableGet($unit_name=null, $abbreviated_unit_name=null, $category_name=null, $variable=null)
+    public function v1UnitsVariableGet($access_token = null, $unit_name = null, $abbreviated_unit_name = null, $category_name = null, $variable = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1UnitsVariableGetWithHttpInfo ($access_token, $unit_name, $abbreviated_unit_name, $category_name, $variable);
+        return $response; 
+    }
+
+
+    /**
+     * v1UnitsVariableGetWithHttpInfo
+     *
+     * Units for Variable
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $unit_name Name of Unit you want to retrieve (optional)
+     * @param string $abbreviated_unit_name Abbreviated Unit Name of the unit you want (optional)
+     * @param string $category_name Name of the category you want units for (optional)
+     * @param string $variable Name of the variable you want units for (optional)
+     * @return Array of \Swagger\Client\Model\Unit[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1UnitsVariableGetWithHttpInfo($access_token = null, $unit_name = null, $abbreviated_unit_name = null, $category_name = null, $variable = null)
     {
         
   
         // parse inputs
         $resourcePath = "/v1/unitsVariable";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -269,61 +340,73 @@ class UnitsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($unit_name !== null) {
             $queryParams['unitName'] = $this->apiClient->getSerializer()->toQueryValue($unit_name);
         }// query params
+        
         if ($abbreviated_unit_name !== null) {
             $queryParams['abbreviatedUnitName'] = $this->apiClient->getSerializer()->toQueryValue($abbreviated_unit_name);
         }// query params
+        
         if ($category_name !== null) {
             $queryParams['categoryName'] = $this->apiClient->getSerializer()->toQueryValue($category_name);
         }// query params
+        
         if ($variable !== null) {
             $queryParams['variable'] = $this->apiClient->getSerializer()->toQueryValue($variable);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Unit[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Unit[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Unit[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Unit[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Unit[]');
-        
     }
     
 }

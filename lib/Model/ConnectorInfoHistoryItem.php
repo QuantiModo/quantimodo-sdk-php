@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -62,10 +62,10 @@ class ConnectorInfoHistoryItem implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'number_of_measurements' => 'number_of_measurements',
+        'number_of_measurements' => 'numberOfMeasurements',
         'success' => 'success',
         'message' => 'message',
-        'created_at' => 'created_at'
+        'created_at' => 'createdAt'
     );
   
     /**
@@ -110,7 +110,7 @@ class ConnectorInfoHistoryItem implements ArrayAccess
     protected $message;
     
     /**
-      * $created_at Date and time of the update
+      * $created_at Date and time of the update in UTC time zone
       * @var string
       */
     protected $created_at;
@@ -204,7 +204,7 @@ class ConnectorInfoHistoryItem implements ArrayAccess
   
     /**
      * Sets created_at
-     * @param string $created_at Date and time of the update
+     * @param string $created_at Date and time of the update in UTC time zone
      * @return $this
      */
     public function setCreatedAt($created_at)
@@ -262,9 +262,9 @@ class ConnectorInfoHistoryItem implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

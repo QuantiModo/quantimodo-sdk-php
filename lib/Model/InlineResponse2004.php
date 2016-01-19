@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ class InlineResponse2004 implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\Connection',
+        'data' => 'string',
         'success' => 'bool'
     );
   
@@ -85,7 +85,7 @@ class InlineResponse2004 implements ArrayAccess
     
     /**
       * $data 
-      * @var \Swagger\Client\Model\Connection
+      * @var string
       */
     protected $data;
     
@@ -110,7 +110,7 @@ class InlineResponse2004 implements ArrayAccess
     
     /**
      * Gets data
-     * @return \Swagger\Client\Model\Connection
+     * @return string
      */
     public function getData()
     {
@@ -119,7 +119,7 @@ class InlineResponse2004 implements ArrayAccess
   
     /**
      * Sets data
-     * @param \Swagger\Client\Model\Connection $data 
+     * @param string $data 
      * @return $this
      */
     public function setData($data)
@@ -198,9 +198,9 @@ class InlineResponse2004 implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

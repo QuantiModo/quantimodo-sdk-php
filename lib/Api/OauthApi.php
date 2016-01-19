@@ -10,7 +10,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ class OauthApi
      * Authorize
      *
      * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do. (required)
-     * @param string $client_secret This is the secret for your obtained client_id. QuantiModo uses this to validate that only your application uses the client_id. (required)
+     * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId. (required)
      * @param string $response_type If the value is code, launches a Basic flow, requiring a POST to the token endpoint to obtain the tokens. If the value is token id_token or id_token token, launches an Implicit flow, requiring the use of Javascript at the redirect URI to retrieve tokens from the URI #fragment. (required)
      * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (required)
      * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (optional)
@@ -105,7 +105,28 @@ class OauthApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1Oauth2AuthorizeGet($client_id, $client_secret, $response_type, $scope, $redirect_uri=null, $state=null)
+    public function v1Oauth2AuthorizeGet($client_id, $client_secret, $response_type, $scope, $redirect_uri = null, $state = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1Oauth2AuthorizeGetWithHttpInfo ($client_id, $client_secret, $response_type, $scope, $redirect_uri, $state);
+        return $response; 
+    }
+
+
+    /**
+     * v1Oauth2AuthorizeGetWithHttpInfo
+     *
+     * Authorize
+     *
+     * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do. (required)
+     * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId. (required)
+     * @param string $response_type If the value is code, launches a Basic flow, requiring a POST to the token endpoint to obtain the tokens. If the value is token id_token or id_token token, launches an Implicit flow, requiring the use of Javascript at the redirect URI to retrieve tokens from the URI #fragment. (required)
+     * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (required)
+     * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (optional)
+     * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1Oauth2AuthorizeGetWithHttpInfo($client_id, $client_secret, $response_type, $scope, $redirect_uri = null, $state = null)
     {
         
         // verify the required parameter 'client_id' is set
@@ -127,8 +148,6 @@ class OauthApi
   
         // parse inputs
         $resourcePath = "/v1/oauth2/authorize";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -137,57 +156,69 @@ class OauthApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
         if ($client_id !== null) {
-            $queryParams['client_id'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
+            $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
         }// query params
+        
         if ($client_secret !== null) {
             $queryParams['client_secret'] = $this->apiClient->getSerializer()->toQueryValue($client_secret);
         }// query params
+        
         if ($response_type !== null) {
             $queryParams['response_type'] = $this->apiClient->getSerializer()->toQueryValue($response_type);
         }// query params
+        
         if ($scope !== null) {
             $queryParams['scope'] = $this->apiClient->getSerializer()->toQueryValue($scope);
         }// query params
+        
         if ($redirect_uri !== null) {
             $queryParams['redirect_uri'] = $this->apiClient->getSerializer()->toQueryValue($redirect_uri);
         }// query params
+        
         if ($state !== null) {
             $queryParams['state'] = $this->apiClient->getSerializer()->toQueryValue($state);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -196,7 +227,7 @@ class OauthApi
      * Access Token
      *
      * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do. (required)
-     * @param string $client_secret This is the secret for your obtained client_id. QuantiModo uses this to validate that only your application uses the client_id. (required)
+     * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId. (required)
      * @param string $grant_type Grant Type can be &#39;authorization_code&#39; or &#39;refresh_token&#39; (required)
      * @param string $response_type If the value is code, launches a Basic flow, requiring a POST to the token endpoint to obtain the tokens. If the value is token id_token or id_token token, launches an Implicit flow, requiring the use of Javascript at the redirect URI to retrieve tokens from the URI #fragment. (optional)
      * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (optional)
@@ -205,7 +236,29 @@ class OauthApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1Oauth2TokenGet($client_id, $client_secret, $grant_type, $response_type=null, $scope=null, $redirect_uri=null, $state=null)
+    public function v1Oauth2TokenGet($client_id, $client_secret, $grant_type, $response_type = null, $scope = null, $redirect_uri = null, $state = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1Oauth2TokenGetWithHttpInfo ($client_id, $client_secret, $grant_type, $response_type, $scope, $redirect_uri, $state);
+        return $response; 
+    }
+
+
+    /**
+     * v1Oauth2TokenGetWithHttpInfo
+     *
+     * Access Token
+     *
+     * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do. (required)
+     * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId. (required)
+     * @param string $grant_type Grant Type can be &#39;authorization_code&#39; or &#39;refresh_token&#39; (required)
+     * @param string $response_type If the value is code, launches a Basic flow, requiring a POST to the token endpoint to obtain the tokens. If the value is token id_token or id_token token, launches an Implicit flow, requiring the use of Javascript at the redirect URI to retrieve tokens from the URI #fragment. (optional)
+     * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (optional)
+     * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (optional)
+     * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1Oauth2TokenGetWithHttpInfo($client_id, $client_secret, $grant_type, $response_type = null, $scope = null, $redirect_uri = null, $state = null)
     {
         
         // verify the required parameter 'client_id' is set
@@ -223,8 +276,6 @@ class OauthApi
   
         // parse inputs
         $resourcePath = "/v1/oauth2/token";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -233,60 +284,73 @@ class OauthApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
         if ($client_id !== null) {
-            $queryParams['client_id'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
+            $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
         }// query params
+        
         if ($client_secret !== null) {
             $queryParams['client_secret'] = $this->apiClient->getSerializer()->toQueryValue($client_secret);
         }// query params
+        
         if ($grant_type !== null) {
             $queryParams['grant_type'] = $this->apiClient->getSerializer()->toQueryValue($grant_type);
         }// query params
+        
         if ($response_type !== null) {
             $queryParams['response_type'] = $this->apiClient->getSerializer()->toQueryValue($response_type);
         }// query params
+        
         if ($scope !== null) {
             $queryParams['scope'] = $this->apiClient->getSerializer()->toQueryValue($scope);
         }// query params
+        
         if ($redirect_uri !== null) {
             $queryParams['redirect_uri'] = $this->apiClient->getSerializer()->toQueryValue($redirect_uri);
         }// query params
+        
         if ($state !== null) {
             $queryParams['state'] = $this->apiClient->getSerializer()->toQueryValue($state);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
 }

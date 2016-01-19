@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20018
+ * TrackingReminderPendingSkip
  *
  * PHP version 5
  *
@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * InlineResponse20018 Class Doc Comment
+ * TrackingReminderPendingSkip Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,15 +44,14 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20018 implements ArrayAccess
+class TrackingReminderPendingSkip implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\Unit',
-        'success' => 'bool'
+        'id' => 'int'
     );
   
     /** 
@@ -60,8 +59,7 @@ class InlineResponse20018 implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'data' => 'data',
-        'success' => 'success'
+        'id' => 'id'
     );
   
     /**
@@ -69,8 +67,7 @@ class InlineResponse20018 implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'data' => 'setData',
-        'success' => 'setSuccess'
+        'id' => 'setId'
     );
   
     /**
@@ -78,22 +75,15 @@ class InlineResponse20018 implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'data' => 'getData',
-        'success' => 'getSuccess'
+        'id' => 'getId'
     );
   
     
     /**
-      * $data 
-      * @var \Swagger\Client\Model\Unit
+      * $id Id of the pending reminder to be skipped
+      * @var int
       */
-    protected $data;
-    
-    /**
-      * $success 
-      * @var bool
-      */
-    protected $success;
+    protected $id;
     
 
     /**
@@ -103,50 +93,28 @@ class InlineResponse20018 implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->data = $data["data"];
-            $this->success = $data["success"];
+            $this->id = $data["id"];
         }
     }
     
     /**
-     * Gets data
-     * @return \Swagger\Client\Model\Unit
+     * Gets id
+     * @return int
      */
-    public function getData()
+    public function getId()
     {
-        return $this->data;
+        return $this->id;
     }
   
     /**
-     * Sets data
-     * @param \Swagger\Client\Model\Unit $data 
+     * Sets id
+     * @param int $id Id of the pending reminder to be skipped
      * @return $this
      */
-    public function setData($data)
+    public function setId($id)
     {
         
-        $this->data = $data;
-        return $this;
-    }
-    
-    /**
-     * Gets success
-     * @return bool
-     */
-    public function getSuccess()
-    {
-        return $this->success;
-    }
-  
-    /**
-     * Sets success
-     * @param bool $success 
-     * @return $this
-     */
-    public function setSuccess($success)
-    {
-        
-        $this->success = $success;
+        $this->id = $id;
         return $this;
     }
     
@@ -198,9 +166,9 @@ class InlineResponse20018 implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

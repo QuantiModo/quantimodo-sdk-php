@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ class UserTokenRequestInnerUserField implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        '_id' => 'int'
+        'id' => 'int'
     );
   
     /** 
@@ -59,7 +59,7 @@ class UserTokenRequestInnerUserField implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        '_id' => '_id'
+        'id' => 'id'
     );
   
     /**
@@ -67,7 +67,7 @@ class UserTokenRequestInnerUserField implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        '_id' => 'setId'
+        'id' => 'setId'
     );
   
     /**
@@ -75,15 +75,15 @@ class UserTokenRequestInnerUserField implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        '_id' => 'getId'
+        'id' => 'getId'
     );
   
     
     /**
-      * $_id WordPress user ID
+      * $id WordPress user ID
       * @var int
       */
-    protected $_id;
+    protected $id;
     
 
     /**
@@ -93,28 +93,28 @@ class UserTokenRequestInnerUserField implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->_id = $data["_id"];
+            $this->id = $data["id"];
         }
     }
     
     /**
-     * Gets _id
+     * Gets id
      * @return int
      */
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
   
     /**
-     * Sets _id
-     * @param int $_id WordPress user ID
+     * Sets id
+     * @param int $id WordPress user ID
      * @return $this
      */
-    public function setId($_id)
+    public function setId($id)
     {
         
-        $this->_id = $_id;
+        $this->id = $id;
         return $this;
     }
     
@@ -166,9 +166,9 @@ class UserTokenRequestInnerUserField implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

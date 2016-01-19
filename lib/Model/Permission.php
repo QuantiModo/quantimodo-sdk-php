@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -67,10 +67,10 @@ class Permission implements ArrayAccess
     static $attributeMap = array(
         'target' => 'target',
         'variable_name' => 'variableName',
-        'min_timestamp' => 'min_timestamp',
-        'max_timestamp' => 'max_timestamp',
-        'min_time_of_day' => 'min_time_of_day',
-        'max_time_of_day' => 'max_time_of_day',
+        'min_timestamp' => 'minTimestamp',
+        'max_timestamp' => 'maxTimestamp',
+        'min_time_of_day' => 'minTimeOfDay',
+        'max_time_of_day' => 'maxTimeOfDay',
         'week' => 'week'
     );
   
@@ -358,9 +358,9 @@ class Permission implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

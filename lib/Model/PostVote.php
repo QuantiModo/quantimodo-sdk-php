@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2007
+ * PostVote
  *
  * PHP version 5
  *
@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * InlineResponse2007 Class Doc Comment
+ * PostVote Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,15 +44,16 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2007 implements ArrayAccess
+class PostVote implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\Correlation[]',
-        'success' => 'bool'
+        'cause' => 'string',
+        'effect' => 'string',
+        'vote' => 'bool'
     );
   
     /** 
@@ -60,8 +61,9 @@ class InlineResponse2007 implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'data' => 'data',
-        'success' => 'success'
+        'cause' => 'cause',
+        'effect' => 'effect',
+        'vote' => 'vote'
     );
   
     /**
@@ -69,8 +71,9 @@ class InlineResponse2007 implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'data' => 'setData',
-        'success' => 'setSuccess'
+        'cause' => 'setCause',
+        'effect' => 'setEffect',
+        'vote' => 'setVote'
     );
   
     /**
@@ -78,22 +81,29 @@ class InlineResponse2007 implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'data' => 'getData',
-        'success' => 'getSuccess'
+        'cause' => 'getCause',
+        'effect' => 'getEffect',
+        'vote' => 'getVote'
     );
   
     
     /**
-      * $data 
-      * @var \Swagger\Client\Model\Correlation[]
+      * $cause Cause variable name
+      * @var string
       */
-    protected $data;
+    protected $cause;
     
     /**
-      * $success 
+      * $effect Effect variable name
+      * @var string
+      */
+    protected $effect;
+    
+    /**
+      * $vote Vote: 0 (for implausible) or 1 (for plausible)
       * @var bool
       */
-    protected $success;
+    protected $vote;
     
 
     /**
@@ -103,50 +113,72 @@ class InlineResponse2007 implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->data = $data["data"];
-            $this->success = $data["success"];
+            $this->cause = $data["cause"];
+            $this->effect = $data["effect"];
+            $this->vote = $data["vote"];
         }
     }
     
     /**
-     * Gets data
-     * @return \Swagger\Client\Model\Correlation[]
+     * Gets cause
+     * @return string
      */
-    public function getData()
+    public function getCause()
     {
-        return $this->data;
+        return $this->cause;
     }
   
     /**
-     * Sets data
-     * @param \Swagger\Client\Model\Correlation[] $data 
+     * Sets cause
+     * @param string $cause Cause variable name
      * @return $this
      */
-    public function setData($data)
+    public function setCause($cause)
     {
         
-        $this->data = $data;
+        $this->cause = $cause;
         return $this;
     }
     
     /**
-     * Gets success
-     * @return bool
+     * Gets effect
+     * @return string
      */
-    public function getSuccess()
+    public function getEffect()
     {
-        return $this->success;
+        return $this->effect;
     }
   
     /**
-     * Sets success
-     * @param bool $success 
+     * Sets effect
+     * @param string $effect Effect variable name
      * @return $this
      */
-    public function setSuccess($success)
+    public function setEffect($effect)
     {
         
-        $this->success = $success;
+        $this->effect = $effect;
+        return $this;
+    }
+    
+    /**
+     * Gets vote
+     * @return bool
+     */
+    public function getVote()
+    {
+        return $this->vote;
+    }
+  
+    /**
+     * Sets vote
+     * @param bool $vote Vote: 0 (for implausible) or 1 (for plausible)
+     * @return $this
+     */
+    public function setVote($vote)
+    {
+        
+        $this->vote = $vote;
         return $this;
     }
     
@@ -198,9 +230,9 @@ class InlineResponse2007 implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

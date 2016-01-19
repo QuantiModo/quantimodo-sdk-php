@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -51,10 +51,7 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'name' => 'string'
     );
   
     /** 
@@ -62,10 +59,7 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'name' => 'name'
     );
   
     /**
@@ -73,10 +67,7 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'name' => 'setName'
     );
   
     /**
@@ -84,36 +75,15 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'name' => 'getName'
     );
   
     
     /**
-      * $id id
-      * @var int
-      */
-    protected $id;
-    
-    /**
-      * $name Unit category name
+      * $name Category name
       * @var string
       */
     protected $name;
-    
-    /**
-      * $created_at created_at
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at updated_at
-      * @var \DateTime
-      */
-    protected $updated_at;
     
 
     /**
@@ -123,32 +93,8 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
             $this->name = $data["name"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
         }
-    }
-    
-    /**
-     * Gets id
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-  
-    /**
-     * Sets id
-     * @param int $id id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        
-        $this->id = $id;
-        return $this;
     }
     
     /**
@@ -162,55 +108,13 @@ class UnitCategory implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name Unit category name
+     * @param string $name Category name
      * @return $this
      */
     public function setName($name)
     {
         
         $this->name = $name;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
         return $this;
     }
     
@@ -262,9 +166,9 @@ class UnitCategory implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

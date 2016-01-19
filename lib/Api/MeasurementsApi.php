@@ -10,7 +10,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -101,12 +101,25 @@ class MeasurementsApi
      */
     public function v1MeasurementSourcesGet()
     {
+        list($response, $statusCode, $httpHeader) = $this->v1MeasurementSourcesGetWithHttpInfo ();
+        return $response; 
+    }
+
+
+    /**
+     * v1MeasurementSourcesGetWithHttpInfo
+     *
+     * Get measurement sources
+     *
+     * @return Array of \Swagger\Client\Model\MeasurementSource, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1MeasurementSourcesGetWithHttpInfo()
+    {
         
   
         // parse inputs
         $resourcePath = "/v1/measurementSources";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -115,49 +128,53 @@ class MeasurementsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\MeasurementSource'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\MeasurementSource', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\MeasurementSource', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\MeasurementSource', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\MeasurementSource');
-        
     }
     
     /**
@@ -166,10 +183,28 @@ class MeasurementsApi
      * Add a data source
      *
      * @param \Swagger\Client\Model\MeasurementSource $name An array of names of data sources you want to add. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1MeasurementSourcesPost($name)
+    public function v1MeasurementSourcesPost($name, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1MeasurementSourcesPostWithHttpInfo ($name, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1MeasurementSourcesPostWithHttpInfo
+     *
+     * Add a data source
+     *
+     * @param \Swagger\Client\Model\MeasurementSource $name An array of names of data sources you want to add. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1MeasurementSourcesPostWithHttpInfo($name, $access_token = null)
     {
         
         // verify the required parameter 'name' is set
@@ -179,8 +214,6 @@ class MeasurementsApi
   
         // parse inputs
         $resourcePath = "/v1/measurementSources";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -189,11 +222,18 @@ class MeasurementsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         
-        
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         // body params
         $_tempBody = null;
@@ -204,28 +244,31 @@ class MeasurementsApi
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -233,12 +276,15 @@ class MeasurementsApi
      *
      * Get measurements for this user
      *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $variable_name Name of the variable you want measurements for (optional)
      * @param string $source Name of the source you want measurements for (supports exact name match only) (optional)
      * @param string $value Value of measurement (optional)
-     * @param string $last_updated The time that this measurement was created or last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
-     * @param string $unit The unit you want the measurements in (optional)
+     * @param string $last_updated The time that this measurement was created or last updated in the format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $unit The unit you want the measurements returned in (optional)
      * @param string $start_time The lower limit of measurements returned (Epoch) (optional)
+     * @param string $created_at The time the measurement record was first created in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. (optional)
+     * @param string $updated_at The time the measurement record was last changed in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. (optional)
      * @param string $end_time The upper limit of measurements returned (Epoch) (optional)
      * @param int $grouping_width The time (in seconds) over which measurements are grouped together (optional)
      * @param string $grouping_timezone The time (in seconds) over which measurements are grouped together (optional)
@@ -248,14 +294,42 @@ class MeasurementsApi
      * @return \Swagger\Client\Model\Measurement
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1MeasurementsGet($variable_name=null, $source=null, $value=null, $last_updated=null, $unit=null, $start_time=null, $end_time=null, $grouping_width=null, $grouping_timezone=null, $limit=null, $offset=null, $sort=null)
+    public function v1MeasurementsGet($access_token = null, $variable_name = null, $source = null, $value = null, $last_updated = null, $unit = null, $start_time = null, $created_at = null, $updated_at = null, $end_time = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1MeasurementsGetWithHttpInfo ($access_token, $variable_name, $source, $value, $last_updated, $unit, $start_time, $created_at, $updated_at, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
+        return $response; 
+    }
+
+
+    /**
+     * v1MeasurementsGetWithHttpInfo
+     *
+     * Get measurements for this user
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $variable_name Name of the variable you want measurements for (optional)
+     * @param string $source Name of the source you want measurements for (supports exact name match only) (optional)
+     * @param string $value Value of measurement (optional)
+     * @param string $last_updated The time that this measurement was created or last updated in the format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $unit The unit you want the measurements returned in (optional)
+     * @param string $start_time The lower limit of measurements returned (Epoch) (optional)
+     * @param string $created_at The time the measurement record was first created in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. (optional)
+     * @param string $updated_at The time the measurement record was last changed in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. (optional)
+     * @param string $end_time The upper limit of measurements returned (Epoch) (optional)
+     * @param int $grouping_width The time (in seconds) over which measurements are grouped together (optional)
+     * @param string $grouping_timezone The time (in seconds) over which measurements are grouped together (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return Array of \Swagger\Client\Model\Measurement, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1MeasurementsGetWithHttpInfo($access_token = null, $variable_name = null, $source = null, $value = null, $last_updated = null, $unit = null, $start_time = null, $created_at = null, $updated_at = null, $end_time = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
         
   
         // parse inputs
         $resourcePath = "/v1/measurements";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -264,85 +338,113 @@ class MeasurementsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($variable_name !== null) {
             $queryParams['variableName'] = $this->apiClient->getSerializer()->toQueryValue($variable_name);
         }// query params
+        
         if ($source !== null) {
             $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
         }// query params
+        
         if ($value !== null) {
             $queryParams['value'] = $this->apiClient->getSerializer()->toQueryValue($value);
         }// query params
+        
         if ($last_updated !== null) {
             $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
         }// query params
+        
         if ($unit !== null) {
             $queryParams['unit'] = $this->apiClient->getSerializer()->toQueryValue($unit);
         }// query params
+        
         if ($start_time !== null) {
             $queryParams['startTime'] = $this->apiClient->getSerializer()->toQueryValue($start_time);
         }// query params
+        
+        if ($created_at !== null) {
+            $queryParams['createdAt'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
+        }// query params
+        
+        if ($updated_at !== null) {
+            $queryParams['updatedAt'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
+        }// query params
+        
         if ($end_time !== null) {
             $queryParams['endTime'] = $this->apiClient->getSerializer()->toQueryValue($end_time);
         }// query params
+        
         if ($grouping_width !== null) {
             $queryParams['groupingWidth'] = $this->apiClient->getSerializer()->toQueryValue($grouping_width);
         }// query params
+        
         if ($grouping_timezone !== null) {
             $queryParams['groupingTimezone'] = $this->apiClient->getSerializer()->toQueryValue($grouping_timezone);
         }// query params
+        
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }// query params
+        
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }// query params
+        
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Measurement'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Measurement', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Measurement', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Measurement', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Measurement');
-        
     }
     
     /**
@@ -351,10 +453,28 @@ class MeasurementsApi
      * Post a new set or update existing measurements to the database
      *
      * @param \Swagger\Client\Model\MeasurementSet $measurements An array of measurements you want to insert. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1MeasurementsPost($measurements)
+    public function v1MeasurementsPost($measurements, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1MeasurementsPostWithHttpInfo ($measurements, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1MeasurementsPostWithHttpInfo
+     *
+     * Post a new set or update existing measurements to the database
+     *
+     * @param \Swagger\Client\Model\MeasurementSet $measurements An array of measurements you want to insert. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1MeasurementsPostWithHttpInfo($measurements, $access_token = null)
     {
         
         // verify the required parameter 'measurements' is set
@@ -364,8 +484,6 @@ class MeasurementsApi
   
         // parse inputs
         $resourcePath = "/v1/measurements";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -374,11 +492,18 @@ class MeasurementsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         
-        
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         // body params
         $_tempBody = null;
@@ -389,28 +514,31 @@ class MeasurementsApi
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -419,6 +547,7 @@ class MeasurementsApi
      * Get daily measurements for this user
      *
      * @param string $variable_name Name of the variable you want measurements for (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $abbreviated_unit_name The unit your want the measurements in (optional)
      * @param string $start_time The lower limit of measurements returned (Iso8601) (optional)
      * @param string $end_time The upper limit of measurements returned (Iso8601) (optional)
@@ -430,7 +559,32 @@ class MeasurementsApi
      * @return \Swagger\Client\Model\Measurement
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1MeasurementsDailyGet($variable_name, $abbreviated_unit_name=null, $start_time=null, $end_time=null, $grouping_width=null, $grouping_timezone=null, $limit=null, $offset=null, $sort=null)
+    public function v1MeasurementsDailyGet($variable_name, $access_token = null, $abbreviated_unit_name = null, $start_time = null, $end_time = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1MeasurementsDailyGetWithHttpInfo ($variable_name, $access_token, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
+        return $response; 
+    }
+
+
+    /**
+     * v1MeasurementsDailyGetWithHttpInfo
+     *
+     * Get daily measurements for this user
+     *
+     * @param string $variable_name Name of the variable you want measurements for (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $abbreviated_unit_name The unit your want the measurements in (optional)
+     * @param string $start_time The lower limit of measurements returned (Iso8601) (optional)
+     * @param string $end_time The upper limit of measurements returned (Iso8601) (optional)
+     * @param int $grouping_width The time (in seconds) over which measurements are grouped together (optional)
+     * @param string $grouping_timezone The time (in seconds) over which measurements are grouped together (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return Array of \Swagger\Client\Model\Measurement, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1MeasurementsDailyGetWithHttpInfo($variable_name, $access_token = null, $abbreviated_unit_name = null, $start_time = null, $end_time = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
         
         // verify the required parameter 'variable_name' is set
@@ -440,8 +594,6 @@ class MeasurementsApi
   
         // parse inputs
         $resourcePath = "/v1/measurements/daily";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -450,76 +602,93 @@ class MeasurementsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($variable_name !== null) {
             $queryParams['variableName'] = $this->apiClient->getSerializer()->toQueryValue($variable_name);
         }// query params
+        
         if ($abbreviated_unit_name !== null) {
             $queryParams['abbreviatedUnitName'] = $this->apiClient->getSerializer()->toQueryValue($abbreviated_unit_name);
         }// query params
+        
         if ($start_time !== null) {
             $queryParams['startTime'] = $this->apiClient->getSerializer()->toQueryValue($start_time);
         }// query params
+        
         if ($end_time !== null) {
             $queryParams['endTime'] = $this->apiClient->getSerializer()->toQueryValue($end_time);
         }// query params
+        
         if ($grouping_width !== null) {
             $queryParams['groupingWidth'] = $this->apiClient->getSerializer()->toQueryValue($grouping_width);
         }// query params
+        
         if ($grouping_timezone !== null) {
             $queryParams['groupingTimezone'] = $this->apiClient->getSerializer()->toQueryValue($grouping_timezone);
         }// query params
+        
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }// query params
+        
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }// query params
+        
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Measurement'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Measurement', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Measurement', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Measurement', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Measurement');
-        
     }
     
     /**
@@ -532,14 +701,29 @@ class MeasurementsApi
      * @return \Swagger\Client\Model\MeasurementRange
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1MeasurementsRangeGet($sources=null, $user=null)
+    public function v1MeasurementsRangeGet($sources = null, $user = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1MeasurementsRangeGetWithHttpInfo ($sources, $user);
+        return $response; 
+    }
+
+
+    /**
+     * v1MeasurementsRangeGetWithHttpInfo
+     *
+     * Get measurements range for this user
+     *
+     * @param string $sources Enter source name to limit to specific source (varchar) (optional)
+     * @param int $user If not specified, uses currently logged in user (bigint) (optional)
+     * @return Array of \Swagger\Client\Model\MeasurementRange, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1MeasurementsRangeGetWithHttpInfo($sources = null, $user = null)
     {
         
   
         // parse inputs
         $resourcePath = "/v1/measurementsRange";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -548,55 +732,385 @@ class MeasurementsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
         if ($sources !== null) {
             $queryParams['sources'] = $this->apiClient->getSerializer()->toQueryValue($sources);
         }// query params
+        
         if ($user !== null) {
             $queryParams['user'] = $this->apiClient->getSerializer()->toQueryValue($user);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\MeasurementRange'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\MeasurementRange', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\MeasurementRange', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\MeasurementRange', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
+    }
+    
+    /**
+     * v2MeasurementsIdGet
+     *
+     * Get Measurement
+     *
+     * @param int $id id of Measurement (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return \Swagger\Client\Model\InlineResponse2003
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v2MeasurementsIdGet($id, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v2MeasurementsIdGetWithHttpInfo ($id, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v2MeasurementsIdGetWithHttpInfo
+     *
+     * Get Measurement
+     *
+     * @param int $id id of Measurement (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v2MeasurementsIdGetWithHttpInfo($id, $access_token = null)
+    {
         
-        if (!$response) {
-            return null;
+        // verify the required parameter 'id' is set
+        if ($id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $id when calling v2MeasurementsIdGet');
         }
   
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\MeasurementRange');
+        // parse inputs
+        $resourcePath = "/v2/measurements/{id}";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+  
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
+        
+        // path params
+        
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                "{" . "id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\InlineResponse2003'
+            );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader);
+            
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2003', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
+    }
+    
+    /**
+     * v2MeasurementsIdPut
+     *
+     * Update Measurement
+     *
+     * @param int $id id of Measurement (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param \Swagger\Client\Model\Measurement $body Measurement that should be updated (optional)
+     * @return \Swagger\Client\Model\InlineResponse2004
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v2MeasurementsIdPut($id, $access_token = null, $body = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v2MeasurementsIdPutWithHttpInfo ($id, $access_token, $body);
+        return $response; 
+    }
+
+
+    /**
+     * v2MeasurementsIdPutWithHttpInfo
+     *
+     * Update Measurement
+     *
+     * @param int $id id of Measurement (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param \Swagger\Client\Model\Measurement $body Measurement that should be updated (optional)
+     * @return Array of \Swagger\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v2MeasurementsIdPutWithHttpInfo($id, $access_token = null, $body = null)
+    {
+        
+        // verify the required parameter 'id' is set
+        if ($id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $id when calling v2MeasurementsIdPut');
+        }
+  
+        // parse inputs
+        $resourcePath = "/v2/measurements/{id}";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+  
+        // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
+        
+        // path params
+        
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                "{" . "id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'PUT',
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\InlineResponse2004'
+            );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
+            
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2004', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
+    }
+    
+    /**
+     * v2MeasurementsIdDelete
+     *
+     * Delete Measurement
+     *
+     * @param int $id id of Measurement (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return \Swagger\Client\Model\InlineResponse2004
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v2MeasurementsIdDelete($id, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v2MeasurementsIdDeleteWithHttpInfo ($id, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v2MeasurementsIdDeleteWithHttpInfo
+     *
+     * Delete Measurement
+     *
+     * @param int $id id of Measurement (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v2MeasurementsIdDeleteWithHttpInfo($id, $access_token = null)
+    {
+        
+        // verify the required parameter 'id' is set
+        if ($id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $id when calling v2MeasurementsIdDelete');
+        }
+  
+        // parse inputs
+        $resourcePath = "/v2/measurements/{id}";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+  
+        // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
+        
+        // path params
+        
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                "{" . "id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'DELETE',
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\InlineResponse2004'
+            );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
+            
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2004', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
     }
     
 }

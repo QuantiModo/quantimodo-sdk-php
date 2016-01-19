@@ -10,7 +10,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -96,23 +96,32 @@ class ConnectorsApi
      *
      * Get embeddable connect javascript
      *
-     * @param string $access_token User&#39;s access token (required)
-     * @param string $mashape_key Mashape API key (optional)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectJsGet($access_token, $mashape_key=null)
+    public function v1ConnectJsGet($access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectJsGetWithHttpInfo ($access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectJsGetWithHttpInfo
+     *
+     * Get embeddable connect javascript
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectJsGetWithHttpInfo($access_token = null)
     {
         
-        // verify the required parameter 'access_token' is set
-        if ($access_token === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $access_token when calling v1ConnectJsGet');
-        }
   
         // parse inputs
         $resourcePath = "/v1/connect.js";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -121,42 +130,49 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
         if ($access_token !== null) {
-            $queryParams['access token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
-        if ($mashape_key !== null) {
-            $queryParams['mashape key'] = $this->apiClient->getSerializer()->toQueryValue($mashape_key);
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -164,22 +180,36 @@ class ConnectorsApi
      *
      * Mobile connect page
      *
-     * @param string $t User token (required)
+     * @param string $access_token User OAuth access token (required)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectMobileGet($t)
+    public function v1ConnectMobileGet($access_token)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectMobileGetWithHttpInfo ($access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectMobileGetWithHttpInfo
+     *
+     * Mobile connect page
+     *
+     * @param string $access_token User OAuth access token (required)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectMobileGetWithHttpInfo($access_token)
     {
         
-        // verify the required parameter 't' is set
-        if ($t === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $t when calling v1ConnectMobileGet');
+        // verify the required parameter 'access_token' is set
+        if ($access_token === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $access_token when calling v1ConnectMobileGet');
         }
   
         // parse inputs
         $resourcePath = "/v1/connect/mobile";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -188,39 +218,49 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
-        if ($t !== null) {
-            $queryParams['t'] = $this->apiClient->getSerializer()->toQueryValue($t);
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -233,12 +273,25 @@ class ConnectorsApi
      */
     public function v1ConnectorsListGet()
     {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectorsListGetWithHttpInfo ();
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectorsListGetWithHttpInfo
+     *
+     * List of Connectors
+     *
+     * @return Array of \Swagger\Client\Model\Connector[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectorsListGetWithHttpInfo()
+    {
         
   
         // parse inputs
         $resourcePath = "/v1/connectors/list";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -247,49 +300,53 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Connector[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Connector[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Connector[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Connector[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Connector[]');
-        
     }
     
     /**
@@ -298,10 +355,28 @@ class ConnectorsApi
      * Obtain a token from 3rd party data source
      *
      * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectorsConnectorConnectGet($connector)
+    public function v1ConnectorsConnectorConnectGet($connector, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectorsConnectorConnectGetWithHttpInfo ($connector, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectorsConnectorConnectGetWithHttpInfo
+     *
+     * Obtain a token from 3rd party data source
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectorsConnectorConnectGetWithHttpInfo($connector, $access_token = null)
     {
         
         // verify the required parameter 'connector' is set
@@ -311,8 +386,6 @@ class ConnectorsApi
   
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/connect";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -321,11 +394,16 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($connector !== null) {
             $resourcePath = str_replace(
                 "{" . "connector" . "}",
@@ -333,34 +411,40 @@ class ConnectorsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -372,10 +456,31 @@ class ConnectorsApi
      * @param string $parameters JSON Array of Parameters for the request to enable connector. (required)
      * @param string $url URL which should be used to enable the connector. (required)
      * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup)
+    public function v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo ($connector, $parameters, $url, $use_popup, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo
+     *
+     * Connection Instructions
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $parameters JSON Array of Parameters for the request to enable connector. (required)
+     * @param string $url URL which should be used to enable the connector. (required)
+     * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo($connector, $parameters, $url, $use_popup, $access_token = null)
     {
         
         // verify the required parameter 'connector' is set
@@ -397,8 +502,6 @@ class ConnectorsApi
   
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/connectInstructions";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -407,20 +510,28 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($parameters !== null) {
             $queryParams['parameters'] = $this->apiClient->getSerializer()->toQueryValue($parameters);
         }// query params
+        
         if ($url !== null) {
             $queryParams['url'] = $this->apiClient->getSerializer()->toQueryValue($url);
         }// query params
+        
         if ($use_popup !== null) {
             $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
         }
         
         // path params
+        
         if ($connector !== null) {
             $resourcePath = str_replace(
                 "{" . "connector" . "}",
@@ -428,34 +539,40 @@ class ConnectorsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -469,11 +586,35 @@ class ConnectorsApi
      * @param string $placeholder Placeholder hint value for the parameter input tag. (required)
      * @param string $type Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp (required)
      * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $default_value Default parameter value (optional)
      * @return \Swagger\Client\Model\ConnectorInstruction
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $default_value=null)
+    public function v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $default_value = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectorsConnectorConnectParameterGetWithHttpInfo ($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $default_value);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectorsConnectorConnectParameterGetWithHttpInfo
+     *
+     * Connect Parameter
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $display_name Name of the parameter that is user visible in the form (required)
+     * @param string $key Name of the property that the user has to enter such as username or password Connector (used in HTTP request) (required)
+     * @param string $placeholder Placeholder hint value for the parameter input tag. (required)
+     * @param string $type Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp (required)
+     * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $default_value Default parameter value (optional)
+     * @return Array of \Swagger\Client\Model\ConnectorInstruction, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectorsConnectorConnectParameterGetWithHttpInfo($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $default_value = null)
     {
         
         // verify the required parameter 'connector' is set
@@ -503,8 +644,6 @@ class ConnectorsApi
   
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/connectParameter";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -513,29 +652,40 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($default_value !== null) {
             $queryParams['defaultValue'] = $this->apiClient->getSerializer()->toQueryValue($default_value);
         }// query params
+        
         if ($display_name !== null) {
             $queryParams['displayName'] = $this->apiClient->getSerializer()->toQueryValue($display_name);
         }// query params
+        
         if ($key !== null) {
             $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
         }// query params
+        
         if ($placeholder !== null) {
             $queryParams['placeholder'] = $this->apiClient->getSerializer()->toQueryValue($placeholder);
         }// query params
+        
         if ($type !== null) {
             $queryParams['type'] = $this->apiClient->getSerializer()->toQueryValue($type);
         }// query params
+        
         if ($use_popup !== null) {
             $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
         }
         
         // path params
+        
         if ($connector !== null) {
             $resourcePath = str_replace(
                 "{" . "connector" . "}",
@@ -543,44 +693,48 @@ class ConnectorsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\ConnectorInstruction'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\ConnectorInstruction', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ConnectorInstruction', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\ConnectorInstruction', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\ConnectorInstruction');
-        
     }
     
     /**
@@ -594,6 +748,22 @@ class ConnectorsApi
      */
     public function v1ConnectorsConnectorDisconnectGet($connector)
     {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectorsConnectorDisconnectGetWithHttpInfo ($connector);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectorsConnectorDisconnectGetWithHttpInfo
+     *
+     * Delete stored connection info
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectorsConnectorDisconnectGetWithHttpInfo($connector)
+    {
         
         // verify the required parameter 'connector' is set
         if ($connector === null) {
@@ -602,8 +772,6 @@ class ConnectorsApi
   
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/disconnect";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -612,11 +780,12 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         // path params
+        
         if ($connector !== null) {
             $resourcePath = str_replace(
                 "{" . "connector" . "}",
@@ -624,34 +793,40 @@ class ConnectorsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
     /**
@@ -660,10 +835,28 @@ class ConnectorsApi
      * Get connector info for user
      *
      * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\ConnectorInfo
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectorsConnectorInfoGet($connector)
+    public function v1ConnectorsConnectorInfoGet($connector, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectorsConnectorInfoGetWithHttpInfo ($connector, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectorsConnectorInfoGetWithHttpInfo
+     *
+     * Get connector info for user
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\ConnectorInfo, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectorsConnectorInfoGetWithHttpInfo($connector, $access_token = null)
     {
         
         // verify the required parameter 'connector' is set
@@ -673,8 +866,6 @@ class ConnectorsApi
   
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/info";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -683,11 +874,16 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($connector !== null) {
             $resourcePath = str_replace(
                 "{" . "connector" . "}",
@@ -695,44 +891,48 @@ class ConnectorsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\ConnectorInfo'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\ConnectorInfo', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ConnectorInfo', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\ConnectorInfo', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\ConnectorInfo');
-        
     }
     
     /**
@@ -741,10 +941,28 @@ class ConnectorsApi
      * Sync with data source
      *
      * @param string $connector Lowercase system name of the source application or device (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1ConnectorsConnectorUpdateGet($connector)
+    public function v1ConnectorsConnectorUpdateGet($connector, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1ConnectorsConnectorUpdateGetWithHttpInfo ($connector, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1ConnectorsConnectorUpdateGetWithHttpInfo
+     *
+     * Sync with data source
+     *
+     * @param string $connector Lowercase system name of the source application or device (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1ConnectorsConnectorUpdateGetWithHttpInfo($connector, $access_token = null)
     {
         
         // verify the required parameter 'connector' is set
@@ -754,8 +972,6 @@ class ConnectorsApi
   
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/update";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -764,11 +980,16 @@ class ConnectorsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($connector !== null) {
             $resourcePath = str_replace(
                 "{" . "connector" . "}",
@@ -776,34 +997,40 @@ class ConnectorsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
   
             throw $e;
         }
-        
     }
     
 }

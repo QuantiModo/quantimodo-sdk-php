@@ -10,7 +10,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -98,10 +98,29 @@ class UserApi
      *
      * @param int $organization_id Organization ID (required)
      * @param \Swagger\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\UserTokenSuccessfulResponse
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1OrganizationsOrganizationIdUsersPost($organization_id, $body)
+    public function v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1OrganizationsOrganizationIdUsersPostWithHttpInfo ($organization_id, $body, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1OrganizationsOrganizationIdUsersPostWithHttpInfo
+     *
+     * Get user tokens for existing users, create new users
+     *
+     * @param int $organization_id Organization ID (required)
+     * @param \Swagger\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\UserTokenSuccessfulResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1OrganizationsOrganizationIdUsersPostWithHttpInfo($organization_id, $body, $access_token = null)
     {
         
         // verify the required parameter 'organization_id' is set
@@ -115,8 +134,6 @@ class UserApi
   
         // parse inputs
         $resourcePath = "/v1/organizations/{organizationId}/users";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -125,11 +142,16 @@ class UserApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($organization_id !== null) {
             $resourcePath = str_replace(
                 "{" . "organizationId" . "}",
@@ -137,6 +159,9 @@ class UserApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         // body params
         $_tempBody = null;
@@ -147,47 +172,51 @@ class UserApi
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\UserTokenSuccessfulResponse'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\UserTokenSuccessfulResponse', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenSuccessfulResponse', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenSuccessfulResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenSuccessfulResponse', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenSuccessfulResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenFailedResponse', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenFailedResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 403:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenFailedResponse', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\UserTokenFailedResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\UserTokenSuccessfulResponse');
-        
     }
     
     /**
@@ -200,12 +229,25 @@ class UserApi
      */
     public function v1UserMeGet()
     {
+        list($response, $statusCode, $httpHeader) = $this->v1UserMeGetWithHttpInfo ();
+        return $response; 
+    }
+
+
+    /**
+     * v1UserMeGetWithHttpInfo
+     *
+     * Get all available units for variableGet authenticated user
+     *
+     * @return Array of \Swagger\Client\Model\User, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1UserMeGetWithHttpInfo()
+    {
         
   
         // parse inputs
         $resourcePath = "/v1/user/me";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -214,49 +256,53 @@ class UserApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\User'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\User', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\User', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\User', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\User');
-        
     }
     
 }

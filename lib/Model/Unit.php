@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -51,19 +51,12 @@ class Unit implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'client_id' => 'string',
         'name' => 'string',
         'abbreviated_name' => 'string',
-        'category_id' => 'int',
-        'minimum_value' => 'float',
-        'maximum_value' => 'float',
-        'updated' => 'int',
-        'default_unit_id' => 'int',
-        'multiply' => 'float',
-        'add' => 'float',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'category' => 'string',
+        'minimum_value' => 'double',
+        'maximum_value' => 'double',
+        'conversion_steps' => '\Swagger\Client\Model\ConversionStep[]'
     );
   
     /** 
@@ -71,19 +64,12 @@ class Unit implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'client_id' => 'client_id',
         'name' => 'name',
-        'abbreviated_name' => 'abbreviated_name',
-        'category_id' => 'category_id',
-        'minimum_value' => 'minimum_value',
-        'maximum_value' => 'maximum_value',
-        'updated' => 'updated',
-        'default_unit_id' => 'default_unit_id',
-        'multiply' => 'multiply',
-        'add' => 'add',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'abbreviated_name' => 'abbreviatedName',
+        'category' => 'category',
+        'minimum_value' => 'minimumValue',
+        'maximum_value' => 'maximumValue',
+        'conversion_steps' => 'conversionSteps'
     );
   
     /**
@@ -91,19 +77,12 @@ class Unit implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'client_id' => 'setClientId',
         'name' => 'setName',
         'abbreviated_name' => 'setAbbreviatedName',
-        'category_id' => 'setCategoryId',
+        'category' => 'setCategory',
         'minimum_value' => 'setMinimumValue',
         'maximum_value' => 'setMaximumValue',
-        'updated' => 'setUpdated',
-        'default_unit_id' => 'setDefaultUnitId',
-        'multiply' => 'setMultiply',
-        'add' => 'setAdd',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'conversion_steps' => 'setConversionSteps'
     );
   
     /**
@@ -111,33 +90,14 @@ class Unit implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'client_id' => 'getClientId',
         'name' => 'getName',
         'abbreviated_name' => 'getAbbreviatedName',
-        'category_id' => 'getCategoryId',
+        'category' => 'getCategory',
         'minimum_value' => 'getMinimumValue',
         'maximum_value' => 'getMaximumValue',
-        'updated' => 'getUpdated',
-        'default_unit_id' => 'getDefaultUnitId',
-        'multiply' => 'getMultiply',
-        'add' => 'getAdd',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'conversion_steps' => 'getConversionSteps'
     );
   
-    
-    /**
-      * $id id
-      * @var int
-      */
-    protected $id;
-    
-    /**
-      * $client_id client_id
-      * @var string
-      */
-    protected $client_id;
     
     /**
       * $name Unit name
@@ -152,58 +112,28 @@ class Unit implements ArrayAccess
     protected $abbreviated_name;
     
     /**
-      * $category_id Unit category ID
-      * @var int
+      * $category Unit category
+      * @var string
       */
-    protected $category_id;
+    protected $category;
     
     /**
-      * $minimum_value Unit minimum value
-      * @var float
+      * $minimum_value The smallest acceptable value for measurements using this unit
+      * @var double
       */
     protected $minimum_value;
     
     /**
-      * $maximum_value Unit maximum value
-      * @var float
+      * $maximum_value The largest acceptable value for measurements using this unit
+      * @var double
       */
     protected $maximum_value;
     
     /**
-      * $updated updated
-      * @var int
+      * $conversion_steps Conversion steps list
+      * @var \Swagger\Client\Model\ConversionStep[]
       */
-    protected $updated;
-    
-    /**
-      * $default_unit_id ID of default unit
-      * @var int
-      */
-    protected $default_unit_id;
-    
-    /**
-      * $multiply Value multiplied to
-      * @var float
-      */
-    protected $multiply;
-    
-    /**
-      * $add Value which should be added to convert to default unit
-      * @var float
-      */
-    protected $add;
-    
-    /**
-      * $created_at created_at
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at updated_at
-      * @var \DateTime
-      */
-    protected $updated_at;
+    protected $conversion_steps;
     
 
     /**
@@ -213,62 +143,13 @@ class Unit implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->client_id = $data["client_id"];
             $this->name = $data["name"];
             $this->abbreviated_name = $data["abbreviated_name"];
-            $this->category_id = $data["category_id"];
+            $this->category = $data["category"];
             $this->minimum_value = $data["minimum_value"];
             $this->maximum_value = $data["maximum_value"];
-            $this->updated = $data["updated"];
-            $this->default_unit_id = $data["default_unit_id"];
-            $this->multiply = $data["multiply"];
-            $this->add = $data["add"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
+            $this->conversion_steps = $data["conversion_steps"];
         }
-    }
-    
-    /**
-     * Gets id
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-  
-    /**
-     * Sets id
-     * @param int $id id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        
-        $this->id = $id;
-        return $this;
-    }
-    
-    /**
-     * Gets client_id
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->client_id;
-    }
-  
-    /**
-     * Sets client_id
-     * @param string $client_id client_id
-     * @return $this
-     */
-    public function setClientId($client_id)
-    {
-        
-        $this->client_id = $client_id;
-        return $this;
     }
     
     /**
@@ -314,29 +195,32 @@ class Unit implements ArrayAccess
     }
     
     /**
-     * Gets category_id
-     * @return int
+     * Gets category
+     * @return string
      */
-    public function getCategoryId()
+    public function getCategory()
     {
-        return $this->category_id;
+        return $this->category;
     }
   
     /**
-     * Sets category_id
-     * @param int $category_id Unit category ID
+     * Sets category
+     * @param string $category Unit category
      * @return $this
      */
-    public function setCategoryId($category_id)
+    public function setCategory($category)
     {
-        
-        $this->category_id = $category_id;
+        $allowed_values = array("Distance", "Duration", "Energy", "Frequency", "Miscellany", "Pressure", "Proportion", "Rating", "Temperature", "Volume", "Weight");
+        if (!in_array($category, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'category', must be one of 'Distance', 'Duration', 'Energy', 'Frequency', 'Miscellany', 'Pressure', 'Proportion', 'Rating', 'Temperature', 'Volume', 'Weight'");
+        }
+        $this->category = $category;
         return $this;
     }
     
     /**
      * Gets minimum_value
-     * @return float
+     * @return double
      */
     public function getMinimumValue()
     {
@@ -345,7 +229,7 @@ class Unit implements ArrayAccess
   
     /**
      * Sets minimum_value
-     * @param float $minimum_value Unit minimum value
+     * @param double $minimum_value The smallest acceptable value for measurements using this unit
      * @return $this
      */
     public function setMinimumValue($minimum_value)
@@ -357,7 +241,7 @@ class Unit implements ArrayAccess
     
     /**
      * Gets maximum_value
-     * @return float
+     * @return double
      */
     public function getMaximumValue()
     {
@@ -366,7 +250,7 @@ class Unit implements ArrayAccess
   
     /**
      * Sets maximum_value
-     * @param float $maximum_value Unit maximum value
+     * @param double $maximum_value The largest acceptable value for measurements using this unit
      * @return $this
      */
     public function setMaximumValue($maximum_value)
@@ -377,128 +261,23 @@ class Unit implements ArrayAccess
     }
     
     /**
-     * Gets updated
-     * @return int
+     * Gets conversion_steps
+     * @return \Swagger\Client\Model\ConversionStep[]
      */
-    public function getUpdated()
+    public function getConversionSteps()
     {
-        return $this->updated;
+        return $this->conversion_steps;
     }
   
     /**
-     * Sets updated
-     * @param int $updated updated
+     * Sets conversion_steps
+     * @param \Swagger\Client\Model\ConversionStep[] $conversion_steps Conversion steps list
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setConversionSteps($conversion_steps)
     {
         
-        $this->updated = $updated;
-        return $this;
-    }
-    
-    /**
-     * Gets default_unit_id
-     * @return int
-     */
-    public function getDefaultUnitId()
-    {
-        return $this->default_unit_id;
-    }
-  
-    /**
-     * Sets default_unit_id
-     * @param int $default_unit_id ID of default unit
-     * @return $this
-     */
-    public function setDefaultUnitId($default_unit_id)
-    {
-        
-        $this->default_unit_id = $default_unit_id;
-        return $this;
-    }
-    
-    /**
-     * Gets multiply
-     * @return float
-     */
-    public function getMultiply()
-    {
-        return $this->multiply;
-    }
-  
-    /**
-     * Sets multiply
-     * @param float $multiply Value multiplied to
-     * @return $this
-     */
-    public function setMultiply($multiply)
-    {
-        
-        $this->multiply = $multiply;
-        return $this;
-    }
-    
-    /**
-     * Gets add
-     * @return float
-     */
-    public function getAdd()
-    {
-        return $this->add;
-    }
-  
-    /**
-     * Sets add
-     * @param float $add Value which should be added to convert to default unit
-     * @return $this
-     */
-    public function setAdd($add)
-    {
-        
-        $this->add = $add;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
+        $this->conversion_steps = $conversion_steps;
         return $this;
     }
     
@@ -550,9 +329,9 @@ class Unit implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

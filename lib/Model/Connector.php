@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -56,10 +56,11 @@ class Connector implements ArrayAccess
         'display_name' => 'string',
         'image' => 'string',
         'get_it_url' => 'string',
-        'short_description' => 'string',
-        'long_description' => 'string',
-        'enabled' => 'bool',
-        'oauth' => 'bool'
+        'connected' => 'string',
+        'connect_instructions' => 'string',
+        'last_update' => 'int',
+        'total_measurements_in_last_update' => 'int',
+        'no_data_yet' => 'bool'
     );
   
     /** 
@@ -69,13 +70,14 @@ class Connector implements ArrayAccess
     static $attributeMap = array(
         'id' => 'id',
         'name' => 'name',
-        'display_name' => 'display_name',
+        'display_name' => 'displayName',
         'image' => 'image',
-        'get_it_url' => 'get_it_url',
-        'short_description' => 'short_description',
-        'long_description' => 'long_description',
-        'enabled' => 'enabled',
-        'oauth' => 'oauth'
+        'get_it_url' => 'getItUrl',
+        'connected' => 'connected',
+        'connect_instructions' => 'connectInstructions',
+        'last_update' => 'lastUpdate',
+        'total_measurements_in_last_update' => 'totalMeasurementsInLastUpdate',
+        'no_data_yet' => 'noDataYet'
     );
   
     /**
@@ -88,10 +90,11 @@ class Connector implements ArrayAccess
         'display_name' => 'setDisplayName',
         'image' => 'setImage',
         'get_it_url' => 'setGetItUrl',
-        'short_description' => 'setShortDescription',
-        'long_description' => 'setLongDescription',
-        'enabled' => 'setEnabled',
-        'oauth' => 'setOauth'
+        'connected' => 'setConnected',
+        'connect_instructions' => 'setConnectInstructions',
+        'last_update' => 'setLastUpdate',
+        'total_measurements_in_last_update' => 'setTotalMeasurementsInLastUpdate',
+        'no_data_yet' => 'setNoDataYet'
     );
   
     /**
@@ -104,10 +107,11 @@ class Connector implements ArrayAccess
         'display_name' => 'getDisplayName',
         'image' => 'getImage',
         'get_it_url' => 'getGetItUrl',
-        'short_description' => 'getShortDescription',
-        'long_description' => 'getLongDescription',
-        'enabled' => 'getEnabled',
-        'oauth' => 'getOauth'
+        'connected' => 'getConnected',
+        'connect_instructions' => 'getConnectInstructions',
+        'last_update' => 'getLastUpdate',
+        'total_measurements_in_last_update' => 'getTotalMeasurementsInLastUpdate',
+        'no_data_yet' => 'getNoDataYet'
     );
   
     
@@ -142,28 +146,34 @@ class Connector implements ArrayAccess
     protected $get_it_url;
     
     /**
-      * $short_description Short description
+      * $connected True if the authenticated user has this connector enabled
       * @var string
       */
-    protected $short_description;
+    protected $connected;
     
     /**
-      * $long_description Long description
+      * $connect_instructions URL and parameters used when connecting to a service
       * @var string
       */
-    protected $long_description;
+    protected $connect_instructions;
     
     /**
-      * $enabled enabled
-      * @var bool
+      * $last_update Epoch timestamp of last sync
+      * @var int
       */
-    protected $enabled;
+    protected $last_update;
     
     /**
-      * $oauth oauth
+      * $total_measurements_in_last_update Number of measurements obtained during latest update
+      * @var int
+      */
+    protected $total_measurements_in_last_update;
+    
+    /**
+      * $no_data_yet True if user has no measurements for this connector
       * @var bool
       */
-    protected $oauth;
+    protected $no_data_yet;
     
 
     /**
@@ -178,10 +188,11 @@ class Connector implements ArrayAccess
             $this->display_name = $data["display_name"];
             $this->image = $data["image"];
             $this->get_it_url = $data["get_it_url"];
-            $this->short_description = $data["short_description"];
-            $this->long_description = $data["long_description"];
-            $this->enabled = $data["enabled"];
-            $this->oauth = $data["oauth"];
+            $this->connected = $data["connected"];
+            $this->connect_instructions = $data["connect_instructions"];
+            $this->last_update = $data["last_update"];
+            $this->total_measurements_in_last_update = $data["total_measurements_in_last_update"];
+            $this->no_data_yet = $data["no_data_yet"];
         }
     }
     
@@ -291,86 +302,107 @@ class Connector implements ArrayAccess
     }
     
     /**
-     * Gets short_description
+     * Gets connected
      * @return string
      */
-    public function getShortDescription()
+    public function getConnected()
     {
-        return $this->short_description;
+        return $this->connected;
     }
   
     /**
-     * Sets short_description
-     * @param string $short_description Short description
+     * Sets connected
+     * @param string $connected True if the authenticated user has this connector enabled
      * @return $this
      */
-    public function setShortDescription($short_description)
+    public function setConnected($connected)
     {
         
-        $this->short_description = $short_description;
+        $this->connected = $connected;
         return $this;
     }
     
     /**
-     * Gets long_description
+     * Gets connect_instructions
      * @return string
      */
-    public function getLongDescription()
+    public function getConnectInstructions()
     {
-        return $this->long_description;
+        return $this->connect_instructions;
     }
   
     /**
-     * Sets long_description
-     * @param string $long_description Long description
+     * Sets connect_instructions
+     * @param string $connect_instructions URL and parameters used when connecting to a service
      * @return $this
      */
-    public function setLongDescription($long_description)
+    public function setConnectInstructions($connect_instructions)
     {
         
-        $this->long_description = $long_description;
+        $this->connect_instructions = $connect_instructions;
         return $this;
     }
     
     /**
-     * Gets enabled
-     * @return bool
+     * Gets last_update
+     * @return int
      */
-    public function getEnabled()
+    public function getLastUpdate()
     {
-        return $this->enabled;
+        return $this->last_update;
     }
   
     /**
-     * Sets enabled
-     * @param bool $enabled enabled
+     * Sets last_update
+     * @param int $last_update Epoch timestamp of last sync
      * @return $this
      */
-    public function setEnabled($enabled)
+    public function setLastUpdate($last_update)
     {
         
-        $this->enabled = $enabled;
+        $this->last_update = $last_update;
         return $this;
     }
     
     /**
-     * Gets oauth
-     * @return bool
+     * Gets total_measurements_in_last_update
+     * @return int
      */
-    public function getOauth()
+    public function getTotalMeasurementsInLastUpdate()
     {
-        return $this->oauth;
+        return $this->total_measurements_in_last_update;
     }
   
     /**
-     * Sets oauth
-     * @param bool $oauth oauth
+     * Sets total_measurements_in_last_update
+     * @param int $total_measurements_in_last_update Number of measurements obtained during latest update
      * @return $this
      */
-    public function setOauth($oauth)
+    public function setTotalMeasurementsInLastUpdate($total_measurements_in_last_update)
     {
         
-        $this->oauth = $oauth;
+        $this->total_measurements_in_last_update = $total_measurements_in_last_update;
+        return $this;
+    }
+    
+    /**
+     * Gets no_data_yet
+     * @return bool
+     */
+    public function getNoDataYet()
+    {
+        return $this->no_data_yet;
+    }
+  
+    /**
+     * Sets no_data_yet
+     * @param bool $no_data_yet True if user has no measurements for this connector
+     * @return $this
+     */
+    public function setNoDataYet($no_data_yet)
+    {
+        
+        $this->no_data_yet = $no_data_yet;
         return $this;
     }
     
@@ -422,9 +454,9 @@ class Connector implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

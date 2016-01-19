@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20023
+ * UserTag
  *
  * PHP version 5
  *
@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * InlineResponse20023 Class Doc Comment
+ * UserTag Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,15 +44,16 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20023 implements ArrayAccess
+class UserTag implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\VariableCategory[]',
-        'success' => 'bool'
+        'tagged_variable_id' => 'int',
+        'tag_variable_id' => 'int',
+        'conversion_factor' => 'Number'
     );
   
     /** 
@@ -60,8 +61,9 @@ class InlineResponse20023 implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'data' => 'data',
-        'success' => 'success'
+        'tagged_variable_id' => 'taggedVariableId',
+        'tag_variable_id' => 'tagVariableId',
+        'conversion_factor' => 'conversionFactor'
     );
   
     /**
@@ -69,8 +71,9 @@ class InlineResponse20023 implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'data' => 'setData',
-        'success' => 'setSuccess'
+        'tagged_variable_id' => 'setTaggedVariableId',
+        'tag_variable_id' => 'setTagVariableId',
+        'conversion_factor' => 'setConversionFactor'
     );
   
     /**
@@ -78,22 +81,29 @@ class InlineResponse20023 implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'data' => 'getData',
-        'success' => 'getSuccess'
+        'tagged_variable_id' => 'getTaggedVariableId',
+        'tag_variable_id' => 'getTagVariableId',
+        'conversion_factor' => 'getConversionFactor'
     );
   
     
     /**
-      * $data 
-      * @var \Swagger\Client\Model\VariableCategory[]
+      * $tagged_variable_id This is the id of the variable being tagged with an ingredient or something.
+      * @var int
       */
-    protected $data;
+    protected $tagged_variable_id;
     
     /**
-      * $success 
-      * @var bool
+      * $tag_variable_id This is the id of the ingredient variable whose value is determined based on the value of the tagged variable.
+      * @var int
       */
-    protected $success;
+    protected $tag_variable_id;
+    
+    /**
+      * $conversion_factor Number by which we multiply the tagged variable value to obtain the tag variable (ingredient) value
+      * @var Number
+      */
+    protected $conversion_factor;
     
 
     /**
@@ -103,50 +113,72 @@ class InlineResponse20023 implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->data = $data["data"];
-            $this->success = $data["success"];
+            $this->tagged_variable_id = $data["tagged_variable_id"];
+            $this->tag_variable_id = $data["tag_variable_id"];
+            $this->conversion_factor = $data["conversion_factor"];
         }
     }
     
     /**
-     * Gets data
-     * @return \Swagger\Client\Model\VariableCategory[]
+     * Gets tagged_variable_id
+     * @return int
      */
-    public function getData()
+    public function getTaggedVariableId()
     {
-        return $this->data;
+        return $this->tagged_variable_id;
     }
   
     /**
-     * Sets data
-     * @param \Swagger\Client\Model\VariableCategory[] $data 
+     * Sets tagged_variable_id
+     * @param int $tagged_variable_id This is the id of the variable being tagged with an ingredient or something.
      * @return $this
      */
-    public function setData($data)
+    public function setTaggedVariableId($tagged_variable_id)
     {
         
-        $this->data = $data;
+        $this->tagged_variable_id = $tagged_variable_id;
         return $this;
     }
     
     /**
-     * Gets success
-     * @return bool
+     * Gets tag_variable_id
+     * @return int
      */
-    public function getSuccess()
+    public function getTagVariableId()
     {
-        return $this->success;
+        return $this->tag_variable_id;
     }
   
     /**
-     * Sets success
-     * @param bool $success 
+     * Sets tag_variable_id
+     * @param int $tag_variable_id This is the id of the ingredient variable whose value is determined based on the value of the tagged variable.
      * @return $this
      */
-    public function setSuccess($success)
+    public function setTagVariableId($tag_variable_id)
     {
         
-        $this->success = $success;
+        $this->tag_variable_id = $tag_variable_id;
+        return $this;
+    }
+    
+    /**
+     * Gets conversion_factor
+     * @return Number
+     */
+    public function getConversionFactor()
+    {
+        return $this->conversion_factor;
+    }
+  
+    /**
+     * Sets conversion_factor
+     * @param Number $conversion_factor Number by which we multiply the tagged variable value to obtain the tag variable (ingredient) value
+     * @return $this
+     */
+    public function setConversionFactor($conversion_factor)
+    {
+        
+        $this->conversion_factor = $conversion_factor;
         return $this;
     }
     
@@ -198,9 +230,9 @@ class InlineResponse20023 implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -52,15 +52,15 @@ class UserVariables implements ArrayAccess
       */
     static $swaggerTypes = array(
         'user' => 'int',
-        'variable' => 'string',
+        'variable_id' => 'int',
         'duration_of_action' => 'int',
         'filling_value' => 'int',
         'join_with' => 'string',
         'maximum_allowed_value' => 'float',
         'minimum_allowed_value' => 'float',
-        'name' => 'string',
         'onset_delay' => 'int',
-        'unit' => 'string'
+        'experiment_start_time' => 'string',
+        'experiment_end_time' => 'string'
     );
   
     /** 
@@ -69,15 +69,15 @@ class UserVariables implements ArrayAccess
       */
     static $attributeMap = array(
         'user' => 'user',
-        'variable' => 'variable',
+        'variable_id' => 'variableId',
         'duration_of_action' => 'durationOfAction',
         'filling_value' => 'fillingValue',
         'join_with' => 'joinWith',
         'maximum_allowed_value' => 'maximumAllowedValue',
         'minimum_allowed_value' => 'minimumAllowedValue',
-        'name' => 'name',
         'onset_delay' => 'onsetDelay',
-        'unit' => 'unit'
+        'experiment_start_time' => 'experimentStartTime',
+        'experiment_end_time' => 'experimentEndTime'
     );
   
     /**
@@ -86,15 +86,15 @@ class UserVariables implements ArrayAccess
       */
     static $setters = array(
         'user' => 'setUser',
-        'variable' => 'setVariable',
+        'variable_id' => 'setVariableId',
         'duration_of_action' => 'setDurationOfAction',
         'filling_value' => 'setFillingValue',
         'join_with' => 'setJoinWith',
         'maximum_allowed_value' => 'setMaximumAllowedValue',
         'minimum_allowed_value' => 'setMinimumAllowedValue',
-        'name' => 'setName',
         'onset_delay' => 'setOnsetDelay',
-        'unit' => 'setUnit'
+        'experiment_start_time' => 'setExperimentStartTime',
+        'experiment_end_time' => 'setExperimentEndTime'
     );
   
     /**
@@ -103,15 +103,15 @@ class UserVariables implements ArrayAccess
       */
     static $getters = array(
         'user' => 'getUser',
-        'variable' => 'getVariable',
+        'variable_id' => 'getVariableId',
         'duration_of_action' => 'getDurationOfAction',
         'filling_value' => 'getFillingValue',
         'join_with' => 'getJoinWith',
         'maximum_allowed_value' => 'getMaximumAllowedValue',
         'minimum_allowed_value' => 'getMinimumAllowedValue',
-        'name' => 'getName',
         'onset_delay' => 'getOnsetDelay',
-        'unit' => 'getUnit'
+        'experiment_start_time' => 'getExperimentStartTime',
+        'experiment_end_time' => 'getExperimentEndTime'
     );
   
     
@@ -122,10 +122,10 @@ class UserVariables implements ArrayAccess
     protected $user;
     
     /**
-      * $variable Variable DISPLAY name
-      * @var string
+      * $variable_id Common variable id
+      * @var int
       */
-    protected $variable;
+    protected $variable_id;
     
     /**
       * $duration_of_action Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
@@ -158,22 +158,22 @@ class UserVariables implements ArrayAccess
     protected $minimum_allowed_value;
     
     /**
-      * $name name
-      * @var string
-      */
-    protected $name;
-    
-    /**
       * $onset_delay onsetDelay
       * @var int
       */
     protected $onset_delay;
     
     /**
-      * $unit unit
+      * $experiment_start_time Earliest measurement startTime that should be used in analysis in ISO format
       * @var string
       */
-    protected $unit;
+    protected $experiment_start_time;
+    
+    /**
+      * $experiment_end_time Latest measurement startTime that should be used in analysis in ISO format
+      * @var string
+      */
+    protected $experiment_end_time;
     
 
     /**
@@ -184,15 +184,15 @@ class UserVariables implements ArrayAccess
     {
         if ($data != null) {
             $this->user = $data["user"];
-            $this->variable = $data["variable"];
+            $this->variable_id = $data["variable_id"];
             $this->duration_of_action = $data["duration_of_action"];
             $this->filling_value = $data["filling_value"];
             $this->join_with = $data["join_with"];
             $this->maximum_allowed_value = $data["maximum_allowed_value"];
             $this->minimum_allowed_value = $data["minimum_allowed_value"];
-            $this->name = $data["name"];
             $this->onset_delay = $data["onset_delay"];
-            $this->unit = $data["unit"];
+            $this->experiment_start_time = $data["experiment_start_time"];
+            $this->experiment_end_time = $data["experiment_end_time"];
         }
     }
     
@@ -218,23 +218,23 @@ class UserVariables implements ArrayAccess
     }
     
     /**
-     * Gets variable
-     * @return string
+     * Gets variable_id
+     * @return int
      */
-    public function getVariable()
+    public function getVariableId()
     {
-        return $this->variable;
+        return $this->variable_id;
     }
   
     /**
-     * Sets variable
-     * @param string $variable Variable DISPLAY name
+     * Sets variable_id
+     * @param int $variable_id Common variable id
      * @return $this
      */
-    public function setVariable($variable)
+    public function setVariableId($variable_id)
     {
         
-        $this->variable = $variable;
+        $this->variable_id = $variable_id;
         return $this;
     }
     
@@ -344,27 +344,6 @@ class UserVariables implements ArrayAccess
     }
     
     /**
-     * Gets name
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-  
-    /**
-     * Sets name
-     * @param string $name name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        
-        $this->name = $name;
-        return $this;
-    }
-    
-    /**
      * Gets onset_delay
      * @return int
      */
@@ -386,23 +365,44 @@ class UserVariables implements ArrayAccess
     }
     
     /**
-     * Gets unit
+     * Gets experiment_start_time
      * @return string
      */
-    public function getUnit()
+    public function getExperimentStartTime()
     {
-        return $this->unit;
+        return $this->experiment_start_time;
     }
   
     /**
-     * Sets unit
-     * @param string $unit unit
+     * Sets experiment_start_time
+     * @param string $experiment_start_time Earliest measurement startTime that should be used in analysis in ISO format
      * @return $this
      */
-    public function setUnit($unit)
+    public function setExperimentStartTime($experiment_start_time)
     {
         
-        $this->unit = $unit;
+        $this->experiment_start_time = $experiment_start_time;
+        return $this;
+    }
+    
+    /**
+     * Gets experiment_end_time
+     * @return string
+     */
+    public function getExperimentEndTime()
+    {
+        return $this->experiment_end_time;
+    }
+  
+    /**
+     * Sets experiment_end_time
+     * @param string $experiment_end_time Latest measurement startTime that should be used in analysis in ISO format
+     * @return $this
+     */
+    public function setExperimentEndTime($experiment_end_time)
+    {
+        
+        $this->experiment_end_time = $experiment_end_time;
         return $this;
     }
     
@@ -454,9 +454,9 @@ class UserVariables implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

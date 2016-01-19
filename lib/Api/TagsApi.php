@@ -1,6 +1,6 @@
 <?php
 /**
- * VotesApi
+ * TagsApi
  * PHP version 5
  *
  * @category Class
@@ -39,7 +39,7 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * VotesApi Class Doc Comment
+ * TagsApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
@@ -47,7 +47,7 @@ use \Swagger\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class VotesApi
+class TagsApi
 {
 
     /**
@@ -82,7 +82,7 @@ class VotesApi
     /**
      * Set the API client
      * @param \Swagger\Client\ApiClient $apiClient set the API client
-     * @return VotesApi
+     * @return TagsApi
      */
     public function setApiClient(ApiClient $apiClient)
     {
@@ -92,42 +92,42 @@ class VotesApi
   
     
     /**
-     * v1VotesPost
+     * v1UserTagsPost
      *
      * Post or update vote
      *
-     * @param \Swagger\Client\Model\PostVote $body Provides vote data (required)
+     * @param \Swagger\Client\Model\UserTag $body Provides vote data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\CommonResponse
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VotesPost($body, $access_token = null)
+    public function v1UserTagsPost($body, $access_token = null)
     {
-        list($response, $statusCode, $httpHeader) = $this->v1VotesPostWithHttpInfo ($body, $access_token);
+        list($response, $statusCode, $httpHeader) = $this->v1UserTagsPostWithHttpInfo ($body, $access_token);
         return $response; 
     }
 
 
     /**
-     * v1VotesPostWithHttpInfo
+     * v1UserTagsPostWithHttpInfo
      *
      * Post or update vote
      *
-     * @param \Swagger\Client\Model\PostVote $body Provides vote data (required)
+     * @param \Swagger\Client\Model\UserTag $body Provides vote data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return Array of \Swagger\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VotesPostWithHttpInfo($body, $access_token = null)
+    public function v1UserTagsPostWithHttpInfo($body, $access_token = null)
     {
         
         // verify the required parameter 'body' is set
         if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling v1VotesPost');
+            throw new \InvalidArgumentException('Missing the required parameter $body when calling v1UserTagsPost');
         }
   
         // parse inputs
-        $resourcePath = "/v1/votes";
+        $resourcePath = "/v1/userTags";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -194,46 +194,46 @@ class VotesApi
     }
     
     /**
-     * v1VotesDeletePost
+     * v1UserTagsDeletePost
      *
-     * Delete vote
+     * Delete user tag or ingredient
      *
-     * @param string $cause Cause variable name (required)
-     * @param string $effect Effect variable name (required)
+     * @param int $tagged_variable_id This is the id of the variable being tagged with an ingredient or something. (required)
+     * @param int $tag_variable_id This is the id of the ingredient variable whose value is determined based on the value of the tagged variable. (required)
      * @return \Swagger\Client\Model\CommonResponse
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VotesDeletePost($cause, $effect)
+    public function v1UserTagsDeletePost($tagged_variable_id, $tag_variable_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->v1VotesDeletePostWithHttpInfo ($cause, $effect);
+        list($response, $statusCode, $httpHeader) = $this->v1UserTagsDeletePostWithHttpInfo ($tagged_variable_id, $tag_variable_id);
         return $response; 
     }
 
 
     /**
-     * v1VotesDeletePostWithHttpInfo
+     * v1UserTagsDeletePostWithHttpInfo
      *
-     * Delete vote
+     * Delete user tag or ingredient
      *
-     * @param string $cause Cause variable name (required)
-     * @param string $effect Effect variable name (required)
+     * @param int $tagged_variable_id This is the id of the variable being tagged with an ingredient or something. (required)
+     * @param int $tag_variable_id This is the id of the ingredient variable whose value is determined based on the value of the tagged variable. (required)
      * @return Array of \Swagger\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VotesDeletePostWithHttpInfo($cause, $effect)
+    public function v1UserTagsDeletePostWithHttpInfo($tagged_variable_id, $tag_variable_id)
     {
         
-        // verify the required parameter 'cause' is set
-        if ($cause === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $cause when calling v1VotesDeletePost');
+        // verify the required parameter 'tagged_variable_id' is set
+        if ($tagged_variable_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $tagged_variable_id when calling v1UserTagsDeletePost');
         }
-        // verify the required parameter 'effect' is set
-        if ($effect === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $effect when calling v1VotesDeletePost');
+        // verify the required parameter 'tag_variable_id' is set
+        if ($tag_variable_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $tag_variable_id when calling v1UserTagsDeletePost');
         }
   
         // parse inputs
-        $resourcePath = "/v1/votes/delete";
+        $resourcePath = "/v1/userTags/delete";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -246,12 +246,12 @@ class VotesApi
   
         // query params
         
-        if ($cause !== null) {
-            $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
+        if ($tagged_variable_id !== null) {
+            $queryParams['taggedVariableId'] = $this->apiClient->getSerializer()->toQueryValue($tagged_variable_id);
         }// query params
         
-        if ($effect !== null) {
-            $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
+        if ($tag_variable_id !== null) {
+            $queryParams['tagVariableId'] = $this->apiClient->getSerializer()->toQueryValue($tag_variable_id);
         }
         
         

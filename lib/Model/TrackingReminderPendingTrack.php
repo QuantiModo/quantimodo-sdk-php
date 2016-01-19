@@ -1,6 +1,6 @@
 <?php
 /**
- * MeasurementValue
+ * TrackingReminderPendingTrack
  *
  * PHP version 5
  *
@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * MeasurementValue Class Doc Comment
+ * TrackingReminderPendingTrack Class Doc Comment
  *
  * @category    Class
  * @description 
@@ -44,15 +44,14 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MeasurementValue implements ArrayAccess
+class TrackingReminderPendingTrack implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'start_time' => 'int',
-        'value' => 'float'
+        'id' => 'int'
     );
   
     /** 
@@ -60,8 +59,7 @@ class MeasurementValue implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'start_time' => 'start_time',
-        'value' => 'value'
+        'id' => 'id'
     );
   
     /**
@@ -69,8 +67,7 @@ class MeasurementValue implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'start_time' => 'setStartTime',
-        'value' => 'setValue'
+        'id' => 'setId'
     );
   
     /**
@@ -78,22 +75,15 @@ class MeasurementValue implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'start_time' => 'getStartTime',
-        'value' => 'getValue'
+        'id' => 'getId'
     );
   
     
     /**
-      * $start_time start_time
+      * $id Id of the pending reminder to be tracked
       * @var int
       */
-    protected $start_time;
-    
-    /**
-      * $value value
-      * @var float
-      */
-    protected $value;
+    protected $id;
     
 
     /**
@@ -103,50 +93,28 @@ class MeasurementValue implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->start_time = $data["start_time"];
-            $this->value = $data["value"];
+            $this->id = $data["id"];
         }
     }
     
     /**
-     * Gets start_time
+     * Gets id
      * @return int
      */
-    public function getStartTime()
+    public function getId()
     {
-        return $this->start_time;
+        return $this->id;
     }
   
     /**
-     * Sets start_time
-     * @param int $start_time start_time
+     * Sets id
+     * @param int $id Id of the pending reminder to be tracked
      * @return $this
      */
-    public function setStartTime($start_time)
+    public function setId($id)
     {
         
-        $this->start_time = $start_time;
-        return $this;
-    }
-    
-    /**
-     * Gets value
-     * @return float
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-  
-    /**
-     * Sets value
-     * @param float $value value
-     * @return $this
-     */
-    public function setValue($value)
-    {
-        
-        $this->value = $value;
+        $this->id = $id;
         return $this;
     }
     
@@ -198,9 +166,9 @@ class MeasurementValue implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

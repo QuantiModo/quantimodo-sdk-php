@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -51,22 +51,7 @@ class VariableCategory implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
-        'filling_value' => 'float',
-        'maximum_allowed_value' => 'float',
-        'minimum_allowed_value' => 'float',
-        'duration_of_action' => 'int',
-        'onset_delay' => 'int',
-        'combination_operation' => 'string',
-        'updated' => 'int',
-        'cause_only' => 'bool',
-        'public' => 'int',
-        'outcome' => 'bool',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'image_url' => 'string',
-        'default_unit_id' => 'int'
+        'name' => 'string'
     );
   
     /** 
@@ -74,22 +59,7 @@ class VariableCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
-        'filling_value' => 'filling_value',
-        'maximum_allowed_value' => 'maximum_allowed_value',
-        'minimum_allowed_value' => 'minimum_allowed_value',
-        'duration_of_action' => 'duration_of_action',
-        'onset_delay' => 'onset_delay',
-        'combination_operation' => 'combination_operation',
-        'updated' => 'updated',
-        'cause_only' => 'cause_only',
-        'public' => 'public',
-        'outcome' => 'outcome',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'image_url' => 'image_url',
-        'default_unit_id' => 'default_unit_id'
+        'name' => 'name'
     );
   
     /**
@@ -97,22 +67,7 @@ class VariableCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
-        'filling_value' => 'setFillingValue',
-        'maximum_allowed_value' => 'setMaximumAllowedValue',
-        'minimum_allowed_value' => 'setMinimumAllowedValue',
-        'duration_of_action' => 'setDurationOfAction',
-        'onset_delay' => 'setOnsetDelay',
-        'combination_operation' => 'setCombinationOperation',
-        'updated' => 'setUpdated',
-        'cause_only' => 'setCauseOnly',
-        'public' => 'setPublic',
-        'outcome' => 'setOutcome',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'image_url' => 'setImageUrl',
-        'default_unit_id' => 'setDefaultUnitId'
+        'name' => 'setName'
     );
   
     /**
@@ -120,120 +75,15 @@ class VariableCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
-        'filling_value' => 'getFillingValue',
-        'maximum_allowed_value' => 'getMaximumAllowedValue',
-        'minimum_allowed_value' => 'getMinimumAllowedValue',
-        'duration_of_action' => 'getDurationOfAction',
-        'onset_delay' => 'getOnsetDelay',
-        'combination_operation' => 'getCombinationOperation',
-        'updated' => 'getUpdated',
-        'cause_only' => 'getCauseOnly',
-        'public' => 'getPublic',
-        'outcome' => 'getOutcome',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'image_url' => 'getImageUrl',
-        'default_unit_id' => 'getDefaultUnitId'
+        'name' => 'getName'
     );
   
     
     /**
-      * $id id
-      * @var int
-      */
-    protected $id;
-    
-    /**
-      * $name Name of the category
+      * $name Category name
       * @var string
       */
     protected $name;
-    
-    /**
-      * $filling_value Value for replacing null measurements
-      * @var float
-      */
-    protected $filling_value;
-    
-    /**
-      * $maximum_allowed_value Maximum recorded value of this category
-      * @var float
-      */
-    protected $maximum_allowed_value;
-    
-    /**
-      * $minimum_allowed_value Minimum recorded value of this category
-      * @var float
-      */
-    protected $minimum_allowed_value;
-    
-    /**
-      * $duration_of_action How long the effect of a measurement in this variable lasts
-      * @var int
-      */
-    protected $duration_of_action;
-    
-    /**
-      * $onset_delay How long it takes for a measurement in this variable to take effect
-      * @var int
-      */
-    protected $onset_delay;
-    
-    /**
-      * $combination_operation How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
-      * @var string
-      */
-    protected $combination_operation;
-    
-    /**
-      * $updated updated
-      * @var int
-      */
-    protected $updated;
-    
-    /**
-      * $cause_only A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user
-      * @var bool
-      */
-    protected $cause_only;
-    
-    /**
-      * $public Is category public
-      * @var int
-      */
-    protected $public;
-    
-    /**
-      * $outcome outcome
-      * @var bool
-      */
-    protected $outcome;
-    
-    /**
-      * $created_at created_at
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at updated_at
-      * @var \DateTime
-      */
-    protected $updated_at;
-    
-    /**
-      * $image_url Image URL
-      * @var string
-      */
-    protected $image_url;
-    
-    /**
-      * $default_unit_id ID of the default unit for the category
-      * @var int
-      */
-    protected $default_unit_id;
     
 
     /**
@@ -243,44 +93,8 @@ class VariableCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
             $this->name = $data["name"];
-            $this->filling_value = $data["filling_value"];
-            $this->maximum_allowed_value = $data["maximum_allowed_value"];
-            $this->minimum_allowed_value = $data["minimum_allowed_value"];
-            $this->duration_of_action = $data["duration_of_action"];
-            $this->onset_delay = $data["onset_delay"];
-            $this->combination_operation = $data["combination_operation"];
-            $this->updated = $data["updated"];
-            $this->cause_only = $data["cause_only"];
-            $this->public = $data["public"];
-            $this->outcome = $data["outcome"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
-            $this->image_url = $data["image_url"];
-            $this->default_unit_id = $data["default_unit_id"];
         }
-    }
-    
-    /**
-     * Gets id
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-  
-    /**
-     * Sets id
-     * @param int $id id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        
-        $this->id = $id;
-        return $this;
     }
     
     /**
@@ -294,307 +108,13 @@ class VariableCategory implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name Name of the category
+     * @param string $name Category name
      * @return $this
      */
     public function setName($name)
     {
         
         $this->name = $name;
-        return $this;
-    }
-    
-    /**
-     * Gets filling_value
-     * @return float
-     */
-    public function getFillingValue()
-    {
-        return $this->filling_value;
-    }
-  
-    /**
-     * Sets filling_value
-     * @param float $filling_value Value for replacing null measurements
-     * @return $this
-     */
-    public function setFillingValue($filling_value)
-    {
-        
-        $this->filling_value = $filling_value;
-        return $this;
-    }
-    
-    /**
-     * Gets maximum_allowed_value
-     * @return float
-     */
-    public function getMaximumAllowedValue()
-    {
-        return $this->maximum_allowed_value;
-    }
-  
-    /**
-     * Sets maximum_allowed_value
-     * @param float $maximum_allowed_value Maximum recorded value of this category
-     * @return $this
-     */
-    public function setMaximumAllowedValue($maximum_allowed_value)
-    {
-        
-        $this->maximum_allowed_value = $maximum_allowed_value;
-        return $this;
-    }
-    
-    /**
-     * Gets minimum_allowed_value
-     * @return float
-     */
-    public function getMinimumAllowedValue()
-    {
-        return $this->minimum_allowed_value;
-    }
-  
-    /**
-     * Sets minimum_allowed_value
-     * @param float $minimum_allowed_value Minimum recorded value of this category
-     * @return $this
-     */
-    public function setMinimumAllowedValue($minimum_allowed_value)
-    {
-        
-        $this->minimum_allowed_value = $minimum_allowed_value;
-        return $this;
-    }
-    
-    /**
-     * Gets duration_of_action
-     * @return int
-     */
-    public function getDurationOfAction()
-    {
-        return $this->duration_of_action;
-    }
-  
-    /**
-     * Sets duration_of_action
-     * @param int $duration_of_action How long the effect of a measurement in this variable lasts
-     * @return $this
-     */
-    public function setDurationOfAction($duration_of_action)
-    {
-        
-        $this->duration_of_action = $duration_of_action;
-        return $this;
-    }
-    
-    /**
-     * Gets onset_delay
-     * @return int
-     */
-    public function getOnsetDelay()
-    {
-        return $this->onset_delay;
-    }
-  
-    /**
-     * Sets onset_delay
-     * @param int $onset_delay How long it takes for a measurement in this variable to take effect
-     * @return $this
-     */
-    public function setOnsetDelay($onset_delay)
-    {
-        
-        $this->onset_delay = $onset_delay;
-        return $this;
-    }
-    
-    /**
-     * Gets combination_operation
-     * @return string
-     */
-    public function getCombinationOperation()
-    {
-        return $this->combination_operation;
-    }
-  
-    /**
-     * Sets combination_operation
-     * @param string $combination_operation How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
-     * @return $this
-     */
-    public function setCombinationOperation($combination_operation)
-    {
-        
-        $this->combination_operation = $combination_operation;
-        return $this;
-    }
-    
-    /**
-     * Gets updated
-     * @return int
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-  
-    /**
-     * Sets updated
-     * @param int $updated updated
-     * @return $this
-     */
-    public function setUpdated($updated)
-    {
-        
-        $this->updated = $updated;
-        return $this;
-    }
-    
-    /**
-     * Gets cause_only
-     * @return bool
-     */
-    public function getCauseOnly()
-    {
-        return $this->cause_only;
-    }
-  
-    /**
-     * Sets cause_only
-     * @param bool $cause_only A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user
-     * @return $this
-     */
-    public function setCauseOnly($cause_only)
-    {
-        
-        $this->cause_only = $cause_only;
-        return $this;
-    }
-    
-    /**
-     * Gets public
-     * @return int
-     */
-    public function getPublic()
-    {
-        return $this->public;
-    }
-  
-    /**
-     * Sets public
-     * @param int $public Is category public
-     * @return $this
-     */
-    public function setPublic($public)
-    {
-        
-        $this->public = $public;
-        return $this;
-    }
-    
-    /**
-     * Gets outcome
-     * @return bool
-     */
-    public function getOutcome()
-    {
-        return $this->outcome;
-    }
-  
-    /**
-     * Sets outcome
-     * @param bool $outcome outcome
-     * @return $this
-     */
-    public function setOutcome($outcome)
-    {
-        
-        $this->outcome = $outcome;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
-        return $this;
-    }
-    
-    /**
-     * Gets image_url
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->image_url;
-    }
-  
-    /**
-     * Sets image_url
-     * @param string $image_url Image URL
-     * @return $this
-     */
-    public function setImageUrl($image_url)
-    {
-        
-        $this->image_url = $image_url;
-        return $this;
-    }
-    
-    /**
-     * Gets default_unit_id
-     * @return int
-     */
-    public function getDefaultUnitId()
-    {
-        return $this->default_unit_id;
-    }
-  
-    /**
-     * Sets default_unit_id
-     * @param int $default_unit_id ID of the default unit for the category
-     * @return $this
-     */
-    public function setDefaultUnitId($default_unit_id)
-    {
-        
-        $this->default_unit_id = $default_unit_id;
         return $this;
     }
     
@@ -646,9 +166,9 @@ class VariableCategory implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

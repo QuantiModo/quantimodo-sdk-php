@@ -10,7 +10,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -92,10 +92,11 @@ class CorrelationsApi
   
     
     /**
-     * v1CorrelationsGet
+     * v1AggregatedCorrelationsGet
      *
-     * Get correlations
+     * Get aggregated correlations
      *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
      * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
      * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
@@ -108,14 +109,37 @@ class CorrelationsApi
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1CorrelationsGet($effect=null, $cause=null, $correlation_coefficient=null, $onset_delay=null, $duration_of_action=null, $last_updated=null, $limit=null, $offset=null, $sort=null)
+    public function v1AggregatedCorrelationsGet($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1AggregatedCorrelationsGetWithHttpInfo ($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+        return $response; 
+    }
+
+
+    /**
+     * v1AggregatedCorrelationsGetWithHttpInfo
+     *
+     * Get aggregated correlations
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
+     * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
+     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
+     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
+     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1AggregatedCorrelationsGetWithHttpInfo($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
         
   
         // parse inputs
-        $resourcePath = "/v1/correlations";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
+        $resourcePath = "/v1/aggregatedCorrelations";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -124,99 +148,132 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($effect !== null) {
             $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
         }// query params
+        
         if ($cause !== null) {
             $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
         }// query params
+        
         if ($correlation_coefficient !== null) {
             $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
         }// query params
+        
         if ($onset_delay !== null) {
             $queryParams['onsetDelay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
         }// query params
+        
         if ($duration_of_action !== null) {
             $queryParams['durationOfAction'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
         }// query params
+        
         if ($last_updated !== null) {
             $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
         }// query params
+        
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }// query params
+        
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }// query params
+        
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Correlation[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
     }
     
     /**
-     * v1CorrelationsPost
+     * v1AggregatedCorrelationsPost
      *
      * Store or Update a Correlation
      *
      * @param \Swagger\Client\Model\PostCorrelation $body Provides correlation data (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1CorrelationsPost($body)
+    public function v1AggregatedCorrelationsPost($body, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1AggregatedCorrelationsPostWithHttpInfo ($body, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1AggregatedCorrelationsPostWithHttpInfo
+     *
+     * Store or Update a Correlation
+     *
+     * @param \Swagger\Client\Model\PostCorrelation $body Provides correlation data (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1AggregatedCorrelationsPostWithHttpInfo($body, $access_token = null)
     {
         
         // verify the required parameter 'body' is set
         if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling v1CorrelationsPost');
+            throw new \InvalidArgumentException('Missing the required parameter $body when calling v1AggregatedCorrelationsPost');
         }
   
         // parse inputs
-        $resourcePath = "/v1/correlations";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
+        $resourcePath = "/v1/aggregatedCorrelations";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -225,11 +282,18 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         
-        
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         // body params
         $_tempBody = null;
@@ -240,32 +304,181 @@ class CorrelationsApi
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams
             );
+            
+            return array(null, $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 400:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\JsonErrorResponse', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\JsonErrorResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
+    }
+    
+    /**
+     * v1CorrelationsGet
+     *
+     * Get correlations
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
+     * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
+     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
+     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
+     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return \Swagger\Client\Model\Correlation[]
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1CorrelationsGet($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1CorrelationsGetWithHttpInfo ($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+        return $response; 
+    }
+
+
+    /**
+     * v1CorrelationsGetWithHttpInfo
+     *
+     * Get correlations
+     *
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
+     * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
+     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
+     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
+     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with `-, it will sort in descending order. (optional)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1CorrelationsGetWithHttpInfo($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    {
         
+  
+        // parse inputs
+        $resourcePath = "/v1/correlations";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+  
+        // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
+        if ($effect !== null) {
+            $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
+        }// query params
+        
+        if ($cause !== null) {
+            $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
+        }// query params
+        
+        if ($correlation_coefficient !== null) {
+            $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
+        }// query params
+        
+        if ($onset_delay !== null) {
+            $queryParams['onsetDelay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
+        }// query params
+        
+        if ($duration_of_action !== null) {
+            $queryParams['durationOfAction'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
+        }// query params
+        
+        if ($last_updated !== null) {
+            $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
+        }// query params
+        
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }// query params
+        
+        if ($offset !== null) {
+            $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
+        }// query params
+        
+        if ($sort !== null) {
+            $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
+        }
+        
+        
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\Correlation[]'
+            );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
     }
     
     /**
@@ -277,11 +490,33 @@ class CorrelationsApi
      * @param int $user_id User id (required)
      * @param string $variable_name Effect variable name (required)
      * @param string $organization_token Organization access token (required)
-     * @param string $include_public Include bublic correlations, Can be \&quot;1\&quot; or empty. (optional)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $include_public=null)
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo ($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public);
+        return $response; 
+    }
+
+
+    /**
+     * v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo
+     *
+     * Search user correlations for a given cause
+     *
+     * @param int $organization_id Organization ID (required)
+     * @param int $user_id User id (required)
+     * @param string $variable_name Effect variable name (required)
+     * @param string $organization_token Organization access token (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
     {
         
         // verify the required parameter 'organization_id' is set
@@ -303,8 +538,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/causes";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -313,17 +546,24 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($organization_token !== null) {
             $queryParams['organization_token'] = $this->apiClient->getSerializer()->toQueryValue($organization_token);
         }// query params
+        
         if ($include_public !== null) {
-            $queryParams['include_public'] = $this->apiClient->getSerializer()->toQueryValue($include_public);
+            $queryParams['includePublic'] = $this->apiClient->getSerializer()->toQueryValue($include_public);
         }
         
         // path params
+        
         if ($organization_id !== null) {
             $resourcePath = str_replace(
                 "{" . "organizationId" . "}",
@@ -331,6 +571,7 @@ class CorrelationsApi
                 $resourcePath
             );
         }// path params
+        
         if ($user_id !== null) {
             $resourcePath = str_replace(
                 "{" . "userId" . "}",
@@ -338,6 +579,7 @@ class CorrelationsApi
                 $resourcePath
             );
         }// path params
+        
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -345,44 +587,48 @@ class CorrelationsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Correlation[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
     }
     
     /**
@@ -394,11 +640,33 @@ class CorrelationsApi
      * @param int $user_id User id (required)
      * @param string $variable_name Cause variable name (required)
      * @param string $organization_token Organization access token (required)
-     * @param string $include_public Include bublic correlations, Can be \&quot;1\&quot; or empty. (optional)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
      * @return \Swagger\Client\Model\CommonResponse[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $include_public=null)
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo ($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public);
+        return $response; 
+    }
+
+
+    /**
+     * v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo
+     *
+     * Search user correlations for a given cause
+     *
+     * @param int $organization_id Organization ID (required)
+     * @param int $user_id User id (required)
+     * @param string $variable_name Cause variable name (required)
+     * @param string $organization_token Organization access token (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
+     * @return Array of \Swagger\Client\Model\CommonResponse[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
     {
         
         // verify the required parameter 'organization_id' is set
@@ -420,8 +688,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/effects";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -430,17 +696,24 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($organization_token !== null) {
             $queryParams['organization_token'] = $this->apiClient->getSerializer()->toQueryValue($organization_token);
         }// query params
+        
         if ($include_public !== null) {
             $queryParams['include_public'] = $this->apiClient->getSerializer()->toQueryValue($include_public);
         }
         
         // path params
+        
         if ($organization_id !== null) {
             $resourcePath = str_replace(
                 "{" . "organizationId" . "}",
@@ -448,6 +721,7 @@ class CorrelationsApi
                 $resourcePath
             );
         }// path params
+        
         if ($user_id !== null) {
             $resourcePath = str_replace(
                 "{" . "userId" . "}",
@@ -455,6 +729,7 @@ class CorrelationsApi
                 $resourcePath
             );
         }// path params
+        
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -462,44 +737,48 @@ class CorrelationsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\CommonResponse[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\CommonResponse[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommonResponse[]');
-        
     }
     
     /**
@@ -508,11 +787,30 @@ class CorrelationsApi
      * Get average correlations for variables containing search term
      *
      * @param string $search Name of the variable that you want to know the causes or effects of. (required)
-     * @param string $effect_or_cause Specifies whether to return the effects or causes of the searched variable. (required)
+     * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause)
+    public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1PublicCorrelationsSearchSearchGetWithHttpInfo ($search, $effect_or_cause, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1PublicCorrelationsSearchSearchGetWithHttpInfo
+     *
+     * Get average correlations for variables containing search term
+     *
+     * @param string $search Name of the variable that you want to know the causes or effects of. (required)
+     * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token = null)
     {
         
         // verify the required parameter 'search' is set
@@ -526,8 +824,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/public/correlations/search/{search}";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -536,14 +832,20 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }// query params
+        
         if ($effect_or_cause !== null) {
             $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
         }
         
         // path params
+        
         if ($search !== null) {
             $resourcePath = str_replace(
                 "{" . "search" . "}",
@@ -551,44 +853,48 @@ class CorrelationsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Correlation[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
     }
     
     /**
@@ -602,6 +908,22 @@ class CorrelationsApi
      */
     public function v1VariablesVariableNameCausesGet($variable_name)
     {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesVariableNameCausesGetWithHttpInfo ($variable_name);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesVariableNameCausesGetWithHttpInfo
+     *
+     * Search user correlations for a given effect
+     *
+     * @param string $variable_name Effect variable name (required)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesVariableNameCausesGetWithHttpInfo($variable_name)
+    {
         
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
@@ -610,8 +932,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/causes";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -620,11 +940,12 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         
         
         // path params
+        
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -632,44 +953,48 @@ class CorrelationsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Correlation[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
     }
     
     /**
@@ -678,10 +1003,28 @@ class CorrelationsApi
      * Search user correlations for a given cause
      *
      * @param string $variable_name Cause variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VariablesVariableNameEffectsGet($variable_name)
+    public function v1VariablesVariableNameEffectsGet($variable_name, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesVariableNameEffectsGetWithHttpInfo ($variable_name, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesVariableNameEffectsGetWithHttpInfo
+     *
+     * Search user correlations for a given cause
+     *
+     * @param string $variable_name Cause variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesVariableNameEffectsGetWithHttpInfo($variable_name, $access_token = null)
     {
         
         // verify the required parameter 'variable_name' is set
@@ -691,8 +1034,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/effects";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -701,11 +1042,16 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -713,44 +1059,48 @@ class CorrelationsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Correlation[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
     }
     
     /**
@@ -759,10 +1109,28 @@ class CorrelationsApi
      * Search public correlations for a given effect
      *
      * @param string $variable_name Effect variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VariablesVariableNamePublicCausesGet($variable_name)
+    public function v1VariablesVariableNamePublicCausesGet($variable_name, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesVariableNamePublicCausesGetWithHttpInfo ($variable_name, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesVariableNamePublicCausesGetWithHttpInfo
+     *
+     * Search public correlations for a given effect
+     *
+     * @param string $variable_name Effect variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesVariableNamePublicCausesGetWithHttpInfo($variable_name, $access_token = null)
     {
         
         // verify the required parameter 'variable_name' is set
@@ -772,8 +1140,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/public/causes";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -782,11 +1148,16 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -794,44 +1165,48 @@ class CorrelationsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Correlation[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
     }
     
     /**
@@ -840,10 +1215,28 @@ class CorrelationsApi
      * Search public correlations for a given cause
      *
      * @param string $variable_name Cause variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\Correlation[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VariablesVariableNamePublicEffectsGet($variable_name)
+    public function v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VariablesVariableNamePublicEffectsGetWithHttpInfo ($variable_name, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1VariablesVariableNamePublicEffectsGetWithHttpInfo
+     *
+     * Search public correlations for a given cause
+     *
+     * @param string $variable_name Cause variable name (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VariablesVariableNamePublicEffectsGetWithHttpInfo($variable_name, $access_token = null)
     {
         
         // verify the required parameter 'variable_name' is set
@@ -853,8 +1246,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/public/effects";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "GET";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -863,11 +1254,16 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
+        // query params
         
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
         
         // path params
+        
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -875,44 +1271,48 @@ class CorrelationsApi
                 $resourcePath
             );
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\Correlation[]'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]');
-        
     }
     
     /**
@@ -920,33 +1320,38 @@ class CorrelationsApi
      *
      * Post or update vote
      *
-     * @param string $cause Cause variable name (required)
-     * @param string $effect Effect variable name (required)
-     * @param Number $correlation Correlation value (required)
-     * @param bool $vote Vote: 0 (for implausible) or 1 (for plausible) (optional)
+     * @param \Swagger\Client\Model\PostVote $body Provides vote data (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @return \Swagger\Client\Model\CommonResponse
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function v1VotesPost($cause, $effect, $correlation, $vote=null)
+    public function v1VotesPost($body, $access_token = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->v1VotesPostWithHttpInfo ($body, $access_token);
+        return $response; 
+    }
+
+
+    /**
+     * v1VotesPostWithHttpInfo
+     *
+     * Post or update vote
+     *
+     * @param \Swagger\Client\Model\PostVote $body Provides vote data (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @return Array of \Swagger\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VotesPostWithHttpInfo($body, $access_token = null)
     {
         
-        // verify the required parameter 'cause' is set
-        if ($cause === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $cause when calling v1VotesPost');
-        }
-        // verify the required parameter 'effect' is set
-        if ($effect === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $effect when calling v1VotesPost');
-        }
-        // verify the required parameter 'correlation' is set
-        if ($correlation === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $correlation when calling v1VotesPost');
+        // verify the required parameter 'body' is set
+        if ($body === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $body when calling v1VotesPost');
         }
   
         // parse inputs
         $resourcePath = "/v1/votes";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -955,61 +1360,61 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
-        if ($cause !== null) {
-            $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
-        }// query params
-        if ($effect !== null) {
-            $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
-        }// query params
-        if ($correlation !== null) {
-            $queryParams['correlation'] = $this->apiClient->getSerializer()->toQueryValue($correlation);
-        }// query params
-        if ($vote !== null) {
-            $queryParams['vote'] = $this->apiClient->getSerializer()->toQueryValue($vote);
+        
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
-        
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\CommonResponse'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommonResponse');
-        
     }
     
     /**
@@ -1024,6 +1429,23 @@ class CorrelationsApi
      */
     public function v1VotesDeletePost($cause, $effect)
     {
+        list($response, $statusCode, $httpHeader) = $this->v1VotesDeletePostWithHttpInfo ($cause, $effect);
+        return $response; 
+    }
+
+
+    /**
+     * v1VotesDeletePostWithHttpInfo
+     *
+     * Delete vote
+     *
+     * @param string $cause Cause variable name (required)
+     * @param string $effect Effect variable name (required)
+     * @return Array of \Swagger\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function v1VotesDeletePostWithHttpInfo($cause, $effect)
+    {
         
         // verify the required parameter 'cause' is set
         if ($cause === null) {
@@ -1036,8 +1458,6 @@ class CorrelationsApi
   
         // parse inputs
         $resourcePath = "/v1/votes/delete";
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-        $method = "POST";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1046,55 +1466,61 @@ class CorrelationsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
   
         // query params
+        
         if ($cause !== null) {
             $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
         }// query params
+        
         if ($effect !== null) {
             $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
         }
         
         
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
         
   
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } else if (count($formParams) > 0) {
+        } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
         
-        
-        //TODO support oauth
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
         
         // make the API Call
-        try
-        {
-            list($response, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, $method,
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\CommonResponse'
             );
+            
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
+            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse', $httpHeader);
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
   
             throw $e;
         }
-        
-        if (!$response) {
-            return null;
-        }
-  
-        return $this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommonResponse');
-        
     }
     
 }

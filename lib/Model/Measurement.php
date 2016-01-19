@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -51,25 +51,18 @@ class Measurement implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'user_id' => 'int',
-        'client_id' => 'string',
-        'connector_id' => 'int',
-        'variable_id' => 'int',
-        'source_id' => 'int',
-        'start_time' => 'int',
-        'value' => 'float',
-        'unit_id' => 'int',
-        'original_value' => 'float',
-        'original_unit_id' => 'int',
-        'duration' => 'int',
-        'note' => 'string',
-        'latitude' => 'float',
-        'longitude' => 'float',
-        'location' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'error' => 'string'
+        'variable' => 'string',
+        'source' => 'string',
+        'start_time' => 'string',
+        'human_time' => '\Swagger\Client\Model\HumanTime',
+        'value' => 'double',
+        'unit' => 'string',
+        'original_value' => 'int',
+        'stored_value' => 'double',
+        'stored_abbreviated_unit_name' => 'string',
+        'original_abbreviated_unit_name' => 'string',
+        'abbreviated_unit_name' => 'string',
+        'note' => 'string'
     );
   
     /** 
@@ -77,25 +70,18 @@ class Measurement implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'user_id' => 'user_id',
-        'client_id' => 'client_id',
-        'connector_id' => 'connector_id',
-        'variable_id' => 'variable_id',
-        'source_id' => 'source_id',
-        'start_time' => 'start_time',
+        'variable' => 'variable',
+        'source' => 'source',
+        'start_time' => 'startTime',
+        'human_time' => 'humanTime',
         'value' => 'value',
-        'unit_id' => 'unit_id',
-        'original_value' => 'original_value',
-        'original_unit_id' => 'original_unit_id',
-        'duration' => 'duration',
-        'note' => 'note',
-        'latitude' => 'latitude',
-        'longitude' => 'longitude',
-        'location' => 'location',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'error' => 'error'
+        'unit' => 'unit',
+        'original_value' => 'originalValue',
+        'stored_value' => 'storedValue',
+        'stored_abbreviated_unit_name' => 'storedAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'originalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'abbreviatedUnitName',
+        'note' => 'note'
     );
   
     /**
@@ -103,25 +89,18 @@ class Measurement implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'user_id' => 'setUserId',
-        'client_id' => 'setClientId',
-        'connector_id' => 'setConnectorId',
-        'variable_id' => 'setVariableId',
-        'source_id' => 'setSourceId',
+        'variable' => 'setVariable',
+        'source' => 'setSource',
         'start_time' => 'setStartTime',
+        'human_time' => 'setHumanTime',
         'value' => 'setValue',
-        'unit_id' => 'setUnitId',
+        'unit' => 'setUnit',
         'original_value' => 'setOriginalValue',
-        'original_unit_id' => 'setOriginalUnitId',
-        'duration' => 'setDuration',
-        'note' => 'setNote',
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude',
-        'location' => 'setLocation',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'error' => 'setError'
+        'stored_value' => 'setStoredValue',
+        'stored_abbreviated_unit_name' => 'setStoredAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'setOriginalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
+        'note' => 'setNote'
     );
   
     /**
@@ -129,141 +108,92 @@ class Measurement implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'user_id' => 'getUserId',
-        'client_id' => 'getClientId',
-        'connector_id' => 'getConnectorId',
-        'variable_id' => 'getVariableId',
-        'source_id' => 'getSourceId',
+        'variable' => 'getVariable',
+        'source' => 'getSource',
         'start_time' => 'getStartTime',
+        'human_time' => 'getHumanTime',
         'value' => 'getValue',
-        'unit_id' => 'getUnitId',
+        'unit' => 'getUnit',
         'original_value' => 'getOriginalValue',
-        'original_unit_id' => 'getOriginalUnitId',
-        'duration' => 'getDuration',
-        'note' => 'getNote',
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude',
-        'location' => 'getLocation',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'error' => 'getError'
+        'stored_value' => 'getStoredValue',
+        'stored_abbreviated_unit_name' => 'getStoredAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'getOriginalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
+        'note' => 'getNote'
     );
   
     
     /**
-      * $id id
-      * @var int
-      */
-    protected $id;
-    
-    /**
-      * $user_id ID of user that owns this measurement
-      * @var int
-      */
-    protected $user_id;
-    
-    /**
-      * $client_id client_id
+      * $variable ORIGINAL Name of the variable for which we are creating the measurement records
       * @var string
       */
-    protected $client_id;
+    protected $variable;
     
     /**
-      * $connector_id Connector ID
-      * @var int
+      * $source Application or device used to record the measurement values
+      * @var string
       */
-    protected $connector_id;
-    
-    /**
-      * $variable_id ID of the variable for which we are creating the measurement records
-      * @var int
-      */
-    protected $variable_id;
-    
-    /**
-      * $source_id Application or device used to record the measurement values
-      * @var int
-      */
-    protected $source_id;
+    protected $source;
     
     /**
       * $start_time Start Time for the measurement event in ISO 8601
-      * @var int
+      * @var string
       */
     protected $start_time;
     
     /**
+      * $human_time Start Time for the measurement event in ISO 8601
+      * @var \Swagger\Client\Model\HumanTime
+      */
+    protected $human_time;
+    
+    /**
       * $value Converted measurement value in requested unit
-      * @var float
+      * @var double
       */
     protected $value;
     
     /**
-      * $unit_id Unit ID of measurement as requested in GET request
-      * @var int
+      * $unit Unit of measurement as requested in GET request
+      * @var string
       */
-    protected $unit_id;
+    protected $unit;
     
     /**
       * $original_value Original value
-      * @var float
+      * @var int
       */
     protected $original_value;
     
     /**
-      * $original_unit_id Unit ID of measurement as originally submitted
-      * @var int
+      * $stored_value Measurement value in the unit as orignally submitted
+      * @var double
       */
-    protected $original_unit_id;
+    protected $stored_value;
     
     /**
-      * $duration duration of measurement in seconds
-      * @var int
+      * $stored_abbreviated_unit_name Unit of measurement as originally submitted
+      * @var string
       */
-    protected $duration;
+    protected $stored_abbreviated_unit_name;
+    
+    /**
+      * $original_abbreviated_unit_name Original Unit of measurement as originally submitted
+      * @var string
+      */
+    protected $original_abbreviated_unit_name;
+    
+    /**
+      * $abbreviated_unit_name Unit of measurement as originally submitted
+      * @var string
+      */
+    protected $abbreviated_unit_name;
     
     /**
       * $note Note of measurement
       * @var string
       */
     protected $note;
-    
-    /**
-      * $latitude latitude
-      * @var float
-      */
-    protected $latitude;
-    
-    /**
-      * $longitude longitude
-      * @var float
-      */
-    protected $longitude;
-    
-    /**
-      * $location location
-      * @var string
-      */
-    protected $location;
-    
-    /**
-      * $created_at created_at
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at updated_at
-      * @var \DateTime
-      */
-    protected $updated_at;
-    
-    /**
-      * $error error
-      * @var string
-      */
-    protected $error;
     
 
     /**
@@ -273,157 +203,66 @@ class Measurement implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->user_id = $data["user_id"];
-            $this->client_id = $data["client_id"];
-            $this->connector_id = $data["connector_id"];
-            $this->variable_id = $data["variable_id"];
-            $this->source_id = $data["source_id"];
+            $this->variable = $data["variable"];
+            $this->source = $data["source"];
             $this->start_time = $data["start_time"];
+            $this->human_time = $data["human_time"];
             $this->value = $data["value"];
-            $this->unit_id = $data["unit_id"];
+            $this->unit = $data["unit"];
             $this->original_value = $data["original_value"];
-            $this->original_unit_id = $data["original_unit_id"];
-            $this->duration = $data["duration"];
+            $this->stored_value = $data["stored_value"];
+            $this->stored_abbreviated_unit_name = $data["stored_abbreviated_unit_name"];
+            $this->original_abbreviated_unit_name = $data["original_abbreviated_unit_name"];
+            $this->abbreviated_unit_name = $data["abbreviated_unit_name"];
             $this->note = $data["note"];
-            $this->latitude = $data["latitude"];
-            $this->longitude = $data["longitude"];
-            $this->location = $data["location"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
-            $this->error = $data["error"];
         }
     }
     
     /**
-     * Gets id
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-  
-    /**
-     * Sets id
-     * @param int $id id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        
-        $this->id = $id;
-        return $this;
-    }
-    
-    /**
-     * Gets user_id
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-  
-    /**
-     * Sets user_id
-     * @param int $user_id ID of user that owns this measurement
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        
-        $this->user_id = $user_id;
-        return $this;
-    }
-    
-    /**
-     * Gets client_id
+     * Gets variable
      * @return string
      */
-    public function getClientId()
+    public function getVariable()
     {
-        return $this->client_id;
+        return $this->variable;
     }
   
     /**
-     * Sets client_id
-     * @param string $client_id client_id
+     * Sets variable
+     * @param string $variable ORIGINAL Name of the variable for which we are creating the measurement records
      * @return $this
      */
-    public function setClientId($client_id)
+    public function setVariable($variable)
     {
         
-        $this->client_id = $client_id;
+        $this->variable = $variable;
         return $this;
     }
     
     /**
-     * Gets connector_id
-     * @return int
+     * Gets source
+     * @return string
      */
-    public function getConnectorId()
+    public function getSource()
     {
-        return $this->connector_id;
+        return $this->source;
     }
   
     /**
-     * Sets connector_id
-     * @param int $connector_id Connector ID
+     * Sets source
+     * @param string $source Application or device used to record the measurement values
      * @return $this
      */
-    public function setConnectorId($connector_id)
+    public function setSource($source)
     {
         
-        $this->connector_id = $connector_id;
-        return $this;
-    }
-    
-    /**
-     * Gets variable_id
-     * @return int
-     */
-    public function getVariableId()
-    {
-        return $this->variable_id;
-    }
-  
-    /**
-     * Sets variable_id
-     * @param int $variable_id ID of the variable for which we are creating the measurement records
-     * @return $this
-     */
-    public function setVariableId($variable_id)
-    {
-        
-        $this->variable_id = $variable_id;
-        return $this;
-    }
-    
-    /**
-     * Gets source_id
-     * @return int
-     */
-    public function getSourceId()
-    {
-        return $this->source_id;
-    }
-  
-    /**
-     * Sets source_id
-     * @param int $source_id Application or device used to record the measurement values
-     * @return $this
-     */
-    public function setSourceId($source_id)
-    {
-        
-        $this->source_id = $source_id;
+        $this->source = $source;
         return $this;
     }
     
     /**
      * Gets start_time
-     * @return int
+     * @return string
      */
     public function getStartTime()
     {
@@ -432,7 +271,7 @@ class Measurement implements ArrayAccess
   
     /**
      * Sets start_time
-     * @param int $start_time Start Time for the measurement event in ISO 8601
+     * @param string $start_time Start Time for the measurement event in ISO 8601
      * @return $this
      */
     public function setStartTime($start_time)
@@ -443,8 +282,29 @@ class Measurement implements ArrayAccess
     }
     
     /**
+     * Gets human_time
+     * @return \Swagger\Client\Model\HumanTime
+     */
+    public function getHumanTime()
+    {
+        return $this->human_time;
+    }
+  
+    /**
+     * Sets human_time
+     * @param \Swagger\Client\Model\HumanTime $human_time Start Time for the measurement event in ISO 8601
+     * @return $this
+     */
+    public function setHumanTime($human_time)
+    {
+        
+        $this->human_time = $human_time;
+        return $this;
+    }
+    
+    /**
      * Gets value
-     * @return float
+     * @return double
      */
     public function getValue()
     {
@@ -453,7 +313,7 @@ class Measurement implements ArrayAccess
   
     /**
      * Sets value
-     * @param float $value Converted measurement value in requested unit
+     * @param double $value Converted measurement value in requested unit
      * @return $this
      */
     public function setValue($value)
@@ -464,29 +324,29 @@ class Measurement implements ArrayAccess
     }
     
     /**
-     * Gets unit_id
-     * @return int
+     * Gets unit
+     * @return string
      */
-    public function getUnitId()
+    public function getUnit()
     {
-        return $this->unit_id;
+        return $this->unit;
     }
   
     /**
-     * Sets unit_id
-     * @param int $unit_id Unit ID of measurement as requested in GET request
+     * Sets unit
+     * @param string $unit Unit of measurement as requested in GET request
      * @return $this
      */
-    public function setUnitId($unit_id)
+    public function setUnit($unit)
     {
         
-        $this->unit_id = $unit_id;
+        $this->unit = $unit;
         return $this;
     }
     
     /**
      * Gets original_value
-     * @return float
+     * @return int
      */
     public function getOriginalValue()
     {
@@ -495,7 +355,7 @@ class Measurement implements ArrayAccess
   
     /**
      * Sets original_value
-     * @param float $original_value Original value
+     * @param int $original_value Original value
      * @return $this
      */
     public function setOriginalValue($original_value)
@@ -506,44 +366,86 @@ class Measurement implements ArrayAccess
     }
     
     /**
-     * Gets original_unit_id
-     * @return int
+     * Gets stored_value
+     * @return double
      */
-    public function getOriginalUnitId()
+    public function getStoredValue()
     {
-        return $this->original_unit_id;
+        return $this->stored_value;
     }
   
     /**
-     * Sets original_unit_id
-     * @param int $original_unit_id Unit ID of measurement as originally submitted
+     * Sets stored_value
+     * @param double $stored_value Measurement value in the unit as orignally submitted
      * @return $this
      */
-    public function setOriginalUnitId($original_unit_id)
+    public function setStoredValue($stored_value)
     {
         
-        $this->original_unit_id = $original_unit_id;
+        $this->stored_value = $stored_value;
         return $this;
     }
     
     /**
-     * Gets duration
-     * @return int
+     * Gets stored_abbreviated_unit_name
+     * @return string
      */
-    public function getDuration()
+    public function getStoredAbbreviatedUnitName()
     {
-        return $this->duration;
+        return $this->stored_abbreviated_unit_name;
     }
   
     /**
-     * Sets duration
-     * @param int $duration duration of measurement in seconds
+     * Sets stored_abbreviated_unit_name
+     * @param string $stored_abbreviated_unit_name Unit of measurement as originally submitted
      * @return $this
      */
-    public function setDuration($duration)
+    public function setStoredAbbreviatedUnitName($stored_abbreviated_unit_name)
     {
         
-        $this->duration = $duration;
+        $this->stored_abbreviated_unit_name = $stored_abbreviated_unit_name;
+        return $this;
+    }
+    
+    /**
+     * Gets original_abbreviated_unit_name
+     * @return string
+     */
+    public function getOriginalAbbreviatedUnitName()
+    {
+        return $this->original_abbreviated_unit_name;
+    }
+  
+    /**
+     * Sets original_abbreviated_unit_name
+     * @param string $original_abbreviated_unit_name Original Unit of measurement as originally submitted
+     * @return $this
+     */
+    public function setOriginalAbbreviatedUnitName($original_abbreviated_unit_name)
+    {
+        
+        $this->original_abbreviated_unit_name = $original_abbreviated_unit_name;
+        return $this;
+    }
+    
+    /**
+     * Gets abbreviated_unit_name
+     * @return string
+     */
+    public function getAbbreviatedUnitName()
+    {
+        return $this->abbreviated_unit_name;
+    }
+  
+    /**
+     * Sets abbreviated_unit_name
+     * @param string $abbreviated_unit_name Unit of measurement as originally submitted
+     * @return $this
+     */
+    public function setAbbreviatedUnitName($abbreviated_unit_name)
+    {
+        
+        $this->abbreviated_unit_name = $abbreviated_unit_name;
         return $this;
     }
     
@@ -565,132 +467,6 @@ class Measurement implements ArrayAccess
     {
         
         $this->note = $note;
-        return $this;
-    }
-    
-    /**
-     * Gets latitude
-     * @return float
-     */
-    public function getLatitude()
-    {
-        return $this->latitude;
-    }
-  
-    /**
-     * Sets latitude
-     * @param float $latitude latitude
-     * @return $this
-     */
-    public function setLatitude($latitude)
-    {
-        
-        $this->latitude = $latitude;
-        return $this;
-    }
-    
-    /**
-     * Gets longitude
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-  
-    /**
-     * Sets longitude
-     * @param float $longitude longitude
-     * @return $this
-     */
-    public function setLongitude($longitude)
-    {
-        
-        $this->longitude = $longitude;
-        return $this;
-    }
-    
-    /**
-     * Gets location
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-  
-    /**
-     * Sets location
-     * @param string $location location
-     * @return $this
-     */
-    public function setLocation($location)
-    {
-        
-        $this->location = $location;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
-        return $this;
-    }
-    
-    /**
-     * Gets error
-     * @return string
-     */
-    public function getError()
-    {
-        return $this->error;
-    }
-  
-    /**
-     * Sets error
-     * @param string $error error
-     * @return $this
-     */
-    public function setError($error)
-    {
-        
-        $this->error = $error;
         return $this;
     }
     
@@ -742,9 +518,9 @@ class Measurement implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }

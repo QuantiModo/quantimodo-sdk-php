@@ -11,7 +11,7 @@
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 /**
- *  Copyright 2015 SmartBear Software
+ *  Copyright 2016 SmartBear Software
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -52,41 +52,35 @@ class Variable implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'int',
-        'client_id' => 'string',
-        'parent_id' => 'int',
         'name' => 'string',
-        'variable_category_id' => 'int',
-        'default_unit_id' => 'int',
+        'original_name' => 'string',
+        'category' => 'string',
+        'abbreviated_unit_name' => 'string',
+        'abbreviated_unit_id' => 'int',
+        'sources' => 'string',
+        'minimum_value' => 'double',
+        'maximum_value' => 'double',
         'combination_operation' => 'string',
-        'filling_value' => 'float',
-        'maximum_allowed_value' => 'float',
-        'minimum_allowed_value' => 'float',
+        'filling_value' => 'double',
+        'join_with' => 'string',
+        'joined_variables' => '\Swagger\Client\Model\Variable[]',
+        'parent' => 'int',
+        'sub_variables' => '\Swagger\Client\Model\Variable[]',
         'onset_delay' => 'int',
         'duration_of_action' => 'int',
-        'public' => 'int',
-        'cause_only' => 'bool',
-        'most_common_value' => 'float',
-        'most_common_unit_id' => 'int',
-        'standard_deviation' => 'float',
-        'variance' => 'float',
-        'mean' => 'float',
-        'median' => 'float',
-        'number_of_measurements' => 'float',
-        'number_of_unique_values' => 'float',
-        'skewness' => 'float',
-        'kurtosis' => 'float',
-        'status' => 'string',
-        'error_message' => 'string',
-        'last_successful_update_time' => '\DateTime',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'product_url' => 'string',
-        'image_url' => 'string',
-        'price' => 'float',
-        'number_of_user_variables' => 'int',
-        'outcome' => 'bool',
-        'minimum_recorded_value' => 'float',
-        'maximum_recorded_value' => 'float'
+        'earliest_measurement_time' => 'int',
+        'latest_measurement_time' => 'int',
+        'updated' => 'int',
+        'cause_only' => 'int',
+        'number_of_correlations' => 'int',
+        'outcome' => 'int',
+        'measurements_at_last_analysis' => 'int',
+        'number_of_measurements' => 'int',
+        'last_unit' => 'string',
+        'last_value' => 'int',
+        'most_common_value' => 'int',
+        'most_common_unit' => 'string',
+        'last_source' => 'int'
     );
   
     /** 
@@ -95,41 +89,35 @@ class Variable implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'client_id' => 'client_id',
-        'parent_id' => 'parent_id',
         'name' => 'name',
-        'variable_category_id' => 'variable_category_id',
-        'default_unit_id' => 'default_unit_id',
-        'combination_operation' => 'combination_operation',
-        'filling_value' => 'filling_value',
-        'maximum_allowed_value' => 'maximum_allowed_value',
-        'minimum_allowed_value' => 'minimum_allowed_value',
-        'onset_delay' => 'onset_delay',
-        'duration_of_action' => 'duration_of_action',
-        'public' => 'public',
-        'cause_only' => 'cause_only',
-        'most_common_value' => 'most_common_value',
-        'most_common_unit_id' => 'most_common_unit_id',
-        'standard_deviation' => 'standard_deviation',
-        'variance' => 'variance',
-        'mean' => 'mean',
-        'median' => 'median',
-        'number_of_measurements' => 'number_of_measurements',
-        'number_of_unique_values' => 'number_of_unique_values',
-        'skewness' => 'skewness',
-        'kurtosis' => 'kurtosis',
-        'status' => 'status',
-        'error_message' => 'error_message',
-        'last_successful_update_time' => 'last_successful_update_time',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'product_url' => 'product_url',
-        'image_url' => 'image_url',
-        'price' => 'price',
-        'number_of_user_variables' => 'number_of_user_variables',
+        'original_name' => 'originalName',
+        'category' => 'category',
+        'abbreviated_unit_name' => 'abbreviatedUnitName',
+        'abbreviated_unit_id' => 'abbreviatedUnitId',
+        'sources' => 'sources',
+        'minimum_value' => 'minimumValue',
+        'maximum_value' => 'maximumValue',
+        'combination_operation' => 'combinationOperation',
+        'filling_value' => 'fillingValue',
+        'join_with' => 'joinWith',
+        'joined_variables' => 'joinedVariables',
+        'parent' => 'parent',
+        'sub_variables' => 'subVariables',
+        'onset_delay' => 'onsetDelay',
+        'duration_of_action' => 'durationOfAction',
+        'earliest_measurement_time' => 'earliestMeasurementTime',
+        'latest_measurement_time' => 'latestMeasurementTime',
+        'updated' => 'updated',
+        'cause_only' => 'causeOnly',
+        'number_of_correlations' => 'numberOfCorrelations',
         'outcome' => 'outcome',
-        'minimum_recorded_value' => 'minimum_recorded_value',
-        'maximum_recorded_value' => 'maximum_recorded_value'
+        'measurements_at_last_analysis' => 'measurementsAtLastAnalysis',
+        'number_of_measurements' => 'numberOfMeasurements',
+        'last_unit' => 'lastUnit',
+        'last_value' => 'lastValue',
+        'most_common_value' => 'mostCommonValue',
+        'most_common_unit' => 'mostCommonUnit',
+        'last_source' => 'lastSource'
     );
   
     /**
@@ -138,41 +126,35 @@ class Variable implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'client_id' => 'setClientId',
-        'parent_id' => 'setParentId',
         'name' => 'setName',
-        'variable_category_id' => 'setVariableCategoryId',
-        'default_unit_id' => 'setDefaultUnitId',
+        'original_name' => 'setOriginalName',
+        'category' => 'setCategory',
+        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
+        'abbreviated_unit_id' => 'setAbbreviatedUnitId',
+        'sources' => 'setSources',
+        'minimum_value' => 'setMinimumValue',
+        'maximum_value' => 'setMaximumValue',
         'combination_operation' => 'setCombinationOperation',
         'filling_value' => 'setFillingValue',
-        'maximum_allowed_value' => 'setMaximumAllowedValue',
-        'minimum_allowed_value' => 'setMinimumAllowedValue',
+        'join_with' => 'setJoinWith',
+        'joined_variables' => 'setJoinedVariables',
+        'parent' => 'setParent',
+        'sub_variables' => 'setSubVariables',
         'onset_delay' => 'setOnsetDelay',
         'duration_of_action' => 'setDurationOfAction',
-        'public' => 'setPublic',
+        'earliest_measurement_time' => 'setEarliestMeasurementTime',
+        'latest_measurement_time' => 'setLatestMeasurementTime',
+        'updated' => 'setUpdated',
         'cause_only' => 'setCauseOnly',
-        'most_common_value' => 'setMostCommonValue',
-        'most_common_unit_id' => 'setMostCommonUnitId',
-        'standard_deviation' => 'setStandardDeviation',
-        'variance' => 'setVariance',
-        'mean' => 'setMean',
-        'median' => 'setMedian',
-        'number_of_measurements' => 'setNumberOfMeasurements',
-        'number_of_unique_values' => 'setNumberOfUniqueValues',
-        'skewness' => 'setSkewness',
-        'kurtosis' => 'setKurtosis',
-        'status' => 'setStatus',
-        'error_message' => 'setErrorMessage',
-        'last_successful_update_time' => 'setLastSuccessfulUpdateTime',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'product_url' => 'setProductUrl',
-        'image_url' => 'setImageUrl',
-        'price' => 'setPrice',
-        'number_of_user_variables' => 'setNumberOfUserVariables',
+        'number_of_correlations' => 'setNumberOfCorrelations',
         'outcome' => 'setOutcome',
-        'minimum_recorded_value' => 'setMinimumRecordedValue',
-        'maximum_recorded_value' => 'setMaximumRecordedValue'
+        'measurements_at_last_analysis' => 'setMeasurementsAtLastAnalysis',
+        'number_of_measurements' => 'setNumberOfMeasurements',
+        'last_unit' => 'setLastUnit',
+        'last_value' => 'setLastValue',
+        'most_common_value' => 'setMostCommonValue',
+        'most_common_unit' => 'setMostCommonUnit',
+        'last_source' => 'setLastSource'
     );
   
     /**
@@ -181,259 +163,217 @@ class Variable implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'client_id' => 'getClientId',
-        'parent_id' => 'getParentId',
         'name' => 'getName',
-        'variable_category_id' => 'getVariableCategoryId',
-        'default_unit_id' => 'getDefaultUnitId',
+        'original_name' => 'getOriginalName',
+        'category' => 'getCategory',
+        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
+        'abbreviated_unit_id' => 'getAbbreviatedUnitId',
+        'sources' => 'getSources',
+        'minimum_value' => 'getMinimumValue',
+        'maximum_value' => 'getMaximumValue',
         'combination_operation' => 'getCombinationOperation',
         'filling_value' => 'getFillingValue',
-        'maximum_allowed_value' => 'getMaximumAllowedValue',
-        'minimum_allowed_value' => 'getMinimumAllowedValue',
+        'join_with' => 'getJoinWith',
+        'joined_variables' => 'getJoinedVariables',
+        'parent' => 'getParent',
+        'sub_variables' => 'getSubVariables',
         'onset_delay' => 'getOnsetDelay',
         'duration_of_action' => 'getDurationOfAction',
-        'public' => 'getPublic',
+        'earliest_measurement_time' => 'getEarliestMeasurementTime',
+        'latest_measurement_time' => 'getLatestMeasurementTime',
+        'updated' => 'getUpdated',
         'cause_only' => 'getCauseOnly',
-        'most_common_value' => 'getMostCommonValue',
-        'most_common_unit_id' => 'getMostCommonUnitId',
-        'standard_deviation' => 'getStandardDeviation',
-        'variance' => 'getVariance',
-        'mean' => 'getMean',
-        'median' => 'getMedian',
-        'number_of_measurements' => 'getNumberOfMeasurements',
-        'number_of_unique_values' => 'getNumberOfUniqueValues',
-        'skewness' => 'getSkewness',
-        'kurtosis' => 'getKurtosis',
-        'status' => 'getStatus',
-        'error_message' => 'getErrorMessage',
-        'last_successful_update_time' => 'getLastSuccessfulUpdateTime',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'product_url' => 'getProductUrl',
-        'image_url' => 'getImageUrl',
-        'price' => 'getPrice',
-        'number_of_user_variables' => 'getNumberOfUserVariables',
+        'number_of_correlations' => 'getNumberOfCorrelations',
         'outcome' => 'getOutcome',
-        'minimum_recorded_value' => 'getMinimumRecordedValue',
-        'maximum_recorded_value' => 'getMaximumRecordedValue'
+        'measurements_at_last_analysis' => 'getMeasurementsAtLastAnalysis',
+        'number_of_measurements' => 'getNumberOfMeasurements',
+        'last_unit' => 'getLastUnit',
+        'last_value' => 'getLastValue',
+        'most_common_value' => 'getMostCommonValue',
+        'most_common_unit' => 'getMostCommonUnit',
+        'last_source' => 'getLastSource'
     );
   
     
     /**
-      * $id id
+      * $id Variable ID
       * @var int
       */
     protected $id;
     
     /**
-      * $client_id client_id
-      * @var string
-      */
-    protected $client_id;
-    
-    /**
-      * $parent_id parent_id
-      * @var int
-      */
-    protected $parent_id;
-    
-    /**
-      * $name Name of the variable
+      * $name User-defined variable display name.
       * @var string
       */
     protected $name;
     
     /**
-      * $variable_category_id Category of the variable
-      * @var int
+      * $original_name Name used when the variable was originally created in the `variables` table.
+      * @var string
       */
-    protected $variable_category_id;
+    protected $original_name;
     
     /**
-      * $default_unit_id ID of the default unit of measurement to use for this variable
-      * @var int
+      * $category Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc.
+      * @var string
       */
-    protected $default_unit_id;
+    protected $category;
     
     /**
-      * $combination_operation How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
+      * $abbreviated_unit_name Abbreviated name of the default unit for the variable
+      * @var string
+      */
+    protected $abbreviated_unit_name;
+    
+    /**
+      * $abbreviated_unit_id Id of the default unit for the variable
+      * @var int
+      */
+    protected $abbreviated_unit_id;
+    
+    /**
+      * $sources Comma-separated list of source names to limit variables to those sources
+      * @var string
+      */
+    protected $sources;
+    
+    /**
+      * $minimum_value Minimum reasonable value for this variable (uses default unit)
+      * @var double
+      */
+    protected $minimum_value;
+    
+    /**
+      * $maximum_value Maximum reasonable value for this variable (uses default unit)
+      * @var double
+      */
+    protected $maximum_value;
+    
+    /**
+      * $combination_operation Way to aggregate measurements over time. Options are \"MEAN\" or \"SUM\".  SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED.
       * @var string
       */
     protected $combination_operation;
     
     /**
-      * $filling_value filling_value
-      * @var float
+      * $filling_value Value for replacing null measurements
+      * @var double
       */
     protected $filling_value;
     
     /**
-      * $maximum_allowed_value maximum_allowed_value
-      * @var float
+      * $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables.
+      * @var string
       */
-    protected $maximum_allowed_value;
+    protected $join_with;
     
     /**
-      * $minimum_allowed_value minimum_allowed_value
-      * @var float
+      * $joined_variables Array of Variables that are joined with this Variable
+      * @var \Swagger\Client\Model\Variable[]
       */
-    protected $minimum_allowed_value;
+    protected $joined_variables;
     
     /**
-      * $onset_delay onset_delay
+      * $parent Id of the parent variable if this variable has any parent
+      * @var int
+      */
+    protected $parent;
+    
+    /**
+      * $sub_variables Array of Variables that are sub variables to this Variable
+      * @var \Swagger\Client\Model\Variable[]
+      */
+    protected $sub_variables;
+    
+    /**
+      * $onset_delay How long it takes for a measurement in this variable to take effect
       * @var int
       */
     protected $onset_delay;
     
     /**
-      * $duration_of_action duration_of_action
+      * $duration_of_action How long the effect of a measurement in this variable lasts
       * @var int
       */
     protected $duration_of_action;
     
     /**
-      * $public public
+      * $earliest_measurement_time Earliest measurement time
       * @var int
       */
-    protected $public;
+    protected $earliest_measurement_time;
     
     /**
-      * $cause_only cause_only
-      * @var bool
+      * $latest_measurement_time Latest measurement time
+      * @var int
+      */
+    protected $latest_measurement_time;
+    
+    /**
+      * $updated When this variable or its settings were last updated
+      * @var int
+      */
+    protected $updated;
+    
+    /**
+      * $cause_only A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user.
+      * @var int
       */
     protected $cause_only;
     
     /**
-      * $most_common_value most_common_value
-      * @var float
-      */
-    protected $most_common_value;
-    
-    /**
-      * $most_common_unit_id most_common_unit_id
+      * $number_of_correlations Number of correlations
       * @var int
       */
-    protected $most_common_unit_id;
+    protected $number_of_correlations;
     
     /**
-      * $standard_deviation standard_deviation
-      * @var float
-      */
-    protected $standard_deviation;
-    
-    /**
-      * $variance variance
-      * @var float
-      */
-    protected $variance;
-    
-    /**
-      * $mean mean
-      * @var float
-      */
-    protected $mean;
-    
-    /**
-      * $median median
-      * @var float
-      */
-    protected $median;
-    
-    /**
-      * $number_of_measurements number_of_measurements
-      * @var float
-      */
-    protected $number_of_measurements;
-    
-    /**
-      * $number_of_unique_values number_of_unique_values
-      * @var float
-      */
-    protected $number_of_unique_values;
-    
-    /**
-      * $skewness skewness
-      * @var float
-      */
-    protected $skewness;
-    
-    /**
-      * $kurtosis kurtosis
-      * @var float
-      */
-    protected $kurtosis;
-    
-    /**
-      * $status status
-      * @var string
-      */
-    protected $status;
-    
-    /**
-      * $error_message error_message
-      * @var string
-      */
-    protected $error_message;
-    
-    /**
-      * $last_successful_update_time last_successful_update_time
-      * @var \DateTime
-      */
-    protected $last_successful_update_time;
-    
-    /**
-      * $created_at created_at
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at updated_at
-      * @var \DateTime
-      */
-    protected $updated_at;
-    
-    /**
-      * $product_url product_url
-      * @var string
-      */
-    protected $product_url;
-    
-    /**
-      * $image_url image_url
-      * @var string
-      */
-    protected $image_url;
-    
-    /**
-      * $price price
-      * @var float
-      */
-    protected $price;
-    
-    /**
-      * $number_of_user_variables number_of_user_variables
+      * $outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.
       * @var int
-      */
-    protected $number_of_user_variables;
-    
-    /**
-      * $outcome outcome
-      * @var bool
       */
     protected $outcome;
     
     /**
-      * $minimum_recorded_value minimum_recorded_value
-      * @var float
+      * $measurements_at_last_analysis The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the measurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there's not enough new data to make a significant difference in the correlation.
+      * @var int
       */
-    protected $minimum_recorded_value;
+    protected $measurements_at_last_analysis;
     
     /**
-      * $maximum_recorded_value maximum_recorded_value
-      * @var float
+      * $number_of_measurements Number of measurements
+      * @var int
       */
-    protected $maximum_recorded_value;
+    protected $number_of_measurements;
+    
+    /**
+      * $last_unit Last unit
+      * @var string
+      */
+    protected $last_unit;
+    
+    /**
+      * $last_value Last value
+      * @var int
+      */
+    protected $last_value;
+    
+    /**
+      * $most_common_value Most common value
+      * @var int
+      */
+    protected $most_common_value;
+    
+    /**
+      * $most_common_unit Most common unit
+      * @var string
+      */
+    protected $most_common_unit;
+    
+    /**
+      * $last_source Last source
+      * @var int
+      */
+    protected $last_source;
     
 
     /**
@@ -444,41 +384,35 @@ class Variable implements ArrayAccess
     {
         if ($data != null) {
             $this->id = $data["id"];
-            $this->client_id = $data["client_id"];
-            $this->parent_id = $data["parent_id"];
             $this->name = $data["name"];
-            $this->variable_category_id = $data["variable_category_id"];
-            $this->default_unit_id = $data["default_unit_id"];
+            $this->original_name = $data["original_name"];
+            $this->category = $data["category"];
+            $this->abbreviated_unit_name = $data["abbreviated_unit_name"];
+            $this->abbreviated_unit_id = $data["abbreviated_unit_id"];
+            $this->sources = $data["sources"];
+            $this->minimum_value = $data["minimum_value"];
+            $this->maximum_value = $data["maximum_value"];
             $this->combination_operation = $data["combination_operation"];
             $this->filling_value = $data["filling_value"];
-            $this->maximum_allowed_value = $data["maximum_allowed_value"];
-            $this->minimum_allowed_value = $data["minimum_allowed_value"];
+            $this->join_with = $data["join_with"];
+            $this->joined_variables = $data["joined_variables"];
+            $this->parent = $data["parent"];
+            $this->sub_variables = $data["sub_variables"];
             $this->onset_delay = $data["onset_delay"];
             $this->duration_of_action = $data["duration_of_action"];
-            $this->public = $data["public"];
+            $this->earliest_measurement_time = $data["earliest_measurement_time"];
+            $this->latest_measurement_time = $data["latest_measurement_time"];
+            $this->updated = $data["updated"];
             $this->cause_only = $data["cause_only"];
-            $this->most_common_value = $data["most_common_value"];
-            $this->most_common_unit_id = $data["most_common_unit_id"];
-            $this->standard_deviation = $data["standard_deviation"];
-            $this->variance = $data["variance"];
-            $this->mean = $data["mean"];
-            $this->median = $data["median"];
-            $this->number_of_measurements = $data["number_of_measurements"];
-            $this->number_of_unique_values = $data["number_of_unique_values"];
-            $this->skewness = $data["skewness"];
-            $this->kurtosis = $data["kurtosis"];
-            $this->status = $data["status"];
-            $this->error_message = $data["error_message"];
-            $this->last_successful_update_time = $data["last_successful_update_time"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
-            $this->product_url = $data["product_url"];
-            $this->image_url = $data["image_url"];
-            $this->price = $data["price"];
-            $this->number_of_user_variables = $data["number_of_user_variables"];
+            $this->number_of_correlations = $data["number_of_correlations"];
             $this->outcome = $data["outcome"];
-            $this->minimum_recorded_value = $data["minimum_recorded_value"];
-            $this->maximum_recorded_value = $data["maximum_recorded_value"];
+            $this->measurements_at_last_analysis = $data["measurements_at_last_analysis"];
+            $this->number_of_measurements = $data["number_of_measurements"];
+            $this->last_unit = $data["last_unit"];
+            $this->last_value = $data["last_value"];
+            $this->most_common_value = $data["most_common_value"];
+            $this->most_common_unit = $data["most_common_unit"];
+            $this->last_source = $data["last_source"];
         }
     }
     
@@ -493,55 +427,13 @@ class Variable implements ArrayAccess
   
     /**
      * Sets id
-     * @param int $id id
+     * @param int $id Variable ID
      * @return $this
      */
     public function setId($id)
     {
         
         $this->id = $id;
-        return $this;
-    }
-    
-    /**
-     * Gets client_id
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->client_id;
-    }
-  
-    /**
-     * Sets client_id
-     * @param string $client_id client_id
-     * @return $this
-     */
-    public function setClientId($client_id)
-    {
-        
-        $this->client_id = $client_id;
-        return $this;
-    }
-    
-    /**
-     * Gets parent_id
-     * @return int
-     */
-    public function getParentId()
-    {
-        return $this->parent_id;
-    }
-  
-    /**
-     * Sets parent_id
-     * @param int $parent_id parent_id
-     * @return $this
-     */
-    public function setParentId($parent_id)
-    {
-        
-        $this->parent_id = $parent_id;
         return $this;
     }
     
@@ -556,7 +448,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name Name of the variable
+     * @param string $name User-defined variable display name.
      * @return $this
      */
     public function setName($name)
@@ -567,44 +459,149 @@ class Variable implements ArrayAccess
     }
     
     /**
-     * Gets variable_category_id
-     * @return int
+     * Gets original_name
+     * @return string
      */
-    public function getVariableCategoryId()
+    public function getOriginalName()
     {
-        return $this->variable_category_id;
+        return $this->original_name;
     }
   
     /**
-     * Sets variable_category_id
-     * @param int $variable_category_id Category of the variable
+     * Sets original_name
+     * @param string $original_name Name used when the variable was originally created in the `variables` table.
      * @return $this
      */
-    public function setVariableCategoryId($variable_category_id)
+    public function setOriginalName($original_name)
     {
         
-        $this->variable_category_id = $variable_category_id;
+        $this->original_name = $original_name;
         return $this;
     }
     
     /**
-     * Gets default_unit_id
-     * @return int
+     * Gets category
+     * @return string
      */
-    public function getDefaultUnitId()
+    public function getCategory()
     {
-        return $this->default_unit_id;
+        return $this->category;
     }
   
     /**
-     * Sets default_unit_id
-     * @param int $default_unit_id ID of the default unit of measurement to use for this variable
+     * Sets category
+     * @param string $category Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc.
      * @return $this
      */
-    public function setDefaultUnitId($default_unit_id)
+    public function setCategory($category)
     {
         
-        $this->default_unit_id = $default_unit_id;
+        $this->category = $category;
+        return $this;
+    }
+    
+    /**
+     * Gets abbreviated_unit_name
+     * @return string
+     */
+    public function getAbbreviatedUnitName()
+    {
+        return $this->abbreviated_unit_name;
+    }
+  
+    /**
+     * Sets abbreviated_unit_name
+     * @param string $abbreviated_unit_name Abbreviated name of the default unit for the variable
+     * @return $this
+     */
+    public function setAbbreviatedUnitName($abbreviated_unit_name)
+    {
+        
+        $this->abbreviated_unit_name = $abbreviated_unit_name;
+        return $this;
+    }
+    
+    /**
+     * Gets abbreviated_unit_id
+     * @return int
+     */
+    public function getAbbreviatedUnitId()
+    {
+        return $this->abbreviated_unit_id;
+    }
+  
+    /**
+     * Sets abbreviated_unit_id
+     * @param int $abbreviated_unit_id Id of the default unit for the variable
+     * @return $this
+     */
+    public function setAbbreviatedUnitId($abbreviated_unit_id)
+    {
+        
+        $this->abbreviated_unit_id = $abbreviated_unit_id;
+        return $this;
+    }
+    
+    /**
+     * Gets sources
+     * @return string
+     */
+    public function getSources()
+    {
+        return $this->sources;
+    }
+  
+    /**
+     * Sets sources
+     * @param string $sources Comma-separated list of source names to limit variables to those sources
+     * @return $this
+     */
+    public function setSources($sources)
+    {
+        
+        $this->sources = $sources;
+        return $this;
+    }
+    
+    /**
+     * Gets minimum_value
+     * @return double
+     */
+    public function getMinimumValue()
+    {
+        return $this->minimum_value;
+    }
+  
+    /**
+     * Sets minimum_value
+     * @param double $minimum_value Minimum reasonable value for this variable (uses default unit)
+     * @return $this
+     */
+    public function setMinimumValue($minimum_value)
+    {
+        
+        $this->minimum_value = $minimum_value;
+        return $this;
+    }
+    
+    /**
+     * Gets maximum_value
+     * @return double
+     */
+    public function getMaximumValue()
+    {
+        return $this->maximum_value;
+    }
+  
+    /**
+     * Sets maximum_value
+     * @param double $maximum_value Maximum reasonable value for this variable (uses default unit)
+     * @return $this
+     */
+    public function setMaximumValue($maximum_value)
+    {
+        
+        $this->maximum_value = $maximum_value;
         return $this;
     }
     
@@ -619,19 +616,22 @@ class Variable implements ArrayAccess
   
     /**
      * Sets combination_operation
-     * @param string $combination_operation How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
+     * @param string $combination_operation Way to aggregate measurements over time. Options are \"MEAN\" or \"SUM\".  SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED.
      * @return $this
      */
     public function setCombinationOperation($combination_operation)
     {
-        
+        $allowed_values = array("MEAN", "SUM");
+        if (!in_array($combination_operation, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'combination_operation', must be one of 'MEAN', 'SUM'");
+        }
         $this->combination_operation = $combination_operation;
         return $this;
     }
     
     /**
      * Gets filling_value
-     * @return float
+     * @return double
      */
     public function getFillingValue()
     {
@@ -640,7 +640,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets filling_value
-     * @param float $filling_value filling_value
+     * @param double $filling_value Value for replacing null measurements
      * @return $this
      */
     public function setFillingValue($filling_value)
@@ -651,44 +651,86 @@ class Variable implements ArrayAccess
     }
     
     /**
-     * Gets maximum_allowed_value
-     * @return float
+     * Gets join_with
+     * @return string
      */
-    public function getMaximumAllowedValue()
+    public function getJoinWith()
     {
-        return $this->maximum_allowed_value;
+        return $this->join_with;
     }
   
     /**
-     * Sets maximum_allowed_value
-     * @param float $maximum_allowed_value maximum_allowed_value
+     * Sets join_with
+     * @param string $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables.
      * @return $this
      */
-    public function setMaximumAllowedValue($maximum_allowed_value)
+    public function setJoinWith($join_with)
     {
         
-        $this->maximum_allowed_value = $maximum_allowed_value;
+        $this->join_with = $join_with;
         return $this;
     }
     
     /**
-     * Gets minimum_allowed_value
-     * @return float
+     * Gets joined_variables
+     * @return \Swagger\Client\Model\Variable[]
      */
-    public function getMinimumAllowedValue()
+    public function getJoinedVariables()
     {
-        return $this->minimum_allowed_value;
+        return $this->joined_variables;
     }
   
     /**
-     * Sets minimum_allowed_value
-     * @param float $minimum_allowed_value minimum_allowed_value
+     * Sets joined_variables
+     * @param \Swagger\Client\Model\Variable[] $joined_variables Array of Variables that are joined with this Variable
      * @return $this
      */
-    public function setMinimumAllowedValue($minimum_allowed_value)
+    public function setJoinedVariables($joined_variables)
     {
         
-        $this->minimum_allowed_value = $minimum_allowed_value;
+        $this->joined_variables = $joined_variables;
+        return $this;
+    }
+    
+    /**
+     * Gets parent
+     * @return int
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+  
+    /**
+     * Sets parent
+     * @param int $parent Id of the parent variable if this variable has any parent
+     * @return $this
+     */
+    public function setParent($parent)
+    {
+        
+        $this->parent = $parent;
+        return $this;
+    }
+    
+    /**
+     * Gets sub_variables
+     * @return \Swagger\Client\Model\Variable[]
+     */
+    public function getSubVariables()
+    {
+        return $this->sub_variables;
+    }
+  
+    /**
+     * Sets sub_variables
+     * @param \Swagger\Client\Model\Variable[] $sub_variables Array of Variables that are sub variables to this Variable
+     * @return $this
+     */
+    public function setSubVariables($sub_variables)
+    {
+        
+        $this->sub_variables = $sub_variables;
         return $this;
     }
     
@@ -703,7 +745,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets onset_delay
-     * @param int $onset_delay onset_delay
+     * @param int $onset_delay How long it takes for a measurement in this variable to take effect
      * @return $this
      */
     public function setOnsetDelay($onset_delay)
@@ -724,7 +766,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets duration_of_action
-     * @param int $duration_of_action duration_of_action
+     * @param int $duration_of_action How long the effect of a measurement in this variable lasts
      * @return $this
      */
     public function setDurationOfAction($duration_of_action)
@@ -735,29 +777,71 @@ class Variable implements ArrayAccess
     }
     
     /**
-     * Gets public
+     * Gets earliest_measurement_time
      * @return int
      */
-    public function getPublic()
+    public function getEarliestMeasurementTime()
     {
-        return $this->public;
+        return $this->earliest_measurement_time;
     }
   
     /**
-     * Sets public
-     * @param int $public public
+     * Sets earliest_measurement_time
+     * @param int $earliest_measurement_time Earliest measurement time
      * @return $this
      */
-    public function setPublic($public)
+    public function setEarliestMeasurementTime($earliest_measurement_time)
     {
         
-        $this->public = $public;
+        $this->earliest_measurement_time = $earliest_measurement_time;
+        return $this;
+    }
+    
+    /**
+     * Gets latest_measurement_time
+     * @return int
+     */
+    public function getLatestMeasurementTime()
+    {
+        return $this->latest_measurement_time;
+    }
+  
+    /**
+     * Sets latest_measurement_time
+     * @param int $latest_measurement_time Latest measurement time
+     * @return $this
+     */
+    public function setLatestMeasurementTime($latest_measurement_time)
+    {
+        
+        $this->latest_measurement_time = $latest_measurement_time;
+        return $this;
+    }
+    
+    /**
+     * Gets updated
+     * @return int
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+  
+    /**
+     * Sets updated
+     * @param int $updated When this variable or its settings were last updated
+     * @return $this
+     */
+    public function setUpdated($updated)
+    {
+        
+        $this->updated = $updated;
         return $this;
     }
     
     /**
      * Gets cause_only
-     * @return bool
+     * @return int
      */
     public function getCauseOnly()
     {
@@ -766,7 +850,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets cause_only
-     * @param bool $cause_only cause_only
+     * @param int $cause_only A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user.
      * @return $this
      */
     public function setCauseOnly($cause_only)
@@ -777,407 +861,29 @@ class Variable implements ArrayAccess
     }
     
     /**
-     * Gets most_common_value
-     * @return float
-     */
-    public function getMostCommonValue()
-    {
-        return $this->most_common_value;
-    }
-  
-    /**
-     * Sets most_common_value
-     * @param float $most_common_value most_common_value
-     * @return $this
-     */
-    public function setMostCommonValue($most_common_value)
-    {
-        
-        $this->most_common_value = $most_common_value;
-        return $this;
-    }
-    
-    /**
-     * Gets most_common_unit_id
+     * Gets number_of_correlations
      * @return int
      */
-    public function getMostCommonUnitId()
+    public function getNumberOfCorrelations()
     {
-        return $this->most_common_unit_id;
+        return $this->number_of_correlations;
     }
   
     /**
-     * Sets most_common_unit_id
-     * @param int $most_common_unit_id most_common_unit_id
+     * Sets number_of_correlations
+     * @param int $number_of_correlations Number of correlations
      * @return $this
      */
-    public function setMostCommonUnitId($most_common_unit_id)
+    public function setNumberOfCorrelations($number_of_correlations)
     {
         
-        $this->most_common_unit_id = $most_common_unit_id;
-        return $this;
-    }
-    
-    /**
-     * Gets standard_deviation
-     * @return float
-     */
-    public function getStandardDeviation()
-    {
-        return $this->standard_deviation;
-    }
-  
-    /**
-     * Sets standard_deviation
-     * @param float $standard_deviation standard_deviation
-     * @return $this
-     */
-    public function setStandardDeviation($standard_deviation)
-    {
-        
-        $this->standard_deviation = $standard_deviation;
-        return $this;
-    }
-    
-    /**
-     * Gets variance
-     * @return float
-     */
-    public function getVariance()
-    {
-        return $this->variance;
-    }
-  
-    /**
-     * Sets variance
-     * @param float $variance variance
-     * @return $this
-     */
-    public function setVariance($variance)
-    {
-        
-        $this->variance = $variance;
-        return $this;
-    }
-    
-    /**
-     * Gets mean
-     * @return float
-     */
-    public function getMean()
-    {
-        return $this->mean;
-    }
-  
-    /**
-     * Sets mean
-     * @param float $mean mean
-     * @return $this
-     */
-    public function setMean($mean)
-    {
-        
-        $this->mean = $mean;
-        return $this;
-    }
-    
-    /**
-     * Gets median
-     * @return float
-     */
-    public function getMedian()
-    {
-        return $this->median;
-    }
-  
-    /**
-     * Sets median
-     * @param float $median median
-     * @return $this
-     */
-    public function setMedian($median)
-    {
-        
-        $this->median = $median;
-        return $this;
-    }
-    
-    /**
-     * Gets number_of_measurements
-     * @return float
-     */
-    public function getNumberOfMeasurements()
-    {
-        return $this->number_of_measurements;
-    }
-  
-    /**
-     * Sets number_of_measurements
-     * @param float $number_of_measurements number_of_measurements
-     * @return $this
-     */
-    public function setNumberOfMeasurements($number_of_measurements)
-    {
-        
-        $this->number_of_measurements = $number_of_measurements;
-        return $this;
-    }
-    
-    /**
-     * Gets number_of_unique_values
-     * @return float
-     */
-    public function getNumberOfUniqueValues()
-    {
-        return $this->number_of_unique_values;
-    }
-  
-    /**
-     * Sets number_of_unique_values
-     * @param float $number_of_unique_values number_of_unique_values
-     * @return $this
-     */
-    public function setNumberOfUniqueValues($number_of_unique_values)
-    {
-        
-        $this->number_of_unique_values = $number_of_unique_values;
-        return $this;
-    }
-    
-    /**
-     * Gets skewness
-     * @return float
-     */
-    public function getSkewness()
-    {
-        return $this->skewness;
-    }
-  
-    /**
-     * Sets skewness
-     * @param float $skewness skewness
-     * @return $this
-     */
-    public function setSkewness($skewness)
-    {
-        
-        $this->skewness = $skewness;
-        return $this;
-    }
-    
-    /**
-     * Gets kurtosis
-     * @return float
-     */
-    public function getKurtosis()
-    {
-        return $this->kurtosis;
-    }
-  
-    /**
-     * Sets kurtosis
-     * @param float $kurtosis kurtosis
-     * @return $this
-     */
-    public function setKurtosis($kurtosis)
-    {
-        
-        $this->kurtosis = $kurtosis;
-        return $this;
-    }
-    
-    /**
-     * Gets status
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-  
-    /**
-     * Sets status
-     * @param string $status status
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        
-        $this->status = $status;
-        return $this;
-    }
-    
-    /**
-     * Gets error_message
-     * @return string
-     */
-    public function getErrorMessage()
-    {
-        return $this->error_message;
-    }
-  
-    /**
-     * Sets error_message
-     * @param string $error_message error_message
-     * @return $this
-     */
-    public function setErrorMessage($error_message)
-    {
-        
-        $this->error_message = $error_message;
-        return $this;
-    }
-    
-    /**
-     * Gets last_successful_update_time
-     * @return \DateTime
-     */
-    public function getLastSuccessfulUpdateTime()
-    {
-        return $this->last_successful_update_time;
-    }
-  
-    /**
-     * Sets last_successful_update_time
-     * @param \DateTime $last_successful_update_time last_successful_update_time
-     * @return $this
-     */
-    public function setLastSuccessfulUpdateTime($last_successful_update_time)
-    {
-        
-        $this->last_successful_update_time = $last_successful_update_time;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at created_at
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at updated_at
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
-        return $this;
-    }
-    
-    /**
-     * Gets product_url
-     * @return string
-     */
-    public function getProductUrl()
-    {
-        return $this->product_url;
-    }
-  
-    /**
-     * Sets product_url
-     * @param string $product_url product_url
-     * @return $this
-     */
-    public function setProductUrl($product_url)
-    {
-        
-        $this->product_url = $product_url;
-        return $this;
-    }
-    
-    /**
-     * Gets image_url
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->image_url;
-    }
-  
-    /**
-     * Sets image_url
-     * @param string $image_url image_url
-     * @return $this
-     */
-    public function setImageUrl($image_url)
-    {
-        
-        $this->image_url = $image_url;
-        return $this;
-    }
-    
-    /**
-     * Gets price
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-  
-    /**
-     * Sets price
-     * @param float $price price
-     * @return $this
-     */
-    public function setPrice($price)
-    {
-        
-        $this->price = $price;
-        return $this;
-    }
-    
-    /**
-     * Gets number_of_user_variables
-     * @return int
-     */
-    public function getNumberOfUserVariables()
-    {
-        return $this->number_of_user_variables;
-    }
-  
-    /**
-     * Sets number_of_user_variables
-     * @param int $number_of_user_variables number_of_user_variables
-     * @return $this
-     */
-    public function setNumberOfUserVariables($number_of_user_variables)
-    {
-        
-        $this->number_of_user_variables = $number_of_user_variables;
+        $this->number_of_correlations = $number_of_correlations;
         return $this;
     }
     
     /**
      * Gets outcome
-     * @return bool
+     * @return int
      */
     public function getOutcome()
     {
@@ -1186,7 +892,7 @@ class Variable implements ArrayAccess
   
     /**
      * Sets outcome
-     * @param bool $outcome outcome
+     * @param int $outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.
      * @return $this
      */
     public function setOutcome($outcome)
@@ -1197,44 +903,149 @@ class Variable implements ArrayAccess
     }
     
     /**
-     * Gets minimum_recorded_value
-     * @return float
+     * Gets measurements_at_last_analysis
+     * @return int
      */
-    public function getMinimumRecordedValue()
+    public function getMeasurementsAtLastAnalysis()
     {
-        return $this->minimum_recorded_value;
+        return $this->measurements_at_last_analysis;
     }
   
     /**
-     * Sets minimum_recorded_value
-     * @param float $minimum_recorded_value minimum_recorded_value
+     * Sets measurements_at_last_analysis
+     * @param int $measurements_at_last_analysis The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the measurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there's not enough new data to make a significant difference in the correlation.
      * @return $this
      */
-    public function setMinimumRecordedValue($minimum_recorded_value)
+    public function setMeasurementsAtLastAnalysis($measurements_at_last_analysis)
     {
         
-        $this->minimum_recorded_value = $minimum_recorded_value;
+        $this->measurements_at_last_analysis = $measurements_at_last_analysis;
         return $this;
     }
     
     /**
-     * Gets maximum_recorded_value
-     * @return float
+     * Gets number_of_measurements
+     * @return int
      */
-    public function getMaximumRecordedValue()
+    public function getNumberOfMeasurements()
     {
-        return $this->maximum_recorded_value;
+        return $this->number_of_measurements;
     }
   
     /**
-     * Sets maximum_recorded_value
-     * @param float $maximum_recorded_value maximum_recorded_value
+     * Sets number_of_measurements
+     * @param int $number_of_measurements Number of measurements
      * @return $this
      */
-    public function setMaximumRecordedValue($maximum_recorded_value)
+    public function setNumberOfMeasurements($number_of_measurements)
     {
         
-        $this->maximum_recorded_value = $maximum_recorded_value;
+        $this->number_of_measurements = $number_of_measurements;
+        return $this;
+    }
+    
+    /**
+     * Gets last_unit
+     * @return string
+     */
+    public function getLastUnit()
+    {
+        return $this->last_unit;
+    }
+  
+    /**
+     * Sets last_unit
+     * @param string $last_unit Last unit
+     * @return $this
+     */
+    public function setLastUnit($last_unit)
+    {
+        
+        $this->last_unit = $last_unit;
+        return $this;
+    }
+    
+    /**
+     * Gets last_value
+     * @return int
+     */
+    public function getLastValue()
+    {
+        return $this->last_value;
+    }
+  
+    /**
+     * Sets last_value
+     * @param int $last_value Last value
+     * @return $this
+     */
+    public function setLastValue($last_value)
+    {
+        
+        $this->last_value = $last_value;
+        return $this;
+    }
+    
+    /**
+     * Gets most_common_value
+     * @return int
+     */
+    public function getMostCommonValue()
+    {
+        return $this->most_common_value;
+    }
+  
+    /**
+     * Sets most_common_value
+     * @param int $most_common_value Most common value
+     * @return $this
+     */
+    public function setMostCommonValue($most_common_value)
+    {
+        
+        $this->most_common_value = $most_common_value;
+        return $this;
+    }
+    
+    /**
+     * Gets most_common_unit
+     * @return string
+     */
+    public function getMostCommonUnit()
+    {
+        return $this->most_common_unit;
+    }
+  
+    /**
+     * Sets most_common_unit
+     * @param string $most_common_unit Most common unit
+     * @return $this
+     */
+    public function setMostCommonUnit($most_common_unit)
+    {
+        
+        $this->most_common_unit = $most_common_unit;
+        return $this;
+    }
+    
+    /**
+     * Gets last_source
+     * @return int
+     */
+    public function getLastSource()
+    {
+        return $this->last_source;
+    }
+  
+    /**
+     * Sets last_source
+     * @param int $last_source Last source
+     * @return $this
+     */
+    public function setLastSource($last_source)
+    {
+        
+        $this->last_source = $last_source;
         return $this;
     }
     
@@ -1286,9 +1097,9 @@ class Variable implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         } else {
-            return json_encode(get_object_vars($this));
+            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
     }
 }
