@@ -51,7 +51,7 @@ class InlineResponse2002 implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\TrackingReminderPending[]',
+        'data' => 'string',
         'success' => 'bool'
     );
   
@@ -85,7 +85,7 @@ class InlineResponse2002 implements ArrayAccess
     
     /**
       * $data 
-      * @var \Swagger\Client\Model\TrackingReminderPending[]
+      * @var string
       */
     protected $data;
     
@@ -110,7 +110,7 @@ class InlineResponse2002 implements ArrayAccess
     
     /**
      * Gets data
-     * @return \Swagger\Client\Model\TrackingReminderPending[]
+     * @return string
      */
     public function getData()
     {
@@ -119,7 +119,7 @@ class InlineResponse2002 implements ArrayAccess
   
     /**
      * Sets data
-     * @param \Swagger\Client\Model\TrackingReminderPending[] $data 
+     * @param string $data 
      * @return $this
      */
     public function setData($data)
