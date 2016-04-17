@@ -51,7 +51,7 @@ class InlineResponse2003 implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\Measurement',
+        'data' => '\Swagger\Client\Model\Connection[]',
         'success' => 'bool'
     );
   
@@ -85,7 +85,7 @@ class InlineResponse2003 implements ArrayAccess
     
     /**
       * $data 
-      * @var \Swagger\Client\Model\Measurement
+      * @var \Swagger\Client\Model\Connection[]
       */
     protected $data;
     
@@ -110,7 +110,7 @@ class InlineResponse2003 implements ArrayAccess
     
     /**
      * Gets data
-     * @return \Swagger\Client\Model\Measurement
+     * @return \Swagger\Client\Model\Connection[]
      */
     public function getData()
     {
@@ -119,7 +119,7 @@ class InlineResponse2003 implements ArrayAccess
   
     /**
      * Sets data
-     * @param \Swagger\Client\Model\Measurement $data 
+     * @param \Swagger\Client\Model\Connection[] $data 
      * @return $this
      */
     public function setData($data)

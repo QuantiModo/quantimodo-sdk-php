@@ -56,11 +56,12 @@ class Connector implements ArrayAccess
         'display_name' => 'string',
         'image' => 'string',
         'get_it_url' => 'string',
-        'connected' => 'string',
-        'connect_instructions' => 'string',
-        'last_update' => 'int',
-        'total_measurements_in_last_update' => 'int',
-        'no_data_yet' => 'bool'
+        'short_description' => 'string',
+        'long_description' => 'string',
+        'enabled' => 'bool',
+        'oauth' => 'bool',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     );
   
     /** 
@@ -70,14 +71,15 @@ class Connector implements ArrayAccess
     static $attributeMap = array(
         'id' => 'id',
         'name' => 'name',
-        'display_name' => 'displayName',
+        'display_name' => 'display_name',
         'image' => 'image',
-        'get_it_url' => 'getItUrl',
-        'connected' => 'connected',
-        'connect_instructions' => 'connectInstructions',
-        'last_update' => 'lastUpdate',
-        'total_measurements_in_last_update' => 'totalMeasurementsInLastUpdate',
-        'no_data_yet' => 'noDataYet'
+        'get_it_url' => 'get_it_url',
+        'short_description' => 'short_description',
+        'long_description' => 'long_description',
+        'enabled' => 'enabled',
+        'oauth' => 'oauth',
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at'
     );
   
     /**
@@ -90,11 +92,12 @@ class Connector implements ArrayAccess
         'display_name' => 'setDisplayName',
         'image' => 'setImage',
         'get_it_url' => 'setGetItUrl',
-        'connected' => 'setConnected',
-        'connect_instructions' => 'setConnectInstructions',
-        'last_update' => 'setLastUpdate',
-        'total_measurements_in_last_update' => 'setTotalMeasurementsInLastUpdate',
-        'no_data_yet' => 'setNoDataYet'
+        'short_description' => 'setShortDescription',
+        'long_description' => 'setLongDescription',
+        'enabled' => 'setEnabled',
+        'oauth' => 'setOauth',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     );
   
     /**
@@ -107,11 +110,12 @@ class Connector implements ArrayAccess
         'display_name' => 'getDisplayName',
         'image' => 'getImage',
         'get_it_url' => 'getGetItUrl',
-        'connected' => 'getConnected',
-        'connect_instructions' => 'getConnectInstructions',
-        'last_update' => 'getLastUpdate',
-        'total_measurements_in_last_update' => 'getTotalMeasurementsInLastUpdate',
-        'no_data_yet' => 'getNoDataYet'
+        'short_description' => 'getShortDescription',
+        'long_description' => 'getLongDescription',
+        'enabled' => 'getEnabled',
+        'oauth' => 'getOauth',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     );
   
     
@@ -122,13 +126,13 @@ class Connector implements ArrayAccess
     protected $id;
     
     /**
-      * $name Connector lowercase system name
+      * $name Lowercase system name for the data source
       * @var string
       */
     protected $name;
     
     /**
-      * $display_name Connector pretty display name
+      * $display_name Pretty display name for the data source
       * @var string
       */
     protected $display_name;
@@ -146,34 +150,40 @@ class Connector implements ArrayAccess
     protected $get_it_url;
     
     /**
-      * $connected True if the authenticated user has this connector enabled
+      * $short_description Short description of the service (such as the categories it tracks)
       * @var string
       */
-    protected $connected;
+    protected $short_description;
     
     /**
-      * $connect_instructions URL and parameters used when connecting to a service
+      * $long_description Longer paragraph description of the data provider
       * @var string
       */
-    protected $connect_instructions;
+    protected $long_description;
     
     /**
-      * $last_update Epoch timestamp of last sync
-      * @var int
-      */
-    protected $last_update;
-    
-    /**
-      * $total_measurements_in_last_update Number of measurements obtained during latest update
-      * @var int
-      */
-    protected $total_measurements_in_last_update;
-    
-    /**
-      * $no_data_yet True if user has no measurements for this connector
+      * $enabled Set to 1 if the connector should be returned when listing connectors
       * @var bool
       */
-    protected $no_data_yet;
+    protected $enabled;
+    
+    /**
+      * $oauth Set to 1 if the connector uses OAuth authentication as opposed to username/password
+      * @var bool
+      */
+    protected $oauth;
+    
+    /**
+      * $created_at When the record was first created. Use ISO 8601 datetime format
+      * @var \DateTime
+      */
+    protected $created_at;
+    
+    /**
+      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
+      * @var \DateTime
+      */
+    protected $updated_at;
     
 
     /**
@@ -188,11 +198,12 @@ class Connector implements ArrayAccess
             $this->display_name = $data["display_name"];
             $this->image = $data["image"];
             $this->get_it_url = $data["get_it_url"];
-            $this->connected = $data["connected"];
-            $this->connect_instructions = $data["connect_instructions"];
-            $this->last_update = $data["last_update"];
-            $this->total_measurements_in_last_update = $data["total_measurements_in_last_update"];
-            $this->no_data_yet = $data["no_data_yet"];
+            $this->short_description = $data["short_description"];
+            $this->long_description = $data["long_description"];
+            $this->enabled = $data["enabled"];
+            $this->oauth = $data["oauth"];
+            $this->created_at = $data["created_at"];
+            $this->updated_at = $data["updated_at"];
         }
     }
     
@@ -228,7 +239,7 @@ class Connector implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name Connector lowercase system name
+     * @param string $name Lowercase system name for the data source
      * @return $this
      */
     public function setName($name)
@@ -249,7 +260,7 @@ class Connector implements ArrayAccess
   
     /**
      * Sets display_name
-     * @param string $display_name Connector pretty display name
+     * @param string $display_name Pretty display name for the data source
      * @return $this
      */
     public function setDisplayName($display_name)
@@ -302,107 +313,128 @@ class Connector implements ArrayAccess
     }
     
     /**
-     * Gets connected
+     * Gets short_description
      * @return string
      */
-    public function getConnected()
+    public function getShortDescription()
     {
-        return $this->connected;
+        return $this->short_description;
     }
   
     /**
-     * Sets connected
-     * @param string $connected True if the authenticated user has this connector enabled
+     * Sets short_description
+     * @param string $short_description Short description of the service (such as the categories it tracks)
      * @return $this
      */
-    public function setConnected($connected)
+    public function setShortDescription($short_description)
     {
         
-        $this->connected = $connected;
+        $this->short_description = $short_description;
         return $this;
     }
     
     /**
-     * Gets connect_instructions
+     * Gets long_description
      * @return string
      */
-    public function getConnectInstructions()
+    public function getLongDescription()
     {
-        return $this->connect_instructions;
+        return $this->long_description;
     }
   
     /**
-     * Sets connect_instructions
-     * @param string $connect_instructions URL and parameters used when connecting to a service
+     * Sets long_description
+     * @param string $long_description Longer paragraph description of the data provider
      * @return $this
      */
-    public function setConnectInstructions($connect_instructions)
+    public function setLongDescription($long_description)
     {
         
-        $this->connect_instructions = $connect_instructions;
+        $this->long_description = $long_description;
         return $this;
     }
     
     /**
-     * Gets last_update
-     * @return int
-     */
-    public function getLastUpdate()
-    {
-        return $this->last_update;
-    }
-  
-    /**
-     * Sets last_update
-     * @param int $last_update Epoch timestamp of last sync
-     * @return $this
-     */
-    public function setLastUpdate($last_update)
-    {
-        
-        $this->last_update = $last_update;
-        return $this;
-    }
-    
-    /**
-     * Gets total_measurements_in_last_update
-     * @return int
-     */
-    public function getTotalMeasurementsInLastUpdate()
-    {
-        return $this->total_measurements_in_last_update;
-    }
-  
-    /**
-     * Sets total_measurements_in_last_update
-     * @param int $total_measurements_in_last_update Number of measurements obtained during latest update
-     * @return $this
-     */
-    public function setTotalMeasurementsInLastUpdate($total_measurements_in_last_update)
-    {
-        
-        $this->total_measurements_in_last_update = $total_measurements_in_last_update;
-        return $this;
-    }
-    
-    /**
-     * Gets no_data_yet
+     * Gets enabled
      * @return bool
      */
-    public function getNoDataYet()
+    public function getEnabled()
     {
-        return $this->no_data_yet;
+        return $this->enabled;
     }
   
     /**
-     * Sets no_data_yet
-     * @param bool $no_data_yet True if user has no measurements for this connector
+     * Sets enabled
+     * @param bool $enabled Set to 1 if the connector should be returned when listing connectors
      * @return $this
      */
-    public function setNoDataYet($no_data_yet)
+    public function setEnabled($enabled)
     {
         
-        $this->no_data_yet = $no_data_yet;
+        $this->enabled = $enabled;
+        return $this;
+    }
+    
+    /**
+     * Gets oauth
+     * @return bool
+     */
+    public function getOauth()
+    {
+        return $this->oauth;
+    }
+  
+    /**
+     * Sets oauth
+     * @param bool $oauth Set to 1 if the connector uses OAuth authentication as opposed to username/password
+     * @return $this
+     */
+    public function setOauth($oauth)
+    {
+        
+        $this->oauth = $oauth;
+        return $this;
+    }
+    
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+  
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        
+        $this->created_at = $created_at;
+        return $this;
+    }
+    
+    /**
+     * Gets updated_at
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+  
+    /**
+     * Sets updated_at
+     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        
+        $this->updated_at = $updated_at;
         return $this;
     }
     

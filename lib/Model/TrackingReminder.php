@@ -66,16 +66,8 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'bool',
         'last_reminded' => '\DateTime',
         'last_tracked' => '\DateTime',
-        'first_daily_reminder_time' => 'string',
-        'second_daily_reminder_time' => 'string',
-        'third_daily_reminder_time' => 'string',
-        'start_tracking_date' => '\DateTime',
-        'stop_tracking_date' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'variable_name' => 'string',
-        'variable_category_name' => 'string',
-        'abbreviated_unit_name' => 'string',
-        'combinination_operation' => 'string'
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     );
   
     /** 
@@ -84,30 +76,22 @@ class TrackingReminder implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'client_id' => 'clientId',
-        'user_id' => 'userId',
-        'variable_id' => 'variableId',
-        'default_value' => 'defaultValue',
-        'reminder_start_time' => 'reminderStartTime',
-        'reminder_end_time' => 'reminderEndTime',
-        'reminder_sound' => 'reminderSound',
-        'reminder_frequency' => 'reminderFrequency',
-        'pop_up' => 'popUp',
+        'client_id' => 'client_id',
+        'user_id' => 'user_id',
+        'variable_id' => 'variable_id',
+        'default_value' => 'default_value',
+        'reminder_start_time' => 'reminder_start_time',
+        'reminder_end_time' => 'reminder_end_time',
+        'reminder_sound' => 'reminder_sound',
+        'reminder_frequency' => 'reminder_frequency',
+        'pop_up' => 'pop_up',
         'sms' => 'sms',
         'email' => 'email',
-        'notification_bar' => 'notificationBar',
-        'last_reminded' => 'lastReminded',
-        'last_tracked' => 'lastTracked',
-        'first_daily_reminder_time' => 'firstDailyReminderTime',
-        'second_daily_reminder_time' => 'secondDailyReminderTime',
-        'third_daily_reminder_time' => 'thirdDailyReminderTime',
-        'start_tracking_date' => 'startTrackingDate',
-        'stop_tracking_date' => 'stopTrackingDate',
-        'updated_at' => 'updatedAt',
-        'variable_name' => 'variableName',
-        'variable_category_name' => 'variableCategoryName',
-        'abbreviated_unit_name' => 'abbreviatedUnitName',
-        'combinination_operation' => 'combininationOperation'
+        'notification_bar' => 'notification_bar',
+        'last_reminded' => 'last_reminded',
+        'last_tracked' => 'last_tracked',
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at'
     );
   
     /**
@@ -130,16 +114,8 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'setNotificationBar',
         'last_reminded' => 'setLastReminded',
         'last_tracked' => 'setLastTracked',
-        'first_daily_reminder_time' => 'setFirstDailyReminderTime',
-        'second_daily_reminder_time' => 'setSecondDailyReminderTime',
-        'third_daily_reminder_time' => 'setThirdDailyReminderTime',
-        'start_tracking_date' => 'setStartTrackingDate',
-        'stop_tracking_date' => 'setStopTrackingDate',
-        'updated_at' => 'setUpdatedAt',
-        'variable_name' => 'setVariableName',
-        'variable_category_name' => 'setVariableCategoryName',
-        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
-        'combinination_operation' => 'setCombininationOperation'
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     );
   
     /**
@@ -162,16 +138,8 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'getNotificationBar',
         'last_reminded' => 'getLastReminded',
         'last_tracked' => 'getLastTracked',
-        'first_daily_reminder_time' => 'getFirstDailyReminderTime',
-        'second_daily_reminder_time' => 'getSecondDailyReminderTime',
-        'third_daily_reminder_time' => 'getThirdDailyReminderTime',
-        'start_tracking_date' => 'getStartTrackingDate',
-        'stop_tracking_date' => 'getStopTrackingDate',
-        'updated_at' => 'getUpdatedAt',
-        'variable_name' => 'getVariableName',
-        'variable_category_name' => 'getVariableCategoryName',
-        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
-        'combinination_operation' => 'getCombininationOperation'
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     );
   
     
@@ -182,7 +150,7 @@ class TrackingReminder implements ArrayAccess
     protected $id;
     
     /**
-      * $client_id clientId
+      * $client_id client_id
       * @var string
       */
     protected $client_id;
@@ -266,64 +234,16 @@ class TrackingReminder implements ArrayAccess
     protected $last_tracked;
     
     /**
-      * $first_daily_reminder_time Specific first time of day that the user should be reminded to track in HH:MM:SS format
-      * @var string
-      */
-    protected $first_daily_reminder_time;
-    
-    /**
-      * $second_daily_reminder_time Specific second time of day that the user should be reminded to track in HH:MM:SS format
-      * @var string
-      */
-    protected $second_daily_reminder_time;
-    
-    /**
-      * $third_daily_reminder_time Specific third time of day that the user should be reminded to track in HH:MM:SS format
-      * @var string
-      */
-    protected $third_daily_reminder_time;
-    
-    /**
-      * $start_tracking_date Earliest date on which the user should be reminded to track in YYYY-MM-DD format
+      * $created_at When the record was first created. Use ISO 8601 datetime format
       * @var \DateTime
       */
-    protected $start_tracking_date;
+    protected $created_at;
     
     /**
-      * $stop_tracking_date Latest date on which the user should be reminded to track in YYYY-MM-DD format
-      * @var \DateTime
-      */
-    protected $stop_tracking_date;
-    
-    /**
-      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
+      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
       * @var \DateTime
       */
     protected $updated_at;
-    
-    /**
-      * $variable_name Name of the variable to be used when sending measurements
-      * @var string
-      */
-    protected $variable_name;
-    
-    /**
-      * $variable_category_name Name of the variable category to be used when sending measurements
-      * @var string
-      */
-    protected $variable_category_name;
-    
-    /**
-      * $abbreviated_unit_name Abbreviated name of the unit to be used when sending measurements
-      * @var string
-      */
-    protected $abbreviated_unit_name;
-    
-    /**
-      * $combinination_operation The way multiple measurements are aggregated over time
-      * @var string
-      */
-    protected $combinination_operation;
     
 
     /**
@@ -348,16 +268,8 @@ class TrackingReminder implements ArrayAccess
             $this->notification_bar = $data["notification_bar"];
             $this->last_reminded = $data["last_reminded"];
             $this->last_tracked = $data["last_tracked"];
-            $this->first_daily_reminder_time = $data["first_daily_reminder_time"];
-            $this->second_daily_reminder_time = $data["second_daily_reminder_time"];
-            $this->third_daily_reminder_time = $data["third_daily_reminder_time"];
-            $this->start_tracking_date = $data["start_tracking_date"];
-            $this->stop_tracking_date = $data["stop_tracking_date"];
+            $this->created_at = $data["created_at"];
             $this->updated_at = $data["updated_at"];
-            $this->variable_name = $data["variable_name"];
-            $this->variable_category_name = $data["variable_category_name"];
-            $this->abbreviated_unit_name = $data["abbreviated_unit_name"];
-            $this->combinination_operation = $data["combinination_operation"];
         }
     }
     
@@ -393,7 +305,7 @@ class TrackingReminder implements ArrayAccess
   
     /**
      * Sets client_id
-     * @param string $client_id clientId
+     * @param string $client_id client_id
      * @return $this
      */
     public function setClientId($client_id)
@@ -677,107 +589,23 @@ class TrackingReminder implements ArrayAccess
     }
     
     /**
-     * Gets first_daily_reminder_time
-     * @return string
-     */
-    public function getFirstDailyReminderTime()
-    {
-        return $this->first_daily_reminder_time;
-    }
-  
-    /**
-     * Sets first_daily_reminder_time
-     * @param string $first_daily_reminder_time Specific first time of day that the user should be reminded to track in HH:MM:SS format
-     * @return $this
-     */
-    public function setFirstDailyReminderTime($first_daily_reminder_time)
-    {
-        
-        $this->first_daily_reminder_time = $first_daily_reminder_time;
-        return $this;
-    }
-    
-    /**
-     * Gets second_daily_reminder_time
-     * @return string
-     */
-    public function getSecondDailyReminderTime()
-    {
-        return $this->second_daily_reminder_time;
-    }
-  
-    /**
-     * Sets second_daily_reminder_time
-     * @param string $second_daily_reminder_time Specific second time of day that the user should be reminded to track in HH:MM:SS format
-     * @return $this
-     */
-    public function setSecondDailyReminderTime($second_daily_reminder_time)
-    {
-        
-        $this->second_daily_reminder_time = $second_daily_reminder_time;
-        return $this;
-    }
-    
-    /**
-     * Gets third_daily_reminder_time
-     * @return string
-     */
-    public function getThirdDailyReminderTime()
-    {
-        return $this->third_daily_reminder_time;
-    }
-  
-    /**
-     * Sets third_daily_reminder_time
-     * @param string $third_daily_reminder_time Specific third time of day that the user should be reminded to track in HH:MM:SS format
-     * @return $this
-     */
-    public function setThirdDailyReminderTime($third_daily_reminder_time)
-    {
-        
-        $this->third_daily_reminder_time = $third_daily_reminder_time;
-        return $this;
-    }
-    
-    /**
-     * Gets start_tracking_date
+     * Gets created_at
      * @return \DateTime
      */
-    public function getStartTrackingDate()
+    public function getCreatedAt()
     {
-        return $this->start_tracking_date;
+        return $this->created_at;
     }
   
     /**
-     * Sets start_tracking_date
-     * @param \DateTime $start_tracking_date Earliest date on which the user should be reminded to track in YYYY-MM-DD format
+     * Sets created_at
+     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
      * @return $this
      */
-    public function setStartTrackingDate($start_tracking_date)
+    public function setCreatedAt($created_at)
     {
         
-        $this->start_tracking_date = $start_tracking_date;
-        return $this;
-    }
-    
-    /**
-     * Gets stop_tracking_date
-     * @return \DateTime
-     */
-    public function getStopTrackingDate()
-    {
-        return $this->stop_tracking_date;
-    }
-  
-    /**
-     * Sets stop_tracking_date
-     * @param \DateTime $stop_tracking_date Latest date on which the user should be reminded to track in YYYY-MM-DD format
-     * @return $this
-     */
-    public function setStopTrackingDate($stop_tracking_date)
-    {
-        
-        $this->stop_tracking_date = $stop_tracking_date;
+        $this->created_at = $created_at;
         return $this;
     }
     
@@ -792,100 +620,13 @@ class TrackingReminder implements ArrayAccess
   
     /**
      * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
+     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
      * @return $this
      */
     public function setUpdatedAt($updated_at)
     {
         
         $this->updated_at = $updated_at;
-        return $this;
-    }
-    
-    /**
-     * Gets variable_name
-     * @return string
-     */
-    public function getVariableName()
-    {
-        return $this->variable_name;
-    }
-  
-    /**
-     * Sets variable_name
-     * @param string $variable_name Name of the variable to be used when sending measurements
-     * @return $this
-     */
-    public function setVariableName($variable_name)
-    {
-        
-        $this->variable_name = $variable_name;
-        return $this;
-    }
-    
-    /**
-     * Gets variable_category_name
-     * @return string
-     */
-    public function getVariableCategoryName()
-    {
-        return $this->variable_category_name;
-    }
-  
-    /**
-     * Sets variable_category_name
-     * @param string $variable_category_name Name of the variable category to be used when sending measurements
-     * @return $this
-     */
-    public function setVariableCategoryName($variable_category_name)
-    {
-        
-        $this->variable_category_name = $variable_category_name;
-        return $this;
-    }
-    
-    /**
-     * Gets abbreviated_unit_name
-     * @return string
-     */
-    public function getAbbreviatedUnitName()
-    {
-        return $this->abbreviated_unit_name;
-    }
-  
-    /**
-     * Sets abbreviated_unit_name
-     * @param string $abbreviated_unit_name Abbreviated name of the unit to be used when sending measurements
-     * @return $this
-     */
-    public function setAbbreviatedUnitName($abbreviated_unit_name)
-    {
-        
-        $this->abbreviated_unit_name = $abbreviated_unit_name;
-        return $this;
-    }
-    
-    /**
-     * Gets combinination_operation
-     * @return string
-     */
-    public function getCombininationOperation()
-    {
-        return $this->combinination_operation;
-    }
-  
-    /**
-     * Sets combinination_operation
-     * @param string $combinination_operation The way multiple measurements are aggregated over time
-     * @return $this
-     */
-    public function setCombininationOperation($combinination_operation)
-    {
-        $allowed_values = array("MEAN", "SUM");
-        if (!in_array($combinination_operation, $allowed_values)) {
-            throw new \InvalidArgumentException("Invalid value for 'combinination_operation', must be one of 'MEAN', 'SUM'");
-        }
-        $this->combinination_operation = $combinination_operation;
         return $this;
     }
     

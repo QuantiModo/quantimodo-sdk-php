@@ -51,7 +51,7 @@ class InlineResponse2004 implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => 'string',
+        'data' => '\Swagger\Client\Model\Credential[]',
         'success' => 'bool'
     );
   
@@ -85,7 +85,7 @@ class InlineResponse2004 implements ArrayAccess
     
     /**
       * $data 
-      * @var string
+      * @var \Swagger\Client\Model\Credential[]
       */
     protected $data;
     
@@ -110,7 +110,7 @@ class InlineResponse2004 implements ArrayAccess
     
     /**
      * Gets data
-     * @return string
+     * @return \Swagger\Client\Model\Credential[]
      */
     public function getData()
     {
@@ -119,7 +119,7 @@ class InlineResponse2004 implements ArrayAccess
   
     /**
      * Sets data
-     * @param string $data 
+     * @param \Swagger\Client\Model\Credential[] $data 
      * @return $this
      */
     public function setData($data)

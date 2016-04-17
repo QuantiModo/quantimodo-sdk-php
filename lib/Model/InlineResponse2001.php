@@ -51,7 +51,7 @@ class InlineResponse2001 implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\TrackingReminder',
+        'data' => '\Swagger\Client\Model\AggregatedCorrelation',
         'success' => 'bool'
     );
   
@@ -85,7 +85,7 @@ class InlineResponse2001 implements ArrayAccess
     
     /**
       * $data 
-      * @var \Swagger\Client\Model\TrackingReminder
+      * @var \Swagger\Client\Model\AggregatedCorrelation
       */
     protected $data;
     
@@ -110,7 +110,7 @@ class InlineResponse2001 implements ArrayAccess
     
     /**
      * Gets data
-     * @return \Swagger\Client\Model\TrackingReminder
+     * @return \Swagger\Client\Model\AggregatedCorrelation
      */
     public function getData()
     {
@@ -119,7 +119,7 @@ class InlineResponse2001 implements ArrayAccess
   
     /**
      * Sets data
-     * @param \Swagger\Client\Model\TrackingReminder $data 
+     * @param \Swagger\Client\Model\AggregatedCorrelation $data 
      * @return $this
      */
     public function setData($data)
