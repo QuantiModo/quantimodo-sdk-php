@@ -51,28 +51,30 @@ class Correlation implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'correlation_coefficient' => 'Number',
-        'cause' => 'string',
-        'original_cause' => 'string',
-        'effect' => 'string',
-        'original_effect' => 'string',
-        'onset_delay' => 'double',
-        'duration_of_action' => 'Number',
-        'number_of_pairs' => 'Number',
-        'effect_size' => 'string',
-        'statistical_significance' => 'string',
-        'timestamp' => 'Number',
-        'reverse_correlation' => 'Number',
-        'causality_factor' => 'Number',
-        'cause_category' => 'string',
-        'effect_category' => 'string',
-        'value_predicting_high_outcome' => 'Number',
-        'value_predicting_low_outcome' => 'Number',
-        'optimal_pearson_product' => 'Number',
-        'average_vote' => 'Number',
-        'user_vote' => 'Number',
+        'id' => 'int',
+        'timestamp' => 'int',
+        'user_id' => 'int',
+        'correlation' => 'float',
+        'cause_id' => 'int',
+        'effect_id' => 'int',
+        'onset_delay' => 'int',
+        'duration_of_action' => 'int',
+        'number_of_pairs' => 'int',
+        'value_predicting_high_outcome' => 'float',
+        'value_predicting_low_outcome' => 'float',
+        'optimal_pearson_product' => 'float',
+        'vote' => 'float',
+        'statistical_significance' => 'float',
         'cause_unit' => 'string',
-        'cause_unit_id' => 'int'
+        'cause_unit_id' => 'int',
+        'cause_changes' => 'int',
+        'effect_changes' => 'int',
+        'qm_score' => 'float',
+        'error' => 'string',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'reverse_pearson_correlation_coefficient' => 'float',
+        'predictive_pearson_correlation_coefficient' => 'float'
     );
   
     /** 
@@ -80,28 +82,30 @@ class Correlation implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'correlation_coefficient' => 'correlationCoefficient',
-        'cause' => 'cause',
-        'original_cause' => 'originalCause',
-        'effect' => 'effect',
-        'original_effect' => 'originalEffect',
-        'onset_delay' => 'onsetDelay',
-        'duration_of_action' => 'durationOfAction',
-        'number_of_pairs' => 'numberOfPairs',
-        'effect_size' => 'effectSize',
-        'statistical_significance' => 'statisticalSignificance',
+        'id' => 'id',
         'timestamp' => 'timestamp',
-        'reverse_correlation' => 'reverseCorrelation',
-        'causality_factor' => 'causalityFactor',
-        'cause_category' => 'causeCategory',
-        'effect_category' => 'effectCategory',
-        'value_predicting_high_outcome' => 'valuePredictingHighOutcome',
-        'value_predicting_low_outcome' => 'valuePredictingLowOutcome',
-        'optimal_pearson_product' => 'optimalPearsonProduct',
-        'average_vote' => 'averageVote',
-        'user_vote' => 'userVote',
-        'cause_unit' => 'causeUnit',
-        'cause_unit_id' => 'causeUnitId'
+        'user_id' => 'user_id',
+        'correlation' => 'correlation',
+        'cause_id' => 'cause_id',
+        'effect_id' => 'effect_id',
+        'onset_delay' => 'onset_delay',
+        'duration_of_action' => 'duration_of_action',
+        'number_of_pairs' => 'number_of_pairs',
+        'value_predicting_high_outcome' => 'value_predicting_high_outcome',
+        'value_predicting_low_outcome' => 'value_predicting_low_outcome',
+        'optimal_pearson_product' => 'optimal_pearson_product',
+        'vote' => 'vote',
+        'statistical_significance' => 'statistical_significance',
+        'cause_unit' => 'cause_unit',
+        'cause_unit_id' => 'cause_unit_id',
+        'cause_changes' => 'cause_changes',
+        'effect_changes' => 'effect_changes',
+        'qm_score' => 'qm_score',
+        'error' => 'error',
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at',
+        'reverse_pearson_correlation_coefficient' => 'reverse_pearson_correlation_coefficient',
+        'predictive_pearson_correlation_coefficient' => 'predictive_pearson_correlation_coefficient'
     );
   
     /**
@@ -109,28 +113,30 @@ class Correlation implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'correlation_coefficient' => 'setCorrelationCoefficient',
-        'cause' => 'setCause',
-        'original_cause' => 'setOriginalCause',
-        'effect' => 'setEffect',
-        'original_effect' => 'setOriginalEffect',
+        'id' => 'setId',
+        'timestamp' => 'setTimestamp',
+        'user_id' => 'setUserId',
+        'correlation' => 'setCorrelation',
+        'cause_id' => 'setCauseId',
+        'effect_id' => 'setEffectId',
         'onset_delay' => 'setOnsetDelay',
         'duration_of_action' => 'setDurationOfAction',
         'number_of_pairs' => 'setNumberOfPairs',
-        'effect_size' => 'setEffectSize',
-        'statistical_significance' => 'setStatisticalSignificance',
-        'timestamp' => 'setTimestamp',
-        'reverse_correlation' => 'setReverseCorrelation',
-        'causality_factor' => 'setCausalityFactor',
-        'cause_category' => 'setCauseCategory',
-        'effect_category' => 'setEffectCategory',
         'value_predicting_high_outcome' => 'setValuePredictingHighOutcome',
         'value_predicting_low_outcome' => 'setValuePredictingLowOutcome',
         'optimal_pearson_product' => 'setOptimalPearsonProduct',
-        'average_vote' => 'setAverageVote',
-        'user_vote' => 'setUserVote',
+        'vote' => 'setVote',
+        'statistical_significance' => 'setStatisticalSignificance',
         'cause_unit' => 'setCauseUnit',
-        'cause_unit_id' => 'setCauseUnitId'
+        'cause_unit_id' => 'setCauseUnitId',
+        'cause_changes' => 'setCauseChanges',
+        'effect_changes' => 'setEffectChanges',
+        'qm_score' => 'setQmScore',
+        'error' => 'setError',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
+        'reverse_pearson_correlation_coefficient' => 'setReversePearsonCorrelationCoefficient',
+        'predictive_pearson_correlation_coefficient' => 'setPredictivePearsonCorrelationCoefficient'
     );
   
     /**
@@ -138,150 +144,116 @@ class Correlation implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'correlation_coefficient' => 'getCorrelationCoefficient',
-        'cause' => 'getCause',
-        'original_cause' => 'getOriginalCause',
-        'effect' => 'getEffect',
-        'original_effect' => 'getOriginalEffect',
+        'id' => 'getId',
+        'timestamp' => 'getTimestamp',
+        'user_id' => 'getUserId',
+        'correlation' => 'getCorrelation',
+        'cause_id' => 'getCauseId',
+        'effect_id' => 'getEffectId',
         'onset_delay' => 'getOnsetDelay',
         'duration_of_action' => 'getDurationOfAction',
         'number_of_pairs' => 'getNumberOfPairs',
-        'effect_size' => 'getEffectSize',
-        'statistical_significance' => 'getStatisticalSignificance',
-        'timestamp' => 'getTimestamp',
-        'reverse_correlation' => 'getReverseCorrelation',
-        'causality_factor' => 'getCausalityFactor',
-        'cause_category' => 'getCauseCategory',
-        'effect_category' => 'getEffectCategory',
         'value_predicting_high_outcome' => 'getValuePredictingHighOutcome',
         'value_predicting_low_outcome' => 'getValuePredictingLowOutcome',
         'optimal_pearson_product' => 'getOptimalPearsonProduct',
-        'average_vote' => 'getAverageVote',
-        'user_vote' => 'getUserVote',
+        'vote' => 'getVote',
+        'statistical_significance' => 'getStatisticalSignificance',
         'cause_unit' => 'getCauseUnit',
-        'cause_unit_id' => 'getCauseUnitId'
+        'cause_unit_id' => 'getCauseUnitId',
+        'cause_changes' => 'getCauseChanges',
+        'effect_changes' => 'getEffectChanges',
+        'qm_score' => 'getQmScore',
+        'error' => 'getError',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
+        'reverse_pearson_correlation_coefficient' => 'getReversePearsonCorrelationCoefficient',
+        'predictive_pearson_correlation_coefficient' => 'getPredictivePearsonCorrelationCoefficient'
     );
   
     
     /**
-      * $correlation_coefficient Pearson correlation coefficient between cause and effect measurements
-      * @var Number
+      * $id id
+      * @var int
       */
-    protected $correlation_coefficient;
+    protected $id;
     
     /**
-      * $cause ORIGINAL variable name of the cause variable for which the user desires correlations.
-      * @var string
+      * $timestamp Time at which correlation was calculated
+      * @var int
       */
-    protected $cause;
+    protected $timestamp;
     
     /**
-      * $original_cause original name of the cause.
-      * @var string
+      * $user_id ID of user that owns this correlation
+      * @var int
       */
-    protected $original_cause;
+    protected $user_id;
     
     /**
-      * $effect ORIGINAL variable name of the effect variable for which the user desires correlations.
-      * @var string
+      * $correlation Pearson correlation coefficient between cause and effect measurements
+      * @var float
       */
-    protected $effect;
+    protected $correlation;
     
     /**
-      * $original_effect effect variable original name.
-      * @var string
+      * $cause_id variable ID of the cause variable for which the user desires correlations
+      * @var int
       */
-    protected $original_effect;
+    protected $cause_id;
+    
+    /**
+      * $effect_id variable ID of the effect variable for which the user desires correlations
+      * @var int
+      */
+    protected $effect_id;
     
     /**
       * $onset_delay User estimated or default time after cause measurement before a perceivable effect is observed
-      * @var double
+      * @var int
       */
     protected $onset_delay;
     
     /**
       * $duration_of_action Time over which the cause is expected to produce a perceivable effect following the onset delay
-      * @var Number
+      * @var int
       */
     protected $duration_of_action;
     
     /**
       * $number_of_pairs Number of points that went into the correlation calculation
-      * @var Number
+      * @var int
       */
     protected $number_of_pairs;
     
     /**
-      * $effect_size Magnitude of the effects of a cause indicating whether it's practically meaningful.
-      * @var string
-      */
-    protected $effect_size;
-    
-    /**
-      * $statistical_significance A function of the effect size and sample size
-      * @var string
-      */
-    protected $statistical_significance;
-    
-    /**
-      * $timestamp Time at which correlation was calculated
-      * @var Number
-      */
-    protected $timestamp;
-    
-    /**
-      * $reverse_correlation Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation.
-      * @var Number
-      */
-    protected $reverse_correlation;
-    
-    /**
-      * $causality_factor 
-      * @var Number
-      */
-    protected $causality_factor;
-    
-    /**
-      * $cause_category Variable category of the cause variable.
-      * @var string
-      */
-    protected $cause_category;
-    
-    /**
-      * $effect_category Variable category of the effect variable.
-      * @var string
-      */
-    protected $effect_category;
-    
-    /**
       * $value_predicting_high_outcome cause value that predicts an above average effect value (in default unit for cause variable)
-      * @var Number
+      * @var float
       */
     protected $value_predicting_high_outcome;
     
     /**
       * $value_predicting_low_outcome cause value that predicts a below average effect value (in default unit for cause variable)
-      * @var Number
+      * @var float
       */
     protected $value_predicting_low_outcome;
     
     /**
       * $optimal_pearson_product Optimal Pearson Product
-      * @var Number
+      * @var float
       */
     protected $optimal_pearson_product;
     
     /**
-      * $average_vote Average Vote
-      * @var Number
+      * $vote Vote
+      * @var float
       */
-    protected $average_vote;
+    protected $vote;
     
     /**
-      * $user_vote User Vote
-      * @var Number
+      * $statistical_significance A function of the effect size and sample size
+      * @var float
       */
-    protected $user_vote;
+    protected $statistical_significance;
     
     /**
       * $cause_unit Unit of the predictor variable
@@ -290,10 +262,58 @@ class Correlation implements ArrayAccess
     protected $cause_unit;
     
     /**
-      * $cause_unit_id Unit Id of the predictor variable
+      * $cause_unit_id Unit ID of the predictor variable
       * @var int
       */
     protected $cause_unit_id;
+    
+    /**
+      * $cause_changes Cause changes
+      * @var int
+      */
+    protected $cause_changes;
+    
+    /**
+      * $effect_changes Effect changes
+      * @var int
+      */
+    protected $effect_changes;
+    
+    /**
+      * $qm_score QM Score
+      * @var float
+      */
+    protected $qm_score;
+    
+    /**
+      * $error error
+      * @var string
+      */
+    protected $error;
+    
+    /**
+      * $created_at When the record was first created. Use ISO 8601 datetime format
+      * @var \DateTime
+      */
+    protected $created_at;
+    
+    /**
+      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
+      * @var \DateTime
+      */
+    protected $updated_at;
+    
+    /**
+      * $reverse_pearson_correlation_coefficient Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation
+      * @var float
+      */
+    protected $reverse_pearson_correlation_coefficient;
+    
+    /**
+      * $predictive_pearson_correlation_coefficient Predictive Pearson Correlation Coefficient
+      * @var float
+      */
+    protected $predictive_pearson_correlation_coefficient;
     
 
     /**
@@ -303,139 +323,162 @@ class Correlation implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->correlation_coefficient = $data["correlation_coefficient"];
-            $this->cause = $data["cause"];
-            $this->original_cause = $data["original_cause"];
-            $this->effect = $data["effect"];
-            $this->original_effect = $data["original_effect"];
+            $this->id = $data["id"];
+            $this->timestamp = $data["timestamp"];
+            $this->user_id = $data["user_id"];
+            $this->correlation = $data["correlation"];
+            $this->cause_id = $data["cause_id"];
+            $this->effect_id = $data["effect_id"];
             $this->onset_delay = $data["onset_delay"];
             $this->duration_of_action = $data["duration_of_action"];
             $this->number_of_pairs = $data["number_of_pairs"];
-            $this->effect_size = $data["effect_size"];
-            $this->statistical_significance = $data["statistical_significance"];
-            $this->timestamp = $data["timestamp"];
-            $this->reverse_correlation = $data["reverse_correlation"];
-            $this->causality_factor = $data["causality_factor"];
-            $this->cause_category = $data["cause_category"];
-            $this->effect_category = $data["effect_category"];
             $this->value_predicting_high_outcome = $data["value_predicting_high_outcome"];
             $this->value_predicting_low_outcome = $data["value_predicting_low_outcome"];
             $this->optimal_pearson_product = $data["optimal_pearson_product"];
-            $this->average_vote = $data["average_vote"];
-            $this->user_vote = $data["user_vote"];
+            $this->vote = $data["vote"];
+            $this->statistical_significance = $data["statistical_significance"];
             $this->cause_unit = $data["cause_unit"];
             $this->cause_unit_id = $data["cause_unit_id"];
+            $this->cause_changes = $data["cause_changes"];
+            $this->effect_changes = $data["effect_changes"];
+            $this->qm_score = $data["qm_score"];
+            $this->error = $data["error"];
+            $this->created_at = $data["created_at"];
+            $this->updated_at = $data["updated_at"];
+            $this->reverse_pearson_correlation_coefficient = $data["reverse_pearson_correlation_coefficient"];
+            $this->predictive_pearson_correlation_coefficient = $data["predictive_pearson_correlation_coefficient"];
         }
     }
     
     /**
-     * Gets correlation_coefficient
-     * @return Number
+     * Gets id
+     * @return int
      */
-    public function getCorrelationCoefficient()
+    public function getId()
     {
-        return $this->correlation_coefficient;
+        return $this->id;
     }
   
     /**
-     * Sets correlation_coefficient
-     * @param Number $correlation_coefficient Pearson correlation coefficient between cause and effect measurements
+     * Sets id
+     * @param int $id id
      * @return $this
      */
-    public function setCorrelationCoefficient($correlation_coefficient)
+    public function setId($id)
     {
         
-        $this->correlation_coefficient = $correlation_coefficient;
+        $this->id = $id;
         return $this;
     }
     
     /**
-     * Gets cause
-     * @return string
+     * Gets timestamp
+     * @return int
      */
-    public function getCause()
+    public function getTimestamp()
     {
-        return $this->cause;
+        return $this->timestamp;
     }
   
     /**
-     * Sets cause
-     * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations.
+     * Sets timestamp
+     * @param int $timestamp Time at which correlation was calculated
      * @return $this
      */
-    public function setCause($cause)
+    public function setTimestamp($timestamp)
     {
         
-        $this->cause = $cause;
+        $this->timestamp = $timestamp;
         return $this;
     }
     
     /**
-     * Gets original_cause
-     * @return string
+     * Gets user_id
+     * @return int
      */
-    public function getOriginalCause()
+    public function getUserId()
     {
-        return $this->original_cause;
+        return $this->user_id;
     }
   
     /**
-     * Sets original_cause
-     * @param string $original_cause original name of the cause.
+     * Sets user_id
+     * @param int $user_id ID of user that owns this correlation
      * @return $this
      */
-    public function setOriginalCause($original_cause)
+    public function setUserId($user_id)
     {
         
-        $this->original_cause = $original_cause;
+        $this->user_id = $user_id;
         return $this;
     }
     
     /**
-     * Gets effect
-     * @return string
+     * Gets correlation
+     * @return float
      */
-    public function getEffect()
+    public function getCorrelation()
     {
-        return $this->effect;
+        return $this->correlation;
     }
   
     /**
-     * Sets effect
-     * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations.
+     * Sets correlation
+     * @param float $correlation Pearson correlation coefficient between cause and effect measurements
      * @return $this
      */
-    public function setEffect($effect)
+    public function setCorrelation($correlation)
     {
         
-        $this->effect = $effect;
+        $this->correlation = $correlation;
         return $this;
     }
     
     /**
-     * Gets original_effect
-     * @return string
+     * Gets cause_id
+     * @return int
      */
-    public function getOriginalEffect()
+    public function getCauseId()
     {
-        return $this->original_effect;
+        return $this->cause_id;
     }
   
     /**
-     * Sets original_effect
-     * @param string $original_effect effect variable original name.
+     * Sets cause_id
+     * @param int $cause_id variable ID of the cause variable for which the user desires correlations
      * @return $this
      */
-    public function setOriginalEffect($original_effect)
+    public function setCauseId($cause_id)
     {
         
-        $this->original_effect = $original_effect;
+        $this->cause_id = $cause_id;
+        return $this;
+    }
+    
+    /**
+     * Gets effect_id
+     * @return int
+     */
+    public function getEffectId()
+    {
+        return $this->effect_id;
+    }
+  
+    /**
+     * Sets effect_id
+     * @param int $effect_id variable ID of the effect variable for which the user desires correlations
+     * @return $this
+     */
+    public function setEffectId($effect_id)
+    {
+        
+        $this->effect_id = $effect_id;
         return $this;
     }
     
     /**
      * Gets onset_delay
-     * @return double
+     * @return int
      */
     public function getOnsetDelay()
     {
@@ -444,7 +487,7 @@ class Correlation implements ArrayAccess
   
     /**
      * Sets onset_delay
-     * @param double $onset_delay User estimated or default time after cause measurement before a perceivable effect is observed
+     * @param int $onset_delay User estimated or default time after cause measurement before a perceivable effect is observed
      * @return $this
      */
     public function setOnsetDelay($onset_delay)
@@ -456,7 +499,7 @@ class Correlation implements ArrayAccess
     
     /**
      * Gets duration_of_action
-     * @return Number
+     * @return int
      */
     public function getDurationOfAction()
     {
@@ -465,7 +508,7 @@ class Correlation implements ArrayAccess
   
     /**
      * Sets duration_of_action
-     * @param Number $duration_of_action Time over which the cause is expected to produce a perceivable effect following the onset delay
+     * @param int $duration_of_action Time over which the cause is expected to produce a perceivable effect following the onset delay
      * @return $this
      */
     public function setDurationOfAction($duration_of_action)
@@ -477,7 +520,7 @@ class Correlation implements ArrayAccess
     
     /**
      * Gets number_of_pairs
-     * @return Number
+     * @return int
      */
     public function getNumberOfPairs()
     {
@@ -486,7 +529,7 @@ class Correlation implements ArrayAccess
   
     /**
      * Sets number_of_pairs
-     * @param Number $number_of_pairs Number of points that went into the correlation calculation
+     * @param int $number_of_pairs Number of points that went into the correlation calculation
      * @return $this
      */
     public function setNumberOfPairs($number_of_pairs)
@@ -497,155 +540,8 @@ class Correlation implements ArrayAccess
     }
     
     /**
-     * Gets effect_size
-     * @return string
-     */
-    public function getEffectSize()
-    {
-        return $this->effect_size;
-    }
-  
-    /**
-     * Sets effect_size
-     * @param string $effect_size Magnitude of the effects of a cause indicating whether it's practically meaningful.
-     * @return $this
-     */
-    public function setEffectSize($effect_size)
-    {
-        
-        $this->effect_size = $effect_size;
-        return $this;
-    }
-    
-    /**
-     * Gets statistical_significance
-     * @return string
-     */
-    public function getStatisticalSignificance()
-    {
-        return $this->statistical_significance;
-    }
-  
-    /**
-     * Sets statistical_significance
-     * @param string $statistical_significance A function of the effect size and sample size
-     * @return $this
-     */
-    public function setStatisticalSignificance($statistical_significance)
-    {
-        
-        $this->statistical_significance = $statistical_significance;
-        return $this;
-    }
-    
-    /**
-     * Gets timestamp
-     * @return Number
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
-  
-    /**
-     * Sets timestamp
-     * @param Number $timestamp Time at which correlation was calculated
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        
-        $this->timestamp = $timestamp;
-        return $this;
-    }
-    
-    /**
-     * Gets reverse_correlation
-     * @return Number
-     */
-    public function getReverseCorrelation()
-    {
-        return $this->reverse_correlation;
-    }
-  
-    /**
-     * Sets reverse_correlation
-     * @param Number $reverse_correlation Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation.
-     * @return $this
-     */
-    public function setReverseCorrelation($reverse_correlation)
-    {
-        
-        $this->reverse_correlation = $reverse_correlation;
-        return $this;
-    }
-    
-    /**
-     * Gets causality_factor
-     * @return Number
-     */
-    public function getCausalityFactor()
-    {
-        return $this->causality_factor;
-    }
-  
-    /**
-     * Sets causality_factor
-     * @param Number $causality_factor 
-     * @return $this
-     */
-    public function setCausalityFactor($causality_factor)
-    {
-        
-        $this->causality_factor = $causality_factor;
-        return $this;
-    }
-    
-    /**
-     * Gets cause_category
-     * @return string
-     */
-    public function getCauseCategory()
-    {
-        return $this->cause_category;
-    }
-  
-    /**
-     * Sets cause_category
-     * @param string $cause_category Variable category of the cause variable.
-     * @return $this
-     */
-    public function setCauseCategory($cause_category)
-    {
-        
-        $this->cause_category = $cause_category;
-        return $this;
-    }
-    
-    /**
-     * Gets effect_category
-     * @return string
-     */
-    public function getEffectCategory()
-    {
-        return $this->effect_category;
-    }
-  
-    /**
-     * Sets effect_category
-     * @param string $effect_category Variable category of the effect variable.
-     * @return $this
-     */
-    public function setEffectCategory($effect_category)
-    {
-        
-        $this->effect_category = $effect_category;
-        return $this;
-    }
-    
-    /**
      * Gets value_predicting_high_outcome
-     * @return Number
+     * @return float
      */
     public function getValuePredictingHighOutcome()
     {
@@ -654,7 +550,7 @@ class Correlation implements ArrayAccess
   
     /**
      * Sets value_predicting_high_outcome
-     * @param Number $value_predicting_high_outcome cause value that predicts an above average effect value (in default unit for cause variable)
+     * @param float $value_predicting_high_outcome cause value that predicts an above average effect value (in default unit for cause variable)
      * @return $this
      */
     public function setValuePredictingHighOutcome($value_predicting_high_outcome)
@@ -666,7 +562,7 @@ class Correlation implements ArrayAccess
     
     /**
      * Gets value_predicting_low_outcome
-     * @return Number
+     * @return float
      */
     public function getValuePredictingLowOutcome()
     {
@@ -675,7 +571,7 @@ class Correlation implements ArrayAccess
   
     /**
      * Sets value_predicting_low_outcome
-     * @param Number $value_predicting_low_outcome cause value that predicts a below average effect value (in default unit for cause variable)
+     * @param float $value_predicting_low_outcome cause value that predicts a below average effect value (in default unit for cause variable)
      * @return $this
      */
     public function setValuePredictingLowOutcome($value_predicting_low_outcome)
@@ -687,7 +583,7 @@ class Correlation implements ArrayAccess
     
     /**
      * Gets optimal_pearson_product
-     * @return Number
+     * @return float
      */
     public function getOptimalPearsonProduct()
     {
@@ -696,7 +592,7 @@ class Correlation implements ArrayAccess
   
     /**
      * Sets optimal_pearson_product
-     * @param Number $optimal_pearson_product Optimal Pearson Product
+     * @param float $optimal_pearson_product Optimal Pearson Product
      * @return $this
      */
     public function setOptimalPearsonProduct($optimal_pearson_product)
@@ -707,44 +603,44 @@ class Correlation implements ArrayAccess
     }
     
     /**
-     * Gets average_vote
-     * @return Number
+     * Gets vote
+     * @return float
      */
-    public function getAverageVote()
+    public function getVote()
     {
-        return $this->average_vote;
+        return $this->vote;
     }
   
     /**
-     * Sets average_vote
-     * @param Number $average_vote Average Vote
+     * Sets vote
+     * @param float $vote Vote
      * @return $this
      */
-    public function setAverageVote($average_vote)
+    public function setVote($vote)
     {
         
-        $this->average_vote = $average_vote;
+        $this->vote = $vote;
         return $this;
     }
     
     /**
-     * Gets user_vote
-     * @return Number
+     * Gets statistical_significance
+     * @return float
      */
-    public function getUserVote()
+    public function getStatisticalSignificance()
     {
-        return $this->user_vote;
+        return $this->statistical_significance;
     }
   
     /**
-     * Sets user_vote
-     * @param Number $user_vote User Vote
+     * Sets statistical_significance
+     * @param float $statistical_significance A function of the effect size and sample size
      * @return $this
      */
-    public function setUserVote($user_vote)
+    public function setStatisticalSignificance($statistical_significance)
     {
         
-        $this->user_vote = $user_vote;
+        $this->statistical_significance = $statistical_significance;
         return $this;
     }
     
@@ -780,13 +676,181 @@ class Correlation implements ArrayAccess
   
     /**
      * Sets cause_unit_id
-     * @param int $cause_unit_id Unit Id of the predictor variable
+     * @param int $cause_unit_id Unit ID of the predictor variable
      * @return $this
      */
     public function setCauseUnitId($cause_unit_id)
     {
         
         $this->cause_unit_id = $cause_unit_id;
+        return $this;
+    }
+    
+    /**
+     * Gets cause_changes
+     * @return int
+     */
+    public function getCauseChanges()
+    {
+        return $this->cause_changes;
+    }
+  
+    /**
+     * Sets cause_changes
+     * @param int $cause_changes Cause changes
+     * @return $this
+     */
+    public function setCauseChanges($cause_changes)
+    {
+        
+        $this->cause_changes = $cause_changes;
+        return $this;
+    }
+    
+    /**
+     * Gets effect_changes
+     * @return int
+     */
+    public function getEffectChanges()
+    {
+        return $this->effect_changes;
+    }
+  
+    /**
+     * Sets effect_changes
+     * @param int $effect_changes Effect changes
+     * @return $this
+     */
+    public function setEffectChanges($effect_changes)
+    {
+        
+        $this->effect_changes = $effect_changes;
+        return $this;
+    }
+    
+    /**
+     * Gets qm_score
+     * @return float
+     */
+    public function getQmScore()
+    {
+        return $this->qm_score;
+    }
+  
+    /**
+     * Sets qm_score
+     * @param float $qm_score QM Score
+     * @return $this
+     */
+    public function setQmScore($qm_score)
+    {
+        
+        $this->qm_score = $qm_score;
+        return $this;
+    }
+    
+    /**
+     * Gets error
+     * @return string
+     */
+    public function getError()
+    {
+        return $this->error;
+    }
+  
+    /**
+     * Sets error
+     * @param string $error error
+     * @return $this
+     */
+    public function setError($error)
+    {
+        
+        $this->error = $error;
+        return $this;
+    }
+    
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+  
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        
+        $this->created_at = $created_at;
+        return $this;
+    }
+    
+    /**
+     * Gets updated_at
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+  
+    /**
+     * Sets updated_at
+     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        
+        $this->updated_at = $updated_at;
+        return $this;
+    }
+    
+    /**
+     * Gets reverse_pearson_correlation_coefficient
+     * @return float
+     */
+    public function getReversePearsonCorrelationCoefficient()
+    {
+        return $this->reverse_pearson_correlation_coefficient;
+    }
+  
+    /**
+     * Sets reverse_pearson_correlation_coefficient
+     * @param float $reverse_pearson_correlation_coefficient Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation
+     * @return $this
+     */
+    public function setReversePearsonCorrelationCoefficient($reverse_pearson_correlation_coefficient)
+    {
+        
+        $this->reverse_pearson_correlation_coefficient = $reverse_pearson_correlation_coefficient;
+        return $this;
+    }
+    
+    /**
+     * Gets predictive_pearson_correlation_coefficient
+     * @return float
+     */
+    public function getPredictivePearsonCorrelationCoefficient()
+    {
+        return $this->predictive_pearson_correlation_coefficient;
+    }
+  
+    /**
+     * Sets predictive_pearson_correlation_coefficient
+     * @param float $predictive_pearson_correlation_coefficient Predictive Pearson Correlation Coefficient
+     * @return $this
+     */
+    public function setPredictivePearsonCorrelationCoefficient($predictive_pearson_correlation_coefficient)
+    {
+        
+        $this->predictive_pearson_correlation_coefficient = $predictive_pearson_correlation_coefficient;
         return $this;
     }
     

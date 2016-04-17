@@ -51,7 +51,10 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'name' => 'string'
+        'id' => 'int',
+        'name' => 'string',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     );
   
     /** 
@@ -59,7 +62,10 @@ class UnitCategory implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'name' => 'name'
+        'id' => 'id',
+        'name' => 'name',
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at'
     );
   
     /**
@@ -67,7 +73,10 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'name' => 'setName'
+        'id' => 'setId',
+        'name' => 'setName',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     );
   
     /**
@@ -75,15 +84,36 @@ class UnitCategory implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'name' => 'getName'
+        'id' => 'getId',
+        'name' => 'getName',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     );
   
     
     /**
-      * $name Category name
+      * $id id
+      * @var int
+      */
+    protected $id;
+    
+    /**
+      * $name Unit category name
       * @var string
       */
     protected $name;
+    
+    /**
+      * $created_at When the record was first created. Use ISO 8601 datetime format
+      * @var \DateTime
+      */
+    protected $created_at;
+    
+    /**
+      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
+      * @var \DateTime
+      */
+    protected $updated_at;
     
 
     /**
@@ -93,8 +123,32 @@ class UnitCategory implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
+            $this->id = $data["id"];
             $this->name = $data["name"];
+            $this->created_at = $data["created_at"];
+            $this->updated_at = $data["updated_at"];
         }
+    }
+    
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+  
+    /**
+     * Sets id
+     * @param int $id id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        
+        $this->id = $id;
+        return $this;
     }
     
     /**
@@ -108,13 +162,55 @@ class UnitCategory implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name Category name
+     * @param string $name Unit category name
      * @return $this
      */
     public function setName($name)
     {
         
         $this->name = $name;
+        return $this;
+    }
+    
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+  
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        
+        $this->created_at = $created_at;
+        return $this;
+    }
+    
+    /**
+     * Gets updated_at
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+  
+    /**
+     * Sets updated_at
+     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        
+        $this->updated_at = $updated_at;
         return $this;
     }
     
