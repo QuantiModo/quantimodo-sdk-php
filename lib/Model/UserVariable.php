@@ -10,21 +10,29 @@
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
+
 /**
- *  Copyright 2016 SmartBear Software
+ * QuantiModo
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ *
+ * OpenAPI spec version: 2.0.6
+ * 
+ * Generated by: https://github.com/swagger-api/swagger-codegen.git
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
 /**
  * NOTE: This class is auto generated by the swagger code generator program.
  * https://github.com/swagger-api/swagger-codegen
@@ -34,11 +42,11 @@
 namespace Swagger\Client\Model;
 
 use \ArrayAccess;
+
 /**
  * UserVariable Class Doc Comment
  *
  * @category    Class
- * @description 
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
@@ -47,10 +55,16 @@ use \ArrayAccess;
 class UserVariable implements ArrayAccess
 {
     /**
-      * Array of property to type mappings. Used for (de)serialization 
+      * The original name of the model.
+      * @var string
+      */
+    protected static $swaggerModelName = 'UserVariable';
+
+    /**
+      * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    static $swaggerTypes = array(
+    protected static $swaggerTypes = array(
         'parent_id' => 'int',
         'user_id' => 'int',
         'client_id' => 'string',
@@ -107,12 +121,17 @@ class UserVariable implements ArrayAccess
         'earliest_filling_time' => 'int',
         'latest_filling_time' => 'int'
     );
-  
-    /** 
-      * Array of attributes where the key is the local name, and the value is the original name
-      * @var string[] 
-      */
-    static $attributeMap = array(
+
+    public static function swaggerTypes()
+    {
+        return self::$swaggerTypes;
+    }
+
+    /**
+     * Array of attributes where the key is the local name, and the value is the original name
+     * @var string[]
+     */
+    protected static $attributeMap = array(
         'parent_id' => 'parent_id',
         'user_id' => 'user_id',
         'client_id' => 'client_id',
@@ -169,12 +188,17 @@ class UserVariable implements ArrayAccess
         'earliest_filling_time' => 'earliest_filling_time',
         'latest_filling_time' => 'latest_filling_time'
     );
-  
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
     /**
-      * Array of attributes to setter functions (for deserialization of responses)
-      * @var string[]
-      */
-    static $setters = array(
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = array(
         'parent_id' => 'setParentId',
         'user_id' => 'setUserId',
         'client_id' => 'setClientId',
@@ -231,12 +255,17 @@ class UserVariable implements ArrayAccess
         'earliest_filling_time' => 'setEarliestFillingTime',
         'latest_filling_time' => 'setLatestFillingTime'
     );
-  
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
+
     /**
-      * Array of attributes to getter functions (for serialization of requests)
-      * @var string[]
-      */
-    static $getters = array(
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = array(
         'parent_id' => 'getParentId',
         'user_id' => 'getUserId',
         'client_id' => 'getClientId',
@@ -293,338 +322,21 @@ class UserVariable implements ArrayAccess
         'earliest_filling_time' => 'getEarliestFillingTime',
         'latest_filling_time' => 'getLatestFillingTime'
     );
-  
+
+    public static function getters()
+    {
+        return self::$getters;
+    }
+
     
+
+    
+
     /**
-      * $parent_id ID of the parent variable if this variable has any parent
-      * @var int
-      */
-    protected $parent_id;
-    
-    /**
-      * $user_id User ID
-      * @var int
-      */
-    protected $user_id;
-    
-    /**
-      * $client_id client_id
-      * @var string
-      */
-    protected $client_id;
-    
-    /**
-      * $variable_id ID of variable
-      * @var int
-      */
-    protected $variable_id;
-    
-    /**
-      * $default_unit_id ID of unit to use for this variable
-      * @var int
-      */
-    protected $default_unit_id;
-    
-    /**
-      * $minimum_allowed_value Minimum reasonable value for this variable (uses default unit)
-      * @var float
-      */
-    protected $minimum_allowed_value;
-    
-    /**
-      * $maximum_allowed_value Maximum reasonable value for this variable (uses default unit)
-      * @var float
-      */
-    protected $maximum_allowed_value;
-    
-    /**
-      * $filling_value Value for replacing null measurements
-      * @var float
-      */
-    protected $filling_value;
-    
-    /**
-      * $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
-      * @var int
-      */
-    protected $join_with;
-    
-    /**
-      * $onset_delay How long it takes for a measurement in this variable to take effect
-      * @var int
-      */
-    protected $onset_delay;
-    
-    /**
-      * $duration_of_action Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
-      * @var int
-      */
-    protected $duration_of_action;
-    
-    /**
-      * $variable_category_id ID of variable category
-      * @var int
-      */
-    protected $variable_category_id;
-    
-    /**
-      * $updated updated
-      * @var int
-      */
-    protected $updated;
-    
-    /**
-      * $public Is variable public
-      * @var int
-      */
-    protected $public;
-    
-    /**
-      * $cause_only A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
-      * @var bool
-      */
-    protected $cause_only;
-    
-    /**
-      * $filling_type 0 -> No filling, 1 -> Use filling-value
-      * @var string
-      */
-    protected $filling_type;
-    
-    /**
-      * $number_of_measurements Number of measurements
-      * @var int
-      */
-    protected $number_of_measurements;
-    
-    /**
-      * $number_of_processed_measurements Number of processed measurements
-      * @var int
-      */
-    protected $number_of_processed_measurements;
-    
-    /**
-      * $measurements_at_last_analysis Number of measurements at last analysis
-      * @var int
-      */
-    protected $measurements_at_last_analysis;
-    
-    /**
-      * $last_unit_id ID of last Unit
-      * @var int
-      */
-    protected $last_unit_id;
-    
-    /**
-      * $last_original_unit_id ID of last original Unit
-      * @var int
-      */
-    protected $last_original_unit_id;
-    
-    /**
-      * $last_value Last Value
-      * @var float
-      */
-    protected $last_value;
-    
-    /**
-      * $last_original_value Last original value which is stored
-      * @var int
-      */
-    protected $last_original_value;
-    
-    /**
-      * $last_source_id ID of last source
-      * @var int
-      */
-    protected $last_source_id;
-    
-    /**
-      * $number_of_correlations Number of correlations for this variable
-      * @var int
-      */
-    protected $number_of_correlations;
-    
-    /**
-      * $status status
-      * @var string
-      */
-    protected $status;
-    
-    /**
-      * $error_message error_message
-      * @var string
-      */
-    protected $error_message;
-    
-    /**
-      * $last_successful_update_time When this variable or its settings were last updated
-      * @var \DateTime
-      */
-    protected $last_successful_update_time;
-    
-    /**
-      * $standard_deviation Standard deviation
-      * @var float
-      */
-    protected $standard_deviation;
-    
-    /**
-      * $variance Variance
-      * @var float
-      */
-    protected $variance;
-    
-    /**
-      * $minimum_recorded_value Minimum recorded value of this variable
-      * @var float
-      */
-    protected $minimum_recorded_value;
-    
-    /**
-      * $maximum_recorded_daily_value Maximum recorded daily value of this variable
-      * @var float
-      */
-    protected $maximum_recorded_daily_value;
-    
-    /**
-      * $mean Mean
-      * @var float
-      */
-    protected $mean;
-    
-    /**
-      * $median Median
-      * @var float
-      */
-    protected $median;
-    
-    /**
-      * $most_common_unit_id Most common Unit ID
-      * @var int
-      */
-    protected $most_common_unit_id;
-    
-    /**
-      * $most_common_value Most common value
-      * @var float
-      */
-    protected $most_common_value;
-    
-    /**
-      * $number_of_unique_daily_values Number of unique daily values
-      * @var float
-      */
-    protected $number_of_unique_daily_values;
-    
-    /**
-      * $number_of_changes Number of changes
-      * @var int
-      */
-    protected $number_of_changes;
-    
-    /**
-      * $skewness Skewness
-      * @var float
-      */
-    protected $skewness;
-    
-    /**
-      * $kurtosis Kurtosis
-      * @var float
-      */
-    protected $kurtosis;
-    
-    /**
-      * $latitude Latitude
-      * @var float
-      */
-    protected $latitude;
-    
-    /**
-      * $longitude Longitude
-      * @var float
-      */
-    protected $longitude;
-    
-    /**
-      * $location Location
-      * @var string
-      */
-    protected $location;
-    
-    /**
-      * $experiment_start_time Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $experiment_start_time;
-    
-    /**
-      * $experiment_end_time Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $experiment_end_time;
-    
-    /**
-      * $created_at When the record was first created. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $updated_at;
-    
-    /**
-      * $outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
-      * @var bool
-      */
-    protected $outcome;
-    
-    /**
-      * $sources Comma-separated list of source names to limit variables to those sources
-      * @var string
-      */
-    protected $sources;
-    
-    /**
-      * $earliest_source_time Earliest source time
-      * @var int
-      */
-    protected $earliest_source_time;
-    
-    /**
-      * $latest_source_time Latest source time
-      * @var int
-      */
-    protected $latest_source_time;
-    
-    /**
-      * $earliest_measurement_time Earliest measurement time
-      * @var int
-      */
-    protected $earliest_measurement_time;
-    
-    /**
-      * $latest_measurement_time Latest measurement time
-      * @var int
-      */
-    protected $latest_measurement_time;
-    
-    /**
-      * $earliest_filling_time Earliest filling time
-      * @var int
-      */
-    protected $earliest_filling_time;
-    
-    /**
-      * $latest_filling_time Latest filling time
-      * @var int
-      */
-    protected $latest_filling_time;
-    
+     * Associative array for storing property values
+     * @var mixed[]
+     */
+    protected $container = array();
 
     /**
      * Constructor
@@ -632,74 +344,101 @@ class UserVariable implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        if ($data != null) {
-            $this->parent_id = $data["parent_id"];
-            $this->user_id = $data["user_id"];
-            $this->client_id = $data["client_id"];
-            $this->variable_id = $data["variable_id"];
-            $this->default_unit_id = $data["default_unit_id"];
-            $this->minimum_allowed_value = $data["minimum_allowed_value"];
-            $this->maximum_allowed_value = $data["maximum_allowed_value"];
-            $this->filling_value = $data["filling_value"];
-            $this->join_with = $data["join_with"];
-            $this->onset_delay = $data["onset_delay"];
-            $this->duration_of_action = $data["duration_of_action"];
-            $this->variable_category_id = $data["variable_category_id"];
-            $this->updated = $data["updated"];
-            $this->public = $data["public"];
-            $this->cause_only = $data["cause_only"];
-            $this->filling_type = $data["filling_type"];
-            $this->number_of_measurements = $data["number_of_measurements"];
-            $this->number_of_processed_measurements = $data["number_of_processed_measurements"];
-            $this->measurements_at_last_analysis = $data["measurements_at_last_analysis"];
-            $this->last_unit_id = $data["last_unit_id"];
-            $this->last_original_unit_id = $data["last_original_unit_id"];
-            $this->last_value = $data["last_value"];
-            $this->last_original_value = $data["last_original_value"];
-            $this->last_source_id = $data["last_source_id"];
-            $this->number_of_correlations = $data["number_of_correlations"];
-            $this->status = $data["status"];
-            $this->error_message = $data["error_message"];
-            $this->last_successful_update_time = $data["last_successful_update_time"];
-            $this->standard_deviation = $data["standard_deviation"];
-            $this->variance = $data["variance"];
-            $this->minimum_recorded_value = $data["minimum_recorded_value"];
-            $this->maximum_recorded_daily_value = $data["maximum_recorded_daily_value"];
-            $this->mean = $data["mean"];
-            $this->median = $data["median"];
-            $this->most_common_unit_id = $data["most_common_unit_id"];
-            $this->most_common_value = $data["most_common_value"];
-            $this->number_of_unique_daily_values = $data["number_of_unique_daily_values"];
-            $this->number_of_changes = $data["number_of_changes"];
-            $this->skewness = $data["skewness"];
-            $this->kurtosis = $data["kurtosis"];
-            $this->latitude = $data["latitude"];
-            $this->longitude = $data["longitude"];
-            $this->location = $data["location"];
-            $this->experiment_start_time = $data["experiment_start_time"];
-            $this->experiment_end_time = $data["experiment_end_time"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
-            $this->outcome = $data["outcome"];
-            $this->sources = $data["sources"];
-            $this->earliest_source_time = $data["earliest_source_time"];
-            $this->latest_source_time = $data["latest_source_time"];
-            $this->earliest_measurement_time = $data["earliest_measurement_time"];
-            $this->latest_measurement_time = $data["latest_measurement_time"];
-            $this->earliest_filling_time = $data["earliest_filling_time"];
-            $this->latest_filling_time = $data["latest_filling_time"];
-        }
+        $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
+        $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
+        $this->container['default_unit_id'] = isset($data['default_unit_id']) ? $data['default_unit_id'] : null;
+        $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
+        $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
+        $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
+        $this->container['join_with'] = isset($data['join_with']) ? $data['join_with'] : null;
+        $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
+        $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
+        $this->container['variable_category_id'] = isset($data['variable_category_id']) ? $data['variable_category_id'] : null;
+        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
+        $this->container['public'] = isset($data['public']) ? $data['public'] : null;
+        $this->container['cause_only'] = isset($data['cause_only']) ? $data['cause_only'] : null;
+        $this->container['filling_type'] = isset($data['filling_type']) ? $data['filling_type'] : null;
+        $this->container['number_of_measurements'] = isset($data['number_of_measurements']) ? $data['number_of_measurements'] : null;
+        $this->container['number_of_processed_measurements'] = isset($data['number_of_processed_measurements']) ? $data['number_of_processed_measurements'] : null;
+        $this->container['measurements_at_last_analysis'] = isset($data['measurements_at_last_analysis']) ? $data['measurements_at_last_analysis'] : null;
+        $this->container['last_unit_id'] = isset($data['last_unit_id']) ? $data['last_unit_id'] : null;
+        $this->container['last_original_unit_id'] = isset($data['last_original_unit_id']) ? $data['last_original_unit_id'] : null;
+        $this->container['last_value'] = isset($data['last_value']) ? $data['last_value'] : null;
+        $this->container['last_original_value'] = isset($data['last_original_value']) ? $data['last_original_value'] : null;
+        $this->container['last_source_id'] = isset($data['last_source_id']) ? $data['last_source_id'] : null;
+        $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
+        $this->container['last_successful_update_time'] = isset($data['last_successful_update_time']) ? $data['last_successful_update_time'] : null;
+        $this->container['standard_deviation'] = isset($data['standard_deviation']) ? $data['standard_deviation'] : null;
+        $this->container['variance'] = isset($data['variance']) ? $data['variance'] : null;
+        $this->container['minimum_recorded_value'] = isset($data['minimum_recorded_value']) ? $data['minimum_recorded_value'] : null;
+        $this->container['maximum_recorded_daily_value'] = isset($data['maximum_recorded_daily_value']) ? $data['maximum_recorded_daily_value'] : null;
+        $this->container['mean'] = isset($data['mean']) ? $data['mean'] : null;
+        $this->container['median'] = isset($data['median']) ? $data['median'] : null;
+        $this->container['most_common_unit_id'] = isset($data['most_common_unit_id']) ? $data['most_common_unit_id'] : null;
+        $this->container['most_common_value'] = isset($data['most_common_value']) ? $data['most_common_value'] : null;
+        $this->container['number_of_unique_daily_values'] = isset($data['number_of_unique_daily_values']) ? $data['number_of_unique_daily_values'] : null;
+        $this->container['number_of_changes'] = isset($data['number_of_changes']) ? $data['number_of_changes'] : null;
+        $this->container['skewness'] = isset($data['skewness']) ? $data['skewness'] : null;
+        $this->container['kurtosis'] = isset($data['kurtosis']) ? $data['kurtosis'] : null;
+        $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
+        $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
+        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
+        $this->container['experiment_start_time'] = isset($data['experiment_start_time']) ? $data['experiment_start_time'] : null;
+        $this->container['experiment_end_time'] = isset($data['experiment_end_time']) ? $data['experiment_end_time'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['outcome'] = isset($data['outcome']) ? $data['outcome'] : null;
+        $this->container['sources'] = isset($data['sources']) ? $data['sources'] : null;
+        $this->container['earliest_source_time'] = isset($data['earliest_source_time']) ? $data['earliest_source_time'] : null;
+        $this->container['latest_source_time'] = isset($data['latest_source_time']) ? $data['latest_source_time'] : null;
+        $this->container['earliest_measurement_time'] = isset($data['earliest_measurement_time']) ? $data['earliest_measurement_time'] : null;
+        $this->container['latest_measurement_time'] = isset($data['latest_measurement_time']) ? $data['latest_measurement_time'] : null;
+        $this->container['earliest_filling_time'] = isset($data['earliest_filling_time']) ? $data['earliest_filling_time'] : null;
+        $this->container['latest_filling_time'] = isset($data['latest_filling_time']) ? $data['latest_filling_time'] : null;
     }
-    
+
+    /**
+     * show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties()
+    {
+        $invalid_properties = array();
+        if ($this->container['variable_id'] === null) {
+            $invalid_properties[] = "'variable_id' can't be null";
+        }
+        return $invalid_properties;
+    }
+
+    /**
+     * validate all the properties in the model
+     * return true if all passed
+     *
+     * @return bool True if all properteis are valid
+     */
+    public function valid()
+    {
+        if ($this->container['variable_id'] === null) {
+            return false;
+        }
+        return true;
+    }
+
+
     /**
      * Gets parent_id
      * @return int
      */
     public function getParentId()
     {
-        return $this->parent_id;
+        return $this->container['parent_id'];
     }
-  
+
     /**
      * Sets parent_id
      * @param int $parent_id ID of the parent variable if this variable has any parent
@@ -707,20 +446,20 @@ class UserVariable implements ArrayAccess
      */
     public function setParentId($parent_id)
     {
-        
-        $this->parent_id = $parent_id;
+        $this->container['parent_id'] = $parent_id;
+
         return $this;
     }
-    
+
     /**
      * Gets user_id
      * @return int
      */
     public function getUserId()
     {
-        return $this->user_id;
+        return $this->container['user_id'];
     }
-  
+
     /**
      * Sets user_id
      * @param int $user_id User ID
@@ -728,20 +467,20 @@ class UserVariable implements ArrayAccess
      */
     public function setUserId($user_id)
     {
-        
-        $this->user_id = $user_id;
+        $this->container['user_id'] = $user_id;
+
         return $this;
     }
-    
+
     /**
      * Gets client_id
      * @return string
      */
     public function getClientId()
     {
-        return $this->client_id;
+        return $this->container['client_id'];
     }
-  
+
     /**
      * Sets client_id
      * @param string $client_id client_id
@@ -749,20 +488,20 @@ class UserVariable implements ArrayAccess
      */
     public function setClientId($client_id)
     {
-        
-        $this->client_id = $client_id;
+        $this->container['client_id'] = $client_id;
+
         return $this;
     }
-    
+
     /**
      * Gets variable_id
      * @return int
      */
     public function getVariableId()
     {
-        return $this->variable_id;
+        return $this->container['variable_id'];
     }
-  
+
     /**
      * Sets variable_id
      * @param int $variable_id ID of variable
@@ -770,20 +509,20 @@ class UserVariable implements ArrayAccess
      */
     public function setVariableId($variable_id)
     {
-        
-        $this->variable_id = $variable_id;
+        $this->container['variable_id'] = $variable_id;
+
         return $this;
     }
-    
+
     /**
      * Gets default_unit_id
      * @return int
      */
     public function getDefaultUnitId()
     {
-        return $this->default_unit_id;
+        return $this->container['default_unit_id'];
     }
-  
+
     /**
      * Sets default_unit_id
      * @param int $default_unit_id ID of unit to use for this variable
@@ -791,20 +530,20 @@ class UserVariable implements ArrayAccess
      */
     public function setDefaultUnitId($default_unit_id)
     {
-        
-        $this->default_unit_id = $default_unit_id;
+        $this->container['default_unit_id'] = $default_unit_id;
+
         return $this;
     }
-    
+
     /**
      * Gets minimum_allowed_value
      * @return float
      */
     public function getMinimumAllowedValue()
     {
-        return $this->minimum_allowed_value;
+        return $this->container['minimum_allowed_value'];
     }
-  
+
     /**
      * Sets minimum_allowed_value
      * @param float $minimum_allowed_value Minimum reasonable value for this variable (uses default unit)
@@ -812,20 +551,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMinimumAllowedValue($minimum_allowed_value)
     {
-        
-        $this->minimum_allowed_value = $minimum_allowed_value;
+        $this->container['minimum_allowed_value'] = $minimum_allowed_value;
+
         return $this;
     }
-    
+
     /**
      * Gets maximum_allowed_value
      * @return float
      */
     public function getMaximumAllowedValue()
     {
-        return $this->maximum_allowed_value;
+        return $this->container['maximum_allowed_value'];
     }
-  
+
     /**
      * Sets maximum_allowed_value
      * @param float $maximum_allowed_value Maximum reasonable value for this variable (uses default unit)
@@ -833,20 +572,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMaximumAllowedValue($maximum_allowed_value)
     {
-        
-        $this->maximum_allowed_value = $maximum_allowed_value;
+        $this->container['maximum_allowed_value'] = $maximum_allowed_value;
+
         return $this;
     }
-    
+
     /**
      * Gets filling_value
      * @return float
      */
     public function getFillingValue()
     {
-        return $this->filling_value;
+        return $this->container['filling_value'];
     }
-  
+
     /**
      * Sets filling_value
      * @param float $filling_value Value for replacing null measurements
@@ -854,20 +593,20 @@ class UserVariable implements ArrayAccess
      */
     public function setFillingValue($filling_value)
     {
-        
-        $this->filling_value = $filling_value;
+        $this->container['filling_value'] = $filling_value;
+
         return $this;
     }
-    
+
     /**
      * Gets join_with
      * @return int
      */
     public function getJoinWith()
     {
-        return $this->join_with;
+        return $this->container['join_with'];
     }
-  
+
     /**
      * Sets join_with
      * @param int $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
@@ -875,20 +614,20 @@ class UserVariable implements ArrayAccess
      */
     public function setJoinWith($join_with)
     {
-        
-        $this->join_with = $join_with;
+        $this->container['join_with'] = $join_with;
+
         return $this;
     }
-    
+
     /**
      * Gets onset_delay
      * @return int
      */
     public function getOnsetDelay()
     {
-        return $this->onset_delay;
+        return $this->container['onset_delay'];
     }
-  
+
     /**
      * Sets onset_delay
      * @param int $onset_delay How long it takes for a measurement in this variable to take effect
@@ -896,20 +635,20 @@ class UserVariable implements ArrayAccess
      */
     public function setOnsetDelay($onset_delay)
     {
-        
-        $this->onset_delay = $onset_delay;
+        $this->container['onset_delay'] = $onset_delay;
+
         return $this;
     }
-    
+
     /**
      * Gets duration_of_action
      * @return int
      */
     public function getDurationOfAction()
     {
-        return $this->duration_of_action;
+        return $this->container['duration_of_action'];
     }
-  
+
     /**
      * Sets duration_of_action
      * @param int $duration_of_action Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
@@ -917,20 +656,20 @@ class UserVariable implements ArrayAccess
      */
     public function setDurationOfAction($duration_of_action)
     {
-        
-        $this->duration_of_action = $duration_of_action;
+        $this->container['duration_of_action'] = $duration_of_action;
+
         return $this;
     }
-    
+
     /**
      * Gets variable_category_id
      * @return int
      */
     public function getVariableCategoryId()
     {
-        return $this->variable_category_id;
+        return $this->container['variable_category_id'];
     }
-  
+
     /**
      * Sets variable_category_id
      * @param int $variable_category_id ID of variable category
@@ -938,20 +677,20 @@ class UserVariable implements ArrayAccess
      */
     public function setVariableCategoryId($variable_category_id)
     {
-        
-        $this->variable_category_id = $variable_category_id;
+        $this->container['variable_category_id'] = $variable_category_id;
+
         return $this;
     }
-    
+
     /**
      * Gets updated
      * @return int
      */
     public function getUpdated()
     {
-        return $this->updated;
+        return $this->container['updated'];
     }
-  
+
     /**
      * Sets updated
      * @param int $updated updated
@@ -959,20 +698,20 @@ class UserVariable implements ArrayAccess
      */
     public function setUpdated($updated)
     {
-        
-        $this->updated = $updated;
+        $this->container['updated'] = $updated;
+
         return $this;
     }
-    
+
     /**
      * Gets public
      * @return int
      */
     public function getPublic()
     {
-        return $this->public;
+        return $this->container['public'];
     }
-  
+
     /**
      * Sets public
      * @param int $public Is variable public
@@ -980,20 +719,20 @@ class UserVariable implements ArrayAccess
      */
     public function setPublic($public)
     {
-        
-        $this->public = $public;
+        $this->container['public'] = $public;
+
         return $this;
     }
-    
+
     /**
      * Gets cause_only
      * @return bool
      */
     public function getCauseOnly()
     {
-        return $this->cause_only;
+        return $this->container['cause_only'];
     }
-  
+
     /**
      * Sets cause_only
      * @param bool $cause_only A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
@@ -1001,20 +740,20 @@ class UserVariable implements ArrayAccess
      */
     public function setCauseOnly($cause_only)
     {
-        
-        $this->cause_only = $cause_only;
+        $this->container['cause_only'] = $cause_only;
+
         return $this;
     }
-    
+
     /**
      * Gets filling_type
      * @return string
      */
     public function getFillingType()
     {
-        return $this->filling_type;
+        return $this->container['filling_type'];
     }
-  
+
     /**
      * Sets filling_type
      * @param string $filling_type 0 -> No filling, 1 -> Use filling-value
@@ -1022,20 +761,20 @@ class UserVariable implements ArrayAccess
      */
     public function setFillingType($filling_type)
     {
-        
-        $this->filling_type = $filling_type;
+        $this->container['filling_type'] = $filling_type;
+
         return $this;
     }
-    
+
     /**
      * Gets number_of_measurements
      * @return int
      */
     public function getNumberOfMeasurements()
     {
-        return $this->number_of_measurements;
+        return $this->container['number_of_measurements'];
     }
-  
+
     /**
      * Sets number_of_measurements
      * @param int $number_of_measurements Number of measurements
@@ -1043,20 +782,20 @@ class UserVariable implements ArrayAccess
      */
     public function setNumberOfMeasurements($number_of_measurements)
     {
-        
-        $this->number_of_measurements = $number_of_measurements;
+        $this->container['number_of_measurements'] = $number_of_measurements;
+
         return $this;
     }
-    
+
     /**
      * Gets number_of_processed_measurements
      * @return int
      */
     public function getNumberOfProcessedMeasurements()
     {
-        return $this->number_of_processed_measurements;
+        return $this->container['number_of_processed_measurements'];
     }
-  
+
     /**
      * Sets number_of_processed_measurements
      * @param int $number_of_processed_measurements Number of processed measurements
@@ -1064,20 +803,20 @@ class UserVariable implements ArrayAccess
      */
     public function setNumberOfProcessedMeasurements($number_of_processed_measurements)
     {
-        
-        $this->number_of_processed_measurements = $number_of_processed_measurements;
+        $this->container['number_of_processed_measurements'] = $number_of_processed_measurements;
+
         return $this;
     }
-    
+
     /**
      * Gets measurements_at_last_analysis
      * @return int
      */
     public function getMeasurementsAtLastAnalysis()
     {
-        return $this->measurements_at_last_analysis;
+        return $this->container['measurements_at_last_analysis'];
     }
-  
+
     /**
      * Sets measurements_at_last_analysis
      * @param int $measurements_at_last_analysis Number of measurements at last analysis
@@ -1085,20 +824,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMeasurementsAtLastAnalysis($measurements_at_last_analysis)
     {
-        
-        $this->measurements_at_last_analysis = $measurements_at_last_analysis;
+        $this->container['measurements_at_last_analysis'] = $measurements_at_last_analysis;
+
         return $this;
     }
-    
+
     /**
      * Gets last_unit_id
      * @return int
      */
     public function getLastUnitId()
     {
-        return $this->last_unit_id;
+        return $this->container['last_unit_id'];
     }
-  
+
     /**
      * Sets last_unit_id
      * @param int $last_unit_id ID of last Unit
@@ -1106,20 +845,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLastUnitId($last_unit_id)
     {
-        
-        $this->last_unit_id = $last_unit_id;
+        $this->container['last_unit_id'] = $last_unit_id;
+
         return $this;
     }
-    
+
     /**
      * Gets last_original_unit_id
      * @return int
      */
     public function getLastOriginalUnitId()
     {
-        return $this->last_original_unit_id;
+        return $this->container['last_original_unit_id'];
     }
-  
+
     /**
      * Sets last_original_unit_id
      * @param int $last_original_unit_id ID of last original Unit
@@ -1127,20 +866,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLastOriginalUnitId($last_original_unit_id)
     {
-        
-        $this->last_original_unit_id = $last_original_unit_id;
+        $this->container['last_original_unit_id'] = $last_original_unit_id;
+
         return $this;
     }
-    
+
     /**
      * Gets last_value
      * @return float
      */
     public function getLastValue()
     {
-        return $this->last_value;
+        return $this->container['last_value'];
     }
-  
+
     /**
      * Sets last_value
      * @param float $last_value Last Value
@@ -1148,20 +887,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLastValue($last_value)
     {
-        
-        $this->last_value = $last_value;
+        $this->container['last_value'] = $last_value;
+
         return $this;
     }
-    
+
     /**
      * Gets last_original_value
      * @return int
      */
     public function getLastOriginalValue()
     {
-        return $this->last_original_value;
+        return $this->container['last_original_value'];
     }
-  
+
     /**
      * Sets last_original_value
      * @param int $last_original_value Last original value which is stored
@@ -1169,20 +908,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLastOriginalValue($last_original_value)
     {
-        
-        $this->last_original_value = $last_original_value;
+        $this->container['last_original_value'] = $last_original_value;
+
         return $this;
     }
-    
+
     /**
      * Gets last_source_id
      * @return int
      */
     public function getLastSourceId()
     {
-        return $this->last_source_id;
+        return $this->container['last_source_id'];
     }
-  
+
     /**
      * Sets last_source_id
      * @param int $last_source_id ID of last source
@@ -1190,20 +929,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLastSourceId($last_source_id)
     {
-        
-        $this->last_source_id = $last_source_id;
+        $this->container['last_source_id'] = $last_source_id;
+
         return $this;
     }
-    
+
     /**
      * Gets number_of_correlations
      * @return int
      */
     public function getNumberOfCorrelations()
     {
-        return $this->number_of_correlations;
+        return $this->container['number_of_correlations'];
     }
-  
+
     /**
      * Sets number_of_correlations
      * @param int $number_of_correlations Number of correlations for this variable
@@ -1211,20 +950,20 @@ class UserVariable implements ArrayAccess
      */
     public function setNumberOfCorrelations($number_of_correlations)
     {
-        
-        $this->number_of_correlations = $number_of_correlations;
+        $this->container['number_of_correlations'] = $number_of_correlations;
+
         return $this;
     }
-    
+
     /**
      * Gets status
      * @return string
      */
     public function getStatus()
     {
-        return $this->status;
+        return $this->container['status'];
     }
-  
+
     /**
      * Sets status
      * @param string $status status
@@ -1232,20 +971,20 @@ class UserVariable implements ArrayAccess
      */
     public function setStatus($status)
     {
-        
-        $this->status = $status;
+        $this->container['status'] = $status;
+
         return $this;
     }
-    
+
     /**
      * Gets error_message
      * @return string
      */
     public function getErrorMessage()
     {
-        return $this->error_message;
+        return $this->container['error_message'];
     }
-  
+
     /**
      * Sets error_message
      * @param string $error_message error_message
@@ -1253,20 +992,20 @@ class UserVariable implements ArrayAccess
      */
     public function setErrorMessage($error_message)
     {
-        
-        $this->error_message = $error_message;
+        $this->container['error_message'] = $error_message;
+
         return $this;
     }
-    
+
     /**
      * Gets last_successful_update_time
      * @return \DateTime
      */
     public function getLastSuccessfulUpdateTime()
     {
-        return $this->last_successful_update_time;
+        return $this->container['last_successful_update_time'];
     }
-  
+
     /**
      * Sets last_successful_update_time
      * @param \DateTime $last_successful_update_time When this variable or its settings were last updated
@@ -1274,20 +1013,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLastSuccessfulUpdateTime($last_successful_update_time)
     {
-        
-        $this->last_successful_update_time = $last_successful_update_time;
+        $this->container['last_successful_update_time'] = $last_successful_update_time;
+
         return $this;
     }
-    
+
     /**
      * Gets standard_deviation
      * @return float
      */
     public function getStandardDeviation()
     {
-        return $this->standard_deviation;
+        return $this->container['standard_deviation'];
     }
-  
+
     /**
      * Sets standard_deviation
      * @param float $standard_deviation Standard deviation
@@ -1295,20 +1034,20 @@ class UserVariable implements ArrayAccess
      */
     public function setStandardDeviation($standard_deviation)
     {
-        
-        $this->standard_deviation = $standard_deviation;
+        $this->container['standard_deviation'] = $standard_deviation;
+
         return $this;
     }
-    
+
     /**
      * Gets variance
      * @return float
      */
     public function getVariance()
     {
-        return $this->variance;
+        return $this->container['variance'];
     }
-  
+
     /**
      * Sets variance
      * @param float $variance Variance
@@ -1316,20 +1055,20 @@ class UserVariable implements ArrayAccess
      */
     public function setVariance($variance)
     {
-        
-        $this->variance = $variance;
+        $this->container['variance'] = $variance;
+
         return $this;
     }
-    
+
     /**
      * Gets minimum_recorded_value
      * @return float
      */
     public function getMinimumRecordedValue()
     {
-        return $this->minimum_recorded_value;
+        return $this->container['minimum_recorded_value'];
     }
-  
+
     /**
      * Sets minimum_recorded_value
      * @param float $minimum_recorded_value Minimum recorded value of this variable
@@ -1337,20 +1076,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMinimumRecordedValue($minimum_recorded_value)
     {
-        
-        $this->minimum_recorded_value = $minimum_recorded_value;
+        $this->container['minimum_recorded_value'] = $minimum_recorded_value;
+
         return $this;
     }
-    
+
     /**
      * Gets maximum_recorded_daily_value
      * @return float
      */
     public function getMaximumRecordedDailyValue()
     {
-        return $this->maximum_recorded_daily_value;
+        return $this->container['maximum_recorded_daily_value'];
     }
-  
+
     /**
      * Sets maximum_recorded_daily_value
      * @param float $maximum_recorded_daily_value Maximum recorded daily value of this variable
@@ -1358,20 +1097,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMaximumRecordedDailyValue($maximum_recorded_daily_value)
     {
-        
-        $this->maximum_recorded_daily_value = $maximum_recorded_daily_value;
+        $this->container['maximum_recorded_daily_value'] = $maximum_recorded_daily_value;
+
         return $this;
     }
-    
+
     /**
      * Gets mean
      * @return float
      */
     public function getMean()
     {
-        return $this->mean;
+        return $this->container['mean'];
     }
-  
+
     /**
      * Sets mean
      * @param float $mean Mean
@@ -1379,20 +1118,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMean($mean)
     {
-        
-        $this->mean = $mean;
+        $this->container['mean'] = $mean;
+
         return $this;
     }
-    
+
     /**
      * Gets median
      * @return float
      */
     public function getMedian()
     {
-        return $this->median;
+        return $this->container['median'];
     }
-  
+
     /**
      * Sets median
      * @param float $median Median
@@ -1400,20 +1139,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMedian($median)
     {
-        
-        $this->median = $median;
+        $this->container['median'] = $median;
+
         return $this;
     }
-    
+
     /**
      * Gets most_common_unit_id
      * @return int
      */
     public function getMostCommonUnitId()
     {
-        return $this->most_common_unit_id;
+        return $this->container['most_common_unit_id'];
     }
-  
+
     /**
      * Sets most_common_unit_id
      * @param int $most_common_unit_id Most common Unit ID
@@ -1421,20 +1160,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMostCommonUnitId($most_common_unit_id)
     {
-        
-        $this->most_common_unit_id = $most_common_unit_id;
+        $this->container['most_common_unit_id'] = $most_common_unit_id;
+
         return $this;
     }
-    
+
     /**
      * Gets most_common_value
      * @return float
      */
     public function getMostCommonValue()
     {
-        return $this->most_common_value;
+        return $this->container['most_common_value'];
     }
-  
+
     /**
      * Sets most_common_value
      * @param float $most_common_value Most common value
@@ -1442,20 +1181,20 @@ class UserVariable implements ArrayAccess
      */
     public function setMostCommonValue($most_common_value)
     {
-        
-        $this->most_common_value = $most_common_value;
+        $this->container['most_common_value'] = $most_common_value;
+
         return $this;
     }
-    
+
     /**
      * Gets number_of_unique_daily_values
      * @return float
      */
     public function getNumberOfUniqueDailyValues()
     {
-        return $this->number_of_unique_daily_values;
+        return $this->container['number_of_unique_daily_values'];
     }
-  
+
     /**
      * Sets number_of_unique_daily_values
      * @param float $number_of_unique_daily_values Number of unique daily values
@@ -1463,20 +1202,20 @@ class UserVariable implements ArrayAccess
      */
     public function setNumberOfUniqueDailyValues($number_of_unique_daily_values)
     {
-        
-        $this->number_of_unique_daily_values = $number_of_unique_daily_values;
+        $this->container['number_of_unique_daily_values'] = $number_of_unique_daily_values;
+
         return $this;
     }
-    
+
     /**
      * Gets number_of_changes
      * @return int
      */
     public function getNumberOfChanges()
     {
-        return $this->number_of_changes;
+        return $this->container['number_of_changes'];
     }
-  
+
     /**
      * Sets number_of_changes
      * @param int $number_of_changes Number of changes
@@ -1484,20 +1223,20 @@ class UserVariable implements ArrayAccess
      */
     public function setNumberOfChanges($number_of_changes)
     {
-        
-        $this->number_of_changes = $number_of_changes;
+        $this->container['number_of_changes'] = $number_of_changes;
+
         return $this;
     }
-    
+
     /**
      * Gets skewness
      * @return float
      */
     public function getSkewness()
     {
-        return $this->skewness;
+        return $this->container['skewness'];
     }
-  
+
     /**
      * Sets skewness
      * @param float $skewness Skewness
@@ -1505,20 +1244,20 @@ class UserVariable implements ArrayAccess
      */
     public function setSkewness($skewness)
     {
-        
-        $this->skewness = $skewness;
+        $this->container['skewness'] = $skewness;
+
         return $this;
     }
-    
+
     /**
      * Gets kurtosis
      * @return float
      */
     public function getKurtosis()
     {
-        return $this->kurtosis;
+        return $this->container['kurtosis'];
     }
-  
+
     /**
      * Sets kurtosis
      * @param float $kurtosis Kurtosis
@@ -1526,20 +1265,20 @@ class UserVariable implements ArrayAccess
      */
     public function setKurtosis($kurtosis)
     {
-        
-        $this->kurtosis = $kurtosis;
+        $this->container['kurtosis'] = $kurtosis;
+
         return $this;
     }
-    
+
     /**
      * Gets latitude
      * @return float
      */
     public function getLatitude()
     {
-        return $this->latitude;
+        return $this->container['latitude'];
     }
-  
+
     /**
      * Sets latitude
      * @param float $latitude Latitude
@@ -1547,20 +1286,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLatitude($latitude)
     {
-        
-        $this->latitude = $latitude;
+        $this->container['latitude'] = $latitude;
+
         return $this;
     }
-    
+
     /**
      * Gets longitude
      * @return float
      */
     public function getLongitude()
     {
-        return $this->longitude;
+        return $this->container['longitude'];
     }
-  
+
     /**
      * Sets longitude
      * @param float $longitude Longitude
@@ -1568,20 +1307,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLongitude($longitude)
     {
-        
-        $this->longitude = $longitude;
+        $this->container['longitude'] = $longitude;
+
         return $this;
     }
-    
+
     /**
      * Gets location
      * @return string
      */
     public function getLocation()
     {
-        return $this->location;
+        return $this->container['location'];
     }
-  
+
     /**
      * Sets location
      * @param string $location Location
@@ -1589,20 +1328,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLocation($location)
     {
-        
-        $this->location = $location;
+        $this->container['location'] = $location;
+
         return $this;
     }
-    
+
     /**
      * Gets experiment_start_time
      * @return \DateTime
      */
     public function getExperimentStartTime()
     {
-        return $this->experiment_start_time;
+        return $this->container['experiment_start_time'];
     }
-  
+
     /**
      * Sets experiment_start_time
      * @param \DateTime $experiment_start_time Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format
@@ -1610,20 +1349,20 @@ class UserVariable implements ArrayAccess
      */
     public function setExperimentStartTime($experiment_start_time)
     {
-        
-        $this->experiment_start_time = $experiment_start_time;
+        $this->container['experiment_start_time'] = $experiment_start_time;
+
         return $this;
     }
-    
+
     /**
      * Gets experiment_end_time
      * @return \DateTime
      */
     public function getExperimentEndTime()
     {
-        return $this->experiment_end_time;
+        return $this->container['experiment_end_time'];
     }
-  
+
     /**
      * Sets experiment_end_time
      * @param \DateTime $experiment_end_time Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format
@@ -1631,20 +1370,20 @@ class UserVariable implements ArrayAccess
      */
     public function setExperimentEndTime($experiment_end_time)
     {
-        
-        $this->experiment_end_time = $experiment_end_time;
+        $this->container['experiment_end_time'] = $experiment_end_time;
+
         return $this;
     }
-    
+
     /**
      * Gets created_at
      * @return \DateTime
      */
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->container['created_at'];
     }
-  
+
     /**
      * Sets created_at
      * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
@@ -1652,20 +1391,20 @@ class UserVariable implements ArrayAccess
      */
     public function setCreatedAt($created_at)
     {
-        
-        $this->created_at = $created_at;
+        $this->container['created_at'] = $created_at;
+
         return $this;
     }
-    
+
     /**
      * Gets updated_at
      * @return \DateTime
      */
     public function getUpdatedAt()
     {
-        return $this->updated_at;
+        return $this->container['updated_at'];
     }
-  
+
     /**
      * Sets updated_at
      * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
@@ -1673,20 +1412,20 @@ class UserVariable implements ArrayAccess
      */
     public function setUpdatedAt($updated_at)
     {
-        
-        $this->updated_at = $updated_at;
+        $this->container['updated_at'] = $updated_at;
+
         return $this;
     }
-    
+
     /**
      * Gets outcome
      * @return bool
      */
     public function getOutcome()
     {
-        return $this->outcome;
+        return $this->container['outcome'];
     }
-  
+
     /**
      * Sets outcome
      * @param bool $outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
@@ -1694,20 +1433,20 @@ class UserVariable implements ArrayAccess
      */
     public function setOutcome($outcome)
     {
-        
-        $this->outcome = $outcome;
+        $this->container['outcome'] = $outcome;
+
         return $this;
     }
-    
+
     /**
      * Gets sources
      * @return string
      */
     public function getSources()
     {
-        return $this->sources;
+        return $this->container['sources'];
     }
-  
+
     /**
      * Sets sources
      * @param string $sources Comma-separated list of source names to limit variables to those sources
@@ -1715,20 +1454,20 @@ class UserVariable implements ArrayAccess
      */
     public function setSources($sources)
     {
-        
-        $this->sources = $sources;
+        $this->container['sources'] = $sources;
+
         return $this;
     }
-    
+
     /**
      * Gets earliest_source_time
      * @return int
      */
     public function getEarliestSourceTime()
     {
-        return $this->earliest_source_time;
+        return $this->container['earliest_source_time'];
     }
-  
+
     /**
      * Sets earliest_source_time
      * @param int $earliest_source_time Earliest source time
@@ -1736,20 +1475,20 @@ class UserVariable implements ArrayAccess
      */
     public function setEarliestSourceTime($earliest_source_time)
     {
-        
-        $this->earliest_source_time = $earliest_source_time;
+        $this->container['earliest_source_time'] = $earliest_source_time;
+
         return $this;
     }
-    
+
     /**
      * Gets latest_source_time
      * @return int
      */
     public function getLatestSourceTime()
     {
-        return $this->latest_source_time;
+        return $this->container['latest_source_time'];
     }
-  
+
     /**
      * Sets latest_source_time
      * @param int $latest_source_time Latest source time
@@ -1757,20 +1496,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLatestSourceTime($latest_source_time)
     {
-        
-        $this->latest_source_time = $latest_source_time;
+        $this->container['latest_source_time'] = $latest_source_time;
+
         return $this;
     }
-    
+
     /**
      * Gets earliest_measurement_time
      * @return int
      */
     public function getEarliestMeasurementTime()
     {
-        return $this->earliest_measurement_time;
+        return $this->container['earliest_measurement_time'];
     }
-  
+
     /**
      * Sets earliest_measurement_time
      * @param int $earliest_measurement_time Earliest measurement time
@@ -1778,20 +1517,20 @@ class UserVariable implements ArrayAccess
      */
     public function setEarliestMeasurementTime($earliest_measurement_time)
     {
-        
-        $this->earliest_measurement_time = $earliest_measurement_time;
+        $this->container['earliest_measurement_time'] = $earliest_measurement_time;
+
         return $this;
     }
-    
+
     /**
      * Gets latest_measurement_time
      * @return int
      */
     public function getLatestMeasurementTime()
     {
-        return $this->latest_measurement_time;
+        return $this->container['latest_measurement_time'];
     }
-  
+
     /**
      * Sets latest_measurement_time
      * @param int $latest_measurement_time Latest measurement time
@@ -1799,20 +1538,20 @@ class UserVariable implements ArrayAccess
      */
     public function setLatestMeasurementTime($latest_measurement_time)
     {
-        
-        $this->latest_measurement_time = $latest_measurement_time;
+        $this->container['latest_measurement_time'] = $latest_measurement_time;
+
         return $this;
     }
-    
+
     /**
      * Gets earliest_filling_time
      * @return int
      */
     public function getEarliestFillingTime()
     {
-        return $this->earliest_filling_time;
+        return $this->container['earliest_filling_time'];
     }
-  
+
     /**
      * Sets earliest_filling_time
      * @param int $earliest_filling_time Earliest filling time
@@ -1820,20 +1559,20 @@ class UserVariable implements ArrayAccess
      */
     public function setEarliestFillingTime($earliest_filling_time)
     {
-        
-        $this->earliest_filling_time = $earliest_filling_time;
+        $this->container['earliest_filling_time'] = $earliest_filling_time;
+
         return $this;
     }
-    
+
     /**
      * Gets latest_filling_time
      * @return int
      */
     public function getLatestFillingTime()
     {
-        return $this->latest_filling_time;
+        return $this->container['latest_filling_time'];
     }
-  
+
     /**
      * Sets latest_filling_time
      * @param int $latest_filling_time Latest filling time
@@ -1841,62 +1580,65 @@ class UserVariable implements ArrayAccess
      */
     public function setLatestFillingTime($latest_filling_time)
     {
-        
-        $this->latest_filling_time = $latest_filling_time;
+        $this->container['latest_filling_time'] = $latest_filling_time;
+
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return boolean
      */
     public function offsetExists($offset)
     {
-        return isset($this->$offset);
+        return isset($this->container[$offset]);
     }
-  
+
     /**
      * Gets offset.
-     * @param  integer $offset Offset 
-     * @return mixed 
+     * @param  integer $offset Offset
+     * @return mixed
      */
     public function offsetGet($offset)
     {
-        return $this->$offset;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
-  
+
     /**
      * Sets value based on offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @param  mixed   $value  Value to be set
      * @return void
      */
     public function offsetSet($offset, $value)
     {
-        $this->$offset = $value;
+        if (is_null($offset)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$offset] = $value;
+        }
     }
-  
+
     /**
      * Unsets offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return void
      */
     public function offsetUnset($offset)
     {
-        unset($this->$offset);
+        unset($this->container[$offset]);
     }
-  
+
     /**
      * Gets the string presentation of the object
      * @return string
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

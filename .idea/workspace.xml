@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4956b5fe-b219-4946-a6ee-e25f80b5543a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/composerJson.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/autoload.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/composer.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/ApplicationEndpointsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/AuthenticationApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/ConnectorsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/CorrelationsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/MeasurementsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/OrganizationsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/PairsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/RemindersApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/TagsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/UnitsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/UserApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/VariablesApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Api/VotesApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/CommonResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Connection.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Connector.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/ConnectorInfo.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/ConnectorInfoHistoryItem.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/ConnectorInstruction.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/ConversionStep.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Correlation.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Credential.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/HumanTime.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse200.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2001.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse20010.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse20011.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse20012.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2002.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2003.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2004.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2005.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2006.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2007.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2008.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/InlineResponse2009.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/JsonErrorResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Measurement.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/MeasurementDelete.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/MeasurementRange.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/MeasurementSet.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/MeasurementSource.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Pairs.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Permission.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/PostCorrelation.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/PostVote.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/TrackingReminder.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/TrackingReminderDelete.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/TrackingReminderNotification.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/TrackingReminderNotificationSkip.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/TrackingReminderNotificationSnooze.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/TrackingReminderNotificationTrack.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Unit.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UnitCategory.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Update.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/User.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserTag.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserTokenFailedResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserTokenRequest.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserTokenRequestInnerUserField.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserTokenSuccessfulResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserTokenSuccessfulResponseInnerUserField.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserVariable.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserVariableRelationship.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/UserVariables.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/ValueObject.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Variable.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/VariableCategory.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/VariableNew.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/VariableUserSource.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/VariablesNew.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/Vote.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/docs/Model/VoteDelete.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/git_push.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/ApplicationEndpointsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/AuthenticationApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/ConnectorsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/CorrelationsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/MeasurementsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/OrganizationsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/PairsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/RemindersApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/TagsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/UnitsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/UserApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/VariablesApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Api/VotesApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/ApiClient.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/ApiException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Configuration.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/CommonResponse.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Connection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Connector.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/ConnectorInfo.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/ConnectorInfoHistoryItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/ConnectorInstruction.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/ConversionStep.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Correlation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Credential.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/HumanTime.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse200.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2001.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse20010.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse20011.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse20012.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2002.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2003.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2004.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2005.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2006.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2007.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2008.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/InlineResponse2009.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/JsonErrorResponse.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Measurement.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/MeasurementDelete.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/MeasurementRange.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/MeasurementSet.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/MeasurementSource.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Pairs.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Permission.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/PostCorrelation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/PostVote.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/TrackingReminder.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/TrackingReminderDelete.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/TrackingReminderNotification.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/TrackingReminderNotificationSkip.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/TrackingReminderNotificationSnooze.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/TrackingReminderNotificationTrack.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Unit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UnitCategory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Update.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/User.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserTag.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserTokenFailedResponse.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserTokenRequest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserTokenRequestInnerUserField.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserTokenSuccessfulResponse.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserTokenSuccessfulResponseInnerUserField.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserVariable.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserVariableRelationship.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/UserVariables.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/ValueObject.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Variable.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/VariableCategory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/VariableNew.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/VariableUserSource.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/VariablesNew.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/Vote.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/Model/VoteDelete.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/lib/ObjectSerializer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/ApplicationEndpointsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/AuthenticationApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/ConnectorsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/CorrelationsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/MeasurementsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/OrganizationsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/PairsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/RemindersApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/TagsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/UnitsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/UserApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/VariablesApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Api/VotesApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/CommonResponseTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/ConnectionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/ConnectorInfoHistoryItemTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/ConnectorInfoTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/ConnectorInstructionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/ConnectorTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/ConversionStepTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/CorrelationTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/CredentialTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/HumanTimeTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse20010Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse20011Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse20012Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2001Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2002Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2003Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2004Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2005Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2006Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2007Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2008Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse2009Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/InlineResponse200Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/JsonErrorResponseTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/MeasurementDeleteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/MeasurementRangeTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/MeasurementSetTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/MeasurementSourceTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/MeasurementTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/PairsTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/PermissionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/PostCorrelationTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/PostVoteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/TrackingReminderDeleteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/TrackingReminderNotificationSkipTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/TrackingReminderNotificationSnoozeTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/TrackingReminderNotificationTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/TrackingReminderNotificationTrackTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/TrackingReminderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UnitCategoryTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UnitTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UpdateTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserTagTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserTokenFailedResponseTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserTokenRequestInnerUserFieldTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserTokenRequestTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserTokenSuccessfulResponseInnerUserFieldTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserTokenSuccessfulResponseTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserVariableRelationshipTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserVariableTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/UserVariablesTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/ValueObjectTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/VariableCategoryTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/VariableNewTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/VariableTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/VariableUserSourceTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/VariablesNewTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/VoteDeleteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SwaggerClient-php/test/Model/VoteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/autoload.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/composer.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/ApplicationEndpointsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/AuthenticationApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/CommonResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Connection.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Connector.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/ConnectorInfo.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/ConnectorInfoHistoryItem.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/ConnectorInstruction.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/ConnectorsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/ConversionStep.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Correlation.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/CorrelationsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Credential.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/HumanTime.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse200.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2001.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse20010.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse20011.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse20012.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2002.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2003.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2004.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2005.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2006.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2007.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2008.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/InlineResponse2009.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/JsonErrorResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Measurement.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/MeasurementDelete.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/MeasurementRange.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/MeasurementSet.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/MeasurementSource.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/MeasurementsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/OrganizationsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Pairs.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/PairsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Permission.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/PostCorrelation.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/PostVote.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/RemindersApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/TagsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/TrackingReminder.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/TrackingReminderDelete.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/TrackingReminderNotification.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/TrackingReminderNotificationSkip.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/TrackingReminderNotificationSnooze.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/TrackingReminderNotificationTrack.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Unit.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UnitCategory.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UnitsApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Update.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/User.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserTag.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserTokenFailedResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserTokenRequest.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserTokenRequestInnerUserField.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserTokenSuccessfulResponse.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserTokenSuccessfulResponseInnerUserField.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserVariable.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserVariableRelationship.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/UserVariables.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/ValueObject.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Variable.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/VariableCategory.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/VariableNew.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/VariableUserSource.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/VariablesApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/VariablesNew.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Vote.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/VoteDelete.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/VotesApi.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/git_push.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/AggregatedCorrelationApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/ApplicationEndpointsApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/CommonVariableRelationshipApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/ConnectionApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/ConnectorApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/CorrelationApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/CredentialApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/MeasurementApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/SourceApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/TrackingReminderApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/UnitApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/UnitCategoryApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/UpdateApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/UserVariableApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/UserVariableRelationshipApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/VariableApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/VariableCategoryApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/VariableUserSourceApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Api/VoteApi.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/ApiClient.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/ApiException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Configuration.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/AggregatedCorrelation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/CommonVariableRelationship.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Connection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Connector.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Correlation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Credential.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse200.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2001.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20010.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20011.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20012.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20013.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20014.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20015.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20016.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20017.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20018.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20019.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2002.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20020.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20021.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20022.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20023.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20024.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20025.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20026.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20027.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20028.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20029.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2003.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20030.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20031.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20032.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20033.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20034.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20035.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse20036.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2004.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2005.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2006.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2007.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2008.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/InlineResponse2009.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Measurement.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/MeasurementExport.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/MeasurementPost.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/MeasurementValue.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Source.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/TrackingReminder.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Unit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/UnitCategory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/UnitConversion.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Update.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/UserVariable.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/UserVariableRelationship.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Variable.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/VariableCategory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/VariableUserSource.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Model/Vote.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/ObjectSerializer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/AggregatedCorrelationApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/AggregatedCorrelationTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/ApplicationEndpointsApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/CommonVariableRelationshipApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/CommonVariableRelationshipTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/ConnectionApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/ConnectionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/ConnectorApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/ConnectorTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/CorrelationApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/CorrelationTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/CredentialApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/CredentialTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20010Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20011Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20012Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20013Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20014Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20015Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20016Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20017Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20018Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20019Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2001Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20020Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20021Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20022Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20023Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20024Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20025Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20026Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20027Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20028Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20029Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2002Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20030Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20031Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20032Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20033Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20034Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20035Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse20036Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2003Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2004Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2005Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2006Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2007Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2008Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse2009Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/InlineResponse200Test.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/MeasurementApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/MeasurementExportTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/MeasurementPostTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/MeasurementTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/MeasurementValueTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/SourceApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/SourceTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/TrackingReminderApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/TrackingReminderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UnitApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UnitCategoryApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UnitCategoryTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UnitConversionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UnitTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UpdateApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UpdateTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UserVariableApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UserVariableRelationshipApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UserVariableRelationshipTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/UserVariableTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VariableApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VariableCategoryApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VariableCategoryTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VariableTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VariableUserSourceApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VariableUserSourceTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VoteApiTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Tests/VoteTest.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+    </list>
+    <ignored path="quantimodo-sdk-php.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="quantimodo-sdk-php" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-3242">
+                <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+                <folding>
+                  <marker date="1467122779155" expanded="true" signature="9461:9737" ph="..." />
+                  <marker date="1467122779155" expanded="true" signature="9519:9712" ph="..." />
+                  <marker date="1467122779155" expanded="true" signature="9761:9879" ph="..." />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="git_push.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/git_push.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="autoload.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autoload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/SwaggerClient-php/composer.json" />
+        <option value="$PROJECT_DIR$/git_push.sh" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1932" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quantimodo-sdk-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quantimodo-sdk-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quantimodo-sdk-php" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quantimodo-sdk-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quantimodo-sdk-php" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quantimodo-sdk-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quantimodo-sdk-php" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Api" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="C:\Program Files\Git\bin\bash.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4956b5fe-b219-4946-a6ee-e25f80b5543a" name="Default" comment="" />
+      <created>1467122285313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1467122285313</updated>
+      <workItem from="1467122287116" duration="496000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="496000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22542734" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/SwaggerClient-php/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SwaggerClient-php/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SwaggerClient-php/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SwaggerClient-php/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="204">
+            <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SwaggerClient-php/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/git_push.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-3242">
+            <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+            <folding>
+              <marker date="1467122779155" expanded="true" signature="9461:9737" ph="..." />
+              <marker date="1467122779155" expanded="true" signature="9519:9712" ph="..." />
+              <marker date="1467122779155" expanded="true" signature="9761:9879" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

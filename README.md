@@ -1,11 +1,10 @@
-# QuantiModo SDK for PHP
-Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.\n\n\n\n\n\n\n\n\nBefore you get started, you will need to:\n* Sign in/Sign up, and add some data at [https://quantipress.quantimo.do/import-data/](https://quantipress.quantimo.do/import-data/) to try out the API for yourself\n* As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.\n\n\n\n\n## Application Endpoints\nThese endpoints give you access to all authorized users' data for that application.\n### Getting Application Token\nMake a `POST` request to `/api/v2/oauth/access_token`\n\n\n\n\n\n\n\n * `grant_type` Must be `client_credentials`.\n\n\n\n\n\n\n\n * `clientId` Your application's clientId.\n\n\n\n\n\n\n\n * `client_secret` Your application's client_secret.\n\n\n\n\n\n\n\n * `redirect_uri` Your application's redirect url.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Example Queries\n### Query Options\nThe standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API:\n<table>\n\n\n\n\n\n\n\n    <thead>\n\n\n\n\n\n\n\n        <tr>\n\n\n\n\n\n\n\n            <th>Parameter</th>\n\n\n\n\n\n\n\n            <th>Description</th>\n\n\n\n\n\n\n\n        </tr>\n\n\n\n\n\n\n\n    </thead>\n\n\n\n\n\n\n\n    <tbody>\n\n\n\n\n\n\n\n        <tr>\n\n\n\n\n\n\n\n            <td>limit</td>\n\n\n\n\n\n\n\n            <td>The LIMIT is used to limit the number of results returned.\n\nSo\nif you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>\n\n\n\n\n\n\n\n        </tr>\n\n\n\n\n\n\n\n        <tr>\n\n\n\n\n\n\n\n            <td>offset</td>\n\n\n\n\n\n\n\n            <td>Suppose you wanted to show results 11-20. You'd set the\n\n\n\noffset to 10 and the limit to 10.</td>\n\n\n\n\n\n\n\n        </tr>\n\n\n\n\n\n\n\n        <tr>\n\n\n\n\n\n\n\n            <td>sort</td>\n\n\n\n\n\n\n\n            <td>Sort by given field. If the field is prefixed with '-', it\n\n\n\nwill sort in descending order.</td>\n\n\n\n\n\n\n\n        </tr>\n\n\n\n\n\n\n\n    </tbody>\n\n\n\n\n\n\n\n</table>\n\n\n\n\n\n\n\n\n### Pagination Conventions\nSince the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,\n\n\n\n\n\n\n\n\n`/v2/variables?limit=20&offset=60`\n\n\n\n\n\n\n\n\nGenerally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append\n\n\n\n\n\n\n\n\n`?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`\n\n\n\n\n\n\n\n\nto your request.\n\n\n\n\n\n\n\n\nAlso for better pagination, you can get link to the records of first, last, next and previous page from response headers:\n* `Total-Count` - Total number of results for given query\n* `Link-First` - Link to get first page records\n* `Link-Last` - Link to get last page records\n* `Link-Prev` - Link to get previous records set\n* `Link-Next` - Link to get next records set\n\n\n\n\n\n\n\n\nRemember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.\n\n\n\n\n\n\n\n\n### Filter operators support\nAPI supports the following operators with filter parameters:\n<br>\n**Comparison operators**\n\n\n\n\n\n\n\n\nComparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available:\n* `gt` for `greater than` comparison\n* `ge` for `greater than or equal` comparison\n* `lt` for `less than` comparison\n* `le` for `less than or equal` comparison\n\n\n\n\n\n\n\n\nThey are included in queries using the following format:\n\n\n\n\n\n\n\n\n`(<operator>)<value>`\n\n\n\n\n\n\n\n\nFor example, in order to filter value which is greater than 21, the following query parameter should be used:\n\n\n\n\n\n\n\n\n`?value=(gt)21`\n<br><br>\n**Equals/In Operators**\n\n\n\n\n\n\n\n\nIt also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:\n\n\n\n\n\n\n\n\n`?value=42`\n\n\n\n\n\n\n\n\nIn order to filter records which have value 42 or 43, the following query should be used:\n\n\n\n\n\n\n\n\n`?value=42,43`\n<br><br>\n**Like operators**\n\n\n\n\n\n\n\n\nLike operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:\n\n\n\n\n\n\n\n\n`?category=Food%`\n<br><br>\n**Negation operator**\n\n\n\n\n\n\n\n\nIt is possible to get negated results of a query by prefixed the operator with `!`. Some examples:\n\n\n\n\n\n\n\n\n`//filter records except those with value are not 42 or 43`<br>\n`?value=!42,43`\n\n\n\n\n\n\n\n\n`//filter records with value not greater than 21`<br>\n`?value=!(ge)21`\n<br><br>\n**Multiple constraints for single attribute**\n\n\n\n\n\n\n\n\nIt is possible to apply multiple constraints by providing an array of query filters:\n\n\n\n\n\n\n\n\nFilter all records which value is greater than 20.2 and less than 20.3<br>\n`?value[]=(gt)20.2&value[]=(lt)20.3`\n\n\n\n\n\n\n\n\nFilter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br>\n`?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+# quantimodo-sdk-php
+Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
 
 This PHP package is automatically generated by the [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) project:
 
-- API version: 1.3.9
-- Package version: 1.0.0
-- Build date: 2016-04-04T03:44:03.384Z
+- API version: 2.0.6
+- Build date: 2016-06-24T22:12:02.686Z
 - Build package: class io.swagger.codegen.languages.PhpClientCodegen
 
 ## Requirements
@@ -22,11 +21,11 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/YOUR_GIT_USR_ID/YOUR_GIT_REPO_ID.git"
+      "url": "https://github.com/QuantiModo/quantimodo-sdk-php.git"
     }
   ],
   "require": {
-    "YOUR_GIT_USR_ID/YOUR_GIT_REPO_ID": "*@dev"
+    "QuantiModo/quantimodo-sdk-php": "*@dev"
   }
 }
 ```
@@ -38,10 +37,10 @@ Then run `composer install`
 Download the files and include `autoload.php`:
 
 ```php
-    require_once('/path/to/SwaggerClient-php/autoload.php');
+    require_once('/path/to/quantimodo-sdk-php/autoload.php');
 ```
 
-## Tests 
+## Tests
 
 To run the unit tests:
 
@@ -62,8 +61,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. BEARER) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'BEARER');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
@@ -84,7 +83,7 @@ try {
     $result = $api_instance->v2ApplicationConnectionsGet($access_token, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationConnectionsGet: ', $e->getMessage(), "\n";
+    echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationConnectionsGet: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -92,148 +91,150 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://localhost/api*
+All URIs are relative to *https://app.quantimo.do/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApplicationEndpointsApi* | [**v2ApplicationConnectionsGet**](docs/ApplicationEndpointsApi.md#v2applicationconnectionsget) | **GET** /v2/application/connections | Get all Connections
-*ApplicationEndpointsApi* | [**v2ApplicationCredentialsGet**](docs/ApplicationEndpointsApi.md#v2applicationcredentialsget) | **GET** /v2/application/credentials | Get all Credentials
-*ApplicationEndpointsApi* | [**v2ApplicationMeasurementsGet**](docs/ApplicationEndpointsApi.md#v2applicationmeasurementsget) | **GET** /v2/application/measurements | Get measurements for all users using your application
-*ApplicationEndpointsApi* | [**v2ApplicationTrackingRemindersGet**](docs/ApplicationEndpointsApi.md#v2applicationtrackingremindersget) | **GET** /v2/application/trackingReminders | Get tracking reminders
-*ApplicationEndpointsApi* | [**v2ApplicationUpdatesGet**](docs/ApplicationEndpointsApi.md#v2applicationupdatesget) | **GET** /v2/application/updates | Get all Updates
-*ApplicationEndpointsApi* | [**v2ApplicationUserVariableRelationshipsGet**](docs/ApplicationEndpointsApi.md#v2applicationuservariablerelationshipsget) | **GET** /v2/application/userVariableRelationships | Get all UserVariableRelationships
-*ApplicationEndpointsApi* | [**v2ApplicationUserVariablesGet**](docs/ApplicationEndpointsApi.md#v2applicationuservariablesget) | **GET** /v2/application/userVariables | Get all UserVariables
-*ApplicationEndpointsApi* | [**v2ApplicationVariableUserSourcesGet**](docs/ApplicationEndpointsApi.md#v2applicationvariableusersourcesget) | **GET** /v2/application/variableUserSources | Get all VariableUserSources
-*ApplicationEndpointsApi* | [**v2ApplicationVotesGet**](docs/ApplicationEndpointsApi.md#v2applicationvotesget) | **GET** /v2/application/votes | Get all Votes
-*AuthenticationApi* | [**v2AuthSocialAuthorizeCodeGet**](docs/AuthenticationApi.md#v2authsocialauthorizecodeget) | **GET** /v2/auth/social/authorizeCode | Second Step in Social Authentication flow with JWT Token
-*AuthenticationApi* | [**v2AuthSocialAuthorizeTokenGet**](docs/AuthenticationApi.md#v2authsocialauthorizetokenget) | **GET** /v2/auth/social/authorizeToken | Native Social Authentication
-*AuthenticationApi* | [**v2AuthSocialLoginGet**](docs/AuthenticationApi.md#v2authsocialloginget) | **GET** /v2/auth/social/login | First Setp in Social Authentication flow with JWT Token
-*AuthenticationApi* | [**v2Oauth2AccessTokenGet**](docs/AuthenticationApi.md#v2oauth2accesstokenget) | **GET** /v2/oauth2/access_token | Get a user access token
-*AuthenticationApi* | [**v2OauthAuthorizeGet**](docs/AuthenticationApi.md#v2oauthauthorizeget) | **GET** /v2/oauth/authorize | Request Authorization Code
-*ConnectorsApi* | [**v1ConnectJsGet**](docs/ConnectorsApi.md#v1connectjsget) | **GET** /v1/connect.js | Get embeddable connect javascript
-*ConnectorsApi* | [**v1ConnectMobileGet**](docs/ConnectorsApi.md#v1connectmobileget) | **GET** /v1/connect/mobile | Mobile connect page
-*ConnectorsApi* | [**v1ConnectorsConnectorConnectGet**](docs/ConnectorsApi.md#v1connectorsconnectorconnectget) | **GET** /v1/connectors/{connector}/connect | Obtain a token from 3rd party data source
-*ConnectorsApi* | [**v1ConnectorsConnectorConnectInstructionsGet**](docs/ConnectorsApi.md#v1connectorsconnectorconnectinstructionsget) | **GET** /v1/connectors/{connector}/connectInstructions | Connection Instructions
-*ConnectorsApi* | [**v1ConnectorsConnectorConnectParameterGet**](docs/ConnectorsApi.md#v1connectorsconnectorconnectparameterget) | **GET** /v1/connectors/{connector}/connectParameter | Connect Parameter
-*ConnectorsApi* | [**v1ConnectorsConnectorDisconnectGet**](docs/ConnectorsApi.md#v1connectorsconnectordisconnectget) | **GET** /v1/connectors/{connector}/disconnect | Delete stored connection info
-*ConnectorsApi* | [**v1ConnectorsConnectorInfoGet**](docs/ConnectorsApi.md#v1connectorsconnectorinfoget) | **GET** /v1/connectors/{connector}/info | Get connector info for user
-*ConnectorsApi* | [**v1ConnectorsConnectorUpdateGet**](docs/ConnectorsApi.md#v1connectorsconnectorupdateget) | **GET** /v1/connectors/{connector}/update | Sync with data source
-*ConnectorsApi* | [**v1ConnectorsListGet**](docs/ConnectorsApi.md#v1connectorslistget) | **GET** /v1/connectors/list | List of Connectors
-*CorrelationsApi* | [**v1AggregatedCorrelationsGet**](docs/CorrelationsApi.md#v1aggregatedcorrelationsget) | **GET** /v1/aggregatedCorrelations | Get aggregated correlations
-*CorrelationsApi* | [**v1AggregatedCorrelationsPost**](docs/CorrelationsApi.md#v1aggregatedcorrelationspost) | **POST** /v1/aggregatedCorrelations | Store or Update a Correlation
-*CorrelationsApi* | [**v1CorrelationsGet**](docs/CorrelationsApi.md#v1correlationsget) | **GET** /v1/correlations | Get correlations
-*CorrelationsApi* | [**v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet**](docs/CorrelationsApi.md#v1organizationsorganizationidusersuseridvariablesvariablenamecausesget) | **GET** /v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/causes | Search user correlations for a given cause
-*CorrelationsApi* | [**v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet**](docs/CorrelationsApi.md#v1organizationsorganizationidusersuseridvariablesvariablenameeffectsget) | **GET** /v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/effects | Search user correlations for a given cause
-*CorrelationsApi* | [**v1PublicCorrelationsSearchSearchGet**](docs/CorrelationsApi.md#v1publiccorrelationssearchsearchget) | **GET** /v1/public/correlations/search/{search} | Get average correlations for variables containing search term
-*CorrelationsApi* | [**v1VariablesVariableNameCausesGet**](docs/CorrelationsApi.md#v1variablesvariablenamecausesget) | **GET** /v1/variables/{variableName}/causes | Search user correlations for a given effect
-*CorrelationsApi* | [**v1VariablesVariableNameEffectsGet**](docs/CorrelationsApi.md#v1variablesvariablenameeffectsget) | **GET** /v1/variables/{variableName}/effects | Search user correlations for a given cause
-*CorrelationsApi* | [**v1VariablesVariableNamePublicCausesGet**](docs/CorrelationsApi.md#v1variablesvariablenamepubliccausesget) | **GET** /v1/variables/{variableName}/public/causes | Search public correlations for a given effect
-*CorrelationsApi* | [**v1VariablesVariableNamePublicEffectsGet**](docs/CorrelationsApi.md#v1variablesvariablenamepubliceffectsget) | **GET** /v1/variables/{variableName}/public/effects | Search public correlations for a given cause
-*CorrelationsApi* | [**v1VotesDeletePost**](docs/CorrelationsApi.md#v1votesdeletepost) | **POST** /v1/votes/delete | Delete vote
-*CorrelationsApi* | [**v1VotesPost**](docs/CorrelationsApi.md#v1votespost) | **POST** /v1/votes | Post or update vote
-*MeasurementsApi* | [**v1MeasurementSourcesGet**](docs/MeasurementsApi.md#v1measurementsourcesget) | **GET** /v1/measurementSources | Get measurement sources
-*MeasurementsApi* | [**v1MeasurementSourcesPost**](docs/MeasurementsApi.md#v1measurementsourcespost) | **POST** /v1/measurementSources | Add a data source
-*MeasurementsApi* | [**v1MeasurementsDailyGet**](docs/MeasurementsApi.md#v1measurementsdailyget) | **GET** /v1/measurements/daily | Get daily measurements for this user
-*MeasurementsApi* | [**v1MeasurementsDeletePost**](docs/MeasurementsApi.md#v1measurementsdeletepost) | **POST** /v1/measurements/delete | Delete a measurement
-*MeasurementsApi* | [**v1MeasurementsGet**](docs/MeasurementsApi.md#v1measurementsget) | **GET** /v1/measurements | Get measurements for this user
-*MeasurementsApi* | [**v1MeasurementsPost**](docs/MeasurementsApi.md#v1measurementspost) | **POST** /v1/measurements | Post a new set or update existing measurements to the database
-*MeasurementsApi* | [**v1MeasurementsRangeGet**](docs/MeasurementsApi.md#v1measurementsrangeget) | **GET** /v1/measurementsRange | Get measurements range for this user
-*MeasurementsApi* | [**v2MeasurementsCsvGet**](docs/MeasurementsApi.md#v2measurementscsvget) | **GET** /v2/measurements/csv | Get Measurements CSV
-*MeasurementsApi* | [**v2MeasurementsIdDelete**](docs/MeasurementsApi.md#v2measurementsiddelete) | **DELETE** /v2/measurements/{id} | Delete Measurement
-*MeasurementsApi* | [**v2MeasurementsIdGet**](docs/MeasurementsApi.md#v2measurementsidget) | **GET** /v2/measurements/{id} | Get Measurement
-*MeasurementsApi* | [**v2MeasurementsIdPut**](docs/MeasurementsApi.md#v2measurementsidput) | **PUT** /v2/measurements/{id} | Update Measurement
-*MeasurementsApi* | [**v2MeasurementsRequestCsvPost**](docs/MeasurementsApi.md#v2measurementsrequestcsvpost) | **POST** /v2/measurements/request_csv | Post Request for Measurements CSV
-*OrganizationsApi* | [**v1OrganizationsOrganizationIdUsersPost**](docs/OrganizationsApi.md#v1organizationsorganizationiduserspost) | **POST** /v1/organizations/{organizationId}/users | Get user tokens for existing users, create new users
-*PairsApi* | [**v1PairsCsvGet**](docs/PairsApi.md#v1pairscsvget) | **GET** /v1/pairsCsv | Get pairs
-*PairsApi* | [**v1PairsGet**](docs/PairsApi.md#v1pairsget) | **GET** /v1/pairs | Get pairs
-*RemindersApi* | [**v1TrackingReminderNotificationsGet**](docs/RemindersApi.md#v1trackingremindernotificationsget) | **GET** /v1/trackingReminderNotifications | Get specific pending tracking reminders
-*RemindersApi* | [**v1TrackingReminderNotificationsSkipPost**](docs/RemindersApi.md#v1trackingremindernotificationsskippost) | **POST** /v1/trackingReminderNotifications/skip | Skip a pending tracking reminder
-*RemindersApi* | [**v1TrackingReminderNotificationsSnoozePost**](docs/RemindersApi.md#v1trackingremindernotificationssnoozepost) | **POST** /v1/trackingReminderNotifications/snooze | Snooze a pending tracking reminder
-*RemindersApi* | [**v1TrackingReminderNotificationsTrackPost**](docs/RemindersApi.md#v1trackingremindernotificationstrackpost) | **POST** /v1/trackingReminderNotifications/track | Track a pending tracking reminder
-*RemindersApi* | [**v1TrackingRemindersDeletePost**](docs/RemindersApi.md#v1trackingremindersdeletepost) | **POST** /v1/trackingReminders/delete | Delete tracking reminder
-*RemindersApi* | [**v1TrackingRemindersGet**](docs/RemindersApi.md#v1trackingremindersget) | **GET** /v1/trackingReminders | Get repeating tracking reminder settings
-*RemindersApi* | [**v1TrackingRemindersPost**](docs/RemindersApi.md#v1trackingreminderspost) | **POST** /v1/trackingReminders | Store a Tracking Reminder
-*TagsApi* | [**v1UserTagsDeletePost**](docs/TagsApi.md#v1usertagsdeletepost) | **POST** /v1/userTags/delete | Delete user tag or ingredient
-*TagsApi* | [**v1UserTagsPost**](docs/TagsApi.md#v1usertagspost) | **POST** /v1/userTags | Post or update user tags or ingredients
-*UnitsApi* | [**v1UnitCategoriesGet**](docs/UnitsApi.md#v1unitcategoriesget) | **GET** /v1/unitCategories | Get unit categories
-*UnitsApi* | [**v1UnitsGet**](docs/UnitsApi.md#v1unitsget) | **GET** /v1/units | Get all available units
-*UnitsApi* | [**v1UnitsVariableGet**](docs/UnitsApi.md#v1unitsvariableget) | **GET** /v1/unitsVariable | Units for Variable
-*UserApi* | [**v1OrganizationsOrganizationIdUsersPost**](docs/UserApi.md#v1organizationsorganizationiduserspost) | **POST** /v1/organizations/{organizationId}/users | Get user tokens for existing users, create new users
-*UserApi* | [**v1UserMeGet**](docs/UserApi.md#v1usermeget) | **GET** /v1/user/me | Get all available units for variableGet authenticated user
-*VariablesApi* | [**v1PublicVariablesGet**](docs/VariablesApi.md#v1publicvariablesget) | **GET** /v1/public/variables | Get public variables
-*VariablesApi* | [**v1PublicVariablesSearchSearchGet**](docs/VariablesApi.md#v1publicvariablessearchsearchget) | **GET** /v1/public/variables/search/{search} | Get top 5 PUBLIC variables with the most correlations
-*VariablesApi* | [**v1UserVariablesPost**](docs/VariablesApi.md#v1uservariablespost) | **POST** /v1/userVariables | Update User Settings for a Variable
-*VariablesApi* | [**v1VariableCategoriesGet**](docs/VariablesApi.md#v1variablecategoriesget) | **GET** /v1/variableCategories | Variable categories
-*VariablesApi* | [**v1VariablesGet**](docs/VariablesApi.md#v1variablesget) | **GET** /v1/variables | Get variables by the category name
-*VariablesApi* | [**v1VariablesPost**](docs/VariablesApi.md#v1variablespost) | **POST** /v1/variables | Create Variables
-*VariablesApi* | [**v1VariablesSearchSearchGet**](docs/VariablesApi.md#v1variablessearchsearchget) | **GET** /v1/variables/search/{search} | Get variables by search query
-*VariablesApi* | [**v1VariablesVariableNameGet**](docs/VariablesApi.md#v1variablesvariablenameget) | **GET** /v1/variables/{variableName} | Get info about a variable
-*VotesApi* | [**v1VotesDeletePost**](docs/VotesApi.md#v1votesdeletepost) | **POST** /v1/votes/delete | Delete vote
-*VotesApi* | [**v1VotesPost**](docs/VotesApi.md#v1votespost) | **POST** /v1/votes | Post or update vote
+*ApplicationEndpointsApi* | [**v2ApplicationConnectionsGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationconnectionsget) | **GET** /v2/application/connections | Get all Connections
+*ApplicationEndpointsApi* | [**v2ApplicationCredentialsGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationcredentialsget) | **GET** /v2/application/credentials | Get all Credentials
+*ApplicationEndpointsApi* | [**v2ApplicationMeasurementsGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationmeasurementsget) | **GET** /v2/application/measurements | Get measurements for all users using your application
+*ApplicationEndpointsApi* | [**v2ApplicationTrackingRemindersGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationtrackingremindersget) | **GET** /v2/application/trackingReminders | Get tracking reminders
+*ApplicationEndpointsApi* | [**v2ApplicationUpdatesGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationupdatesget) | **GET** /v2/application/updates | Get all Updates
+*ApplicationEndpointsApi* | [**v2ApplicationUserVariableRelationshipsGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationuservariablerelationshipsget) | **GET** /v2/application/userVariableRelationships | Get all UserVariableRelationships
+*ApplicationEndpointsApi* | [**v2ApplicationUserVariablesGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationuservariablesget) | **GET** /v2/application/userVariables | Get all UserVariables
+*ApplicationEndpointsApi* | [**v2ApplicationVariableUserSourcesGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationvariableusersourcesget) | **GET** /v2/application/variableUserSources | Get all VariableUserSources
+*ApplicationEndpointsApi* | [**v2ApplicationVotesGet**](docs/Api/ApplicationEndpointsApi.md#v2applicationvotesget) | **GET** /v2/application/votes | Get all Votes
+*AuthenticationApi* | [**v2AuthSocialAuthorizeCodeGet**](docs/Api/AuthenticationApi.md#v2authsocialauthorizecodeget) | **GET** /v2/auth/social/authorizeCode | Second Step in Social Authentication flow with JWT Token
+*AuthenticationApi* | [**v2AuthSocialAuthorizeTokenGet**](docs/Api/AuthenticationApi.md#v2authsocialauthorizetokenget) | **GET** /v2/auth/social/authorizeToken | Native Social Authentication
+*AuthenticationApi* | [**v2AuthSocialLoginGet**](docs/Api/AuthenticationApi.md#v2authsocialloginget) | **GET** /v2/auth/social/login | First Setp in Social Authentication flow with JWT Token
+*AuthenticationApi* | [**v2Oauth2AccessTokenGet**](docs/Api/AuthenticationApi.md#v2oauth2accesstokenget) | **GET** /v2/oauth2/access_token | Get a user access token
+*AuthenticationApi* | [**v2OauthAuthorizeGet**](docs/Api/AuthenticationApi.md#v2oauthauthorizeget) | **GET** /v2/oauth/authorize | Request Authorization Code
+*ConnectorsApi* | [**v1ConnectJsGet**](docs/Api/ConnectorsApi.md#v1connectjsget) | **GET** /v1/connect.js | Get embeddable connect javascript
+*ConnectorsApi* | [**v1ConnectMobileGet**](docs/Api/ConnectorsApi.md#v1connectmobileget) | **GET** /v1/connect/mobile | Mobile connect page
+*ConnectorsApi* | [**v1ConnectorsConnectorConnectGet**](docs/Api/ConnectorsApi.md#v1connectorsconnectorconnectget) | **GET** /v1/connectors/{connector}/connect | Obtain a token from 3rd party data source
+*ConnectorsApi* | [**v1ConnectorsConnectorConnectInstructionsGet**](docs/Api/ConnectorsApi.md#v1connectorsconnectorconnectinstructionsget) | **GET** /v1/connectors/{connector}/connectInstructions | Connection Instructions
+*ConnectorsApi* | [**v1ConnectorsConnectorConnectParameterGet**](docs/Api/ConnectorsApi.md#v1connectorsconnectorconnectparameterget) | **GET** /v1/connectors/{connector}/connectParameter | Connect Parameter
+*ConnectorsApi* | [**v1ConnectorsConnectorDisconnectGet**](docs/Api/ConnectorsApi.md#v1connectorsconnectordisconnectget) | **GET** /v1/connectors/{connector}/disconnect | Delete stored connection info
+*ConnectorsApi* | [**v1ConnectorsConnectorInfoGet**](docs/Api/ConnectorsApi.md#v1connectorsconnectorinfoget) | **GET** /v1/connectors/{connector}/info | Get connector info for user
+*ConnectorsApi* | [**v1ConnectorsConnectorUpdateGet**](docs/Api/ConnectorsApi.md#v1connectorsconnectorupdateget) | **GET** /v1/connectors/{connector}/update | Sync with data source
+*ConnectorsApi* | [**v1ConnectorsListGet**](docs/Api/ConnectorsApi.md#v1connectorslistget) | **GET** /v1/connectors/list | List of Connectors
+*CorrelationsApi* | [**v1AggregatedCorrelationsGet**](docs/Api/CorrelationsApi.md#v1aggregatedcorrelationsget) | **GET** /v1/aggregatedCorrelations | Get aggregated correlations
+*CorrelationsApi* | [**v1AggregatedCorrelationsPost**](docs/Api/CorrelationsApi.md#v1aggregatedcorrelationspost) | **POST** /v1/aggregatedCorrelations | Store or Update a Correlation
+*CorrelationsApi* | [**v1CorrelationsGet**](docs/Api/CorrelationsApi.md#v1correlationsget) | **GET** /v1/correlations | Get correlations
+*CorrelationsApi* | [**v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet**](docs/Api/CorrelationsApi.md#v1organizationsorganizationidusersuseridvariablesvariablenamecausesget) | **GET** /v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/causes | Search user correlations for a given cause
+*CorrelationsApi* | [**v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet**](docs/Api/CorrelationsApi.md#v1organizationsorganizationidusersuseridvariablesvariablenameeffectsget) | **GET** /v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/effects | Search user correlations for a given cause
+*CorrelationsApi* | [**v1PublicCorrelationsSearchSearchGet**](docs/Api/CorrelationsApi.md#v1publiccorrelationssearchsearchget) | **GET** /v1/public/correlations/search/{search} | Get average correlations for variables containing search term
+*CorrelationsApi* | [**v1VariablesVariableNameCausesGet**](docs/Api/CorrelationsApi.md#v1variablesvariablenamecausesget) | **GET** /v1/variables/{variableName}/causes | Search user correlations for a given effect
+*CorrelationsApi* | [**v1VariablesVariableNameEffectsGet**](docs/Api/CorrelationsApi.md#v1variablesvariablenameeffectsget) | **GET** /v1/variables/{variableName}/effects | Search user correlations for a given cause
+*CorrelationsApi* | [**v1VariablesVariableNamePublicCausesGet**](docs/Api/CorrelationsApi.md#v1variablesvariablenamepubliccausesget) | **GET** /v1/variables/{variableName}/public/causes | Search public correlations for a given effect
+*CorrelationsApi* | [**v1VariablesVariableNamePublicEffectsGet**](docs/Api/CorrelationsApi.md#v1variablesvariablenamepubliceffectsget) | **GET** /v1/variables/{variableName}/public/effects | Search public correlations for a given cause
+*CorrelationsApi* | [**v1VotesDeletePost**](docs/Api/CorrelationsApi.md#v1votesdeletepost) | **POST** /v1/votes/delete | Delete vote
+*CorrelationsApi* | [**v1VotesPost**](docs/Api/CorrelationsApi.md#v1votespost) | **POST** /v1/votes | Post or update vote
+*MeasurementsApi* | [**v1MeasurementSourcesGet**](docs/Api/MeasurementsApi.md#v1measurementsourcesget) | **GET** /v1/measurementSources | Get measurement sources
+*MeasurementsApi* | [**v1MeasurementSourcesPost**](docs/Api/MeasurementsApi.md#v1measurementsourcespost) | **POST** /v1/measurementSources | Add a data source
+*MeasurementsApi* | [**v1MeasurementsDailyGet**](docs/Api/MeasurementsApi.md#v1measurementsdailyget) | **GET** /v1/measurements/daily | Get daily measurements for this user
+*MeasurementsApi* | [**v1MeasurementsDeletePost**](docs/Api/MeasurementsApi.md#v1measurementsdeletepost) | **POST** /v1/measurements/delete | Delete a measurement
+*MeasurementsApi* | [**v1MeasurementsGet**](docs/Api/MeasurementsApi.md#v1measurementsget) | **GET** /v1/measurements | Get measurements for this user
+*MeasurementsApi* | [**v1MeasurementsPost**](docs/Api/MeasurementsApi.md#v1measurementspost) | **POST** /v1/measurements | Post a new set or update existing measurements to the database
+*MeasurementsApi* | [**v1MeasurementsRangeGet**](docs/Api/MeasurementsApi.md#v1measurementsrangeget) | **GET** /v1/measurementsRange | Get measurements range for this user
+*MeasurementsApi* | [**v2MeasurementsCsvGet**](docs/Api/MeasurementsApi.md#v2measurementscsvget) | **GET** /v2/measurements/csv | Get Measurements CSV
+*MeasurementsApi* | [**v2MeasurementsIdDelete**](docs/Api/MeasurementsApi.md#v2measurementsiddelete) | **DELETE** /v2/measurements/{id} | Delete Measurement
+*MeasurementsApi* | [**v2MeasurementsIdGet**](docs/Api/MeasurementsApi.md#v2measurementsidget) | **GET** /v2/measurements/{id} | Get Measurement
+*MeasurementsApi* | [**v2MeasurementsIdPut**](docs/Api/MeasurementsApi.md#v2measurementsidput) | **PUT** /v2/measurements/{id} | Update Measurement
+*MeasurementsApi* | [**v2MeasurementsRequestCsvPost**](docs/Api/MeasurementsApi.md#v2measurementsrequestcsvpost) | **POST** /v2/measurements/request_csv | Post Request for Measurements CSV
+*MeasurementsApi* | [**v2MeasurementsRequestPdfPost**](docs/Api/MeasurementsApi.md#v2measurementsrequestpdfpost) | **POST** /v2/measurements/request_pdf | Post Request for Measurements PDF
+*MeasurementsApi* | [**v2MeasurementsRequestXlsPost**](docs/Api/MeasurementsApi.md#v2measurementsrequestxlspost) | **POST** /v2/measurements/request_xls | Post Request for Measurements XLS
+*OrganizationsApi* | [**v1OrganizationsOrganizationIdUsersPost**](docs/Api/OrganizationsApi.md#v1organizationsorganizationiduserspost) | **POST** /v1/organizations/{organizationId}/users | Get user tokens for existing users, create new users
+*PairsApi* | [**v1PairsCsvGet**](docs/Api/PairsApi.md#v1pairscsvget) | **GET** /v1/pairsCsv | Get pairs
+*PairsApi* | [**v1PairsGet**](docs/Api/PairsApi.md#v1pairsget) | **GET** /v1/pairs | Get pairs
+*RemindersApi* | [**v1TrackingReminderNotificationsGet**](docs/Api/RemindersApi.md#v1trackingremindernotificationsget) | **GET** /v1/trackingReminderNotifications | Get specific pending tracking reminders
+*RemindersApi* | [**v1TrackingReminderNotificationsSkipPost**](docs/Api/RemindersApi.md#v1trackingremindernotificationsskippost) | **POST** /v1/trackingReminderNotifications/skip | Skip a pending tracking reminder
+*RemindersApi* | [**v1TrackingReminderNotificationsSnoozePost**](docs/Api/RemindersApi.md#v1trackingremindernotificationssnoozepost) | **POST** /v1/trackingReminderNotifications/snooze | Snooze a pending tracking reminder
+*RemindersApi* | [**v1TrackingReminderNotificationsTrackPost**](docs/Api/RemindersApi.md#v1trackingremindernotificationstrackpost) | **POST** /v1/trackingReminderNotifications/track | Track a pending tracking reminder
+*RemindersApi* | [**v1TrackingRemindersDeletePost**](docs/Api/RemindersApi.md#v1trackingremindersdeletepost) | **POST** /v1/trackingReminders/delete | Delete tracking reminder
+*RemindersApi* | [**v1TrackingRemindersGet**](docs/Api/RemindersApi.md#v1trackingremindersget) | **GET** /v1/trackingReminders | Get repeating tracking reminder settings
+*RemindersApi* | [**v1TrackingRemindersPost**](docs/Api/RemindersApi.md#v1trackingreminderspost) | **POST** /v1/trackingReminders | Store a Tracking Reminder
+*TagsApi* | [**v1UserTagsDeletePost**](docs/Api/TagsApi.md#v1usertagsdeletepost) | **POST** /v1/userTags/delete | Delete user tag or ingredient
+*TagsApi* | [**v1UserTagsPost**](docs/Api/TagsApi.md#v1usertagspost) | **POST** /v1/userTags | Post or update user tags or ingredients
+*UnitsApi* | [**v1UnitCategoriesGet**](docs/Api/UnitsApi.md#v1unitcategoriesget) | **GET** /v1/unitCategories | Get unit categories
+*UnitsApi* | [**v1UnitsGet**](docs/Api/UnitsApi.md#v1unitsget) | **GET** /v1/units | Get all available units
+*UnitsApi* | [**v1UnitsVariableGet**](docs/Api/UnitsApi.md#v1unitsvariableget) | **GET** /v1/unitsVariable | Units for Variable
+*UserApi* | [**v1OrganizationsOrganizationIdUsersPost**](docs/Api/UserApi.md#v1organizationsorganizationiduserspost) | **POST** /v1/organizations/{organizationId}/users | Get user tokens for existing users, create new users
+*UserApi* | [**v1UserMeGet**](docs/Api/UserApi.md#v1usermeget) | **GET** /v1/user/me | Get all available units for variableGet authenticated user
+*VariablesApi* | [**v1PublicVariablesGet**](docs/Api/VariablesApi.md#v1publicvariablesget) | **GET** /v1/public/variables | Get public variables
+*VariablesApi* | [**v1PublicVariablesSearchSearchGet**](docs/Api/VariablesApi.md#v1publicvariablessearchsearchget) | **GET** /v1/public/variables/search/{search} | Get top 5 PUBLIC variables with the most correlations
+*VariablesApi* | [**v1UserVariablesPost**](docs/Api/VariablesApi.md#v1uservariablespost) | **POST** /v1/userVariables | Update User Settings for a Variable
+*VariablesApi* | [**v1VariableCategoriesGet**](docs/Api/VariablesApi.md#v1variablecategoriesget) | **GET** /v1/variableCategories | Variable categories
+*VariablesApi* | [**v1VariablesGet**](docs/Api/VariablesApi.md#v1variablesget) | **GET** /v1/variables | Get variables by the category name
+*VariablesApi* | [**v1VariablesPost**](docs/Api/VariablesApi.md#v1variablespost) | **POST** /v1/variables | Create Variables
+*VariablesApi* | [**v1VariablesSearchSearchGet**](docs/Api/VariablesApi.md#v1variablessearchsearchget) | **GET** /v1/variables/search/{search} | Get variables by search query
+*VariablesApi* | [**v1VariablesVariableNameGet**](docs/Api/VariablesApi.md#v1variablesvariablenameget) | **GET** /v1/variables/{variableName} | Get info about a variable
+*VotesApi* | [**v1VotesDeletePost**](docs/Api/VotesApi.md#v1votesdeletepost) | **POST** /v1/votes/delete | Delete vote
+*VotesApi* | [**v1VotesPost**](docs/Api/VotesApi.md#v1votespost) | **POST** /v1/votes | Post or update vote
 
 
 ## Documentation For Models
 
- - [CommonResponse](docs/CommonResponse.md)
- - [Connection](docs/Connection.md)
- - [Connector](docs/Connector.md)
- - [ConnectorInfo](docs/ConnectorInfo.md)
- - [ConnectorInfoHistoryItem](docs/ConnectorInfoHistoryItem.md)
- - [ConnectorInstruction](docs/ConnectorInstruction.md)
- - [ConversionStep](docs/ConversionStep.md)
- - [Correlation](docs/Correlation.md)
- - [Credential](docs/Credential.md)
- - [HumanTime](docs/HumanTime.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse2001](docs/InlineResponse2001.md)
- - [InlineResponse20010](docs/InlineResponse20010.md)
- - [InlineResponse20011](docs/InlineResponse20011.md)
- - [InlineResponse20012](docs/InlineResponse20012.md)
- - [InlineResponse2002](docs/InlineResponse2002.md)
- - [InlineResponse2003](docs/InlineResponse2003.md)
- - [InlineResponse2004](docs/InlineResponse2004.md)
- - [InlineResponse2005](docs/InlineResponse2005.md)
- - [InlineResponse2006](docs/InlineResponse2006.md)
- - [InlineResponse2007](docs/InlineResponse2007.md)
- - [InlineResponse2008](docs/InlineResponse2008.md)
- - [InlineResponse2009](docs/InlineResponse2009.md)
- - [JsonErrorResponse](docs/JsonErrorResponse.md)
- - [Measurement](docs/Measurement.md)
- - [MeasurementDelete](docs/MeasurementDelete.md)
- - [MeasurementRange](docs/MeasurementRange.md)
- - [MeasurementSet](docs/MeasurementSet.md)
- - [MeasurementSource](docs/MeasurementSource.md)
- - [Pairs](docs/Pairs.md)
- - [Permission](docs/Permission.md)
- - [PostCorrelation](docs/PostCorrelation.md)
- - [PostVote](docs/PostVote.md)
- - [TrackingReminder](docs/TrackingReminder.md)
- - [TrackingReminderDelete](docs/TrackingReminderDelete.md)
- - [TrackingReminderNotification](docs/TrackingReminderNotification.md)
- - [TrackingReminderNotificationSkip](docs/TrackingReminderNotificationSkip.md)
- - [TrackingReminderNotificationSnooze](docs/TrackingReminderNotificationSnooze.md)
- - [TrackingReminderNotificationTrack](docs/TrackingReminderNotificationTrack.md)
- - [Unit](docs/Unit.md)
- - [UnitCategory](docs/UnitCategory.md)
- - [Update](docs/Update.md)
- - [User](docs/User.md)
- - [UserTag](docs/UserTag.md)
- - [UserTokenFailedResponse](docs/UserTokenFailedResponse.md)
- - [UserTokenRequest](docs/UserTokenRequest.md)
- - [UserTokenRequestInnerUserField](docs/UserTokenRequestInnerUserField.md)
- - [UserTokenSuccessfulResponse](docs/UserTokenSuccessfulResponse.md)
- - [UserTokenSuccessfulResponseInnerUserField](docs/UserTokenSuccessfulResponseInnerUserField.md)
- - [UserVariable](docs/UserVariable.md)
- - [UserVariableRelationship](docs/UserVariableRelationship.md)
- - [UserVariables](docs/UserVariables.md)
- - [ValueObject](docs/ValueObject.md)
- - [Variable](docs/Variable.md)
- - [VariableCategory](docs/VariableCategory.md)
- - [VariableNew](docs/VariableNew.md)
- - [VariableUserSource](docs/VariableUserSource.md)
- - [VariablesNew](docs/VariablesNew.md)
- - [Vote](docs/Vote.md)
- - [VoteDelete](docs/VoteDelete.md)
+ - [CommonResponse](docs/Model/CommonResponse.md)
+ - [Connection](docs/Model/Connection.md)
+ - [Connector](docs/Model/Connector.md)
+ - [ConnectorInfo](docs/Model/ConnectorInfo.md)
+ - [ConnectorInfoHistoryItem](docs/Model/ConnectorInfoHistoryItem.md)
+ - [ConnectorInstruction](docs/Model/ConnectorInstruction.md)
+ - [ConversionStep](docs/Model/ConversionStep.md)
+ - [Correlation](docs/Model/Correlation.md)
+ - [Credential](docs/Model/Credential.md)
+ - [HumanTime](docs/Model/HumanTime.md)
+ - [InlineResponse200](docs/Model/InlineResponse200.md)
+ - [InlineResponse2001](docs/Model/InlineResponse2001.md)
+ - [InlineResponse20010](docs/Model/InlineResponse20010.md)
+ - [InlineResponse20011](docs/Model/InlineResponse20011.md)
+ - [InlineResponse20012](docs/Model/InlineResponse20012.md)
+ - [InlineResponse2002](docs/Model/InlineResponse2002.md)
+ - [InlineResponse2003](docs/Model/InlineResponse2003.md)
+ - [InlineResponse2004](docs/Model/InlineResponse2004.md)
+ - [InlineResponse2005](docs/Model/InlineResponse2005.md)
+ - [InlineResponse2006](docs/Model/InlineResponse2006.md)
+ - [InlineResponse2007](docs/Model/InlineResponse2007.md)
+ - [InlineResponse2008](docs/Model/InlineResponse2008.md)
+ - [InlineResponse2009](docs/Model/InlineResponse2009.md)
+ - [JsonErrorResponse](docs/Model/JsonErrorResponse.md)
+ - [Measurement](docs/Model/Measurement.md)
+ - [MeasurementDelete](docs/Model/MeasurementDelete.md)
+ - [MeasurementRange](docs/Model/MeasurementRange.md)
+ - [MeasurementSet](docs/Model/MeasurementSet.md)
+ - [MeasurementSource](docs/Model/MeasurementSource.md)
+ - [Pairs](docs/Model/Pairs.md)
+ - [Permission](docs/Model/Permission.md)
+ - [PostCorrelation](docs/Model/PostCorrelation.md)
+ - [PostVote](docs/Model/PostVote.md)
+ - [TrackingReminder](docs/Model/TrackingReminder.md)
+ - [TrackingReminderDelete](docs/Model/TrackingReminderDelete.md)
+ - [TrackingReminderNotification](docs/Model/TrackingReminderNotification.md)
+ - [TrackingReminderNotificationSkip](docs/Model/TrackingReminderNotificationSkip.md)
+ - [TrackingReminderNotificationSnooze](docs/Model/TrackingReminderNotificationSnooze.md)
+ - [TrackingReminderNotificationTrack](docs/Model/TrackingReminderNotificationTrack.md)
+ - [Unit](docs/Model/Unit.md)
+ - [UnitCategory](docs/Model/UnitCategory.md)
+ - [Update](docs/Model/Update.md)
+ - [User](docs/Model/User.md)
+ - [UserTag](docs/Model/UserTag.md)
+ - [UserTokenFailedResponse](docs/Model/UserTokenFailedResponse.md)
+ - [UserTokenRequest](docs/Model/UserTokenRequest.md)
+ - [UserTokenRequestInnerUserField](docs/Model/UserTokenRequestInnerUserField.md)
+ - [UserTokenSuccessfulResponse](docs/Model/UserTokenSuccessfulResponse.md)
+ - [UserTokenSuccessfulResponseInnerUserField](docs/Model/UserTokenSuccessfulResponseInnerUserField.md)
+ - [UserVariable](docs/Model/UserVariable.md)
+ - [UserVariableRelationship](docs/Model/UserVariableRelationship.md)
+ - [UserVariables](docs/Model/UserVariables.md)
+ - [ValueObject](docs/Model/ValueObject.md)
+ - [Variable](docs/Model/Variable.md)
+ - [VariableCategory](docs/Model/VariableCategory.md)
+ - [VariableNew](docs/Model/VariableNew.md)
+ - [VariableUserSource](docs/Model/VariableUserSource.md)
+ - [VariablesNew](docs/Model/VariablesNew.md)
+ - [Vote](docs/Model/Vote.md)
+ - [VoteDelete](docs/Model/VoteDelete.md)
 
 
 ## Documentation For Authorization
@@ -243,8 +244,8 @@ Class | Method | HTTP request | Description
 
 - **Type**: OAuth
 - **Flow**: implicit
-- **Authorizatoin URL**: https://app.quantimo.do/api/v1/oauth2/authorize
-- **Scopes**: 
+- **Authorization URL**: https://app.quantimo.do/api/v1/oauth2/authorize
+- **Scopes**:
  - **basic**: Basic authentication
  - **readmeasurements**: Grants read access to measurements and variables. Allows the client app to obtain the user's data.
  - **writemeasurements**: Grants write access to measurements and variables. Allows the client app to store user data.
@@ -253,8 +254,8 @@ Class | Method | HTTP request | Description
 
 - **Type**: OAuth
 - **Flow**: accessCode
-- **Authorizatoin URL**: /api/v2/oauth/authorize
-- **Scopes**: 
+- **Authorization URL**: /api/v2/oauth/authorize
+- **Scopes**:
  - **basic**: allows you to read user info (displayname, email, etc).
  - **readmeasurements**: allows one to read a user's data
  - **writemeasurements**: allows you to write user data
@@ -265,13 +266,10 @@ Class | Method | HTTP request | Description
 
 ## internalApiKey
 
-- **Type**: API key 
+- **Type**: API key
 - **API key parameter name**: api_key
 - **Location**: HTTP header
 
 
 ## Author
-
-
-
-
+QuantiModo

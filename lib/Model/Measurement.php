@@ -10,21 +10,29 @@
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
+
 /**
- *  Copyright 2016 SmartBear Software
+ * QuantiModo
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ *
+ * OpenAPI spec version: 2.0.6
+ * 
+ * Generated by: https://github.com/swagger-api/swagger-codegen.git
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
 /**
  * NOTE: This class is auto generated by the swagger code generator program.
  * https://github.com/swagger-api/swagger-codegen
@@ -34,11 +42,11 @@
 namespace Swagger\Client\Model;
 
 use \ArrayAccess;
+
 /**
  * Measurement Class Doc Comment
  *
  * @category    Class
- * @description 
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
@@ -47,224 +55,116 @@ use \ArrayAccess;
 class Measurement implements ArrayAccess
 {
     /**
-      * Array of property to type mappings. Used for (de)serialization 
+      * The original name of the model.
+      * @var string
+      */
+    protected static $swaggerModelName = 'Measurement';
+
+    /**
+      * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    static $swaggerTypes = array(
-        'id' => 'int',
-        'user_id' => 'int',
-        'client_id' => 'string',
-        'connector_id' => 'int',
-        'variable_id' => 'int',
-        'source_id' => 'int',
+    protected static $swaggerTypes = array(
+        'variable' => 'string',
+        'source' => 'string',
         'start_time' => 'string',
-        'value' => 'float',
-        'unit_id' => 'int',
-        'original_value' => 'float',
-        'original_unit_id' => 'int',
-        'duration' => 'int',
-        'note' => 'string',
-        'latitude' => 'float',
-        'longitude' => 'float',
-        'location' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'error' => 'string'
+        'human_time' => '\Swagger\Client\Model\HumanTime',
+        'value' => 'double',
+        'unit' => 'string',
+        'original_value' => 'int',
+        'stored_value' => 'double',
+        'stored_abbreviated_unit_name' => 'string',
+        'original_abbreviated_unit_name' => 'string',
+        'abbreviated_unit_name' => 'string',
+        'note' => 'string'
     );
-  
-    /** 
-      * Array of attributes where the key is the local name, and the value is the original name
-      * @var string[] 
-      */
-    static $attributeMap = array(
-        'id' => 'id',
-        'user_id' => 'user_id',
-        'client_id' => 'client_id',
-        'connector_id' => 'connector_id',
-        'variable_id' => 'variable_id',
-        'source_id' => 'source_id',
-        'start_time' => 'start_time',
+
+    public static function swaggerTypes()
+    {
+        return self::$swaggerTypes;
+    }
+
+    /**
+     * Array of attributes where the key is the local name, and the value is the original name
+     * @var string[]
+     */
+    protected static $attributeMap = array(
+        'variable' => 'variable',
+        'source' => 'source',
+        'start_time' => 'startTime',
+        'human_time' => 'humanTime',
         'value' => 'value',
-        'unit_id' => 'unit_id',
-        'original_value' => 'original_value',
-        'original_unit_id' => 'original_unit_id',
-        'duration' => 'duration',
-        'note' => 'note',
-        'latitude' => 'latitude',
-        'longitude' => 'longitude',
-        'location' => 'location',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'error' => 'error'
+        'unit' => 'unit',
+        'original_value' => 'originalValue',
+        'stored_value' => 'storedValue',
+        'stored_abbreviated_unit_name' => 'storedAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'originalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'abbreviatedUnitName',
+        'note' => 'note'
     );
-  
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
     /**
-      * Array of attributes to setter functions (for deserialization of responses)
-      * @var string[]
-      */
-    static $setters = array(
-        'id' => 'setId',
-        'user_id' => 'setUserId',
-        'client_id' => 'setClientId',
-        'connector_id' => 'setConnectorId',
-        'variable_id' => 'setVariableId',
-        'source_id' => 'setSourceId',
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = array(
+        'variable' => 'setVariable',
+        'source' => 'setSource',
         'start_time' => 'setStartTime',
+        'human_time' => 'setHumanTime',
         'value' => 'setValue',
-        'unit_id' => 'setUnitId',
+        'unit' => 'setUnit',
         'original_value' => 'setOriginalValue',
-        'original_unit_id' => 'setOriginalUnitId',
-        'duration' => 'setDuration',
-        'note' => 'setNote',
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude',
-        'location' => 'setLocation',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'error' => 'setError'
+        'stored_value' => 'setStoredValue',
+        'stored_abbreviated_unit_name' => 'setStoredAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'setOriginalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
+        'note' => 'setNote'
     );
-  
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
+
     /**
-      * Array of attributes to getter functions (for serialization of requests)
-      * @var string[]
-      */
-    static $getters = array(
-        'id' => 'getId',
-        'user_id' => 'getUserId',
-        'client_id' => 'getClientId',
-        'connector_id' => 'getConnectorId',
-        'variable_id' => 'getVariableId',
-        'source_id' => 'getSourceId',
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = array(
+        'variable' => 'getVariable',
+        'source' => 'getSource',
         'start_time' => 'getStartTime',
+        'human_time' => 'getHumanTime',
         'value' => 'getValue',
-        'unit_id' => 'getUnitId',
+        'unit' => 'getUnit',
         'original_value' => 'getOriginalValue',
-        'original_unit_id' => 'getOriginalUnitId',
-        'duration' => 'getDuration',
-        'note' => 'getNote',
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude',
-        'location' => 'getLocation',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'error' => 'getError'
+        'stored_value' => 'getStoredValue',
+        'stored_abbreviated_unit_name' => 'getStoredAbbreviatedUnitName',
+        'original_abbreviated_unit_name' => 'getOriginalAbbreviatedUnitName',
+        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
+        'note' => 'getNote'
     );
-  
+
+    public static function getters()
+    {
+        return self::$getters;
+    }
+
     
+
+    
+
     /**
-      * $id id
-      * @var int
-      */
-    protected $id;
-    
-    /**
-      * $user_id ID of user that owns this measurement
-      * @var int
-      */
-    protected $user_id;
-    
-    /**
-      * $client_id client_id
-      * @var string
-      */
-    protected $client_id;
-    
-    /**
-      * $connector_id The id for the connector data source from which the measurement was obtained
-      * @var int
-      */
-    protected $connector_id;
-    
-    /**
-      * $variable_id ID of the variable for which we are creating the measurement records
-      * @var int
-      */
-    protected $variable_id;
-    
-    /**
-      * $source_id Application or device used to record the measurement values
-      * @var int
-      */
-    protected $source_id;
-    
-    /**
-      * $start_time Start Time for the measurement event. Use ISO 8601
-      * @var string
-      */
-    protected $start_time;
-    
-    /**
-      * $value The value of the measurement after conversion to the default unit for that variable
-      * @var float
-      */
-    protected $value;
-    
-    /**
-      * $unit_id The default unit for the variable
-      * @var int
-      */
-    protected $unit_id;
-    
-    /**
-      * $original_value Value of measurement as originally posted (before conversion to default unit)
-      * @var float
-      */
-    protected $original_value;
-    
-    /**
-      * $original_unit_id Unit ID of measurement as originally submitted
-      * @var int
-      */
-    protected $original_unit_id;
-    
-    /**
-      * $duration Duration of the event being measurement in seconds
-      * @var int
-      */
-    protected $duration;
-    
-    /**
-      * $note An optional note the user may include with their measurement
-      * @var string
-      */
-    protected $note;
-    
-    /**
-      * $latitude Latitude at which the measurement was taken
-      * @var float
-      */
-    protected $latitude;
-    
-    /**
-      * $longitude Longitude at which the measurement was taken
-      * @var float
-      */
-    protected $longitude;
-    
-    /**
-      * $location location
-      * @var string
-      */
-    protected $location;
-    
-    /**
-      * $created_at When the record was first created. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $updated_at;
-    
-    /**
-      * $error error
-      * @var string
-      */
-    protected $error;
-    
+     * Associative array for storing property values
+     * @var mixed[]
+     */
+    protected $container = array();
 
     /**
      * Constructor
@@ -272,479 +172,379 @@ class Measurement implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        if ($data != null) {
-            $this->id = $data["id"];
-            $this->user_id = $data["user_id"];
-            $this->client_id = $data["client_id"];
-            $this->connector_id = $data["connector_id"];
-            $this->variable_id = $data["variable_id"];
-            $this->source_id = $data["source_id"];
-            $this->start_time = $data["start_time"];
-            $this->value = $data["value"];
-            $this->unit_id = $data["unit_id"];
-            $this->original_value = $data["original_value"];
-            $this->original_unit_id = $data["original_unit_id"];
-            $this->duration = $data["duration"];
-            $this->note = $data["note"];
-            $this->latitude = $data["latitude"];
-            $this->longitude = $data["longitude"];
-            $this->location = $data["location"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
-            $this->error = $data["error"];
+        $this->container['variable'] = isset($data['variable']) ? $data['variable'] : null;
+        $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        $this->container['human_time'] = isset($data['human_time']) ? $data['human_time'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['unit'] = isset($data['unit']) ? $data['unit'] : null;
+        $this->container['original_value'] = isset($data['original_value']) ? $data['original_value'] : null;
+        $this->container['stored_value'] = isset($data['stored_value']) ? $data['stored_value'] : null;
+        $this->container['stored_abbreviated_unit_name'] = isset($data['stored_abbreviated_unit_name']) ? $data['stored_abbreviated_unit_name'] : null;
+        $this->container['original_abbreviated_unit_name'] = isset($data['original_abbreviated_unit_name']) ? $data['original_abbreviated_unit_name'] : null;
+        $this->container['abbreviated_unit_name'] = isset($data['abbreviated_unit_name']) ? $data['abbreviated_unit_name'] : null;
+        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
+    }
+
+    /**
+     * show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties()
+    {
+        $invalid_properties = array();
+        if ($this->container['variable'] === null) {
+            $invalid_properties[] = "'variable' can't be null";
         }
+        if ($this->container['source'] === null) {
+            $invalid_properties[] = "'source' can't be null";
+        }
+        if ($this->container['start_time'] === null) {
+            $invalid_properties[] = "'start_time' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalid_properties[] = "'value' can't be null";
+        }
+        if ($this->container['unit'] === null) {
+            $invalid_properties[] = "'unit' can't be null";
+        }
+        return $invalid_properties;
     }
-    
+
     /**
-     * Gets id
-     * @return int
+     * validate all the properties in the model
+     * return true if all passed
+     *
+     * @return bool True if all properteis are valid
      */
-    public function getId()
+    public function valid()
     {
-        return $this->id;
+        if ($this->container['variable'] === null) {
+            return false;
+        }
+        if ($this->container['source'] === null) {
+            return false;
+        }
+        if ($this->container['start_time'] === null) {
+            return false;
+        }
+        if ($this->container['value'] === null) {
+            return false;
+        }
+        if ($this->container['unit'] === null) {
+            return false;
+        }
+        return true;
     }
-  
+
+
     /**
-     * Sets id
-     * @param int $id id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        
-        $this->id = $id;
-        return $this;
-    }
-    
-    /**
-     * Gets user_id
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-  
-    /**
-     * Sets user_id
-     * @param int $user_id ID of user that owns this measurement
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        
-        $this->user_id = $user_id;
-        return $this;
-    }
-    
-    /**
-     * Gets client_id
+     * Gets variable
      * @return string
      */
-    public function getClientId()
+    public function getVariable()
     {
-        return $this->client_id;
+        return $this->container['variable'];
     }
-  
+
     /**
-     * Sets client_id
-     * @param string $client_id client_id
+     * Sets variable
+     * @param string $variable ORIGINAL Name of the variable for which we are creating the measurement records
      * @return $this
      */
-    public function setClientId($client_id)
+    public function setVariable($variable)
     {
-        
-        $this->client_id = $client_id;
+        $this->container['variable'] = $variable;
+
         return $this;
     }
-    
+
     /**
-     * Gets connector_id
-     * @return int
+     * Gets source
+     * @return string
      */
-    public function getConnectorId()
+    public function getSource()
     {
-        return $this->connector_id;
+        return $this->container['source'];
     }
-  
+
     /**
-     * Sets connector_id
-     * @param int $connector_id The id for the connector data source from which the measurement was obtained
+     * Sets source
+     * @param string $source Application or device used to record the measurement values
      * @return $this
      */
-    public function setConnectorId($connector_id)
+    public function setSource($source)
     {
-        
-        $this->connector_id = $connector_id;
+        $this->container['source'] = $source;
+
         return $this;
     }
-    
-    /**
-     * Gets variable_id
-     * @return int
-     */
-    public function getVariableId()
-    {
-        return $this->variable_id;
-    }
-  
-    /**
-     * Sets variable_id
-     * @param int $variable_id ID of the variable for which we are creating the measurement records
-     * @return $this
-     */
-    public function setVariableId($variable_id)
-    {
-        
-        $this->variable_id = $variable_id;
-        return $this;
-    }
-    
-    /**
-     * Gets source_id
-     * @return int
-     */
-    public function getSourceId()
-    {
-        return $this->source_id;
-    }
-  
-    /**
-     * Sets source_id
-     * @param int $source_id Application or device used to record the measurement values
-     * @return $this
-     */
-    public function setSourceId($source_id)
-    {
-        
-        $this->source_id = $source_id;
-        return $this;
-    }
-    
+
     /**
      * Gets start_time
      * @return string
      */
     public function getStartTime()
     {
-        return $this->start_time;
+        return $this->container['start_time'];
     }
-  
+
     /**
      * Sets start_time
-     * @param string $start_time Start Time for the measurement event. Use ISO 8601
+     * @param string $start_time Start Time for the measurement event in ISO 8601
      * @return $this
      */
     public function setStartTime($start_time)
     {
-        
-        $this->start_time = $start_time;
+        $this->container['start_time'] = $start_time;
+
         return $this;
     }
-    
+
+    /**
+     * Gets human_time
+     * @return \Swagger\Client\Model\HumanTime
+     */
+    public function getHumanTime()
+    {
+        return $this->container['human_time'];
+    }
+
+    /**
+     * Sets human_time
+     * @param \Swagger\Client\Model\HumanTime $human_time Start Time for the measurement event in ISO 8601
+     * @return $this
+     */
+    public function setHumanTime($human_time)
+    {
+        $this->container['human_time'] = $human_time;
+
+        return $this;
+    }
+
     /**
      * Gets value
-     * @return float
+     * @return double
      */
     public function getValue()
     {
-        return $this->value;
+        return $this->container['value'];
     }
-  
+
     /**
      * Sets value
-     * @param float $value The value of the measurement after conversion to the default unit for that variable
+     * @param double $value Converted measurement value in requested unit
      * @return $this
      */
     public function setValue($value)
     {
-        
-        $this->value = $value;
+        $this->container['value'] = $value;
+
         return $this;
     }
-    
+
     /**
-     * Gets unit_id
-     * @return int
+     * Gets unit
+     * @return string
      */
-    public function getUnitId()
+    public function getUnit()
     {
-        return $this->unit_id;
+        return $this->container['unit'];
     }
-  
+
     /**
-     * Sets unit_id
-     * @param int $unit_id The default unit for the variable
+     * Sets unit
+     * @param string $unit Unit of measurement as requested in GET request
      * @return $this
      */
-    public function setUnitId($unit_id)
+    public function setUnit($unit)
     {
-        
-        $this->unit_id = $unit_id;
+        $this->container['unit'] = $unit;
+
         return $this;
     }
-    
+
     /**
      * Gets original_value
-     * @return float
+     * @return int
      */
     public function getOriginalValue()
     {
-        return $this->original_value;
+        return $this->container['original_value'];
     }
-  
+
     /**
      * Sets original_value
-     * @param float $original_value Value of measurement as originally posted (before conversion to default unit)
+     * @param int $original_value Original value
      * @return $this
      */
     public function setOriginalValue($original_value)
     {
-        
-        $this->original_value = $original_value;
+        $this->container['original_value'] = $original_value;
+
         return $this;
     }
-    
+
     /**
-     * Gets original_unit_id
-     * @return int
+     * Gets stored_value
+     * @return double
      */
-    public function getOriginalUnitId()
+    public function getStoredValue()
     {
-        return $this->original_unit_id;
+        return $this->container['stored_value'];
     }
-  
+
     /**
-     * Sets original_unit_id
-     * @param int $original_unit_id Unit ID of measurement as originally submitted
+     * Sets stored_value
+     * @param double $stored_value Measurement value in the unit as orignally submitted
      * @return $this
      */
-    public function setOriginalUnitId($original_unit_id)
+    public function setStoredValue($stored_value)
     {
-        
-        $this->original_unit_id = $original_unit_id;
+        $this->container['stored_value'] = $stored_value;
+
         return $this;
     }
-    
+
     /**
-     * Gets duration
-     * @return int
+     * Gets stored_abbreviated_unit_name
+     * @return string
      */
-    public function getDuration()
+    public function getStoredAbbreviatedUnitName()
     {
-        return $this->duration;
+        return $this->container['stored_abbreviated_unit_name'];
     }
-  
+
     /**
-     * Sets duration
-     * @param int $duration Duration of the event being measurement in seconds
+     * Sets stored_abbreviated_unit_name
+     * @param string $stored_abbreviated_unit_name Unit of measurement as originally submitted
      * @return $this
      */
-    public function setDuration($duration)
+    public function setStoredAbbreviatedUnitName($stored_abbreviated_unit_name)
     {
-        
-        $this->duration = $duration;
+        $this->container['stored_abbreviated_unit_name'] = $stored_abbreviated_unit_name;
+
         return $this;
     }
-    
+
+    /**
+     * Gets original_abbreviated_unit_name
+     * @return string
+     */
+    public function getOriginalAbbreviatedUnitName()
+    {
+        return $this->container['original_abbreviated_unit_name'];
+    }
+
+    /**
+     * Sets original_abbreviated_unit_name
+     * @param string $original_abbreviated_unit_name Original Unit of measurement as originally submitted
+     * @return $this
+     */
+    public function setOriginalAbbreviatedUnitName($original_abbreviated_unit_name)
+    {
+        $this->container['original_abbreviated_unit_name'] = $original_abbreviated_unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets abbreviated_unit_name
+     * @return string
+     */
+    public function getAbbreviatedUnitName()
+    {
+        return $this->container['abbreviated_unit_name'];
+    }
+
+    /**
+     * Sets abbreviated_unit_name
+     * @param string $abbreviated_unit_name Unit of measurement as originally submitted
+     * @return $this
+     */
+    public function setAbbreviatedUnitName($abbreviated_unit_name)
+    {
+        $this->container['abbreviated_unit_name'] = $abbreviated_unit_name;
+
+        return $this;
+    }
+
     /**
      * Gets note
      * @return string
      */
     public function getNote()
     {
-        return $this->note;
+        return $this->container['note'];
     }
-  
+
     /**
      * Sets note
-     * @param string $note An optional note the user may include with their measurement
+     * @param string $note Note of measurement
      * @return $this
      */
     public function setNote($note)
     {
-        
-        $this->note = $note;
+        $this->container['note'] = $note;
+
         return $this;
     }
-    
-    /**
-     * Gets latitude
-     * @return float
-     */
-    public function getLatitude()
-    {
-        return $this->latitude;
-    }
-  
-    /**
-     * Sets latitude
-     * @param float $latitude Latitude at which the measurement was taken
-     * @return $this
-     */
-    public function setLatitude($latitude)
-    {
-        
-        $this->latitude = $latitude;
-        return $this;
-    }
-    
-    /**
-     * Gets longitude
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-  
-    /**
-     * Sets longitude
-     * @param float $longitude Longitude at which the measurement was taken
-     * @return $this
-     */
-    public function setLongitude($longitude)
-    {
-        
-        $this->longitude = $longitude;
-        return $this;
-    }
-    
-    /**
-     * Gets location
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-  
-    /**
-     * Sets location
-     * @param string $location location
-     * @return $this
-     */
-    public function setLocation($location)
-    {
-        
-        $this->location = $location;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
-        return $this;
-    }
-    
-    /**
-     * Gets error
-     * @return string
-     */
-    public function getError()
-    {
-        return $this->error;
-    }
-  
-    /**
-     * Sets error
-     * @param string $error error
-     * @return $this
-     */
-    public function setError($error)
-    {
-        
-        $this->error = $error;
-        return $this;
-    }
-    
     /**
      * Returns true if offset exists. False otherwise.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return boolean
      */
     public function offsetExists($offset)
     {
-        return isset($this->$offset);
+        return isset($this->container[$offset]);
     }
-  
+
     /**
      * Gets offset.
-     * @param  integer $offset Offset 
-     * @return mixed 
+     * @param  integer $offset Offset
+     * @return mixed
      */
     public function offsetGet($offset)
     {
-        return $this->$offset;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
-  
+
     /**
      * Sets value based on offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @param  mixed   $value  Value to be set
      * @return void
      */
     public function offsetSet($offset, $value)
     {
-        $this->$offset = $value;
+        if (is_null($offset)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$offset] = $value;
+        }
     }
-  
+
     /**
      * Unsets offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return void
      */
     public function offsetUnset($offset)
     {
-        unset($this->$offset);
+        unset($this->container[$offset]);
     }
-  
+
     /**
      * Gets the string presentation of the object
      * @return string
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
