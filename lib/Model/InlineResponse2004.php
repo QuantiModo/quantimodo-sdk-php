@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -47,7 +47,7 @@ use \ArrayAccess;
  * InlineResponse2004 Class Doc Comment
  *
  * @category    Class
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -65,7 +65,7 @@ class InlineResponse2004 implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'data' => '\Swagger\Client\Model\Credential[]',
+        'data' => '\QuantiModo\Client\Model\Credential[]',
         'success' => 'bool'
     );
 
@@ -161,7 +161,7 @@ class InlineResponse2004 implements ArrayAccess
 
     /**
      * Gets data
-     * @return \Swagger\Client\Model\Credential[]
+     * @return \QuantiModo\Client\Model\Credential[]
      */
     public function getData()
     {
@@ -170,7 +170,7 @@ class InlineResponse2004 implements ArrayAccess
 
     /**
      * Sets data
-     * @param \Swagger\Client\Model\Credential[] $data
+     * @param \QuantiModo\Client\Model\Credential[] $data
      * @return $this
      */
     public function setData($data)
@@ -252,9 +252,9 @@ class InlineResponse2004 implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

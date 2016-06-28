@@ -1,4 +1,4 @@
-# Swagger\Client\OrganizationsApi
+# QuantiModo\Client\OrganizationsApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **v1OrganizationsOrganizationIdUsersPost**
-> \Swagger\Client\Model\UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token)
+> \QuantiModo\Client\Model\UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token)
 
 Get user tokens for existing users, create new users
 
@@ -20,15 +20,15 @@ Get user tokens for existing users, create new users
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\OrganizationsApi();
+$api_instance = new QuantiModo\Client\Api\OrganizationsApi();
 $organization_id = 56; // int | Organization ID
-$body = new \Swagger\Client\Model\UserTokenRequest(); // \Swagger\Client\Model\UserTokenRequest | Provides organization token and user ID
+$body = new \QuantiModo\Client\Model\UserTokenRequest(); // \QuantiModo\Client\Model\UserTokenRequest | Provides organization token and user ID
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -45,12 +45,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**| Organization ID |
- **body** | [**\Swagger\Client\Model\UserTokenRequest**](../Model/\Swagger\Client\Model\UserTokenRequest.md)| Provides organization token and user ID |
+ **body** | [**\QuantiModo\Client\Model\UserTokenRequest**](../Model/\QuantiModo\Client\Model\UserTokenRequest.md)| Provides organization token and user ID |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\UserTokenSuccessfulResponse**](../Model/UserTokenSuccessfulResponse.md)
+[**\QuantiModo\Client\Model\UserTokenSuccessfulResponse**](../Model/UserTokenSuccessfulResponse.md)
 
 ### Authorization
 

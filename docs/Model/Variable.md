@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **combination_operation** | **string** | Way to aggregate measurements over time. Options are \&quot;MEAN\&quot; or \&quot;SUM\&quot;.  SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED. | 
 **filling_value** | **double** | Value for replacing null measurements | 
 **join_with** | **string** | The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables. | 
-**joined_variables** | [**\Swagger\Client\Model\Variable[]**](Variable.md) | Array of Variables that are joined with this Variable | 
+**joined_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are joined with this Variable |
 **parent** | **int** | Id of the parent variable if this variable has any parent | 
-**sub_variables** | [**\Swagger\Client\Model\Variable[]**](Variable.md) | Array of Variables that are sub variables to this Variable | 
+**sub_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are sub variables to this Variable |
 **onset_delay** | **int** | How long it takes for a measurement in this variable to take effect | 
 **duration_of_action** | **int** | How long the effect of a measurement in this variable lasts | 
 **earliest_measurement_time** | **int** | Earliest measurement time | 

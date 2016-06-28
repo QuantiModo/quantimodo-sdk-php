@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -47,7 +47,7 @@ use \ArrayAccess;
  * ConnectorInfo Class Doc Comment
  *
  * @category    Class
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -68,7 +68,7 @@ class ConnectorInfo implements ArrayAccess
         'id' => 'int',
         'connected' => 'bool',
         'error' => 'string',
-        'history' => '\Swagger\Client\Model\ConnectorInfoHistoryItem[]'
+        'history' => '\QuantiModo\Client\Model\ConnectorInfoHistoryItem[]'
     );
 
     public static function swaggerTypes()
@@ -258,7 +258,7 @@ class ConnectorInfo implements ArrayAccess
 
     /**
      * Gets history
-     * @return \Swagger\Client\Model\ConnectorInfoHistoryItem[]
+     * @return \QuantiModo\Client\Model\ConnectorInfoHistoryItem[]
      */
     public function getHistory()
     {
@@ -267,7 +267,7 @@ class ConnectorInfo implements ArrayAccess
 
     /**
      * Sets history
-     * @param \Swagger\Client\Model\ConnectorInfoHistoryItem[] $history
+     * @param \QuantiModo\Client\Model\ConnectorInfoHistoryItem[] $history
      * @return $this
      */
     public function setHistory($history)
@@ -328,9 +328,9 @@ class ConnectorInfo implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -47,7 +47,7 @@ use \ArrayAccess;
  * UserTokenRequest Class Doc Comment
  *
  * @category    Class
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -65,7 +65,7 @@ class UserTokenRequest implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'user' => '\Swagger\Client\Model\UserTokenRequestInnerUserField',
+        'user' => '\QuantiModo\Client\Model\UserTokenRequestInnerUserField',
         'organization_access_token' => 'string'
     );
 
@@ -167,7 +167,7 @@ class UserTokenRequest implements ArrayAccess
 
     /**
      * Gets user
-     * @return \Swagger\Client\Model\UserTokenRequestInnerUserField
+     * @return \QuantiModo\Client\Model\UserTokenRequestInnerUserField
      */
     public function getUser()
     {
@@ -176,7 +176,7 @@ class UserTokenRequest implements ArrayAccess
 
     /**
      * Sets user
-     * @param \Swagger\Client\Model\UserTokenRequestInnerUserField $user
+     * @param \QuantiModo\Client\Model\UserTokenRequestInnerUserField $user
      * @return $this
      */
     public function setUser($user)
@@ -258,9 +258,9 @@ class UserTokenRequest implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

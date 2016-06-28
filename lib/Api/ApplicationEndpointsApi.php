@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,18 +38,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace QuantiModo\Client\Api;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \QuantiModo\Client\Configuration;
+use \QuantiModo\Client\ApiClient;
+use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\ObjectSerializer;
 
 /**
  * ApplicationEndpointsApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -60,16 +60,16 @@ class ApplicationEndpointsApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \QuantiModo\Client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \QuantiModo\Client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
@@ -82,7 +82,7 @@ class ApplicationEndpointsApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \QuantiModo\Client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -92,11 +92,11 @@ class ApplicationEndpointsApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \QuantiModo\Client\ApiClient $apiClient set the API client
      *
      * @return ApplicationEndpointsApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\QuantiModo\Client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -121,8 +121,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2003
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2003
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationConnectionsGet($access_token = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -150,8 +150,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationConnectionsGetWithHttpInfo($access_token = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -242,14 +242,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2003'
+                '\QuantiModo\Client\Model\InlineResponse2003'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2003', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2003', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -272,8 +272,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2004
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2004
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationCredentialsGet($access_token = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -297,8 +297,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationCredentialsGetWithHttpInfo($access_token = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -377,14 +377,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2004'
+                '\QuantiModo\Client\Model\InlineResponse2004'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2004', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2004', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -419,8 +419,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2005
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2005
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationMeasurementsGet($access_token = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
@@ -456,8 +456,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationMeasurementsGetWithHttpInfo($access_token = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
@@ -572,14 +572,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2005'
+                '\QuantiModo\Client\Model\InlineResponse2005'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2005', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2005', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -600,8 +600,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2001
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2001
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationTrackingRemindersGet($access_token = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -623,8 +623,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationTrackingRemindersGetWithHttpInfo($access_token = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -697,14 +697,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2001'
+                '\QuantiModo\Client\Model\InlineResponse2001'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2001', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2001', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -728,8 +728,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2006
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2006
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationUpdatesGet($access_token = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -754,8 +754,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationUpdatesGetWithHttpInfo($access_token = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -837,14 +837,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2006'
+                '\QuantiModo\Client\Model\InlineResponse2006'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2006', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2006', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2006', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2006', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -878,8 +878,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2007
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2007
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationUserVariableRelationshipsGet($access_token = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
     {
@@ -914,8 +914,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationUserVariableRelationshipsGetWithHttpInfo($access_token = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1027,14 +1027,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2007'
+                '\QuantiModo\Client\Model\InlineResponse2007'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2007', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2007', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2007', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2007', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1104,8 +1104,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2008
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2008
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationUserVariablesGet($access_token = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1176,8 +1176,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationUserVariablesGetWithHttpInfo($access_token = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1397,14 +1397,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2008'
+                '\QuantiModo\Client\Model\InlineResponse2008'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2008', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2008', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2008', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2008', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1428,8 +1428,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse2009
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2009
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationVariableUserSourcesGet($access_token = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1454,8 +1454,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationVariableUserSourcesGetWithHttpInfo($access_token = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1537,14 +1537,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse2009'
+                '\QuantiModo\Client\Model\InlineResponse2009'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse2009', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2009', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse2009', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2009', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1568,8 +1568,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\InlineResponse20010
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse20010
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationVotesGet($access_token = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1594,8 +1594,8 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2ApplicationVotesGetWithHttpInfo($access_token = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1677,14 +1677,14 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\InlineResponse20010'
+                '\QuantiModo\Client\Model\InlineResponse20010'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\InlineResponse20010', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse20010', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\InlineResponse20010', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse20010', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

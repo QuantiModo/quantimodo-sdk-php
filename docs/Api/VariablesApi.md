@@ -1,4 +1,4 @@
-# Swagger\Client\VariablesApi
+# QuantiModo\Client\VariablesApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **v1PublicVariablesGet**
-> \Swagger\Client\Model\Variable v1PublicVariablesGet()
+> \QuantiModo\Client\Model\Variable v1PublicVariablesGet()
 
 Get public variables
 
@@ -27,9 +27,9 @@ This endpoint retrieves an array of all public variables. Public variables are t
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
 
 try {
     $result = $api_instance->v1PublicVariablesGet();
@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 
@@ -59,7 +59,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PublicVariablesSearchSearchGet**
-> \Swagger\Client\Model\Variable v1PublicVariablesSearchSearchGet($search, $access_token, $category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Variable v1PublicVariablesSearchSearchGet($search, $access_token, $category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort)
 
 Get top 5 PUBLIC variables with the most correlations
 
@@ -71,9 +71,9 @@ Get top 5 PUBLIC variables with the most correlations containing the entered sea
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
 $search = "search_example"; // string | Search query can be some fraction of a variable name.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $category_name = "category_name_example"; // string | Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work.
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 
@@ -135,10 +135,10 @@ Users can change the parameters used in analysis of that variable such as the ex
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
-$user_variables = new \Swagger\Client\Model\UserVariables(); // \Swagger\Client\Model\UserVariables | Variable user settings data
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
+$user_variables = new \QuantiModo\Client\Model\UserVariables(); // \QuantiModo\Client\Model\UserVariables | Variable user settings data
 
 try {
     $api_instance->v1UserVariablesPost($user_variables);
@@ -152,7 +152,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_variables** | [**\Swagger\Client\Model\UserVariables**](../Model/\Swagger\Client\Model\UserVariables.md)| Variable user settings data |
+ **user_variables** | [**\QuantiModo\Client\Model\UserVariables**](../Model/\QuantiModo\Client\Model\UserVariables.md)| Variable user settings data |
 
 ### Return type
 
@@ -170,7 +170,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariableCategoriesGet**
-> \Swagger\Client\Model\VariableCategory[] v1VariableCategoriesGet()
+> \QuantiModo\Client\Model\VariableCategory[] v1VariableCategoriesGet()
 
 Variable categories
 
@@ -182,9 +182,9 @@ The variable categories include Activity, Causes of Illness, Cognitive Performan
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
 
 try {
     $result = $api_instance->v1VariableCategoriesGet();
@@ -200,7 +200,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\VariableCategory[]**](../Model/VariableCategory.md)
+[**\QuantiModo\Client\Model\VariableCategory[]**](../Model/VariableCategory.md)
 
 ### Authorization
 
@@ -214,7 +214,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesGet**
-> \Swagger\Client\Model\Variable v1VariablesGet($access_token, $id, $user_id, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Variable v1VariablesGet($access_token, $id, $user_id, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort)
 
 Get variables by the category name
 
@@ -226,12 +226,12 @@ Get variables by the category name. <br>Supported filter parameters:<br><ul><li>
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: basicAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $id = 56; // int | Common variable id
 $user_id = 56; // int | User id
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 
@@ -301,10 +301,10 @@ Allows the client to create a new variable in the `variables` table.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
-$body = new \Swagger\Client\Model\VariablesNew(); // \Swagger\Client\Model\VariablesNew | Original name for the variable.
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
+$body = new \QuantiModo\Client\Model\VariablesNew(); // \QuantiModo\Client\Model\VariablesNew | Original name for the variable.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -319,7 +319,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\VariablesNew**](../Model/\Swagger\Client\Model\VariablesNew.md)| Original name for the variable. |
+ **body** | [**\QuantiModo\Client\Model\VariablesNew**](../Model/\QuantiModo\Client\Model\VariablesNew.md)| Original name for the variable. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
@@ -338,7 +338,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesSearchSearchGet**
-> \Swagger\Client\Model\Variable[] v1VariablesSearchSearchGet($search, $access_token, $category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset)
+> \QuantiModo\Client\Model\Variable[] v1VariablesSearchSearchGet($search, $access_token, $category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset)
 
 Get variables by search query
 
@@ -350,9 +350,9 @@ Get variables containing the search characters for which the currently logged in
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
 $search = "search_example"; // string | Search query which may be an entire variable name or a fragment of one.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $category_name = "category_name_example"; // string | Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work.
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Variable[]**](../Model/Variable.md)
+[**\QuantiModo\Client\Model\Variable[]**](../Model/Variable.md)
 
 ### Authorization
 
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNameGet**
-> \Swagger\Client\Model\Variable v1VariablesVariableNameGet($variable_name, $access_token)
+> \QuantiModo\Client\Model\Variable v1VariablesVariableNameGet($variable_name, $access_token)
 
 Get info about a variable
 
@@ -416,9 +416,9 @@ Get all of the settings and information about a variable by its name. If the log
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VariablesApi();
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
 $variable_name = "variable_name_example"; // string | Variable name
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 

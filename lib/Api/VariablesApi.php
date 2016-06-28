@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,18 +38,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace QuantiModo\Client\Api;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \QuantiModo\Client\Configuration;
+use \QuantiModo\Client\ApiClient;
+use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\ObjectSerializer;
 
 /**
  * VariablesApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -60,16 +60,16 @@ class VariablesApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \QuantiModo\Client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \QuantiModo\Client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
@@ -82,7 +82,7 @@ class VariablesApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \QuantiModo\Client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -92,11 +92,11 @@ class VariablesApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \QuantiModo\Client\ApiClient $apiClient set the API client
      *
      * @return VariablesApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\QuantiModo\Client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -108,8 +108,8 @@ class VariablesApi
      * Get public variables.
      *
      *
-     * @return \Swagger\Client\Model\Variable
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PublicVariablesGet()
     {
@@ -124,8 +124,8 @@ class VariablesApi
      * Get public variables.
      *
      *
-     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PublicVariablesGetWithHttpInfo()
     {
@@ -170,14 +170,14 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -200,8 +200,8 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\Variable
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PublicVariablesSearchSearchGet($search, $access_token = null, $category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
     {
@@ -225,8 +225,8 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PublicVariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
     {
@@ -307,14 +307,14 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -327,10 +327,10 @@ class VariablesApi
      *
      * Update User Settings for a Variable.
      *
-     * @param \Swagger\Client\Model\UserVariables $user_variables Variable user settings data (required)
+     * @param \QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1UserVariablesPost($user_variables)
     {
@@ -344,10 +344,10 @@ class VariablesApi
      *
      * Update User Settings for a Variable.
      *
-     * @param \Swagger\Client\Model\UserVariables $user_variables Variable user settings data (required)
+     * @param \QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1UserVariablesPostWithHttpInfo($user_variables)
     {
@@ -417,8 +417,8 @@ class VariablesApi
      * Variable categories.
      *
      *
-     * @return \Swagger\Client\Model\VariableCategory[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\VariableCategory[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariableCategoriesGet()
     {
@@ -433,8 +433,8 @@ class VariablesApi
      * Variable categories.
      *
      *
-     * @return Array of \Swagger\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariableCategoriesGetWithHttpInfo()
     {
@@ -479,14 +479,14 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\VariableCategory[]'
+                '\QuantiModo\Client\Model\VariableCategory[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\VariableCategory[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\VariableCategory[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -513,8 +513,8 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\Variable
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesGet($access_token = null, $id = null, $user_id = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
@@ -542,8 +542,8 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesGetWithHttpInfo($access_token = null, $id = null, $user_id = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
@@ -632,14 +632,14 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -652,11 +652,11 @@ class VariablesApi
      *
      * Create Variables.
      *
-     * @param \Swagger\Client\Model\VariablesNew $body Original name for the variable. (required)
+     * @param \QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesPost($body, $access_token = null)
     {
@@ -670,11 +670,11 @@ class VariablesApi
      *
      * Create Variables.
      *
-     * @param \Swagger\Client\Model\VariablesNew $body Original name for the variable. (required)
+     * @param \QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesPostWithHttpInfo($body, $access_token = null)
     {
@@ -757,8 +757,8 @@ class VariablesApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      *
-     * @return \Swagger\Client\Model\Variable[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesSearchSearchGet($search, $access_token = null, $category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
     {
@@ -783,8 +783,8 @@ class VariablesApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
     {
@@ -868,14 +868,14 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Variable[]'
+                '\QuantiModo\Client\Model\Variable[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -891,8 +891,8 @@ class VariablesApi
      * @param string $variable_name Variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return \Swagger\Client\Model\Variable
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNameGet($variable_name, $access_token = null)
     {
@@ -909,8 +909,8 @@ class VariablesApi
      * @param string $variable_name Variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return Array of \Swagger\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNameGetWithHttpInfo($variable_name, $access_token = null)
     {
@@ -970,14 +970,14 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

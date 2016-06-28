@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -47,7 +47,7 @@ use \ArrayAccess;
  * Variable Class Doc Comment
  *
  * @category    Class
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -77,9 +77,9 @@ class Variable implements ArrayAccess
         'combination_operation' => 'string',
         'filling_value' => 'double',
         'join_with' => 'string',
-        'joined_variables' => '\Swagger\Client\Model\Variable[]',
+        'joined_variables' => '\QuantiModo\Client\Model\Variable[]',
         'parent' => 'int',
-        'sub_variables' => '\Swagger\Client\Model\Variable[]',
+        'sub_variables' => '\QuantiModo\Client\Model\Variable[]',
         'onset_delay' => 'int',
         'duration_of_action' => 'int',
         'earliest_measurement_time' => 'int',
@@ -753,7 +753,7 @@ class Variable implements ArrayAccess
 
     /**
      * Gets joined_variables
-     * @return \Swagger\Client\Model\Variable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getJoinedVariables()
     {
@@ -762,7 +762,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets joined_variables
-     * @param \Swagger\Client\Model\Variable[] $joined_variables Array of Variables that are joined with this Variable
+     * @param \QuantiModo\Client\Model\Variable[] $joined_variables Array of Variables that are joined with this Variable
      * @return $this
      */
     public function setJoinedVariables($joined_variables)
@@ -795,7 +795,7 @@ class Variable implements ArrayAccess
 
     /**
      * Gets sub_variables
-     * @return \Swagger\Client\Model\Variable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getSubVariables()
     {
@@ -804,7 +804,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets sub_variables
-     * @param \Swagger\Client\Model\Variable[] $sub_variables Array of Variables that are sub variables to this Variable
+     * @param \QuantiModo\Client\Model\Variable[] $sub_variables Array of Variables that are sub variables to this Variable
      * @return $this
      */
     public function setSubVariables($sub_variables)
@@ -1180,9 +1180,9 @@ class Variable implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

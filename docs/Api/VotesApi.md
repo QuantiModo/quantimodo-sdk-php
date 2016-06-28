@@ -1,4 +1,4 @@
-# Swagger\Client\VotesApi
+# QuantiModo\Client\VotesApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1VotesDeletePost**
-> \Swagger\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token)
 
 Delete vote
 
@@ -21,10 +21,10 @@ Delete previously posted vote
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VotesApi();
-$body = new \Swagger\Client\Model\VoteDelete(); // \Swagger\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
+$api_instance = new QuantiModo\Client\Api\VotesApi();
+$body = new \QuantiModo\Client\Model\VoteDelete(); // \QuantiModo\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -40,12 +40,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\VoteDelete**](../Model/\Swagger\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
+ **body** | [**\QuantiModo\Client\Model\VoteDelete**](../Model/\QuantiModo\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VotesPost**
-> \Swagger\Client\Model\CommonResponse v1VotesPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token)
 
 Post or update vote
 
@@ -71,10 +71,10 @@ This is to enable users to indicate their opinion on the plausibility of a causa
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\VotesApi();
-$body = new \Swagger\Client\Model\PostVote(); // \Swagger\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
+$api_instance = new QuantiModo\Client\Api\VotesApi();
+$body = new \QuantiModo\Client\Model\PostVote(); // \QuantiModo\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -90,12 +90,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\PostVote**](../Model/\Swagger\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
+ **body** | [**\QuantiModo\Client\Model\PostVote**](../Model/\QuantiModo\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 

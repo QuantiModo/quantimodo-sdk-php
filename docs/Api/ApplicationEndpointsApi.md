@@ -1,4 +1,4 @@
-# Swagger\Client\ApplicationEndpointsApi
+# QuantiModo\Client\ApplicationEndpointsApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **v2ApplicationConnectionsGet**
-> \Swagger\Client\Model\InlineResponse2003 v2ApplicationConnectionsGet($access_token, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2003 v2ApplicationConnectionsGet($access_token, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Connections
 
@@ -28,13 +28,13 @@ Get all Connections
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
 $connector_id = 56; // int | The id for the connector data source for which the connection is connected
 $connect_status = "connect_status_example"; // string | Indicates whether a connector is currently connected to a service for a user.
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\QuantiModo\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationCredentialsGet**
-> \Swagger\Client\Model\InlineResponse2004 v2ApplicationCredentialsGet($access_token, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2004 v2ApplicationCredentialsGet($access_token, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Credentials
 
@@ -104,13 +104,13 @@ Get all Credentials
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
 $connector_id = 56; // int | The id for the connector data source from which the credential was obtained
 $attr_key = "attr_key_example"; // string | Attribute name such as token, userid, username, or password
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\QuantiModo\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationMeasurementsGet**
-> \Swagger\Client\Model\InlineResponse2005 v2ApplicationMeasurementsGet($access_token, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2005 v2ApplicationMeasurementsGet($access_token, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
 
 Get measurements for all users using your application
 
@@ -172,13 +172,13 @@ Measurements are any value that can be recorded like daily steps, a mood rating,
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
 $client_id = "client_id_example"; // string | The ID of the client application which originally stored the measurement
 $connector_id = 56; // int | The id for the connector data source from which the measurement was obtained
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\QuantiModo\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationTrackingRemindersGet**
-> \Swagger\Client\Model\InlineResponse2001 v2ApplicationTrackingRemindersGet($access_token, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2001 v2ApplicationTrackingRemindersGet($access_token, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get tracking reminders
 
@@ -264,13 +264,13 @@ Get the variable id, frequency, and default value for the user tracking reminder
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $client_id = "client_id_example"; // string | The ID of the client application which last created or updated this trackingReminder
 $created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUpdatesGet**
-> \Swagger\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Updates
 
@@ -328,13 +328,13 @@ Get all Updates
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
 $connector_id = 56; // int | connector_id
 $number_of_measurements = 56; // int | number_of_measurements
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\QuantiModo\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariableRelationshipsGet**
-> \Swagger\Client\Model\InlineResponse2007 v2ApplicationUserVariableRelationshipsGet($access_token, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariableRelationshipsGet($access_token, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
 
 Get all UserVariableRelationships
 
@@ -398,13 +398,13 @@ Get all UserVariableRelationships
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $id = 56; // int | id
 $confidence_level = "confidence_level_example"; // string | Our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors
@@ -462,7 +462,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\QuantiModo\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariablesGet**
-> \Swagger\Client\Model\InlineResponse2008 v2ApplicationUserVariablesGet($access_token, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2008 v2ApplicationUserVariablesGet($access_token, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
 
 Get all UserVariables
 
@@ -488,13 +488,13 @@ Get all UserVariables
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $client_id = "client_id_example"; // string | The ID of the client application which last created or updated this user variable
 $parent_id = 56; // int | ID of the parent variable if this variable has any parent
@@ -624,7 +624,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\QuantiModo\Client\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVariableUserSourcesGet**
-> \Swagger\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all VariableUserSources
 
@@ -650,13 +650,13 @@ Get all VariableUserSources
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $variable_id = 56; // int | ID of variable
 $timestamp = 56; // int | Time that this measurement occurred Uses epoch minute (epoch time divided by 60)
@@ -694,7 +694,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\QuantiModo\Client\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 ### Authorization
 
@@ -708,7 +708,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVotesGet**
-> \Swagger\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Votes
 
@@ -720,13 +720,13 @@ Get all Votes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ApplicationEndpointsApi();
+$api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $client_id = "client_id_example"; // string | The ID of the client application which last created or updated this vote
 $cause_id = 56; // int | ID of predictor variable
@@ -764,7 +764,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\QuantiModo\Client\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
 
 ### Authorization
 

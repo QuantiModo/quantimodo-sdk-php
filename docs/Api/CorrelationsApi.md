@@ -1,4 +1,4 @@
-# Swagger\Client\CorrelationsApi
+# QuantiModo\Client\CorrelationsApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **v1AggregatedCorrelationsGet**
-> \Swagger\Client\Model\Correlation[] v1AggregatedCorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Correlation[] v1AggregatedCorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
 
 Get aggregated correlations
 
@@ -31,9 +31,9 @@ Get correlations based on the anonymized aggregate data from all QuantiModo user
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $effect = "effect_example"; // string | ORIGINAL variable name of the effect variable for which the user desires correlations
 $cause = "cause_example"; // string | ORIGINAL variable name of the cause variable for which the user desires correlations
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -97,10 +97,10 @@ Add correlation
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
-$body = new \Swagger\Client\Model\PostCorrelation(); // \Swagger\Client\Model\PostCorrelation | Provides correlation data
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
+$body = new \QuantiModo\Client\Model\PostCorrelation(); // \QuantiModo\Client\Model\PostCorrelation | Provides correlation data
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -115,7 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\PostCorrelation**](../Model/\Swagger\Client\Model\PostCorrelation.md)| Provides correlation data |
+ **body** | [**\QuantiModo\Client\Model\PostCorrelation**](../Model/\QuantiModo\Client\Model\PostCorrelation.md)| Provides correlation data |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
@@ -134,7 +134,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1CorrelationsGet**
-> \Swagger\Client\Model\Correlation[] v1CorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Correlation[] v1CorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
 
 Get correlations
 
@@ -146,9 +146,9 @@ Get correlations.<br>Supported filter parameters:<br><ul><li><b>correlationCoeff
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $effect = "effect_example"; // string | ORIGINAL variable name of the effect variable for which the user desires correlations
 $cause = "cause_example"; // string | ORIGINAL variable name of the cause variable for which the user desires correlations
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet**
-> \Swagger\Client\Model\Correlation[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public)
+> \QuantiModo\Client\Model\Correlation[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public)
 
 Search user correlations for a given cause
 
@@ -212,9 +212,9 @@ Returns average of all correlations and votes for all user cause variables for a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $organization_id = 56; // int | Organization ID
 $user_id = 56; // int | User id
 $variable_name = "variable_name_example"; // string | Effect variable name
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet**
-> \Swagger\Client\Model\CommonResponse[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public)
+> \QuantiModo\Client\Model\CommonResponse[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public)
 
 Search user correlations for a given cause
 
@@ -270,9 +270,9 @@ Returns average of all correlations and votes for all user cause variables for a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $organization_id = 56; // int | Organization ID
 $user_id = 56; // int | User id
 $variable_name = "variable_name_example"; // string | Cause variable name
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse[]**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse[]**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PublicCorrelationsSearchSearchGet**
-> \Swagger\Client\Model\Correlation[] v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token)
 
 Get average correlations for variables containing search term
 
@@ -328,9 +328,9 @@ Returns the average correlations from all users for all public variables that co
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $search = "search_example"; // string | Name of the variable that you want to know the causes or effects of.
 $effect_or_cause = "effect_or_cause_example"; // string | Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNameCausesGet**
-> \Swagger\Client\Model\Correlation[] v1VariablesVariableNameCausesGet($variable_name)
+> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNameCausesGet($variable_name)
 
 Search user correlations for a given effect
 
@@ -380,9 +380,9 @@ Returns average of all correlations and votes for all user cause variables for a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $variable_name = "variable_name_example"; // string | Effect variable name
 
 try {
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -416,7 +416,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNameEffectsGet**
-> \Swagger\Client\Model\Correlation[] v1VariablesVariableNameEffectsGet($variable_name, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNameEffectsGet($variable_name, $access_token)
 
 Search user correlations for a given cause
 
@@ -428,9 +428,9 @@ Returns average of all correlations and votes for all user effect variables for 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $variable_name = "variable_name_example"; // string | Cause variable name
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNamePublicCausesGet**
-> \Swagger\Client\Model\Correlation[] v1VariablesVariableNamePublicCausesGet($variable_name, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNamePublicCausesGet($variable_name, $access_token)
 
 Search public correlations for a given effect
 
@@ -478,9 +478,9 @@ Returns average of all correlations and votes for all public cause variables for
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $variable_name = "variable_name_example"; // string | Effect variable name
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNamePublicEffectsGet**
-> \Swagger\Client\Model\Correlation[] v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token)
 
 Search public correlations for a given cause
 
@@ -528,9 +528,9 @@ Returns average of all correlations and votes for all public cause variables for
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $variable_name = "variable_name_example"; // string | Cause variable name
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -552,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Correlation[]**](../Model/Correlation.md)
+[**\QuantiModo\Client\Model\Correlation[]**](../Model/Correlation.md)
 
 ### Authorization
 
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VotesDeletePost**
-> \Swagger\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token)
 
 Delete vote
 
@@ -578,10 +578,10 @@ Delete previously posted vote
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
-$body = new \Swagger\Client\Model\VoteDelete(); // \Swagger\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
+$body = new \QuantiModo\Client\Model\VoteDelete(); // \QuantiModo\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -597,12 +597,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\VoteDelete**](../Model/\Swagger\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
+ **body** | [**\QuantiModo\Client\Model\VoteDelete**](../Model/\QuantiModo\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -616,7 +616,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VotesPost**
-> \Swagger\Client\Model\CommonResponse v1VotesPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token)
 
 Post or update vote
 
@@ -628,10 +628,10 @@ This is to enable users to indicate their opinion on the plausibility of a causa
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\CorrelationsApi();
-$body = new \Swagger\Client\Model\PostVote(); // \Swagger\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
+$api_instance = new QuantiModo\Client\Api\CorrelationsApi();
+$body = new \QuantiModo\Client\Model\PostVote(); // \QuantiModo\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -647,12 +647,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\PostVote**](../Model/\Swagger\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
+ **body** | [**\QuantiModo\Client\Model\PostVote**](../Model/\QuantiModo\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 

@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,14 +38,14 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client;
+namespace QuantiModo\Client;
 
 /**
  * Configuration Class Doc Comment
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -93,7 +93,7 @@ class Configuration
     /**
      * The default instance of ApiClient
      *
-     * @var \Swagger\Client\ApiClient
+     * @var \QuantiModo\Client\ApiClient
      */
     protected $defaultHeaders = array();
 
@@ -112,11 +112,11 @@ class Configuration
     protected $curlTimeout = 0;
 
     /**
-     * User agent of the HTTP request, set to "PHP-Swagger" by default
+     * User agent of the HTTP request, set to "PHP-QuantiModo" by default
      *
      * @var string
      */
-    protected $userAgent = "Swagger-Codegen/1.0.0/php";
+    protected $userAgent = "QuantiModo-Codegen/1.0.0/php";
 
     /**
      * Debug switch (default set to false)
@@ -519,7 +519,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (Swagger\Client) Debug Report:' . PHP_EOL;
+        $report  = 'PHP SDK (QuantiModo\Client) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . phpversion() . PHP_EOL;
         $report .= '    OpenAPI Spec Version: 2.0.6' . PHP_EOL;

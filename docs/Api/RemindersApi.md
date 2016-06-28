@@ -1,4 +1,4 @@
-# Swagger\Client\RemindersApi
+# QuantiModo\Client\RemindersApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **v1TrackingReminderNotificationsGet**
-> \Swagger\Client\Model\InlineResponse200 v1TrackingReminderNotificationsGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse200 v1TrackingReminderNotificationsGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get specific pending tracking reminders
 
@@ -26,9 +26,9 @@ Specfic pending reminder instances that still need to be tracked.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\RemindersApi();
+$api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $variable_category_name = "variable_category_name_example"; // string | Limit tracking reminder notifications to a specific variable category
 $created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local.
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\QuantiModo\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsSkipPost**
-> \Swagger\Client\Model\CommonResponse v1TrackingReminderNotificationsSkipPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSkipPost($body, $access_token)
 
 Skip a pending tracking reminder
 
@@ -86,10 +86,10 @@ Deletes the pending tracking reminder
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\RemindersApi();
-$body = new \Swagger\Client\Model\TrackingReminderNotificationSkip(); // \Swagger\Client\Model\TrackingReminderNotificationSkip | Id of the pending reminder to be skipped or deleted
+$api_instance = new QuantiModo\Client\Api\RemindersApi();
+$body = new \QuantiModo\Client\Model\TrackingReminderNotificationSkip(); // \QuantiModo\Client\Model\TrackingReminderNotificationSkip | Id of the pending reminder to be skipped or deleted
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -105,12 +105,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\TrackingReminderNotificationSkip**](../Model/\Swagger\Client\Model\TrackingReminderNotificationSkip.md)| Id of the pending reminder to be skipped or deleted |
+ **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationSkip**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationSkip.md)| Id of the pending reminder to be skipped or deleted |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsSnoozePost**
-> \Swagger\Client\Model\CommonResponse v1TrackingReminderNotificationsSnoozePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSnoozePost($body, $access_token)
 
 Snooze a pending tracking reminder
 
@@ -136,10 +136,10 @@ Changes the reminder time to now plus one hour
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\RemindersApi();
-$body = new \Swagger\Client\Model\TrackingReminderNotificationSnooze(); // \Swagger\Client\Model\TrackingReminderNotificationSnooze | Id of the pending reminder to be snoozed
+$api_instance = new QuantiModo\Client\Api\RemindersApi();
+$body = new \QuantiModo\Client\Model\TrackingReminderNotificationSnooze(); // \QuantiModo\Client\Model\TrackingReminderNotificationSnooze | Id of the pending reminder to be snoozed
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -155,12 +155,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\TrackingReminderNotificationSnooze**](../Model/\Swagger\Client\Model\TrackingReminderNotificationSnooze.md)| Id of the pending reminder to be snoozed |
+ **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationSnooze**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationSnooze.md)| Id of the pending reminder to be snoozed |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsTrackPost**
-> \Swagger\Client\Model\CommonResponse v1TrackingReminderNotificationsTrackPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsTrackPost($body, $access_token)
 
 Track a pending tracking reminder
 
@@ -186,10 +186,10 @@ Adds the default measurement for the pending tracking reminder with the reminder
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\RemindersApi();
-$body = new \Swagger\Client\Model\TrackingReminderNotificationTrack(); // \Swagger\Client\Model\TrackingReminderNotificationTrack | Id of the pending reminder to be tracked
+$api_instance = new QuantiModo\Client\Api\RemindersApi();
+$body = new \QuantiModo\Client\Model\TrackingReminderNotificationTrack(); // \QuantiModo\Client\Model\TrackingReminderNotificationTrack | Id of the pending reminder to be tracked
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -205,12 +205,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\TrackingReminderNotificationTrack**](../Model/\Swagger\Client\Model\TrackingReminderNotificationTrack.md)| Id of the pending reminder to be tracked |
+ **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationTrack**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationTrack.md)| Id of the pending reminder to be tracked |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersDeletePost**
-> \Swagger\Client\Model\CommonResponse v1TrackingRemindersDeletePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingRemindersDeletePost($body, $access_token)
 
 Delete tracking reminder
 
@@ -236,10 +236,10 @@ Delete previously created tracking reminder
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\RemindersApi();
-$body = new \Swagger\Client\Model\TrackingReminderDelete(); // \Swagger\Client\Model\TrackingReminderDelete | Id of reminder to be deleted
+$api_instance = new QuantiModo\Client\Api\RemindersApi();
+$body = new \QuantiModo\Client\Model\TrackingReminderDelete(); // \QuantiModo\Client\Model\TrackingReminderDelete | Id of reminder to be deleted
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -255,12 +255,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\TrackingReminderDelete**](../Model/\Swagger\Client\Model\TrackingReminderDelete.md)| Id of reminder to be deleted |
+ **body** | [**\QuantiModo\Client\Model\TrackingReminderDelete**](../Model/\QuantiModo\Client\Model\TrackingReminderDelete.md)| Id of reminder to be deleted |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersGet**
-> \Swagger\Client\Model\InlineResponse2001 v1TrackingRemindersGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2001 v1TrackingRemindersGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get repeating tracking reminder settings
 
@@ -286,9 +286,9 @@ Users can be reminded to track certain variables at a specified frequency with a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\RemindersApi();
+$api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $variable_category_name = "variable_category_name_example"; // string | Limit tracking reminders to a specific variable category
 $created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local.
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersPost**
-> \Swagger\Client\Model\InlineResponse2002 v1TrackingRemindersPost($access_token, $body)
+> \QuantiModo\Client\Model\InlineResponse2002 v1TrackingRemindersPost($access_token, $body)
 
 Store a Tracking Reminder
 
@@ -346,11 +346,11 @@ This is to enable users to create reminders to track a variable with a default v
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\RemindersApi();
+$api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
-$body = new \Swagger\Client\Model\TrackingReminder(); // \Swagger\Client\Model\TrackingReminder | TrackingReminder that should be stored
+$body = new \QuantiModo\Client\Model\TrackingReminder(); // \QuantiModo\Client\Model\TrackingReminder | TrackingReminder that should be stored
 
 try {
     $result = $api_instance->v1TrackingRemindersPost($access_token, $body);
@@ -366,11 +366,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **body** | [**\Swagger\Client\Model\TrackingReminder**](../Model/\Swagger\Client\Model\TrackingReminder.md)| TrackingReminder that should be stored | [optional]
+ **body** | [**\QuantiModo\Client\Model\TrackingReminder**](../Model/\QuantiModo\Client\Model\TrackingReminder.md)| TrackingReminder that should be stored | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\QuantiModo\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
 
 ### Authorization
 

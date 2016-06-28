@@ -1,4 +1,4 @@
-# Swagger\Client\MeasurementsApi
+# QuantiModo\Client\MeasurementsApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **v1MeasurementSourcesGet**
-> \Swagger\Client\Model\MeasurementSource v1MeasurementSourcesGet()
+> \QuantiModo\Client\Model\MeasurementSource v1MeasurementSourcesGet()
 
 Get measurement sources
 
@@ -33,9 +33,9 @@ Returns a list of all the apps from which measurement data is obtained.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 
 try {
     $result = $api_instance->v1MeasurementSourcesGet();
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\MeasurementSource**](../Model/MeasurementSource.md)
+[**\QuantiModo\Client\Model\MeasurementSource**](../Model/MeasurementSource.md)
 
 ### Authorization
 
@@ -77,10 +77,10 @@ Add a life-tracking app or device to the QuantiModo list of data sources.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
-$body = new \Swagger\Client\Model\MeasurementSource(); // \Swagger\Client\Model\MeasurementSource | An array of names of data sources you want to add.
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
+$body = new \QuantiModo\Client\Model\MeasurementSource(); // \QuantiModo\Client\Model\MeasurementSource | An array of names of data sources you want to add.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -95,7 +95,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MeasurementSource**](../Model/\Swagger\Client\Model\MeasurementSource.md)| An array of names of data sources you want to add. |
+ **body** | [**\QuantiModo\Client\Model\MeasurementSource**](../Model/\QuantiModo\Client\Model\MeasurementSource.md)| An array of names of data sources you want to add. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
@@ -114,7 +114,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsDailyGet**
-> \Swagger\Client\Model\Measurement v1MeasurementsDailyGet($variable_name, $access_token, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Measurement v1MeasurementsDailyGet($variable_name, $access_token, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
 
 Get daily measurements for this user
 
@@ -126,9 +126,9 @@ Measurements are any value that can be recorded like daily steps, a mood rating,
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $abbreviated_unit_name = "abbreviated_unit_name_example"; // string | The unit your want the measurements in
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Measurement**](../Model/Measurement.md)
+[**\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
 
 ### Authorization
 
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsDeletePost**
-> \Swagger\Client\Model\CommonResponse v1MeasurementsDeletePost($body)
+> \QuantiModo\Client\Model\CommonResponse v1MeasurementsDeletePost($body)
 
 Delete a measurement
 
@@ -192,10 +192,10 @@ Delete a previously submitted measurement
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
-$body = new \Swagger\Client\Model\MeasurementDelete(); // \Swagger\Client\Model\MeasurementDelete | The startTime and variableId of the measurement to be deleted.
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
+$body = new \QuantiModo\Client\Model\MeasurementDelete(); // \QuantiModo\Client\Model\MeasurementDelete | The startTime and variableId of the measurement to be deleted.
 
 try {
     $result = $api_instance->v1MeasurementsDeletePost($body);
@@ -210,11 +210,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MeasurementDelete**](../Model/\Swagger\Client\Model\MeasurementDelete.md)| The startTime and variableId of the measurement to be deleted. |
+ **body** | [**\QuantiModo\Client\Model\MeasurementDelete**](../Model/\QuantiModo\Client\Model\MeasurementDelete.md)| The startTime and variableId of the measurement to be deleted. |
 
 ### Return type
 
-[**\Swagger\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsGet**
-> \Swagger\Client\Model\Measurement v1MeasurementsGet($access_token, $variable_name, $variable_category_name, $source, $value, $last_updated, $unit, $start_time, $created_at, $updated_at, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $variable_name, $variable_category_name, $source, $value, $last_updated, $unit, $start_time, $created_at, $updated_at, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
 
 Get measurements for this user
 
@@ -240,9 +240,9 @@ Measurements are any value that can be recorded like daily steps, a mood rating,
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
 $variable_category_name = "variable_category_name_example"; // string | Name of the variable category you want measurements for
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Measurement**](../Model/Measurement.md)
+[**\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
 
 ### Authorization
 
@@ -318,10 +318,10 @@ You can submit or update multiple measurements in a \"measurements\" sub-array. 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
-$body = new \Swagger\Client\Model\MeasurementSet(); // \Swagger\Client\Model\MeasurementSet | An array of measurements you want to insert.
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
+$body = new \QuantiModo\Client\Model\MeasurementSet(); // \QuantiModo\Client\Model\MeasurementSet | An array of measurements you want to insert.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -336,7 +336,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MeasurementSet**](../Model/\Swagger\Client\Model\MeasurementSet.md)| An array of measurements you want to insert. |
+ **body** | [**\QuantiModo\Client\Model\MeasurementSet**](../Model/\QuantiModo\Client\Model\MeasurementSet.md)| An array of measurements you want to insert. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
 
 ### Return type
@@ -355,7 +355,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsRangeGet**
-> \Swagger\Client\Model\MeasurementRange v1MeasurementsRangeGet($sources, $user)
+> \QuantiModo\Client\Model\MeasurementRange v1MeasurementsRangeGet($sources, $user)
 
 Get measurements range for this user
 
@@ -367,9 +367,9 @@ Get Unix time-stamp (epoch time) of the user's first and last measurements taken
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $sources = "sources_example"; // string | Enter source name to limit to specific source (varchar)
 $user = 56; // int | If not specified, uses currently logged in user (bigint)
 
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\MeasurementRange**](../Model/MeasurementRange.md)
+[**\QuantiModo\Client\Model\MeasurementRange**](../Model/MeasurementRange.md)
 
 ### Authorization
 
@@ -417,9 +417,9 @@ Download a CSV containing all user measurements
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdDelete**
-> \Swagger\Client\Model\InlineResponse20012 v2MeasurementsIdDelete($id, $access_token)
+> \QuantiModo\Client\Model\InlineResponse20012 v2MeasurementsIdDelete($id, $access_token)
 
 Delete Measurement
 
@@ -465,9 +465,9 @@ Delete Measurement
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $id = 56; // int | id of Measurement
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\QuantiModo\Client\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdGet**
-> \Swagger\Client\Model\InlineResponse20011 v2MeasurementsIdGet($id, $access_token)
+> \QuantiModo\Client\Model\InlineResponse20011 v2MeasurementsIdGet($id, $access_token)
 
 Get Measurement
 
@@ -515,9 +515,9 @@ Get Measurement
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $id = 56; // int | id of Measurement
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\QuantiModo\Client\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdPut**
-> \Swagger\Client\Model\InlineResponse20012 v2MeasurementsIdPut($id, $access_token, $body)
+> \QuantiModo\Client\Model\InlineResponse20012 v2MeasurementsIdPut($id, $access_token, $body)
 
 Update Measurement
 
@@ -565,12 +565,12 @@ Update Measurement
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $id = 56; // int | id of Measurement
 $access_token = "access_token_example"; // string | User's OAuth2 access token
-$body = new \Swagger\Client\Model\Measurement(); // \Swagger\Client\Model\Measurement | Measurement that should be updated
+$body = new \QuantiModo\Client\Model\Measurement(); // \QuantiModo\Client\Model\Measurement | Measurement that should be updated
 
 try {
     $result = $api_instance->v2MeasurementsIdPut($id, $access_token, $body);
@@ -587,11 +587,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of Measurement |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **body** | [**\Swagger\Client\Model\Measurement**](../Model/\Swagger\Client\Model\Measurement.md)| Measurement that should be updated | [optional]
+ **body** | [**\QuantiModo\Client\Model\Measurement**](../Model/\QuantiModo\Client\Model\Measurement.md)| Measurement that should be updated | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\QuantiModo\Client\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -617,9 +617,9 @@ Use this endpoint to schedule a CSV export containing all user measurements to b
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -665,9 +665,9 @@ Use this endpoint to schedule a PDF export containing all user measurements to b
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -713,9 +713,9 @@ Use this endpoint to schedule a XLS export containing all user measurements to b
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\MeasurementsApi();
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {

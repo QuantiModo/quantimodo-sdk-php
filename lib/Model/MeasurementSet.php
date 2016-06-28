@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -47,7 +47,7 @@ use \ArrayAccess;
  * MeasurementSet Class Doc Comment
  *
  * @category    Class
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -65,7 +65,7 @@ class MeasurementSet implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'measurements' => '\Swagger\Client\Model\ValueObject[]',
+        'measurements' => '\QuantiModo\Client\Model\ValueObject[]',
         'variable_name' => 'string',
         'source_name' => 'string',
         'variable_category_name' => 'string',
@@ -227,7 +227,7 @@ class MeasurementSet implements ArrayAccess
 
     /**
      * Gets measurements
-     * @return \Swagger\Client\Model\ValueObject[]
+     * @return \QuantiModo\Client\Model\ValueObject[]
      */
     public function getMeasurements()
     {
@@ -236,7 +236,7 @@ class MeasurementSet implements ArrayAccess
 
     /**
      * Sets measurements
-     * @param \Swagger\Client\Model\ValueObject[] $measurements Array of timestamps, values, and optional notes
+     * @param \QuantiModo\Client\Model\ValueObject[] $measurements Array of timestamps, values, and optional notes
      * @return $this
      */
     public function setMeasurements($measurements)
@@ -406,9 +406,9 @@ class MeasurementSet implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

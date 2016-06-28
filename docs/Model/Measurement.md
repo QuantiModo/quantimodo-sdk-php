@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **variable** | **string** | ORIGINAL Name of the variable for which we are creating the measurement records | 
 **source** | **string** | Application or device used to record the measurement values | 
 **start_time** | **string** | Start Time for the measurement event in ISO 8601 | 
-**human_time** | [**\Swagger\Client\Model\HumanTime**](HumanTime.md) | Start Time for the measurement event in ISO 8601 | [optional] 
+**human_time** | [**\QuantiModo\Client\Model\HumanTime**](HumanTime.md) | Start Time for the measurement event in ISO 8601 | [optional]
 **value** | **double** | Converted measurement value in requested unit | 
 **unit** | **string** | Unit of measurement as requested in GET request | 
 **original_value** | **int** | Original value | [optional] 

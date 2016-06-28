@@ -1,4 +1,4 @@
-# Swagger\Client\PairsApi
+# QuantiModo\Client\PairsApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1PairsCsvGet**
-> \Swagger\Client\Model\Pairs[] v1PairsCsvGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Pairs[] v1PairsCsvGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
 
 Get pairs
 
@@ -21,9 +21,9 @@ Pairs cause measurements with effect measurements grouped over the duration of a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\PairsApi();
+$api_instance = new QuantiModo\Client\Api\PairsApi();
 $cause = "cause_example"; // string | Original variable name for the explanatory or independent variable
 $effect = "effect_example"; // string | Original variable name for the outcome or dependent variable
 $access_token = "access_token_example"; // string | User's OAuth2 access token
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Pairs[]**](../Model/Pairs.md)
+[**\QuantiModo\Client\Model\Pairs[]**](../Model/Pairs.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PairsGet**
-> \Swagger\Client\Model\Pairs[] v1PairsGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Pairs[] v1PairsGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
 
 Get pairs
 
@@ -95,9 +95,9 @@ Pairs cause measurements with effect measurements grouped over the duration of a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\PairsApi();
+$api_instance = new QuantiModo\Client\Api\PairsApi();
 $cause = "cause_example"; // string | Original variable name for the explanatory or independent variable
 $effect = "effect_example"; // string | Original variable name for the outcome or dependent variable
 $access_token = "access_token_example"; // string | User's OAuth2 access token
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Pairs[]**](../Model/Pairs.md)
+[**\QuantiModo\Client\Model\Pairs[]**](../Model/Pairs.md)
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-# Swagger\Client\UnitsApi
+# QuantiModo\Client\UnitsApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **v1UnitCategoriesGet**
-> \Swagger\Client\Model\UnitCategory v1UnitCategoriesGet()
+> \QuantiModo\Client\Model\UnitCategory v1UnitCategoriesGet()
 
 Get unit categories
 
@@ -22,9 +22,9 @@ Get a list of the categories of measurement units such as 'Distance', 'Duration'
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\UnitsApi();
+$api_instance = new QuantiModo\Client\Api\UnitsApi();
 
 try {
     $result = $api_instance->v1UnitCategoriesGet();
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\UnitCategory**](../Model/UnitCategory.md)
+[**\QuantiModo\Client\Model\UnitCategory**](../Model/UnitCategory.md)
 
 ### Authorization
 
@@ -54,7 +54,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1UnitsGet**
-> \Swagger\Client\Model\Unit[] v1UnitsGet($access_token, $id, $unit_name, $abbreviated_unit_name, $category_name)
+> \QuantiModo\Client\Model\Unit[] v1UnitsGet($access_token, $id, $unit_name, $abbreviated_unit_name, $category_name)
 
 Get all available units
 
@@ -66,9 +66,9 @@ Get all available units
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\UnitsApi();
+$api_instance = new QuantiModo\Client\Api\UnitsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $id = 56; // int | Unit id
 $unit_name = "unit_name_example"; // string | Unit name
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Unit[]**](../Model/Unit.md)
+[**\QuantiModo\Client\Model\Unit[]**](../Model/Unit.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1UnitsVariableGet**
-> \Swagger\Client\Model\Unit[] v1UnitsVariableGet($access_token, $unit_name, $abbreviated_unit_name, $category_name, $variable)
+> \QuantiModo\Client\Model\Unit[] v1UnitsVariableGet($access_token, $unit_name, $abbreviated_unit_name, $category_name, $variable)
 
 Units for Variable
 
@@ -122,9 +122,9 @@ Get a list of all possible units to use for a given variable
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\UnitsApi();
+$api_instance = new QuantiModo\Client\Api\UnitsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $unit_name = "unit_name_example"; // string | Name of Unit you want to retrieve
 $abbreviated_unit_name = "abbreviated_unit_name_example"; // string | Abbreviated Unit Name of the unit you want
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Unit[]**](../Model/Unit.md)
+[**\QuantiModo\Client\Model\Unit[]**](../Model/Unit.md)
 
 ### Authorization
 

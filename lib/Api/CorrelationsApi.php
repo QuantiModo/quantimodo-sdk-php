@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,18 +38,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace QuantiModo\Client\Api;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \QuantiModo\Client\Configuration;
+use \QuantiModo\Client\ApiClient;
+use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\ObjectSerializer;
 
 /**
  * CorrelationsApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -60,16 +60,16 @@ class CorrelationsApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \QuantiModo\Client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \QuantiModo\Client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
@@ -82,7 +82,7 @@ class CorrelationsApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \QuantiModo\Client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -92,11 +92,11 @@ class CorrelationsApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \QuantiModo\Client\ApiClient $apiClient set the API client
      *
      * @return CorrelationsApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\QuantiModo\Client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -118,8 +118,8 @@ class CorrelationsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1AggregatedCorrelationsGet($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
@@ -144,8 +144,8 @@ class CorrelationsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1AggregatedCorrelationsGetWithHttpInfo($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
@@ -220,14 +220,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -240,11 +240,11 @@ class CorrelationsApi
      *
      * Store or Update a Correlation.
      *
-     * @param \Swagger\Client\Model\PostCorrelation $body Provides correlation data (required)
+     * @param \QuantiModo\Client\Model\PostCorrelation $body Provides correlation data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1AggregatedCorrelationsPost($body, $access_token = null)
     {
@@ -258,11 +258,11 @@ class CorrelationsApi
      *
      * Store or Update a Correlation.
      *
-     * @param \Swagger\Client\Model\PostCorrelation $body Provides correlation data (required)
+     * @param \QuantiModo\Client\Model\PostCorrelation $body Provides correlation data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1AggregatedCorrelationsPostWithHttpInfo($body, $access_token = null)
     {
@@ -325,7 +325,7 @@ class CorrelationsApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\JsonErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\JsonErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -349,8 +349,8 @@ class CorrelationsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1CorrelationsGet($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
@@ -375,8 +375,8 @@ class CorrelationsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1CorrelationsGetWithHttpInfo($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
@@ -451,14 +451,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -478,8 +478,8 @@ class CorrelationsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
     {
@@ -500,8 +500,8 @@ class CorrelationsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
     {
@@ -596,14 +596,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -623,8 +623,8 @@ class CorrelationsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
      *
-     * @return \Swagger\Client\Model\CommonResponse[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\CommonResponse[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
     {
@@ -645,8 +645,8 @@ class CorrelationsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
      *
-     * @return Array of \Swagger\Client\Model\CommonResponse[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\CommonResponse[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
     {
@@ -741,14 +741,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\CommonResponse[]'
+                '\QuantiModo\Client\Model\CommonResponse[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommonResponse[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -765,8 +765,8 @@ class CorrelationsApi
      * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token = null)
     {
@@ -784,8 +784,8 @@ class CorrelationsApi
      * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token = null)
     {
@@ -853,14 +853,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -875,8 +875,8 @@ class CorrelationsApi
      *
      * @param string $variable_name Effect variable name (required)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNameCausesGet($variable_name)
     {
@@ -892,8 +892,8 @@ class CorrelationsApi
      *
      * @param string $variable_name Effect variable name (required)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNameCausesGetWithHttpInfo($variable_name)
     {
@@ -950,14 +950,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -973,8 +973,8 @@ class CorrelationsApi
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNameEffectsGet($variable_name, $access_token = null)
     {
@@ -991,8 +991,8 @@ class CorrelationsApi
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNameEffectsGetWithHttpInfo($variable_name, $access_token = null)
     {
@@ -1052,14 +1052,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1075,8 +1075,8 @@ class CorrelationsApi
      * @param string $variable_name Effect variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNamePublicCausesGet($variable_name, $access_token = null)
     {
@@ -1093,8 +1093,8 @@ class CorrelationsApi
      * @param string $variable_name Effect variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNamePublicCausesGetWithHttpInfo($variable_name, $access_token = null)
     {
@@ -1154,14 +1154,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1177,8 +1177,8 @@ class CorrelationsApi
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return \Swagger\Client\Model\Correlation[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token = null)
     {
@@ -1195,8 +1195,8 @@ class CorrelationsApi
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return Array of \Swagger\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VariablesVariableNamePublicEffectsGetWithHttpInfo($variable_name, $access_token = null)
     {
@@ -1256,14 +1256,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1276,11 +1276,11 @@ class CorrelationsApi
      *
      * Delete vote.
      *
-     * @param \Swagger\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
+     * @param \QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return \Swagger\Client\Model\CommonResponse
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\CommonResponse
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VotesDeletePost($body, $access_token = null)
     {
@@ -1294,11 +1294,11 @@ class CorrelationsApi
      *
      * Delete vote.
      *
-     * @param \Swagger\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
+     * @param \QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return Array of \Swagger\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VotesDeletePostWithHttpInfo($body, $access_token = null)
     {
@@ -1355,14 +1355,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\CommonResponse'
+                '\QuantiModo\Client\Model\CommonResponse'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1375,11 +1375,11 @@ class CorrelationsApi
      *
      * Post or update vote.
      *
-     * @param \Swagger\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
+     * @param \QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return \Swagger\Client\Model\CommonResponse
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\CommonResponse
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VotesPost($body, $access_token = null)
     {
@@ -1393,11 +1393,11 @@ class CorrelationsApi
      *
      * Post or update vote.
      *
-     * @param \Swagger\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
+     * @param \QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      *
-     * @return Array of \Swagger\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1VotesPostWithHttpInfo($body, $access_token = null)
     {
@@ -1454,14 +1454,14 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\CommonResponse'
+                '\QuantiModo\Client\Model\CommonResponse'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

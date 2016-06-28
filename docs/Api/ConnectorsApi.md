@@ -1,4 +1,4 @@
-# Swagger\Client\ConnectorsApi
+# QuantiModo\Client\ConnectorsApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -28,13 +28,13 @@ Get embeddable connect javascript. Usage:    - Embedding in applications with po
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
 try {
@@ -79,13 +79,13 @@ This page is designed to be opened in a webview.  Instead of using popup authent
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure API key authorization: internalApiKey
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $access_token = "access_token_example"; // string | User OAuth access token
 
 try {
@@ -130,9 +130,9 @@ Attempt to obtain a token from the data provider, store it in the database. With
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -179,9 +179,9 @@ Returns instructions that describe what parameters and endpoint to use to connec
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
 $parameters = "parameters_example"; // string | JSON Array of Parameters for the request to enable connector.
 $url = "url_example"; // string | URL which should be used to enable the connector.
@@ -222,7 +222,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorConnectParameterGet**
-> \Swagger\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $default_value)
+> \QuantiModo\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $default_value)
 
 Connect Parameter
 
@@ -234,9 +234,9 @@ Returns instructions that describe what parameters and endpoint to use to connec
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
 $display_name = "display_name_example"; // string | Name of the parameter that is user visible in the form
 $key = "key_example"; // string | Name of the property that the user has to enter such as username or password Connector (used in HTTP request)
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ConnectorInstruction**](../Model/ConnectorInstruction.md)
+[**\QuantiModo\Client\Model\ConnectorInstruction**](../Model/ConnectorInstruction.md)
 
 ### Authorization
 
@@ -296,9 +296,9 @@ The disconnect method deletes any stored tokens or connection information from t
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
 
 try {
@@ -331,7 +331,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorInfoGet**
-> \Swagger\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token)
+> \QuantiModo\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token)
 
 Get connector info for user
 
@@ -343,9 +343,9 @@ Returns information about the connector such as the connector id, whether or not
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ConnectorInfo**](../Model/ConnectorInfo.md)
+[**\QuantiModo\Client\Model\ConnectorInfo**](../Model/ConnectorInfo.md)
 
 ### Authorization
 
@@ -393,9 +393,9 @@ The update method tells the QM Connector Framework to check with the data provid
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 
@@ -430,7 +430,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsListGet**
-> \Swagger\Client\Model\Connector[] v1ConnectorsListGet()
+> \QuantiModo\Client\Model\Connector[] v1ConnectorsListGet()
 
 List of Connectors
 
@@ -442,9 +442,9 @@ A connector pulls data from other data providers using their API or a screenscra
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ConnectorsApi();
+$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 
 try {
     $result = $api_instance->v1ConnectorsListGet();
@@ -460,7 +460,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\Connector[]**](../Model/Connector.md)
+[**\QuantiModo\Client\Model\Connector[]**](../Model/Connector.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -47,7 +47,7 @@ use \ArrayAccess;
  * Measurement Class Doc Comment
  *
  * @category    Class
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -68,7 +68,7 @@ class Measurement implements ArrayAccess
         'variable' => 'string',
         'source' => 'string',
         'start_time' => 'string',
-        'human_time' => '\Swagger\Client\Model\HumanTime',
+        'human_time' => '\QuantiModo\Client\Model\HumanTime',
         'value' => 'double',
         'unit' => 'string',
         'original_value' => 'int',
@@ -304,7 +304,7 @@ class Measurement implements ArrayAccess
 
     /**
      * Gets human_time
-     * @return \Swagger\Client\Model\HumanTime
+     * @return \QuantiModo\Client\Model\HumanTime
      */
     public function getHumanTime()
     {
@@ -313,7 +313,7 @@ class Measurement implements ArrayAccess
 
     /**
      * Sets human_time
-     * @param \Swagger\Client\Model\HumanTime $human_time Start Time for the measurement event in ISO 8601
+     * @param \QuantiModo\Client\Model\HumanTime $human_time Start Time for the measurement event in ISO 8601
      * @return $this
      */
     public function setHumanTime($human_time)
@@ -542,9 +542,9 @@ class Measurement implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,18 +38,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace QuantiModo\Client\Api;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \QuantiModo\Client\Configuration;
+use \QuantiModo\Client\ApiClient;
+use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\ObjectSerializer;
 
 /**
  * AuthenticationApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -60,16 +60,16 @@ class AuthenticationApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \QuantiModo\Client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \QuantiModo\Client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
@@ -82,7 +82,7 @@ class AuthenticationApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \QuantiModo\Client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -92,11 +92,11 @@ class AuthenticationApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \QuantiModo\Client\ApiClient $apiClient set the API client
      *
      * @return AuthenticationApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\QuantiModo\Client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -111,7 +111,7 @@ class AuthenticationApi
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2AuthSocialAuthorizeCodeGet($code, $provider)
     {
@@ -129,7 +129,7 @@ class AuthenticationApi
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2AuthSocialAuthorizeCodeGetWithHttpInfo($code, $provider)
     {
@@ -210,7 +210,7 @@ class AuthenticationApi
      * @param string $refresh_token Optional refresh token obtained from Google or FB native SDK (optional)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2AuthSocialAuthorizeTokenGet($access_token, $provider, $refresh_token = null)
     {
@@ -229,7 +229,7 @@ class AuthenticationApi
      * @param string $refresh_token Optional refresh token obtained from Google or FB native SDK (optional)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2AuthSocialAuthorizeTokenGetWithHttpInfo($access_token, $provider, $refresh_token = null)
     {
@@ -312,7 +312,7 @@ class AuthenticationApi
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2AuthSocialLoginGet($redirect_url, $provider)
     {
@@ -330,7 +330,7 @@ class AuthenticationApi
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2AuthSocialLoginGetWithHttpInfo($redirect_url, $provider)
     {
@@ -416,7 +416,7 @@ class AuthenticationApi
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2Oauth2AccessTokenGet($client_id, $client_secret, $grant_type, $code, $response_type = null, $scope = null, $redirect_uri = null, $state = null)
     {
@@ -440,7 +440,7 @@ class AuthenticationApi
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2Oauth2AccessTokenGetWithHttpInfo($client_id, $client_secret, $grant_type, $code, $response_type = null, $scope = null, $redirect_uri = null, $state = null)
     {
@@ -552,7 +552,7 @@ class AuthenticationApi
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
      *
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2OauthAuthorizeGet($client_id, $client_secret, $response_type, $scope, $redirect_uri = null, $state = null)
     {
@@ -574,7 +574,7 @@ class AuthenticationApi
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
      *
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v2OauthAuthorizeGetWithHttpInfo($client_id, $client_secret, $response_type, $scope, $redirect_uri = null, $state = null)
     {

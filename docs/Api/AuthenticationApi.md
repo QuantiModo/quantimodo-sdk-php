@@ -1,4 +1,4 @@
-# Swagger\Client\AuthenticationApi
+# QuantiModo\Client\AuthenticationApi
 
 All URIs are relative to *https://app.quantimo.do/api*
 
@@ -24,9 +24,9 @@ Here is the flow for how social authentication works with a JWT Token  1.**Clien
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\AuthenticationApi();
+$api_instance = new QuantiModo\Client\Api\AuthenticationApi();
 $code = "code_example"; // string | Authorization code obtained from the provider.
 $provider = "provider_example"; // string | The current options are `google` and `facebook`.
 
@@ -73,9 +73,9 @@ If you are using native authentication via Facebook or Google SDKs then you shou
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\AuthenticationApi();
+$api_instance = new QuantiModo\Client\Api\AuthenticationApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token obtained from Google or FB native SDK
 $provider = "provider_example"; // string | The current options are `google` and `facebook`.
 $refresh_token = "refresh_token_example"; // string | Optional refresh token obtained from Google or FB native SDK
@@ -124,9 +124,9 @@ Here is the flow for how social authentication works with a JWT Token  1.**Clien
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\AuthenticationApi();
+$api_instance = new QuantiModo\Client\Api\AuthenticationApi();
 $redirect_url = "redirect_url_example"; // string | The redirect URI is the URL within your client application that will receive the OAuth2 credentials. Url should be registered with our social apps. Facebook and Twitter are fine with any redirect url with the same domain base url but Google needs exact redirect url.
 $provider = "provider_example"; // string | The current options are `google` and `facebook`.
 
@@ -173,9 +173,9 @@ Client provides authorization token obtained from /api/v1/oauth2/authorize to th
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\AuthenticationApi();
+$api_instance = new QuantiModo\Client\Api\AuthenticationApi();
 $client_id = "client_id_example"; // string | This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do.
 $client_secret = "client_secret_example"; // string | This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId.
 $grant_type = "grant_type_example"; // string | Grant Type can be 'authorization_code' or 'refresh_token'
@@ -234,9 +234,9 @@ You can implement OAuth2 authentication to your application using our **OAuth2**
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\AuthenticationApi();
+$api_instance = new QuantiModo\Client\Api\AuthenticationApi();
 $client_id = "client_id_example"; // string | This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by creating a free application at [https://admin.quantimo.do](https://admin.quantimo.do).
 $client_secret = "client_secret_example"; // string | This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId.  Obtain this by creating a free application at [https://admin.quantimo.do](https://admin.quantimo.do).
 $response_type = "response_type_example"; // string | If the value is code, launches a Basic flow, requiring a POST to the token endpoint to obtain the tokens. If the value is token id_token or id_token token, launches an Implicit flow, requiring the use of Javascript at the redirect URI to retrieve tokens from the URI #fragment.

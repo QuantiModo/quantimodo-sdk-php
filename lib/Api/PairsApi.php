@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,18 +38,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace QuantiModo\Client\Api;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \QuantiModo\Client\Configuration;
+use \QuantiModo\Client\ApiClient;
+use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\ObjectSerializer;
 
 /**
  * PairsApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -60,16 +60,16 @@ class PairsApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \QuantiModo\Client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \QuantiModo\Client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
@@ -82,7 +82,7 @@ class PairsApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \QuantiModo\Client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -92,11 +92,11 @@ class PairsApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \QuantiModo\Client\ApiClient $apiClient set the API client
      *
      * @return PairsApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\QuantiModo\Client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -122,8 +122,8 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\Pairs[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Pairs[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PairsCsvGet($cause, $effect, $access_token = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -152,8 +152,8 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PairsCsvGetWithHttpInfo($cause, $effect, $access_token = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -250,14 +250,14 @@ class PairsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Pairs[]'
+                '\QuantiModo\Client\Model\Pairs[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Pairs[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Pairs[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -285,8 +285,8 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return \Swagger\Client\Model\Pairs[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Pairs[]
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PairsGet($cause, $effect, $access_token = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -315,8 +315,8 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      *
-     * @return Array of \Swagger\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \QuantiModo\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
      */
     public function v1PairsGetWithHttpInfo($cause, $effect, $access_token = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -413,14 +413,14 @@ class PairsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Pairs[]'
+                '\QuantiModo\Client\Model\Pairs[]'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Pairs[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Pairs[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
