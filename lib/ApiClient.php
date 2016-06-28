@@ -5,39 +5,47 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
+
 /**
- *  Copyright 2016 SmartBear Software
+ * QuantiModo
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ *
+ * OpenAPI spec version: 2.0.6
+ * 
+ * Generated by: https://github.com/swagger-api/swagger-codegen.git
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
 /**
  * NOTE: This class is auto generated by the swagger code generator program.
  * https://github.com/swagger-api/swagger-codegen
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client;
+namespace QuantiModo\Client;
 
 /**
  * ApiClient Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -55,21 +63,24 @@ class ApiClient
 
     /**
      * Configuration
+     *
      * @var Configuration
      */
     protected $config;
 
     /**
      * Object Serializer
+     *
      * @var ObjectSerializer
      */
     protected $serializer;
 
     /**
      * Constructor of the class
+     *
      * @param Configuration $config config for this ApiClient
      */
-    public function __construct(Configuration $config = null)
+    public function __construct(\QuantiModo\Client\Configuration $config = null)
     {
         if ($config == null) {
             $config = Configuration::getDefaultConfiguration();
@@ -81,6 +92,7 @@ class ApiClient
 
     /**
      * Get the config
+     *
      * @return Configuration
      */
     public function getConfig()
@@ -90,6 +102,7 @@ class ApiClient
 
     /**
      * Get the serializer
+     *
      * @return ObjectSerializer
      */
     public function getSerializer()
@@ -99,7 +112,9 @@ class ApiClient
 
     /**
      * Get API key (with prefix if set)
+     *
      * @param  string $apiKeyIdentifier name of apikey
+     *
      * @return string API key with the prefix
      */
     public function getApiKeyWithPrefix($apiKeyIdentifier)
@@ -122,13 +137,15 @@ class ApiClient
 
     /**
      * Make the HTTP call (Sync)
+     *
      * @param string $resourcePath path to method endpoint
      * @param string $method       method to call
      * @param array  $queryParams  parameters to be place in query URL
      * @param array  $postData     parameters to be placed in POST body
      * @param array  $headerParams parameters to be place in request header
      * @param string $responseType expected response type of the endpoint
-     * @throws \Swagger\Client\ApiException on a non 2xx response
+     *
+     * @throws \QuantiModo\Client\ApiException on a non 2xx response
      * @return mixed
      */
     public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null)
@@ -150,7 +167,7 @@ class ApiClient
         if ($postData and in_array('Content-Type: application/x-www-form-urlencoded', $headers)) {
             $postData = http_build_query($postData);
         } elseif ((is_object($postData) or is_array($postData)) and !in_array('Content-Type: multipart/form-data', $headers)) { // json model
-            $postData = json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($postData));
+            $postData = json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($postData));
         }
 
         $url = $this->config->getHost() . $resourcePath;
@@ -160,7 +177,7 @@ class ApiClient
         if ($this->config->getCurlTimeout() != 0) {
             curl_setopt($curl, CURLOPT_TIMEOUT, $this->config->getCurlTimeout());
         }
-        // return the result on success, rather than just true 
+        // return the result on success, rather than just true
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
@@ -171,7 +188,7 @@ class ApiClient
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         }
 
-        if (! empty($queryParams)) {
+        if (!empty($queryParams)) {
             $url = ($url . '?' . http_build_query($queryParams));
         }
 
@@ -202,7 +219,7 @@ class ApiClient
 
         // debugging for curl
         if ($this->config->getDebug()) {
-            error_log("[DEBUG] HTTP Request body  ~BEGIN~\n".print_r($postData, true)."\n~END~\n", 3, $this->config->getDebugFile());
+            error_log("[DEBUG] HTTP Request body  ~BEGIN~".PHP_EOL.print_r($postData, true).PHP_EOL."~END~".PHP_EOL, 3, $this->config->getDebugFile());
 
             curl_setopt($curl, CURLOPT_VERBOSE, 1);
             curl_setopt($curl, CURLOPT_STDERR, fopen($this->config->getDebugFile(), 'a'));
@@ -216,21 +233,21 @@ class ApiClient
         // Make the request
         $response = curl_exec($curl);
         $http_header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
-        $http_header = $this->http_parse_headers(substr($response, 0, $http_header_size));
+        $http_header = $this->httpParseHeaders(substr($response, 0, $http_header_size));
         $http_body = substr($response, $http_header_size);
         $response_info = curl_getinfo($curl);
 
         // debug HTTP response body
         if ($this->config->getDebug()) {
-            error_log("[DEBUG] HTTP Response body ~BEGIN~\n".print_r($http_body, true)."\n~END~\n", 3, $this->config->getDebugFile());
+            error_log("[DEBUG] HTTP Response body ~BEGIN~".PHP_EOL.print_r($http_body, true).PHP_EOL."~END~".PHP_EOL, 3, $this->config->getDebugFile());
         }
 
         // Handle the response
         if ($response_info['http_code'] == 0) {
             throw new ApiException("API call to $url timed out: ".serialize($response_info), 0, null, null);
-        } elseif ($response_info['http_code'] >= 200 && $response_info['http_code'] <= 299 ) {
+        } elseif ($response_info['http_code'] >= 200 && $response_info['http_code'] <= 299) {
             // return raw body if response is a file
-            if ($responseType == '\SplFileObject' || $responseType == 'ByteArray') {
+            if ($responseType == '\SplFileObject' || $responseType == 'string') {
                 return array($http_body, $response_info['http_code'], $http_header);
             }
 
@@ -246,7 +263,9 @@ class ApiClient
 
             throw new ApiException(
                 "[".$response_info['http_code']."] Error connecting to the API ($url)",
-                $response_info['http_code'], $http_header, $data
+                $response_info['http_code'],
+                $http_header,
+                $data
             );
         }
         return array($data, $response_info['http_code'], $http_header);
@@ -259,7 +278,7 @@ class ApiClient
      *
      * @return string Accept (e.g. application/json)
      */
-    public static function selectHeaderAccept($accept)
+    public function selectHeaderAccept($accept)
     {
         if (count($accept) === 0 or (count($accept) === 1 and $accept[0] === '')) {
             return null;
@@ -277,7 +296,7 @@ class ApiClient
      *
      * @return string Content-Type (e.g. application/json)
      */
-    public static function selectHeaderContentType($content_type)
+    public function selectHeaderContentType($content_type)
     {
         if (count($content_type) === 0 or (count($content_type) === 1 and $content_type[0] === '')) {
             return 'application/json';
@@ -295,44 +314,35 @@ class ApiClient
     *
     * @return string[] Array of HTTP response heaers
     */
-    protected function http_parse_headers($raw_headers)
+    protected function httpParseHeaders($raw_headers)
     {
         // ref/credit: http://php.net/manual/en/function.http-parse-headers.php#112986
         $headers = array();
-        $key = ''; // [+]
-   
-        foreach(explode("\n", $raw_headers) as $i => $h)
-        {
+        $key = '';
+
+        foreach (explode("\n", $raw_headers) as $h) {
             $h = explode(':', $h, 2);
-   
-            if (isset($h[1]))
-            {
-                if (!isset($headers[$h[0]]))
+
+            if (isset($h[1])) {
+                if (!isset($headers[$h[0]])) {
                     $headers[$h[0]] = trim($h[1]);
-                elseif (is_array($headers[$h[0]]))
-                {
-                    // $tmp = array_merge($headers[$h[0]], array(trim($h[1]))); // [-]
-                    // $headers[$h[0]] = $tmp; // [-]
-                    $headers[$h[0]] = array_merge($headers[$h[0]], array(trim($h[1]))); // [+]
+                } elseif (is_array($headers[$h[0]])) {
+                    $headers[$h[0]] = array_merge($headers[$h[0]], array(trim($h[1])));
+                } else {
+                    $headers[$h[0]] = array_merge(array($headers[$h[0]]), array(trim($h[1])));
                 }
-                else
-                {
-                    // $tmp = array_merge(array($headers[$h[0]]), array(trim($h[1]))); // [-]
-                    // $headers[$h[0]] = $tmp; // [-]
-                    $headers[$h[0]] = array_merge(array($headers[$h[0]]), array(trim($h[1]))); // [+]
+
+                $key = $h[0];
+            } else {
+                if (substr($h[0], 0, 1) == "\t") {
+                    $headers[$key] .= "\r\n\t".trim($h[0]);
+                } elseif (!$key) {
+                    $headers[0] = trim($h[0]);
                 }
-   
-                $key = $h[0]; // [+]
+                trim($h[0]);
             }
-            else // [+]
-            { // [+]
-                if (substr($h[0], 0, 1) == "\t") // [+]
-                    $headers[$key] .= "\r\n\t".trim($h[0]); // [+]
-                elseif (!$key) // [+]
-                    $headers[0] = trim($h[0]);trim($h[0]); // [+]
-            } // [+]
         }
-   
+
         return $headers;
     }
 }

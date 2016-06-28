@@ -5,41 +5,49 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
+
 /**
- *  Copyright 2016 SmartBear Software
+ * QuantiModo
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ *
+ * OpenAPI spec version: 2.0.6
+ * 
+ * Generated by: https://github.com/swagger-api/swagger-codegen.git
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
 /**
  * NOTE: This class is auto generated by the swagger code generator program.
  * https://github.com/swagger-api/swagger-codegen
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
+
 /**
  * Unit Class Doc Comment
  *
  * @category    Class
- * @description 
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -47,164 +55,124 @@ use \ArrayAccess;
 class Unit implements ArrayAccess
 {
     /**
-      * Array of property to type mappings. Used for (de)serialization 
+      * The original name of the model.
+      * @var string
+      */
+    protected static $swaggerModelName = 'Unit';
+
+    /**
+      * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    static $swaggerTypes = array(
-        'id' => 'int',
-        'client_id' => 'string',
+    protected static $swaggerTypes = array(
         'name' => 'string',
         'abbreviated_name' => 'string',
-        'category_id' => 'int',
-        'minimum_value' => 'float',
-        'maximum_value' => 'float',
-        'updated' => 'int',
-        'default_unit_id' => 'int',
-        'multiply' => 'float',
-        'add' => 'float',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'category' => 'string',
+        'minimum_value' => 'double',
+        'maximum_value' => 'double',
+        'conversion_steps' => '\QuantiModo\Client\Model\ConversionStep[]'
     );
-  
-    /** 
-      * Array of attributes where the key is the local name, and the value is the original name
-      * @var string[] 
-      */
-    static $attributeMap = array(
-        'id' => 'id',
-        'client_id' => 'client_id',
-        'name' => 'name',
-        'abbreviated_name' => 'abbreviated_name',
-        'category_id' => 'category_id',
-        'minimum_value' => 'minimum_value',
-        'maximum_value' => 'maximum_value',
-        'updated' => 'updated',
-        'default_unit_id' => 'default_unit_id',
-        'multiply' => 'multiply',
-        'add' => 'add',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
-    );
-  
+
+    public static function swaggerTypes()
+    {
+        return self::$swaggerTypes;
+    }
+
     /**
-      * Array of attributes to setter functions (for deserialization of responses)
-      * @var string[]
-      */
-    static $setters = array(
-        'id' => 'setId',
-        'client_id' => 'setClientId',
+     * Array of attributes where the key is the local name, and the value is the original name
+     * @var string[]
+     */
+    protected static $attributeMap = array(
+        'name' => 'name',
+        'abbreviated_name' => 'abbreviatedName',
+        'category' => 'category',
+        'minimum_value' => 'minimumValue',
+        'maximum_value' => 'maximumValue',
+        'conversion_steps' => 'conversionSteps'
+    );
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = array(
         'name' => 'setName',
         'abbreviated_name' => 'setAbbreviatedName',
-        'category_id' => 'setCategoryId',
+        'category' => 'setCategory',
         'minimum_value' => 'setMinimumValue',
         'maximum_value' => 'setMaximumValue',
-        'updated' => 'setUpdated',
-        'default_unit_id' => 'setDefaultUnitId',
-        'multiply' => 'setMultiply',
-        'add' => 'setAdd',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'conversion_steps' => 'setConversionSteps'
     );
-  
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
+
     /**
-      * Array of attributes to getter functions (for serialization of requests)
-      * @var string[]
-      */
-    static $getters = array(
-        'id' => 'getId',
-        'client_id' => 'getClientId',
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = array(
         'name' => 'getName',
         'abbreviated_name' => 'getAbbreviatedName',
-        'category_id' => 'getCategoryId',
+        'category' => 'getCategory',
         'minimum_value' => 'getMinimumValue',
         'maximum_value' => 'getMaximumValue',
-        'updated' => 'getUpdated',
-        'default_unit_id' => 'getDefaultUnitId',
-        'multiply' => 'getMultiply',
-        'add' => 'getAdd',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'conversion_steps' => 'getConversionSteps'
     );
-  
+
+    public static function getters()
+    {
+        return self::$getters;
+    }
+
+    const CATEGORY_DISTANCE = 'Distance';
+    const CATEGORY_DURATION = 'Duration';
+    const CATEGORY_ENERGY = 'Energy';
+    const CATEGORY_FREQUENCY = 'Frequency';
+    const CATEGORY_MISCELLANY = 'Miscellany';
+    const CATEGORY_PRESSURE = 'Pressure';
+    const CATEGORY_PROPORTION = 'Proportion';
+    const CATEGORY_RATING = 'Rating';
+    const CATEGORY_TEMPERATURE = 'Temperature';
+    const CATEGORY_VOLUME = 'Volume';
+    const CATEGORY_WEIGHT = 'Weight';
+    
+
     
     /**
-      * $id id
-      * @var int
-      */
-    protected $id;
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getCategoryAllowableValues()
+    {
+        return [
+            self::CATEGORY_DISTANCE,
+            self::CATEGORY_DURATION,
+            self::CATEGORY_ENERGY,
+            self::CATEGORY_FREQUENCY,
+            self::CATEGORY_MISCELLANY,
+            self::CATEGORY_PRESSURE,
+            self::CATEGORY_PROPORTION,
+            self::CATEGORY_RATING,
+            self::CATEGORY_TEMPERATURE,
+            self::CATEGORY_VOLUME,
+            self::CATEGORY_WEIGHT,
+        ];
+    }
     
+
     /**
-      * $client_id client_id
-      * @var string
-      */
-    protected $client_id;
-    
-    /**
-      * $name Unit name
-      * @var string
-      */
-    protected $name;
-    
-    /**
-      * $abbreviated_name Unit abbreviation
-      * @var string
-      */
-    protected $abbreviated_name;
-    
-    /**
-      * $category_id Unit category ID
-      * @var int
-      */
-    protected $category_id;
-    
-    /**
-      * $minimum_value Minimum value permitted for this unit
-      * @var float
-      */
-    protected $minimum_value;
-    
-    /**
-      * $maximum_value Maximum value permitted for this unit
-      * @var float
-      */
-    protected $maximum_value;
-    
-    /**
-      * $updated updated
-      * @var int
-      */
-    protected $updated;
-    
-    /**
-      * $default_unit_id ID of default unit for this units category
-      * @var int
-      */
-    protected $default_unit_id;
-    
-    /**
-      * $multiply Value multiplied to convert to default unit in this unit category
-      * @var float
-      */
-    protected $multiply;
-    
-    /**
-      * $add Value which should be added to convert to default unit
-      * @var float
-      */
-    protected $add;
-    
-    /**
-      * $created_at When the record was first created. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $updated_at;
-    
+     * Associative array for storing property values
+     * @var mixed[]
+     */
+    protected $container = array();
 
     /**
      * Constructor
@@ -212,74 +180,78 @@ class Unit implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        if ($data != null) {
-            $this->id = $data["id"];
-            $this->client_id = $data["client_id"];
-            $this->name = $data["name"];
-            $this->abbreviated_name = $data["abbreviated_name"];
-            $this->category_id = $data["category_id"];
-            $this->minimum_value = $data["minimum_value"];
-            $this->maximum_value = $data["maximum_value"];
-            $this->updated = $data["updated"];
-            $this->default_unit_id = $data["default_unit_id"];
-            $this->multiply = $data["multiply"];
-            $this->add = $data["add"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['abbreviated_name'] = isset($data['abbreviated_name']) ? $data['abbreviated_name'] : null;
+        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        $this->container['minimum_value'] = isset($data['minimum_value']) ? $data['minimum_value'] : null;
+        $this->container['maximum_value'] = isset($data['maximum_value']) ? $data['maximum_value'] : null;
+        $this->container['conversion_steps'] = isset($data['conversion_steps']) ? $data['conversion_steps'] : null;
+    }
+
+    /**
+     * show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties()
+    {
+        $invalid_properties = array();
+        if ($this->container['name'] === null) {
+            $invalid_properties[] = "'name' can't be null";
         }
+        if ($this->container['abbreviated_name'] === null) {
+            $invalid_properties[] = "'abbreviated_name' can't be null";
+        }
+        if ($this->container['category'] === null) {
+            $invalid_properties[] = "'category' can't be null";
+        }
+        $allowed_values = array("Distance", "Duration", "Energy", "Frequency", "Miscellany", "Pressure", "Proportion", "Rating", "Temperature", "Volume", "Weight");
+        if (!in_array($this->container['category'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'category', must be one of #{allowed_values}.";
+        }
+        if ($this->container['conversion_steps'] === null) {
+            $invalid_properties[] = "'conversion_steps' can't be null";
+        }
+        return $invalid_properties;
     }
-    
+
     /**
-     * Gets id
-     * @return int
+     * validate all the properties in the model
+     * return true if all passed
+     *
+     * @return bool True if all properteis are valid
      */
-    public function getId()
+    public function valid()
     {
-        return $this->id;
+        if ($this->container['name'] === null) {
+            return false;
+        }
+        if ($this->container['abbreviated_name'] === null) {
+            return false;
+        }
+        if ($this->container['category'] === null) {
+            return false;
+        }
+        $allowed_values = array("Distance", "Duration", "Energy", "Frequency", "Miscellany", "Pressure", "Proportion", "Rating", "Temperature", "Volume", "Weight");
+        if (!in_array($this->container['category'], $allowed_values)) {
+            return false;
+        }
+        if ($this->container['conversion_steps'] === null) {
+            return false;
+        }
+        return true;
     }
-  
-    /**
-     * Sets id
-     * @param int $id id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        
-        $this->id = $id;
-        return $this;
-    }
-    
-    /**
-     * Gets client_id
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->client_id;
-    }
-  
-    /**
-     * Sets client_id
-     * @param string $client_id client_id
-     * @return $this
-     */
-    public function setClientId($client_id)
-    {
-        
-        $this->client_id = $client_id;
-        return $this;
-    }
-    
+
+
     /**
      * Gets name
      * @return string
      */
     public function getName()
     {
-        return $this->name;
+        return $this->container['name'];
     }
-  
+
     /**
      * Sets name
      * @param string $name Unit name
@@ -287,20 +259,20 @@ class Unit implements ArrayAccess
      */
     public function setName($name)
     {
-        
-        $this->name = $name;
+        $this->container['name'] = $name;
+
         return $this;
     }
-    
+
     /**
      * Gets abbreviated_name
      * @return string
      */
     public function getAbbreviatedName()
     {
-        return $this->abbreviated_name;
+        return $this->container['abbreviated_name'];
     }
-  
+
     /**
      * Sets abbreviated_name
      * @param string $abbreviated_name Unit abbreviation
@@ -308,251 +280,153 @@ class Unit implements ArrayAccess
      */
     public function setAbbreviatedName($abbreviated_name)
     {
-        
-        $this->abbreviated_name = $abbreviated_name;
+        $this->container['abbreviated_name'] = $abbreviated_name;
+
         return $this;
     }
-    
+
     /**
-     * Gets category_id
-     * @return int
+     * Gets category
+     * @return string
      */
-    public function getCategoryId()
+    public function getCategory()
     {
-        return $this->category_id;
+        return $this->container['category'];
     }
-  
+
     /**
-     * Sets category_id
-     * @param int $category_id Unit category ID
+     * Sets category
+     * @param string $category Unit category
      * @return $this
      */
-    public function setCategoryId($category_id)
+    public function setCategory($category)
     {
-        
-        $this->category_id = $category_id;
+        $allowed_values = array('Distance', 'Duration', 'Energy', 'Frequency', 'Miscellany', 'Pressure', 'Proportion', 'Rating', 'Temperature', 'Volume', 'Weight');
+        if (!in_array($category, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'category', must be one of 'Distance', 'Duration', 'Energy', 'Frequency', 'Miscellany', 'Pressure', 'Proportion', 'Rating', 'Temperature', 'Volume', 'Weight'");
+        }
+        $this->container['category'] = $category;
+
         return $this;
     }
-    
+
     /**
      * Gets minimum_value
-     * @return float
+     * @return double
      */
     public function getMinimumValue()
     {
-        return $this->minimum_value;
+        return $this->container['minimum_value'];
     }
-  
+
     /**
      * Sets minimum_value
-     * @param float $minimum_value Minimum value permitted for this unit
+     * @param double $minimum_value The smallest acceptable value for measurements using this unit
      * @return $this
      */
     public function setMinimumValue($minimum_value)
     {
-        
-        $this->minimum_value = $minimum_value;
+        $this->container['minimum_value'] = $minimum_value;
+
         return $this;
     }
-    
+
     /**
      * Gets maximum_value
-     * @return float
+     * @return double
      */
     public function getMaximumValue()
     {
-        return $this->maximum_value;
+        return $this->container['maximum_value'];
     }
-  
+
     /**
      * Sets maximum_value
-     * @param float $maximum_value Maximum value permitted for this unit
+     * @param double $maximum_value The largest acceptable value for measurements using this unit
      * @return $this
      */
     public function setMaximumValue($maximum_value)
     {
-        
-        $this->maximum_value = $maximum_value;
+        $this->container['maximum_value'] = $maximum_value;
+
         return $this;
     }
-    
+
     /**
-     * Gets updated
-     * @return int
+     * Gets conversion_steps
+     * @return \QuantiModo\Client\Model\ConversionStep[]
      */
-    public function getUpdated()
+    public function getConversionSteps()
     {
-        return $this->updated;
+        return $this->container['conversion_steps'];
     }
-  
+
     /**
-     * Sets updated
-     * @param int $updated updated
+     * Sets conversion_steps
+     * @param \QuantiModo\Client\Model\ConversionStep[] $conversion_steps Conversion steps list
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setConversionSteps($conversion_steps)
     {
-        
-        $this->updated = $updated;
+        $this->container['conversion_steps'] = $conversion_steps;
+
         return $this;
     }
-    
-    /**
-     * Gets default_unit_id
-     * @return int
-     */
-    public function getDefaultUnitId()
-    {
-        return $this->default_unit_id;
-    }
-  
-    /**
-     * Sets default_unit_id
-     * @param int $default_unit_id ID of default unit for this units category
-     * @return $this
-     */
-    public function setDefaultUnitId($default_unit_id)
-    {
-        
-        $this->default_unit_id = $default_unit_id;
-        return $this;
-    }
-    
-    /**
-     * Gets multiply
-     * @return float
-     */
-    public function getMultiply()
-    {
-        return $this->multiply;
-    }
-  
-    /**
-     * Sets multiply
-     * @param float $multiply Value multiplied to convert to default unit in this unit category
-     * @return $this
-     */
-    public function setMultiply($multiply)
-    {
-        
-        $this->multiply = $multiply;
-        return $this;
-    }
-    
-    /**
-     * Gets add
-     * @return float
-     */
-    public function getAdd()
-    {
-        return $this->add;
-    }
-  
-    /**
-     * Sets add
-     * @param float $add Value which should be added to convert to default unit
-     * @return $this
-     */
-    public function setAdd($add)
-    {
-        
-        $this->add = $add;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
-        return $this;
-    }
-    
     /**
      * Returns true if offset exists. False otherwise.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return boolean
      */
     public function offsetExists($offset)
     {
-        return isset($this->$offset);
+        return isset($this->container[$offset]);
     }
-  
+
     /**
      * Gets offset.
-     * @param  integer $offset Offset 
-     * @return mixed 
+     * @param  integer $offset Offset
+     * @return mixed
      */
     public function offsetGet($offset)
     {
-        return $this->$offset;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
-  
+
     /**
      * Sets value based on offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @param  mixed   $value  Value to be set
      * @return void
      */
     public function offsetSet($offset, $value)
     {
-        $this->$offset = $value;
+        if (is_null($offset)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$offset] = $value;
+        }
     }
-  
+
     /**
      * Unsets offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return void
      */
     public function offsetUnset($offset)
     {
-        unset($this->$offset);
+        unset($this->container[$offset]);
     }
-  
+
     /**
      * Gets the string presentation of the object
      * @return string
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
+
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

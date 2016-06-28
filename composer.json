@@ -1,14 +1,13 @@
 {
     "name": "quantimodo/quantimodo-sdk-php",
-    "version": "1.8.7",
     "description": "",
     "keywords": [
-        "quantimodo",
+        "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "http://quantimo.do",
+    "homepage": "https://quantimo.do",
     "license": "Apache v2",
     "authors": [
         {
@@ -17,17 +16,20 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "satooshi/php-coveralls": "~0.6.1",
-        "squizlabs/php_codesniffer": "~2.0"
+        "phpunit/phpunit": "~4.8",
+        "satooshi/php-coveralls": "~1.0",
+        "squizlabs/php_codesniffer": "~2.6"
     },
     "autoload": {
-        "psr-4": { "QuantiModo\\PHP-Client\\" : "lib/" }
+        "psr-4": { "QuantiModo\\Client\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "QuantiModo\\Client\\" : "test/" }
     }
 }

@@ -5,41 +5,49 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
+
 /**
- *  Copyright 2016 SmartBear Software
+ * QuantiModo
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ *
+ * OpenAPI spec version: 2.0.6
+ * 
+ * Generated by: https://github.com/swagger-api/swagger-codegen.git
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
 /**
  * NOTE: This class is auto generated by the swagger code generator program.
  * https://github.com/swagger-api/swagger-codegen
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
+
 /**
  * VariableCategory Class Doc Comment
  *
  * @category    Class
- * @description 
- * @package     Swagger\Client
+ * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -47,194 +55,72 @@ use \ArrayAccess;
 class VariableCategory implements ArrayAccess
 {
     /**
-      * Array of property to type mappings. Used for (de)serialization 
-      * @var string[]
-      */
-    static $swaggerTypes = array(
-        'id' => 'int',
-        'name' => 'string',
-        'filling_value' => 'float',
-        'maximum_allowed_value' => 'float',
-        'minimum_allowed_value' => 'float',
-        'duration_of_action' => 'int',
-        'onset_delay' => 'int',
-        'combination_operation' => 'string',
-        'updated' => 'int',
-        'cause_only' => 'bool',
-        'public' => 'int',
-        'outcome' => 'bool',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'image_url' => 'string',
-        'default_unit_id' => 'int'
-    );
-  
-    /** 
-      * Array of attributes where the key is the local name, and the value is the original name
-      * @var string[] 
-      */
-    static $attributeMap = array(
-        'id' => 'id',
-        'name' => 'name',
-        'filling_value' => 'filling_value',
-        'maximum_allowed_value' => 'maximum_allowed_value',
-        'minimum_allowed_value' => 'minimum_allowed_value',
-        'duration_of_action' => 'duration_of_action',
-        'onset_delay' => 'onset_delay',
-        'combination_operation' => 'combination_operation',
-        'updated' => 'updated',
-        'cause_only' => 'cause_only',
-        'public' => 'public',
-        'outcome' => 'outcome',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'image_url' => 'image_url',
-        'default_unit_id' => 'default_unit_id'
-    );
-  
-    /**
-      * Array of attributes to setter functions (for deserialization of responses)
-      * @var string[]
-      */
-    static $setters = array(
-        'id' => 'setId',
-        'name' => 'setName',
-        'filling_value' => 'setFillingValue',
-        'maximum_allowed_value' => 'setMaximumAllowedValue',
-        'minimum_allowed_value' => 'setMinimumAllowedValue',
-        'duration_of_action' => 'setDurationOfAction',
-        'onset_delay' => 'setOnsetDelay',
-        'combination_operation' => 'setCombinationOperation',
-        'updated' => 'setUpdated',
-        'cause_only' => 'setCauseOnly',
-        'public' => 'setPublic',
-        'outcome' => 'setOutcome',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'image_url' => 'setImageUrl',
-        'default_unit_id' => 'setDefaultUnitId'
-    );
-  
-    /**
-      * Array of attributes to getter functions (for serialization of requests)
-      * @var string[]
-      */
-    static $getters = array(
-        'id' => 'getId',
-        'name' => 'getName',
-        'filling_value' => 'getFillingValue',
-        'maximum_allowed_value' => 'getMaximumAllowedValue',
-        'minimum_allowed_value' => 'getMinimumAllowedValue',
-        'duration_of_action' => 'getDurationOfAction',
-        'onset_delay' => 'getOnsetDelay',
-        'combination_operation' => 'getCombinationOperation',
-        'updated' => 'getUpdated',
-        'cause_only' => 'getCauseOnly',
-        'public' => 'getPublic',
-        'outcome' => 'getOutcome',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'image_url' => 'getImageUrl',
-        'default_unit_id' => 'getDefaultUnitId'
-    );
-  
-    
-    /**
-      * $id id
-      * @var int
-      */
-    protected $id;
-    
-    /**
-      * $name Name of the category
+      * The original name of the model.
       * @var string
       */
-    protected $name;
-    
+    protected static $swaggerModelName = 'VariableCategory';
+
     /**
-      * $filling_value Value for replacing null measurements
-      * @var float
+      * Array of property to type mappings. Used for (de)serialization
+      * @var string[]
       */
-    protected $filling_value;
-    
+    protected static $swaggerTypes = array(
+        'name' => 'string'
+    );
+
+    public static function swaggerTypes()
+    {
+        return self::$swaggerTypes;
+    }
+
     /**
-      * $maximum_allowed_value Maximum recorded value of this category
-      * @var float
-      */
-    protected $maximum_allowed_value;
-    
+     * Array of attributes where the key is the local name, and the value is the original name
+     * @var string[]
+     */
+    protected static $attributeMap = array(
+        'name' => 'name'
+    );
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
     /**
-      * $minimum_allowed_value Minimum recorded value of this category
-      * @var float
-      */
-    protected $minimum_allowed_value;
-    
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = array(
+        'name' => 'setName'
+    );
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
+
     /**
-      * $duration_of_action How long the effect of a measurement in this variable lasts
-      * @var int
-      */
-    protected $duration_of_action;
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = array(
+        'name' => 'getName'
+    );
+
+    public static function getters()
+    {
+        return self::$getters;
+    }
+
     
+
+    
+
     /**
-      * $onset_delay How long it takes for a measurement in this variable to take effect
-      * @var int
-      */
-    protected $onset_delay;
-    
-    /**
-      * $combination_operation How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
-      * @var string
-      */
-    protected $combination_operation;
-    
-    /**
-      * $updated updated
-      * @var int
-      */
-    protected $updated;
-    
-    /**
-      * $cause_only A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user
-      * @var bool
-      */
-    protected $cause_only;
-    
-    /**
-      * $public Is category public
-      * @var int
-      */
-    protected $public;
-    
-    /**
-      * $outcome outcome
-      * @var bool
-      */
-    protected $outcome;
-    
-    /**
-      * $created_at When the record was first created. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $created_at;
-    
-    /**
-      * $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
-      * @var \DateTime
-      */
-    protected $updated_at;
-    
-    /**
-      * $image_url Image URL
-      * @var string
-      */
-    protected $image_url;
-    
-    /**
-      * $default_unit_id ID of the default unit for the category
-      * @var int
-      */
-    protected $default_unit_id;
-    
+     * Associative array for storing property values
+     * @var mixed[]
+     */
+    protected $container = array();
 
     /**
      * Constructor
@@ -242,413 +128,113 @@ class VariableCategory implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        if ($data != null) {
-            $this->id = $data["id"];
-            $this->name = $data["name"];
-            $this->filling_value = $data["filling_value"];
-            $this->maximum_allowed_value = $data["maximum_allowed_value"];
-            $this->minimum_allowed_value = $data["minimum_allowed_value"];
-            $this->duration_of_action = $data["duration_of_action"];
-            $this->onset_delay = $data["onset_delay"];
-            $this->combination_operation = $data["combination_operation"];
-            $this->updated = $data["updated"];
-            $this->cause_only = $data["cause_only"];
-            $this->public = $data["public"];
-            $this->outcome = $data["outcome"];
-            $this->created_at = $data["created_at"];
-            $this->updated_at = $data["updated_at"];
-            $this->image_url = $data["image_url"];
-            $this->default_unit_id = $data["default_unit_id"];
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+    }
+
+    /**
+     * show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties()
+    {
+        $invalid_properties = array();
+        if ($this->container['name'] === null) {
+            $invalid_properties[] = "'name' can't be null";
         }
+        return $invalid_properties;
     }
-    
+
     /**
-     * Gets id
-     * @return int
+     * validate all the properties in the model
+     * return true if all passed
+     *
+     * @return bool True if all properteis are valid
      */
-    public function getId()
+    public function valid()
     {
-        return $this->id;
+        if ($this->container['name'] === null) {
+            return false;
+        }
+        return true;
     }
-  
-    /**
-     * Sets id
-     * @param int $id id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        
-        $this->id = $id;
-        return $this;
-    }
-    
+
+
     /**
      * Gets name
      * @return string
      */
     public function getName()
     {
-        return $this->name;
+        return $this->container['name'];
     }
-  
+
     /**
      * Sets name
-     * @param string $name Name of the category
+     * @param string $name Category name
      * @return $this
      */
     public function setName($name)
     {
-        
-        $this->name = $name;
+        $this->container['name'] = $name;
+
         return $this;
     }
-    
-    /**
-     * Gets filling_value
-     * @return float
-     */
-    public function getFillingValue()
-    {
-        return $this->filling_value;
-    }
-  
-    /**
-     * Sets filling_value
-     * @param float $filling_value Value for replacing null measurements
-     * @return $this
-     */
-    public function setFillingValue($filling_value)
-    {
-        
-        $this->filling_value = $filling_value;
-        return $this;
-    }
-    
-    /**
-     * Gets maximum_allowed_value
-     * @return float
-     */
-    public function getMaximumAllowedValue()
-    {
-        return $this->maximum_allowed_value;
-    }
-  
-    /**
-     * Sets maximum_allowed_value
-     * @param float $maximum_allowed_value Maximum recorded value of this category
-     * @return $this
-     */
-    public function setMaximumAllowedValue($maximum_allowed_value)
-    {
-        
-        $this->maximum_allowed_value = $maximum_allowed_value;
-        return $this;
-    }
-    
-    /**
-     * Gets minimum_allowed_value
-     * @return float
-     */
-    public function getMinimumAllowedValue()
-    {
-        return $this->minimum_allowed_value;
-    }
-  
-    /**
-     * Sets minimum_allowed_value
-     * @param float $minimum_allowed_value Minimum recorded value of this category
-     * @return $this
-     */
-    public function setMinimumAllowedValue($minimum_allowed_value)
-    {
-        
-        $this->minimum_allowed_value = $minimum_allowed_value;
-        return $this;
-    }
-    
-    /**
-     * Gets duration_of_action
-     * @return int
-     */
-    public function getDurationOfAction()
-    {
-        return $this->duration_of_action;
-    }
-  
-    /**
-     * Sets duration_of_action
-     * @param int $duration_of_action How long the effect of a measurement in this variable lasts
-     * @return $this
-     */
-    public function setDurationOfAction($duration_of_action)
-    {
-        
-        $this->duration_of_action = $duration_of_action;
-        return $this;
-    }
-    
-    /**
-     * Gets onset_delay
-     * @return int
-     */
-    public function getOnsetDelay()
-    {
-        return $this->onset_delay;
-    }
-  
-    /**
-     * Sets onset_delay
-     * @param int $onset_delay How long it takes for a measurement in this variable to take effect
-     * @return $this
-     */
-    public function setOnsetDelay($onset_delay)
-    {
-        
-        $this->onset_delay = $onset_delay;
-        return $this;
-    }
-    
-    /**
-     * Gets combination_operation
-     * @return string
-     */
-    public function getCombinationOperation()
-    {
-        return $this->combination_operation;
-    }
-  
-    /**
-     * Sets combination_operation
-     * @param string $combination_operation How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
-     * @return $this
-     */
-    public function setCombinationOperation($combination_operation)
-    {
-        
-        $this->combination_operation = $combination_operation;
-        return $this;
-    }
-    
-    /**
-     * Gets updated
-     * @return int
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-  
-    /**
-     * Sets updated
-     * @param int $updated updated
-     * @return $this
-     */
-    public function setUpdated($updated)
-    {
-        
-        $this->updated = $updated;
-        return $this;
-    }
-    
-    /**
-     * Gets cause_only
-     * @return bool
-     */
-    public function getCauseOnly()
-    {
-        return $this->cause_only;
-    }
-  
-    /**
-     * Sets cause_only
-     * @param bool $cause_only A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user
-     * @return $this
-     */
-    public function setCauseOnly($cause_only)
-    {
-        
-        $this->cause_only = $cause_only;
-        return $this;
-    }
-    
-    /**
-     * Gets public
-     * @return int
-     */
-    public function getPublic()
-    {
-        return $this->public;
-    }
-  
-    /**
-     * Sets public
-     * @param int $public Is category public
-     * @return $this
-     */
-    public function setPublic($public)
-    {
-        
-        $this->public = $public;
-        return $this;
-    }
-    
-    /**
-     * Gets outcome
-     * @return bool
-     */
-    public function getOutcome()
-    {
-        return $this->outcome;
-    }
-  
-    /**
-     * Sets outcome
-     * @param bool $outcome outcome
-     * @return $this
-     */
-    public function setOutcome($outcome)
-    {
-        
-        $this->outcome = $outcome;
-        return $this;
-    }
-    
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-  
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        
-        $this->created_at = $created_at;
-        return $this;
-    }
-    
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-  
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        
-        $this->updated_at = $updated_at;
-        return $this;
-    }
-    
-    /**
-     * Gets image_url
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->image_url;
-    }
-  
-    /**
-     * Sets image_url
-     * @param string $image_url Image URL
-     * @return $this
-     */
-    public function setImageUrl($image_url)
-    {
-        
-        $this->image_url = $image_url;
-        return $this;
-    }
-    
-    /**
-     * Gets default_unit_id
-     * @return int
-     */
-    public function getDefaultUnitId()
-    {
-        return $this->default_unit_id;
-    }
-  
-    /**
-     * Sets default_unit_id
-     * @param int $default_unit_id ID of the default unit for the category
-     * @return $this
-     */
-    public function setDefaultUnitId($default_unit_id)
-    {
-        
-        $this->default_unit_id = $default_unit_id;
-        return $this;
-    }
-    
     /**
      * Returns true if offset exists. False otherwise.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return boolean
      */
     public function offsetExists($offset)
     {
-        return isset($this->$offset);
+        return isset($this->container[$offset]);
     }
-  
+
     /**
      * Gets offset.
-     * @param  integer $offset Offset 
-     * @return mixed 
+     * @param  integer $offset Offset
+     * @return mixed
      */
     public function offsetGet($offset)
     {
-        return $this->$offset;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
-  
+
     /**
      * Sets value based on offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @param  mixed   $value  Value to be set
      * @return void
      */
     public function offsetSet($offset, $value)
     {
-        $this->$offset = $value;
+        if (is_null($offset)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$offset] = $value;
+        }
     }
-  
+
     /**
      * Unsets offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return void
      */
     public function offsetUnset($offset)
     {
-        unset($this->$offset);
+        unset($this->container[$offset]);
     }
-  
+
     /**
      * Gets the string presentation of the object
      * @return string
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+            return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
+
+        return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
