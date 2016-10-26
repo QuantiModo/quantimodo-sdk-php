@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * Measurement Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class Measurement implements ArrayAccess
@@ -64,7 +65,7 @@ class Measurement implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'variable' => 'string',
         'source' => 'string',
         'start_time' => 'string',
@@ -77,7 +78,7 @@ class Measurement implements ArrayAccess
         'original_abbreviated_unit_name' => 'string',
         'abbreviated_unit_name' => 'string',
         'note' => 'string'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -88,7 +89,7 @@ class Measurement implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'variable' => 'variable',
         'source' => 'source',
         'start_time' => 'startTime',
@@ -101,18 +102,14 @@ class Measurement implements ArrayAccess
         'original_abbreviated_unit_name' => 'originalAbbreviatedUnitName',
         'abbreviated_unit_name' => 'abbreviatedUnitName',
         'note' => 'note'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'variable' => 'setVariable',
         'source' => 'setSource',
         'start_time' => 'setStartTime',
@@ -125,18 +122,14 @@ class Measurement implements ArrayAccess
         'original_abbreviated_unit_name' => 'setOriginalAbbreviatedUnitName',
         'abbreviated_unit_name' => 'setAbbreviatedUnitName',
         'note' => 'setNote'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'variable' => 'getVariable',
         'source' => 'getSource',
         'start_time' => 'getStartTime',
@@ -149,7 +142,17 @@ class Measurement implements ArrayAccess
         'original_abbreviated_unit_name' => 'getOriginalAbbreviatedUnitName',
         'abbreviated_unit_name' => 'getAbbreviatedUnitName',
         'note' => 'getNote'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -164,11 +167,11 @@ class Measurement implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -193,7 +196,7 @@ class Measurement implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['variable'] === null) {
             $invalid_properties[] = "'variable' can't be null";
         }
@@ -313,7 +316,7 @@ class Measurement implements ArrayAccess
 
     /**
      * Sets human_time
-     * @param \QuantiModo\Client\Model\HumanTime $human_time Start Time for the measurement event in ISO 8601
+     * @param \QuantiModo\Client\Model\HumanTime $human_time
      * @return $this
      */
     public function setHumanTime($human_time)

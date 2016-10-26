@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * UserTokenRequest Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserTokenRequest implements ArrayAccess
@@ -64,10 +65,10 @@ class UserTokenRequest implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'user' => '\QuantiModo\Client\Model\UserTokenRequestInnerUserField',
         'organization_access_token' => 'string'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -78,38 +79,40 @@ class UserTokenRequest implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'user' => 'user',
         'organization_access_token' => 'organizationAccessToken'
-    );
+    ];
+
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = [
+        'user' => 'setUser',
+        'organization_access_token' => 'setOrganizationAccessToken'
+    ];
+
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = [
+        'user' => 'getUser',
+        'organization_access_token' => 'getOrganizationAccessToken'
+    ];
 
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     * @var string[]
-     */
-    protected static $setters = array(
-        'user' => 'setUser',
-        'organization_access_token' => 'setOrganizationAccessToken'
-    );
-
     public static function setters()
     {
         return self::$setters;
     }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     * @var string[]
-     */
-    protected static $getters = array(
-        'user' => 'getUser',
-        'organization_access_token' => 'getOrganizationAccessToken'
-    );
 
     public static function getters()
     {
@@ -124,11 +127,11 @@ class UserTokenRequest implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -143,7 +146,7 @@ class UserTokenRequest implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['organization_access_token'] === null) {
             $invalid_properties[] = "'organization_access_token' can't be null";
         }

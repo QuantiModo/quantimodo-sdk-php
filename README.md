@@ -1,10 +1,10 @@
-# quantimodo-sdk-php
+# QuantiModoClient
 Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
 
-This PHP package is automatically generated by the [QuantiModo Codegen](https://github.com/swagger-api/swagger-codegen) project:
+This PHP package is automatically generated by the [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) project:
 
 - API version: 2.0.6
-- Build date: 2016-06-24T22:12:02.686Z
+- Package version: 4.0.8
 - Build package: class io.swagger.codegen.languages.PhpClientCodegen
 
 ## Requirements
@@ -21,11 +21,11 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/QuantiModo/quantimodo-sdk-php.git"
+      "url": "https://github.com/quantimodo/quantimodo-sdk-php.git"
     }
   ],
   "require": {
-    "QuantiModo/quantimodo-sdk-php": "*@dev"
+    "quantimodo/quantimodo-sdk-php": "*@dev"
   }
 }
 ```
@@ -37,7 +37,7 @@ Then run `composer install`
 Download the files and include `autoload.php`:
 
 ```php
-    require_once('/path/to/quantimodo-sdk-php/autoload.php');
+    require_once('/path/to/QuantiModoClient/autoload.php');
 ```
 
 ## Tests
@@ -46,7 +46,7 @@ To run the unit tests:
 
 ```
 composer install
-./vendor/bin/phpunit lib/Tests
+./vendor/bin/phpunit
 ```
 
 ## Getting Started
@@ -66,6 +66,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
+$user_id = 56; // int | User's id
 $connector_id = 56; // int | The id for the connector data source for which the connection is connected
 $connect_status = "connect_status_example"; // string | Indicates whether a connector is currently connected to a service for a user.
 $connect_error = "connect_error_example"; // string | Error message if there is a problem with authorizing this connection.
@@ -80,7 +81,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationConnectionsGet($access_token, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationConnectionsGet($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationConnectionsGet: ', $e->getMessage(), PHP_EOL;
@@ -137,6 +138,7 @@ Class | Method | HTTP request | Description
 *MeasurementsApi* | [**v1MeasurementsGet**](docs/Api/MeasurementsApi.md#v1measurementsget) | **GET** /v1/measurements | Get measurements for this user
 *MeasurementsApi* | [**v1MeasurementsPost**](docs/Api/MeasurementsApi.md#v1measurementspost) | **POST** /v1/measurements | Post a new set or update existing measurements to the database
 *MeasurementsApi* | [**v1MeasurementsRangeGet**](docs/Api/MeasurementsApi.md#v1measurementsrangeget) | **GET** /v1/measurementsRange | Get measurements range for this user
+*MeasurementsApi* | [**v1MeasurementsUpdatePost**](docs/Api/MeasurementsApi.md#v1measurementsupdatepost) | **POST** /v1/measurements/update | Update a measurement
 *MeasurementsApi* | [**v2MeasurementsCsvGet**](docs/Api/MeasurementsApi.md#v2measurementscsvget) | **GET** /v2/measurements/csv | Get Measurements CSV
 *MeasurementsApi* | [**v2MeasurementsIdDelete**](docs/Api/MeasurementsApi.md#v2measurementsiddelete) | **DELETE** /v2/measurements/{id} | Delete Measurement
 *MeasurementsApi* | [**v2MeasurementsIdGet**](docs/Api/MeasurementsApi.md#v2measurementsidget) | **GET** /v2/measurements/{id} | Get Measurement
@@ -163,9 +165,11 @@ Class | Method | HTTP request | Description
 *UserApi* | [**v1UserMeGet**](docs/Api/UserApi.md#v1usermeget) | **GET** /v1/user/me | Get all available units for variableGet authenticated user
 *VariablesApi* | [**v1PublicVariablesGet**](docs/Api/VariablesApi.md#v1publicvariablesget) | **GET** /v1/public/variables | Get public variables
 *VariablesApi* | [**v1PublicVariablesSearchSearchGet**](docs/Api/VariablesApi.md#v1publicvariablessearchsearchget) | **GET** /v1/public/variables/search/{search} | Get top 5 PUBLIC variables with the most correlations
+*VariablesApi* | [**v1UserVariablesDeletePost**](docs/Api/VariablesApi.md#v1uservariablesdeletepost) | **POST** /v1/userVariables/delete | Delete All Measurements For Variable
 *VariablesApi* | [**v1UserVariablesPost**](docs/Api/VariablesApi.md#v1uservariablespost) | **POST** /v1/userVariables | Update User Settings for a Variable
+*VariablesApi* | [**v1UserVariablesResetPost**](docs/Api/VariablesApi.md#v1uservariablesresetpost) | **POST** /v1/userVariables/reset | Reset user settings for a variable to defaults
 *VariablesApi* | [**v1VariableCategoriesGet**](docs/Api/VariablesApi.md#v1variablecategoriesget) | **GET** /v1/variableCategories | Variable categories
-*VariablesApi* | [**v1VariablesGet**](docs/Api/VariablesApi.md#v1variablesget) | **GET** /v1/variables | Get variables by the category name
+*VariablesApi* | [**v1VariablesGet**](docs/Api/VariablesApi.md#v1variablesget) | **GET** /v1/variables | Get variables with user&#39;s settings
 *VariablesApi* | [**v1VariablesPost**](docs/Api/VariablesApi.md#v1variablespost) | **POST** /v1/variables | Create Variables
 *VariablesApi* | [**v1VariablesSearchSearchGet**](docs/Api/VariablesApi.md#v1variablessearchsearchget) | **GET** /v1/variables/search/{search} | Get variables by search query
 *VariablesApi* | [**v1VariablesVariableNameGet**](docs/Api/VariablesApi.md#v1variablesvariablenameget) | **GET** /v1/variables/{variableName} | Get info about a variable
@@ -204,6 +208,7 @@ Class | Method | HTTP request | Description
  - [MeasurementRange](docs/Model/MeasurementRange.md)
  - [MeasurementSet](docs/Model/MeasurementSet.md)
  - [MeasurementSource](docs/Model/MeasurementSource.md)
+ - [MeasurementUpdate](docs/Model/MeasurementUpdate.md)
  - [Pairs](docs/Model/Pairs.md)
  - [Permission](docs/Model/Permission.md)
  - [PostCorrelation](docs/Model/PostCorrelation.md)
@@ -225,6 +230,7 @@ Class | Method | HTTP request | Description
  - [UserTokenSuccessfulResponse](docs/Model/UserTokenSuccessfulResponse.md)
  - [UserTokenSuccessfulResponseInnerUserField](docs/Model/UserTokenSuccessfulResponseInnerUserField.md)
  - [UserVariable](docs/Model/UserVariable.md)
+ - [UserVariableDelete](docs/Model/UserVariableDelete.md)
  - [UserVariableRelationship](docs/Model/UserVariableRelationship.md)
  - [UserVariables](docs/Model/UserVariables.md)
  - [ValueObject](docs/Model/ValueObject.md)
@@ -240,26 +246,6 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## oauth2
-
-- **Type**: OAuth
-- **Flow**: implicit
-- **Authorization URL**: https://app.quantimo.do/api/v1/oauth2/authorize
-- **Scopes**:
- - **basic**: Basic authentication
- - **readmeasurements**: Grants read access to measurements and variables. Allows the client app to obtain the user's data.
- - **writemeasurements**: Grants write access to measurements and variables. Allows the client app to store user data.
-
-## quantimodo_oauth2
-
-- **Type**: OAuth
-- **Flow**: accessCode
-- **Authorization URL**: /api/v2/oauth/authorize
-- **Scopes**:
- - **basic**: allows you to read user info (displayname, email, etc).
- - **readmeasurements**: allows one to read a user's data
- - **writemeasurements**: allows you to write user data
-
 ## basicAuth
 
 - **Type**: HTTP basic authentication
@@ -270,6 +256,29 @@ Class | Method | HTTP request | Description
 - **API key parameter name**: api_key
 - **Location**: HTTP header
 
+## oauth2
+
+- **Type**: OAuth
+- **Flow**: implicit
+- **Authorization URL**: https://app.quantimo.do/api/v1/oauth2/authorize
+- **Scopes**: 
+ - **basic**: Basic authentication
+ - **readmeasurements**: Grants read access to measurements and variables. Allows the client app to obtain the user's data.
+ - **writemeasurements**: Grants write access to measurements and variables. Allows the client app to store user data.
+
+## quantimodo_oauth2
+
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorization URL**: /api/v2/oauth/authorize
+- **Scopes**: 
+ - **basic**: Allows you to read user info (displayname, email, etc).
+ - **readmeasurements**: Allows one to read a user's data
+ - **writemeasurements**: Allows you to write user data
+
 
 ## Author
-QuantiModo
+
+
+
+

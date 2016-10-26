@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * UserVariableTest Class Doc Comment
  *
- * @category    Class
- * @description UserVariable
+ * @category    Class */
+// * @description UserVariable
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserVariableTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,445 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "parent_id"
+     */
+    public function testPropertyParentId()
+    {
+
+    }
+
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
+    {
+
+    }
+
+    /**
+     * Test attribute "client_id"
+     */
+    public function testPropertyClientId()
+    {
+
+    }
+
+    /**
+     * Test attribute "variable_id"
+     */
+    public function testPropertyVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "default_unit_id"
+     */
+    public function testPropertyDefaultUnitId()
+    {
+
+    }
+
+    /**
+     * Test attribute "minimum_allowed_value"
+     */
+    public function testPropertyMinimumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "maximum_allowed_value"
+     */
+    public function testPropertyMaximumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "filling_value"
+     */
+    public function testPropertyFillingValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "join_with"
+     */
+    public function testPropertyJoinWith()
+    {
+
+    }
+
+    /**
+     * Test attribute "onset_delay"
+     */
+    public function testPropertyOnsetDelay()
+    {
+
+    }
+
+    /**
+     * Test attribute "duration_of_action"
+     */
+    public function testPropertyDurationOfAction()
+    {
+
+    }
+
+    /**
+     * Test attribute "variable_category_id"
+     */
+    public function testPropertyVariableCategoryId()
+    {
+
+    }
+
+    /**
+     * Test attribute "updated"
+     */
+    public function testPropertyUpdated()
+    {
+
+    }
+
+    /**
+     * Test attribute "public"
+     */
+    public function testPropertyPublic()
+    {
+
+    }
+
+    /**
+     * Test attribute "cause_only"
+     */
+    public function testPropertyCauseOnly()
+    {
+
+    }
+
+    /**
+     * Test attribute "filling_type"
+     */
+    public function testPropertyFillingType()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_measurements"
+     */
+    public function testPropertyNumberOfMeasurements()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_processed_measurements"
+     */
+    public function testPropertyNumberOfProcessedMeasurements()
+    {
+
+    }
+
+    /**
+     * Test attribute "measurements_at_last_analysis"
+     */
+    public function testPropertyMeasurementsAtLastAnalysis()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_unit_id"
+     */
+    public function testPropertyLastUnitId()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_original_unit_id"
+     */
+    public function testPropertyLastOriginalUnitId()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_value"
+     */
+    public function testPropertyLastValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_original_value"
+     */
+    public function testPropertyLastOriginalValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_source_id"
+     */
+    public function testPropertyLastSourceId()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_correlations"
+     */
+    public function testPropertyNumberOfCorrelations()
+    {
+
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+
+    }
+
+    /**
+     * Test attribute "error_message"
+     */
+    public function testPropertyErrorMessage()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_successful_update_time"
+     */
+    public function testPropertyLastSuccessfulUpdateTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "standard_deviation"
+     */
+    public function testPropertyStandardDeviation()
+    {
+
+    }
+
+    /**
+     * Test attribute "variance"
+     */
+    public function testPropertyVariance()
+    {
+
+    }
+
+    /**
+     * Test attribute "minimum_recorded_value"
+     */
+    public function testPropertyMinimumRecordedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "maximum_recorded_daily_value"
+     */
+    public function testPropertyMaximumRecordedDailyValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "mean"
+     */
+    public function testPropertyMean()
+    {
+
+    }
+
+    /**
+     * Test attribute "median"
+     */
+    public function testPropertyMedian()
+    {
+
+    }
+
+    /**
+     * Test attribute "most_common_unit_id"
+     */
+    public function testPropertyMostCommonUnitId()
+    {
+
+    }
+
+    /**
+     * Test attribute "most_common_value"
+     */
+    public function testPropertyMostCommonValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_unique_daily_values"
+     */
+    public function testPropertyNumberOfUniqueDailyValues()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_changes"
+     */
+    public function testPropertyNumberOfChanges()
+    {
+
+    }
+
+    /**
+     * Test attribute "skewness"
+     */
+    public function testPropertySkewness()
+    {
+
+    }
+
+    /**
+     * Test attribute "kurtosis"
+     */
+    public function testPropertyKurtosis()
+    {
+
+    }
+
+    /**
+     * Test attribute "latitude"
+     */
+    public function testPropertyLatitude()
+    {
+
+    }
+
+    /**
+     * Test attribute "longitude"
+     */
+    public function testPropertyLongitude()
+    {
+
+    }
+
+    /**
+     * Test attribute "location"
+     */
+    public function testPropertyLocation()
+    {
+
+    }
+
+    /**
+     * Test attribute "experiment_start_time"
+     */
+    public function testPropertyExperimentStartTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "experiment_end_time"
+     */
+    public function testPropertyExperimentEndTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "created_at"
+     */
+    public function testPropertyCreatedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "outcome"
+     */
+    public function testPropertyOutcome()
+    {
+
+    }
+
+    /**
+     * Test attribute "sources"
+     */
+    public function testPropertySources()
+    {
+
+    }
+
+    /**
+     * Test attribute "earliest_source_time"
+     */
+    public function testPropertyEarliestSourceTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "latest_source_time"
+     */
+    public function testPropertyLatestSourceTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "earliest_measurement_time"
+     */
+    public function testPropertyEarliestMeasurementTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "latest_measurement_time"
+     */
+    public function testPropertyLatestMeasurementTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "earliest_filling_time"
+     */
+    public function testPropertyEarliestFillingTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "latest_filling_time"
+     */
+    public function testPropertyLatestFillingTime()
+    {
+
+    }
+
 }

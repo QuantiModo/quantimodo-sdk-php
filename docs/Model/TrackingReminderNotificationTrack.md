@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Id of the PENDING reminder to be tracked | 
+**tracking_reminder_notification** | [**\QuantiModo\Client\Model\TrackingReminderNotification**](TrackingReminderNotification.md) |  | 
+**modified_value** | **float** | Optional value to be recorded instead of the tracking reminder default value | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

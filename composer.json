@@ -1,5 +1,6 @@
 {
     "name": "quantimodo/quantimodo-sdk-php",
+    "version": "4.0.8",
     "description": "",
     "keywords": [
         "swagger",
@@ -7,12 +8,12 @@
         "sdk",
         "api"
     ],
-    "homepage": "https://quantimo.do",
-    "license": "Apache v2",
+    "homepage": "http://swagger.io",
+    "license": "Apache-2.0",
     "authors": [
         {
-            "name": "QuantiModo",
-            "homepage": "https://quantimo.do"
+            "name": "Swagger and contributors",
+            "homepage": "https://github.com/swagger-api/swagger-codegen"
         }
     ],
     "require": {
@@ -24,7 +25,8 @@
     "require-dev": {
         "phpunit/phpunit": "~4.8",
         "satooshi/php-coveralls": "~1.0",
-        "squizlabs/php_codesniffer": "~2.6"
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": "~1.12"
     },
     "autoload": {
         "psr-4": { "QuantiModo\\Client\\" : "lib/" }

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**measurements** | [**\QuantiModo\Client\Model\ValueObject[]**](ValueObject.md) | Array of timestamps, values, and optional notes |
+**measurements** | [**\QuantiModo\Client\Model\ValueObject[]**](ValueObject.md) | Array of timestamps, values, and optional notes | 
 **variable_name** | **string** | ORIGINAL name of the variable for which we are creating the measurement records | 
 **source_name** | **string** | Name of the application or device used to record the measurement values | 
 **variable_category_name** | **string** | Variable category name | [optional] 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1OrganizationsOrganizationIdUsersPost**
-> \QuantiModo\Client\Model\UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token)
+> \QuantiModo\Client\Model\UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token, $user_id)
 
 Get user tokens for existing users, create new users
 
@@ -31,9 +31,10 @@ $api_instance = new QuantiModo\Client\Api\UserApi();
 $organization_id = 56; // int | Organization ID
 $body = new \QuantiModo\Client\Model\UserTokenRequest(); // \QuantiModo\Client\Model\UserTokenRequest | Provides organization token and user ID
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token);
+    $result = $api_instance->v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->v1OrganizationsOrganizationIdUsersPost: ', $e->getMessage(), PHP_EOL;
@@ -48,6 +49,7 @@ Name | Type | Description  | Notes
  **organization_id** | **int**| Organization ID |
  **body** | [**\QuantiModo\Client\Model\UserTokenRequest**](../Model/\QuantiModo\Client\Model\UserTokenRequest.md)| Provides organization token and user ID |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 

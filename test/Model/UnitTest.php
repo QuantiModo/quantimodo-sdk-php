@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * UnitTest Class Doc Comment
  *
- * @category    Class
- * @description Unit
+ * @category    Class */
+// * @description Unit
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UnitTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class UnitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,53 @@ class UnitTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+
+    }
+
+    /**
+     * Test attribute "abbreviated_name"
+     */
+    public function testPropertyAbbreviatedName()
+    {
+
+    }
+
+    /**
+     * Test attribute "category"
+     */
+    public function testPropertyCategory()
+    {
+
+    }
+
+    /**
+     * Test attribute "minimum_allowed_value"
+     */
+    public function testPropertyMinimumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "maximum_allowed_value"
+     */
+    public function testPropertyMaximumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "conversion_steps"
+     */
+    public function testPropertyConversionSteps()
+    {
+
+    }
+
 }

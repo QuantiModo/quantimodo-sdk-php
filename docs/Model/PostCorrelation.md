@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cause** | **string** | Cause variable name | 
-**effect** | **string** | Effect variable name | 
+**cause_variable_name** | **string** | Cause variable name | 
+**effect_variable_name** | **string** | Effect variable name | 
 **correlation** | **double** | Correlation value | 
 **vote** | **int** | Vote: 0 or 1 | [optional] 
 

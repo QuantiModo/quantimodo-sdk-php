@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * JsonErrorResponse Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class JsonErrorResponse implements ArrayAccess
@@ -64,10 +65,10 @@ class JsonErrorResponse implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'status' => 'string',
         'message' => 'string'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -78,38 +79,40 @@ class JsonErrorResponse implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'status' => 'status',
         'message' => 'message'
-    );
+    ];
+
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = [
+        'status' => 'setStatus',
+        'message' => 'setMessage'
+    ];
+
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = [
+        'status' => 'getStatus',
+        'message' => 'getMessage'
+    ];
 
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     * @var string[]
-     */
-    protected static $setters = array(
-        'status' => 'setStatus',
-        'message' => 'setMessage'
-    );
-
     public static function setters()
     {
         return self::$setters;
     }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     * @var string[]
-     */
-    protected static $getters = array(
-        'status' => 'getStatus',
-        'message' => 'getMessage'
-    );
 
     public static function getters()
     {
@@ -124,11 +127,11 @@ class JsonErrorResponse implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -143,7 +146,7 @@ class JsonErrorResponse implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['status'] === null) {
             $invalid_properties[] = "'status' can't be null";
         }

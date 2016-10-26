@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * VariableTest Class Doc Comment
  *
- * @category    Class
- * @description Variable
+ * @category    Class */
+// * @description Variable
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class VariableTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,245 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+
+    }
+
+    /**
+     * Test attribute "original_name"
+     */
+    public function testPropertyOriginalName()
+    {
+
+    }
+
+    /**
+     * Test attribute "category"
+     */
+    public function testPropertyCategory()
+    {
+
+    }
+
+    /**
+     * Test attribute "abbreviated_unit_name"
+     */
+    public function testPropertyAbbreviatedUnitName()
+    {
+
+    }
+
+    /**
+     * Test attribute "abbreviated_unit_id"
+     */
+    public function testPropertyAbbreviatedUnitId()
+    {
+
+    }
+
+    /**
+     * Test attribute "sources"
+     */
+    public function testPropertySources()
+    {
+
+    }
+
+    /**
+     * Test attribute "minimum_allowed_value"
+     */
+    public function testPropertyMinimumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "maximum_allowed_value"
+     */
+    public function testPropertyMaximumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "combination_operation"
+     */
+    public function testPropertyCombinationOperation()
+    {
+
+    }
+
+    /**
+     * Test attribute "filling_value"
+     */
+    public function testPropertyFillingValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "join_with"
+     */
+    public function testPropertyJoinWith()
+    {
+
+    }
+
+    /**
+     * Test attribute "joined_variables"
+     */
+    public function testPropertyJoinedVariables()
+    {
+
+    }
+
+    /**
+     * Test attribute "parent"
+     */
+    public function testPropertyParent()
+    {
+
+    }
+
+    /**
+     * Test attribute "sub_variables"
+     */
+    public function testPropertySubVariables()
+    {
+
+    }
+
+    /**
+     * Test attribute "onset_delay"
+     */
+    public function testPropertyOnsetDelay()
+    {
+
+    }
+
+    /**
+     * Test attribute "duration_of_action"
+     */
+    public function testPropertyDurationOfAction()
+    {
+
+    }
+
+    /**
+     * Test attribute "earliest_measurement_time"
+     */
+    public function testPropertyEarliestMeasurementTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "latest_measurement_time"
+     */
+    public function testPropertyLatestMeasurementTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "updated"
+     */
+    public function testPropertyUpdated()
+    {
+
+    }
+
+    /**
+     * Test attribute "cause_only"
+     */
+    public function testPropertyCauseOnly()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_correlations"
+     */
+    public function testPropertyNumberOfCorrelations()
+    {
+
+    }
+
+    /**
+     * Test attribute "outcome"
+     */
+    public function testPropertyOutcome()
+    {
+
+    }
+
+    /**
+     * Test attribute "measurements_at_last_analysis"
+     */
+    public function testPropertyMeasurementsAtLastAnalysis()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_measurements"
+     */
+    public function testPropertyNumberOfMeasurements()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_unit"
+     */
+    public function testPropertyLastUnit()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_value"
+     */
+    public function testPropertyLastValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "most_common_value"
+     */
+    public function testPropertyMostCommonValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "most_common_unit"
+     */
+    public function testPropertyMostCommonUnit()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_source"
+     */
+    public function testPropertyLastSource()
+    {
+
+    }
+
 }

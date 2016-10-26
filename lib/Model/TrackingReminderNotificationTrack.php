@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * TrackingReminderNotificationTrack Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class TrackingReminderNotificationTrack implements ArrayAccess
@@ -64,9 +65,10 @@ class TrackingReminderNotificationTrack implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
-        'id' => 'int'
-    );
+    protected static $swaggerTypes = [
+        'tracking_reminder_notification' => '\QuantiModo\Client\Model\TrackingReminderNotification',
+        'modified_value' => 'float'
+    ];
 
     public static function swaggerTypes()
     {
@@ -77,35 +79,40 @@ class TrackingReminderNotificationTrack implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
-        'id' => 'id'
-    );
+    protected static $attributeMap = [
+        'tracking_reminder_notification' => 'trackingReminderNotification',
+        'modified_value' => 'modifiedValue'
+    ];
+
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = [
+        'tracking_reminder_notification' => 'setTrackingReminderNotification',
+        'modified_value' => 'setModifiedValue'
+    ];
+
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = [
+        'tracking_reminder_notification' => 'getTrackingReminderNotification',
+        'modified_value' => 'getModifiedValue'
+    ];
 
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     * @var string[]
-     */
-    protected static $setters = array(
-        'id' => 'setId'
-    );
-
     public static function setters()
     {
         return self::$setters;
     }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     * @var string[]
-     */
-    protected static $getters = array(
-        'id' => 'getId'
-    );
 
     public static function getters()
     {
@@ -120,15 +127,16 @@ class TrackingReminderNotificationTrack implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['tracking_reminder_notification'] = isset($data['tracking_reminder_notification']) ? $data['tracking_reminder_notification'] : null;
+        $this->container['modified_value'] = isset($data['modified_value']) ? $data['modified_value'] : null;
     }
 
     /**
@@ -138,9 +146,9 @@ class TrackingReminderNotificationTrack implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
-        if ($this->container['id'] === null) {
-            $invalid_properties[] = "'id' can't be null";
+        $invalid_properties = [];
+        if ($this->container['tracking_reminder_notification'] === null) {
+            $invalid_properties[] = "'tracking_reminder_notification' can't be null";
         }
         return $invalid_properties;
     }
@@ -153,7 +161,7 @@ class TrackingReminderNotificationTrack implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['id'] === null) {
+        if ($this->container['tracking_reminder_notification'] === null) {
             return false;
         }
         return true;
@@ -161,22 +169,43 @@ class TrackingReminderNotificationTrack implements ArrayAccess
 
 
     /**
-     * Gets id
-     * @return int
+     * Gets tracking_reminder_notification
+     * @return \QuantiModo\Client\Model\TrackingReminderNotification
      */
-    public function getId()
+    public function getTrackingReminderNotification()
     {
-        return $this->container['id'];
+        return $this->container['tracking_reminder_notification'];
     }
 
     /**
-     * Sets id
-     * @param int $id Id of the PENDING reminder to be tracked
+     * Sets tracking_reminder_notification
+     * @param \QuantiModo\Client\Model\TrackingReminderNotification $tracking_reminder_notification
      * @return $this
      */
-    public function setId($id)
+    public function setTrackingReminderNotification($tracking_reminder_notification)
     {
-        $this->container['id'] = $id;
+        $this->container['tracking_reminder_notification'] = $tracking_reminder_notification;
+
+        return $this;
+    }
+
+    /**
+     * Gets modified_value
+     * @return float
+     */
+    public function getModifiedValue()
+    {
+        return $this->container['modified_value'];
+    }
+
+    /**
+     * Sets modified_value
+     * @param float $modified_value Optional value to be recorded instead of the tracking reminder default value
+     * @return $this
+     */
+    public function setModifiedValue($modified_value)
+    {
+        $this->container['modified_value'] = $modified_value;
 
         return $this;
     }

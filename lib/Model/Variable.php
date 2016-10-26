@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * Variable Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class Variable implements ArrayAccess
@@ -64,7 +65,7 @@ class Variable implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'id' => 'int',
         'name' => 'string',
         'original_name' => 'string',
@@ -72,8 +73,8 @@ class Variable implements ArrayAccess
         'abbreviated_unit_name' => 'string',
         'abbreviated_unit_id' => 'int',
         'sources' => 'string',
-        'minimum_value' => 'double',
-        'maximum_value' => 'double',
+        'minimum_allowed_value' => 'double',
+        'maximum_allowed_value' => 'double',
         'combination_operation' => 'string',
         'filling_value' => 'double',
         'join_with' => 'string',
@@ -95,7 +96,7 @@ class Variable implements ArrayAccess
         'most_common_value' => 'int',
         'most_common_unit' => 'string',
         'last_source' => 'int'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -106,7 +107,7 @@ class Variable implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
         'original_name' => 'originalName',
@@ -114,8 +115,8 @@ class Variable implements ArrayAccess
         'abbreviated_unit_name' => 'abbreviatedUnitName',
         'abbreviated_unit_id' => 'abbreviatedUnitId',
         'sources' => 'sources',
-        'minimum_value' => 'minimumValue',
-        'maximum_value' => 'maximumValue',
+        'minimum_allowed_value' => 'minimumAllowedValue',
+        'maximum_allowed_value' => 'maximumAllowedValue',
         'combination_operation' => 'combinationOperation',
         'filling_value' => 'fillingValue',
         'join_with' => 'joinWith',
@@ -137,18 +138,14 @@ class Variable implements ArrayAccess
         'most_common_value' => 'mostCommonValue',
         'most_common_unit' => 'mostCommonUnit',
         'last_source' => 'lastSource'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
         'original_name' => 'setOriginalName',
@@ -156,8 +153,8 @@ class Variable implements ArrayAccess
         'abbreviated_unit_name' => 'setAbbreviatedUnitName',
         'abbreviated_unit_id' => 'setAbbreviatedUnitId',
         'sources' => 'setSources',
-        'minimum_value' => 'setMinimumValue',
-        'maximum_value' => 'setMaximumValue',
+        'minimum_allowed_value' => 'setMinimumAllowedValue',
+        'maximum_allowed_value' => 'setMaximumAllowedValue',
         'combination_operation' => 'setCombinationOperation',
         'filling_value' => 'setFillingValue',
         'join_with' => 'setJoinWith',
@@ -179,18 +176,14 @@ class Variable implements ArrayAccess
         'most_common_value' => 'setMostCommonValue',
         'most_common_unit' => 'setMostCommonUnit',
         'last_source' => 'setLastSource'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
         'original_name' => 'getOriginalName',
@@ -198,8 +191,8 @@ class Variable implements ArrayAccess
         'abbreviated_unit_name' => 'getAbbreviatedUnitName',
         'abbreviated_unit_id' => 'getAbbreviatedUnitId',
         'sources' => 'getSources',
-        'minimum_value' => 'getMinimumValue',
-        'maximum_value' => 'getMaximumValue',
+        'minimum_allowed_value' => 'getMinimumAllowedValue',
+        'maximum_allowed_value' => 'getMaximumAllowedValue',
         'combination_operation' => 'getCombinationOperation',
         'filling_value' => 'getFillingValue',
         'join_with' => 'getJoinWith',
@@ -221,7 +214,17 @@ class Variable implements ArrayAccess
         'most_common_value' => 'getMostCommonValue',
         'most_common_unit' => 'getMostCommonUnit',
         'last_source' => 'getLastSource'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -250,11 +253,11 @@ class Variable implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -265,8 +268,8 @@ class Variable implements ArrayAccess
         $this->container['abbreviated_unit_name'] = isset($data['abbreviated_unit_name']) ? $data['abbreviated_unit_name'] : null;
         $this->container['abbreviated_unit_id'] = isset($data['abbreviated_unit_id']) ? $data['abbreviated_unit_id'] : null;
         $this->container['sources'] = isset($data['sources']) ? $data['sources'] : null;
-        $this->container['minimum_value'] = isset($data['minimum_value']) ? $data['minimum_value'] : null;
-        $this->container['maximum_value'] = isset($data['maximum_value']) ? $data['maximum_value'] : null;
+        $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
+        $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
         $this->container['combination_operation'] = isset($data['combination_operation']) ? $data['combination_operation'] : null;
         $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
         $this->container['join_with'] = isset($data['join_with']) ? $data['join_with'] : null;
@@ -297,7 +300,7 @@ class Variable implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['name'] === null) {
             $invalid_properties[] = "'name' can't be null";
         }
@@ -316,19 +319,20 @@ class Variable implements ArrayAccess
         if ($this->container['sources'] === null) {
             $invalid_properties[] = "'sources' can't be null";
         }
-        if ($this->container['minimum_value'] === null) {
-            $invalid_properties[] = "'minimum_value' can't be null";
+        if ($this->container['minimum_allowed_value'] === null) {
+            $invalid_properties[] = "'minimum_allowed_value' can't be null";
         }
-        if ($this->container['maximum_value'] === null) {
-            $invalid_properties[] = "'maximum_value' can't be null";
+        if ($this->container['maximum_allowed_value'] === null) {
+            $invalid_properties[] = "'maximum_allowed_value' can't be null";
         }
         if ($this->container['combination_operation'] === null) {
             $invalid_properties[] = "'combination_operation' can't be null";
         }
-        $allowed_values = array("MEAN", "SUM");
+        $allowed_values = ["MEAN", "SUM"];
         if (!in_array($this->container['combination_operation'], $allowed_values)) {
             $invalid_properties[] = "invalid value for 'combination_operation', must be one of #{allowed_values}.";
         }
+
         if ($this->container['filling_value'] === null) {
             $invalid_properties[] = "'filling_value' can't be null";
         }
@@ -418,16 +422,16 @@ class Variable implements ArrayAccess
         if ($this->container['sources'] === null) {
             return false;
         }
-        if ($this->container['minimum_value'] === null) {
+        if ($this->container['minimum_allowed_value'] === null) {
             return false;
         }
-        if ($this->container['maximum_value'] === null) {
+        if ($this->container['maximum_allowed_value'] === null) {
             return false;
         }
         if ($this->container['combination_operation'] === null) {
             return false;
         }
-        $allowed_values = array("MEAN", "SUM");
+        $allowed_values = ["MEAN", "SUM"];
         if (!in_array($this->container['combination_operation'], $allowed_values)) {
             return false;
         }
@@ -643,43 +647,43 @@ class Variable implements ArrayAccess
     }
 
     /**
-     * Gets minimum_value
+     * Gets minimum_allowed_value
      * @return double
      */
-    public function getMinimumValue()
+    public function getMinimumAllowedValue()
     {
-        return $this->container['minimum_value'];
+        return $this->container['minimum_allowed_value'];
     }
 
     /**
-     * Sets minimum_value
-     * @param double $minimum_value Minimum reasonable value for this variable (uses default unit)
+     * Sets minimum_allowed_value
+     * @param double $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
      * @return $this
      */
-    public function setMinimumValue($minimum_value)
+    public function setMinimumAllowedValue($minimum_allowed_value)
     {
-        $this->container['minimum_value'] = $minimum_value;
+        $this->container['minimum_allowed_value'] = $minimum_allowed_value;
 
         return $this;
     }
 
     /**
-     * Gets maximum_value
+     * Gets maximum_allowed_value
      * @return double
      */
-    public function getMaximumValue()
+    public function getMaximumAllowedValue()
     {
-        return $this->container['maximum_value'];
+        return $this->container['maximum_allowed_value'];
     }
 
     /**
-     * Sets maximum_value
-     * @param double $maximum_value Maximum reasonable value for this variable (uses default unit)
+     * Sets maximum_allowed_value
+     * @param double $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
      * @return $this
      */
-    public function setMaximumValue($maximum_value)
+    public function setMaximumAllowedValue($maximum_allowed_value)
     {
-        $this->container['maximum_value'] = $maximum_value;
+        $this->container['maximum_allowed_value'] = $maximum_allowed_value;
 
         return $this;
     }
@@ -701,7 +705,7 @@ class Variable implements ArrayAccess
     public function setCombinationOperation($combination_operation)
     {
         $allowed_values = array('MEAN', 'SUM');
-        if (!in_array($combination_operation, $allowed_values)) {
+        if ((!in_array($combination_operation, $allowed_values))) {
             throw new \InvalidArgumentException("Invalid value for 'combination_operation', must be one of 'MEAN', 'SUM'");
         }
         $this->container['combination_operation'] = $combination_operation;
@@ -720,7 +724,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets filling_value
-     * @param double $filling_value Value for replacing null measurements
+     * @param double $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
      * @return $this
      */
     public function setFillingValue($filling_value)
@@ -825,7 +829,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets onset_delay
-     * @param int $onset_delay How long it takes for a measurement in this variable to take effect
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
      * @return $this
      */
     public function setOnsetDelay($onset_delay)
@@ -846,7 +850,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets duration_of_action
-     * @param int $duration_of_action How long the effect of a measurement in this variable lasts
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
      * @return $this
      */
     public function setDurationOfAction($duration_of_action)

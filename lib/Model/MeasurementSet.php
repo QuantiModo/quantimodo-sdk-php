@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * MeasurementSet Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class MeasurementSet implements ArrayAccess
@@ -64,14 +65,14 @@ class MeasurementSet implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'measurements' => '\QuantiModo\Client\Model\ValueObject[]',
         'variable_name' => 'string',
         'source_name' => 'string',
         'variable_category_name' => 'string',
         'combination_operation' => 'string',
         'abbreviated_unit_name' => 'string'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -82,50 +83,52 @@ class MeasurementSet implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'measurements' => 'measurements',
         'variable_name' => 'variableName',
         'source_name' => 'sourceName',
         'variable_category_name' => 'variableCategoryName',
         'combination_operation' => 'combinationOperation',
         'abbreviated_unit_name' => 'abbreviatedUnitName'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'measurements' => 'setMeasurements',
         'variable_name' => 'setVariableName',
         'source_name' => 'setSourceName',
         'variable_category_name' => 'setVariableCategoryName',
         'combination_operation' => 'setCombinationOperation',
         'abbreviated_unit_name' => 'setAbbreviatedUnitName'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'measurements' => 'getMeasurements',
         'variable_name' => 'getVariableName',
         'source_name' => 'getSourceName',
         'variable_category_name' => 'getVariableCategoryName',
         'combination_operation' => 'getCombinationOperation',
         'abbreviated_unit_name' => 'getAbbreviatedUnitName'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -154,11 +157,11 @@ class MeasurementSet implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -177,7 +180,7 @@ class MeasurementSet implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['measurements'] === null) {
             $invalid_properties[] = "'measurements' can't be null";
         }
@@ -187,10 +190,11 @@ class MeasurementSet implements ArrayAccess
         if ($this->container['source_name'] === null) {
             $invalid_properties[] = "'source_name' can't be null";
         }
-        $allowed_values = array("MEAN", "SUM");
+        $allowed_values = ["MEAN", "SUM"];
         if (!in_array($this->container['combination_operation'], $allowed_values)) {
             $invalid_properties[] = "invalid value for 'combination_operation', must be one of #{allowed_values}.";
         }
+
         if ($this->container['abbreviated_unit_name'] === null) {
             $invalid_properties[] = "'abbreviated_unit_name' can't be null";
         }
@@ -214,7 +218,7 @@ class MeasurementSet implements ArrayAccess
         if ($this->container['source_name'] === null) {
             return false;
         }
-        $allowed_values = array("MEAN", "SUM");
+        $allowed_values = ["MEAN", "SUM"];
         if (!in_array($this->container['combination_operation'], $allowed_values)) {
             return false;
         }
@@ -326,7 +330,7 @@ class MeasurementSet implements ArrayAccess
     public function setCombinationOperation($combination_operation)
     {
         $allowed_values = array('MEAN', 'SUM');
-        if (!in_array($combination_operation, $allowed_values)) {
+        if (!is_null($combination_operation) && (!in_array($combination_operation, $allowed_values))) {
             throw new \InvalidArgumentException("Invalid value for 'combination_operation', must be one of 'MEAN', 'SUM'");
         }
         $this->container['combination_operation'] = $combination_operation;

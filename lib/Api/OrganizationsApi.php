@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -40,9 +40,9 @@
 
 namespace QuantiModo\Client\Api;
 
-use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ObjectSerializer;
 
 /**
@@ -51,12 +51,11 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class OrganizationsApi
 {
-
     /**
      * API Client
      *
@@ -71,7 +70,7 @@ class OrganizationsApi
      */
     public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
-        if ($apiClient == null) {
+        if ($apiClient === null) {
             $apiClient = new ApiClient();
             $apiClient->getConfig()->setHost('https://app.quantimo.do/api');
         }
@@ -105,64 +104,63 @@ class OrganizationsApi
     /**
      * Operation v1OrganizationsOrganizationIdUsersPost
      *
-     * Get user tokens for existing users, create new users.
+     * Get user tokens for existing users, create new users
      *
      * @param int $organization_id Organization ID (required)
      * @param \QuantiModo\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\UserTokenSuccessfulResponse
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\UserTokenSuccessfulResponse
      */
-    public function v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token = null)
+    public function v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1OrganizationsOrganizationIdUsersPostWithHttpInfo($organization_id, $body, $access_token);
+        list($response) = $this->v1OrganizationsOrganizationIdUsersPostWithHttpInfo($organization_id, $body, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1OrganizationsOrganizationIdUsersPostWithHttpInfo
      *
-     * Get user tokens for existing users, create new users.
+     * Get user tokens for existing users, create new users
      *
      * @param int $organization_id Organization ID (required)
      * @param \QuantiModo\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\UserTokenSuccessfulResponse, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\UserTokenSuccessfulResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1OrganizationsOrganizationIdUsersPostWithHttpInfo($organization_id, $body, $access_token = null)
+    public function v1OrganizationsOrganizationIdUsersPostWithHttpInfo($organization_id, $body, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'organization_id' is set
         if ($organization_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $organization_id when calling v1OrganizationsOrganizationIdUsersPost');
         }
-
         // verify the required parameter 'body' is set
         if ($body === null) {
             throw new \InvalidArgumentException('Missing the required parameter $body when calling v1OrganizationsOrganizationIdUsersPost');
         }
-
         // parse inputs
         $resourcePath = "/v1/organizations/{organizationId}/users";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // path params
         if ($organization_id !== null) {
             $resourcePath = str_replace(
@@ -174,7 +172,6 @@ class OrganizationsApi
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -187,18 +184,15 @@ class OrganizationsApi
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -207,10 +201,11 @@ class OrganizationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\UserTokenSuccessfulResponse'
+                '\QuantiModo\Client\Model\UserTokenSuccessfulResponse',
+                '/v1/organizations/{organizationId}/users'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:

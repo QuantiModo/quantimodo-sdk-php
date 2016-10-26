@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * UserVariablesTest Class Doc Comment
  *
- * @category    Class
- * @description UserVariables
+ * @category    Class */
+// * @description UserVariables
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserVariablesTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class UserVariablesTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,93 @@ class UserVariablesTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "user"
+     */
+    public function testPropertyUser()
+    {
+
+    }
+
+    /**
+     * Test attribute "variable_id"
+     */
+    public function testPropertyVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "duration_of_action"
+     */
+    public function testPropertyDurationOfAction()
+    {
+
+    }
+
+    /**
+     * Test attribute "filling_value"
+     */
+    public function testPropertyFillingValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "join_with"
+     */
+    public function testPropertyJoinWith()
+    {
+
+    }
+
+    /**
+     * Test attribute "maximum_allowed_value"
+     */
+    public function testPropertyMaximumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "minimum_allowed_value"
+     */
+    public function testPropertyMinimumAllowedValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "onset_delay"
+     */
+    public function testPropertyOnsetDelay()
+    {
+
+    }
+
+    /**
+     * Test attribute "experiment_start_time"
+     */
+    public function testPropertyExperimentStartTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "experiment_end_time"
+     */
+    public function testPropertyExperimentEndTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "alias"
+     */
+    public function testPropertyAlias()
+    {
+
+    }
+
 }

@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -38,7 +38,7 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace QuantiModo\Client\Api;
+namespace QuantiModo\Client;
 
 use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
@@ -51,14 +51,14 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class VariablesApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test cases
      */
     public static function setUpBeforeClass()
     {
@@ -66,7 +66,23 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -83,6 +99,7 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1PublicVariablesSearchSearchGet
      *
@@ -93,6 +110,18 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test case for v1UserVariablesDeletePost
+     *
+     * Delete All Measurements For Variable.
+     *
+     */
+    public function testV1UserVariablesDeletePost()
+    {
+
+    }
+
     /**
      * Test case for v1UserVariablesPost
      *
@@ -103,6 +132,18 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test case for v1UserVariablesResetPost
+     *
+     * Reset user settings for a variable to defaults.
+     *
+     */
+    public function testV1UserVariablesResetPost()
+    {
+
+    }
+
     /**
      * Test case for v1VariableCategoriesGet
      *
@@ -113,16 +154,18 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VariablesGet
      *
-     * Get variables by the category name.
+     * Get variables with user's settings.
      *
      */
     public function testV1VariablesGet()
     {
 
     }
+
     /**
      * Test case for v1VariablesPost
      *
@@ -133,6 +176,7 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VariablesSearchSearchGet
      *
@@ -143,6 +187,7 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VariablesVariableNameGet
      *
@@ -153,4 +198,5 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
 }

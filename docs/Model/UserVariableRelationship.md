@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **confidence_level** | **string** | Our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors | 
 **confidence_score** | **float** | A quantitative representation of our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors | 
 **direction** | **string** | Direction is positive if higher predictor values generally precede higher outcome values. Direction is negative if higher predictor values generally precede lower outcome values. | 
-**duration_of_action** | **int** | Number of seconds over which the predictor variable event is expected to produce a perceivable effect following the onset delay | 
+**duration_of_action** | **int** | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | 
 **error_message** | **string** | error_message | [optional] 
-**onset_delay** | **int** | User estimated (or default number of seconds) after cause measurement before a perceivable effect is observed | [optional] 
+**onset_delay** | **int** | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional] 
 **outcome_variable_id** | **int** | Variable ID for the outcome variable | 
 **predictor_variable_id** | **int** | Variable ID for the predictor variable | 
 **predictor_unit_id** | **int** | ID for default unit of the predictor variable | 

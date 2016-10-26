@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * UserTag Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserTag implements ArrayAccess
@@ -64,11 +65,11 @@ class UserTag implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'tagged_variable_id' => 'int',
         'tag_variable_id' => 'int',
         'conversion_factor' => 'float'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -79,41 +80,43 @@ class UserTag implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'tagged_variable_id' => 'taggedVariableId',
         'tag_variable_id' => 'tagVariableId',
         'conversion_factor' => 'conversionFactor'
-    );
+    ];
+
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = [
+        'tagged_variable_id' => 'setTaggedVariableId',
+        'tag_variable_id' => 'setTagVariableId',
+        'conversion_factor' => 'setConversionFactor'
+    ];
+
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = [
+        'tagged_variable_id' => 'getTaggedVariableId',
+        'tag_variable_id' => 'getTagVariableId',
+        'conversion_factor' => 'getConversionFactor'
+    ];
 
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     * @var string[]
-     */
-    protected static $setters = array(
-        'tagged_variable_id' => 'setTaggedVariableId',
-        'tag_variable_id' => 'setTagVariableId',
-        'conversion_factor' => 'setConversionFactor'
-    );
-
     public static function setters()
     {
         return self::$setters;
     }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     * @var string[]
-     */
-    protected static $getters = array(
-        'tagged_variable_id' => 'getTaggedVariableId',
-        'tag_variable_id' => 'getTagVariableId',
-        'conversion_factor' => 'getConversionFactor'
-    );
 
     public static function getters()
     {
@@ -128,11 +131,11 @@ class UserTag implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -148,7 +151,7 @@ class UserTag implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['tagged_variable_id'] === null) {
             $invalid_properties[] = "'tagged_variable_id' can't be null";
         }

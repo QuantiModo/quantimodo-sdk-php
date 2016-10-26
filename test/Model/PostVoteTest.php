@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * PostVoteTest Class Doc Comment
  *
- * @category    Class
- * @description PostVote
+ * @category    Class */
+// * @description PostVote
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class PostVoteTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class PostVoteTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,29 @@ class PostVoteTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "cause_variable_id"
+     */
+    public function testPropertyCauseVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "effect_variable_id"
+     */
+    public function testPropertyEffectVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "vote"
+     */
+    public function testPropertyVote()
+    {
+
+    }
+
 }

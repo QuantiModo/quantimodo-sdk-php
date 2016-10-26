@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -40,9 +40,9 @@
 
 namespace QuantiModo\Client\Api;
 
-use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ObjectSerializer;
 
 /**
@@ -51,12 +51,11 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class ApplicationEndpointsApi
 {
-
     /**
      * API Client
      *
@@ -71,7 +70,7 @@ class ApplicationEndpointsApi
      */
     public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
-        if ($apiClient == null) {
+        if ($apiClient === null) {
             $apiClient = new ApiClient();
             $apiClient->getConfig()->setHost('https://app.quantimo.do/api');
         }
@@ -105,9 +104,10 @@ class ApplicationEndpointsApi
     /**
      * Operation v2ApplicationConnectionsGet
      *
-     * Get all Connections.
+     * Get all Connections
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $connector_id The id for the connector data source for which the connection is connected (optional)
      * @param string $connect_status Indicates whether a connector is currently connected to a service for a user. (optional)
      * @param string $connect_error Error message if there is a problem with authorizing this connection. (optional)
@@ -120,23 +120,22 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2003
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2003
      */
-    public function v2ApplicationConnectionsGet($access_token = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationConnectionsGet($access_token = null, $user_id = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationConnectionsGetWithHttpInfo($access_token, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationConnectionsGetWithHttpInfo($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationConnectionsGetWithHttpInfo
      *
-     * Get all Connections.
+     * Get all Connections
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $connector_id The id for the connector data source for which the connection is connected (optional)
      * @param string $connect_status Indicates whether a connector is currently connected to a service for a user. (optional)
      * @param string $connect_error Error message if there is a problem with authorizing this connection. (optional)
@@ -149,91 +148,98 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationConnectionsGetWithHttpInfo($access_token = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationConnectionsGetWithHttpInfo($access_token = null, $user_id = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/connections";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($connector_id !== null) {
             $queryParams['connector_id'] = $this->apiClient->getSerializer()->toQueryValue($connector_id);
-        }// query params
+        }
+        // query params
         if ($connect_status !== null) {
             $queryParams['connect_status'] = $this->apiClient->getSerializer()->toQueryValue($connect_status);
-        }// query params
+        }
+        // query params
         if ($connect_error !== null) {
             $queryParams['connect_error'] = $this->apiClient->getSerializer()->toQueryValue($connect_error);
-        }// query params
+        }
+        // query params
         if ($update_requested_at !== null) {
             $queryParams['update_requested_at'] = $this->apiClient->getSerializer()->toQueryValue($update_requested_at);
-        }// query params
+        }
+        // query params
         if ($update_status !== null) {
             $queryParams['update_status'] = $this->apiClient->getSerializer()->toQueryValue($update_status);
-        }// query params
+        }
+        // query params
         if ($update_error !== null) {
             $queryParams['update_error'] = $this->apiClient->getSerializer()->toQueryValue($update_error);
-        }// query params
+        }
+        // query params
         if ($last_successful_updated_at !== null) {
             $queryParams['last_successful_updated_at'] = $this->apiClient->getSerializer()->toQueryValue($last_successful_updated_at);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -242,10 +248,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2003'
+                '\QuantiModo\Client\Model\InlineResponse2003',
+                '/v2/application/connections'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -257,12 +264,14 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationCredentialsGet
      *
-     * Get all Credentials.
+     * Get all Credentials
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $connector_id The id for the connector data source from which the credential was obtained (optional)
      * @param string $attr_key Attribute name such as token, userid, username, or password (optional)
      * @param string $attr_value Encrypted value for the attribute specified (optional)
@@ -271,23 +280,22 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2004
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2004
      */
-    public function v2ApplicationCredentialsGet($access_token = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationCredentialsGet($access_token = null, $user_id = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationCredentialsGetWithHttpInfo($access_token, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationCredentialsGetWithHttpInfo($access_token, $user_id, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationCredentialsGetWithHttpInfo
      *
-     * Get all Credentials.
+     * Get all Credentials
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $connector_id The id for the connector data source from which the credential was obtained (optional)
      * @param string $attr_key Attribute name such as token, userid, username, or password (optional)
      * @param string $attr_value Encrypted value for the attribute specified (optional)
@@ -296,79 +304,82 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationCredentialsGetWithHttpInfo($access_token = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationCredentialsGetWithHttpInfo($access_token = null, $user_id = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/credentials";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($connector_id !== null) {
             $queryParams['connector_id'] = $this->apiClient->getSerializer()->toQueryValue($connector_id);
-        }// query params
+        }
+        // query params
         if ($attr_key !== null) {
             $queryParams['attr_key'] = $this->apiClient->getSerializer()->toQueryValue($attr_key);
-        }// query params
+        }
+        // query params
         if ($attr_value !== null) {
             $queryParams['attr_value'] = $this->apiClient->getSerializer()->toQueryValue($attr_value);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -377,10 +388,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2004'
+                '\QuantiModo\Client\Model\InlineResponse2004',
+                '/v2/application/credentials'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -392,12 +404,14 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationMeasurementsGet
      *
-     * Get measurements for all users using your application.
+     * Get measurements for all users using your application
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which originally stored the measurement (optional)
      * @param int $connector_id The id for the connector data source from which the measurement was obtained (optional)
      * @param int $variable_id ID of the variable for which we are creating the measurement records (optional)
@@ -407,7 +421,7 @@ class ApplicationEndpointsApi
      * @param int $unit_id The default unit id for the variable (optional)
      * @param float $original_value Unconverted value of measurement as originally posted (before conversion to default unit) (optional)
      * @param int $original_unit_id Unit id of the measurement as originally submitted (optional)
-     * @param int $duration Duration of the event being measurement in seconds (optional)
+     * @param int $duration The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $note An optional note the user may include with their measurement (optional)
      * @param float $latitude Latitude at which the measurement was taken (optional)
      * @param float $longitude Longitude at which the measurement was taken (optional)
@@ -418,23 +432,22 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2005
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2005
      */
-    public function v2ApplicationMeasurementsGet($access_token = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationMeasurementsGet($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationMeasurementsGetWithHttpInfo($access_token, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationMeasurementsGetWithHttpInfo($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationMeasurementsGetWithHttpInfo
      *
-     * Get measurements for all users using your application.
+     * Get measurements for all users using your application
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which originally stored the measurement (optional)
      * @param int $connector_id The id for the connector data source from which the measurement was obtained (optional)
      * @param int $variable_id ID of the variable for which we are creating the measurement records (optional)
@@ -444,7 +457,7 @@ class ApplicationEndpointsApi
      * @param int $unit_id The default unit id for the variable (optional)
      * @param float $original_value Unconverted value of measurement as originally posted (before conversion to default unit) (optional)
      * @param int $original_unit_id Unit id of the measurement as originally submitted (optional)
-     * @param int $duration Duration of the event being measurement in seconds (optional)
+     * @param int $duration The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $note An optional note the user may include with their measurement (optional)
      * @param float $latitude Latitude at which the measurement was taken (optional)
      * @param float $longitude Longitude at which the measurement was taken (optional)
@@ -455,115 +468,130 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationMeasurementsGetWithHttpInfo($access_token = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationMeasurementsGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/measurements";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($client_id !== null) {
             $queryParams['client_id'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }// query params
+        }
+        // query params
         if ($connector_id !== null) {
             $queryParams['connector_id'] = $this->apiClient->getSerializer()->toQueryValue($connector_id);
-        }// query params
+        }
+        // query params
         if ($variable_id !== null) {
             $queryParams['variable_id'] = $this->apiClient->getSerializer()->toQueryValue($variable_id);
-        }// query params
+        }
+        // query params
         if ($source_id !== null) {
             $queryParams['source_id'] = $this->apiClient->getSerializer()->toQueryValue($source_id);
-        }// query params
+        }
+        // query params
         if ($start_time !== null) {
             $queryParams['start_time'] = $this->apiClient->getSerializer()->toQueryValue($start_time);
-        }// query params
+        }
+        // query params
         if ($value !== null) {
             $queryParams['value'] = $this->apiClient->getSerializer()->toQueryValue($value);
-        }// query params
+        }
+        // query params
         if ($unit_id !== null) {
             $queryParams['unit_id'] = $this->apiClient->getSerializer()->toQueryValue($unit_id);
-        }// query params
+        }
+        // query params
         if ($original_value !== null) {
             $queryParams['original_value'] = $this->apiClient->getSerializer()->toQueryValue($original_value);
-        }// query params
+        }
+        // query params
         if ($original_unit_id !== null) {
             $queryParams['original_unit_id'] = $this->apiClient->getSerializer()->toQueryValue($original_unit_id);
-        }// query params
+        }
+        // query params
         if ($duration !== null) {
             $queryParams['duration'] = $this->apiClient->getSerializer()->toQueryValue($duration);
-        }// query params
+        }
+        // query params
         if ($note !== null) {
             $queryParams['note'] = $this->apiClient->getSerializer()->toQueryValue($note);
-        }// query params
+        }
+        // query params
         if ($latitude !== null) {
             $queryParams['latitude'] = $this->apiClient->getSerializer()->toQueryValue($latitude);
-        }// query params
+        }
+        // query params
         if ($longitude !== null) {
             $queryParams['longitude'] = $this->apiClient->getSerializer()->toQueryValue($longitude);
-        }// query params
+        }
+        // query params
         if ($location !== null) {
             $queryParams['location'] = $this->apiClient->getSerializer()->toQueryValue($location);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($error !== null) {
             $queryParams['error'] = $this->apiClient->getSerializer()->toQueryValue($error);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -572,10 +600,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2005'
+                '\QuantiModo\Client\Model\InlineResponse2005',
+                '/v2/application/measurements'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -587,108 +616,110 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationTrackingRemindersGet
      *
-     * Get tracking reminders.
+     * Get tracking reminders
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this trackingReminder (optional)
      * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
      * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2001
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2001
      */
-    public function v2ApplicationTrackingRemindersGet($access_token = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationTrackingRemindersGet($access_token = null, $user_id = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationTrackingRemindersGetWithHttpInfo($access_token, $client_id, $created_at, $updated_at, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationTrackingRemindersGetWithHttpInfo($access_token, $user_id, $client_id, $created_at, $updated_at, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationTrackingRemindersGetWithHttpInfo
      *
-     * Get tracking reminders.
+     * Get tracking reminders
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this trackingReminder (optional)
      * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
      * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationTrackingRemindersGetWithHttpInfo($access_token = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationTrackingRemindersGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/trackingReminders";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($client_id !== null) {
             $queryParams['client_id'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -697,10 +728,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2001'
+                '\QuantiModo\Client\Model\InlineResponse2001',
+                '/v2/application/trackingReminders'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -712,12 +744,14 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationUpdatesGet
      *
-     * Get all Updates.
+     * Get all Updates
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $connector_id connector_id (optional)
      * @param int $number_of_measurements number_of_measurements (optional)
      * @param bool $success success (optional)
@@ -727,23 +761,22 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2006
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2006
      */
-    public function v2ApplicationUpdatesGet($access_token = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUpdatesGet($access_token = null, $user_id = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationUpdatesGetWithHttpInfo($access_token, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationUpdatesGetWithHttpInfo($access_token, $user_id, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationUpdatesGetWithHttpInfo
      *
-     * Get all Updates.
+     * Get all Updates
      *
      * @param string $access_token Application&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $connector_id connector_id (optional)
      * @param int $number_of_measurements number_of_measurements (optional)
      * @param bool $success success (optional)
@@ -753,82 +786,86 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationUpdatesGetWithHttpInfo($access_token = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUpdatesGetWithHttpInfo($access_token = null, $user_id = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/updates";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($connector_id !== null) {
             $queryParams['connector_id'] = $this->apiClient->getSerializer()->toQueryValue($connector_id);
-        }// query params
+        }
+        // query params
         if ($number_of_measurements !== null) {
             $queryParams['number_of_measurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_measurements);
-        }// query params
+        }
+        // query params
         if ($success !== null) {
             $queryParams['success'] = $this->apiClient->getSerializer()->toQueryValue($success);
-        }// query params
+        }
+        // query params
         if ($message !== null) {
             $queryParams['message'] = $this->apiClient->getSerializer()->toQueryValue($message);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -837,10 +874,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2006'
+                '\QuantiModo\Client\Model\InlineResponse2006',
+                '/v2/application/updates'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2006', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2006', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -852,19 +890,21 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationUserVariableRelationshipsGet
      *
-     * Get all UserVariableRelationships.
+     * Get all UserVariableRelationships
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $id id (optional)
      * @param string $confidence_level Our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors (optional)
      * @param float $confidence_score A quantitative representation of our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors (optional)
      * @param string $direction Direction is positive if higher predictor values generally precede higher outcome values. Direction is negative if higher predictor values generally precede lower outcome values. (optional)
-     * @param int $duration_of_action Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect (optional)
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $error_message error_message (optional)
-     * @param int $onset_delay Estimated number of seconds that pass before a stimulus produces a perceivable effect (optional)
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
      * @param int $outcome_variable_id Variable ID for the outcome variable (optional)
      * @param int $predictor_variable_id Variable ID for the predictor variable (optional)
      * @param int $predictor_unit_id ID for default unit of the predictor variable (optional)
@@ -877,30 +917,29 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2007
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2007
      */
-    public function v2ApplicationUserVariableRelationshipsGet($access_token = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUserVariableRelationshipsGet($access_token = null, $user_id = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationUserVariableRelationshipsGetWithHttpInfo($access_token, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationUserVariableRelationshipsGetWithHttpInfo($access_token, $user_id, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationUserVariableRelationshipsGetWithHttpInfo
      *
-     * Get all UserVariableRelationships.
+     * Get all UserVariableRelationships
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $id id (optional)
      * @param string $confidence_level Our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors (optional)
      * @param float $confidence_score A quantitative representation of our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors (optional)
      * @param string $direction Direction is positive if higher predictor values generally precede higher outcome values. Direction is negative if higher predictor values generally precede lower outcome values. (optional)
-     * @param int $duration_of_action Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect (optional)
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $error_message error_message (optional)
-     * @param int $onset_delay Estimated number of seconds that pass before a stimulus produces a perceivable effect (optional)
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
      * @param int $outcome_variable_id Variable ID for the outcome variable (optional)
      * @param int $predictor_variable_id Variable ID for the predictor variable (optional)
      * @param int $predictor_unit_id ID for default unit of the predictor variable (optional)
@@ -913,112 +952,126 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationUserVariableRelationshipsGetWithHttpInfo($access_token = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUserVariableRelationshipsGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/userVariableRelationships";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($id !== null) {
             $queryParams['id'] = $this->apiClient->getSerializer()->toQueryValue($id);
-        }// query params
+        }
+        // query params
         if ($confidence_level !== null) {
             $queryParams['confidence_level'] = $this->apiClient->getSerializer()->toQueryValue($confidence_level);
-        }// query params
+        }
+        // query params
         if ($confidence_score !== null) {
             $queryParams['confidence_score'] = $this->apiClient->getSerializer()->toQueryValue($confidence_score);
-        }// query params
+        }
+        // query params
         if ($direction !== null) {
             $queryParams['direction'] = $this->apiClient->getSerializer()->toQueryValue($direction);
-        }// query params
+        }
+        // query params
         if ($duration_of_action !== null) {
             $queryParams['duration_of_action'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
-        }// query params
+        }
+        // query params
         if ($error_message !== null) {
             $queryParams['error_message'] = $this->apiClient->getSerializer()->toQueryValue($error_message);
-        }// query params
+        }
+        // query params
         if ($onset_delay !== null) {
             $queryParams['onset_delay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
-        }// query params
+        }
+        // query params
         if ($outcome_variable_id !== null) {
             $queryParams['outcome_variable_id'] = $this->apiClient->getSerializer()->toQueryValue($outcome_variable_id);
-        }// query params
+        }
+        // query params
         if ($predictor_variable_id !== null) {
             $queryParams['predictor_variable_id'] = $this->apiClient->getSerializer()->toQueryValue($predictor_variable_id);
-        }// query params
+        }
+        // query params
         if ($predictor_unit_id !== null) {
             $queryParams['predictor_unit_id'] = $this->apiClient->getSerializer()->toQueryValue($predictor_unit_id);
-        }// query params
+        }
+        // query params
         if ($sinn_rank !== null) {
             $queryParams['sinn_rank'] = $this->apiClient->getSerializer()->toQueryValue($sinn_rank);
-        }// query params
+        }
+        // query params
         if ($strength_level !== null) {
             $queryParams['strength_level'] = $this->apiClient->getSerializer()->toQueryValue($strength_level);
-        }// query params
+        }
+        // query params
         if ($strength_score !== null) {
             $queryParams['strength_score'] = $this->apiClient->getSerializer()->toQueryValue($strength_score);
-        }// query params
+        }
+        // query params
         if ($vote !== null) {
             $queryParams['vote'] = $this->apiClient->getSerializer()->toQueryValue($vote);
-        }// query params
+        }
+        // query params
         if ($value_predicting_high_outcome !== null) {
             $queryParams['value_predicting_high_outcome'] = $this->apiClient->getSerializer()->toQueryValue($value_predicting_high_outcome);
-        }// query params
+        }
+        // query params
         if ($value_predicting_low_outcome !== null) {
             $queryParams['value_predicting_low_outcome'] = $this->apiClient->getSerializer()->toQueryValue($value_predicting_low_outcome);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -1027,10 +1080,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2007'
+                '\QuantiModo\Client\Model\InlineResponse2007',
+                '/v2/application/userVariableRelationships'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2007', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2007', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1042,22 +1096,24 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationUserVariablesGet
      *
-     * Get all UserVariables.
+     * Get all UserVariables
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this user variable (optional)
      * @param int $parent_id ID of the parent variable if this variable has any parent (optional)
      * @param int $variable_id ID of variable (optional)
      * @param int $default_unit_id D of unit to use for this variable (optional)
-     * @param float $minimum_allowed_value Minimum reasonable value for this variable (uses default unit) (optional)
-     * @param float $maximum_allowed_value Maximum reasonable value for this variable (uses default unit) (optional)
-     * @param float $filling_value Value for replacing null measurements (optional)
+     * @param float $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis. (optional)
+     * @param float $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis. (optional)
+     * @param float $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven&#39;t taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing. (optional)
      * @param int $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables (optional)
-     * @param int $onset_delay Estimated number of seconds that pass before a stimulus produces a perceivable effect (optional)
-     * @param int $duration_of_action Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect (optional)
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param int $variable_category_id ID of variable category (optional)
      * @param int $updated updated (optional)
      * @param int $public Is variable public (optional)
@@ -1103,33 +1159,32 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2008
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2008
      */
-    public function v2ApplicationUserVariablesGet($access_token = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUserVariablesGet($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationUserVariablesGetWithHttpInfo($access_token, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationUserVariablesGetWithHttpInfo($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationUserVariablesGetWithHttpInfo
      *
-     * Get all UserVariables.
+     * Get all UserVariables
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this user variable (optional)
      * @param int $parent_id ID of the parent variable if this variable has any parent (optional)
      * @param int $variable_id ID of variable (optional)
      * @param int $default_unit_id D of unit to use for this variable (optional)
-     * @param float $minimum_allowed_value Minimum reasonable value for this variable (uses default unit) (optional)
-     * @param float $maximum_allowed_value Maximum reasonable value for this variable (uses default unit) (optional)
-     * @param float $filling_value Value for replacing null measurements (optional)
+     * @param float $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis. (optional)
+     * @param float $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis. (optional)
+     * @param float $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven&#39;t taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing. (optional)
      * @param int $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables (optional)
-     * @param int $onset_delay Estimated number of seconds that pass before a stimulus produces a perceivable effect (optional)
-     * @param int $duration_of_action Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect (optional)
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param int $variable_category_id ID of variable category (optional)
      * @param int $updated updated (optional)
      * @param int $public Is variable public (optional)
@@ -1175,220 +1230,270 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationUserVariablesGetWithHttpInfo($access_token = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUserVariablesGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/userVariables";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($client_id !== null) {
             $queryParams['client_id'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }// query params
+        }
+        // query params
         if ($parent_id !== null) {
             $queryParams['parent_id'] = $this->apiClient->getSerializer()->toQueryValue($parent_id);
-        }// query params
+        }
+        // query params
         if ($variable_id !== null) {
             $queryParams['variable_id'] = $this->apiClient->getSerializer()->toQueryValue($variable_id);
-        }// query params
+        }
+        // query params
         if ($default_unit_id !== null) {
             $queryParams['default_unit_id'] = $this->apiClient->getSerializer()->toQueryValue($default_unit_id);
-        }// query params
+        }
+        // query params
         if ($minimum_allowed_value !== null) {
             $queryParams['minimum_allowed_value'] = $this->apiClient->getSerializer()->toQueryValue($minimum_allowed_value);
-        }// query params
+        }
+        // query params
         if ($maximum_allowed_value !== null) {
             $queryParams['maximum_allowed_value'] = $this->apiClient->getSerializer()->toQueryValue($maximum_allowed_value);
-        }// query params
+        }
+        // query params
         if ($filling_value !== null) {
             $queryParams['filling_value'] = $this->apiClient->getSerializer()->toQueryValue($filling_value);
-        }// query params
+        }
+        // query params
         if ($join_with !== null) {
             $queryParams['join_with'] = $this->apiClient->getSerializer()->toQueryValue($join_with);
-        }// query params
+        }
+        // query params
         if ($onset_delay !== null) {
             $queryParams['onset_delay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
-        }// query params
+        }
+        // query params
         if ($duration_of_action !== null) {
             $queryParams['duration_of_action'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
-        }// query params
+        }
+        // query params
         if ($variable_category_id !== null) {
             $queryParams['variable_category_id'] = $this->apiClient->getSerializer()->toQueryValue($variable_category_id);
-        }// query params
+        }
+        // query params
         if ($updated !== null) {
             $queryParams['updated'] = $this->apiClient->getSerializer()->toQueryValue($updated);
-        }// query params
+        }
+        // query params
         if ($public !== null) {
             $queryParams['public'] = $this->apiClient->getSerializer()->toQueryValue($public);
-        }// query params
+        }
+        // query params
         if ($cause_only !== null) {
             $queryParams['cause_only'] = $this->apiClient->getSerializer()->toQueryValue($cause_only);
-        }// query params
+        }
+        // query params
         if ($filling_type !== null) {
             $queryParams['filling_type'] = $this->apiClient->getSerializer()->toQueryValue($filling_type);
-        }// query params
+        }
+        // query params
         if ($number_of_measurements !== null) {
             $queryParams['number_of_measurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_measurements);
-        }// query params
+        }
+        // query params
         if ($number_of_processed_measurements !== null) {
             $queryParams['number_of_processed_measurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_processed_measurements);
-        }// query params
+        }
+        // query params
         if ($measurements_at_last_analysis !== null) {
             $queryParams['measurements_at_last_analysis'] = $this->apiClient->getSerializer()->toQueryValue($measurements_at_last_analysis);
-        }// query params
+        }
+        // query params
         if ($last_unit_id !== null) {
             $queryParams['last_unit_id'] = $this->apiClient->getSerializer()->toQueryValue($last_unit_id);
-        }// query params
+        }
+        // query params
         if ($last_original_unit_id !== null) {
             $queryParams['last_original_unit_id'] = $this->apiClient->getSerializer()->toQueryValue($last_original_unit_id);
-        }// query params
+        }
+        // query params
         if ($last_original_value !== null) {
             $queryParams['last_original_value'] = $this->apiClient->getSerializer()->toQueryValue($last_original_value);
-        }// query params
+        }
+        // query params
         if ($last_value !== null) {
             $queryParams['last_value'] = $this->apiClient->getSerializer()->toQueryValue($last_value);
-        }// query params
+        }
+        // query params
         if ($last_source_id !== null) {
             $queryParams['last_source_id'] = $this->apiClient->getSerializer()->toQueryValue($last_source_id);
-        }// query params
+        }
+        // query params
         if ($number_of_correlations !== null) {
             $queryParams['number_of_correlations'] = $this->apiClient->getSerializer()->toQueryValue($number_of_correlations);
-        }// query params
+        }
+        // query params
         if ($status !== null) {
             $queryParams['status'] = $this->apiClient->getSerializer()->toQueryValue($status);
-        }// query params
+        }
+        // query params
         if ($error_message !== null) {
             $queryParams['error_message'] = $this->apiClient->getSerializer()->toQueryValue($error_message);
-        }// query params
+        }
+        // query params
         if ($last_successful_update_time !== null) {
             $queryParams['last_successful_update_time'] = $this->apiClient->getSerializer()->toQueryValue($last_successful_update_time);
-        }// query params
+        }
+        // query params
         if ($standard_deviation !== null) {
             $queryParams['standard_deviation'] = $this->apiClient->getSerializer()->toQueryValue($standard_deviation);
-        }// query params
+        }
+        // query params
         if ($variance !== null) {
             $queryParams['variance'] = $this->apiClient->getSerializer()->toQueryValue($variance);
-        }// query params
+        }
+        // query params
         if ($minimum_recorded_value !== null) {
             $queryParams['minimum_recorded_value'] = $this->apiClient->getSerializer()->toQueryValue($minimum_recorded_value);
-        }// query params
+        }
+        // query params
         if ($maximum_recorded_value !== null) {
             $queryParams['maximum_recorded_value'] = $this->apiClient->getSerializer()->toQueryValue($maximum_recorded_value);
-        }// query params
+        }
+        // query params
         if ($mean !== null) {
             $queryParams['mean'] = $this->apiClient->getSerializer()->toQueryValue($mean);
-        }// query params
+        }
+        // query params
         if ($median !== null) {
             $queryParams['median'] = $this->apiClient->getSerializer()->toQueryValue($median);
-        }// query params
+        }
+        // query params
         if ($most_common_unit_id !== null) {
             $queryParams['most_common_unit_id'] = $this->apiClient->getSerializer()->toQueryValue($most_common_unit_id);
-        }// query params
+        }
+        // query params
         if ($most_common_value !== null) {
             $queryParams['most_common_value'] = $this->apiClient->getSerializer()->toQueryValue($most_common_value);
-        }// query params
+        }
+        // query params
         if ($number_of_unique_daily_values !== null) {
             $queryParams['number_of_unique_daily_values'] = $this->apiClient->getSerializer()->toQueryValue($number_of_unique_daily_values);
-        }// query params
+        }
+        // query params
         if ($number_of_changes !== null) {
             $queryParams['number_of_changes'] = $this->apiClient->getSerializer()->toQueryValue($number_of_changes);
-        }// query params
+        }
+        // query params
         if ($skewness !== null) {
             $queryParams['skewness'] = $this->apiClient->getSerializer()->toQueryValue($skewness);
-        }// query params
+        }
+        // query params
         if ($kurtosis !== null) {
             $queryParams['kurtosis'] = $this->apiClient->getSerializer()->toQueryValue($kurtosis);
-        }// query params
+        }
+        // query params
         if ($latitude !== null) {
             $queryParams['latitude'] = $this->apiClient->getSerializer()->toQueryValue($latitude);
-        }// query params
+        }
+        // query params
         if ($longitude !== null) {
             $queryParams['longitude'] = $this->apiClient->getSerializer()->toQueryValue($longitude);
-        }// query params
+        }
+        // query params
         if ($location !== null) {
             $queryParams['location'] = $this->apiClient->getSerializer()->toQueryValue($location);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($outcome !== null) {
             $queryParams['outcome'] = $this->apiClient->getSerializer()->toQueryValue($outcome);
-        }// query params
+        }
+        // query params
         if ($sources !== null) {
             $queryParams['sources'] = $this->apiClient->getSerializer()->toQueryValue($sources);
-        }// query params
+        }
+        // query params
         if ($earliest_source_time !== null) {
             $queryParams['earliest_source_time'] = $this->apiClient->getSerializer()->toQueryValue($earliest_source_time);
-        }// query params
+        }
+        // query params
         if ($latest_source_time !== null) {
             $queryParams['latest_source_time'] = $this->apiClient->getSerializer()->toQueryValue($latest_source_time);
-        }// query params
+        }
+        // query params
         if ($earliest_measurement_time !== null) {
             $queryParams['earliest_measurement_time'] = $this->apiClient->getSerializer()->toQueryValue($earliest_measurement_time);
-        }// query params
+        }
+        // query params
         if ($latest_measurement_time !== null) {
             $queryParams['latest_measurement_time'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
-        }// query params
+        }
+        // query params
         if ($earliest_filling_time !== null) {
             $queryParams['earliest_filling_time'] = $this->apiClient->getSerializer()->toQueryValue($earliest_filling_time);
-        }// query params
+        }
+        // query params
         if ($latest_filling_time !== null) {
             $queryParams['latest_filling_time'] = $this->apiClient->getSerializer()->toQueryValue($latest_filling_time);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -1397,10 +1502,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2008'
+                '\QuantiModo\Client\Model\InlineResponse2008',
+                '/v2/application/userVariables'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2008', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2008', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1412,12 +1518,14 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationVariableUserSourcesGet
      *
-     * Get all VariableUserSources.
+     * Get all VariableUserSources
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $variable_id ID of variable (optional)
      * @param int $timestamp Time that this measurement occurred Uses epoch minute (epoch time divided by 60) (optional)
      * @param int $earliest_measurement_time Earliest measurement time (optional)
@@ -1427,23 +1535,22 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse2009
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse2009
      */
-    public function v2ApplicationVariableUserSourcesGet($access_token = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationVariableUserSourcesGet($access_token = null, $user_id = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationVariableUserSourcesGetWithHttpInfo($access_token, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationVariableUserSourcesGetWithHttpInfo($access_token, $user_id, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationVariableUserSourcesGetWithHttpInfo
      *
-     * Get all VariableUserSources.
+     * Get all VariableUserSources
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $variable_id ID of variable (optional)
      * @param int $timestamp Time that this measurement occurred Uses epoch minute (epoch time divided by 60) (optional)
      * @param int $earliest_measurement_time Earliest measurement time (optional)
@@ -1453,82 +1560,86 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationVariableUserSourcesGetWithHttpInfo($access_token = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationVariableUserSourcesGetWithHttpInfo($access_token = null, $user_id = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/variableUserSources";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($variable_id !== null) {
             $queryParams['variable_id'] = $this->apiClient->getSerializer()->toQueryValue($variable_id);
-        }// query params
+        }
+        // query params
         if ($timestamp !== null) {
             $queryParams['timestamp'] = $this->apiClient->getSerializer()->toQueryValue($timestamp);
-        }// query params
+        }
+        // query params
         if ($earliest_measurement_time !== null) {
             $queryParams['earliest_measurement_time'] = $this->apiClient->getSerializer()->toQueryValue($earliest_measurement_time);
-        }// query params
+        }
+        // query params
         if ($latest_measurement_time !== null) {
             $queryParams['latest_measurement_time'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -1537,10 +1648,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2009'
+                '\QuantiModo\Client\Model\InlineResponse2009',
+                '/v2/application/variableUserSources'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2009', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2009', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1552,12 +1664,14 @@ class ApplicationEndpointsApi
             throw $e;
         }
     }
+
     /**
      * Operation v2ApplicationVotesGet
      *
-     * Get all Votes.
+     * Get all Votes
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this vote (optional)
      * @param int $cause_id ID of predictor variable (optional)
      * @param int $effect_id ID of outcome variable (optional)
@@ -1567,23 +1681,22 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\InlineResponse20010
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\InlineResponse20010
      */
-    public function v2ApplicationVotesGet($access_token = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationVotesGet($access_token = null, $user_id = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationVotesGetWithHttpInfo($access_token, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationVotesGetWithHttpInfo($access_token, $user_id, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v2ApplicationVotesGetWithHttpInfo
      *
-     * Get all Votes.
+     * Get all Votes
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this vote (optional)
      * @param int $cause_id ID of predictor variable (optional)
      * @param int $effect_id ID of outcome variable (optional)
@@ -1593,82 +1706,86 @@ class ApplicationEndpointsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationVotesGetWithHttpInfo($access_token = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationVotesGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v2/application/votes";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($client_id !== null) {
             $queryParams['client_id'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }// query params
+        }
+        // query params
         if ($cause_id !== null) {
             $queryParams['cause_id'] = $this->apiClient->getSerializer()->toQueryValue($cause_id);
-        }// query params
+        }
+        // query params
         if ($effect_id !== null) {
             $queryParams['effect_id'] = $this->apiClient->getSerializer()->toQueryValue($effect_id);
-        }// query params
+        }
+        // query params
         if ($value !== null) {
             $queryParams['value'] = $this->apiClient->getSerializer()->toQueryValue($value);
-        }// query params
+        }
+        // query params
         if ($created_at !== null) {
             $queryParams['created_at'] = $this->apiClient->getSerializer()->toQueryValue($created_at);
-        }// query params
+        }
+        // query params
         if ($updated_at !== null) {
             $queryParams['updated_at'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -1677,10 +1794,11 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse20010'
+                '\QuantiModo\Client\Model\InlineResponse20010',
+                '/v2/application/votes'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse20010', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse20010', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:

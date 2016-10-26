@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * TrackingReminder Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class TrackingReminder implements ArrayAccess
@@ -64,7 +65,7 @@ class TrackingReminder implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'id' => 'int',
         'client_id' => 'string',
         'user_id' => 'int',
@@ -80,9 +81,6 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'bool',
         'last_reminded' => '\DateTime',
         'last_tracked' => '\DateTime',
-        'first_daily_reminder_time' => 'string',
-        'second_daily_reminder_time' => 'string',
-        'third_daily_reminder_time' => 'string',
         'start_tracking_date' => 'string',
         'stop_tracking_date' => 'string',
         'updated_at' => '\DateTime',
@@ -90,7 +88,7 @@ class TrackingReminder implements ArrayAccess
         'variable_category_name' => 'string',
         'abbreviated_unit_name' => 'string',
         'combination_operation' => 'string'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -101,7 +99,7 @@ class TrackingReminder implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'id' => 'id',
         'client_id' => 'clientId',
         'user_id' => 'userId',
@@ -117,9 +115,6 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'notificationBar',
         'last_reminded' => 'lastReminded',
         'last_tracked' => 'lastTracked',
-        'first_daily_reminder_time' => 'firstDailyReminderTime',
-        'second_daily_reminder_time' => 'secondDailyReminderTime',
-        'third_daily_reminder_time' => 'thirdDailyReminderTime',
         'start_tracking_date' => 'startTrackingDate',
         'stop_tracking_date' => 'stopTrackingDate',
         'updated_at' => 'updatedAt',
@@ -127,18 +122,14 @@ class TrackingReminder implements ArrayAccess
         'variable_category_name' => 'variableCategoryName',
         'abbreviated_unit_name' => 'abbreviatedUnitName',
         'combination_operation' => 'combinationOperation'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'id' => 'setId',
         'client_id' => 'setClientId',
         'user_id' => 'setUserId',
@@ -154,9 +145,6 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'setNotificationBar',
         'last_reminded' => 'setLastReminded',
         'last_tracked' => 'setLastTracked',
-        'first_daily_reminder_time' => 'setFirstDailyReminderTime',
-        'second_daily_reminder_time' => 'setSecondDailyReminderTime',
-        'third_daily_reminder_time' => 'setThirdDailyReminderTime',
         'start_tracking_date' => 'setStartTrackingDate',
         'stop_tracking_date' => 'setStopTrackingDate',
         'updated_at' => 'setUpdatedAt',
@@ -164,18 +152,14 @@ class TrackingReminder implements ArrayAccess
         'variable_category_name' => 'setVariableCategoryName',
         'abbreviated_unit_name' => 'setAbbreviatedUnitName',
         'combination_operation' => 'setCombinationOperation'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'id' => 'getId',
         'client_id' => 'getClientId',
         'user_id' => 'getUserId',
@@ -191,9 +175,6 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'getNotificationBar',
         'last_reminded' => 'getLastReminded',
         'last_tracked' => 'getLastTracked',
-        'first_daily_reminder_time' => 'getFirstDailyReminderTime',
-        'second_daily_reminder_time' => 'getSecondDailyReminderTime',
-        'third_daily_reminder_time' => 'getThirdDailyReminderTime',
         'start_tracking_date' => 'getStartTrackingDate',
         'stop_tracking_date' => 'getStopTrackingDate',
         'updated_at' => 'getUpdatedAt',
@@ -201,7 +182,17 @@ class TrackingReminder implements ArrayAccess
         'variable_category_name' => 'getVariableCategoryName',
         'abbreviated_unit_name' => 'getAbbreviatedUnitName',
         'combination_operation' => 'getCombinationOperation'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -230,11 +221,11 @@ class TrackingReminder implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -253,9 +244,6 @@ class TrackingReminder implements ArrayAccess
         $this->container['notification_bar'] = isset($data['notification_bar']) ? $data['notification_bar'] : null;
         $this->container['last_reminded'] = isset($data['last_reminded']) ? $data['last_reminded'] : null;
         $this->container['last_tracked'] = isset($data['last_tracked']) ? $data['last_tracked'] : null;
-        $this->container['first_daily_reminder_time'] = isset($data['first_daily_reminder_time']) ? $data['first_daily_reminder_time'] : null;
-        $this->container['second_daily_reminder_time'] = isset($data['second_daily_reminder_time']) ? $data['second_daily_reminder_time'] : null;
-        $this->container['third_daily_reminder_time'] = isset($data['third_daily_reminder_time']) ? $data['third_daily_reminder_time'] : null;
         $this->container['start_tracking_date'] = isset($data['start_tracking_date']) ? $data['start_tracking_date'] : null;
         $this->container['stop_tracking_date'] = isset($data['stop_tracking_date']) ? $data['stop_tracking_date'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
@@ -272,14 +260,21 @@ class TrackingReminder implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['variable_id'] === null) {
             $invalid_properties[] = "'variable_id' can't be null";
         }
-        $allowed_values = array("MEAN", "SUM");
+        if ($this->container['default_value'] === null) {
+            $invalid_properties[] = "'default_value' can't be null";
+        }
+        if ($this->container['reminder_frequency'] === null) {
+            $invalid_properties[] = "'reminder_frequency' can't be null";
+        }
+        $allowed_values = ["MEAN", "SUM"];
         if (!in_array($this->container['combination_operation'], $allowed_values)) {
             $invalid_properties[] = "invalid value for 'combination_operation', must be one of #{allowed_values}.";
         }
+
         return $invalid_properties;
     }
 
@@ -294,7 +289,13 @@ class TrackingReminder implements ArrayAccess
         if ($this->container['variable_id'] === null) {
             return false;
         }
-        $allowed_values = array("MEAN", "SUM");
+        if ($this->container['default_value'] === null) {
+            return false;
+        }
+        if ($this->container['reminder_frequency'] === null) {
+            return false;
+        }
+        $allowed_values = ["MEAN", "SUM"];
         if (!in_array($this->container['combination_operation'], $allowed_values)) {
             return false;
         }
@@ -618,69 +619,6 @@ class TrackingReminder implements ArrayAccess
     }
 
     /**
-     * Gets first_daily_reminder_time
-     * @return string
-     */
-    public function getFirstDailyReminderTime()
-    {
-        return $this->container['first_daily_reminder_time'];
-    }
-
-    /**
-     * Sets first_daily_reminder_time
-     * @param string $first_daily_reminder_time Specific first time of day that the user should be reminded to track in UTC HH:MM:SS format
-     * @return $this
-     */
-    public function setFirstDailyReminderTime($first_daily_reminder_time)
-    {
-        $this->container['first_daily_reminder_time'] = $first_daily_reminder_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets second_daily_reminder_time
-     * @return string
-     */
-    public function getSecondDailyReminderTime()
-    {
-        return $this->container['second_daily_reminder_time'];
-    }
-
-    /**
-     * Sets second_daily_reminder_time
-     * @param string $second_daily_reminder_time Specific second time of day that the user should be reminded to track in UTC HH:MM:SS format
-     * @return $this
-     */
-    public function setSecondDailyReminderTime($second_daily_reminder_time)
-    {
-        $this->container['second_daily_reminder_time'] = $second_daily_reminder_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets third_daily_reminder_time
-     * @return string
-     */
-    public function getThirdDailyReminderTime()
-    {
-        return $this->container['third_daily_reminder_time'];
-    }
-
-    /**
-     * Sets third_daily_reminder_time
-     * @param string $third_daily_reminder_time Specific third time of day that the user should be reminded to track in UTC HH:MM:SS format
-     * @return $this
-     */
-    public function setThirdDailyReminderTime($third_daily_reminder_time)
-    {
-        $this->container['third_daily_reminder_time'] = $third_daily_reminder_time;
-
-        return $this;
-    }
-
-    /**
      * Gets start_tracking_date
      * @return string
      */
@@ -823,7 +761,7 @@ class TrackingReminder implements ArrayAccess
     public function setCombinationOperation($combination_operation)
     {
         $allowed_values = array('MEAN', 'SUM');
-        if (!in_array($combination_operation, $allowed_values)) {
+        if (!is_null($combination_operation) && (!in_array($combination_operation, $allowed_values))) {
             throw new \InvalidArgumentException("Invalid value for 'combination_operation', must be one of 'MEAN', 'SUM'");
         }
         $this->container['combination_operation'] = $combination_operation;

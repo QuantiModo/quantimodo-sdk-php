@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * UserVariables Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserVariables implements ArrayAccess
@@ -64,7 +65,7 @@ class UserVariables implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'user' => 'int',
         'variable_id' => 'int',
         'duration_of_action' => 'int',
@@ -74,8 +75,9 @@ class UserVariables implements ArrayAccess
         'minimum_allowed_value' => 'float',
         'onset_delay' => 'int',
         'experiment_start_time' => 'string',
-        'experiment_end_time' => 'string'
-    );
+        'experiment_end_time' => 'string',
+        'alias' => 'string'
+    ];
 
     public static function swaggerTypes()
     {
@@ -86,7 +88,7 @@ class UserVariables implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'user' => 'user',
         'variable_id' => 'variableId',
         'duration_of_action' => 'durationOfAction',
@@ -96,19 +98,16 @@ class UserVariables implements ArrayAccess
         'minimum_allowed_value' => 'minimumAllowedValue',
         'onset_delay' => 'onsetDelay',
         'experiment_start_time' => 'experimentStartTime',
-        'experiment_end_time' => 'experimentEndTime'
-    );
+        'experiment_end_time' => 'experimentEndTime',
+        'alias' => 'alias'
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'user' => 'setUser',
         'variable_id' => 'setVariableId',
         'duration_of_action' => 'setDurationOfAction',
@@ -118,19 +117,16 @@ class UserVariables implements ArrayAccess
         'minimum_allowed_value' => 'setMinimumAllowedValue',
         'onset_delay' => 'setOnsetDelay',
         'experiment_start_time' => 'setExperimentStartTime',
-        'experiment_end_time' => 'setExperimentEndTime'
-    );
+        'experiment_end_time' => 'setExperimentEndTime',
+        'alias' => 'setAlias'
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'user' => 'getUser',
         'variable_id' => 'getVariableId',
         'duration_of_action' => 'getDurationOfAction',
@@ -140,8 +136,19 @@ class UserVariables implements ArrayAccess
         'minimum_allowed_value' => 'getMinimumAllowedValue',
         'onset_delay' => 'getOnsetDelay',
         'experiment_start_time' => 'getExperimentStartTime',
-        'experiment_end_time' => 'getExperimentEndTime'
-    );
+        'experiment_end_time' => 'getExperimentEndTime',
+        'alias' => 'getAlias'
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -156,11 +163,11 @@ class UserVariables implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -174,6 +181,7 @@ class UserVariables implements ArrayAccess
         $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
         $this->container['experiment_start_time'] = isset($data['experiment_start_time']) ? $data['experiment_start_time'] : null;
         $this->container['experiment_end_time'] = isset($data['experiment_end_time']) ? $data['experiment_end_time'] : null;
+        $this->container['alias'] = isset($data['alias']) ? $data['alias'] : null;
     }
 
     /**
@@ -183,7 +191,7 @@ class UserVariables implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['user'] === null) {
             $invalid_properties[] = "'user' can't be null";
         }
@@ -264,7 +272,7 @@ class UserVariables implements ArrayAccess
 
     /**
      * Sets duration_of_action
-     * @param int $duration_of_action Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
      * @return $this
      */
     public function setDurationOfAction($duration_of_action)
@@ -285,7 +293,7 @@ class UserVariables implements ArrayAccess
 
     /**
      * Sets filling_value
-     * @param int $filling_value fillingValue
+     * @param int $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
      * @return $this
      */
     public function setFillingValue($filling_value)
@@ -327,7 +335,7 @@ class UserVariables implements ArrayAccess
 
     /**
      * Sets maximum_allowed_value
-     * @param float $maximum_allowed_value maximumAllowedValue
+     * @param float $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
      * @return $this
      */
     public function setMaximumAllowedValue($maximum_allowed_value)
@@ -348,7 +356,7 @@ class UserVariables implements ArrayAccess
 
     /**
      * Sets minimum_allowed_value
-     * @param float $minimum_allowed_value minimumAllowedValue
+     * @param float $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
      * @return $this
      */
     public function setMinimumAllowedValue($minimum_allowed_value)
@@ -390,7 +398,7 @@ class UserVariables implements ArrayAccess
 
     /**
      * Sets experiment_start_time
-     * @param string $experiment_start_time Earliest measurement startTime that should be used in analysis in ISO format
+     * @param string $experiment_start_time Earliest measurement startTime that should be used in analysis. For instance, the date when you started tracking something.  Helpful in determining when to start 0 filling since we can assume the absence of a treatment measurement, for instance, indicates that the treatment was not applied rathter than simply not recorded.  Uses ISO string format
      * @return $this
      */
     public function setExperimentStartTime($experiment_start_time)
@@ -411,12 +419,33 @@ class UserVariables implements ArrayAccess
 
     /**
      * Sets experiment_end_time
-     * @param string $experiment_end_time Latest measurement startTime that should be used in analysis in ISO format
+     * @param string $experiment_end_time Latest measurement startTime that should be used in analysis. For instance, the date when you stopped tracking something.  Helpful in determining when to stop 0 filling since we can assume the absence of a treatment measurement, for instance, indicates that the treatment was not applied rathter than simply not recorded.   Uses ISO string format
      * @return $this
      */
     public function setExperimentEndTime($experiment_end_time)
     {
         $this->container['experiment_end_time'] = $experiment_end_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets alias
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->container['alias'];
+    }
+
+    /**
+     * Sets alias
+     * @param string $alias User-defined display alias for variable name
+     * @return $this
+     */
+    public function setAlias($alias)
+    {
+        $this->container['alias'] = $alias;
 
         return $this;
     }

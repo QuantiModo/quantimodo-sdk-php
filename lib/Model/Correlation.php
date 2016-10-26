@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * Correlation Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class Correlation implements ArrayAccess
@@ -64,7 +65,7 @@ class Correlation implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'correlation_coefficient' => 'float',
         'cause' => 'string',
         'original_cause' => 'string',
@@ -87,7 +88,7 @@ class Correlation implements ArrayAccess
         'user_vote' => 'float',
         'cause_unit' => 'string',
         'cause_unit_id' => 'int'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -98,7 +99,7 @@ class Correlation implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'correlation_coefficient' => 'correlationCoefficient',
         'cause' => 'cause',
         'original_cause' => 'originalCause',
@@ -121,18 +122,14 @@ class Correlation implements ArrayAccess
         'user_vote' => 'userVote',
         'cause_unit' => 'causeUnit',
         'cause_unit_id' => 'causeUnitId'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'correlation_coefficient' => 'setCorrelationCoefficient',
         'cause' => 'setCause',
         'original_cause' => 'setOriginalCause',
@@ -155,18 +152,14 @@ class Correlation implements ArrayAccess
         'user_vote' => 'setUserVote',
         'cause_unit' => 'setCauseUnit',
         'cause_unit_id' => 'setCauseUnitId'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'correlation_coefficient' => 'getCorrelationCoefficient',
         'cause' => 'getCause',
         'original_cause' => 'getOriginalCause',
@@ -189,7 +182,17 @@ class Correlation implements ArrayAccess
         'user_vote' => 'getUserVote',
         'cause_unit' => 'getCauseUnit',
         'cause_unit_id' => 'getCauseUnitId'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -204,11 +207,11 @@ class Correlation implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -243,7 +246,7 @@ class Correlation implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['correlation_coefficient'] === null) {
             $invalid_properties[] = "'correlation_coefficient' can't be null";
         }
@@ -417,7 +420,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets onset_delay
-     * @param double $onset_delay User estimated or default time after cause measurement before a perceivable effect is observed
+     * @param double $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
      * @return $this
      */
     public function setOnsetDelay($onset_delay)
@@ -438,7 +441,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets duration_of_action
-     * @param float $duration_of_action Time over which the cause is expected to produce a perceivable effect following the onset delay
+     * @param float $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
      * @return $this
      */
     public function setDurationOfAction($duration_of_action)

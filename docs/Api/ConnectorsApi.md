@@ -67,7 +67,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectMobileGet**
-> v1ConnectMobileGet($access_token)
+> v1ConnectMobileGet($access_token, $user_id)
 
 Mobile connect page
 
@@ -87,9 +87,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $access_token = "access_token_example"; // string | User OAuth access token
+$user_id = 56; // int | User's id
 
 try {
-    $api_instance->v1ConnectMobileGet($access_token);
+    $api_instance->v1ConnectMobileGet($access_token, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->v1ConnectMobileGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -101,6 +102,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User OAuth access token |
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -118,7 +120,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorConnectGet**
-> v1ConnectorsConnectorConnectGet($connector, $access_token)
+> v1ConnectorsConnectorConnectGet($connector, $access_token, $user_id)
 
 Obtain a token from 3rd party data source
 
@@ -135,9 +137,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $api_instance->v1ConnectorsConnectorConnectGet($connector, $access_token);
+    $api_instance->v1ConnectorsConnectorConnectGet($connector, $access_token, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->v1ConnectorsConnectorConnectGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -150,6 +153,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -167,7 +171,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorConnectInstructionsGet**
-> v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup, $access_token)
+> v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup, $access_token, $user_id)
 
 Connection Instructions
 
@@ -187,9 +191,10 @@ $parameters = "parameters_example"; // string | JSON Array of Parameters for the
 $url = "url_example"; // string | URL which should be used to enable the connector.
 $use_popup = true; // bool | Should use popup when enabling connector
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $api_instance->v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup, $access_token);
+    $api_instance->v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup, $access_token, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->v1ConnectorsConnectorConnectInstructionsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -205,6 +210,7 @@ Name | Type | Description  | Notes
  **url** | **string**| URL which should be used to enable the connector. |
  **use_popup** | **bool**| Should use popup when enabling connector |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -222,7 +228,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorConnectParameterGet**
-> \QuantiModo\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $default_value)
+> \QuantiModo\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $user_id, $default_value)
 
 Connect Parameter
 
@@ -244,10 +250,11 @@ $placeholder = "placeholder_example"; // string | Placeholder hint value for the
 $type = "type_example"; // string | Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp
 $use_popup = true; // bool | Should use popup when enabling connector
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $default_value = "default_value_example"; // string | Default parameter value
 
 try {
-    $result = $api_instance->v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $default_value);
+    $result = $api_instance->v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $user_id, $default_value);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->v1ConnectorsConnectorConnectParameterGet: ', $e->getMessage(), PHP_EOL;
@@ -266,6 +273,7 @@ Name | Type | Description  | Notes
  **type** | **string**| Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp |
  **use_popup** | **bool**| Should use popup when enabling connector |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **default_value** | **string**| Default parameter value | [optional]
 
 ### Return type
@@ -331,7 +339,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorInfoGet**
-> \QuantiModo\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token)
+> \QuantiModo\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token, $user_id)
 
 Get connector info for user
 
@@ -348,9 +356,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1ConnectorsConnectorInfoGet($connector, $access_token);
+    $result = $api_instance->v1ConnectorsConnectorInfoGet($connector, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->v1ConnectorsConnectorInfoGet: ', $e->getMessage(), PHP_EOL;
@@ -364,6 +373,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -381,7 +391,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorUpdateGet**
-> v1ConnectorsConnectorUpdateGet($connector, $access_token)
+> v1ConnectorsConnectorUpdateGet($connector, $access_token, $user_id)
 
 Sync with data source
 
@@ -398,9 +408,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
 $connector = "connector_example"; // string | Lowercase system name of the source application or device
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $api_instance->v1ConnectorsConnectorUpdateGet($connector, $access_token);
+    $api_instance->v1ConnectorsConnectorUpdateGet($connector, $access_token, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->v1ConnectorsConnectorUpdateGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -413,6 +424,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **connector** | **string**| Lowercase system name of the source application or device |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 

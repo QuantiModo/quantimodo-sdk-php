@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -40,9 +40,9 @@
 
 namespace QuantiModo\Client\Api;
 
-use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ObjectSerializer;
 
 /**
@@ -51,12 +51,11 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class AuthenticationApi
 {
-
     /**
      * API Client
      *
@@ -71,7 +70,7 @@ class AuthenticationApi
      */
     public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
-        if ($apiClient == null) {
+        if ($apiClient === null) {
             $apiClient = new ApiClient();
             $apiClient->getConfig()->setHost('https://app.quantimo.do/api');
         }
@@ -105,13 +104,12 @@ class AuthenticationApi
     /**
      * Operation v2AuthSocialAuthorizeCodeGet
      *
-     * Second Step in Social Authentication flow with JWT Token.
+     * Second Step in Social Authentication flow with JWT Token
      *
      * @param string $code Authorization code obtained from the provider. (required)
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v2AuthSocialAuthorizeCodeGet($code, $provider)
     {
@@ -119,65 +117,56 @@ class AuthenticationApi
         return $response;
     }
 
-
     /**
      * Operation v2AuthSocialAuthorizeCodeGetWithHttpInfo
      *
-     * Second Step in Social Authentication flow with JWT Token.
+     * Second Step in Social Authentication flow with JWT Token
      *
      * @param string $code Authorization code obtained from the provider. (required)
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2AuthSocialAuthorizeCodeGetWithHttpInfo($code, $provider)
     {
-        
         // verify the required parameter 'code' is set
         if ($code === null) {
             throw new \InvalidArgumentException('Missing the required parameter $code when calling v2AuthSocialAuthorizeCodeGet');
         }
-
         // verify the required parameter 'provider' is set
         if ($provider === null) {
             throw new \InvalidArgumentException('Missing the required parameter $provider when calling v2AuthSocialAuthorizeCodeGet');
         }
-
         // parse inputs
         $resourcePath = "/v2/auth/social/authorizeCode";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($code !== null) {
             $queryParams['code'] = $this->apiClient->getSerializer()->toQueryValue($code);
-        }// query params
+        }
+        // query params
         if ($provider !== null) {
             $queryParams['provider'] = $this->apiClient->getSerializer()->toQueryValue($provider);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -189,10 +178,12 @@ class AuthenticationApi
                 'GET',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v2/auth/social/authorizeCode'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -200,17 +191,17 @@ class AuthenticationApi
             throw $e;
         }
     }
+
     /**
      * Operation v2AuthSocialAuthorizeTokenGet
      *
-     * Native Social Authentication.
+     * Native Social Authentication
      *
      * @param string $access_token User&#39;s OAuth2 access token obtained from Google or FB native SDK (required)
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
      * @param string $refresh_token Optional refresh token obtained from Google or FB native SDK (optional)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v2AuthSocialAuthorizeTokenGet($access_token, $provider, $refresh_token = null)
     {
@@ -218,69 +209,61 @@ class AuthenticationApi
         return $response;
     }
 
-
     /**
      * Operation v2AuthSocialAuthorizeTokenGetWithHttpInfo
      *
-     * Native Social Authentication.
+     * Native Social Authentication
      *
      * @param string $access_token User&#39;s OAuth2 access token obtained from Google or FB native SDK (required)
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
      * @param string $refresh_token Optional refresh token obtained from Google or FB native SDK (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2AuthSocialAuthorizeTokenGetWithHttpInfo($access_token, $provider, $refresh_token = null)
     {
-        
         // verify the required parameter 'access_token' is set
         if ($access_token === null) {
             throw new \InvalidArgumentException('Missing the required parameter $access_token when calling v2AuthSocialAuthorizeTokenGet');
         }
-
         // verify the required parameter 'provider' is set
         if ($provider === null) {
             throw new \InvalidArgumentException('Missing the required parameter $provider when calling v2AuthSocialAuthorizeTokenGet');
         }
-
         // parse inputs
         $resourcePath = "/v2/auth/social/authorizeToken";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($refresh_token !== null) {
             $queryParams['refreshToken'] = $this->apiClient->getSerializer()->toQueryValue($refresh_token);
-        }// query params
+        }
+        // query params
         if ($access_token !== null) {
             $queryParams['accessToken'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
         if ($provider !== null) {
             $queryParams['provider'] = $this->apiClient->getSerializer()->toQueryValue($provider);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -292,10 +275,12 @@ class AuthenticationApi
                 'GET',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v2/auth/social/authorizeToken'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -303,16 +288,16 @@ class AuthenticationApi
             throw $e;
         }
     }
+
     /**
      * Operation v2AuthSocialLoginGet
      *
-     * First Setp in Social Authentication flow with JWT Token.
+     * First Setp in Social Authentication flow with JWT Token
      *
      * @param string $redirect_url The redirect URI is the URL within your client application that will receive the OAuth2 credentials. Url should be registered with our social apps. Facebook and Twitter are fine with any redirect url with the same domain base url but Google needs exact redirect url. (required)
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v2AuthSocialLoginGet($redirect_url, $provider)
     {
@@ -320,65 +305,56 @@ class AuthenticationApi
         return $response;
     }
 
-
     /**
      * Operation v2AuthSocialLoginGetWithHttpInfo
      *
-     * First Setp in Social Authentication flow with JWT Token.
+     * First Setp in Social Authentication flow with JWT Token
      *
      * @param string $redirect_url The redirect URI is the URL within your client application that will receive the OAuth2 credentials. Url should be registered with our social apps. Facebook and Twitter are fine with any redirect url with the same domain base url but Google needs exact redirect url. (required)
      * @param string $provider The current options are &#x60;google&#x60; and &#x60;facebook&#x60;. (required)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2AuthSocialLoginGetWithHttpInfo($redirect_url, $provider)
     {
-        
         // verify the required parameter 'redirect_url' is set
         if ($redirect_url === null) {
             throw new \InvalidArgumentException('Missing the required parameter $redirect_url when calling v2AuthSocialLoginGet');
         }
-
         // verify the required parameter 'provider' is set
         if ($provider === null) {
             throw new \InvalidArgumentException('Missing the required parameter $provider when calling v2AuthSocialLoginGet');
         }
-
         // parse inputs
         $resourcePath = "/v2/auth/social/login";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($redirect_url !== null) {
             $queryParams['redirectUrl'] = $this->apiClient->getSerializer()->toQueryValue($redirect_url);
-        }// query params
+        }
+        // query params
         if ($provider !== null) {
             $queryParams['provider'] = $this->apiClient->getSerializer()->toQueryValue($provider);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -390,10 +366,12 @@ class AuthenticationApi
                 'GET',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v2/auth/social/login'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -401,10 +379,11 @@ class AuthenticationApi
             throw $e;
         }
     }
+
     /**
      * Operation v2Oauth2AccessTokenGet
      *
-     * Get a user access token.
+     * Get a user access token
      *
      * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do. (required)
      * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId. (required)
@@ -414,9 +393,8 @@ class AuthenticationApi
      * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (optional)
      * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (optional)
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v2Oauth2AccessTokenGet($client_id, $client_secret, $grant_type, $code, $response_type = null, $scope = null, $redirect_uri = null, $state = null)
     {
@@ -424,11 +402,10 @@ class AuthenticationApi
         return $response;
     }
 
-
     /**
      * Operation v2Oauth2AccessTokenGetWithHttpInfo
      *
-     * Get a user access token.
+     * Get a user access token
      *
      * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by emailing info@quantimo.do. (required)
      * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId. (required)
@@ -438,85 +415,81 @@ class AuthenticationApi
      * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (optional)
      * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (optional)
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2Oauth2AccessTokenGetWithHttpInfo($client_id, $client_secret, $grant_type, $code, $response_type = null, $scope = null, $redirect_uri = null, $state = null)
     {
-        
         // verify the required parameter 'client_id' is set
         if ($client_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $client_id when calling v2Oauth2AccessTokenGet');
         }
-
         // verify the required parameter 'client_secret' is set
         if ($client_secret === null) {
             throw new \InvalidArgumentException('Missing the required parameter $client_secret when calling v2Oauth2AccessTokenGet');
         }
-
         // verify the required parameter 'grant_type' is set
         if ($grant_type === null) {
             throw new \InvalidArgumentException('Missing the required parameter $grant_type when calling v2Oauth2AccessTokenGet');
         }
-
         // verify the required parameter 'code' is set
         if ($code === null) {
             throw new \InvalidArgumentException('Missing the required parameter $code when calling v2Oauth2AccessTokenGet');
         }
-
         // parse inputs
         $resourcePath = "/v2/oauth2/access_token";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($client_id !== null) {
             $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }// query params
+        }
+        // query params
         if ($client_secret !== null) {
             $queryParams['client_secret'] = $this->apiClient->getSerializer()->toQueryValue($client_secret);
-        }// query params
+        }
+        // query params
         if ($grant_type !== null) {
             $queryParams['grant_type'] = $this->apiClient->getSerializer()->toQueryValue($grant_type);
-        }// query params
+        }
+        // query params
         if ($code !== null) {
             $queryParams['code'] = $this->apiClient->getSerializer()->toQueryValue($code);
-        }// query params
+        }
+        // query params
         if ($response_type !== null) {
             $queryParams['response_type'] = $this->apiClient->getSerializer()->toQueryValue($response_type);
-        }// query params
+        }
+        // query params
         if ($scope !== null) {
             $queryParams['scope'] = $this->apiClient->getSerializer()->toQueryValue($scope);
-        }// query params
+        }
+        // query params
         if ($redirect_uri !== null) {
             $queryParams['redirect_uri'] = $this->apiClient->getSerializer()->toQueryValue($redirect_uri);
-        }// query params
+        }
+        // query params
         if ($state !== null) {
             $queryParams['state'] = $this->apiClient->getSerializer()->toQueryValue($state);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -528,10 +501,12 @@ class AuthenticationApi
                 'GET',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v2/oauth2/access_token'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -539,10 +514,11 @@ class AuthenticationApi
             throw $e;
         }
     }
+
     /**
      * Operation v2OauthAuthorizeGet
      *
-     * Request Authorization Code.
+     * Request Authorization Code
      *
      * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by creating a free application at [https://admin.quantimo.do](https://admin.quantimo.do). (required)
      * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId.  Obtain this by creating a free application at [https://admin.quantimo.do](https://admin.quantimo.do). (required)
@@ -550,9 +526,8 @@ class AuthenticationApi
      * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (required)
      * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (optional)
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v2OauthAuthorizeGet($client_id, $client_secret, $response_type, $scope, $redirect_uri = null, $state = null)
     {
@@ -560,11 +535,10 @@ class AuthenticationApi
         return $response;
     }
 
-
     /**
      * Operation v2OauthAuthorizeGetWithHttpInfo
      *
-     * Request Authorization Code.
+     * Request Authorization Code
      *
      * @param string $client_id This is the unique ID that QuantiModo uses to identify your application. Obtain a client id by creating a free application at [https://admin.quantimo.do](https://admin.quantimo.do). (required)
      * @param string $client_secret This is the secret for your obtained clientId. QuantiModo uses this to validate that only your application uses the clientId.  Obtain this by creating a free application at [https://admin.quantimo.do](https://admin.quantimo.do). (required)
@@ -572,79 +546,73 @@ class AuthenticationApi
      * @param string $scope Scopes include basic, readmeasurements, and writemeasurements. The \&quot;basic\&quot; scope allows you to read user info (displayname, email, etc). The \&quot;readmeasurements\&quot; scope allows one to read a user&#39;s data. The \&quot;writemeasurements\&quot; scope allows you to write user data. Separate multiple scopes by a space. (required)
      * @param string $redirect_uri The redirect URI is the URL within your client application that will receive the OAuth2 credentials. (optional)
      * @param string $state An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2OauthAuthorizeGetWithHttpInfo($client_id, $client_secret, $response_type, $scope, $redirect_uri = null, $state = null)
     {
-        
         // verify the required parameter 'client_id' is set
         if ($client_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $client_id when calling v2OauthAuthorizeGet');
         }
-
         // verify the required parameter 'client_secret' is set
         if ($client_secret === null) {
             throw new \InvalidArgumentException('Missing the required parameter $client_secret when calling v2OauthAuthorizeGet');
         }
-
         // verify the required parameter 'response_type' is set
         if ($response_type === null) {
             throw new \InvalidArgumentException('Missing the required parameter $response_type when calling v2OauthAuthorizeGet');
         }
-
         // verify the required parameter 'scope' is set
         if ($scope === null) {
             throw new \InvalidArgumentException('Missing the required parameter $scope when calling v2OauthAuthorizeGet');
         }
-
         // parse inputs
         $resourcePath = "/v2/oauth/authorize";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($client_id !== null) {
             $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }// query params
+        }
+        // query params
         if ($client_secret !== null) {
             $queryParams['client_secret'] = $this->apiClient->getSerializer()->toQueryValue($client_secret);
-        }// query params
+        }
+        // query params
         if ($response_type !== null) {
             $queryParams['response_type'] = $this->apiClient->getSerializer()->toQueryValue($response_type);
-        }// query params
+        }
+        // query params
         if ($scope !== null) {
             $queryParams['scope'] = $this->apiClient->getSerializer()->toQueryValue($scope);
-        }// query params
+        }
+        // query params
         if ($redirect_uri !== null) {
             $queryParams['redirect_uri'] = $this->apiClient->getSerializer()->toQueryValue($redirect_uri);
-        }// query params
+        }
+        // query params
         if ($state !== null) {
             $queryParams['state'] = $this->apiClient->getSerializer()->toQueryValue($state);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -656,10 +624,12 @@ class AuthenticationApi
                 'GET',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v2/oauth/authorize'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
