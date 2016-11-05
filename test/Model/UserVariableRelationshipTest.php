@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * UserVariableRelationshipTest Class Doc Comment
  *
- * @category    Class
- * @description UserVariableRelationship
+ * @category    Class */
+// * @description UserVariableRelationship
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserVariableRelationshipTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class UserVariableRelationshipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,141 @@ class UserVariableRelationshipTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+
+    }
+
+    /**
+     * Test attribute "confidence_level"
+     */
+    public function testPropertyConfidenceLevel()
+    {
+
+    }
+
+    /**
+     * Test attribute "confidence_score"
+     */
+    public function testPropertyConfidenceScore()
+    {
+
+    }
+
+    /**
+     * Test attribute "direction"
+     */
+    public function testPropertyDirection()
+    {
+
+    }
+
+    /**
+     * Test attribute "duration_of_action"
+     */
+    public function testPropertyDurationOfAction()
+    {
+
+    }
+
+    /**
+     * Test attribute "error_message"
+     */
+    public function testPropertyErrorMessage()
+    {
+
+    }
+
+    /**
+     * Test attribute "onset_delay"
+     */
+    public function testPropertyOnsetDelay()
+    {
+
+    }
+
+    /**
+     * Test attribute "outcome_variable_id"
+     */
+    public function testPropertyOutcomeVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "predictor_variable_id"
+     */
+    public function testPropertyPredictorVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "predictor_unit_id"
+     */
+    public function testPropertyPredictorUnitId()
+    {
+
+    }
+
+    /**
+     * Test attribute "sinn_rank"
+     */
+    public function testPropertySinnRank()
+    {
+
+    }
+
+    /**
+     * Test attribute "strength_level"
+     */
+    public function testPropertyStrengthLevel()
+    {
+
+    }
+
+    /**
+     * Test attribute "strength_score"
+     */
+    public function testPropertyStrengthScore()
+    {
+
+    }
+
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
+    {
+
+    }
+
+    /**
+     * Test attribute "vote"
+     */
+    public function testPropertyVote()
+    {
+
+    }
+
+    /**
+     * Test attribute "value_predicting_high_outcome"
+     */
+    public function testPropertyValuePredictingHighOutcome()
+    {
+
+    }
+
+    /**
+     * Test attribute "value_predicting_low_outcome"
+     */
+    public function testPropertyValuePredictingLowOutcome()
+    {
+
+    }
+
 }

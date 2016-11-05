@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * UserVariableRelationship Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserVariableRelationship implements ArrayAccess
@@ -64,7 +65,7 @@ class UserVariableRelationship implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'id' => 'int',
         'confidence_level' => 'string',
         'confidence_score' => 'float',
@@ -82,7 +83,7 @@ class UserVariableRelationship implements ArrayAccess
         'vote' => 'string',
         'value_predicting_high_outcome' => 'float',
         'value_predicting_low_outcome' => 'float'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -93,7 +94,7 @@ class UserVariableRelationship implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'id' => 'id',
         'confidence_level' => 'confidence_level',
         'confidence_score' => 'confidence_score',
@@ -111,18 +112,14 @@ class UserVariableRelationship implements ArrayAccess
         'vote' => 'vote',
         'value_predicting_high_outcome' => 'value_predicting_high_outcome',
         'value_predicting_low_outcome' => 'value_predicting_low_outcome'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'id' => 'setId',
         'confidence_level' => 'setConfidenceLevel',
         'confidence_score' => 'setConfidenceScore',
@@ -140,18 +137,14 @@ class UserVariableRelationship implements ArrayAccess
         'vote' => 'setVote',
         'value_predicting_high_outcome' => 'setValuePredictingHighOutcome',
         'value_predicting_low_outcome' => 'setValuePredictingLowOutcome'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'id' => 'getId',
         'confidence_level' => 'getConfidenceLevel',
         'confidence_score' => 'getConfidenceScore',
@@ -169,7 +162,17 @@ class UserVariableRelationship implements ArrayAccess
         'vote' => 'getVote',
         'value_predicting_high_outcome' => 'getValuePredictingHighOutcome',
         'value_predicting_low_outcome' => 'getValuePredictingLowOutcome'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -184,11 +187,11 @@ class UserVariableRelationship implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -218,7 +221,7 @@ class UserVariableRelationship implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['confidence_level'] === null) {
             $invalid_properties[] = "'confidence_level' can't be null";
         }
@@ -401,7 +404,7 @@ class UserVariableRelationship implements ArrayAccess
 
     /**
      * Sets duration_of_action
-     * @param int $duration_of_action Number of seconds over which the predictor variable event is expected to produce a perceivable effect following the onset delay
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
      * @return $this
      */
     public function setDurationOfAction($duration_of_action)
@@ -443,7 +446,7 @@ class UserVariableRelationship implements ArrayAccess
 
     /**
      * Sets onset_delay
-     * @param int $onset_delay User estimated (or default number of seconds) after cause measurement before a perceivable effect is observed
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
      * @return $this
      */
     public function setOnsetDelay($onset_delay)

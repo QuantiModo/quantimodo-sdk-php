@@ -10,16 +10,16 @@ Name | Type | Description | Notes
 **abbreviated_unit_name** | **string** | Abbreviated name of the default unit for the variable | 
 **abbreviated_unit_id** | **int** | Id of the default unit for the variable | 
 **sources** | **string** | Comma-separated list of source names to limit variables to those sources | 
-**minimum_value** | **double** | Minimum reasonable value for this variable (uses default unit) | 
-**maximum_value** | **double** | Maximum reasonable value for this variable (uses default unit) | 
+**minimum_allowed_value** | **double** | The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis. | 
+**maximum_allowed_value** | **double** | The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis. | 
 **combination_operation** | **string** | Way to aggregate measurements over time. Options are \&quot;MEAN\&quot; or \&quot;SUM\&quot;.  SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED. | 
-**filling_value** | **double** | Value for replacing null measurements | 
+**filling_value** | **double** | When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven&#39;t taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing. | 
 **join_with** | **string** | The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables. | 
-**joined_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are joined with this Variable |
+**joined_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are joined with this Variable | 
 **parent** | **int** | Id of the parent variable if this variable has any parent | 
-**sub_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are sub variables to this Variable |
-**onset_delay** | **int** | How long it takes for a measurement in this variable to take effect | 
-**duration_of_action** | **int** | How long the effect of a measurement in this variable lasts | 
+**sub_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are sub variables to this Variable | 
+**onset_delay** | **int** | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | 
+**duration_of_action** | **int** | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | 
 **earliest_measurement_time** | **int** | Earliest measurement time | 
 **latest_measurement_time** | **int** | Latest measurement time | 
 **updated** | **int** | When this variable or its settings were last updated | 

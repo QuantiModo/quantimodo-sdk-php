@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -40,9 +40,9 @@
 
 namespace QuantiModo\Client\Api;
 
-use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ObjectSerializer;
 
 /**
@@ -51,12 +51,11 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class VariablesApi
 {
-
     /**
      * API Client
      *
@@ -71,7 +70,7 @@ class VariablesApi
      */
     public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
-        if ($apiClient == null) {
+        if ($apiClient === null) {
             $apiClient = new ApiClient();
             $apiClient->getConfig()->setHost('https://app.quantimo.do/api');
         }
@@ -105,59 +104,133 @@ class VariablesApi
     /**
      * Operation v1PublicVariablesGet
      *
-     * Get public variables.
+     * Get public variables
      *
-     *
-     * @return \QuantiModo\Client\Model\Variable
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param int $id Common variable id (optional)
+     * @param int $user_id2 User id (optional)
+     * @param string $category Filter data by category (optional)
+     * @param string $name Original name of the variable (supports exact name match only) (optional)
+     * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $source The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
+     * @param string $latest_measurement_time Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $number_of_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
+     * @param string $last_source Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
      */
-    public function v1PublicVariablesGet()
+    public function v1PublicVariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1PublicVariablesGetWithHttpInfo();
+        list($response) = $this->v1PublicVariablesGetWithHttpInfo($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v1PublicVariablesGetWithHttpInfo
      *
-     * Get public variables.
+     * Get public variables
      *
-     *
-     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param int $id Common variable id (optional)
+     * @param int $user_id2 User id (optional)
+     * @param string $category Filter data by category (optional)
+     * @param string $name Original name of the variable (supports exact name match only) (optional)
+     * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $source The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
+     * @param string $latest_measurement_time Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+     * @param string $number_of_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
+     * @param string $last_source Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+     * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+     * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1PublicVariablesGetWithHttpInfo()
+    public function v1PublicVariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v1/public/variables";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        
-        
-        
+        // query params
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
+        if ($id !== null) {
+            $queryParams['id'] = $this->apiClient->getSerializer()->toQueryValue($id);
+        }
+        // query params
+        if ($user_id2 !== null) {
+            $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id2);
+        }
+        // query params
+        if ($category !== null) {
+            $queryParams['category'] = $this->apiClient->getSerializer()->toQueryValue($category);
+        }
+        // query params
+        if ($name !== null) {
+            $queryParams['name'] = $this->apiClient->getSerializer()->toQueryValue($name);
+        }
+        // query params
+        if ($last_updated !== null) {
+            $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
+        }
+        // query params
+        if ($source !== null) {
+            $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
+        }
+        // query params
+        if ($latest_measurement_time !== null) {
+            $queryParams['latestMeasurementTime'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
+        }
+        // query params
+        if ($number_of_measurements !== null) {
+            $queryParams['numberOfMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_measurements);
+        }
+        // query params
+        if ($last_source !== null) {
+            $queryParams['lastSource'] = $this->apiClient->getSerializer()->toQueryValue($last_source);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
+        }
+        // query params
+        if ($sort !== null) {
+            $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -170,10 +243,11 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable',
+                '/v1/public/variables'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -185,95 +259,103 @@ class VariablesApi
             throw $e;
         }
     }
+
     /**
      * Operation v1PublicVariablesSearchSearchGet
      *
-     * Get top 5 PUBLIC variables with the most correlations.
+     * Get top 5 PUBLIC variables with the most correlations
      *
      * @param string $search Search query can be some fraction of a variable name. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $variable_category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
      * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
      * @param string $effect_or_cause Indicate if you only want variables that have user correlations.  Possible values are effect and cause. (optional)
      * @param string $public_effect_or_cause Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause. (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\Variable
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
      */
-    public function v1PublicVariablesSearchSearchGet($search, $access_token = null, $category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
+    public function v1PublicVariablesSearchSearchGet($search, $access_token = null, $user_id = null, $variable_category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1PublicVariablesSearchSearchGetWithHttpInfo($search, $access_token, $category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort);
+        list($response) = $this->v1PublicVariablesSearchSearchGetWithHttpInfo($search, $access_token, $user_id, $variable_category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v1PublicVariablesSearchSearchGetWithHttpInfo
      *
-     * Get top 5 PUBLIC variables with the most correlations.
+     * Get top 5 PUBLIC variables with the most correlations
      *
      * @param string $search Search query can be some fraction of a variable name. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $variable_category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
      * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
      * @param string $effect_or_cause Indicate if you only want variables that have user correlations.  Possible values are effect and cause. (optional)
      * @param string $public_effect_or_cause Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause. (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1PublicVariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
+    public function v1PublicVariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $user_id = null, $variable_category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // verify the required parameter 'search' is set
         if ($search === null) {
             throw new \InvalidArgumentException('Missing the required parameter $search when calling v1PublicVariablesSearchSearchGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/public/variables/search/{search}";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
-        if ($category_name !== null) {
-            $queryParams['categoryName'] = $this->apiClient->getSerializer()->toQueryValue($category_name);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
+        if ($variable_category_name !== null) {
+            $queryParams['variableCategoryName'] = $this->apiClient->getSerializer()->toQueryValue($variable_category_name);
+        }
+        // query params
         if ($source !== null) {
             $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
-        }// query params
+        }
+        // query params
         if ($effect_or_cause !== null) {
             $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
-        }// query params
+        }
+        // query params
         if ($public_effect_or_cause !== null) {
             $queryParams['publicEffectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($public_effect_or_cause);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
         // path params
         if ($search !== null) {
             $resourcePath = str_replace(
@@ -286,15 +368,12 @@ class VariablesApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -307,10 +386,11 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable',
+                '/v1/public/variables/search/{search}'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -322,15 +402,97 @@ class VariablesApi
             throw $e;
         }
     }
+
+    /**
+     * Operation v1UserVariablesDeletePost
+     *
+     * Delete All Measurements For Variable
+     *
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable whose measurements should be deleted (required)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
+     */
+    public function v1UserVariablesDeletePost($variable_id)
+    {
+        list($response) = $this->v1UserVariablesDeletePostWithHttpInfo($variable_id);
+        return $response;
+    }
+
+    /**
+     * Operation v1UserVariablesDeletePostWithHttpInfo
+     *
+     * Delete All Measurements For Variable
+     *
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable whose measurements should be deleted (required)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v1UserVariablesDeletePostWithHttpInfo($variable_id)
+    {
+        // verify the required parameter 'variable_id' is set
+        if ($variable_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $variable_id when calling v1UserVariablesDeletePost');
+        }
+        // parse inputs
+        $resourcePath = "/v1/userVariables/delete";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        // body params
+        $_tempBody = null;
+        if (isset($variable_id)) {
+            $_tempBody = $variable_id;
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'POST',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                null,
+                '/v1/userVariables/delete'
+            );
+
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
     /**
      * Operation v1UserVariablesPost
      *
-     * Update User Settings for a Variable.
+     * Update User Settings for a Variable
      *
      * @param \QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v1UserVariablesPost($user_variables)
     {
@@ -338,44 +500,36 @@ class VariablesApi
         return $response;
     }
 
-
     /**
      * Operation v1UserVariablesPostWithHttpInfo
      *
-     * Update User Settings for a Variable.
+     * Update User Settings for a Variable
      *
      * @param \QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1UserVariablesPostWithHttpInfo($user_variables)
     {
-        
         // verify the required parameter 'user_variables' is set
         if ($user_variables === null) {
             throw new \InvalidArgumentException('Missing the required parameter $user_variables when calling v1UserVariablesPost');
         }
-
         // parse inputs
         $resourcePath = "/v1/userVariables";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // body params
         $_tempBody = null;
         if (isset($user_variables)) {
@@ -388,7 +542,6 @@ class VariablesApi
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -400,10 +553,12 @@ class VariablesApi
                 'POST',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v1/userVariables'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -411,54 +566,57 @@ class VariablesApi
             throw $e;
         }
     }
+
     /**
-     * Operation v1VariableCategoriesGet
+     * Operation v1UserVariablesResetPost
      *
-     * Variable categories.
+     * Reset user settings for a variable to defaults
      *
-     *
-     * @return \QuantiModo\Client\Model\VariableCategory[]
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable that should be reset (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
-    public function v1VariableCategoriesGet()
+    public function v1UserVariablesResetPost($variable_id)
     {
-        list($response) = $this->v1VariableCategoriesGetWithHttpInfo();
+        list($response) = $this->v1UserVariablesResetPostWithHttpInfo($variable_id);
         return $response;
     }
 
-
     /**
-     * Operation v1VariableCategoriesGetWithHttpInfo
+     * Operation v1UserVariablesResetPostWithHttpInfo
      *
-     * Variable categories.
+     * Reset user settings for a variable to defaults
      *
-     *
-     * @return Array of \QuantiModo\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable that should be reset (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariableCategoriesGetWithHttpInfo()
+    public function v1UserVariablesResetPostWithHttpInfo($variable_id)
     {
-        
+        // verify the required parameter 'variable_id' is set
+        if ($variable_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $variable_id when calling v1UserVariablesResetPost');
+        }
         // parse inputs
-        $resourcePath = "/v1/variableCategories";
+        $resourcePath = "/v1/userVariables/reset";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
-        
+        // body params
+        $_tempBody = null;
+        if (isset($variable_id)) {
+            $_tempBody = $variable_id;
+        }
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -466,7 +624,77 @@ class VariablesApi
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'POST',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                null,
+                '/v1/userVariables/reset'
+            );
+
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v1VariableCategoriesGet
+     *
+     * Variable categories
+     *
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\VariableCategory[]
+     */
+    public function v1VariableCategoriesGet()
+    {
+        list($response) = $this->v1VariableCategoriesGetWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation v1VariableCategoriesGetWithHttpInfo
+     *
+     * Variable categories
+     *
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v1VariableCategoriesGetWithHttpInfo()
+    {
+        // parse inputs
+        $resourcePath = "/v1/variableCategories";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
         
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -479,10 +707,11 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\VariableCategory[]'
+                '\QuantiModo\Client\Model\VariableCategory[]',
+                '/v1/variableCategories'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -494,14 +723,16 @@ class VariablesApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesGet
      *
-     * Get variables by the category name.
+     * Get variables with user's settings
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $id Common variable id (optional)
-     * @param int $user_id User id (optional)
+     * @param int $user_id2 User id (optional)
      * @param string $category Filter data by category (optional)
      * @param string $name Original name of the variable (supports exact name match only) (optional)
      * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
@@ -512,25 +743,24 @@ class VariablesApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\Variable
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
      */
-    public function v1VariablesGet($access_token = null, $id = null, $user_id = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
+    public function v1VariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1VariablesGetWithHttpInfo($access_token, $id, $user_id, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
+        list($response) = $this->v1VariablesGetWithHttpInfo($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v1VariablesGetWithHttpInfo
      *
-     * Get variables by the category name.
+     * Get variables with user's settings
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param int $id Common variable id (optional)
-     * @param int $user_id User id (optional)
+     * @param int $user_id2 User id (optional)
      * @param string $category Filter data by category (optional)
      * @param string $name Original name of the variable (supports exact name match only) (optional)
      * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
@@ -541,85 +771,93 @@ class VariablesApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesGetWithHttpInfo($access_token = null, $id = null, $user_id = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
+    public function v1VariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v1/variables";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($id !== null) {
             $queryParams['id'] = $this->apiClient->getSerializer()->toQueryValue($id);
-        }// query params
-        if ($user_id !== null) {
-            $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
-        }// query params
+        }
+        // query params
+        if ($user_id2 !== null) {
+            $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id2);
+        }
+        // query params
         if ($category !== null) {
             $queryParams['category'] = $this->apiClient->getSerializer()->toQueryValue($category);
-        }// query params
+        }
+        // query params
         if ($name !== null) {
             $queryParams['name'] = $this->apiClient->getSerializer()->toQueryValue($name);
-        }// query params
+        }
+        // query params
         if ($last_updated !== null) {
             $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
-        }// query params
+        }
+        // query params
         if ($source !== null) {
             $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
-        }// query params
+        }
+        // query params
         if ($latest_measurement_time !== null) {
             $queryParams['latestMeasurementTime'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
-        }// query params
+        }
+        // query params
         if ($number_of_measurements !== null) {
             $queryParams['numberOfMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_measurements);
-        }// query params
+        }
+        // query params
         if ($last_source !== null) {
             $queryParams['lastSource'] = $this->apiClient->getSerializer()->toQueryValue($last_source);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires HTTP basic authentication
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
@@ -632,10 +870,11 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable',
+                '/v1/variables'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -647,65 +886,64 @@ class VariablesApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesPost
      *
-     * Create Variables.
+     * Create Variables
      *
      * @param \QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return void
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
-    public function v1VariablesPost($body, $access_token = null)
+    public function v1VariablesPost($body, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1VariablesPostWithHttpInfo($body, $access_token);
+        list($response) = $this->v1VariablesPostWithHttpInfo($body, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1VariablesPostWithHttpInfo
      *
-     * Create Variables.
+     * Create Variables
      *
      * @param \QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesPostWithHttpInfo($body, $access_token = null)
+    public function v1VariablesPostWithHttpInfo($body, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'body' is set
         if ($body === null) {
             throw new \InvalidArgumentException('Missing the required parameter $body when calling v1VariablesPost');
         }
-
         // parse inputs
         $resourcePath = "/v1/variables";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -718,7 +956,6 @@ class VariablesApi
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -730,10 +967,12 @@ class VariablesApi
                 'POST',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v1/variables'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -741,14 +980,16 @@ class VariablesApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesSearchSearchGet
      *
-     * Get variables by search query.
+     * Get variables by search query
      *
      * @param string $search Search query which may be an entire variable name or a fragment of one. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $variable_category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
      * @param bool $include_public Set to true if you would like to include public variables when no user variables are found. (optional)
      * @param bool $manual_tracking Set to true if you would like to exlude variables like apps and website names. (optional)
      * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
@@ -756,25 +997,24 @@ class VariablesApi
      * @param string $public_effect_or_cause Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause. (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
-     *
-     * @return \QuantiModo\Client\Model\Variable[]
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable[]
      */
-    public function v1VariablesSearchSearchGet($search, $access_token = null, $category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
+    public function v1VariablesSearchSearchGet($search, $access_token = null, $user_id = null, $variable_category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
     {
-        list($response) = $this->v1VariablesSearchSearchGetWithHttpInfo($search, $access_token, $category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset);
+        list($response) = $this->v1VariablesSearchSearchGetWithHttpInfo($search, $access_token, $user_id, $variable_category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset);
         return $response;
     }
-
 
     /**
      * Operation v1VariablesSearchSearchGetWithHttpInfo
      *
-     * Get variables by search query.
+     * Get variables by search query
      *
      * @param string $search Search query which may be an entire variable name or a fragment of one. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     * @param string $category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $variable_category_name Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. (optional)
      * @param bool $include_public Set to true if you would like to include public variables when no user variables are found. (optional)
      * @param bool $manual_tracking Set to true if you would like to exlude variables like apps and website names. (optional)
      * @param string $source Specify a data source name to only return variables from a specific data source. (optional)
@@ -782,59 +1022,67 @@ class VariablesApi
      * @param string $public_effect_or_cause Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause. (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
+    public function v1VariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $user_id = null, $variable_category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
     {
-        
         // verify the required parameter 'search' is set
         if ($search === null) {
             throw new \InvalidArgumentException('Missing the required parameter $search when calling v1VariablesSearchSearchGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/variables/search/{search}";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
-        if ($category_name !== null) {
-            $queryParams['categoryName'] = $this->apiClient->getSerializer()->toQueryValue($category_name);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
+        if ($variable_category_name !== null) {
+            $queryParams['variableCategoryName'] = $this->apiClient->getSerializer()->toQueryValue($variable_category_name);
+        }
+        // query params
         if ($include_public !== null) {
             $queryParams['includePublic'] = $this->apiClient->getSerializer()->toQueryValue($include_public);
-        }// query params
+        }
+        // query params
         if ($manual_tracking !== null) {
             $queryParams['manualTracking'] = $this->apiClient->getSerializer()->toQueryValue($manual_tracking);
-        }// query params
+        }
+        // query params
         if ($source !== null) {
             $queryParams['source'] = $this->apiClient->getSerializer()->toQueryValue($source);
-        }// query params
+        }
+        // query params
         if ($effect_or_cause !== null) {
             $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
-        }// query params
+        }
+        // query params
         if ($public_effect_or_cause !== null) {
             $queryParams['publicEffectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($public_effect_or_cause);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }
-        
         // path params
         if ($search !== null) {
             $resourcePath = str_replace(
@@ -847,15 +1095,12 @@ class VariablesApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -868,10 +1113,11 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Variable[]'
+                '\QuantiModo\Client\Model\Variable[]',
+                '/v1/variables/search/{search}'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -883,60 +1129,61 @@ class VariablesApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesVariableNameGet
      *
-     * Get info about a variable.
+     * Get info about a variable
      *
      * @param string $variable_name Variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\Variable
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Variable
      */
-    public function v1VariablesVariableNameGet($variable_name, $access_token = null)
+    public function v1VariablesVariableNameGet($variable_name, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1VariablesVariableNameGetWithHttpInfo($variable_name, $access_token);
+        list($response) = $this->v1VariablesVariableNameGetWithHttpInfo($variable_name, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1VariablesVariableNameGetWithHttpInfo
      *
-     * Get info about a variable.
+     * Get info about a variable
      *
      * @param string $variable_name Variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesVariableNameGetWithHttpInfo($variable_name, $access_token = null)
+    public function v1VariablesVariableNameGetWithHttpInfo($variable_name, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1VariablesVariableNameGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // path params
         if ($variable_name !== null) {
             $resourcePath = str_replace(
@@ -949,15 +1196,12 @@ class VariablesApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -970,10 +1214,11 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Variable'
+                '\QuantiModo\Client\Model\Variable',
+                '/v1/variables/{variableName}'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:

@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * ConnectorTest Class Doc Comment
  *
- * @category    Class
- * @description Connector
+ * @category    Class */
+// * @description Connector
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class ConnectorTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,85 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+
+    }
+
+    /**
+     * Test attribute "display_name"
+     */
+    public function testPropertyDisplayName()
+    {
+
+    }
+
+    /**
+     * Test attribute "image"
+     */
+    public function testPropertyImage()
+    {
+
+    }
+
+    /**
+     * Test attribute "get_it_url"
+     */
+    public function testPropertyGetItUrl()
+    {
+
+    }
+
+    /**
+     * Test attribute "connected"
+     */
+    public function testPropertyConnected()
+    {
+
+    }
+
+    /**
+     * Test attribute "connect_instructions"
+     */
+    public function testPropertyConnectInstructions()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_update"
+     */
+    public function testPropertyLastUpdate()
+    {
+
+    }
+
+    /**
+     * Test attribute "total_measurements_in_last_update"
+     */
+    public function testPropertyTotalMeasurementsInLastUpdate()
+    {
+
+    }
+
+    /**
+     * Test attribute "no_data_yet"
+     */
+    public function testPropertyNoDataYet()
+    {
+
+    }
+
 }

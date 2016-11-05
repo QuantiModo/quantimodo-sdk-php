@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * CorrelationTest Class Doc Comment
  *
- * @category    Class
- * @description Correlation
+ * @category    Class */
+// * @description Correlation
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class CorrelationTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,181 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "correlation_coefficient"
+     */
+    public function testPropertyCorrelationCoefficient()
+    {
+
+    }
+
+    /**
+     * Test attribute "cause"
+     */
+    public function testPropertyCause()
+    {
+
+    }
+
+    /**
+     * Test attribute "original_cause"
+     */
+    public function testPropertyOriginalCause()
+    {
+
+    }
+
+    /**
+     * Test attribute "effect"
+     */
+    public function testPropertyEffect()
+    {
+
+    }
+
+    /**
+     * Test attribute "original_effect"
+     */
+    public function testPropertyOriginalEffect()
+    {
+
+    }
+
+    /**
+     * Test attribute "onset_delay"
+     */
+    public function testPropertyOnsetDelay()
+    {
+
+    }
+
+    /**
+     * Test attribute "duration_of_action"
+     */
+    public function testPropertyDurationOfAction()
+    {
+
+    }
+
+    /**
+     * Test attribute "number_of_pairs"
+     */
+    public function testPropertyNumberOfPairs()
+    {
+
+    }
+
+    /**
+     * Test attribute "effect_size"
+     */
+    public function testPropertyEffectSize()
+    {
+
+    }
+
+    /**
+     * Test attribute "statistical_significance"
+     */
+    public function testPropertyStatisticalSignificance()
+    {
+
+    }
+
+    /**
+     * Test attribute "timestamp"
+     */
+    public function testPropertyTimestamp()
+    {
+
+    }
+
+    /**
+     * Test attribute "reverse_correlation"
+     */
+    public function testPropertyReverseCorrelation()
+    {
+
+    }
+
+    /**
+     * Test attribute "causality_factor"
+     */
+    public function testPropertyCausalityFactor()
+    {
+
+    }
+
+    /**
+     * Test attribute "cause_category"
+     */
+    public function testPropertyCauseCategory()
+    {
+
+    }
+
+    /**
+     * Test attribute "effect_category"
+     */
+    public function testPropertyEffectCategory()
+    {
+
+    }
+
+    /**
+     * Test attribute "value_predicting_high_outcome"
+     */
+    public function testPropertyValuePredictingHighOutcome()
+    {
+
+    }
+
+    /**
+     * Test attribute "value_predicting_low_outcome"
+     */
+    public function testPropertyValuePredictingLowOutcome()
+    {
+
+    }
+
+    /**
+     * Test attribute "optimal_pearson_product"
+     */
+    public function testPropertyOptimalPearsonProduct()
+    {
+
+    }
+
+    /**
+     * Test attribute "average_vote"
+     */
+    public function testPropertyAverageVote()
+    {
+
+    }
+
+    /**
+     * Test attribute "user_vote"
+     */
+    public function testPropertyUserVote()
+    {
+
+    }
+
+    /**
+     * Test attribute "cause_unit"
+     */
+    public function testPropertyCauseUnit()
+    {
+
+    }
+
+    /**
+     * Test attribute "cause_unit_id"
+     */
+    public function testPropertyCauseUnitId()
+    {
+
+    }
+
 }

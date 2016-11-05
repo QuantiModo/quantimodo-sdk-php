@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -47,12 +47,11 @@ namespace QuantiModo\Client;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class Configuration
 {
-
     private static $defaultConfiguration = null;
 
     /**
@@ -60,14 +59,14 @@ class Configuration
      *
      * @var string[]
      */
-    protected $apiKeys = array();
+    protected $apiKeys = [];
 
     /**
      * Associate array to store API prefix (e.g. Bearer)
      *
      * @var string[]
      */
-    protected $apiKeyPrefixes = array();
+    protected $apiKeyPrefixes = [];
 
     /**
      * Access token for OAuth
@@ -91,11 +90,11 @@ class Configuration
     protected $password = '';
 
     /**
-     * The default instance of ApiClient
+     * The default header(s)
      *
-     * @var \QuantiModo\Client\ApiClient
+     * @var array
      */
-    protected $defaultHeaders = array();
+    protected $defaultHeaders = [];
 
     /**
      * The host
@@ -112,11 +111,11 @@ class Configuration
     protected $curlTimeout = 0;
 
     /**
-     * User agent of the HTTP request, set to "PHP-QuantiModo" by default
+     * User agent of the HTTP request, set to "PHP-Swagger" by default
      *
      * @var string
      */
-    protected $userAgent = "QuantiModo-Codegen/1.0.0/php";
+    protected $userAgent = "Swagger-Codegen/4.0.8/php";
 
     /**
      * Debug switch (default set to false)
@@ -283,7 +282,7 @@ class Configuration
      * @param string $headerName  header name (e.g. Token)
      * @param string $headerValue header value (e.g. 1z8wp3)
      *
-     * @return ApiClient
+     * @return Configuration
      */
     public function addDefaultHeader($headerName, $headerValue)
     {
@@ -345,7 +344,7 @@ class Configuration
      *
      * @param string $userAgent the user agent of the api client
      *
-     * @return ApiClient
+     * @return Configuration
      */
     public function setUserAgent($userAgent)
     {
@@ -372,7 +371,7 @@ class Configuration
      *
      * @param integer $seconds Number of seconds before timing out [set to 0 for no timeout]
      *
-     * @return ApiClient
+     * @return Configuration
      */
     public function setCurlTimeout($seconds)
     {
@@ -493,7 +492,7 @@ class Configuration
      */
     public static function getDefaultConfiguration()
     {
-        if (self::$defaultConfiguration == null) {
+        if (self::$defaultConfiguration === null) {
             self::$defaultConfiguration = new Configuration();
         }
 
@@ -523,6 +522,7 @@ class Configuration
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . phpversion() . PHP_EOL;
         $report .= '    OpenAPI Spec Version: 2.0.6' . PHP_EOL;
+        $report .= '    SDK Package Version: 4.0.8' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

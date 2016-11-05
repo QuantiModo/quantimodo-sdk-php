@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * Unit Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class Unit implements ArrayAccess
@@ -64,14 +65,14 @@ class Unit implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'name' => 'string',
         'abbreviated_name' => 'string',
         'category' => 'string',
-        'minimum_value' => 'double',
-        'maximum_value' => 'double',
+        'minimum_allowed_value' => 'double',
+        'maximum_allowed_value' => 'double',
         'conversion_steps' => '\QuantiModo\Client\Model\ConversionStep[]'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -82,50 +83,52 @@ class Unit implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'name' => 'name',
         'abbreviated_name' => 'abbreviatedName',
         'category' => 'category',
-        'minimum_value' => 'minimumValue',
-        'maximum_value' => 'maximumValue',
+        'minimum_allowed_value' => 'minimumAllowedValue',
+        'maximum_allowed_value' => 'maximumAllowedValue',
         'conversion_steps' => 'conversionSteps'
-    );
+    ];
+
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = [
+        'name' => 'setName',
+        'abbreviated_name' => 'setAbbreviatedName',
+        'category' => 'setCategory',
+        'minimum_allowed_value' => 'setMinimumAllowedValue',
+        'maximum_allowed_value' => 'setMaximumAllowedValue',
+        'conversion_steps' => 'setConversionSteps'
+    ];
+
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = [
+        'name' => 'getName',
+        'abbreviated_name' => 'getAbbreviatedName',
+        'category' => 'getCategory',
+        'minimum_allowed_value' => 'getMinimumAllowedValue',
+        'maximum_allowed_value' => 'getMaximumAllowedValue',
+        'conversion_steps' => 'getConversionSteps'
+    ];
 
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     * @var string[]
-     */
-    protected static $setters = array(
-        'name' => 'setName',
-        'abbreviated_name' => 'setAbbreviatedName',
-        'category' => 'setCategory',
-        'minimum_value' => 'setMinimumValue',
-        'maximum_value' => 'setMaximumValue',
-        'conversion_steps' => 'setConversionSteps'
-    );
-
     public static function setters()
     {
         return self::$setters;
     }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     * @var string[]
-     */
-    protected static $getters = array(
-        'name' => 'getName',
-        'abbreviated_name' => 'getAbbreviatedName',
-        'category' => 'getCategory',
-        'minimum_value' => 'getMinimumValue',
-        'maximum_value' => 'getMaximumValue',
-        'conversion_steps' => 'getConversionSteps'
-    );
 
     public static function getters()
     {
@@ -172,19 +175,19 @@ class Unit implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['abbreviated_name'] = isset($data['abbreviated_name']) ? $data['abbreviated_name'] : null;
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['minimum_value'] = isset($data['minimum_value']) ? $data['minimum_value'] : null;
-        $this->container['maximum_value'] = isset($data['maximum_value']) ? $data['maximum_value'] : null;
+        $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
+        $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
         $this->container['conversion_steps'] = isset($data['conversion_steps']) ? $data['conversion_steps'] : null;
     }
 
@@ -195,7 +198,7 @@ class Unit implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['name'] === null) {
             $invalid_properties[] = "'name' can't be null";
         }
@@ -205,10 +208,11 @@ class Unit implements ArrayAccess
         if ($this->container['category'] === null) {
             $invalid_properties[] = "'category' can't be null";
         }
-        $allowed_values = array("Distance", "Duration", "Energy", "Frequency", "Miscellany", "Pressure", "Proportion", "Rating", "Temperature", "Volume", "Weight");
+        $allowed_values = ["Distance", "Duration", "Energy", "Frequency", "Miscellany", "Pressure", "Proportion", "Rating", "Temperature", "Volume", "Weight"];
         if (!in_array($this->container['category'], $allowed_values)) {
             $invalid_properties[] = "invalid value for 'category', must be one of #{allowed_values}.";
         }
+
         if ($this->container['conversion_steps'] === null) {
             $invalid_properties[] = "'conversion_steps' can't be null";
         }
@@ -232,7 +236,7 @@ class Unit implements ArrayAccess
         if ($this->container['category'] === null) {
             return false;
         }
-        $allowed_values = array("Distance", "Duration", "Energy", "Frequency", "Miscellany", "Pressure", "Proportion", "Rating", "Temperature", "Volume", "Weight");
+        $allowed_values = ["Distance", "Duration", "Energy", "Frequency", "Miscellany", "Pressure", "Proportion", "Rating", "Temperature", "Volume", "Weight"];
         if (!in_array($this->container['category'], $allowed_values)) {
             return false;
         }
@@ -302,7 +306,7 @@ class Unit implements ArrayAccess
     public function setCategory($category)
     {
         $allowed_values = array('Distance', 'Duration', 'Energy', 'Frequency', 'Miscellany', 'Pressure', 'Proportion', 'Rating', 'Temperature', 'Volume', 'Weight');
-        if (!in_array($category, $allowed_values)) {
+        if ((!in_array($category, $allowed_values))) {
             throw new \InvalidArgumentException("Invalid value for 'category', must be one of 'Distance', 'Duration', 'Energy', 'Frequency', 'Miscellany', 'Pressure', 'Proportion', 'Rating', 'Temperature', 'Volume', 'Weight'");
         }
         $this->container['category'] = $category;
@@ -311,43 +315,43 @@ class Unit implements ArrayAccess
     }
 
     /**
-     * Gets minimum_value
+     * Gets minimum_allowed_value
      * @return double
      */
-    public function getMinimumValue()
+    public function getMinimumAllowedValue()
     {
-        return $this->container['minimum_value'];
+        return $this->container['minimum_allowed_value'];
     }
 
     /**
-     * Sets minimum_value
-     * @param double $minimum_value The smallest acceptable value for measurements using this unit
+     * Sets minimum_allowed_value
+     * @param double $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
      * @return $this
      */
-    public function setMinimumValue($minimum_value)
+    public function setMinimumAllowedValue($minimum_allowed_value)
     {
-        $this->container['minimum_value'] = $minimum_value;
+        $this->container['minimum_allowed_value'] = $minimum_allowed_value;
 
         return $this;
     }
 
     /**
-     * Gets maximum_value
+     * Gets maximum_allowed_value
      * @return double
      */
-    public function getMaximumValue()
+    public function getMaximumAllowedValue()
     {
-        return $this->container['maximum_value'];
+        return $this->container['maximum_allowed_value'];
     }
 
     /**
-     * Sets maximum_value
-     * @param double $maximum_value The largest acceptable value for measurements using this unit
+     * Sets maximum_allowed_value
+     * @param double $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
      * @return $this
      */
-    public function setMaximumValue($maximum_value)
+    public function setMaximumAllowedValue($maximum_allowed_value)
     {
-        $this->container['maximum_value'] = $maximum_value;
+        $this->container['maximum_allowed_value'] = $maximum_allowed_value;
 
         return $this;
     }

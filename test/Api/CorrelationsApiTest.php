@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -38,7 +38,7 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace QuantiModo\Client\Api;
+namespace QuantiModo\Client;
 
 use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
@@ -51,14 +51,14 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test cases
      */
     public static function setUpBeforeClass()
     {
@@ -66,7 +66,23 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -83,6 +99,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1AggregatedCorrelationsPost
      *
@@ -93,6 +110,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1CorrelationsGet
      *
@@ -103,6 +121,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet
      *
@@ -113,6 +132,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet
      *
@@ -123,6 +143,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1PublicCorrelationsSearchSearchGet
      *
@@ -133,6 +154,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VariablesVariableNameCausesGet
      *
@@ -143,6 +165,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VariablesVariableNameEffectsGet
      *
@@ -153,6 +176,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VariablesVariableNamePublicCausesGet
      *
@@ -163,6 +187,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VariablesVariableNamePublicEffectsGet
      *
@@ -173,6 +198,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VotesDeletePost
      *
@@ -183,6 +209,7 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
     /**
      * Test case for v1VotesPost
      *
@@ -193,4 +220,5 @@ class CorrelationsApiTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
 }

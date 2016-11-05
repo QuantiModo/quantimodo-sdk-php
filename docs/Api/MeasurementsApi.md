@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**v1MeasurementsGet**](MeasurementsApi.md#v1MeasurementsGet) | **GET** /v1/measurements | Get measurements for this user
 [**v1MeasurementsPost**](MeasurementsApi.md#v1MeasurementsPost) | **POST** /v1/measurements | Post a new set or update existing measurements to the database
 [**v1MeasurementsRangeGet**](MeasurementsApi.md#v1MeasurementsRangeGet) | **GET** /v1/measurementsRange | Get measurements range for this user
+[**v1MeasurementsUpdatePost**](MeasurementsApi.md#v1MeasurementsUpdatePost) | **POST** /v1/measurements/update | Update a measurement
 [**v2MeasurementsCsvGet**](MeasurementsApi.md#v2MeasurementsCsvGet) | **GET** /v2/measurements/csv | Get Measurements CSV
 [**v2MeasurementsIdDelete**](MeasurementsApi.md#v2MeasurementsIdDelete) | **DELETE** /v2/measurements/{id} | Delete Measurement
 [**v2MeasurementsIdGet**](MeasurementsApi.md#v2MeasurementsIdGet) | **GET** /v2/measurements/{id} | Get Measurement
@@ -65,7 +66,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementSourcesPost**
-> v1MeasurementSourcesPost($body, $access_token)
+> v1MeasurementSourcesPost($body, $access_token, $user_id)
 
 Add a data source
 
@@ -82,9 +83,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $body = new \QuantiModo\Client\Model\MeasurementSource(); // \QuantiModo\Client\Model\MeasurementSource | An array of names of data sources you want to add.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $api_instance->v1MeasurementSourcesPost($body, $access_token);
+    $api_instance->v1MeasurementSourcesPost($body, $access_token, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v1MeasurementSourcesPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -97,6 +99,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\MeasurementSource**](../Model/\QuantiModo\Client\Model\MeasurementSource.md)| An array of names of data sources you want to add. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -114,7 +117,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsDailyGet**
-> \QuantiModo\Client\Model\Measurement v1MeasurementsDailyGet($variable_name, $access_token, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Measurement v1MeasurementsDailyGet($variable_name, $access_token, $user_id, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
 
 Get daily measurements for this user
 
@@ -131,6 +134,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $abbreviated_unit_name = "abbreviated_unit_name_example"; // string | The unit your want the measurements in
 $start_time = "start_time_example"; // string | The lower limit of measurements returned (Iso8601)
 $end_time = "end_time_example"; // string | The upper limit of measurements returned (Iso8601)
@@ -141,7 +145,7 @@ $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set t
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1MeasurementsDailyGet($variable_name, $access_token, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
+    $result = $api_instance->v1MeasurementsDailyGet($variable_name, $access_token, $user_id, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v1MeasurementsDailyGet: ', $e->getMessage(), PHP_EOL;
@@ -155,6 +159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **variable_name** | **string**| Name of the variable you want measurements for |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **abbreviated_unit_name** | **string**| The unit your want the measurements in | [optional]
  **start_time** | **string**| The lower limit of measurements returned (Iso8601) | [optional]
  **end_time** | **string**| The upper limit of measurements returned (Iso8601) | [optional]
@@ -228,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsGet**
-> \QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $variable_name, $variable_category_name, $source, $value, $last_updated, $unit, $start_time, $created_at, $updated_at, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source, $value, $last_updated, $unit, $start_time, $created_at, $updated_at, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
 
 Get measurements for this user
 
@@ -244,6 +249,8 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
+$id = 56; // int | Measurement id
 $variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
 $variable_category_name = "variable_category_name_example"; // string | Name of the variable category you want measurements for
 $source = "source_example"; // string | Name of the source you want measurements for (supports exact name match only)
@@ -261,7 +268,7 @@ $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set t
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1MeasurementsGet($access_token, $variable_name, $variable_category_name, $source, $value, $last_updated, $unit, $start_time, $created_at, $updated_at, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
+    $result = $api_instance->v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source, $value, $last_updated, $unit, $start_time, $created_at, $updated_at, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v1MeasurementsGet: ', $e->getMessage(), PHP_EOL;
@@ -274,6 +281,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
+ **id** | **int**| Measurement id | [optional]
  **variable_name** | **string**| Name of the variable you want measurements for | [optional]
  **variable_category_name** | **string**| Name of the variable category you want measurements for | [optional]
  **source** | **string**| Name of the source you want measurements for (supports exact name match only) | [optional]
@@ -306,7 +315,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsPost**
-> v1MeasurementsPost($body, $access_token)
+> v1MeasurementsPost($body, $access_token, $user_id)
 
 Post a new set or update existing measurements to the database
 
@@ -323,9 +332,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $body = new \QuantiModo\Client\Model\MeasurementSet(); // \QuantiModo\Client\Model\MeasurementSet | An array of measurements you want to insert.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $api_instance->v1MeasurementsPost($body, $access_token);
+    $api_instance->v1MeasurementsPost($body, $access_token, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v1MeasurementsPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -338,6 +348,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\MeasurementSet**](../Model/\QuantiModo\Client\Model\MeasurementSet.md)| An array of measurements you want to insert. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -404,8 +415,56 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **v1MeasurementsUpdatePost**
+> \QuantiModo\Client\Model\CommonResponse v1MeasurementsUpdatePost($body)
+
+Update a measurement
+
+Delete a previously submitted measurement
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: oauth2
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
+$body = new \QuantiModo\Client\Model\MeasurementUpdate(); // \QuantiModo\Client\Model\MeasurementUpdate | The id as well as the new startTime, note, and/or value of the measurement to be updated
+
+try {
+    $result = $api_instance->v1MeasurementsUpdatePost($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MeasurementsApi->v1MeasurementsUpdatePost: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\QuantiModo\Client\Model\MeasurementUpdate**](../Model/\QuantiModo\Client\Model\MeasurementUpdate.md)| The id as well as the new startTime, note, and/or value of the measurement to be updated |
+
+### Return type
+
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **v2MeasurementsCsvGet**
-> \SplFileObject v2MeasurementsCsvGet($access_token)
+> \SplFileObject v2MeasurementsCsvGet($access_token, $user_id)
 
 Get Measurements CSV
 
@@ -421,9 +480,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsCsvGet($access_token);
+    $result = $api_instance->v2MeasurementsCsvGet($access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v2MeasurementsCsvGet: ', $e->getMessage(), PHP_EOL;
@@ -436,6 +496,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -453,7 +514,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdDelete**
-> \QuantiModo\Client\Model\InlineResponse20012 v2MeasurementsIdDelete($id, $access_token)
+> \QuantiModo\Client\Model\InlineResponse20012 v2MeasurementsIdDelete($id, $access_token, $user_id)
 
 Delete Measurement
 
@@ -470,9 +531,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $id = 56; // int | id of Measurement
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsIdDelete($id, $access_token);
+    $result = $api_instance->v2MeasurementsIdDelete($id, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v2MeasurementsIdDelete: ', $e->getMessage(), PHP_EOL;
@@ -486,6 +548,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of Measurement |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -503,7 +566,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdGet**
-> \QuantiModo\Client\Model\InlineResponse20011 v2MeasurementsIdGet($id, $access_token)
+> \QuantiModo\Client\Model\InlineResponse20011 v2MeasurementsIdGet($id, $access_token, $user_id)
 
 Get Measurement
 
@@ -520,9 +583,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $id = 56; // int | id of Measurement
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsIdGet($id, $access_token);
+    $result = $api_instance->v2MeasurementsIdGet($id, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v2MeasurementsIdGet: ', $e->getMessage(), PHP_EOL;
@@ -536,6 +600,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of Measurement |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -553,7 +618,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdPut**
-> \QuantiModo\Client\Model\InlineResponse20012 v2MeasurementsIdPut($id, $access_token, $body)
+> \QuantiModo\Client\Model\InlineResponse20012 v2MeasurementsIdPut($id, $access_token, $user_id, $body)
 
 Update Measurement
 
@@ -570,10 +635,11 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $id = 56; // int | id of Measurement
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $body = new \QuantiModo\Client\Model\Measurement(); // \QuantiModo\Client\Model\Measurement | Measurement that should be updated
 
 try {
-    $result = $api_instance->v2MeasurementsIdPut($id, $access_token, $body);
+    $result = $api_instance->v2MeasurementsIdPut($id, $access_token, $user_id, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v2MeasurementsIdPut: ', $e->getMessage(), PHP_EOL;
@@ -587,6 +653,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of Measurement |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **body** | [**\QuantiModo\Client\Model\Measurement**](../Model/\QuantiModo\Client\Model\Measurement.md)| Measurement that should be updated | [optional]
 
 ### Return type
@@ -605,7 +672,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsRequestCsvPost**
-> int v2MeasurementsRequestCsvPost($access_token)
+> int v2MeasurementsRequestCsvPost($access_token, $user_id)
 
 Post Request for Measurements CSV
 
@@ -621,9 +688,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsRequestCsvPost($access_token);
+    $result = $api_instance->v2MeasurementsRequestCsvPost($access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v2MeasurementsRequestCsvPost: ', $e->getMessage(), PHP_EOL;
@@ -636,6 +704,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -653,7 +722,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsRequestPdfPost**
-> int v2MeasurementsRequestPdfPost($access_token)
+> int v2MeasurementsRequestPdfPost($access_token, $user_id)
 
 Post Request for Measurements PDF
 
@@ -669,9 +738,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsRequestPdfPost($access_token);
+    $result = $api_instance->v2MeasurementsRequestPdfPost($access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v2MeasurementsRequestPdfPost: ', $e->getMessage(), PHP_EOL;
@@ -684,6 +754,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -701,7 +772,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsRequestXlsPost**
-> int v2MeasurementsRequestXlsPost($access_token)
+> int v2MeasurementsRequestXlsPost($access_token, $user_id)
 
 Post Request for Measurements XLS
 
@@ -717,9 +788,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsRequestXlsPost($access_token);
+    $result = $api_instance->v2MeasurementsRequestXlsPost($access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v2MeasurementsRequestXlsPost: ', $e->getMessage(), PHP_EOL;
@@ -732,6 +804,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 

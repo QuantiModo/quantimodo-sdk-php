@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **v1TrackingReminderNotificationsGet**
-> \QuantiModo\Client\Model\InlineResponse200 v1TrackingReminderNotificationsGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse200 v1TrackingReminderNotificationsGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get specific pending tracking reminders
 
@@ -30,6 +30,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $variable_category_name = "variable_category_name_example"; // string | Limit tracking reminder notifications to a specific variable category
 $created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local.
 $updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
@@ -38,7 +39,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v1TrackingReminderNotificationsGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v1TrackingReminderNotificationsGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RemindersApi->v1TrackingReminderNotificationsGet: ', $e->getMessage(), PHP_EOL;
@@ -51,6 +52,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **variable_category_name** | **string**| Limit tracking reminder notifications to a specific variable category | [optional]
  **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
  **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
@@ -74,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsSkipPost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSkipPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSkipPost($body, $access_token, $user_id)
 
 Skip a pending tracking reminder
 
@@ -91,9 +93,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $body = new \QuantiModo\Client\Model\TrackingReminderNotificationSkip(); // \QuantiModo\Client\Model\TrackingReminderNotificationSkip | Id of the pending reminder to be skipped or deleted
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1TrackingReminderNotificationsSkipPost($body, $access_token);
+    $result = $api_instance->v1TrackingReminderNotificationsSkipPost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RemindersApi->v1TrackingReminderNotificationsSkipPost: ', $e->getMessage(), PHP_EOL;
@@ -107,6 +110,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationSkip**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationSkip.md)| Id of the pending reminder to be skipped or deleted |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -124,7 +128,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsSnoozePost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSnoozePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSnoozePost($body, $access_token, $user_id)
 
 Snooze a pending tracking reminder
 
@@ -141,9 +145,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $body = new \QuantiModo\Client\Model\TrackingReminderNotificationSnooze(); // \QuantiModo\Client\Model\TrackingReminderNotificationSnooze | Id of the pending reminder to be snoozed
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1TrackingReminderNotificationsSnoozePost($body, $access_token);
+    $result = $api_instance->v1TrackingReminderNotificationsSnoozePost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RemindersApi->v1TrackingReminderNotificationsSnoozePost: ', $e->getMessage(), PHP_EOL;
@@ -157,6 +162,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationSnooze**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationSnooze.md)| Id of the pending reminder to be snoozed |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -174,7 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsTrackPost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsTrackPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsTrackPost($body, $access_token, $user_id)
 
 Track a pending tracking reminder
 
@@ -191,9 +197,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $body = new \QuantiModo\Client\Model\TrackingReminderNotificationTrack(); // \QuantiModo\Client\Model\TrackingReminderNotificationTrack | Id of the pending reminder to be tracked
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1TrackingReminderNotificationsTrackPost($body, $access_token);
+    $result = $api_instance->v1TrackingReminderNotificationsTrackPost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RemindersApi->v1TrackingReminderNotificationsTrackPost: ', $e->getMessage(), PHP_EOL;
@@ -207,6 +214,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationTrack**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationTrack.md)| Id of the pending reminder to be tracked |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -224,7 +232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersDeletePost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingRemindersDeletePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1TrackingRemindersDeletePost($body, $access_token, $user_id)
 
 Delete tracking reminder
 
@@ -241,9 +249,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $body = new \QuantiModo\Client\Model\TrackingReminderDelete(); // \QuantiModo\Client\Model\TrackingReminderDelete | Id of reminder to be deleted
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1TrackingRemindersDeletePost($body, $access_token);
+    $result = $api_instance->v1TrackingRemindersDeletePost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RemindersApi->v1TrackingRemindersDeletePost: ', $e->getMessage(), PHP_EOL;
@@ -257,6 +266,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\TrackingReminderDelete**](../Model/\QuantiModo\Client\Model\TrackingReminderDelete.md)| Id of reminder to be deleted |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -274,7 +284,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersGet**
-> \QuantiModo\Client\Model\InlineResponse2001 v1TrackingRemindersGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2001 v1TrackingRemindersGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get repeating tracking reminder settings
 
@@ -290,6 +300,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $variable_category_name = "variable_category_name_example"; // string | Limit tracking reminders to a specific variable category
 $created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local.
 $updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
@@ -298,7 +309,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v1TrackingRemindersGet($access_token, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v1TrackingRemindersGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RemindersApi->v1TrackingRemindersGet: ', $e->getMessage(), PHP_EOL;
@@ -311,6 +322,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **variable_category_name** | **string**| Limit tracking reminders to a specific variable category | [optional]
  **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
  **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
@@ -334,7 +346,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersPost**
-> \QuantiModo\Client\Model\InlineResponse2002 v1TrackingRemindersPost($access_token, $body)
+> \QuantiModo\Client\Model\InlineResponse2002 v1TrackingRemindersPost($access_token, $user_id, $body)
 
 Store a Tracking Reminder
 
@@ -350,10 +362,11 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $body = new \QuantiModo\Client\Model\TrackingReminder(); // \QuantiModo\Client\Model\TrackingReminder | TrackingReminder that should be stored
 
 try {
-    $result = $api_instance->v1TrackingRemindersPost($access_token, $body);
+    $result = $api_instance->v1TrackingRemindersPost($access_token, $user_id, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RemindersApi->v1TrackingRemindersPost: ', $e->getMessage(), PHP_EOL;
@@ -366,6 +379,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **body** | [**\QuantiModo\Client\Model\TrackingReminder**](../Model/\QuantiModo\Client\Model\TrackingReminder.md)| TrackingReminder that should be stored | [optional]
 
 ### Return type

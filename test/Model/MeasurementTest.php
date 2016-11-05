@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * MeasurementTest Class Doc Comment
  *
- * @category    Class
- * @description Measurement
+ * @category    Class */
+// * @description Measurement
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class MeasurementTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class MeasurementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,101 @@ class MeasurementTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "variable"
+     */
+    public function testPropertyVariable()
+    {
+
+    }
+
+    /**
+     * Test attribute "source"
+     */
+    public function testPropertySource()
+    {
+
+    }
+
+    /**
+     * Test attribute "start_time"
+     */
+    public function testPropertyStartTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "human_time"
+     */
+    public function testPropertyHumanTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "value"
+     */
+    public function testPropertyValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "unit"
+     */
+    public function testPropertyUnit()
+    {
+
+    }
+
+    /**
+     * Test attribute "original_value"
+     */
+    public function testPropertyOriginalValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "stored_value"
+     */
+    public function testPropertyStoredValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "stored_abbreviated_unit_name"
+     */
+    public function testPropertyStoredAbbreviatedUnitName()
+    {
+
+    }
+
+    /**
+     * Test attribute "original_abbreviated_unit_name"
+     */
+    public function testPropertyOriginalAbbreviatedUnitName()
+    {
+
+    }
+
+    /**
+     * Test attribute "abbreviated_unit_name"
+     */
+    public function testPropertyAbbreviatedUnitName()
+    {
+
+    }
+
+    /**
+     * Test attribute "note"
+     */
+    public function testPropertyNote()
+    {
+
+    }
+
 }

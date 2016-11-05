@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * PostVote Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class PostVote implements ArrayAccess
@@ -64,11 +65,11 @@ class PostVote implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
-        'cause' => 'string',
-        'effect' => 'string',
+    protected static $swaggerTypes = [
+        'cause_variable_id' => 'int',
+        'effect_variable_id' => 'int',
         'vote' => 'bool'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -79,41 +80,43 @@ class PostVote implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
-        'cause' => 'cause',
-        'effect' => 'effect',
+    protected static $attributeMap = [
+        'cause_variable_id' => 'causeVariableId',
+        'effect_variable_id' => 'effectVariableId',
         'vote' => 'vote'
-    );
+    ];
+
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = [
+        'cause_variable_id' => 'setCauseVariableId',
+        'effect_variable_id' => 'setEffectVariableId',
+        'vote' => 'setVote'
+    ];
+
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = [
+        'cause_variable_id' => 'getCauseVariableId',
+        'effect_variable_id' => 'getEffectVariableId',
+        'vote' => 'getVote'
+    ];
 
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     * @var string[]
-     */
-    protected static $setters = array(
-        'cause' => 'setCause',
-        'effect' => 'setEffect',
-        'vote' => 'setVote'
-    );
-
     public static function setters()
     {
         return self::$setters;
     }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     * @var string[]
-     */
-    protected static $getters = array(
-        'cause' => 'getCause',
-        'effect' => 'getEffect',
-        'vote' => 'getVote'
-    );
 
     public static function getters()
     {
@@ -128,16 +131,16 @@ class PostVote implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['cause'] = isset($data['cause']) ? $data['cause'] : null;
-        $this->container['effect'] = isset($data['effect']) ? $data['effect'] : null;
+        $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
+        $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
         $this->container['vote'] = isset($data['vote']) ? $data['vote'] : null;
     }
 
@@ -148,12 +151,12 @@ class PostVote implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
-        if ($this->container['cause'] === null) {
-            $invalid_properties[] = "'cause' can't be null";
+        $invalid_properties = [];
+        if ($this->container['cause_variable_id'] === null) {
+            $invalid_properties[] = "'cause_variable_id' can't be null";
         }
-        if ($this->container['effect'] === null) {
-            $invalid_properties[] = "'effect' can't be null";
+        if ($this->container['effect_variable_id'] === null) {
+            $invalid_properties[] = "'effect_variable_id' can't be null";
         }
         if ($this->container['vote'] === null) {
             $invalid_properties[] = "'vote' can't be null";
@@ -169,10 +172,10 @@ class PostVote implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['cause'] === null) {
+        if ($this->container['cause_variable_id'] === null) {
             return false;
         }
-        if ($this->container['effect'] === null) {
+        if ($this->container['effect_variable_id'] === null) {
             return false;
         }
         if ($this->container['vote'] === null) {
@@ -183,43 +186,43 @@ class PostVote implements ArrayAccess
 
 
     /**
-     * Gets cause
-     * @return string
+     * Gets cause_variable_id
+     * @return int
      */
-    public function getCause()
+    public function getCauseVariableId()
     {
-        return $this->container['cause'];
+        return $this->container['cause_variable_id'];
     }
 
     /**
-     * Sets cause
-     * @param string $cause Cause variable name
+     * Sets cause_variable_id
+     * @param int $cause_variable_id Cause variable id
      * @return $this
      */
-    public function setCause($cause)
+    public function setCauseVariableId($cause_variable_id)
     {
-        $this->container['cause'] = $cause;
+        $this->container['cause_variable_id'] = $cause_variable_id;
 
         return $this;
     }
 
     /**
-     * Gets effect
-     * @return string
+     * Gets effect_variable_id
+     * @return int
      */
-    public function getEffect()
+    public function getEffectVariableId()
     {
-        return $this->container['effect'];
+        return $this->container['effect_variable_id'];
     }
 
     /**
-     * Sets effect
-     * @param string $effect Effect variable name
+     * Sets effect_variable_id
+     * @param int $effect_variable_id Effect variable id
      * @return $this
      */
-    public function setEffect($effect)
+    public function setEffectVariableId($effect_variable_id)
     {
-        $this->container['effect'] = $effect;
+        $this->container['effect_variable_id'] = $effect_variable_id;
 
         return $this;
     }

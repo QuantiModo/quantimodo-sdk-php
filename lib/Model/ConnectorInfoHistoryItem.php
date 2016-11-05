@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * ConnectorInfoHistoryItem Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class ConnectorInfoHistoryItem implements ArrayAccess
@@ -64,12 +65,12 @@ class ConnectorInfoHistoryItem implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'number_of_measurements' => 'int',
         'success' => 'bool',
         'message' => 'string',
         'created_at' => 'string'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -80,44 +81,46 @@ class ConnectorInfoHistoryItem implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'number_of_measurements' => 'numberOfMeasurements',
         'success' => 'success',
         'message' => 'message',
         'created_at' => 'createdAt'
-    );
+    ];
+
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     * @var string[]
+     */
+    protected static $setters = [
+        'number_of_measurements' => 'setNumberOfMeasurements',
+        'success' => 'setSuccess',
+        'message' => 'setMessage',
+        'created_at' => 'setCreatedAt'
+    ];
+
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     * @var string[]
+     */
+    protected static $getters = [
+        'number_of_measurements' => 'getNumberOfMeasurements',
+        'success' => 'getSuccess',
+        'message' => 'getMessage',
+        'created_at' => 'getCreatedAt'
+    ];
 
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     * @var string[]
-     */
-    protected static $setters = array(
-        'number_of_measurements' => 'setNumberOfMeasurements',
-        'success' => 'setSuccess',
-        'message' => 'setMessage',
-        'created_at' => 'setCreatedAt'
-    );
-
     public static function setters()
     {
         return self::$setters;
     }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     * @var string[]
-     */
-    protected static $getters = array(
-        'number_of_measurements' => 'getNumberOfMeasurements',
-        'success' => 'getSuccess',
-        'message' => 'getMessage',
-        'created_at' => 'getCreatedAt'
-    );
 
     public static function getters()
     {
@@ -132,11 +135,11 @@ class ConnectorInfoHistoryItem implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -153,7 +156,7 @@ class ConnectorInfoHistoryItem implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['number_of_measurements'] === null) {
             $invalid_properties[] = "'number_of_measurements' can't be null";
         }

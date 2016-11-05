@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1VotesDeletePost**
-> \QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token, $user_id)
 
 Delete vote
 
@@ -26,9 +26,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\VotesApi();
 $body = new \QuantiModo\Client\Model\VoteDelete(); // \QuantiModo\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1VotesDeletePost($body, $access_token);
+    $result = $api_instance->v1VotesDeletePost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VotesApi->v1VotesDeletePost: ', $e->getMessage(), PHP_EOL;
@@ -42,6 +43,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\VoteDelete**](../Model/\QuantiModo\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -59,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VotesPost**
-> \QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token, $user_id)
 
 Post or update vote
 
@@ -76,9 +78,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\VotesApi();
 $body = new \QuantiModo\Client\Model\PostVote(); // \QuantiModo\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1VotesPost($body, $access_token);
+    $result = $api_instance->v1VotesPost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VotesApi->v1VotesPost: ', $e->getMessage(), PHP_EOL;
@@ -92,6 +95,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\PostVote**](../Model/\QuantiModo\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 

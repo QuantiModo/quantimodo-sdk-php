@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * ConnectionTest Class Doc Comment
  *
- * @category    Class
- * @description Connection
+ * @category    Class */
+// * @description Connection
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class ConnectionTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class ConnectionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,93 @@ class ConnectionTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+
+    }
+
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
+    {
+
+    }
+
+    /**
+     * Test attribute "connector_id"
+     */
+    public function testPropertyConnectorId()
+    {
+
+    }
+
+    /**
+     * Test attribute "connect_status"
+     */
+    public function testPropertyConnectStatus()
+    {
+
+    }
+
+    /**
+     * Test attribute "connect_error"
+     */
+    public function testPropertyConnectError()
+    {
+
+    }
+
+    /**
+     * Test attribute "update_requested_at"
+     */
+    public function testPropertyUpdateRequestedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "update_status"
+     */
+    public function testPropertyUpdateStatus()
+    {
+
+    }
+
+    /**
+     * Test attribute "update_error"
+     */
+    public function testPropertyUpdateError()
+    {
+
+    }
+
+    /**
+     * Test attribute "last_successful_updated_at"
+     */
+    public function testPropertyLastSuccessfulUpdatedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "created_at"
+     */
+    public function testPropertyCreatedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
+    {
+
+    }
+
 }

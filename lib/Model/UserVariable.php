@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * UserVariable Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class UserVariable implements ArrayAccess
@@ -64,7 +65,7 @@ class UserVariable implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'parent_id' => 'int',
         'user_id' => 'int',
         'client_id' => 'string',
@@ -120,7 +121,7 @@ class UserVariable implements ArrayAccess
         'latest_measurement_time' => 'int',
         'earliest_filling_time' => 'int',
         'latest_filling_time' => 'int'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -131,7 +132,7 @@ class UserVariable implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'parent_id' => 'parent_id',
         'user_id' => 'user_id',
         'client_id' => 'client_id',
@@ -187,18 +188,14 @@ class UserVariable implements ArrayAccess
         'latest_measurement_time' => 'latest_measurement_time',
         'earliest_filling_time' => 'earliest_filling_time',
         'latest_filling_time' => 'latest_filling_time'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'parent_id' => 'setParentId',
         'user_id' => 'setUserId',
         'client_id' => 'setClientId',
@@ -254,18 +251,14 @@ class UserVariable implements ArrayAccess
         'latest_measurement_time' => 'setLatestMeasurementTime',
         'earliest_filling_time' => 'setEarliestFillingTime',
         'latest_filling_time' => 'setLatestFillingTime'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'parent_id' => 'getParentId',
         'user_id' => 'getUserId',
         'client_id' => 'getClientId',
@@ -321,7 +314,17 @@ class UserVariable implements ArrayAccess
         'latest_measurement_time' => 'getLatestMeasurementTime',
         'earliest_filling_time' => 'getEarliestFillingTime',
         'latest_filling_time' => 'getLatestFillingTime'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -336,11 +339,11 @@ class UserVariable implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -408,7 +411,7 @@ class UserVariable implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['variable_id'] === null) {
             $invalid_properties[] = "'variable_id' can't be null";
         }
@@ -546,7 +549,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets minimum_allowed_value
-     * @param float $minimum_allowed_value Minimum reasonable value for this variable (uses default unit)
+     * @param float $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
      * @return $this
      */
     public function setMinimumAllowedValue($minimum_allowed_value)
@@ -567,7 +570,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets maximum_allowed_value
-     * @param float $maximum_allowed_value Maximum reasonable value for this variable (uses default unit)
+     * @param float $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
      * @return $this
      */
     public function setMaximumAllowedValue($maximum_allowed_value)
@@ -588,7 +591,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets filling_value
-     * @param float $filling_value Value for replacing null measurements
+     * @param float $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
      * @return $this
      */
     public function setFillingValue($filling_value)
@@ -630,7 +633,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets onset_delay
-     * @param int $onset_delay How long it takes for a measurement in this variable to take effect
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
      * @return $this
      */
     public function setOnsetDelay($onset_delay)
@@ -651,7 +654,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets duration_of_action
-     * @param int $duration_of_action Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
      * @return $this
      */
     public function setDurationOfAction($duration_of_action)

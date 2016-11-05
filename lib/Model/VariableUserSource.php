@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -46,10 +46,11 @@ use \ArrayAccess;
 /**
  * VariableUserSource Class Doc Comment
  *
- * @category    Class
+ * @category    Class */
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class VariableUserSource implements ArrayAccess
@@ -64,7 +65,7 @@ class VariableUserSource implements ArrayAccess
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = array(
+    protected static $swaggerTypes = [
         'user_id' => 'int',
         'variable_id' => 'int',
         'source_id' => 'int',
@@ -73,7 +74,7 @@ class VariableUserSource implements ArrayAccess
         'latest_measurement_time' => 'int',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
-    );
+    ];
 
     public static function swaggerTypes()
     {
@@ -84,7 +85,7 @@ class VariableUserSource implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = array(
+    protected static $attributeMap = [
         'user_id' => 'user_id',
         'variable_id' => 'variable_id',
         'source_id' => 'source_id',
@@ -93,18 +94,14 @@ class VariableUserSource implements ArrayAccess
         'latest_measurement_time' => 'latest_measurement_time',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
-    );
+    ];
 
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = array(
+    protected static $setters = [
         'user_id' => 'setUserId',
         'variable_id' => 'setVariableId',
         'source_id' => 'setSourceId',
@@ -113,18 +110,14 @@ class VariableUserSource implements ArrayAccess
         'latest_measurement_time' => 'setLatestMeasurementTime',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
-    );
+    ];
 
-    public static function setters()
-    {
-        return self::$setters;
-    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = array(
+    protected static $getters = [
         'user_id' => 'getUserId',
         'variable_id' => 'getVariableId',
         'source_id' => 'getSourceId',
@@ -133,7 +126,17 @@ class VariableUserSource implements ArrayAccess
         'latest_measurement_time' => 'getLatestMeasurementTime',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
-    );
+    ];
+
+    public static function attributeMap()
+    {
+        return self::$attributeMap;
+    }
+
+    public static function setters()
+    {
+        return self::$setters;
+    }
 
     public static function getters()
     {
@@ -148,11 +151,11 @@ class VariableUserSource implements ArrayAccess
      * Associative array for storing property values
      * @var mixed[]
      */
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property value initalizing the model
+     * @param mixed[] $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
@@ -173,7 +176,7 @@ class VariableUserSource implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = array();
+        $invalid_properties = [];
         if ($this->container['variable_id'] === null) {
             $invalid_properties[] = "'variable_id' can't be null";
         }

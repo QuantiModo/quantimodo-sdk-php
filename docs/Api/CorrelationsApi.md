@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **v1AggregatedCorrelationsGet**
-> \QuantiModo\Client\Model\Correlation[] v1AggregatedCorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Correlation[] v1AggregatedCorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
 
 Get aggregated correlations
 
@@ -35,18 +35,19 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $effect = "effect_example"; // string | ORIGINAL variable name of the effect variable for which the user desires correlations
 $cause = "cause_example"; // string | ORIGINAL variable name of the cause variable for which the user desires correlations
 $correlation_coefficient = "correlation_coefficient_example"; // string | Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action
-$onset_delay = "onset_delay_example"; // string | The number of seconds which pass following a cause measurement before an effect would likely be observed.
-$duration_of_action = "duration_of_action_example"; // string | The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings.
+$onset_delay = "onset_delay_example"; // string | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
+$duration_of_action = "duration_of_action_example"; // string | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
 $last_updated = "last_updated_example"; // string | The time that this measurement was last updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
 $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1AggregatedCorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+    $result = $api_instance->v1AggregatedCorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1AggregatedCorrelationsGet: ', $e->getMessage(), PHP_EOL;
@@ -59,11 +60,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **effect** | **string**| ORIGINAL variable name of the effect variable for which the user desires correlations | [optional]
  **cause** | **string**| ORIGINAL variable name of the cause variable for which the user desires correlations | [optional]
  **correlation_coefficient** | **string**| Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action | [optional]
- **onset_delay** | **string**| The number of seconds which pass following a cause measurement before an effect would likely be observed. | [optional]
- **duration_of_action** | **string**| The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. | [optional]
+ **onset_delay** | **string**| The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional]
+ **duration_of_action** | **string**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
  **last_updated** | **string**| The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
  **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
@@ -85,7 +87,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1AggregatedCorrelationsPost**
-> v1AggregatedCorrelationsPost($body, $access_token)
+> v1AggregatedCorrelationsPost($body, $access_token, $user_id)
 
 Store or Update a Correlation
 
@@ -102,9 +104,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $body = new \QuantiModo\Client\Model\PostCorrelation(); // \QuantiModo\Client\Model\PostCorrelation | Provides correlation data
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $api_instance->v1AggregatedCorrelationsPost($body, $access_token);
+    $api_instance->v1AggregatedCorrelationsPost($body, $access_token, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1AggregatedCorrelationsPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -117,6 +120,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\PostCorrelation**](../Model/\QuantiModo\Client\Model\PostCorrelation.md)| Provides correlation data |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -134,11 +138,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1CorrelationsGet**
-> \QuantiModo\Client\Model\Correlation[] v1CorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Correlation[] v1CorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
 
 Get correlations
 
-Get correlations.<br>Supported filter parameters:<br><ul><li><b>correlationCoefficient</b> - Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action</li><li><b>onsetDelay</b> - The number of seconds which pass following a cause measurement before an effect would likely be observed.</li><li><b>durationOfAction</b> - The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings.</li><li><b>lastUpdated</b> - The time that this measurement was last updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"</li></ul><br>
+Get correlations based on data from a single user.
 
 ### Example
 ```php
@@ -150,18 +154,19 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $effect = "effect_example"; // string | ORIGINAL variable name of the effect variable for which the user desires correlations
 $cause = "cause_example"; // string | ORIGINAL variable name of the cause variable for which the user desires correlations
 $correlation_coefficient = "correlation_coefficient_example"; // string | Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action
-$onset_delay = "onset_delay_example"; // string | The number of seconds which pass following a cause measurement before an effect would likely be observed.
-$duration_of_action = "duration_of_action_example"; // string | The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings.
+$onset_delay = "onset_delay_example"; // string | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
+$duration_of_action = "duration_of_action_example"; // string | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
 $last_updated = "last_updated_example"; // string | The time that this measurement was last updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
 $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1CorrelationsGet($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+    $result = $api_instance->v1CorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1CorrelationsGet: ', $e->getMessage(), PHP_EOL;
@@ -174,11 +179,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **effect** | **string**| ORIGINAL variable name of the effect variable for which the user desires correlations | [optional]
  **cause** | **string**| ORIGINAL variable name of the cause variable for which the user desires correlations | [optional]
  **correlation_coefficient** | **string**| Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action | [optional]
- **onset_delay** | **string**| The number of seconds which pass following a cause measurement before an effect would likely be observed. | [optional]
- **duration_of_action** | **string**| The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. | [optional]
+ **onset_delay** | **string**| The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional]
+ **duration_of_action** | **string**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
  **last_updated** | **string**| The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
  **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
@@ -200,7 +206,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet**
-> \QuantiModo\Client\Model\Correlation[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public)
+> \QuantiModo\Client\Model\Correlation[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id2, $variable_name, $organization_token, $access_token, $user_id, $include_public)
 
 Search user correlations for a given cause
 
@@ -216,14 +222,15 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $organization_id = 56; // int | Organization ID
-$user_id = 56; // int | User id
+$user_id2 = 56; // int | User id
 $variable_name = "variable_name_example"; // string | Effect variable name
 $organization_token = "organization_token_example"; // string | Organization access token
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $include_public = "include_public_example"; // string | Include public correlations, Can be \"1\" or empty.
 
 try {
-    $result = $api_instance->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public);
+    $result = $api_instance->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id2, $variable_name, $organization_token, $access_token, $user_id, $include_public);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet: ', $e->getMessage(), PHP_EOL;
@@ -236,10 +243,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**| Organization ID |
- **user_id** | **int**| User id |
+ **user_id2** | **int**| User id |
  **variable_name** | **string**| Effect variable name |
  **organization_token** | **string**| Organization access token |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **include_public** | **string**| Include public correlations, Can be \&quot;1\&quot; or empty. | [optional]
 
 ### Return type
@@ -258,7 +266,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet**
-> \QuantiModo\Client\Model\CommonResponse[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public)
+> \QuantiModo\Client\Model\CommonResponse[] v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id2, $variable_name, $organization_token, $access_token, $user_id, $include_public)
 
 Search user correlations for a given cause
 
@@ -274,14 +282,15 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $organization_id = 56; // int | Organization ID
-$user_id = 56; // int | User id
+$user_id2 = 56; // int | User id
 $variable_name = "variable_name_example"; // string | Cause variable name
 $organization_token = "organization_token_example"; // string | Organization access token
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $include_public = "include_public_example"; // string | Include public correlations, Can be \"1\" or empty.
 
 try {
-    $result = $api_instance->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public);
+    $result = $api_instance->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id2, $variable_name, $organization_token, $access_token, $user_id, $include_public);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet: ', $e->getMessage(), PHP_EOL;
@@ -294,10 +303,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**| Organization ID |
- **user_id** | **int**| User id |
+ **user_id2** | **int**| User id |
  **variable_name** | **string**| Cause variable name |
  **organization_token** | **string**| Organization access token |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **include_public** | **string**| Include public correlations, Can be \&quot;1\&quot; or empty. | [optional]
 
 ### Return type
@@ -316,7 +326,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PublicCorrelationsSearchSearchGet**
-> \QuantiModo\Client\Model\Correlation[] v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token, $user_id)
 
 Get average correlations for variables containing search term
 
@@ -334,9 +344,10 @@ $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $search = "search_example"; // string | Name of the variable that you want to know the causes or effects of.
 $effect_or_cause = "effect_or_cause_example"; // string | Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token);
+    $result = $api_instance->v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1PublicCorrelationsSearchSearchGet: ', $e->getMessage(), PHP_EOL;
@@ -351,6 +362,7 @@ Name | Type | Description  | Notes
  **search** | **string**| Name of the variable that you want to know the causes or effects of. |
  **effect_or_cause** | **string**| Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -416,7 +428,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNameEffectsGet**
-> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNameEffectsGet($variable_name, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNameEffectsGet($variable_name, $access_token, $user_id, $correlation_coefficient)
 
 Search user correlations for a given cause
 
@@ -433,9 +445,11 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $variable_name = "variable_name_example"; // string | Cause variable name
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
+$correlation_coefficient = "correlation_coefficient_example"; // string | You can use this to get effects with correlations greater than or less than 0
 
 try {
-    $result = $api_instance->v1VariablesVariableNameEffectsGet($variable_name, $access_token);
+    $result = $api_instance->v1VariablesVariableNameEffectsGet($variable_name, $access_token, $user_id, $correlation_coefficient);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1VariablesVariableNameEffectsGet: ', $e->getMessage(), PHP_EOL;
@@ -449,6 +463,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **variable_name** | **string**| Cause variable name |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
+ **correlation_coefficient** | **string**| You can use this to get effects with correlations greater than or less than 0 | [optional]
 
 ### Return type
 
@@ -466,7 +482,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNamePublicCausesGet**
-> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNamePublicCausesGet($variable_name, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNamePublicCausesGet($variable_name, $access_token, $user_id, $correlation_coefficient)
 
 Search public correlations for a given effect
 
@@ -483,9 +499,11 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $variable_name = "variable_name_example"; // string | Effect variable name
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
+$correlation_coefficient = "correlation_coefficient_example"; // string | You can use this to get causes with correlations greater than or less than 0
 
 try {
-    $result = $api_instance->v1VariablesVariableNamePublicCausesGet($variable_name, $access_token);
+    $result = $api_instance->v1VariablesVariableNamePublicCausesGet($variable_name, $access_token, $user_id, $correlation_coefficient);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1VariablesVariableNamePublicCausesGet: ', $e->getMessage(), PHP_EOL;
@@ -499,6 +517,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **variable_name** | **string**| Effect variable name |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
+ **correlation_coefficient** | **string**| You can use this to get causes with correlations greater than or less than 0 | [optional]
 
 ### Return type
 
@@ -516,7 +536,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNamePublicEffectsGet**
-> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token)
+> \QuantiModo\Client\Model\Correlation[] v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token, $user_id)
 
 Search public correlations for a given cause
 
@@ -533,9 +553,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $variable_name = "variable_name_example"; // string | Cause variable name
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token);
+    $result = $api_instance->v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1VariablesVariableNamePublicEffectsGet: ', $e->getMessage(), PHP_EOL;
@@ -549,6 +570,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **variable_name** | **string**| Cause variable name |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -566,7 +588,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VotesDeletePost**
-> \QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token, $user_id)
 
 Delete vote
 
@@ -583,9 +605,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $body = new \QuantiModo\Client\Model\VoteDelete(); // \QuantiModo\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1VotesDeletePost($body, $access_token);
+    $result = $api_instance->v1VotesDeletePost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1VotesDeletePost: ', $e->getMessage(), PHP_EOL;
@@ -599,6 +622,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\VoteDelete**](../Model/\QuantiModo\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -616,7 +640,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VotesPost**
-> \QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token)
+> \QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token, $user_id)
 
 Post or update vote
 
@@ -633,9 +657,10 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\CorrelationsApi();
 $body = new \QuantiModo\Client\Model\PostVote(); // \QuantiModo\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 
 try {
-    $result = $api_instance->v1VotesPost($body, $access_token);
+    $result = $api_instance->v1VotesPost($body, $access_token, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1VotesPost: ', $e->getMessage(), PHP_EOL;
@@ -649,6 +674,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\QuantiModo\Client\Model\PostVote**](../Model/\QuantiModo\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **v2ApplicationConnectionsGet**
-> \QuantiModo\Client\Model\InlineResponse2003 v2ApplicationConnectionsGet($access_token, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2003 v2ApplicationConnectionsGet($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Connections
 
@@ -36,6 +36,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
+$user_id = 56; // int | User's id
 $connector_id = 56; // int | The id for the connector data source for which the connection is connected
 $connect_status = "connect_status_example"; // string | Indicates whether a connector is currently connected to a service for a user.
 $connect_error = "connect_error_example"; // string | Error message if there is a problem with authorizing this connection.
@@ -50,7 +51,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationConnectionsGet($access_token, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationConnectionsGet($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationConnectionsGet: ', $e->getMessage(), PHP_EOL;
@@ -63,6 +64,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| Application&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **connector_id** | **int**| The id for the connector data source for which the connection is connected | [optional]
  **connect_status** | **string**| Indicates whether a connector is currently connected to a service for a user. | [optional]
  **connect_error** | **string**| Error message if there is a problem with authorizing this connection. | [optional]
@@ -92,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationCredentialsGet**
-> \QuantiModo\Client\Model\InlineResponse2004 v2ApplicationCredentialsGet($access_token, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2004 v2ApplicationCredentialsGet($access_token, $user_id, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Credentials
 
@@ -112,6 +114,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
+$user_id = 56; // int | User's id
 $connector_id = 56; // int | The id for the connector data source from which the credential was obtained
 $attr_key = "attr_key_example"; // string | Attribute name such as token, userid, username, or password
 $attr_value = "attr_value_example"; // string | Encrypted value for the attribute specified
@@ -122,7 +125,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationCredentialsGet($access_token, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationCredentialsGet($access_token, $user_id, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationCredentialsGet: ', $e->getMessage(), PHP_EOL;
@@ -135,6 +138,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| Application&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **connector_id** | **int**| The id for the connector data source from which the credential was obtained | [optional]
  **attr_key** | **string**| Attribute name such as token, userid, username, or password | [optional]
  **attr_value** | **string**| Encrypted value for the attribute specified | [optional]
@@ -160,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationMeasurementsGet**
-> \QuantiModo\Client\Model\InlineResponse2005 v2ApplicationMeasurementsGet($access_token, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2005 v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
 
 Get measurements for all users using your application
 
@@ -180,6 +184,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
+$user_id = 56; // int | User's id
 $client_id = "client_id_example"; // string | The ID of the client application which originally stored the measurement
 $connector_id = 56; // int | The id for the connector data source from which the measurement was obtained
 $variable_id = 56; // int | ID of the variable for which we are creating the measurement records
@@ -189,7 +194,7 @@ $value = 3.4; // float | The value of the measurement after conversion to the de
 $unit_id = 56; // int | The default unit id for the variable
 $original_value = 3.4; // float | Unconverted value of measurement as originally posted (before conversion to default unit)
 $original_unit_id = 56; // int | Unit id of the measurement as originally submitted
-$duration = 56; // int | Duration of the event being measurement in seconds
+$duration = 56; // int | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
 $note = "note_example"; // string | An optional note the user may include with their measurement
 $latitude = 3.4; // float | Latitude at which the measurement was taken
 $longitude = 3.4; // float | Longitude at which the measurement was taken
@@ -202,7 +207,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationMeasurementsGet($access_token, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationMeasurementsGet: ', $e->getMessage(), PHP_EOL;
@@ -215,6 +220,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| Application&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **client_id** | **string**| The ID of the client application which originally stored the measurement | [optional]
  **connector_id** | **int**| The id for the connector data source from which the measurement was obtained | [optional]
  **variable_id** | **int**| ID of the variable for which we are creating the measurement records | [optional]
@@ -224,7 +230,7 @@ Name | Type | Description  | Notes
  **unit_id** | **int**| The default unit id for the variable | [optional]
  **original_value** | **float**| Unconverted value of measurement as originally posted (before conversion to default unit) | [optional]
  **original_unit_id** | **int**| Unit id of the measurement as originally submitted | [optional]
- **duration** | **int**| Duration of the event being measurement in seconds | [optional]
+ **duration** | **int**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
  **note** | **string**| An optional note the user may include with their measurement | [optional]
  **latitude** | **float**| Latitude at which the measurement was taken | [optional]
  **longitude** | **float**| Longitude at which the measurement was taken | [optional]
@@ -252,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationTrackingRemindersGet**
-> \QuantiModo\Client\Model\InlineResponse2001 v2ApplicationTrackingRemindersGet($access_token, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2001 v2ApplicationTrackingRemindersGet($access_token, $user_id, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get tracking reminders
 
@@ -272,6 +278,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $client_id = "client_id_example"; // string | The ID of the client application which last created or updated this trackingReminder
 $created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
 $updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
@@ -280,7 +287,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationTrackingRemindersGet($access_token, $client_id, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationTrackingRemindersGet($access_token, $user_id, $client_id, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationTrackingRemindersGet: ', $e->getMessage(), PHP_EOL;
@@ -293,6 +300,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **client_id** | **string**| The ID of the client application which last created or updated this trackingReminder | [optional]
  **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
  **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
@@ -316,7 +324,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUpdatesGet**
-> \QuantiModo\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $user_id, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Updates
 
@@ -336,6 +344,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | Application's OAuth2 access token
+$user_id = 56; // int | User's id
 $connector_id = 56; // int | connector_id
 $number_of_measurements = 56; // int | number_of_measurements
 $success = true; // bool | success
@@ -347,7 +356,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationUpdatesGet($access_token, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationUpdatesGet($access_token, $user_id, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationUpdatesGet: ', $e->getMessage(), PHP_EOL;
@@ -360,6 +369,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| Application&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **connector_id** | **int**| connector_id | [optional]
  **number_of_measurements** | **int**| number_of_measurements | [optional]
  **success** | **bool**| success | [optional]
@@ -386,7 +396,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariableRelationshipsGet**
-> \QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariableRelationshipsGet($access_token, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariableRelationshipsGet($access_token, $user_id, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
 
 Get all UserVariableRelationships
 
@@ -406,13 +416,14 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $id = 56; // int | id
 $confidence_level = "confidence_level_example"; // string | Our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors
 $confidence_score = 3.4; // float | A quantitative representation of our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors
 $direction = "direction_example"; // string | Direction is positive if higher predictor values generally precede higher outcome values. Direction is negative if higher predictor values generally precede lower outcome values.
-$duration_of_action = 56; // int | Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect
+$duration_of_action = 56; // int | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
 $error_message = "error_message_example"; // string | error_message
-$onset_delay = 56; // int | Estimated number of seconds that pass before a stimulus produces a perceivable effect
+$onset_delay = 56; // int | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
 $outcome_variable_id = 56; // int | Variable ID for the outcome variable
 $predictor_variable_id = 56; // int | Variable ID for the predictor variable
 $predictor_unit_id = 56; // int | ID for default unit of the predictor variable
@@ -427,7 +438,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationUserVariableRelationshipsGet($access_token, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationUserVariableRelationshipsGet($access_token, $user_id, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationUserVariableRelationshipsGet: ', $e->getMessage(), PHP_EOL;
@@ -440,13 +451,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **id** | **int**| id | [optional]
  **confidence_level** | **string**| Our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors | [optional]
  **confidence_score** | **float**| A quantitative representation of our confidence that a consistent predictive relationship exists based on the amount of evidence, reproducibility, and other factors | [optional]
  **direction** | **string**| Direction is positive if higher predictor values generally precede higher outcome values. Direction is negative if higher predictor values generally precede lower outcome values. | [optional]
- **duration_of_action** | **int**| Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect | [optional]
+ **duration_of_action** | **int**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
  **error_message** | **string**| error_message | [optional]
- **onset_delay** | **int**| Estimated number of seconds that pass before a stimulus produces a perceivable effect | [optional]
+ **onset_delay** | **int**| The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional]
  **outcome_variable_id** | **int**| Variable ID for the outcome variable | [optional]
  **predictor_variable_id** | **int**| Variable ID for the predictor variable | [optional]
  **predictor_unit_id** | **int**| ID for default unit of the predictor variable | [optional]
@@ -476,7 +488,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariablesGet**
-> \QuantiModo\Client\Model\InlineResponse2008 v2ApplicationUserVariablesGet($access_token, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2008 v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
 
 Get all UserVariables
 
@@ -496,16 +508,17 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $client_id = "client_id_example"; // string | The ID of the client application which last created or updated this user variable
 $parent_id = 56; // int | ID of the parent variable if this variable has any parent
 $variable_id = 56; // int | ID of variable
 $default_unit_id = 56; // int | D of unit to use for this variable
-$minimum_allowed_value = 3.4; // float | Minimum reasonable value for this variable (uses default unit)
-$maximum_allowed_value = 3.4; // float | Maximum reasonable value for this variable (uses default unit)
-$filling_value = 3.4; // float | Value for replacing null measurements
+$minimum_allowed_value = 3.4; // float | The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
+$maximum_allowed_value = 3.4; // float | The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
+$filling_value = 3.4; // float | When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
 $join_with = 56; // int | The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
-$onset_delay = 56; // int | Estimated number of seconds that pass before a stimulus produces a perceivable effect
-$duration_of_action = 56; // int | Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
+$onset_delay = 56; // int | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
+$duration_of_action = 56; // int | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
 $variable_category_id = 56; // int | ID of variable category
 $updated = 56; // int | updated
 $public = 56; // int | Is variable public
@@ -553,7 +566,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationUserVariablesGet($access_token, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationUserVariablesGet: ', $e->getMessage(), PHP_EOL;
@@ -566,16 +579,17 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **client_id** | **string**| The ID of the client application which last created or updated this user variable | [optional]
  **parent_id** | **int**| ID of the parent variable if this variable has any parent | [optional]
  **variable_id** | **int**| ID of variable | [optional]
  **default_unit_id** | **int**| D of unit to use for this variable | [optional]
- **minimum_allowed_value** | **float**| Minimum reasonable value for this variable (uses default unit) | [optional]
- **maximum_allowed_value** | **float**| Maximum reasonable value for this variable (uses default unit) | [optional]
- **filling_value** | **float**| Value for replacing null measurements | [optional]
+ **minimum_allowed_value** | **float**| The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis. | [optional]
+ **maximum_allowed_value** | **float**| The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis. | [optional]
+ **filling_value** | **float**| When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven&#39;t taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing. | [optional]
  **join_with** | **int**| The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables | [optional]
- **onset_delay** | **int**| Estimated number of seconds that pass before a stimulus produces a perceivable effect | [optional]
- **duration_of_action** | **int**| Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect | [optional]
+ **onset_delay** | **int**| The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional]
+ **duration_of_action** | **int**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
  **variable_category_id** | **int**| ID of variable category | [optional]
  **updated** | **int**| updated | [optional]
  **public** | **int**| Is variable public | [optional]
@@ -638,7 +652,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVariableUserSourcesGet**
-> \QuantiModo\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $user_id, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all VariableUserSources
 
@@ -658,6 +672,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $variable_id = 56; // int | ID of variable
 $timestamp = 56; // int | Time that this measurement occurred Uses epoch minute (epoch time divided by 60)
 $earliest_measurement_time = 56; // int | Earliest measurement time
@@ -669,7 +684,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationVariableUserSourcesGet($access_token, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationVariableUserSourcesGet($access_token, $user_id, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationVariableUserSourcesGet: ', $e->getMessage(), PHP_EOL;
@@ -682,6 +697,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **variable_id** | **int**| ID of variable | [optional]
  **timestamp** | **int**| Time that this measurement occurred Uses epoch minute (epoch time divided by 60) | [optional]
  **earliest_measurement_time** | **int**| Earliest measurement time | [optional]
@@ -708,7 +724,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVotesGet**
-> \QuantiModo\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $user_id, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Votes
 
@@ -728,6 +744,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $client_id = "client_id_example"; // string | The ID of the client application which last created or updated this vote
 $cause_id = 56; // int | ID of predictor variable
 $effect_id = 56; // int | ID of outcome variable
@@ -739,7 +756,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationVotesGet($access_token, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationVotesGet($access_token, $user_id, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationVotesGet: ', $e->getMessage(), PHP_EOL;
@@ -752,6 +769,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **client_id** | **string**| The ID of the client application which last created or updated this vote | [optional]
  **cause_id** | **int**| ID of predictor variable | [optional]
  **effect_id** | **int**| ID of outcome variable | [optional]

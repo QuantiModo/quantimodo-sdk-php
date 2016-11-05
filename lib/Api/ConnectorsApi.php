@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -40,9 +40,9 @@
 
 namespace QuantiModo\Client\Api;
 
-use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ObjectSerializer;
 
 /**
@@ -51,12 +51,11 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class ConnectorsApi
 {
-
     /**
      * API Client
      *
@@ -71,7 +70,7 @@ class ConnectorsApi
      */
     public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
-        if ($apiClient == null) {
+        if ($apiClient === null) {
             $apiClient = new ApiClient();
             $apiClient->getConfig()->setHost('https://app.quantimo.do/api');
         }
@@ -105,12 +104,11 @@ class ConnectorsApi
     /**
      * Operation v1ConnectJsGet
      *
-     * Get embeddable connect javascript.
+     * Get embeddable connect javascript
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v1ConnectJsGet($access_token = null)
     {
@@ -118,62 +116,52 @@ class ConnectorsApi
         return $response;
     }
 
-
     /**
      * Operation v1ConnectJsGetWithHttpInfo
      *
-     * Get embeddable connect javascript.
+     * Get embeddable connect javascript
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1ConnectJsGetWithHttpInfo($access_token = null)
     {
-        
         // parse inputs
         $resourcePath = "/v1/connect.js";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/x-javascript'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/x-javascript']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -181,10 +169,12 @@ class ConnectorsApi
                 'GET',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v1/connect.js'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -192,83 +182,78 @@ class ConnectorsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1ConnectMobileGet
      *
-     * Mobile connect page.
+     * Mobile connect page
      *
      * @param string $access_token User OAuth access token (required)
-     *
-     * @return void
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
-    public function v1ConnectMobileGet($access_token)
+    public function v1ConnectMobileGet($access_token, $user_id = null)
     {
-        list($response) = $this->v1ConnectMobileGetWithHttpInfo($access_token);
+        list($response) = $this->v1ConnectMobileGetWithHttpInfo($access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1ConnectMobileGetWithHttpInfo
      *
-     * Mobile connect page.
+     * Mobile connect page
      *
      * @param string $access_token User OAuth access token (required)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1ConnectMobileGetWithHttpInfo($access_token)
+    public function v1ConnectMobileGetWithHttpInfo($access_token, $user_id = null)
     {
-        
         // verify the required parameter 'access_token' is set
         if ($access_token === null) {
             throw new \InvalidArgumentException('Missing the required parameter $access_token when calling v1ConnectMobileGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/connect/mobile";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('text/html'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['text/html']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
         }
-
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('api_key');
         if (strlen($apiKey) !== 0) {
             $headerParams['api_key'] = $apiKey;
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -276,10 +261,12 @@ class ConnectorsApi
                 'GET',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v1/connect/mobile'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -287,60 +274,61 @@ class ConnectorsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1ConnectorsConnectorConnectGet
      *
-     * Obtain a token from 3rd party data source.
+     * Obtain a token from 3rd party data source
      *
      * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return void
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
-    public function v1ConnectorsConnectorConnectGet($connector, $access_token = null)
+    public function v1ConnectorsConnectorConnectGet($connector, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1ConnectorsConnectorConnectGetWithHttpInfo($connector, $access_token);
+        list($response) = $this->v1ConnectorsConnectorConnectGetWithHttpInfo($connector, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1ConnectorsConnectorConnectGetWithHttpInfo
      *
-     * Obtain a token from 3rd party data source.
+     * Obtain a token from 3rd party data source
      *
      * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1ConnectorsConnectorConnectGetWithHttpInfo($connector, $access_token = null)
+    public function v1ConnectorsConnectorConnectGetWithHttpInfo($connector, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'connector' is set
         if ($connector === null) {
             throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorConnectGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/connect";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // path params
         if ($connector !== null) {
             $resourcePath = str_replace(
@@ -353,294 +341,12 @@ class ConnectorsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams
-            );
-
-            return array(null, $statusCode, $httpHeader);
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-
-            throw $e;
-        }
-    }
-    /**
-     * Operation v1ConnectorsConnectorConnectInstructionsGet
-     *
-     * Connection Instructions.
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $parameters JSON Array of Parameters for the request to enable connector. (required)
-     * @param string $url URL which should be used to enable the connector. (required)
-     * @param bool $use_popup Should use popup when enabling connector (required)
-     * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return void
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup, $access_token = null)
-    {
-        list($response) = $this->v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo($connector, $parameters, $url, $use_popup, $access_token);
-        return $response;
-    }
-
-
-    /**
-     * Operation v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo
-     *
-     * Connection Instructions.
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $parameters JSON Array of Parameters for the request to enable connector. (required)
-     * @param string $url URL which should be used to enable the connector. (required)
-     * @param bool $use_popup Should use popup when enabling connector (required)
-     * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo($connector, $parameters, $url, $use_popup, $access_token = null)
-    {
-        
-        // verify the required parameter 'connector' is set
-        if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorConnectInstructionsGet');
-        }
-
-        // verify the required parameter 'parameters' is set
-        if ($parameters === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $parameters when calling v1ConnectorsConnectorConnectInstructionsGet');
-        }
-
-        // verify the required parameter 'url' is set
-        if ($url === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $url when calling v1ConnectorsConnectorConnectInstructionsGet');
-        }
-
-        // verify the required parameter 'use_popup' is set
-        if ($use_popup === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $use_popup when calling v1ConnectorsConnectorConnectInstructionsGet');
-        }
-
-        // parse inputs
-        $resourcePath = "/v1/connectors/{connector}/connectInstructions";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
-
-        // query params
-        if ($access_token !== null) {
-            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
-        if ($parameters !== null) {
-            $queryParams['parameters'] = $this->apiClient->getSerializer()->toQueryValue($parameters);
-        }// query params
-        if ($url !== null) {
-            $queryParams['url'] = $this->apiClient->getSerializer()->toQueryValue($url);
-        }// query params
-        if ($use_popup !== null) {
-            $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
-        }
-        
-        // path params
-        if ($connector !== null) {
-            $resourcePath = str_replace(
-                "{" . "connector" . "}",
-                $this->apiClient->getSerializer()->toPathValue($connector),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams
-            );
-
-            return array(null, $statusCode, $httpHeader);
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-
-            throw $e;
-        }
-    }
-    /**
-     * Operation v1ConnectorsConnectorConnectParameterGet
-     *
-     * Connect Parameter.
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $display_name Name of the parameter that is user visible in the form (required)
-     * @param string $key Name of the property that the user has to enter such as username or password Connector (used in HTTP request) (required)
-     * @param string $placeholder Placeholder hint value for the parameter input tag. (required)
-     * @param string $type Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp (required)
-     * @param bool $use_popup Should use popup when enabling connector (required)
-     * @param string $access_token User&#39;s OAuth2 access token (optional)
-     * @param string $default_value Default parameter value (optional)
-     *
-     * @return \QuantiModo\Client\Model\ConnectorInstruction
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $default_value = null)
-    {
-        list($response) = $this->v1ConnectorsConnectorConnectParameterGetWithHttpInfo($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $default_value);
-        return $response;
-    }
-
-
-    /**
-     * Operation v1ConnectorsConnectorConnectParameterGetWithHttpInfo
-     *
-     * Connect Parameter.
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $display_name Name of the parameter that is user visible in the form (required)
-     * @param string $key Name of the property that the user has to enter such as username or password Connector (used in HTTP request) (required)
-     * @param string $placeholder Placeholder hint value for the parameter input tag. (required)
-     * @param string $type Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp (required)
-     * @param bool $use_popup Should use popup when enabling connector (required)
-     * @param string $access_token User&#39;s OAuth2 access token (optional)
-     * @param string $default_value Default parameter value (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\ConnectorInstruction, HTTP status code, HTTP response headers (array of strings)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsConnectorConnectParameterGetWithHttpInfo($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $default_value = null)
-    {
-        
-        // verify the required parameter 'connector' is set
-        if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorConnectParameterGet');
-        }
-
-        // verify the required parameter 'display_name' is set
-        if ($display_name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $display_name when calling v1ConnectorsConnectorConnectParameterGet');
-        }
-
-        // verify the required parameter 'key' is set
-        if ($key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $key when calling v1ConnectorsConnectorConnectParameterGet');
-        }
-
-        // verify the required parameter 'placeholder' is set
-        if ($placeholder === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $placeholder when calling v1ConnectorsConnectorConnectParameterGet');
-        }
-
-        // verify the required parameter 'type' is set
-        if ($type === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $type when calling v1ConnectorsConnectorConnectParameterGet');
-        }
-
-        // verify the required parameter 'use_popup' is set
-        if ($use_popup === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $use_popup when calling v1ConnectorsConnectorConnectParameterGet');
-        }
-
-        // parse inputs
-        $resourcePath = "/v1/connectors/{connector}/connectParameter";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
-
-        // query params
-        if ($access_token !== null) {
-            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
-        if ($default_value !== null) {
-            $queryParams['defaultValue'] = $this->apiClient->getSerializer()->toQueryValue($default_value);
-        }// query params
-        if ($display_name !== null) {
-            $queryParams['displayName'] = $this->apiClient->getSerializer()->toQueryValue($display_name);
-        }// query params
-        if ($key !== null) {
-            $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
-        }// query params
-        if ($placeholder !== null) {
-            $queryParams['placeholder'] = $this->apiClient->getSerializer()->toQueryValue($placeholder);
-        }// query params
-        if ($type !== null) {
-            $queryParams['type'] = $this->apiClient->getSerializer()->toQueryValue($type);
-        }// query params
-        if ($use_popup !== null) {
-            $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
-        }
-        
-        // path params
-        if ($connector !== null) {
-            $resourcePath = str_replace(
-                "{" . "connector" . "}",
-                $this->apiClient->getSerializer()->toPathValue($connector),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -653,10 +359,291 @@ class ConnectorsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\ConnectorInstruction'
+                null,
+                '/v1/connectors/{connector}/connect'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\ConnectorInstruction', $httpHeader), $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v1ConnectorsConnectorConnectInstructionsGet
+     *
+     * Connection Instructions
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $parameters JSON Array of Parameters for the request to enable connector. (required)
+     * @param string $url URL which should be used to enable the connector. (required)
+     * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
+     */
+    public function v1ConnectorsConnectorConnectInstructionsGet($connector, $parameters, $url, $use_popup, $access_token = null, $user_id = null)
+    {
+        list($response) = $this->v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo($connector, $parameters, $url, $use_popup, $access_token, $user_id);
+        return $response;
+    }
+
+    /**
+     * Operation v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo
+     *
+     * Connection Instructions
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $parameters JSON Array of Parameters for the request to enable connector. (required)
+     * @param string $url URL which should be used to enable the connector. (required)
+     * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v1ConnectorsConnectorConnectInstructionsGetWithHttpInfo($connector, $parameters, $url, $use_popup, $access_token = null, $user_id = null)
+    {
+        // verify the required parameter 'connector' is set
+        if ($connector === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorConnectInstructionsGet');
+        }
+        // verify the required parameter 'parameters' is set
+        if ($parameters === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $parameters when calling v1ConnectorsConnectorConnectInstructionsGet');
+        }
+        // verify the required parameter 'url' is set
+        if ($url === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $url when calling v1ConnectorsConnectorConnectInstructionsGet');
+        }
+        // verify the required parameter 'use_popup' is set
+        if ($use_popup === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $use_popup when calling v1ConnectorsConnectorConnectInstructionsGet');
+        }
+        // parse inputs
+        $resourcePath = "/v1/connectors/{connector}/connectInstructions";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // query params
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
+        if ($parameters !== null) {
+            $queryParams['parameters'] = $this->apiClient->getSerializer()->toQueryValue($parameters);
+        }
+        // query params
+        if ($url !== null) {
+            $queryParams['url'] = $this->apiClient->getSerializer()->toQueryValue($url);
+        }
+        // query params
+        if ($use_popup !== null) {
+            $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
+        }
+        // path params
+        if ($connector !== null) {
+            $resourcePath = str_replace(
+                "{" . "connector" . "}",
+                $this->apiClient->getSerializer()->toPathValue($connector),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                null,
+                '/v1/connectors/{connector}/connectInstructions'
+            );
+
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v1ConnectorsConnectorConnectParameterGet
+     *
+     * Connect Parameter
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $display_name Name of the parameter that is user visible in the form (required)
+     * @param string $key Name of the property that the user has to enter such as username or password Connector (used in HTTP request) (required)
+     * @param string $placeholder Placeholder hint value for the parameter input tag. (required)
+     * @param string $type Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp (required)
+     * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $default_value Default parameter value (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\ConnectorInstruction
+     */
+    public function v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $user_id = null, $default_value = null)
+    {
+        list($response) = $this->v1ConnectorsConnectorConnectParameterGetWithHttpInfo($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $user_id, $default_value);
+        return $response;
+    }
+
+    /**
+     * Operation v1ConnectorsConnectorConnectParameterGetWithHttpInfo
+     *
+     * Connect Parameter
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $display_name Name of the parameter that is user visible in the form (required)
+     * @param string $key Name of the property that the user has to enter such as username or password Connector (used in HTTP request) (required)
+     * @param string $placeholder Placeholder hint value for the parameter input tag. (required)
+     * @param string $type Type of input field such as those found here http://www.w3schools.com/tags/tag_input.asp (required)
+     * @param bool $use_popup Should use popup when enabling connector (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $default_value Default parameter value (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\ConnectorInstruction, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v1ConnectorsConnectorConnectParameterGetWithHttpInfo($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $user_id = null, $default_value = null)
+    {
+        // verify the required parameter 'connector' is set
+        if ($connector === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorConnectParameterGet');
+        }
+        // verify the required parameter 'display_name' is set
+        if ($display_name === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $display_name when calling v1ConnectorsConnectorConnectParameterGet');
+        }
+        // verify the required parameter 'key' is set
+        if ($key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $key when calling v1ConnectorsConnectorConnectParameterGet');
+        }
+        // verify the required parameter 'placeholder' is set
+        if ($placeholder === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $placeholder when calling v1ConnectorsConnectorConnectParameterGet');
+        }
+        // verify the required parameter 'type' is set
+        if ($type === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $type when calling v1ConnectorsConnectorConnectParameterGet');
+        }
+        // verify the required parameter 'use_popup' is set
+        if ($use_popup === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $use_popup when calling v1ConnectorsConnectorConnectParameterGet');
+        }
+        // parse inputs
+        $resourcePath = "/v1/connectors/{connector}/connectParameter";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // query params
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
+        if ($default_value !== null) {
+            $queryParams['defaultValue'] = $this->apiClient->getSerializer()->toQueryValue($default_value);
+        }
+        // query params
+        if ($display_name !== null) {
+            $queryParams['displayName'] = $this->apiClient->getSerializer()->toQueryValue($display_name);
+        }
+        // query params
+        if ($key !== null) {
+            $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
+        }
+        // query params
+        if ($placeholder !== null) {
+            $queryParams['placeholder'] = $this->apiClient->getSerializer()->toQueryValue($placeholder);
+        }
+        // query params
+        if ($type !== null) {
+            $queryParams['type'] = $this->apiClient->getSerializer()->toQueryValue($type);
+        }
+        // query params
+        if ($use_popup !== null) {
+            $queryParams['usePopup'] = $this->apiClient->getSerializer()->toQueryValue($use_popup);
+        }
+        // path params
+        if ($connector !== null) {
+            $resourcePath = str_replace(
+                "{" . "connector" . "}",
+                $this->apiClient->getSerializer()->toPathValue($connector),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\QuantiModo\Client\Model\ConnectorInstruction',
+                '/v1/connectors/{connector}/connectParameter'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\ConnectorInstruction', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -668,15 +655,15 @@ class ConnectorsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1ConnectorsConnectorDisconnectGet
      *
-     * Delete stored connection info.
+     * Delete stored connection info
      *
      * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     *
-     * @return void
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
     public function v1ConnectorsConnectorDisconnectGet($connector)
     {
@@ -684,39 +671,33 @@ class ConnectorsApi
         return $response;
     }
 
-
     /**
      * Operation v1ConnectorsConnectorDisconnectGetWithHttpInfo
      *
-     * Delete stored connection info.
+     * Delete stored connection info
      *
      * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1ConnectorsConnectorDisconnectGetWithHttpInfo($connector)
     {
-        
         // verify the required parameter 'connector' is set
         if ($connector === null) {
             throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorDisconnectGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/disconnect";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        
-        
         // path params
         if ($connector !== null) {
             $resourcePath = str_replace(
@@ -729,112 +710,12 @@ class ConnectorsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams
-            );
-
-            return array(null, $statusCode, $httpHeader);
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-
-            throw $e;
-        }
-    }
-    /**
-     * Operation v1ConnectorsConnectorInfoGet
-     *
-     * Get connector info for user.
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\ConnectorInfo
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsConnectorInfoGet($connector, $access_token = null)
-    {
-        list($response) = $this->v1ConnectorsConnectorInfoGetWithHttpInfo($connector, $access_token);
-        return $response;
-    }
-
-
-    /**
-     * Operation v1ConnectorsConnectorInfoGetWithHttpInfo
-     *
-     * Get connector info for user.
-     *
-     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
-     * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\ConnectorInfo, HTTP status code, HTTP response headers (array of strings)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsConnectorInfoGetWithHttpInfo($connector, $access_token = null)
-    {
-        
-        // verify the required parameter 'connector' is set
-        if ($connector === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorInfoGet');
-        }
-
-        // parse inputs
-        $resourcePath = "/v1/connectors/{connector}/info";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
-
-        // query params
-        if ($access_token !== null) {
-            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }
-        
-        // path params
-        if ($connector !== null) {
-            $resourcePath = str_replace(
-                "{" . "connector" . "}",
-                $this->apiClient->getSerializer()->toPathValue($connector),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -847,10 +728,108 @@ class ConnectorsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\ConnectorInfo'
+                null,
+                '/v1/connectors/{connector}/disconnect'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\ConnectorInfo', $httpHeader), $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v1ConnectorsConnectorInfoGet
+     *
+     * Get connector info for user
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\ConnectorInfo
+     */
+    public function v1ConnectorsConnectorInfoGet($connector, $access_token = null, $user_id = null)
+    {
+        list($response) = $this->v1ConnectorsConnectorInfoGetWithHttpInfo($connector, $access_token, $user_id);
+        return $response;
+    }
+
+    /**
+     * Operation v1ConnectorsConnectorInfoGetWithHttpInfo
+     *
+     * Get connector info for user
+     *
+     * @param string $connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. (required)
+     * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\ConnectorInfo, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v1ConnectorsConnectorInfoGetWithHttpInfo($connector, $access_token = null, $user_id = null)
+    {
+        // verify the required parameter 'connector' is set
+        if ($connector === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorInfoGet');
+        }
+        // parse inputs
+        $resourcePath = "/v1/connectors/{connector}/info";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // query params
+        if ($access_token !== null) {
+            $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // path params
+        if ($connector !== null) {
+            $resourcePath = str_replace(
+                "{" . "connector" . "}",
+                $this->apiClient->getSerializer()->toPathValue($connector),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\QuantiModo\Client\Model\ConnectorInfo',
+                '/v1/connectors/{connector}/info'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\ConnectorInfo', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -862,60 +841,61 @@ class ConnectorsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1ConnectorsConnectorUpdateGet
      *
-     * Sync with data source.
+     * Sync with data source
      *
      * @param string $connector Lowercase system name of the source application or device (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return void
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
-    public function v1ConnectorsConnectorUpdateGet($connector, $access_token = null)
+    public function v1ConnectorsConnectorUpdateGet($connector, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1ConnectorsConnectorUpdateGetWithHttpInfo($connector, $access_token);
+        list($response) = $this->v1ConnectorsConnectorUpdateGetWithHttpInfo($connector, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1ConnectorsConnectorUpdateGetWithHttpInfo
      *
-     * Sync with data source.
+     * Sync with data source
      *
      * @param string $connector Lowercase system name of the source application or device (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1ConnectorsConnectorUpdateGetWithHttpInfo($connector, $access_token = null)
+    public function v1ConnectorsConnectorUpdateGetWithHttpInfo($connector, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'connector' is set
         if ($connector === null) {
             throw new \InvalidArgumentException('Missing the required parameter $connector when calling v1ConnectorsConnectorUpdateGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/connectors/{connector}/update";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // path params
         if ($connector !== null) {
             $resourcePath = str_replace(
@@ -928,93 +908,12 @@ class ConnectorsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams
-            );
-
-            return array(null, $statusCode, $httpHeader);
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-
-            throw $e;
-        }
-    }
-    /**
-     * Operation v1ConnectorsListGet
-     *
-     * List of Connectors.
-     *
-     *
-     * @return \QuantiModo\Client\Model\Connector[]
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsListGet()
-    {
-        list($response) = $this->v1ConnectorsListGetWithHttpInfo();
-        return $response;
-    }
-
-
-    /**
-     * Operation v1ConnectorsListGetWithHttpInfo
-     *
-     * List of Connectors.
-     *
-     *
-     * @return Array of \QuantiModo\Client\Model\Connector[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     */
-    public function v1ConnectorsListGetWithHttpInfo()
-    {
-        
-        // parse inputs
-        $resourcePath = "/v1/connectors/list";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
-
-        
-        
-        
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -1027,10 +926,82 @@ class ConnectorsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Connector[]'
+                null,
+                '/v1/connectors/{connector}/update'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Connector[]', $httpHeader), $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v1ConnectorsListGet
+     *
+     * List of Connectors
+     *
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Connector[]
+     */
+    public function v1ConnectorsListGet()
+    {
+        list($response) = $this->v1ConnectorsListGetWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation v1ConnectorsListGetWithHttpInfo
+     *
+     * List of Connectors
+     *
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Connector[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v1ConnectorsListGetWithHttpInfo()
+    {
+        // parse inputs
+        $resourcePath = "/v1/connectors/list";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\QuantiModo\Client\Model\Connector[]',
+                '/v1/connectors/list'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Connector[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:

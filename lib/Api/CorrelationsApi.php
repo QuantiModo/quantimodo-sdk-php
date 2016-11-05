@@ -6,7 +6,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -40,9 +40,9 @@
 
 namespace QuantiModo\Client\Api;
 
-use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
+use \QuantiModo\Client\Configuration;
 use \QuantiModo\Client\ObjectSerializer;
 
 /**
@@ -51,12 +51,11 @@ use \QuantiModo\Client\ObjectSerializer;
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class CorrelationsApi
 {
-
     /**
      * API Client
      *
@@ -71,7 +70,7 @@ class CorrelationsApi
      */
     public function __construct(\QuantiModo\Client\ApiClient $apiClient = null)
     {
-        if ($apiClient == null) {
+        if ($apiClient === null) {
             $apiClient = new ApiClient();
             $apiClient->getConfig()->setHost('https://app.quantimo.do/api');
         }
@@ -105,109 +104,115 @@ class CorrelationsApi
     /**
      * Operation v1AggregatedCorrelationsGet
      *
-     * Get aggregated correlations.
+     * Get aggregated correlations
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
      * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
      * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
-     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
-     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
+     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1AggregatedCorrelationsGet($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1AggregatedCorrelationsGet($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1AggregatedCorrelationsGetWithHttpInfo($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+        list($response) = $this->v1AggregatedCorrelationsGetWithHttpInfo($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v1AggregatedCorrelationsGetWithHttpInfo
      *
-     * Get aggregated correlations.
+     * Get aggregated correlations
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
      * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
      * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
-     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
-     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
+     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1AggregatedCorrelationsGetWithHttpInfo($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1AggregatedCorrelationsGetWithHttpInfo($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v1/aggregatedCorrelations";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($effect !== null) {
             $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
-        }// query params
+        }
+        // query params
         if ($cause !== null) {
             $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
-        }// query params
+        }
+        // query params
         if ($correlation_coefficient !== null) {
             $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
-        }// query params
+        }
+        // query params
         if ($onset_delay !== null) {
             $queryParams['onsetDelay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
-        }// query params
+        }
+        // query params
         if ($duration_of_action !== null) {
             $queryParams['durationOfAction'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
-        }// query params
+        }
+        // query params
         if ($last_updated !== null) {
             $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -220,10 +225,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/aggregatedCorrelations'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -235,65 +241,64 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1AggregatedCorrelationsPost
      *
-     * Store or Update a Correlation.
+     * Store or Update a Correlation
      *
      * @param \QuantiModo\Client\Model\PostCorrelation $body Provides correlation data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return void
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return void
      */
-    public function v1AggregatedCorrelationsPost($body, $access_token = null)
+    public function v1AggregatedCorrelationsPost($body, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1AggregatedCorrelationsPostWithHttpInfo($body, $access_token);
+        list($response) = $this->v1AggregatedCorrelationsPostWithHttpInfo($body, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1AggregatedCorrelationsPostWithHttpInfo
      *
-     * Store or Update a Correlation.
+     * Store or Update a Correlation
      *
      * @param \QuantiModo\Client\Model\PostCorrelation $body Provides correlation data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1AggregatedCorrelationsPostWithHttpInfo($body, $access_token = null)
+    public function v1AggregatedCorrelationsPostWithHttpInfo($body, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'body' is set
         if ($body === null) {
             throw new \InvalidArgumentException('Missing the required parameter $body when calling v1AggregatedCorrelationsPost');
         }
-
         // parse inputs
         $resourcePath = "/v1/aggregatedCorrelations";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -306,7 +311,6 @@ class CorrelationsApi
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -318,10 +322,12 @@ class CorrelationsApi
                 'POST',
                 $queryParams,
                 $httpBody,
-                $headerParams
+                $headerParams,
+                null,
+                '/v1/aggregatedCorrelations'
             );
 
-            return array(null, $statusCode, $httpHeader);
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
@@ -333,112 +339,119 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1CorrelationsGet
      *
-     * Get correlations.
+     * Get correlations
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
      * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
      * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
-     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
-     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
+     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1CorrelationsGet($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1CorrelationsGet($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1CorrelationsGetWithHttpInfo($access_token, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+        list($response) = $this->v1CorrelationsGetWithHttpInfo($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
         return $response;
     }
-
 
     /**
      * Operation v1CorrelationsGetWithHttpInfo
      *
-     * Get correlations.
+     * Get correlations
      *
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations (optional)
      * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations (optional)
      * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
-     * @param string $onset_delay The number of seconds which pass following a cause measurement before an effect would likely be observed. (optional)
-     * @param string $duration_of_action The time in seconds over which the cause would be expected to exert a measurable effect. We have selected a default value for each variable. This default value may be replaced by a user specified by adjusting their variable user settings. (optional)
+     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
+     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @param string $last_updated The time that this measurement was last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1CorrelationsGetWithHttpInfo($access_token = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1CorrelationsGetWithHttpInfo($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
     {
-        
         // parse inputs
         $resourcePath = "/v1/correlations";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($effect !== null) {
             $queryParams['effect'] = $this->apiClient->getSerializer()->toQueryValue($effect);
-        }// query params
+        }
+        // query params
         if ($cause !== null) {
             $queryParams['cause'] = $this->apiClient->getSerializer()->toQueryValue($cause);
-        }// query params
+        }
+        // query params
         if ($correlation_coefficient !== null) {
             $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
-        }// query params
+        }
+        // query params
         if ($onset_delay !== null) {
             $queryParams['onsetDelay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
-        }// query params
+        }
+        // query params
         if ($duration_of_action !== null) {
             $queryParams['durationOfAction'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
-        }// query params
+        }
+        // query params
         if ($last_updated !== null) {
             $queryParams['lastUpdated'] = $this->apiClient->getSerializer()->toQueryValue($last_updated);
-        }// query params
+        }
+        // query params
         if ($limit !== null) {
             $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }// query params
+        }
+        // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
+        }
+        // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        
-        
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -451,10 +464,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/correlations'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -466,89 +480,89 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet
      *
-     * Search user correlations for a given cause.
+     * Search user correlations for a given cause
      *
      * @param int $organization_id Organization ID (required)
-     * @param int $user_id User id (required)
+     * @param int $user_id2 User id (required)
      * @param string $variable_name Effect variable name (required)
      * @param string $organization_token Organization access token (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet($organization_id, $user_id2, $variable_name, $organization_token, $access_token = null, $user_id = null, $include_public = null)
     {
-        list($response) = $this->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public);
+        list($response) = $this->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo($organization_id, $user_id2, $variable_name, $organization_token, $access_token, $user_id, $include_public);
         return $response;
     }
-
 
     /**
      * Operation v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo
      *
-     * Search user correlations for a given cause.
+     * Search user correlations for a given cause
      *
      * @param int $organization_id Organization ID (required)
-     * @param int $user_id User id (required)
+     * @param int $user_id2 User id (required)
      * @param string $variable_name Effect variable name (required)
      * @param string $organization_token Organization access token (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithHttpInfo($organization_id, $user_id2, $variable_name, $organization_token, $access_token = null, $user_id = null, $include_public = null)
     {
-        
         // verify the required parameter 'organization_id' is set
         if ($organization_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $organization_id when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet');
         }
-
-        // verify the required parameter 'user_id' is set
-        if ($user_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $user_id when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet');
+        // verify the required parameter 'user_id2' is set
+        if ($user_id2 === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $user_id2 when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet');
         }
-
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet');
         }
-
         // verify the required parameter 'organization_token' is set
         if ($organization_token === null) {
             throw new \InvalidArgumentException('Missing the required parameter $organization_token when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/causes";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($organization_token !== null) {
             $queryParams['organization_token'] = $this->apiClient->getSerializer()->toQueryValue($organization_token);
-        }// query params
+        }
+        // query params
         if ($include_public !== null) {
             $queryParams['includePublic'] = $this->apiClient->getSerializer()->toQueryValue($include_public);
         }
-        
         // path params
         if ($organization_id !== null) {
             $resourcePath = str_replace(
@@ -556,14 +570,16 @@ class CorrelationsApi
                 $this->apiClient->getSerializer()->toPathValue($organization_id),
                 $resourcePath
             );
-        }// path params
-        if ($user_id !== null) {
+        }
+        // path params
+        if ($user_id2 !== null) {
             $resourcePath = str_replace(
                 "{" . "userId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($user_id),
+                $this->apiClient->getSerializer()->toPathValue($user_id2),
                 $resourcePath
             );
-        }// path params
+        }
+        // path params
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -575,15 +591,12 @@ class CorrelationsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -596,10 +609,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/causes'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -611,89 +625,89 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet
      *
-     * Search user correlations for a given cause.
+     * Search user correlations for a given cause
      *
      * @param int $organization_id Organization ID (required)
-     * @param int $user_id User id (required)
+     * @param int $user_id2 User id (required)
      * @param string $variable_name Cause variable name (required)
      * @param string $organization_token Organization access token (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
-     *
-     * @return \QuantiModo\Client\Model\CommonResponse[]
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\CommonResponse[]
      */
-    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet($organization_id, $user_id2, $variable_name, $organization_token, $access_token = null, $user_id = null, $include_public = null)
     {
-        list($response) = $this->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token, $include_public);
+        list($response) = $this->v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo($organization_id, $user_id2, $variable_name, $organization_token, $access_token, $user_id, $include_public);
         return $response;
     }
-
 
     /**
      * Operation v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo
      *
-     * Search user correlations for a given cause.
+     * Search user correlations for a given cause
      *
      * @param int $organization_id Organization ID (required)
-     * @param int $user_id User id (required)
+     * @param int $user_id2 User id (required)
      * @param string $variable_name Cause variable name (required)
      * @param string $organization_token Organization access token (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
+     * @param int $user_id User&#39;s id (optional)
      * @param string $include_public Include public correlations, Can be \&quot;1\&quot; or empty. (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\CommonResponse[], HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\CommonResponse[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo($organization_id, $user_id, $variable_name, $organization_token, $access_token = null, $include_public = null)
+    public function v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithHttpInfo($organization_id, $user_id2, $variable_name, $organization_token, $access_token = null, $user_id = null, $include_public = null)
     {
-        
         // verify the required parameter 'organization_id' is set
         if ($organization_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $organization_id when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet');
         }
-
-        // verify the required parameter 'user_id' is set
-        if ($user_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $user_id when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet');
+        // verify the required parameter 'user_id2' is set
+        if ($user_id2 === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $user_id2 when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet');
         }
-
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet');
         }
-
         // verify the required parameter 'organization_token' is set
         if ($organization_token === null) {
             throw new \InvalidArgumentException('Missing the required parameter $organization_token when calling v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/effects";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($organization_token !== null) {
             $queryParams['organization_token'] = $this->apiClient->getSerializer()->toQueryValue($organization_token);
-        }// query params
+        }
+        // query params
         if ($include_public !== null) {
             $queryParams['include_public'] = $this->apiClient->getSerializer()->toQueryValue($include_public);
         }
-        
         // path params
         if ($organization_id !== null) {
             $resourcePath = str_replace(
@@ -701,14 +715,16 @@ class CorrelationsApi
                 $this->apiClient->getSerializer()->toPathValue($organization_id),
                 $resourcePath
             );
-        }// path params
-        if ($user_id !== null) {
+        }
+        // path params
+        if ($user_id2 !== null) {
             $resourcePath = str_replace(
                 "{" . "userId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($user_id),
+                $this->apiClient->getSerializer()->toPathValue($user_id2),
                 $resourcePath
             );
-        }// path params
+        }
+        // path params
         if ($variable_name !== null) {
             $resourcePath = str_replace(
                 "{" . "variableName" . "}",
@@ -720,15 +736,12 @@ class CorrelationsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -741,10 +754,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\CommonResponse[]'
+                '\QuantiModo\Client\Model\CommonResponse[]',
+                '/v1/organizations/{organizationId}/users/{userId}/variables/{variableName}/effects'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -756,70 +770,71 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1PublicCorrelationsSearchSearchGet
      *
-     * Get average correlations for variables containing search term.
+     * Get average correlations for variables containing search term
      *
      * @param string $search Name of the variable that you want to know the causes or effects of. (required)
      * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token = null)
+    public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token);
+        list($response) = $this->v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1PublicCorrelationsSearchSearchGetWithHttpInfo
      *
-     * Get average correlations for variables containing search term.
+     * Get average correlations for variables containing search term
      *
      * @param string $search Name of the variable that you want to know the causes or effects of. (required)
      * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token = null)
+    public function v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'search' is set
         if ($search === null) {
             throw new \InvalidArgumentException('Missing the required parameter $search when calling v1PublicCorrelationsSearchSearchGet');
         }
-
         // verify the required parameter 'effect_or_cause' is set
         if ($effect_or_cause === null) {
             throw new \InvalidArgumentException('Missing the required parameter $effect_or_cause when calling v1PublicCorrelationsSearchSearchGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/public/correlations/search/{search}";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
-        }// query params
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
         if ($effect_or_cause !== null) {
             $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
         }
-        
         // path params
         if ($search !== null) {
             $resourcePath = str_replace(
@@ -832,15 +847,12 @@ class CorrelationsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -853,10 +865,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/public/correlations/search/{search}'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -868,15 +881,15 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesVariableNameCausesGet
      *
-     * Search user correlations for a given effect.
+     * Search user correlations for a given effect
      *
      * @param string $variable_name Effect variable name (required)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
     public function v1VariablesVariableNameCausesGet($variable_name)
     {
@@ -884,39 +897,33 @@ class CorrelationsApi
         return $response;
     }
 
-
     /**
      * Operation v1VariablesVariableNameCausesGetWithHttpInfo
      *
-     * Search user correlations for a given effect.
+     * Search user correlations for a given effect
      *
      * @param string $variable_name Effect variable name (required)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1VariablesVariableNameCausesGetWithHttpInfo($variable_name)
     {
-        
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1VariablesVariableNameCausesGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/causes";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        
-        
         // path params
         if ($variable_name !== null) {
             $resourcePath = str_replace(
@@ -929,15 +936,12 @@ class CorrelationsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -950,10 +954,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/variables/{variableName}/causes'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -965,60 +970,67 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesVariableNameEffectsGet
      *
-     * Search user correlations for a given cause.
+     * Search user correlations for a given cause
      *
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $correlation_coefficient You can use this to get effects with correlations greater than or less than 0 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1VariablesVariableNameEffectsGet($variable_name, $access_token = null)
+    public function v1VariablesVariableNameEffectsGet($variable_name, $access_token = null, $user_id = null, $correlation_coefficient = null)
     {
-        list($response) = $this->v1VariablesVariableNameEffectsGetWithHttpInfo($variable_name, $access_token);
+        list($response) = $this->v1VariablesVariableNameEffectsGetWithHttpInfo($variable_name, $access_token, $user_id, $correlation_coefficient);
         return $response;
     }
-
 
     /**
      * Operation v1VariablesVariableNameEffectsGetWithHttpInfo
      *
-     * Search user correlations for a given cause.
+     * Search user correlations for a given cause
      *
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $correlation_coefficient You can use this to get effects with correlations greater than or less than 0 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesVariableNameEffectsGetWithHttpInfo($variable_name, $access_token = null)
+    public function v1VariablesVariableNameEffectsGetWithHttpInfo($variable_name, $access_token = null, $user_id = null, $correlation_coefficient = null)
     {
-        
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1VariablesVariableNameEffectsGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/effects";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
+        if ($correlation_coefficient !== null) {
+            $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
+        }
         // path params
         if ($variable_name !== null) {
             $resourcePath = str_replace(
@@ -1031,15 +1043,12 @@ class CorrelationsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -1052,10 +1061,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/variables/{variableName}/effects'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1067,60 +1077,67 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesVariableNamePublicCausesGet
      *
-     * Search public correlations for a given effect.
+     * Search public correlations for a given effect
      *
      * @param string $variable_name Effect variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $correlation_coefficient You can use this to get causes with correlations greater than or less than 0 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1VariablesVariableNamePublicCausesGet($variable_name, $access_token = null)
+    public function v1VariablesVariableNamePublicCausesGet($variable_name, $access_token = null, $user_id = null, $correlation_coefficient = null)
     {
-        list($response) = $this->v1VariablesVariableNamePublicCausesGetWithHttpInfo($variable_name, $access_token);
+        list($response) = $this->v1VariablesVariableNamePublicCausesGetWithHttpInfo($variable_name, $access_token, $user_id, $correlation_coefficient);
         return $response;
     }
-
 
     /**
      * Operation v1VariablesVariableNamePublicCausesGetWithHttpInfo
      *
-     * Search public correlations for a given effect.
+     * Search public correlations for a given effect
      *
      * @param string $variable_name Effect variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
+     * @param string $correlation_coefficient You can use this to get causes with correlations greater than or less than 0 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesVariableNamePublicCausesGetWithHttpInfo($variable_name, $access_token = null)
+    public function v1VariablesVariableNamePublicCausesGetWithHttpInfo($variable_name, $access_token = null, $user_id = null, $correlation_coefficient = null)
     {
-        
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1VariablesVariableNamePublicCausesGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/public/causes";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
+        // query params
+        if ($correlation_coefficient !== null) {
+            $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
+        }
         // path params
         if ($variable_name !== null) {
             $resourcePath = str_replace(
@@ -1133,15 +1150,12 @@ class CorrelationsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -1154,10 +1168,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/variables/{variableName}/public/causes'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1169,60 +1184,61 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VariablesVariableNamePublicEffectsGet
      *
-     * Search public correlations for a given cause.
+     * Search public correlations for a given cause
      *
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\Correlation[]
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token = null)
+    public function v1VariablesVariableNamePublicEffectsGet($variable_name, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1VariablesVariableNamePublicEffectsGetWithHttpInfo($variable_name, $access_token);
+        list($response) = $this->v1VariablesVariableNamePublicEffectsGetWithHttpInfo($variable_name, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1VariablesVariableNamePublicEffectsGetWithHttpInfo
      *
-     * Search public correlations for a given cause.
+     * Search public correlations for a given cause
      *
      * @param string $variable_name Cause variable name (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesVariableNamePublicEffectsGetWithHttpInfo($variable_name, $access_token = null)
+    public function v1VariablesVariableNamePublicEffectsGetWithHttpInfo($variable_name, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'variable_name' is set
         if ($variable_name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $variable_name when calling v1VariablesVariableNamePublicEffectsGet');
         }
-
         // parse inputs
         $resourcePath = "/v1/variables/{variableName}/public/effects";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // path params
         if ($variable_name !== null) {
             $resourcePath = str_replace(
@@ -1235,15 +1251,12 @@ class CorrelationsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
-
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -1256,10 +1269,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]'
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v1/variables/{variableName}/public/effects'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1271,65 +1285,64 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VotesDeletePost
      *
-     * Delete vote.
+     * Delete vote
      *
      * @param \QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\CommonResponse
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
-    public function v1VotesDeletePost($body, $access_token = null)
+    public function v1VotesDeletePost($body, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1VotesDeletePostWithHttpInfo($body, $access_token);
+        list($response) = $this->v1VotesDeletePostWithHttpInfo($body, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1VotesDeletePostWithHttpInfo
      *
-     * Delete vote.
+     * Delete vote
      *
      * @param \QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VotesDeletePostWithHttpInfo($body, $access_token = null)
+    public function v1VotesDeletePostWithHttpInfo($body, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'body' is set
         if ($body === null) {
             throw new \InvalidArgumentException('Missing the required parameter $body when calling v1VotesDeletePost');
         }
-
         // parse inputs
         $resourcePath = "/v1/votes/delete";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -1342,7 +1355,6 @@ class CorrelationsApi
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -1355,10 +1367,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\CommonResponse'
+                '\QuantiModo\Client\Model\CommonResponse',
+                '/v1/votes/delete'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1370,65 +1383,64 @@ class CorrelationsApi
             throw $e;
         }
     }
+
     /**
      * Operation v1VotesPost
      *
-     * Post or update vote.
+     * Post or update vote
      *
      * @param \QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return \QuantiModo\Client\Model\CommonResponse
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
-    public function v1VotesPost($body, $access_token = null)
+    public function v1VotesPost($body, $access_token = null, $user_id = null)
     {
-        list($response) = $this->v1VotesPostWithHttpInfo($body, $access_token);
+        list($response) = $this->v1VotesPostWithHttpInfo($body, $access_token, $user_id);
         return $response;
     }
-
 
     /**
      * Operation v1VotesPostWithHttpInfo
      *
-     * Post or update vote.
+     * Post or update vote
      *
      * @param \QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
-     *
-     * @return Array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VotesPostWithHttpInfo($body, $access_token = null)
+    public function v1VotesPostWithHttpInfo($body, $access_token = null, $user_id = null)
     {
-        
         // verify the required parameter 'body' is set
         if ($body === null) {
             throw new \InvalidArgumentException('Missing the required parameter $body when calling v1VotesPost');
         }
-
         // parse inputs
         $resourcePath = "/v1/votes";
         $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
         if ($access_token !== null) {
             $queryParams['access_token'] = $this->apiClient->getSerializer()->toQueryValue($access_token);
         }
-        
-        
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -1441,7 +1453,6 @@ class CorrelationsApi
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
         // this endpoint requires OAuth (access token)
         if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
             $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
@@ -1454,10 +1465,11 @@ class CorrelationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\CommonResponse'
+                '\QuantiModo\Client\Model\CommonResponse',
+                '/v1/votes'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader);
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:

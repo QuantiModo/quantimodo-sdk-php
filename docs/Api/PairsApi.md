@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1PairsCsvGet**
-> \QuantiModo\Client\Model\Pairs[] v1PairsCsvGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Pairs[] v1PairsCsvGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
 
 Get pairs
 
@@ -27,10 +27,11 @@ $api_instance = new QuantiModo\Client\Api\PairsApi();
 $cause = "cause_example"; // string | Original variable name for the explanatory or independent variable
 $effect = "effect_example"; // string | Original variable name for the outcome or dependent variable
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $cause_source = "cause_source_example"; // string | Name of data source that the cause measurements should come from
 $cause_unit = "cause_unit_example"; // string | Abbreviated name for the unit cause measurements to be returned in
-$delay = "delay_example"; // string | Delay before onset of action (in seconds) from the cause variable settings.
-$duration = "duration_example"; // string | Duration of action (in seconds) from the cause variable settings.
+$delay = "delay_example"; // string | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
+$duration = "duration_example"; // string | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
 $effect_source = "effect_source_example"; // string | Name of data source that the effectmeasurements should come from
 $effect_unit = "effect_unit_example"; // string | Abbreviated name for the unit effect measurements to be returned in
 $end_time = "end_time_example"; // string | The most recent date (in epoch time) for which we should return measurements
@@ -40,7 +41,7 @@ $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set t
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1PairsCsvGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort);
+    $result = $api_instance->v1PairsCsvGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PairsApi->v1PairsCsvGet: ', $e->getMessage(), PHP_EOL;
@@ -55,10 +56,11 @@ Name | Type | Description  | Notes
  **cause** | **string**| Original variable name for the explanatory or independent variable |
  **effect** | **string**| Original variable name for the outcome or dependent variable |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **cause_source** | **string**| Name of data source that the cause measurements should come from | [optional]
  **cause_unit** | **string**| Abbreviated name for the unit cause measurements to be returned in | [optional]
- **delay** | **string**| Delay before onset of action (in seconds) from the cause variable settings. | [optional]
- **duration** | **string**| Duration of action (in seconds) from the cause variable settings. | [optional]
+ **delay** | **string**| The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional]
+ **duration** | **string**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
  **effect_source** | **string**| Name of data source that the effectmeasurements should come from | [optional]
  **effect_unit** | **string**| Abbreviated name for the unit effect measurements to be returned in | [optional]
  **end_time** | **string**| The most recent date (in epoch time) for which we should return measurements | [optional]
@@ -83,7 +85,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PairsGet**
-> \QuantiModo\Client\Model\Pairs[] v1PairsGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Pairs[] v1PairsGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
 
 Get pairs
 
@@ -101,10 +103,11 @@ $api_instance = new QuantiModo\Client\Api\PairsApi();
 $cause = "cause_example"; // string | Original variable name for the explanatory or independent variable
 $effect = "effect_example"; // string | Original variable name for the outcome or dependent variable
 $access_token = "access_token_example"; // string | User's OAuth2 access token
+$user_id = 56; // int | User's id
 $cause_source = "cause_source_example"; // string | Name of data source that the cause measurements should come from
 $cause_unit = "cause_unit_example"; // string | Abbreviated name for the unit cause measurements to be returned in
-$delay = "delay_example"; // string | Delay before onset of action (in seconds) from the cause variable settings.
-$duration = "duration_example"; // string | Duration of action (in seconds) from the cause variable settings.
+$delay = "delay_example"; // string | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
+$duration = "duration_example"; // string | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
 $effect_source = "effect_source_example"; // string | Name of data source that the effectmeasurements should come from
 $effect_unit = "effect_unit_example"; // string | Abbreviated name for the unit effect measurements to be returned in
 $end_time = "end_time_example"; // string | The most recent date (in epoch time) for which we should return measurements
@@ -114,7 +117,7 @@ $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set t
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1PairsGet($cause, $effect, $access_token, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort);
+    $result = $api_instance->v1PairsGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PairsApi->v1PairsGet: ', $e->getMessage(), PHP_EOL;
@@ -129,10 +132,11 @@ Name | Type | Description  | Notes
  **cause** | **string**| Original variable name for the explanatory or independent variable |
  **effect** | **string**| Original variable name for the outcome or dependent variable |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
+ **user_id** | **int**| User&#39;s id | [optional]
  **cause_source** | **string**| Name of data source that the cause measurements should come from | [optional]
  **cause_unit** | **string**| Abbreviated name for the unit cause measurements to be returned in | [optional]
- **delay** | **string**| Delay before onset of action (in seconds) from the cause variable settings. | [optional]
- **duration** | **string**| Duration of action (in seconds) from the cause variable settings. | [optional]
+ **delay** | **string**| The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional]
+ **duration** | **string**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
  **effect_source** | **string**| Name of data source that the effectmeasurements should come from | [optional]
  **effect_unit** | **string**| Abbreviated name for the unit effect measurements to be returned in | [optional]
  **end_time** | **string**| The most recent date (in epoch time) for which we should return measurements | [optional]

@@ -7,7 +7,7 @@
  * @category Class
  * @package  QuantiModo\Client
  * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
@@ -39,23 +39,24 @@
  * Please update the test case below to test the model.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client;
 
 /**
  * TrackingReminderNotificationTest Class Doc Comment
  *
- * @category    Class
- * @description TrackingReminderNotification
+ * @category    Class */
+// * @description TrackingReminderNotification
+/**
  * @package     QuantiModo\Client
  * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
+ * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class TrackingReminderNotificationTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Setup before running each test case
+     * Setup before running any test case
      */
     public static function setUpBeforeClass()
     {
@@ -63,7 +64,23 @@ class TrackingReminderNotificationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+
+    }
+
+    /**
      * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+
+    }
+
+    /**
+     * Clean up after running all test cases
      */
     public static function tearDownAfterClass()
     {
@@ -77,4 +94,141 @@ class TrackingReminderNotificationTest extends \PHPUnit_Framework_TestCase
     {
 
     }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+
+    }
+
+    /**
+     * Test attribute "tracking_reminder_id"
+     */
+    public function testPropertyTrackingReminderId()
+    {
+
+    }
+
+    /**
+     * Test attribute "client_id"
+     */
+    public function testPropertyClientId()
+    {
+
+    }
+
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
+    {
+
+    }
+
+    /**
+     * Test attribute "variable_id"
+     */
+    public function testPropertyVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "pending_reminder_time"
+     */
+    public function testPropertyPendingReminderTime()
+    {
+
+    }
+
+    /**
+     * Test attribute "default_value"
+     */
+    public function testPropertyDefaultValue()
+    {
+
+    }
+
+    /**
+     * Test attribute "reminder_sound"
+     */
+    public function testPropertyReminderSound()
+    {
+
+    }
+
+    /**
+     * Test attribute "pop_up"
+     */
+    public function testPropertyPopUp()
+    {
+
+    }
+
+    /**
+     * Test attribute "sms"
+     */
+    public function testPropertySms()
+    {
+
+    }
+
+    /**
+     * Test attribute "email"
+     */
+    public function testPropertyEmail()
+    {
+
+    }
+
+    /**
+     * Test attribute "notification_bar"
+     */
+    public function testPropertyNotificationBar()
+    {
+
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "variable_name"
+     */
+    public function testPropertyVariableName()
+    {
+
+    }
+
+    /**
+     * Test attribute "variable_category_name"
+     */
+    public function testPropertyVariableCategoryName()
+    {
+
+    }
+
+    /**
+     * Test attribute "abbreviated_unit_name"
+     */
+    public function testPropertyAbbreviatedUnitName()
+    {
+
+    }
+
+    /**
+     * Test attribute "combination_operation"
+     */
+    public function testPropertyCombinationOperation()
+    {
+
+    }
+
 }
