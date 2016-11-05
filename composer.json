@@ -8,12 +8,12 @@
         "sdk",
         "api"
     ],
-    "homepage": "http://swagger.io",
-    "license": "Apache-2.0",
+    "homepage": "https://quantimo.do",
+    "license": "Apache v2",
     "authors": [
         {
-            "name": "Swagger and contributors",
-            "homepage": "https://github.com/swagger-api/swagger-codegen"
+            "name": "QuantiModo",
+            "homepage": "https://quantimo.do"
         }
     ],
     "require": {
