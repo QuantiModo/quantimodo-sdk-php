@@ -1,6 +1,6 @@
 {
     "name": "quantimodo/quantimodo-sdk-php",
-    "version": "4.0.8",
+    "version": "4.6.5",
     "description": "",
     "keywords": [
         "swagger",
@@ -8,12 +8,12 @@
         "sdk",
         "api"
     ],
-    "homepage": "https://quantimo.do",
-    "license": "Apache v2",
+    "homepage": "http://swagger.io",
+    "license": "Apache-2.0",
     "authors": [
         {
-            "name": "QuantiModo",
-            "homepage": "https://quantimo.do"
+            "name": "Swagger and contributors",
+            "homepage": "https://github.com/swagger-api/swagger-codegen"
         }
     ],
     "require": {
