@@ -160,6 +160,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "cause_variable_id"
+     */
+    public function testPropertyCauseVariableId()
+    {
+
+    }
+
+    /**
      * Test attribute "correlation_coefficient"
      */
     public function testPropertyCorrelationCoefficient()
@@ -211,6 +219,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "effect_size"
      */
     public function testPropertyEffectSize()
+    {
+
+    }
+
+    /**
+     * Test attribute "effect_variable_id"
+     */
+    public function testPropertyEffectVariableId()
     {
 
     }
@@ -339,6 +355,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "study_limitations"
      */
     public function testPropertyStudyLimitations()
+    {
+
+    }
+
+    /**
+     * Test attribute "study_link"
+     */
+    public function testPropertyStudyLink()
     {
 
     }

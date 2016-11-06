@@ -74,6 +74,7 @@ class Correlation implements ArrayAccess
         'cause_combination_operation' => 'string',
         'cause_unit' => 'string',
         'cause_unit_id' => 'int',
+        'cause_variable_id' => 'int',
         'correlation_coefficient' => 'float',
         'data_analysis' => 'string',
         'data_sources' => 'string',
@@ -81,6 +82,7 @@ class Correlation implements ArrayAccess
         'effect' => 'string',
         'effect_category' => 'string',
         'effect_size' => 'string',
+        'effect_variable_id' => 'string',
         'number_of_pairs' => 'float',
         'original_effect' => 'string',
         'onset_delay' => 'double',
@@ -97,6 +99,7 @@ class Correlation implements ArrayAccess
         'study_background' => 'string',
         'study_design' => 'string',
         'study_limitations' => 'string',
+        'study_link' => 'string',
         'study_objective' => 'string',
         'study_results' => 'string',
         'study_title' => 'string',
@@ -126,6 +129,7 @@ class Correlation implements ArrayAccess
         'cause_combination_operation' => 'causeCombinationOperation',
         'cause_unit' => 'causeUnit',
         'cause_unit_id' => 'causeUnitId',
+        'cause_variable_id' => 'causeVariableId',
         'correlation_coefficient' => 'correlationCoefficient',
         'data_analysis' => 'dataAnalysis',
         'data_sources' => 'dataSources',
@@ -133,6 +137,7 @@ class Correlation implements ArrayAccess
         'effect' => 'effect',
         'effect_category' => 'effectCategory',
         'effect_size' => 'effectSize',
+        'effect_variable_id' => 'effectVariableId',
         'number_of_pairs' => 'numberOfPairs',
         'original_effect' => 'originalEffect',
         'onset_delay' => 'onsetDelay',
@@ -149,6 +154,7 @@ class Correlation implements ArrayAccess
         'study_background' => 'studyBackground',
         'study_design' => 'studyDesign',
         'study_limitations' => 'studyLimitations',
+        'study_link' => 'studyLink',
         'study_objective' => 'studyObjective',
         'study_results' => 'studyResults',
         'study_title' => 'studyTitle',
@@ -174,6 +180,7 @@ class Correlation implements ArrayAccess
         'cause_combination_operation' => 'setCauseCombinationOperation',
         'cause_unit' => 'setCauseUnit',
         'cause_unit_id' => 'setCauseUnitId',
+        'cause_variable_id' => 'setCauseVariableId',
         'correlation_coefficient' => 'setCorrelationCoefficient',
         'data_analysis' => 'setDataAnalysis',
         'data_sources' => 'setDataSources',
@@ -181,6 +188,7 @@ class Correlation implements ArrayAccess
         'effect' => 'setEffect',
         'effect_category' => 'setEffectCategory',
         'effect_size' => 'setEffectSize',
+        'effect_variable_id' => 'setEffectVariableId',
         'number_of_pairs' => 'setNumberOfPairs',
         'original_effect' => 'setOriginalEffect',
         'onset_delay' => 'setOnsetDelay',
@@ -197,6 +205,7 @@ class Correlation implements ArrayAccess
         'study_background' => 'setStudyBackground',
         'study_design' => 'setStudyDesign',
         'study_limitations' => 'setStudyLimitations',
+        'study_link' => 'setStudyLink',
         'study_objective' => 'setStudyObjective',
         'study_results' => 'setStudyResults',
         'study_title' => 'setStudyTitle',
@@ -222,6 +231,7 @@ class Correlation implements ArrayAccess
         'cause_combination_operation' => 'getCauseCombinationOperation',
         'cause_unit' => 'getCauseUnit',
         'cause_unit_id' => 'getCauseUnitId',
+        'cause_variable_id' => 'getCauseVariableId',
         'correlation_coefficient' => 'getCorrelationCoefficient',
         'data_analysis' => 'getDataAnalysis',
         'data_sources' => 'getDataSources',
@@ -229,6 +239,7 @@ class Correlation implements ArrayAccess
         'effect' => 'getEffect',
         'effect_category' => 'getEffectCategory',
         'effect_size' => 'getEffectSize',
+        'effect_variable_id' => 'getEffectVariableId',
         'number_of_pairs' => 'getNumberOfPairs',
         'original_effect' => 'getOriginalEffect',
         'onset_delay' => 'getOnsetDelay',
@@ -245,6 +256,7 @@ class Correlation implements ArrayAccess
         'study_background' => 'getStudyBackground',
         'study_design' => 'getStudyDesign',
         'study_limitations' => 'getStudyLimitations',
+        'study_link' => 'getStudyLink',
         'study_objective' => 'getStudyObjective',
         'study_results' => 'getStudyResults',
         'study_title' => 'getStudyTitle',
@@ -295,6 +307,7 @@ class Correlation implements ArrayAccess
         $this->container['cause_combination_operation'] = isset($data['cause_combination_operation']) ? $data['cause_combination_operation'] : null;
         $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
         $this->container['cause_unit_id'] = isset($data['cause_unit_id']) ? $data['cause_unit_id'] : null;
+        $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
         $this->container['correlation_coefficient'] = isset($data['correlation_coefficient']) ? $data['correlation_coefficient'] : null;
         $this->container['data_analysis'] = isset($data['data_analysis']) ? $data['data_analysis'] : null;
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
@@ -302,6 +315,7 @@ class Correlation implements ArrayAccess
         $this->container['effect'] = isset($data['effect']) ? $data['effect'] : null;
         $this->container['effect_category'] = isset($data['effect_category']) ? $data['effect_category'] : null;
         $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
+        $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
         $this->container['original_effect'] = isset($data['original_effect']) ? $data['original_effect'] : null;
         $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
@@ -318,6 +332,7 @@ class Correlation implements ArrayAccess
         $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
         $this->container['study_design'] = isset($data['study_design']) ? $data['study_design'] : null;
         $this->container['study_limitations'] = isset($data['study_limitations']) ? $data['study_limitations'] : null;
+        $this->container['study_link'] = isset($data['study_link']) ? $data['study_link'] : null;
         $this->container['study_objective'] = isset($data['study_objective']) ? $data['study_objective'] : null;
         $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
@@ -563,6 +578,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets cause_variable_id
+     * @return int
+     */
+    public function getCauseVariableId()
+    {
+        return $this->container['cause_variable_id'];
+    }
+
+    /**
+     * Sets cause_variable_id
+     * @param int $cause_variable_id 
+     * @return $this
+     */
+    public function setCauseVariableId($cause_variable_id)
+    {
+        $this->container['cause_variable_id'] = $cause_variable_id;
+
+        return $this;
+    }
+
+    /**
      * Gets correlation_coefficient
      * @return float
      */
@@ -705,6 +741,27 @@ class Correlation implements ArrayAccess
     public function setEffectSize($effect_size)
     {
         $this->container['effect_size'] = $effect_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_id
+     * @return string
+     */
+    public function getEffectVariableId()
+    {
+        return $this->container['effect_variable_id'];
+    }
+
+    /**
+     * Sets effect_variable_id
+     * @param string $effect_variable_id Magnitude of the effects of a cause indicating whether it's practically meaningful.
+     * @return $this
+     */
+    public function setEffectVariableId($effect_variable_id)
+    {
+        $this->container['effect_variable_id'] = $effect_variable_id;
 
         return $this;
     }
@@ -1041,6 +1098,27 @@ class Correlation implements ArrayAccess
     public function setStudyLimitations($study_limitations)
     {
         $this->container['study_limitations'] = $study_limitations;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link
+     * @return string
+     */
+    public function getStudyLink()
+    {
+        return $this->container['study_link'];
+    }
+
+    /**
+     * Sets study_link
+     * @param string $study_link Url for the study
+     * @return $this
+     */
+    public function setStudyLink($study_link)
+    {
+        $this->container['study_link'] = $study_link;
 
         return $this;
     }
