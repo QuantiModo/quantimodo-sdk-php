@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **cause_combination_operation** | **string** | The way cause measurements are aggregated | [optional] 
 **cause_unit** | **string** | Unit of the predictor variable | [optional] 
 **cause_unit_id** | **int** | Unit Id of the predictor variable | [optional] 
+**cause_variable_id** | **int** |  | [optional] 
 **correlation_coefficient** | **float** | Pearson correlation coefficient between cause and effect measurements | 
 **data_analysis** | **string** | How the data was analyzed | [optional] 
 **data_sources** | **string** | How the data was obtained | [optional] 
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 **effect** | **string** | ORIGINAL variable name of the effect variable for which the user desires correlations. | 
 **effect_category** | **string** | Variable category of the effect variable. | [optional] 
 **effect_size** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
+**effect_variable_id** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
 **number_of_pairs** | **float** | Number of points that went into the correlation calculation | 
 **original_effect** | **string** | effect variable original name. | [optional] 
 **onset_delay** | **double** | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | 
@@ -34,6 +36,7 @@ Name | Type | Description | Notes
 **study_background** | **string** | In order to reduce suffering through the advancement of human knowledge... | [optional] 
 **study_design** | **string** | This study is based on data donated by one QuantiModo user... | [optional] 
 **study_limitations** | **string** | As with any human experiment, it was impossible to control for all potentially confounding variables... | [optional] 
+**study_link** | **string** | Url for the study | [optional] 
 **study_objective** | **string** | The objective of this study is to determine... | [optional] 
 **study_results** | **string** | This analysis suggests that... | [optional] 
 **study_title** | **string** | N1 Study HIGHER Remeron predicts HIGHER Overall Mood | [optional] 
