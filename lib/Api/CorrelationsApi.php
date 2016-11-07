@@ -117,12 +117,13 @@ class CorrelationsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
+     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1AggregatedCorrelationsGet($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1AggregatedCorrelationsGet($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null, $outcomes_of_interest = null)
     {
-        list($response) = $this->v1AggregatedCorrelationsGetWithHttpInfo($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+        list($response) = $this->v1AggregatedCorrelationsGetWithHttpInfo($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort, $outcomes_of_interest);
         return $response;
     }
 
@@ -142,10 +143,11 @@ class CorrelationsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
+     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1AggregatedCorrelationsGetWithHttpInfo($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1AggregatedCorrelationsGetWithHttpInfo($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null, $outcomes_of_interest = null)
     {
         // parse inputs
         $resourcePath = "/v1/aggregatedCorrelations";
@@ -202,6 +204,10 @@ class CorrelationsApi
         // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
+        }
+        // query params
+        if ($outcomes_of_interest !== null) {
+            $queryParams['outcomesOfInterest'] = $this->apiClient->getSerializer()->toQueryValue($outcomes_of_interest);
         }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -356,12 +362,13 @@ class CorrelationsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
+     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1CorrelationsGet($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1CorrelationsGet($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null, $outcomes_of_interest = null)
     {
-        list($response) = $this->v1CorrelationsGetWithHttpInfo($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+        list($response) = $this->v1CorrelationsGetWithHttpInfo($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort, $outcomes_of_interest);
         return $response;
     }
 
@@ -381,10 +388,11 @@ class CorrelationsApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
+     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1CorrelationsGetWithHttpInfo($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null)
+    public function v1CorrelationsGetWithHttpInfo($access_token = null, $user_id = null, $effect = null, $cause = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $last_updated = null, $limit = null, $offset = null, $sort = null, $outcomes_of_interest = null)
     {
         // parse inputs
         $resourcePath = "/v1/correlations";
@@ -441,6 +449,10 @@ class CorrelationsApi
         // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
+        }
+        // query params
+        if ($outcomes_of_interest !== null) {
+            $queryParams['outcomesOfInterest'] = $this->apiClient->getSerializer()->toQueryValue($outcomes_of_interest);
         }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -780,12 +792,13 @@ class CorrelationsApi
      * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
+     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token = null, $user_id = null)
+    public function v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token = null, $user_id = null, $outcomes_of_interest = null)
     {
-        list($response) = $this->v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token, $user_id);
+        list($response) = $this->v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token, $user_id, $outcomes_of_interest);
         return $response;
     }
 
@@ -798,10 +811,11 @@ class CorrelationsApi
      * @param string $effect_or_cause Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
+     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token = null, $user_id = null)
+    public function v1PublicCorrelationsSearchSearchGetWithHttpInfo($search, $effect_or_cause, $access_token = null, $user_id = null, $outcomes_of_interest = null)
     {
         // verify the required parameter 'search' is set
         if ($search === null) {
@@ -834,6 +848,10 @@ class CorrelationsApi
         // query params
         if ($effect_or_cause !== null) {
             $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
+        }
+        // query params
+        if ($outcomes_of_interest !== null) {
+            $queryParams['outcomesOfInterest'] = $this->apiClient->getSerializer()->toQueryValue($outcomes_of_interest);
         }
         // path params
         if ($search !== null) {

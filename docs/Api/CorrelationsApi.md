@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **v1AggregatedCorrelationsGet**
-> \QuantiModo\Client\Model\Correlation[] v1AggregatedCorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Correlation[] v1AggregatedCorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort, $outcomes_of_interest)
 
 Get aggregated correlations
 
@@ -45,9 +45,10 @@ $last_updated = "last_updated_example"; // string | The time that this measureme
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
 $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
+$outcomes_of_interest = true; // bool | Only include correlations for which the effect is an outcome of interest for the user
 
 try {
-    $result = $api_instance->v1AggregatedCorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+    $result = $api_instance->v1AggregatedCorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort, $outcomes_of_interest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1AggregatedCorrelationsGet: ', $e->getMessage(), PHP_EOL;
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
  **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
  **sort** | **int**| Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. | [optional]
+ **outcomes_of_interest** | **bool**| Only include correlations for which the effect is an outcome of interest for the user | [optional]
 
 ### Return type
 
@@ -138,7 +140,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1CorrelationsGet**
-> \QuantiModo\Client\Model\Correlation[] v1CorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Correlation[] v1CorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort, $outcomes_of_interest)
 
 Get correlations
 
@@ -164,9 +166,10 @@ $last_updated = "last_updated_example"; // string | The time that this measureme
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
 $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
+$outcomes_of_interest = true; // bool | Only include correlations for which the effect is an outcome of interest for the user
 
 try {
-    $result = $api_instance->v1CorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort);
+    $result = $api_instance->v1CorrelationsGet($access_token, $user_id, $effect, $cause, $correlation_coefficient, $onset_delay, $duration_of_action, $last_updated, $limit, $offset, $sort, $outcomes_of_interest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1CorrelationsGet: ', $e->getMessage(), PHP_EOL;
@@ -189,6 +192,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
  **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
  **sort** | **int**| Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. | [optional]
+ **outcomes_of_interest** | **bool**| Only include correlations for which the effect is an outcome of interest for the user | [optional]
 
 ### Return type
 
@@ -326,7 +330,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PublicCorrelationsSearchSearchGet**
-> \QuantiModo\Client\Model\Correlation[] v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token, $user_id)
+> \QuantiModo\Client\Model\Correlation[] v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token, $user_id, $outcomes_of_interest)
 
 Get average correlations for variables containing search term
 
@@ -345,9 +349,10 @@ $search = "search_example"; // string | Name of the variable that you want to kn
 $effect_or_cause = "effect_or_cause_example"; // string | Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
+$outcomes_of_interest = true; // bool | Only include correlations for which the effect is an outcome of interest for the user
 
 try {
-    $result = $api_instance->v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token, $user_id);
+    $result = $api_instance->v1PublicCorrelationsSearchSearchGet($search, $effect_or_cause, $access_token, $user_id, $outcomes_of_interest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CorrelationsApi->v1PublicCorrelationsSearchSearchGet: ', $e->getMessage(), PHP_EOL;
@@ -363,6 +368,7 @@ Name | Type | Description  | Notes
  **effect_or_cause** | **string**| Setting this to effect indicates that the searched variable is the effect and that the causes of this variable should be returned.  cause indicates that the searched variable is the cause and the effects should be returned. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
+ **outcomes_of_interest** | **bool**| Only include correlations for which the effect is an outcome of interest for the user | [optional]
 
 ### Return type
 
