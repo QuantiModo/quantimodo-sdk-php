@@ -115,7 +115,7 @@ class VariablesApi
      * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param string $source The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
      * @param string $latest_measurement_time Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
-     * @param string $number_of_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
+     * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param string $last_source Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
@@ -123,9 +123,9 @@ class VariablesApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\Variable
      */
-    public function v1PublicVariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
+    public function v1PublicVariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1PublicVariablesGetWithHttpInfo($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
+        list($response) = $this->v1PublicVariablesGetWithHttpInfo($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort);
         return $response;
     }
 
@@ -143,7 +143,7 @@ class VariablesApi
      * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param string $source The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
      * @param string $latest_measurement_time Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
-     * @param string $number_of_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
+     * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param string $last_source Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
@@ -151,7 +151,7 @@ class VariablesApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1PublicVariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
+    public function v1PublicVariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
         // parse inputs
         $resourcePath = "/v1/public/variables";
@@ -202,8 +202,8 @@ class VariablesApi
             $queryParams['latestMeasurementTime'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
         }
         // query params
-        if ($number_of_measurements !== null) {
-            $queryParams['numberOfMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_measurements);
+        if ($number_of_raw_measurements !== null) {
+            $queryParams['numberOfRawMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_raw_measurements);
         }
         // query params
         if ($last_source !== null) {
@@ -738,7 +738,7 @@ class VariablesApi
      * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param string $source The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
      * @param string $latest_measurement_time Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
-     * @param string $number_of_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
+     * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param string $last_source Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
@@ -746,9 +746,9 @@ class VariablesApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\Variable
      */
-    public function v1VariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
+    public function v1VariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1VariablesGetWithHttpInfo($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
+        list($response) = $this->v1VariablesGetWithHttpInfo($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort);
         return $response;
     }
 
@@ -766,7 +766,7 @@ class VariablesApi
      * @param string $last_updated Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
      * @param string $source The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
      * @param string $latest_measurement_time Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
-     * @param string $number_of_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
+     * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param string $last_source Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
@@ -774,7 +774,7 @@ class VariablesApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1VariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
+    public function v1VariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
         // parse inputs
         $resourcePath = "/v1/variables";
@@ -825,8 +825,8 @@ class VariablesApi
             $queryParams['latestMeasurementTime'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
         }
         // query params
-        if ($number_of_measurements !== null) {
-            $queryParams['numberOfMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_measurements);
+        if ($number_of_raw_measurements !== null) {
+            $queryParams['numberOfRawMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_raw_measurements);
         }
         // query params
         if ($last_source !== null) {

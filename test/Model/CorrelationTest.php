@@ -144,6 +144,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "cause_image_url"
+     */
+    public function testPropertyCauseImageUrl()
+    {
+
+    }
+
+    /**
      * Test attribute "cause_unit"
      */
     public function testPropertyCauseUnit()
@@ -211,6 +219,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "effect_category"
      */
     public function testPropertyEffectCategory()
+    {
+
+    }
+
+    /**
+     * Test attribute "effect_image_url"
+     */
+    public function testPropertyEffectImageUrl()
     {
 
     }
@@ -363,6 +379,38 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "study_link"
      */
     public function testPropertyStudyLink()
+    {
+
+    }
+
+    /**
+     * Test attribute "study_link_static"
+     */
+    public function testPropertyStudyLinkStatic()
+    {
+
+    }
+
+    /**
+     * Test attribute "study_link_google"
+     */
+    public function testPropertyStudyLinkGoogle()
+    {
+
+    }
+
+    /**
+     * Test attribute "study_link_facebook"
+     */
+    public function testPropertyStudyLinkFacebook()
+    {
+
+    }
+
+    /**
+     * Test attribute "study_link_twitter"
+     */
+    public function testPropertyStudyLinkTwitter()
     {
 
     }

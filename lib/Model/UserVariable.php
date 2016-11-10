@@ -120,7 +120,8 @@ class UserVariable implements ArrayAccess
         'earliest_measurement_time' => 'int',
         'latest_measurement_time' => 'int',
         'earliest_filling_time' => 'int',
-        'latest_filling_time' => 'int'
+        'latest_filling_time' => 'int',
+        'image_url' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -187,7 +188,8 @@ class UserVariable implements ArrayAccess
         'earliest_measurement_time' => 'earliest_measurement_time',
         'latest_measurement_time' => 'latest_measurement_time',
         'earliest_filling_time' => 'earliest_filling_time',
-        'latest_filling_time' => 'latest_filling_time'
+        'latest_filling_time' => 'latest_filling_time',
+        'image_url' => 'imageUrl'
     ];
 
 
@@ -250,7 +252,8 @@ class UserVariable implements ArrayAccess
         'earliest_measurement_time' => 'setEarliestMeasurementTime',
         'latest_measurement_time' => 'setLatestMeasurementTime',
         'earliest_filling_time' => 'setEarliestFillingTime',
-        'latest_filling_time' => 'setLatestFillingTime'
+        'latest_filling_time' => 'setLatestFillingTime',
+        'image_url' => 'setImageUrl'
     ];
 
 
@@ -313,7 +316,8 @@ class UserVariable implements ArrayAccess
         'earliest_measurement_time' => 'getEarliestMeasurementTime',
         'latest_measurement_time' => 'getLatestMeasurementTime',
         'earliest_filling_time' => 'getEarliestFillingTime',
-        'latest_filling_time' => 'getLatestFillingTime'
+        'latest_filling_time' => 'getLatestFillingTime',
+        'image_url' => 'getImageUrl'
     ];
 
     public static function attributeMap()
@@ -402,6 +406,7 @@ class UserVariable implements ArrayAccess
         $this->container['latest_measurement_time'] = isset($data['latest_measurement_time']) ? $data['latest_measurement_time'] : null;
         $this->container['earliest_filling_time'] = isset($data['earliest_filling_time']) ? $data['earliest_filling_time'] : null;
         $this->container['latest_filling_time'] = isset($data['latest_filling_time']) ? $data['latest_filling_time'] : null;
+        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
     }
 
     /**
@@ -1584,6 +1589,27 @@ class UserVariable implements ArrayAccess
     public function setLatestFillingTime($latest_filling_time)
     {
         $this->container['latest_filling_time'] = $latest_filling_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     * @param string $image_url 
+     * @return $this
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
 
         return $this;
     }

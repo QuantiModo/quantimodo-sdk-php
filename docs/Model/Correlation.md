@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **cause_category** | **string** | Variable category of the cause variable. | [optional] 
 **cause_changes** | **int** | Number of changes in the predictor variable (a.k.a the number of experiments) | [optional] 
 **cause_combination_operation** | **string** | The way cause measurements are aggregated | [optional] 
+**cause_image_url** | **string** |  | [optional] 
 **cause_unit** | **string** | Unit of the predictor variable | [optional] 
 **cause_unit_id** | **int** | Unit Id of the predictor variable | [optional] 
 **cause_variable_id** | **int** |  | [optional] 
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 **duration_of_action** | **float** | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | 
 **effect** | **string** | ORIGINAL variable name of the effect variable for which the user desires correlations. | 
 **effect_category** | **string** | Variable category of the effect variable. | [optional] 
+**effect_image_url** | **string** |  | [optional] 
 **effect_size** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
 **effect_variable_id** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
 **number_of_pairs** | **float** | Number of points that went into the correlation calculation | 
@@ -37,6 +39,10 @@ Name | Type | Description | Notes
 **study_design** | **string** | This study is based on data donated by one QuantiModo user... | [optional] 
 **study_limitations** | **string** | As with any human experiment, it was impossible to control for all potentially confounding variables... | [optional] 
 **study_link** | **string** | Url for the study | [optional] 
+**study_link_static** | **string** | Url for the study | [optional] 
+**study_link_google** | **string** | Url for sharing the study on Google+ | [optional] 
+**study_link_facebook** | **string** | Url for sharing the study on Facebook | [optional] 
+**study_link_twitter** | **string** | Url for sharing the study on Twitter | [optional] 
 **study_objective** | **string** | The objective of this study is to determine... | [optional] 
 **study_results** | **string** | This analysis suggests that... | [optional] 
 **study_title** | **string** | N1 Study HIGHER Remeron predicts HIGHER Overall Mood | [optional] 

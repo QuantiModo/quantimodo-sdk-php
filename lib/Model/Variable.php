@@ -89,13 +89,14 @@ class Variable implements ArrayAccess
         'cause_only' => 'int',
         'number_of_correlations' => 'int',
         'outcome' => 'int',
-        'measurements_at_last_analysis' => 'int',
-        'number_of_measurements' => 'int',
+        'raw_measurements_at_last_analysis' => 'int',
+        'number_of_raw_measurements' => 'int',
         'last_unit' => 'string',
         'last_value' => 'int',
         'most_common_value' => 'int',
         'most_common_unit' => 'string',
-        'last_source' => 'int'
+        'last_source' => 'int',
+        'image_url' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -131,13 +132,14 @@ class Variable implements ArrayAccess
         'cause_only' => 'causeOnly',
         'number_of_correlations' => 'numberOfCorrelations',
         'outcome' => 'outcome',
-        'measurements_at_last_analysis' => 'measurementsAtLastAnalysis',
-        'number_of_measurements' => 'numberOfMeasurements',
+        'raw_measurements_at_last_analysis' => 'rawMeasurementsAtLastAnalysis',
+        'number_of_raw_measurements' => 'numberOfRawMeasurements',
         'last_unit' => 'lastUnit',
         'last_value' => 'lastValue',
         'most_common_value' => 'mostCommonValue',
         'most_common_unit' => 'mostCommonUnit',
-        'last_source' => 'lastSource'
+        'last_source' => 'lastSource',
+        'image_url' => 'imageUrl'
     ];
 
 
@@ -169,13 +171,14 @@ class Variable implements ArrayAccess
         'cause_only' => 'setCauseOnly',
         'number_of_correlations' => 'setNumberOfCorrelations',
         'outcome' => 'setOutcome',
-        'measurements_at_last_analysis' => 'setMeasurementsAtLastAnalysis',
-        'number_of_measurements' => 'setNumberOfMeasurements',
+        'raw_measurements_at_last_analysis' => 'setRawMeasurementsAtLastAnalysis',
+        'number_of_raw_measurements' => 'setNumberOfRawMeasurements',
         'last_unit' => 'setLastUnit',
         'last_value' => 'setLastValue',
         'most_common_value' => 'setMostCommonValue',
         'most_common_unit' => 'setMostCommonUnit',
-        'last_source' => 'setLastSource'
+        'last_source' => 'setLastSource',
+        'image_url' => 'setImageUrl'
     ];
 
 
@@ -207,13 +210,14 @@ class Variable implements ArrayAccess
         'cause_only' => 'getCauseOnly',
         'number_of_correlations' => 'getNumberOfCorrelations',
         'outcome' => 'getOutcome',
-        'measurements_at_last_analysis' => 'getMeasurementsAtLastAnalysis',
-        'number_of_measurements' => 'getNumberOfMeasurements',
+        'raw_measurements_at_last_analysis' => 'getRawMeasurementsAtLastAnalysis',
+        'number_of_raw_measurements' => 'getNumberOfRawMeasurements',
         'last_unit' => 'getLastUnit',
         'last_value' => 'getLastValue',
         'most_common_value' => 'getMostCommonValue',
         'most_common_unit' => 'getMostCommonUnit',
-        'last_source' => 'getLastSource'
+        'last_source' => 'getLastSource',
+        'image_url' => 'getImageUrl'
     ];
 
     public static function attributeMap()
@@ -284,13 +288,14 @@ class Variable implements ArrayAccess
         $this->container['cause_only'] = isset($data['cause_only']) ? $data['cause_only'] : null;
         $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
         $this->container['outcome'] = isset($data['outcome']) ? $data['outcome'] : null;
-        $this->container['measurements_at_last_analysis'] = isset($data['measurements_at_last_analysis']) ? $data['measurements_at_last_analysis'] : null;
-        $this->container['number_of_measurements'] = isset($data['number_of_measurements']) ? $data['number_of_measurements'] : null;
+        $this->container['raw_measurements_at_last_analysis'] = isset($data['raw_measurements_at_last_analysis']) ? $data['raw_measurements_at_last_analysis'] : null;
+        $this->container['number_of_raw_measurements'] = isset($data['number_of_raw_measurements']) ? $data['number_of_raw_measurements'] : null;
         $this->container['last_unit'] = isset($data['last_unit']) ? $data['last_unit'] : null;
         $this->container['last_value'] = isset($data['last_value']) ? $data['last_value'] : null;
         $this->container['most_common_value'] = isset($data['most_common_value']) ? $data['most_common_value'] : null;
         $this->container['most_common_unit'] = isset($data['most_common_unit']) ? $data['most_common_unit'] : null;
         $this->container['last_source'] = isset($data['last_source']) ? $data['last_source'] : null;
+        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
     }
 
     /**
@@ -372,11 +377,11 @@ class Variable implements ArrayAccess
         if ($this->container['outcome'] === null) {
             $invalid_properties[] = "'outcome' can't be null";
         }
-        if ($this->container['measurements_at_last_analysis'] === null) {
-            $invalid_properties[] = "'measurements_at_last_analysis' can't be null";
+        if ($this->container['raw_measurements_at_last_analysis'] === null) {
+            $invalid_properties[] = "'raw_measurements_at_last_analysis' can't be null";
         }
-        if ($this->container['number_of_measurements'] === null) {
-            $invalid_properties[] = "'number_of_measurements' can't be null";
+        if ($this->container['number_of_raw_measurements'] === null) {
+            $invalid_properties[] = "'number_of_raw_measurements' can't be null";
         }
         if ($this->container['last_unit'] === null) {
             $invalid_properties[] = "'last_unit' can't be null";
@@ -474,10 +479,10 @@ class Variable implements ArrayAccess
         if ($this->container['outcome'] === null) {
             return false;
         }
-        if ($this->container['measurements_at_last_analysis'] === null) {
+        if ($this->container['raw_measurements_at_last_analysis'] === null) {
             return false;
         }
-        if ($this->container['number_of_measurements'] === null) {
+        if ($this->container['number_of_raw_measurements'] === null) {
             return false;
         }
         if ($this->container['last_unit'] === null) {
@@ -987,43 +992,43 @@ class Variable implements ArrayAccess
     }
 
     /**
-     * Gets measurements_at_last_analysis
+     * Gets raw_measurements_at_last_analysis
      * @return int
      */
-    public function getMeasurementsAtLastAnalysis()
+    public function getRawMeasurementsAtLastAnalysis()
     {
-        return $this->container['measurements_at_last_analysis'];
+        return $this->container['raw_measurements_at_last_analysis'];
     }
 
     /**
-     * Sets measurements_at_last_analysis
-     * @param int $measurements_at_last_analysis The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the measurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there's not enough new data to make a significant difference in the correlation.
+     * Sets raw_measurements_at_last_analysis
+     * @param int $raw_measurements_at_last_analysis The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the rawMeasurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there's not enough new data to make a significant difference in the correlation.
      * @return $this
      */
-    public function setMeasurementsAtLastAnalysis($measurements_at_last_analysis)
+    public function setRawMeasurementsAtLastAnalysis($raw_measurements_at_last_analysis)
     {
-        $this->container['measurements_at_last_analysis'] = $measurements_at_last_analysis;
+        $this->container['raw_measurements_at_last_analysis'] = $raw_measurements_at_last_analysis;
 
         return $this;
     }
 
     /**
-     * Gets number_of_measurements
+     * Gets number_of_raw_measurements
      * @return int
      */
-    public function getNumberOfMeasurements()
+    public function getNumberOfRawMeasurements()
     {
-        return $this->container['number_of_measurements'];
+        return $this->container['number_of_raw_measurements'];
     }
 
     /**
-     * Sets number_of_measurements
-     * @param int $number_of_measurements Number of measurements
+     * Sets number_of_raw_measurements
+     * @param int $number_of_raw_measurements Number of measurements
      * @return $this
      */
-    public function setNumberOfMeasurements($number_of_measurements)
+    public function setNumberOfRawMeasurements($number_of_raw_measurements)
     {
-        $this->container['number_of_measurements'] = $number_of_measurements;
+        $this->container['number_of_raw_measurements'] = $number_of_raw_measurements;
 
         return $this;
     }
@@ -1129,6 +1134,27 @@ class Variable implements ArrayAccess
     public function setLastSource($last_source)
     {
         $this->container['last_source'] = $last_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     * @param string $image_url 
+     * @return $this
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
 
         return $this;
     }
