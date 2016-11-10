@@ -144,9 +144,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "cause_image_url"
+     * Test attribute "cause_variable_image_url"
      */
-    public function testPropertyCauseImageUrl()
+    public function testPropertyCauseVariableImageUrl()
     {
 
     }
@@ -224,9 +224,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "effect_image_url"
+     * Test attribute "effect_variable_image_url"
      */
-    public function testPropertyEffectImageUrl()
+    public function testPropertyEffectVariableImageUrl()
     {
 
     }

@@ -72,7 +72,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'string',
         'cause_changes' => 'int',
         'cause_combination_operation' => 'string',
-        'cause_image_url' => 'string',
+        'cause_variable_image_url' => 'string',
         'cause_unit' => 'string',
         'cause_unit_id' => 'int',
         'cause_variable_id' => 'int',
@@ -82,7 +82,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'float',
         'effect' => 'string',
         'effect_category' => 'string',
-        'effect_image_url' => 'string',
+        'effect_variable_image_url' => 'string',
         'effect_size' => 'string',
         'effect_variable_id' => 'string',
         'number_of_pairs' => 'float',
@@ -133,7 +133,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'causeCategory',
         'cause_changes' => 'causeChanges',
         'cause_combination_operation' => 'causeCombinationOperation',
-        'cause_image_url' => 'causeImageUrl',
+        'cause_variable_image_url' => 'causeVariableImageUrl',
         'cause_unit' => 'causeUnit',
         'cause_unit_id' => 'causeUnitId',
         'cause_variable_id' => 'causeVariableId',
@@ -143,7 +143,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'durationOfAction',
         'effect' => 'effect',
         'effect_category' => 'effectCategory',
-        'effect_image_url' => 'effectImageUrl',
+        'effect_variable_image_url' => 'effectVariableImageUrl',
         'effect_size' => 'effectSize',
         'effect_variable_id' => 'effectVariableId',
         'number_of_pairs' => 'numberOfPairs',
@@ -190,7 +190,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'setCauseCategory',
         'cause_changes' => 'setCauseChanges',
         'cause_combination_operation' => 'setCauseCombinationOperation',
-        'cause_image_url' => 'setCauseImageUrl',
+        'cause_variable_image_url' => 'setCauseVariableImageUrl',
         'cause_unit' => 'setCauseUnit',
         'cause_unit_id' => 'setCauseUnitId',
         'cause_variable_id' => 'setCauseVariableId',
@@ -200,7 +200,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'setDurationOfAction',
         'effect' => 'setEffect',
         'effect_category' => 'setEffectCategory',
-        'effect_image_url' => 'setEffectImageUrl',
+        'effect_variable_image_url' => 'setEffectVariableImageUrl',
         'effect_size' => 'setEffectSize',
         'effect_variable_id' => 'setEffectVariableId',
         'number_of_pairs' => 'setNumberOfPairs',
@@ -247,7 +247,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'getCauseCategory',
         'cause_changes' => 'getCauseChanges',
         'cause_combination_operation' => 'getCauseCombinationOperation',
-        'cause_image_url' => 'getCauseImageUrl',
+        'cause_variable_image_url' => 'getCauseVariableImageUrl',
         'cause_unit' => 'getCauseUnit',
         'cause_unit_id' => 'getCauseUnitId',
         'cause_variable_id' => 'getCauseVariableId',
@@ -257,7 +257,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'getDurationOfAction',
         'effect' => 'getEffect',
         'effect_category' => 'getEffectCategory',
-        'effect_image_url' => 'getEffectImageUrl',
+        'effect_variable_image_url' => 'getEffectVariableImageUrl',
         'effect_size' => 'getEffectSize',
         'effect_variable_id' => 'getEffectVariableId',
         'number_of_pairs' => 'getNumberOfPairs',
@@ -329,7 +329,7 @@ class Correlation implements ArrayAccess
         $this->container['cause_category'] = isset($data['cause_category']) ? $data['cause_category'] : null;
         $this->container['cause_changes'] = isset($data['cause_changes']) ? $data['cause_changes'] : null;
         $this->container['cause_combination_operation'] = isset($data['cause_combination_operation']) ? $data['cause_combination_operation'] : null;
-        $this->container['cause_image_url'] = isset($data['cause_image_url']) ? $data['cause_image_url'] : null;
+        $this->container['cause_variable_image_url'] = isset($data['cause_variable_image_url']) ? $data['cause_variable_image_url'] : null;
         $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
         $this->container['cause_unit_id'] = isset($data['cause_unit_id']) ? $data['cause_unit_id'] : null;
         $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
@@ -339,7 +339,7 @@ class Correlation implements ArrayAccess
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
         $this->container['effect'] = isset($data['effect']) ? $data['effect'] : null;
         $this->container['effect_category'] = isset($data['effect_category']) ? $data['effect_category'] : null;
-        $this->container['effect_image_url'] = isset($data['effect_image_url']) ? $data['effect_image_url'] : null;
+        $this->container['effect_variable_image_url'] = isset($data['effect_variable_image_url']) ? $data['effect_variable_image_url'] : null;
         $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
         $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
@@ -566,22 +566,22 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets cause_image_url
+     * Gets cause_variable_image_url
      * @return string
      */
-    public function getCauseImageUrl()
+    public function getCauseVariableImageUrl()
     {
-        return $this->container['cause_image_url'];
+        return $this->container['cause_variable_image_url'];
     }
 
     /**
-     * Sets cause_image_url
-     * @param string $cause_image_url 
+     * Sets cause_variable_image_url
+     * @param string $cause_variable_image_url 
      * @return $this
      */
-    public function setCauseImageUrl($cause_image_url)
+    public function setCauseVariableImageUrl($cause_variable_image_url)
     {
-        $this->container['cause_image_url'] = $cause_image_url;
+        $this->container['cause_variable_image_url'] = $cause_variable_image_url;
 
         return $this;
     }
@@ -776,22 +776,22 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets effect_image_url
+     * Gets effect_variable_image_url
      * @return string
      */
-    public function getEffectImageUrl()
+    public function getEffectVariableImageUrl()
     {
-        return $this->container['effect_image_url'];
+        return $this->container['effect_variable_image_url'];
     }
 
     /**
-     * Sets effect_image_url
-     * @param string $effect_image_url 
+     * Sets effect_variable_image_url
+     * @param string $effect_variable_image_url 
      * @return $this
      */
-    public function setEffectImageUrl($effect_image_url)
+    public function setEffectVariableImageUrl($effect_variable_image_url)
     {
-        $this->container['effect_image_url'] = $effect_image_url;
+        $this->container['effect_variable_image_url'] = $effect_variable_image_url;
 
         return $this;
     }
