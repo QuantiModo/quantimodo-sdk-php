@@ -280,17 +280,17 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "measurements_at_last_analysis"
+     * Test attribute "raw_measurements_at_last_analysis"
      */
-    public function testPropertyMeasurementsAtLastAnalysis()
+    public function testPropertyRawMeasurementsAtLastAnalysis()
     {
 
     }
 
     /**
-     * Test attribute "number_of_measurements"
+     * Test attribute "number_of_raw_measurements"
      */
-    public function testPropertyNumberOfMeasurements()
+    public function testPropertyNumberOfRawMeasurements()
     {
 
     }
@@ -331,6 +331,14 @@ class VariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "last_source"
      */
     public function testPropertyLastSource()
+    {
+
+    }
+
+    /**
+     * Test attribute "image_url"
+     */
+    public function testPropertyImageUrl()
     {
 
     }

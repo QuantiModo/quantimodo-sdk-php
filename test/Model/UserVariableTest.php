@@ -535,4 +535,12 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * Test attribute "image_url"
+     */
+    public function testPropertyImageUrl()
+    {
+
+    }
+
 }

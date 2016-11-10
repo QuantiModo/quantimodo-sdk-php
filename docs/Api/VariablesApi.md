@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **v1PublicVariablesGet**
-> \QuantiModo\Client\Model\Variable v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Variable v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
 
 Get public variables
 
@@ -41,14 +41,14 @@ $name = "name_example"; // string | Original name of the variable (supports exac
 $last_updated = "last_updated_example"; // string | Filter by the last time any of the properties of the variable were changed. Uses UTC format \"YYYY-MM-DDThh:mm:ss\"
 $source = "source_example"; // string | The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here
 $latest_measurement_time = "latest_measurement_time_example"; // string | Filter variables based on the last time a measurement for them was created or updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"
-$number_of_measurements = "number_of_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
+$number_of_raw_measurements = "number_of_raw_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
 $last_source = "last_source_example"; // string | Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only)
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
 $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
+    $result = $api_instance->v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariablesApi->v1PublicVariablesGet: ', $e->getMessage(), PHP_EOL;
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
  **last_updated** | **string**| Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
  **source** | **string**| The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here | [optional]
  **latest_measurement_time** | **string**| Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
- **number_of_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
+ **number_of_raw_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
  **last_source** | **string**| Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
  **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
@@ -342,7 +342,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesGet**
-> \QuantiModo\Client\Model\Variable v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Variable v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
 
 Get variables with user's settings
 
@@ -369,14 +369,14 @@ $name = "name_example"; // string | Original name of the variable (supports exac
 $last_updated = "last_updated_example"; // string | Filter by the last time any of the properties of the variable were changed. Uses UTC format \"YYYY-MM-DDThh:mm:ss\"
 $source = "source_example"; // string | The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here
 $latest_measurement_time = "latest_measurement_time_example"; // string | Filter variables based on the last time a measurement for them was created or updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"
-$number_of_measurements = "number_of_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
+$number_of_raw_measurements = "number_of_raw_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
 $last_source = "last_source_example"; // string | Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only)
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
 $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_measurements, $last_source, $limit, $offset, $sort);
+    $result = $api_instance->v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariablesApi->v1VariablesGet: ', $e->getMessage(), PHP_EOL;
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
  **last_updated** | **string**| Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
  **source** | **string**| The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here | [optional]
  **latest_measurement_time** | **string**| Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
- **number_of_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
+ **number_of_raw_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
  **last_source** | **string**| Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
  **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]

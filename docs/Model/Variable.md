@@ -26,13 +26,14 @@ Name | Type | Description | Notes
 **cause_only** | **int** | A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user. | 
 **number_of_correlations** | **int** | Number of correlations | 
 **outcome** | **int** | Outcome variables (those with &#x60;outcome&#x60; &#x3D;&#x3D; 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables. | 
-**measurements_at_last_analysis** | **int** | The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the measurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there&#39;s not enough new data to make a significant difference in the correlation. | 
-**number_of_measurements** | **int** | Number of measurements | 
+**raw_measurements_at_last_analysis** | **int** | The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the rawMeasurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there&#39;s not enough new data to make a significant difference in the correlation. | 
+**number_of_raw_measurements** | **int** | Number of measurements | 
 **last_unit** | **string** | Last unit | 
 **last_value** | **int** | Last value | 
 **most_common_value** | **int** | Most common value | 
 **most_common_unit** | **string** | Most common unit | 
 **last_source** | **int** | Last source | 
+**image_url** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

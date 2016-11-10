@@ -58,6 +58,7 @@ Name | Type | Description | Notes
 **latest_measurement_time** | **int** | Latest measurement time | [optional] 
 **earliest_filling_time** | **int** | Earliest filling time | [optional] 
 **latest_filling_time** | **int** | Latest filling time | [optional] 
+**image_url** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

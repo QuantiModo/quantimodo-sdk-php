@@ -72,6 +72,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'string',
         'cause_changes' => 'int',
         'cause_combination_operation' => 'string',
+        'cause_image_url' => 'string',
         'cause_unit' => 'string',
         'cause_unit_id' => 'int',
         'cause_variable_id' => 'int',
@@ -81,6 +82,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'float',
         'effect' => 'string',
         'effect_category' => 'string',
+        'effect_image_url' => 'string',
         'effect_size' => 'string',
         'effect_variable_id' => 'string',
         'number_of_pairs' => 'float',
@@ -100,6 +102,10 @@ class Correlation implements ArrayAccess
         'study_design' => 'string',
         'study_limitations' => 'string',
         'study_link' => 'string',
+        'study_link_static' => 'string',
+        'study_link_google' => 'string',
+        'study_link_facebook' => 'string',
+        'study_link_twitter' => 'string',
         'study_objective' => 'string',
         'study_results' => 'string',
         'study_title' => 'string',
@@ -127,6 +133,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'causeCategory',
         'cause_changes' => 'causeChanges',
         'cause_combination_operation' => 'causeCombinationOperation',
+        'cause_image_url' => 'causeImageUrl',
         'cause_unit' => 'causeUnit',
         'cause_unit_id' => 'causeUnitId',
         'cause_variable_id' => 'causeVariableId',
@@ -136,6 +143,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'durationOfAction',
         'effect' => 'effect',
         'effect_category' => 'effectCategory',
+        'effect_image_url' => 'effectImageUrl',
         'effect_size' => 'effectSize',
         'effect_variable_id' => 'effectVariableId',
         'number_of_pairs' => 'numberOfPairs',
@@ -155,6 +163,10 @@ class Correlation implements ArrayAccess
         'study_design' => 'studyDesign',
         'study_limitations' => 'studyLimitations',
         'study_link' => 'studyLink',
+        'study_link_static' => 'studyLinkStatic',
+        'study_link_google' => 'studyLinkGoogle',
+        'study_link_facebook' => 'studyLinkFacebook',
+        'study_link_twitter' => 'studyLinkTwitter',
         'study_objective' => 'studyObjective',
         'study_results' => 'studyResults',
         'study_title' => 'studyTitle',
@@ -178,6 +190,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'setCauseCategory',
         'cause_changes' => 'setCauseChanges',
         'cause_combination_operation' => 'setCauseCombinationOperation',
+        'cause_image_url' => 'setCauseImageUrl',
         'cause_unit' => 'setCauseUnit',
         'cause_unit_id' => 'setCauseUnitId',
         'cause_variable_id' => 'setCauseVariableId',
@@ -187,6 +200,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'setDurationOfAction',
         'effect' => 'setEffect',
         'effect_category' => 'setEffectCategory',
+        'effect_image_url' => 'setEffectImageUrl',
         'effect_size' => 'setEffectSize',
         'effect_variable_id' => 'setEffectVariableId',
         'number_of_pairs' => 'setNumberOfPairs',
@@ -206,6 +220,10 @@ class Correlation implements ArrayAccess
         'study_design' => 'setStudyDesign',
         'study_limitations' => 'setStudyLimitations',
         'study_link' => 'setStudyLink',
+        'study_link_static' => 'setStudyLinkStatic',
+        'study_link_google' => 'setStudyLinkGoogle',
+        'study_link_facebook' => 'setStudyLinkFacebook',
+        'study_link_twitter' => 'setStudyLinkTwitter',
         'study_objective' => 'setStudyObjective',
         'study_results' => 'setStudyResults',
         'study_title' => 'setStudyTitle',
@@ -229,6 +247,7 @@ class Correlation implements ArrayAccess
         'cause_category' => 'getCauseCategory',
         'cause_changes' => 'getCauseChanges',
         'cause_combination_operation' => 'getCauseCombinationOperation',
+        'cause_image_url' => 'getCauseImageUrl',
         'cause_unit' => 'getCauseUnit',
         'cause_unit_id' => 'getCauseUnitId',
         'cause_variable_id' => 'getCauseVariableId',
@@ -238,6 +257,7 @@ class Correlation implements ArrayAccess
         'duration_of_action' => 'getDurationOfAction',
         'effect' => 'getEffect',
         'effect_category' => 'getEffectCategory',
+        'effect_image_url' => 'getEffectImageUrl',
         'effect_size' => 'getEffectSize',
         'effect_variable_id' => 'getEffectVariableId',
         'number_of_pairs' => 'getNumberOfPairs',
@@ -257,6 +277,10 @@ class Correlation implements ArrayAccess
         'study_design' => 'getStudyDesign',
         'study_limitations' => 'getStudyLimitations',
         'study_link' => 'getStudyLink',
+        'study_link_static' => 'getStudyLinkStatic',
+        'study_link_google' => 'getStudyLinkGoogle',
+        'study_link_facebook' => 'getStudyLinkFacebook',
+        'study_link_twitter' => 'getStudyLinkTwitter',
         'study_objective' => 'getStudyObjective',
         'study_results' => 'getStudyResults',
         'study_title' => 'getStudyTitle',
@@ -305,6 +329,7 @@ class Correlation implements ArrayAccess
         $this->container['cause_category'] = isset($data['cause_category']) ? $data['cause_category'] : null;
         $this->container['cause_changes'] = isset($data['cause_changes']) ? $data['cause_changes'] : null;
         $this->container['cause_combination_operation'] = isset($data['cause_combination_operation']) ? $data['cause_combination_operation'] : null;
+        $this->container['cause_image_url'] = isset($data['cause_image_url']) ? $data['cause_image_url'] : null;
         $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
         $this->container['cause_unit_id'] = isset($data['cause_unit_id']) ? $data['cause_unit_id'] : null;
         $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
@@ -314,6 +339,7 @@ class Correlation implements ArrayAccess
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
         $this->container['effect'] = isset($data['effect']) ? $data['effect'] : null;
         $this->container['effect_category'] = isset($data['effect_category']) ? $data['effect_category'] : null;
+        $this->container['effect_image_url'] = isset($data['effect_image_url']) ? $data['effect_image_url'] : null;
         $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
         $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
@@ -333,6 +359,10 @@ class Correlation implements ArrayAccess
         $this->container['study_design'] = isset($data['study_design']) ? $data['study_design'] : null;
         $this->container['study_limitations'] = isset($data['study_limitations']) ? $data['study_limitations'] : null;
         $this->container['study_link'] = isset($data['study_link']) ? $data['study_link'] : null;
+        $this->container['study_link_static'] = isset($data['study_link_static']) ? $data['study_link_static'] : null;
+        $this->container['study_link_google'] = isset($data['study_link_google']) ? $data['study_link_google'] : null;
+        $this->container['study_link_facebook'] = isset($data['study_link_facebook']) ? $data['study_link_facebook'] : null;
+        $this->container['study_link_twitter'] = isset($data['study_link_twitter']) ? $data['study_link_twitter'] : null;
         $this->container['study_objective'] = isset($data['study_objective']) ? $data['study_objective'] : null;
         $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
@@ -536,6 +566,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets cause_image_url
+     * @return string
+     */
+    public function getCauseImageUrl()
+    {
+        return $this->container['cause_image_url'];
+    }
+
+    /**
+     * Sets cause_image_url
+     * @param string $cause_image_url 
+     * @return $this
+     */
+    public function setCauseImageUrl($cause_image_url)
+    {
+        $this->container['cause_image_url'] = $cause_image_url;
+
+        return $this;
+    }
+
+    /**
      * Gets cause_unit
      * @return string
      */
@@ -720,6 +771,27 @@ class Correlation implements ArrayAccess
     public function setEffectCategory($effect_category)
     {
         $this->container['effect_category'] = $effect_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_image_url
+     * @return string
+     */
+    public function getEffectImageUrl()
+    {
+        return $this->container['effect_image_url'];
+    }
+
+    /**
+     * Sets effect_image_url
+     * @param string $effect_image_url 
+     * @return $this
+     */
+    public function setEffectImageUrl($effect_image_url)
+    {
+        $this->container['effect_image_url'] = $effect_image_url;
 
         return $this;
     }
@@ -1119,6 +1191,90 @@ class Correlation implements ArrayAccess
     public function setStudyLink($study_link)
     {
         $this->container['study_link'] = $study_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_static
+     * @return string
+     */
+    public function getStudyLinkStatic()
+    {
+        return $this->container['study_link_static'];
+    }
+
+    /**
+     * Sets study_link_static
+     * @param string $study_link_static Url for the study
+     * @return $this
+     */
+    public function setStudyLinkStatic($study_link_static)
+    {
+        $this->container['study_link_static'] = $study_link_static;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_google
+     * @return string
+     */
+    public function getStudyLinkGoogle()
+    {
+        return $this->container['study_link_google'];
+    }
+
+    /**
+     * Sets study_link_google
+     * @param string $study_link_google Url for sharing the study on Google+
+     * @return $this
+     */
+    public function setStudyLinkGoogle($study_link_google)
+    {
+        $this->container['study_link_google'] = $study_link_google;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_facebook
+     * @return string
+     */
+    public function getStudyLinkFacebook()
+    {
+        return $this->container['study_link_facebook'];
+    }
+
+    /**
+     * Sets study_link_facebook
+     * @param string $study_link_facebook Url for sharing the study on Facebook
+     * @return $this
+     */
+    public function setStudyLinkFacebook($study_link_facebook)
+    {
+        $this->container['study_link_facebook'] = $study_link_facebook;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_twitter
+     * @return string
+     */
+    public function getStudyLinkTwitter()
+    {
+        return $this->container['study_link_twitter'];
+    }
+
+    /**
+     * Sets study_link_twitter
+     * @param string $study_link_twitter Url for sharing the study on Twitter
+     * @return $this
+     */
+    public function setStudyLinkTwitter($study_link_twitter)
+    {
+        $this->container['study_link_twitter'] = $study_link_twitter;
 
         return $this;
     }
