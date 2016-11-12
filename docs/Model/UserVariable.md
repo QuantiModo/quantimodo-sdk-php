@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **parent_id** | **int** | ID of the parent variable if this variable has any parent | [optional] 
 **user_id** | **int** | User ID | [optional] 
 **client_id** | **string** | client_id | [optional] 
-**variable_id** | **int** | ID of variable | 
+**variable_id** | **int** | ID of variable | [optional] 
 **default_unit_id** | **int** | ID of unit to use for this variable | [optional] 
 **minimum_allowed_value** | **float** | The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis. | [optional] 
 **maximum_allowed_value** | **float** | The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis. | [optional] 
@@ -59,6 +59,7 @@ Name | Type | Description | Notes
 **earliest_filling_time** | **int** | Earliest filling time | [optional] 
 **latest_filling_time** | **int** | Latest filling time | [optional] 
 **image_url** | **string** |  | [optional] 
+**ion_icon** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

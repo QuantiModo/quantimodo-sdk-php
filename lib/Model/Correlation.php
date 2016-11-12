@@ -73,6 +73,7 @@ class Correlation implements ArrayAccess
         'cause_changes' => 'int',
         'cause_combination_operation' => 'string',
         'cause_variable_image_url' => 'string',
+        'cause_variable_ion_icon' => 'string',
         'cause_unit' => 'string',
         'cause_unit_id' => 'int',
         'cause_variable_id' => 'int',
@@ -83,8 +84,10 @@ class Correlation implements ArrayAccess
         'effect' => 'string',
         'effect_category' => 'string',
         'effect_variable_image_url' => 'string',
+        'effect_variable_ion_icon' => 'string',
         'effect_size' => 'string',
         'effect_variable_id' => 'string',
+        'gauge_image' => 'string',
         'number_of_pairs' => 'float',
         'original_effect' => 'string',
         'onset_delay' => 'double',
@@ -134,6 +137,7 @@ class Correlation implements ArrayAccess
         'cause_changes' => 'causeChanges',
         'cause_combination_operation' => 'causeCombinationOperation',
         'cause_variable_image_url' => 'causeVariableImageUrl',
+        'cause_variable_ion_icon' => 'causeVariableIonIcon',
         'cause_unit' => 'causeUnit',
         'cause_unit_id' => 'causeUnitId',
         'cause_variable_id' => 'causeVariableId',
@@ -144,8 +148,10 @@ class Correlation implements ArrayAccess
         'effect' => 'effect',
         'effect_category' => 'effectCategory',
         'effect_variable_image_url' => 'effectVariableImageUrl',
+        'effect_variable_ion_icon' => 'effectVariableIonIcon',
         'effect_size' => 'effectSize',
         'effect_variable_id' => 'effectVariableId',
+        'gauge_image' => 'gaugeImage',
         'number_of_pairs' => 'numberOfPairs',
         'original_effect' => 'originalEffect',
         'onset_delay' => 'onsetDelay',
@@ -191,6 +197,7 @@ class Correlation implements ArrayAccess
         'cause_changes' => 'setCauseChanges',
         'cause_combination_operation' => 'setCauseCombinationOperation',
         'cause_variable_image_url' => 'setCauseVariableImageUrl',
+        'cause_variable_ion_icon' => 'setCauseVariableIonIcon',
         'cause_unit' => 'setCauseUnit',
         'cause_unit_id' => 'setCauseUnitId',
         'cause_variable_id' => 'setCauseVariableId',
@@ -201,8 +208,10 @@ class Correlation implements ArrayAccess
         'effect' => 'setEffect',
         'effect_category' => 'setEffectCategory',
         'effect_variable_image_url' => 'setEffectVariableImageUrl',
+        'effect_variable_ion_icon' => 'setEffectVariableIonIcon',
         'effect_size' => 'setEffectSize',
         'effect_variable_id' => 'setEffectVariableId',
+        'gauge_image' => 'setGaugeImage',
         'number_of_pairs' => 'setNumberOfPairs',
         'original_effect' => 'setOriginalEffect',
         'onset_delay' => 'setOnsetDelay',
@@ -248,6 +257,7 @@ class Correlation implements ArrayAccess
         'cause_changes' => 'getCauseChanges',
         'cause_combination_operation' => 'getCauseCombinationOperation',
         'cause_variable_image_url' => 'getCauseVariableImageUrl',
+        'cause_variable_ion_icon' => 'getCauseVariableIonIcon',
         'cause_unit' => 'getCauseUnit',
         'cause_unit_id' => 'getCauseUnitId',
         'cause_variable_id' => 'getCauseVariableId',
@@ -258,8 +268,10 @@ class Correlation implements ArrayAccess
         'effect' => 'getEffect',
         'effect_category' => 'getEffectCategory',
         'effect_variable_image_url' => 'getEffectVariableImageUrl',
+        'effect_variable_ion_icon' => 'getEffectVariableIonIcon',
         'effect_size' => 'getEffectSize',
         'effect_variable_id' => 'getEffectVariableId',
+        'gauge_image' => 'getGaugeImage',
         'number_of_pairs' => 'getNumberOfPairs',
         'original_effect' => 'getOriginalEffect',
         'onset_delay' => 'getOnsetDelay',
@@ -330,6 +342,7 @@ class Correlation implements ArrayAccess
         $this->container['cause_changes'] = isset($data['cause_changes']) ? $data['cause_changes'] : null;
         $this->container['cause_combination_operation'] = isset($data['cause_combination_operation']) ? $data['cause_combination_operation'] : null;
         $this->container['cause_variable_image_url'] = isset($data['cause_variable_image_url']) ? $data['cause_variable_image_url'] : null;
+        $this->container['cause_variable_ion_icon'] = isset($data['cause_variable_ion_icon']) ? $data['cause_variable_ion_icon'] : null;
         $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
         $this->container['cause_unit_id'] = isset($data['cause_unit_id']) ? $data['cause_unit_id'] : null;
         $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
@@ -340,8 +353,10 @@ class Correlation implements ArrayAccess
         $this->container['effect'] = isset($data['effect']) ? $data['effect'] : null;
         $this->container['effect_category'] = isset($data['effect_category']) ? $data['effect_category'] : null;
         $this->container['effect_variable_image_url'] = isset($data['effect_variable_image_url']) ? $data['effect_variable_image_url'] : null;
+        $this->container['effect_variable_ion_icon'] = isset($data['effect_variable_ion_icon']) ? $data['effect_variable_ion_icon'] : null;
         $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
         $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
+        $this->container['gauge_image'] = isset($data['gauge_image']) ? $data['gauge_image'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
         $this->container['original_effect'] = isset($data['original_effect']) ? $data['original_effect'] : null;
         $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
@@ -587,6 +602,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets cause_variable_ion_icon
+     * @return string
+     */
+    public function getCauseVariableIonIcon()
+    {
+        return $this->container['cause_variable_ion_icon'];
+    }
+
+    /**
+     * Sets cause_variable_ion_icon
+     * @param string $cause_variable_ion_icon For use in Ionic apps
+     * @return $this
+     */
+    public function setCauseVariableIonIcon($cause_variable_ion_icon)
+    {
+        $this->container['cause_variable_ion_icon'] = $cause_variable_ion_icon;
+
+        return $this;
+    }
+
+    /**
      * Gets cause_unit
      * @return string
      */
@@ -797,6 +833,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets effect_variable_ion_icon
+     * @return string
+     */
+    public function getEffectVariableIonIcon()
+    {
+        return $this->container['effect_variable_ion_icon'];
+    }
+
+    /**
+     * Sets effect_variable_ion_icon
+     * @param string $effect_variable_ion_icon For use in Ionic apps
+     * @return $this
+     */
+    public function setEffectVariableIonIcon($effect_variable_ion_icon)
+    {
+        $this->container['effect_variable_ion_icon'] = $effect_variable_ion_icon;
+
+        return $this;
+    }
+
+    /**
      * Gets effect_size
      * @return string
      */
@@ -834,6 +891,27 @@ class Correlation implements ArrayAccess
     public function setEffectVariableId($effect_variable_id)
     {
         $this->container['effect_variable_id'] = $effect_variable_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets gauge_image
+     * @return string
+     */
+    public function getGaugeImage()
+    {
+        return $this->container['gauge_image'];
+    }
+
+    /**
+     * Sets gauge_image
+     * @param string $gauge_image Illustrates the strength of the relationship
+     * @return $this
+     */
+    public function setGaugeImage($gauge_image)
+    {
+        $this->container['gauge_image'] = $gauge_image;
 
         return $this;
     }
