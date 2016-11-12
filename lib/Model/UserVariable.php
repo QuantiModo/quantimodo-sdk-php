@@ -121,7 +121,8 @@ class UserVariable implements ArrayAccess
         'latest_measurement_time' => 'int',
         'earliest_filling_time' => 'int',
         'latest_filling_time' => 'int',
-        'image_url' => 'string'
+        'image_url' => 'string',
+        'ion_icon' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -134,62 +135,63 @@ class UserVariable implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'parent_id' => 'parent_id',
-        'user_id' => 'user_id',
-        'client_id' => 'client_id',
-        'variable_id' => 'variable_id',
-        'default_unit_id' => 'default_unit_id',
-        'minimum_allowed_value' => 'minimum_allowed_value',
-        'maximum_allowed_value' => 'maximum_allowed_value',
-        'filling_value' => 'filling_value',
-        'join_with' => 'join_with',
-        'onset_delay' => 'onset_delay',
-        'duration_of_action' => 'duration_of_action',
-        'variable_category_id' => 'variable_category_id',
+        'parent_id' => 'parentId',
+        'user_id' => 'userId',
+        'client_id' => 'clientId',
+        'variable_id' => 'variableId',
+        'default_unit_id' => 'defaultUnitId',
+        'minimum_allowed_value' => 'minimumAllowedValue',
+        'maximum_allowed_value' => 'maximumAllowedValue',
+        'filling_value' => 'fillingValue',
+        'join_with' => 'joinWith',
+        'onset_delay' => 'onsetDelay',
+        'duration_of_action' => 'durationOfAction',
+        'variable_category_id' => 'variableCategoryId',
         'updated' => 'updated',
         'public' => 'public',
-        'cause_only' => 'cause_only',
-        'filling_type' => 'filling_type',
-        'number_of_measurements' => 'number_of_measurements',
-        'number_of_processed_measurements' => 'number_of_processed_measurements',
-        'measurements_at_last_analysis' => 'measurements_at_last_analysis',
-        'last_unit_id' => 'last_unit_id',
-        'last_original_unit_id' => 'last_original_unit_id',
-        'last_value' => 'last_value',
-        'last_original_value' => 'last_original_value',
-        'last_source_id' => 'last_source_id',
-        'number_of_correlations' => 'number_of_correlations',
+        'cause_only' => 'causeOnly',
+        'filling_type' => 'fillingType',
+        'number_of_measurements' => 'numberOfMeasurements',
+        'number_of_processed_measurements' => 'numberOfProcessedMeasurements',
+        'measurements_at_last_analysis' => 'measurementsAtLastAnalysis',
+        'last_unit_id' => 'lastUnitId',
+        'last_original_unit_id' => 'lastOriginalUnitId',
+        'last_value' => 'lastValue',
+        'last_original_value' => 'lastOriginalValue',
+        'last_source_id' => 'lastSourceId',
+        'number_of_correlations' => 'numberOfCorrelations',
         'status' => 'status',
-        'error_message' => 'error_message',
-        'last_successful_update_time' => 'last_successful_update_time',
+        'error_message' => 'errorMessage',
+        'last_successful_update_time' => 'lastSuccessfulUpdateTime',
         'standard_deviation' => 'standard_deviation',
         'variance' => 'variance',
-        'minimum_recorded_value' => 'minimum_recorded_value',
-        'maximum_recorded_daily_value' => 'maximum_recorded_daily_value',
+        'minimum_recorded_value' => 'minimumRecordedValue',
+        'maximum_recorded_daily_value' => 'maximumRecordedDailyValue',
         'mean' => 'mean',
         'median' => 'median',
-        'most_common_unit_id' => 'most_common_unit_id',
-        'most_common_value' => 'most_common_value',
-        'number_of_unique_daily_values' => 'number_of_unique_daily_values',
-        'number_of_changes' => 'number_of_changes',
+        'most_common_unit_id' => 'mostCommonUnitId',
+        'most_common_value' => 'mostCommonValue',
+        'number_of_unique_daily_values' => 'numberOfUniqueDailyValues',
+        'number_of_changes' => 'numberOfChanges',
         'skewness' => 'skewness',
         'kurtosis' => 'kurtosis',
         'latitude' => 'latitude',
         'longitude' => 'longitude',
         'location' => 'location',
-        'experiment_start_time' => 'experiment_start_time',
-        'experiment_end_time' => 'experiment_end_time',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
+        'experiment_start_time' => 'experimentStartTime',
+        'experiment_end_time' => 'experimentEndTime',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt',
         'outcome' => 'outcome',
         'sources' => 'sources',
-        'earliest_source_time' => 'earliest_source_time',
-        'latest_source_time' => 'latest_source_time',
-        'earliest_measurement_time' => 'earliest_measurement_time',
-        'latest_measurement_time' => 'latest_measurement_time',
-        'earliest_filling_time' => 'earliest_filling_time',
-        'latest_filling_time' => 'latest_filling_time',
-        'image_url' => 'imageUrl'
+        'earliest_source_time' => 'earliestSourceTime',
+        'latest_source_time' => 'latestSourceTime',
+        'earliest_measurement_time' => 'earliestMeasurementTime',
+        'latest_measurement_time' => 'latestMeasurementTime',
+        'earliest_filling_time' => 'earliestFillingTime',
+        'latest_filling_time' => 'latestFillingTime',
+        'image_url' => 'imageUrl',
+        'ion_icon' => 'ionIcon'
     ];
 
 
@@ -253,7 +255,8 @@ class UserVariable implements ArrayAccess
         'latest_measurement_time' => 'setLatestMeasurementTime',
         'earliest_filling_time' => 'setEarliestFillingTime',
         'latest_filling_time' => 'setLatestFillingTime',
-        'image_url' => 'setImageUrl'
+        'image_url' => 'setImageUrl',
+        'ion_icon' => 'setIonIcon'
     ];
 
 
@@ -317,7 +320,8 @@ class UserVariable implements ArrayAccess
         'latest_measurement_time' => 'getLatestMeasurementTime',
         'earliest_filling_time' => 'getEarliestFillingTime',
         'latest_filling_time' => 'getLatestFillingTime',
-        'image_url' => 'getImageUrl'
+        'image_url' => 'getImageUrl',
+        'ion_icon' => 'getIonIcon'
     ];
 
     public static function attributeMap()
@@ -407,6 +411,7 @@ class UserVariable implements ArrayAccess
         $this->container['earliest_filling_time'] = isset($data['earliest_filling_time']) ? $data['earliest_filling_time'] : null;
         $this->container['latest_filling_time'] = isset($data['latest_filling_time']) ? $data['latest_filling_time'] : null;
         $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
+        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
     }
 
     /**
@@ -417,9 +422,6 @@ class UserVariable implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        if ($this->container['variable_id'] === null) {
-            $invalid_properties[] = "'variable_id' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -431,9 +433,6 @@ class UserVariable implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['variable_id'] === null) {
-            return false;
-        }
         return true;
     }
 
@@ -1610,6 +1609,27 @@ class UserVariable implements ArrayAccess
     public function setImageUrl($image_url)
     {
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets ion_icon
+     * @return string
+     */
+    public function getIonIcon()
+    {
+        return $this->container['ion_icon'];
+    }
+
+    /**
+     * Sets ion_icon
+     * @param string $ion_icon 
+     * @return $this
+     */
+    public function setIonIcon($ion_icon)
+    {
+        $this->container['ion_icon'] = $ion_icon;
 
         return $this;
     }

@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **most_common_unit** | **string** | Most common unit | 
 **last_source** | **int** | Last source | 
 **image_url** | **string** |  | [optional] 
+**ion_icon** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

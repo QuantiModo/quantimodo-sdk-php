@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **cause_changes** | **int** | Number of changes in the predictor variable (a.k.a the number of experiments) | [optional] 
 **cause_combination_operation** | **string** | The way cause measurements are aggregated | [optional] 
 **cause_variable_image_url** | **string** |  | [optional] 
+**cause_variable_ion_icon** | **string** | For use in Ionic apps | [optional] 
 **cause_unit** | **string** | Unit of the predictor variable | [optional] 
 **cause_unit_id** | **int** | Unit Id of the predictor variable | [optional] 
 **cause_variable_id** | **int** |  | [optional] 
@@ -20,8 +21,10 @@ Name | Type | Description | Notes
 **effect** | **string** | ORIGINAL variable name of the effect variable for which the user desires correlations. | 
 **effect_category** | **string** | Variable category of the effect variable. | [optional] 
 **effect_variable_image_url** | **string** |  | [optional] 
+**effect_variable_ion_icon** | **string** | For use in Ionic apps | [optional] 
 **effect_size** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
 **effect_variable_id** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
+**gauge_image** | **string** | Illustrates the strength of the relationship | [optional] 
 **number_of_pairs** | **float** | Number of points that went into the correlation calculation | 
 **original_effect** | **string** | effect variable original name. | [optional] 
 **onset_delay** | **double** | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | 

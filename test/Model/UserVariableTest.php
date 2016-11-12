@@ -543,4 +543,12 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * Test attribute "ion_icon"
+     */
+    public function testPropertyIonIcon()
+    {
+
+    }
+
 }

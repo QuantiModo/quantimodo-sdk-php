@@ -96,7 +96,8 @@ class Variable implements ArrayAccess
         'most_common_value' => 'int',
         'most_common_unit' => 'string',
         'last_source' => 'int',
-        'image_url' => 'string'
+        'image_url' => 'string',
+        'ion_icon' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -139,7 +140,8 @@ class Variable implements ArrayAccess
         'most_common_value' => 'mostCommonValue',
         'most_common_unit' => 'mostCommonUnit',
         'last_source' => 'lastSource',
-        'image_url' => 'imageUrl'
+        'image_url' => 'imageUrl',
+        'ion_icon' => 'ionIcon'
     ];
 
 
@@ -178,7 +180,8 @@ class Variable implements ArrayAccess
         'most_common_value' => 'setMostCommonValue',
         'most_common_unit' => 'setMostCommonUnit',
         'last_source' => 'setLastSource',
-        'image_url' => 'setImageUrl'
+        'image_url' => 'setImageUrl',
+        'ion_icon' => 'setIonIcon'
     ];
 
 
@@ -217,7 +220,8 @@ class Variable implements ArrayAccess
         'most_common_value' => 'getMostCommonValue',
         'most_common_unit' => 'getMostCommonUnit',
         'last_source' => 'getLastSource',
-        'image_url' => 'getImageUrl'
+        'image_url' => 'getImageUrl',
+        'ion_icon' => 'getIonIcon'
     ];
 
     public static function attributeMap()
@@ -296,6 +300,7 @@ class Variable implements ArrayAccess
         $this->container['most_common_unit'] = isset($data['most_common_unit']) ? $data['most_common_unit'] : null;
         $this->container['last_source'] = isset($data['last_source']) ? $data['last_source'] : null;
         $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
+        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
     }
 
     /**
@@ -1155,6 +1160,27 @@ class Variable implements ArrayAccess
     public function setImageUrl($image_url)
     {
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets ion_icon
+     * @return string
+     */
+    public function getIonIcon()
+    {
+        return $this->container['ion_icon'];
+    }
+
+    /**
+     * Sets ion_icon
+     * @param string $ion_icon 
+     * @return $this
+     */
+    public function setIonIcon($ion_icon)
+    {
+        $this->container['ion_icon'] = $ion_icon;
 
         return $this;
     }

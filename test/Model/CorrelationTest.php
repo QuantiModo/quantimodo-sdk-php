@@ -152,6 +152,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "cause_variable_ion_icon"
+     */
+    public function testPropertyCauseVariableIonIcon()
+    {
+
+    }
+
+    /**
      * Test attribute "cause_unit"
      */
     public function testPropertyCauseUnit()
@@ -232,6 +240,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "effect_variable_ion_icon"
+     */
+    public function testPropertyEffectVariableIonIcon()
+    {
+
+    }
+
+    /**
      * Test attribute "effect_size"
      */
     public function testPropertyEffectSize()
@@ -243,6 +259,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "effect_variable_id"
      */
     public function testPropertyEffectVariableId()
+    {
+
+    }
+
+    /**
+     * Test attribute "gauge_image"
+     */
+    public function testPropertyGaugeImage()
     {
 
     }
