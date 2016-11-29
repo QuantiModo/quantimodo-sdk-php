@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class Correlation implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -53,6 +55,13 @@ class Correlation implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'average_daily_low_cause' => 'float',
+        'average_daily_high_cause' => 'float',
+        'average_effect' => 'float',
+        'average_effect_following_high_cause' => 'float',
+        'average_effect_following_low_cause' => 'float',
+        'average_effect_following_high_cause_explanation' => 'string',
+        'average_effect_following_low_cause_explanation' => 'string',
         'average_vote' => 'float',
         'causality_factor' => 'float',
         'cause' => 'string',
@@ -64,7 +73,9 @@ class Correlation implements ArrayAccess
         'cause_unit' => 'string',
         'cause_unit_id' => 'int',
         'cause_variable_id' => 'int',
+        'cause_variable_name' => 'string',
         'correlation_coefficient' => 'float',
+        'created_at' => '\DateTime',
         'data_analysis' => 'string',
         'data_sources' => 'string',
         'duration_of_action' => 'float',
@@ -74,6 +85,7 @@ class Correlation implements ArrayAccess
         'effect_variable_ion_icon' => 'string',
         'effect_size' => 'string',
         'effect_variable_id' => 'string',
+        'effect_variable_name' => 'string',
         'gauge_image' => 'string',
         'number_of_pairs' => 'float',
         'original_effect' => 'string',
@@ -83,6 +95,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'string',
         'predictor_explanation' => 'string',
         'principal_investigator' => 'string',
+        'qm_score' => 'float',
         'reverse_correlation' => 'float',
         'significance_explanation' => 'string',
         'statistical_significance' => 'string',
@@ -100,6 +113,7 @@ class Correlation implements ArrayAccess
         'study_results' => 'string',
         'study_title' => 'string',
         'timestamp' => 'float',
+        'updated_at' => '\DateTime',
         'user_vote' => 'float',
         'value_predicting_high_outcome' => 'float',
         'value_predicting_high_outcome_explanation' => 'string',
@@ -117,6 +131,13 @@ class Correlation implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'average_daily_low_cause' => 'averageDailyLowCause',
+        'average_daily_high_cause' => 'averageDailyHighCause',
+        'average_effect' => 'averageEffect',
+        'average_effect_following_high_cause' => 'averageEffectFollowingHighCause',
+        'average_effect_following_low_cause' => 'averageEffectFollowingLowCause',
+        'average_effect_following_high_cause_explanation' => 'averageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause_explanation' => 'averageEffectFollowingLowCauseExplanation',
         'average_vote' => 'averageVote',
         'causality_factor' => 'causalityFactor',
         'cause' => 'cause',
@@ -128,7 +149,9 @@ class Correlation implements ArrayAccess
         'cause_unit' => 'causeUnit',
         'cause_unit_id' => 'causeUnitId',
         'cause_variable_id' => 'causeVariableId',
+        'cause_variable_name' => 'causeVariableName',
         'correlation_coefficient' => 'correlationCoefficient',
+        'created_at' => 'createdAt',
         'data_analysis' => 'dataAnalysis',
         'data_sources' => 'dataSources',
         'duration_of_action' => 'durationOfAction',
@@ -138,6 +161,7 @@ class Correlation implements ArrayAccess
         'effect_variable_ion_icon' => 'effectVariableIonIcon',
         'effect_size' => 'effectSize',
         'effect_variable_id' => 'effectVariableId',
+        'effect_variable_name' => 'effectVariableName',
         'gauge_image' => 'gaugeImage',
         'number_of_pairs' => 'numberOfPairs',
         'original_effect' => 'originalEffect',
@@ -147,6 +171,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'outcomeDataSources',
         'predictor_explanation' => 'predictorExplanation',
         'principal_investigator' => 'principalInvestigator',
+        'qm_score' => 'qmScore',
         'reverse_correlation' => 'reverseCorrelation',
         'significance_explanation' => 'significanceExplanation',
         'statistical_significance' => 'statisticalSignificance',
@@ -164,6 +189,7 @@ class Correlation implements ArrayAccess
         'study_results' => 'studyResults',
         'study_title' => 'studyTitle',
         'timestamp' => 'timestamp',
+        'updated_at' => 'updatedAt',
         'user_vote' => 'userVote',
         'value_predicting_high_outcome' => 'valuePredictingHighOutcome',
         'value_predicting_high_outcome_explanation' => 'valuePredictingHighOutcomeExplanation',
@@ -177,6 +203,13 @@ class Correlation implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'average_daily_low_cause' => 'setAverageDailyLowCause',
+        'average_daily_high_cause' => 'setAverageDailyHighCause',
+        'average_effect' => 'setAverageEffect',
+        'average_effect_following_high_cause' => 'setAverageEffectFollowingHighCause',
+        'average_effect_following_low_cause' => 'setAverageEffectFollowingLowCause',
+        'average_effect_following_high_cause_explanation' => 'setAverageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause_explanation' => 'setAverageEffectFollowingLowCauseExplanation',
         'average_vote' => 'setAverageVote',
         'causality_factor' => 'setCausalityFactor',
         'cause' => 'setCause',
@@ -188,7 +221,9 @@ class Correlation implements ArrayAccess
         'cause_unit' => 'setCauseUnit',
         'cause_unit_id' => 'setCauseUnitId',
         'cause_variable_id' => 'setCauseVariableId',
+        'cause_variable_name' => 'setCauseVariableName',
         'correlation_coefficient' => 'setCorrelationCoefficient',
+        'created_at' => 'setCreatedAt',
         'data_analysis' => 'setDataAnalysis',
         'data_sources' => 'setDataSources',
         'duration_of_action' => 'setDurationOfAction',
@@ -198,6 +233,7 @@ class Correlation implements ArrayAccess
         'effect_variable_ion_icon' => 'setEffectVariableIonIcon',
         'effect_size' => 'setEffectSize',
         'effect_variable_id' => 'setEffectVariableId',
+        'effect_variable_name' => 'setEffectVariableName',
         'gauge_image' => 'setGaugeImage',
         'number_of_pairs' => 'setNumberOfPairs',
         'original_effect' => 'setOriginalEffect',
@@ -207,6 +243,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'setOutcomeDataSources',
         'predictor_explanation' => 'setPredictorExplanation',
         'principal_investigator' => 'setPrincipalInvestigator',
+        'qm_score' => 'setQmScore',
         'reverse_correlation' => 'setReverseCorrelation',
         'significance_explanation' => 'setSignificanceExplanation',
         'statistical_significance' => 'setStatisticalSignificance',
@@ -224,6 +261,7 @@ class Correlation implements ArrayAccess
         'study_results' => 'setStudyResults',
         'study_title' => 'setStudyTitle',
         'timestamp' => 'setTimestamp',
+        'updated_at' => 'setUpdatedAt',
         'user_vote' => 'setUserVote',
         'value_predicting_high_outcome' => 'setValuePredictingHighOutcome',
         'value_predicting_high_outcome_explanation' => 'setValuePredictingHighOutcomeExplanation',
@@ -237,6 +275,13 @@ class Correlation implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'average_daily_low_cause' => 'getAverageDailyLowCause',
+        'average_daily_high_cause' => 'getAverageDailyHighCause',
+        'average_effect' => 'getAverageEffect',
+        'average_effect_following_high_cause' => 'getAverageEffectFollowingHighCause',
+        'average_effect_following_low_cause' => 'getAverageEffectFollowingLowCause',
+        'average_effect_following_high_cause_explanation' => 'getAverageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause_explanation' => 'getAverageEffectFollowingLowCauseExplanation',
         'average_vote' => 'getAverageVote',
         'causality_factor' => 'getCausalityFactor',
         'cause' => 'getCause',
@@ -248,7 +293,9 @@ class Correlation implements ArrayAccess
         'cause_unit' => 'getCauseUnit',
         'cause_unit_id' => 'getCauseUnitId',
         'cause_variable_id' => 'getCauseVariableId',
+        'cause_variable_name' => 'getCauseVariableName',
         'correlation_coefficient' => 'getCorrelationCoefficient',
+        'created_at' => 'getCreatedAt',
         'data_analysis' => 'getDataAnalysis',
         'data_sources' => 'getDataSources',
         'duration_of_action' => 'getDurationOfAction',
@@ -258,6 +305,7 @@ class Correlation implements ArrayAccess
         'effect_variable_ion_icon' => 'getEffectVariableIonIcon',
         'effect_size' => 'getEffectSize',
         'effect_variable_id' => 'getEffectVariableId',
+        'effect_variable_name' => 'getEffectVariableName',
         'gauge_image' => 'getGaugeImage',
         'number_of_pairs' => 'getNumberOfPairs',
         'original_effect' => 'getOriginalEffect',
@@ -267,6 +315,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'getOutcomeDataSources',
         'predictor_explanation' => 'getPredictorExplanation',
         'principal_investigator' => 'getPrincipalInvestigator',
+        'qm_score' => 'getQmScore',
         'reverse_correlation' => 'getReverseCorrelation',
         'significance_explanation' => 'getSignificanceExplanation',
         'statistical_significance' => 'getStatisticalSignificance',
@@ -284,6 +333,7 @@ class Correlation implements ArrayAccess
         'study_results' => 'getStudyResults',
         'study_title' => 'getStudyTitle',
         'timestamp' => 'getTimestamp',
+        'updated_at' => 'getUpdatedAt',
         'user_vote' => 'getUserVote',
         'value_predicting_high_outcome' => 'getValuePredictingHighOutcome',
         'value_predicting_high_outcome_explanation' => 'getValuePredictingHighOutcomeExplanation',
@@ -322,6 +372,13 @@ class Correlation implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['average_daily_low_cause'] = isset($data['average_daily_low_cause']) ? $data['average_daily_low_cause'] : null;
+        $this->container['average_daily_high_cause'] = isset($data['average_daily_high_cause']) ? $data['average_daily_high_cause'] : null;
+        $this->container['average_effect'] = isset($data['average_effect']) ? $data['average_effect'] : null;
+        $this->container['average_effect_following_high_cause'] = isset($data['average_effect_following_high_cause']) ? $data['average_effect_following_high_cause'] : null;
+        $this->container['average_effect_following_low_cause'] = isset($data['average_effect_following_low_cause']) ? $data['average_effect_following_low_cause'] : null;
+        $this->container['average_effect_following_high_cause_explanation'] = isset($data['average_effect_following_high_cause_explanation']) ? $data['average_effect_following_high_cause_explanation'] : null;
+        $this->container['average_effect_following_low_cause_explanation'] = isset($data['average_effect_following_low_cause_explanation']) ? $data['average_effect_following_low_cause_explanation'] : null;
         $this->container['average_vote'] = isset($data['average_vote']) ? $data['average_vote'] : null;
         $this->container['causality_factor'] = isset($data['causality_factor']) ? $data['causality_factor'] : null;
         $this->container['cause'] = isset($data['cause']) ? $data['cause'] : null;
@@ -333,7 +390,9 @@ class Correlation implements ArrayAccess
         $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
         $this->container['cause_unit_id'] = isset($data['cause_unit_id']) ? $data['cause_unit_id'] : null;
         $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
+        $this->container['cause_variable_name'] = isset($data['cause_variable_name']) ? $data['cause_variable_name'] : null;
         $this->container['correlation_coefficient'] = isset($data['correlation_coefficient']) ? $data['correlation_coefficient'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['data_analysis'] = isset($data['data_analysis']) ? $data['data_analysis'] : null;
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
@@ -343,6 +402,7 @@ class Correlation implements ArrayAccess
         $this->container['effect_variable_ion_icon'] = isset($data['effect_variable_ion_icon']) ? $data['effect_variable_ion_icon'] : null;
         $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
         $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
+        $this->container['effect_variable_name'] = isset($data['effect_variable_name']) ? $data['effect_variable_name'] : null;
         $this->container['gauge_image'] = isset($data['gauge_image']) ? $data['gauge_image'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
         $this->container['original_effect'] = isset($data['original_effect']) ? $data['original_effect'] : null;
@@ -352,6 +412,7 @@ class Correlation implements ArrayAccess
         $this->container['outcome_data_sources'] = isset($data['outcome_data_sources']) ? $data['outcome_data_sources'] : null;
         $this->container['predictor_explanation'] = isset($data['predictor_explanation']) ? $data['predictor_explanation'] : null;
         $this->container['principal_investigator'] = isset($data['principal_investigator']) ? $data['principal_investigator'] : null;
+        $this->container['qm_score'] = isset($data['qm_score']) ? $data['qm_score'] : null;
         $this->container['reverse_correlation'] = isset($data['reverse_correlation']) ? $data['reverse_correlation'] : null;
         $this->container['significance_explanation'] = isset($data['significance_explanation']) ? $data['significance_explanation'] : null;
         $this->container['statistical_significance'] = isset($data['statistical_significance']) ? $data['statistical_significance'] : null;
@@ -369,6 +430,7 @@ class Correlation implements ArrayAccess
         $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_vote'] = isset($data['user_vote']) ? $data['user_vote'] : null;
         $this->container['value_predicting_high_outcome'] = isset($data['value_predicting_high_outcome']) ? $data['value_predicting_high_outcome'] : null;
         $this->container['value_predicting_high_outcome_explanation'] = isset($data['value_predicting_high_outcome_explanation']) ? $data['value_predicting_high_outcome_explanation'] : null;
@@ -440,6 +502,153 @@ class Correlation implements ArrayAccess
         return true;
     }
 
+
+    /**
+     * Gets average_daily_low_cause
+     * @return float
+     */
+    public function getAverageDailyLowCause()
+    {
+        return $this->container['average_daily_low_cause'];
+    }
+
+    /**
+     * Sets average_daily_low_cause
+     * @param float $average_daily_low_cause 
+     * @return $this
+     */
+    public function setAverageDailyLowCause($average_daily_low_cause)
+    {
+        $this->container['average_daily_low_cause'] = $average_daily_low_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_daily_high_cause
+     * @return float
+     */
+    public function getAverageDailyHighCause()
+    {
+        return $this->container['average_daily_high_cause'];
+    }
+
+    /**
+     * Sets average_daily_high_cause
+     * @param float $average_daily_high_cause 
+     * @return $this
+     */
+    public function setAverageDailyHighCause($average_daily_high_cause)
+    {
+        $this->container['average_daily_high_cause'] = $average_daily_high_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_effect
+     * @return float
+     */
+    public function getAverageEffect()
+    {
+        return $this->container['average_effect'];
+    }
+
+    /**
+     * Sets average_effect
+     * @param float $average_effect 
+     * @return $this
+     */
+    public function setAverageEffect($average_effect)
+    {
+        $this->container['average_effect'] = $average_effect;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_effect_following_high_cause
+     * @return float
+     */
+    public function getAverageEffectFollowingHighCause()
+    {
+        return $this->container['average_effect_following_high_cause'];
+    }
+
+    /**
+     * Sets average_effect_following_high_cause
+     * @param float $average_effect_following_high_cause 
+     * @return $this
+     */
+    public function setAverageEffectFollowingHighCause($average_effect_following_high_cause)
+    {
+        $this->container['average_effect_following_high_cause'] = $average_effect_following_high_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_effect_following_low_cause
+     * @return float
+     */
+    public function getAverageEffectFollowingLowCause()
+    {
+        return $this->container['average_effect_following_low_cause'];
+    }
+
+    /**
+     * Sets average_effect_following_low_cause
+     * @param float $average_effect_following_low_cause 
+     * @return $this
+     */
+    public function setAverageEffectFollowingLowCause($average_effect_following_low_cause)
+    {
+        $this->container['average_effect_following_low_cause'] = $average_effect_following_low_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_effect_following_high_cause_explanation
+     * @return string
+     */
+    public function getAverageEffectFollowingHighCauseExplanation()
+    {
+        return $this->container['average_effect_following_high_cause_explanation'];
+    }
+
+    /**
+     * Sets average_effect_following_high_cause_explanation
+     * @param string $average_effect_following_high_cause_explanation 
+     * @return $this
+     */
+    public function setAverageEffectFollowingHighCauseExplanation($average_effect_following_high_cause_explanation)
+    {
+        $this->container['average_effect_following_high_cause_explanation'] = $average_effect_following_high_cause_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_effect_following_low_cause_explanation
+     * @return string
+     */
+    public function getAverageEffectFollowingLowCauseExplanation()
+    {
+        return $this->container['average_effect_following_low_cause_explanation'];
+    }
+
+    /**
+     * Sets average_effect_following_low_cause_explanation
+     * @param string $average_effect_following_low_cause_explanation 
+     * @return $this
+     */
+    public function setAverageEffectFollowingLowCauseExplanation($average_effect_following_low_cause_explanation)
+    {
+        $this->container['average_effect_following_low_cause_explanation'] = $average_effect_following_low_cause_explanation;
+
+        return $this;
+    }
 
     /**
      * Gets average_vote
@@ -673,6 +882,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets cause_variable_name
+     * @return string
+     */
+    public function getCauseVariableName()
+    {
+        return $this->container['cause_variable_name'];
+    }
+
+    /**
+     * Sets cause_variable_name
+     * @param string $cause_variable_name ORIGINAL variable name of the cause variable for which the user desires correlations.
+     * @return $this
+     */
+    public function setCauseVariableName($cause_variable_name)
+    {
+        $this->container['cause_variable_name'] = $cause_variable_name;
+
+        return $this;
+    }
+
+    /**
      * Gets correlation_coefficient
      * @return float
      */
@@ -689,6 +919,27 @@ class Correlation implements ArrayAccess
     public function setCorrelationCoefficient($correlation_coefficient)
     {
         $this->container['correlation_coefficient'] = $correlation_coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -883,6 +1134,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets effect_variable_name
+     * @return string
+     */
+    public function getEffectVariableName()
+    {
+        return $this->container['effect_variable_name'];
+    }
+
+    /**
+     * Sets effect_variable_name
+     * @param string $effect_variable_name ORIGINAL variable name of the effect variable for which the user desires correlations.
+     * @return $this
+     */
+    public function setEffectVariableName($effect_variable_name)
+    {
+        $this->container['effect_variable_name'] = $effect_variable_name;
+
+        return $this;
+    }
+
+    /**
      * Gets gauge_image
      * @return string
      */
@@ -1067,6 +1339,27 @@ class Correlation implements ArrayAccess
     public function setPrincipalInvestigator($principal_investigator)
     {
         $this->container['principal_investigator'] = $principal_investigator;
+
+        return $this;
+    }
+
+    /**
+     * Gets qm_score
+     * @return float
+     */
+    public function getQmScore()
+    {
+        return $this->container['qm_score'];
+    }
+
+    /**
+     * Sets qm_score
+     * @param float $qm_score Value representing the significance of the relationship as a function of crowdsourced insights, predictive strength, data quantity, and data quality
+     * @return $this
+     */
+    public function setQmScore($qm_score)
+    {
+        $this->container['qm_score'] = $qm_score;
 
         return $this;
     }
@@ -1429,6 +1722,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets updated_at
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
      * Gets user_vote
      * @return float
      */
@@ -1590,4 +1904,5 @@ class Correlation implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

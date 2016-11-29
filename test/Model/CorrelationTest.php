@@ -83,6 +83,62 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "average_daily_low_cause"
+     */
+    public function testPropertyAverageDailyLowCause()
+    {
+
+    }
+
+    /**
+     * Test attribute "average_daily_high_cause"
+     */
+    public function testPropertyAverageDailyHighCause()
+    {
+
+    }
+
+    /**
+     * Test attribute "average_effect"
+     */
+    public function testPropertyAverageEffect()
+    {
+
+    }
+
+    /**
+     * Test attribute "average_effect_following_high_cause"
+     */
+    public function testPropertyAverageEffectFollowingHighCause()
+    {
+
+    }
+
+    /**
+     * Test attribute "average_effect_following_low_cause"
+     */
+    public function testPropertyAverageEffectFollowingLowCause()
+    {
+
+    }
+
+    /**
+     * Test attribute "average_effect_following_high_cause_explanation"
+     */
+    public function testPropertyAverageEffectFollowingHighCauseExplanation()
+    {
+
+    }
+
+    /**
+     * Test attribute "average_effect_following_low_cause_explanation"
+     */
+    public function testPropertyAverageEffectFollowingLowCauseExplanation()
+    {
+
+    }
+
+    /**
      * Test attribute "average_vote"
      */
     public function testPropertyAverageVote()
@@ -171,9 +227,25 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "cause_variable_name"
+     */
+    public function testPropertyCauseVariableName()
+    {
+
+    }
+
+    /**
      * Test attribute "correlation_coefficient"
      */
     public function testPropertyCorrelationCoefficient()
+    {
+
+    }
+
+    /**
+     * Test attribute "created_at"
+     */
+    public function testPropertyCreatedAt()
     {
 
     }
@@ -251,6 +323,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "effect_variable_name"
+     */
+    public function testPropertyEffectVariableName()
+    {
+
+    }
+
+    /**
      * Test attribute "gauge_image"
      */
     public function testPropertyGaugeImage()
@@ -318,6 +398,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "principal_investigator"
      */
     public function testPropertyPrincipalInvestigator()
+    {
+
+    }
+
+    /**
+     * Test attribute "qm_score"
+     */
+    public function testPropertyQmScore()
     {
 
     }
@@ -454,6 +542,14 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "timestamp"
      */
     public function testPropertyTimestamp()
+    {
+
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
     {
 
     }

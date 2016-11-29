@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | id | [optional] 
-**user_id** | **int** | user_id | 
-**connector_id** | **int** | connector_id | 
-**number_of_measurements** | **int** | number_of_measurements | 
+**user_id** | **int** | user_id | [optional] 
+**connector_id** | **int** | connector_id | [optional] 
+**number_of_measurements** | **int** | number_of_measurements | [optional] 
 **success** | **bool** | success | 
 **message** | **string** | message | 
 **created_at** | [**\DateTime**](\DateTime.md) | When the record was first created. Use ISO 8601 datetime format | [optional] 

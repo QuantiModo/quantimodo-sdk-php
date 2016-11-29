@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class MeasurementSource implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -228,4 +230,5 @@ class MeasurementSource implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

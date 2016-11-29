@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class Vote implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -74,13 +76,13 @@ class Vote implements ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'client_id' => 'client_id',
-        'user_id' => 'user_id',
-        'cause_id' => 'cause_id',
-        'effect_id' => 'effect_id',
+        'client_id' => 'clientId',
+        'user_id' => 'userId',
+        'cause_id' => 'causeId',
+        'effect_id' => 'effectId',
         'value' => 'value',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
 
@@ -164,18 +166,6 @@ class Vote implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        if ($this->container['client_id'] === null) {
-            $invalid_properties[] = "'client_id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalid_properties[] = "'user_id' can't be null";
-        }
-        if ($this->container['cause_id'] === null) {
-            $invalid_properties[] = "'cause_id' can't be null";
-        }
-        if ($this->container['effect_id'] === null) {
-            $invalid_properties[] = "'effect_id' can't be null";
-        }
         if ($this->container['value'] === null) {
             $invalid_properties[] = "'value' can't be null";
         }
@@ -190,18 +180,6 @@ class Vote implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['client_id'] === null) {
-            return false;
-        }
-        if ($this->container['user_id'] === null) {
-            return false;
-        }
-        if ($this->container['cause_id'] === null) {
-            return false;
-        }
-        if ($this->container['effect_id'] === null) {
-            return false;
-        }
         if ($this->container['value'] === null) {
             return false;
         }
@@ -434,4 +412,5 @@ class Vote implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

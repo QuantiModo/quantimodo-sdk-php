@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class PostVote implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -292,4 +294,5 @@ class PostVote implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

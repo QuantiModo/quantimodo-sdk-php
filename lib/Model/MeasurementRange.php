@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class MeasurementRange implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -254,4 +256,5 @@ class MeasurementRange implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

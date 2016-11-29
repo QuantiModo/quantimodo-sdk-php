@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class UserTokenSuccessfulResponseInnerUserField implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -260,4 +262,5 @@ class UserTokenSuccessfulResponseInnerUserField implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class Connector implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -516,4 +518,5 @@ class Connector implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

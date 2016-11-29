@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class Connection implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -77,16 +79,16 @@ class Connection implements ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'user_id' => 'user_id',
-        'connector_id' => 'connector_id',
-        'connect_status' => 'connect_status',
-        'connect_error' => 'connect_error',
-        'update_requested_at' => 'update_requested_at',
-        'update_status' => 'update_status',
-        'update_error' => 'update_error',
-        'last_successful_updated_at' => 'last_successful_updated_at',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'user_id' => 'userId',
+        'connector_id' => 'connectorId',
+        'connect_status' => 'connectStatus',
+        'connect_error' => 'connectError',
+        'update_requested_at' => 'updateRequestedAt',
+        'update_status' => 'updateStatus',
+        'update_error' => 'updateError',
+        'last_successful_updated_at' => 'lastSuccessfulUpdatedAt',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
 
@@ -179,9 +181,6 @@ class Connection implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        if ($this->container['connector_id'] === null) {
-            $invalid_properties[] = "'connector_id' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -193,9 +192,6 @@ class Connection implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['connector_id'] === null) {
-            return false;
-        }
         return true;
     }
 
@@ -488,4 +484,5 @@ class Connection implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 
