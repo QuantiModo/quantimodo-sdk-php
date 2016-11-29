@@ -43,6 +43,8 @@ use \ArrayAccess;
  */
 class VariablesNew implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -201,4 +203,5 @@ class VariablesNew implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

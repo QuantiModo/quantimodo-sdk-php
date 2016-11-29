@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class Update implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -74,13 +76,13 @@ class Update implements ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'user_id' => 'user_id',
-        'connector_id' => 'connector_id',
-        'number_of_measurements' => 'number_of_measurements',
+        'user_id' => 'userId',
+        'connector_id' => 'connectorId',
+        'number_of_measurements' => 'numberOfMeasurements',
         'success' => 'success',
         'message' => 'message',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
 
@@ -164,15 +166,6 @@ class Update implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        if ($this->container['user_id'] === null) {
-            $invalid_properties[] = "'user_id' can't be null";
-        }
-        if ($this->container['connector_id'] === null) {
-            $invalid_properties[] = "'connector_id' can't be null";
-        }
-        if ($this->container['number_of_measurements'] === null) {
-            $invalid_properties[] = "'number_of_measurements' can't be null";
-        }
         if ($this->container['success'] === null) {
             $invalid_properties[] = "'success' can't be null";
         }
@@ -190,15 +183,6 @@ class Update implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['user_id'] === null) {
-            return false;
-        }
-        if ($this->container['connector_id'] === null) {
-            return false;
-        }
-        if ($this->container['number_of_measurements'] === null) {
-            return false;
-        }
         if ($this->container['success'] === null) {
             return false;
         }
@@ -434,4 +418,5 @@ class Update implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

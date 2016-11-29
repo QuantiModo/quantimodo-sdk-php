@@ -1,6 +1,6 @@
 # QuantiModo\Client\VotesApi
 
-All URIs are relative to *https://app.quantimo.do/api*
+All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | id | [optional] 
 **user_id** | **int** | ID of user that owns this correlation | [optional] 
-**connector_id** | **int** | The id for the connector data source for which the connection is connected | 
+**connector_id** | **int** | The id for the connector data source for which the connection is connected | [optional] 
 **connect_status** | **string** | Indicates whether a connector is currently connected to a service for a user. | [optional] 
 **connect_error** | **string** | Error message if there is a problem with authorizing this connection. | [optional] 
 **update_requested_at** | [**\DateTime**](\DateTime.md) | Time at which an update was requested by a user. | [optional] 

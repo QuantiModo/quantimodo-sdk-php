@@ -3,6 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**average_daily_low_cause** | **float** |  | [optional] 
+**average_daily_high_cause** | **float** |  | [optional] 
+**average_effect** | **float** |  | [optional] 
+**average_effect_following_high_cause** | **float** |  | [optional] 
+**average_effect_following_low_cause** | **float** |  | [optional] 
+**average_effect_following_high_cause_explanation** | **string** |  | [optional] 
+**average_effect_following_low_cause_explanation** | **string** |  | [optional] 
 **average_vote** | **float** | Average Vote | [optional] 
 **causality_factor** | **float** |  | [optional] 
 **cause** | **string** | ORIGINAL variable name of the cause variable for which the user desires correlations. | 
@@ -14,7 +21,9 @@ Name | Type | Description | Notes
 **cause_unit** | **string** | Unit of the predictor variable | [optional] 
 **cause_unit_id** | **int** | Unit Id of the predictor variable | [optional] 
 **cause_variable_id** | **int** |  | [optional] 
+**cause_variable_name** | **string** | ORIGINAL variable name of the cause variable for which the user desires correlations. | [optional] 
 **correlation_coefficient** | **float** | Pearson correlation coefficient between cause and effect measurements | 
+**created_at** | [**\DateTime**](\DateTime.md) | When the record was first created. Use ISO 8601 datetime format | [optional] 
 **data_analysis** | **string** | How the data was analyzed | [optional] 
 **data_sources** | **string** | How the data was obtained | [optional] 
 **duration_of_action** | **float** | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | 
@@ -24,6 +33,7 @@ Name | Type | Description | Notes
 **effect_variable_ion_icon** | **string** | For use in Ionic apps | [optional] 
 **effect_size** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
 **effect_variable_id** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
+**effect_variable_name** | **string** | ORIGINAL variable name of the effect variable for which the user desires correlations. | [optional] 
 **gauge_image** | **string** | Illustrates the strength of the relationship | [optional] 
 **number_of_pairs** | **float** | Number of points that went into the correlation calculation | 
 **original_effect** | **string** | effect variable original name. | [optional] 
@@ -33,6 +43,7 @@ Name | Type | Description | Notes
 **outcome_data_sources** | **string** | original name of the cause. | [optional] 
 **predictor_explanation** | **string** | HIGHER Remeron predicts HIGHER Overall Mood | [optional] 
 **principal_investigator** | **string** | Mike Sinn | [optional] 
+**qm_score** | **float** | Value representing the significance of the relationship as a function of crowdsourced insights, predictive strength, data quantity, and data quality | [optional] 
 **reverse_correlation** | **float** | Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation. | [optional] 
 **significance_explanation** | **string** | Using a two-tailed t-test with alpha &#x3D; 0.05, it was determined that the change... | [optional] 
 **statistical_significance** | **string** | A function of the effect size and sample size | [optional] 
@@ -50,6 +61,7 @@ Name | Type | Description | Notes
 **study_results** | **string** | This analysis suggests that... | [optional] 
 **study_title** | **string** | N1 Study HIGHER Remeron predicts HIGHER Overall Mood | [optional] 
 **timestamp** | **float** | Time at which correlation was calculated | 
+**updated_at** | [**\DateTime**](\DateTime.md) | When the record in the database was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional] 
 **user_vote** | **float** | User Vote | [optional] 
 **value_predicting_high_outcome** | **float** | cause value that predicts an above average effect value (in default unit for cause variable) | [optional] 
 **value_predicting_high_outcome_explanation** | **string** | Overall Mood, on average, 34% HIGHER after around 3.98mg Remeron | [optional] 

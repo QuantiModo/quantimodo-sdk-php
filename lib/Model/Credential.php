@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class Credential implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -71,12 +73,12 @@ class Credential implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_id' => 'user_id',
-        'connector_id' => 'connector_id',
-        'attr_key' => 'attr_key',
-        'attr_value' => 'attr_value',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'user_id' => 'userId',
+        'connector_id' => 'connectorId',
+        'attr_key' => 'attrKey',
+        'attr_value' => 'attrValue',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
 
@@ -154,15 +156,6 @@ class Credential implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        if ($this->container['connector_id'] === null) {
-            $invalid_properties[] = "'connector_id' can't be null";
-        }
-        if ($this->container['attr_key'] === null) {
-            $invalid_properties[] = "'attr_key' can't be null";
-        }
-        if ($this->container['attr_value'] === null) {
-            $invalid_properties[] = "'attr_value' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -174,15 +167,6 @@ class Credential implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['connector_id'] === null) {
-            return false;
-        }
-        if ($this->container['attr_key'] === null) {
-            return false;
-        }
-        if ($this->container['attr_value'] === null) {
-            return false;
-        }
         return true;
     }
 
@@ -370,4 +354,5 @@ class Credential implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 

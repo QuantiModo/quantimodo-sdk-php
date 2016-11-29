@@ -42,6 +42,8 @@ use \ArrayAccess;
  */
 class HumanTime implements ArrayAccess
 {
+    const DISCRIMINATOR = null;
+
     /**
       * The original name of the model.
       * @var string
@@ -274,4 +276,5 @@ class HumanTime implements ArrayAccess
         return json_encode(\QuantiModo\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
 
