@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **sms** | **bool** | True if the reminders should be delivered via SMS | [optional] 
 **email** | **bool** | True if the reminders should be delivered via email | [optional] 
 **notification_bar** | **bool** | True if the reminders should appear in the notification bar | [optional] 
-**last_reminded** | [**\DateTime**](\DateTime.md) | ISO 8601 timestamp for the last time a reminder was sent | [optional] 
+**latest_tracking_reminder_notification_reminder_time** | [**\DateTime**](\DateTime.md) | ISO 8601 timestamp for the reminder time of the latest tracking reminder notification that has been pre-emptively generated in the database | [optional] 
 **last_tracked** | [**\DateTime**](\DateTime.md) | ISO 8601 timestamp for the last time a measurement was received for this user and variable | [optional] 
 **start_tracking_date** | **string** | Earliest date on which the user should be reminded to track in YYYY-MM-DD format | [optional] 
 **stop_tracking_date** | **string** | Latest date on which the user should be reminded to track in YYYY-MM-DD format | [optional] 

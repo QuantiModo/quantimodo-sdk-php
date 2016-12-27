@@ -187,7 +187,7 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "last_reminded"
+     * Test attribute "latest_tracking_reminder_notification_reminder_time"
      */
     public function testPropertyLastReminded()
     {

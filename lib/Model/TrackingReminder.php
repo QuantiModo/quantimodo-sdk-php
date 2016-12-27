@@ -68,7 +68,7 @@ class TrackingReminder implements ArrayAccess
         'sms' => 'bool',
         'email' => 'bool',
         'notification_bar' => 'bool',
-        'last_reminded' => '\DateTime',
+        'latest_tracking_reminder_notification_reminder_time' => '\DateTime',
         'last_tracked' => '\DateTime',
         'start_tracking_date' => 'string',
         'stop_tracking_date' => 'string',
@@ -102,7 +102,7 @@ class TrackingReminder implements ArrayAccess
         'sms' => 'sms',
         'email' => 'email',
         'notification_bar' => 'notificationBar',
-        'last_reminded' => 'lastReminded',
+        'latest_tracking_reminder_notification_reminder_time' => 'latestTrackingReminderNotificationReminderTime',
         'last_tracked' => 'lastTracked',
         'start_tracking_date' => 'startTrackingDate',
         'stop_tracking_date' => 'stopTrackingDate',
@@ -132,7 +132,7 @@ class TrackingReminder implements ArrayAccess
         'sms' => 'setSms',
         'email' => 'setEmail',
         'notification_bar' => 'setNotificationBar',
-        'last_reminded' => 'setLastReminded',
+        'latest_tracking_reminder_notification_reminder_time' => 'setLastReminded',
         'last_tracked' => 'setLastTracked',
         'start_tracking_date' => 'setStartTrackingDate',
         'stop_tracking_date' => 'setStopTrackingDate',
@@ -162,7 +162,7 @@ class TrackingReminder implements ArrayAccess
         'sms' => 'getSms',
         'email' => 'getEmail',
         'notification_bar' => 'getNotificationBar',
-        'last_reminded' => 'getLastReminded',
+        'latest_tracking_reminder_notification_reminder_time' => 'getLastReminded',
         'last_tracked' => 'getLastTracked',
         'start_tracking_date' => 'getStartTrackingDate',
         'stop_tracking_date' => 'getStopTrackingDate',
@@ -231,7 +231,7 @@ class TrackingReminder implements ArrayAccess
         $this->container['sms'] = isset($data['sms']) ? $data['sms'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
         $this->container['notification_bar'] = isset($data['notification_bar']) ? $data['notification_bar'] : null;
-        $this->container['last_reminded'] = isset($data['last_reminded']) ? $data['last_reminded'] : null;
+        $this->container['latest_tracking_reminder_notification_reminder_time'] = isset($data['latest_tracking_reminder_notification_reminder_time']) ? $data['latest_tracking_reminder_notification_reminder_time'] : null;
         $this->container['last_tracked'] = isset($data['last_tracked']) ? $data['last_tracked'] : null;
         $this->container['start_tracking_date'] = isset($data['start_tracking_date']) ? $data['start_tracking_date'] : null;
         $this->container['stop_tracking_date'] = isset($data['stop_tracking_date']) ? $data['stop_tracking_date'] : null;
@@ -566,22 +566,22 @@ class TrackingReminder implements ArrayAccess
     }
 
     /**
-     * Gets last_reminded
+     * Gets latest_tracking_reminder_notification_reminder_time
      * @return \DateTime
      */
     public function getLastReminded()
     {
-        return $this->container['last_reminded'];
+        return $this->container['latest_tracking_reminder_notification_reminder_time'];
     }
 
     /**
-     * Sets last_reminded
-     * @param \DateTime $last_reminded ISO 8601 timestamp for the last time a reminder was sent
+     * Sets latest_tracking_reminder_notification_reminder_time
+     * @param \DateTime $latest_tracking_reminder_notification_reminder_time ISO 8601 timestamp for the reminder time of the latest tracking reminder notification that has been pre-emptively generated in the database
      * @return $this
      */
-    public function setLastReminded($last_reminded)
+    public function setLastReminded($latest_tracking_reminder_notification_reminder_time)
     {
-        $this->container['last_reminded'] = $last_reminded;
+        $this->container['latest_tracking_reminder_notification_reminder_time'] = $latest_tracking_reminder_notification_reminder_time;
 
         return $this;
     }
