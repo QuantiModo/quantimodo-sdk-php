@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1UserTagsDeletePost**
-> \QuantiModo\Client\Model\CommonResponse v1UserTagsDeletePost($tagged_variable_id, $tag_variable_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1UserTagsDeletePost($tagged_variable_id, $tag_variable_id)
 
 Delete user tag or ingredient
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1UserTagsPost**
-> \QuantiModo\Client\Model\CommonResponse v1UserTagsPost($body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1UserTagsPost($body, $access_token, $user_id)
 
 Post or update user tags or ingredients
 
@@ -74,7 +74,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\TagsApi();
-$body = new \QuantiModo\Client\Model\UserTag(); // \QuantiModo\Client\Model\UserTag | Contains the new user tag data
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\UserTag(); // \QuantiModo\Client\QuantiModo\Client\Model\UserTag | Contains the new user tag data
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -91,13 +91,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\UserTag**](../Model/\QuantiModo\Client\Model\UserTag.md)| Contains the new user tag data |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\UserTag**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\UserTag.md)| Contains the new user tag data |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 

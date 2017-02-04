@@ -15,7 +15,7 @@
  *
  * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
  *
- * OpenAPI spec version: 4.6.5
+ * OpenAPI spec version: 2.0
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -27,15 +27,14 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\Model;
+namespace QuantiModo\Client\QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
 /**
  * Correlation Class Doc Comment
  *
- * @category    Class */
-/**
+ * @category    Class
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -104,11 +103,11 @@ class Correlation implements ArrayAccess
         'study_background' => 'string',
         'study_design' => 'string',
         'study_limitations' => 'string',
-        'study_link_user' => 'string',
-        'study_link_public' => 'string',
-        'study_link_google' => 'string',
+        'study_link_dynamic' => 'string',
         'study_link_facebook' => 'string',
+        'study_link_google' => 'string',
         'study_link_twitter' => 'string',
+        'study_link_static' => 'string',
         'study_objective' => 'string',
         'study_results' => 'string',
         'study_title' => 'string',
@@ -180,11 +179,11 @@ class Correlation implements ArrayAccess
         'study_background' => 'studyBackground',
         'study_design' => 'studyDesign',
         'study_limitations' => 'studyLimitations',
-        'study_link_user' => 'studyLinkUser',
-        'study_link_public' => 'studyLinkPublic',
-        'study_link_google' => 'studyLinkGoogle',
+        'study_link_dynamic' => 'studyLinkDynamic',
         'study_link_facebook' => 'studyLinkFacebook',
+        'study_link_google' => 'studyLinkGoogle',
         'study_link_twitter' => 'studyLinkTwitter',
+        'study_link_static' => 'studyLinkStatic',
         'study_objective' => 'studyObjective',
         'study_results' => 'studyResults',
         'study_title' => 'studyTitle',
@@ -252,11 +251,11 @@ class Correlation implements ArrayAccess
         'study_background' => 'setStudyBackground',
         'study_design' => 'setStudyDesign',
         'study_limitations' => 'setStudyLimitations',
-        'study_link_user' => 'setStudyLinkUser',
-        'study_link_public' => 'setStudyLinkPublic',
-        'study_link_google' => 'setStudyLinkGoogle',
+        'study_link_dynamic' => 'setStudyLinkDynamic',
         'study_link_facebook' => 'setStudyLinkFacebook',
+        'study_link_google' => 'setStudyLinkGoogle',
         'study_link_twitter' => 'setStudyLinkTwitter',
+        'study_link_static' => 'setStudyLinkStatic',
         'study_objective' => 'setStudyObjective',
         'study_results' => 'setStudyResults',
         'study_title' => 'setStudyTitle',
@@ -324,11 +323,11 @@ class Correlation implements ArrayAccess
         'study_background' => 'getStudyBackground',
         'study_design' => 'getStudyDesign',
         'study_limitations' => 'getStudyLimitations',
-        'study_link_user' => 'getStudyLinkUser',
-        'study_link_public' => 'getStudyLinkPublic',
-        'study_link_google' => 'getStudyLinkGoogle',
+        'study_link_dynamic' => 'getStudyLinkDynamic',
         'study_link_facebook' => 'getStudyLinkFacebook',
+        'study_link_google' => 'getStudyLinkGoogle',
         'study_link_twitter' => 'getStudyLinkTwitter',
+        'study_link_static' => 'getStudyLinkStatic',
         'study_objective' => 'getStudyObjective',
         'study_results' => 'getStudyResults',
         'study_title' => 'getStudyTitle',
@@ -421,11 +420,11 @@ class Correlation implements ArrayAccess
         $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
         $this->container['study_design'] = isset($data['study_design']) ? $data['study_design'] : null;
         $this->container['study_limitations'] = isset($data['study_limitations']) ? $data['study_limitations'] : null;
-        $this->container['study_link_user'] = isset($data['study_link_user']) ? $data['study_link_user'] : null;
-        $this->container['study_link_public'] = isset($data['study_link_public']) ? $data['study_link_public'] : null;
-        $this->container['study_link_google'] = isset($data['study_link_google']) ? $data['study_link_google'] : null;
+        $this->container['study_link_dynamic'] = isset($data['study_link_dynamic']) ? $data['study_link_dynamic'] : null;
         $this->container['study_link_facebook'] = isset($data['study_link_facebook']) ? $data['study_link_facebook'] : null;
+        $this->container['study_link_google'] = isset($data['study_link_google']) ? $data['study_link_google'] : null;
         $this->container['study_link_twitter'] = isset($data['study_link_twitter']) ? $data['study_link_twitter'] : null;
+        $this->container['study_link_static'] = isset($data['study_link_static']) ? $data['study_link_static'] : null;
         $this->container['study_objective'] = isset($data['study_objective']) ? $data['study_objective'] : null;
         $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
@@ -446,6 +445,7 @@ class Correlation implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
+
         if ($this->container['cause'] === null) {
             $invalid_properties[] = "'cause' can't be null";
         }
@@ -474,10 +474,11 @@ class Correlation implements ArrayAccess
      * validate all the properties in the model
      * return true if all passed
      *
-     * @return bool True if all properteis are valid
+     * @return bool True if all properties are valid
      */
     public function valid()
     {
+
         if ($this->container['cause'] === null) {
             return false;
         }
@@ -934,7 +935,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets created_at
-     * @param \DateTime $created_at When the record was first created. Use ISO 8601 datetime format
+     * @param \DateTime $created_at When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
      * @return $this
      */
     public function setCreatedAt($created_at)
@@ -1533,64 +1534,22 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets study_link_user
+     * Gets study_link_dynamic
      * @return string
      */
-    public function getStudyLinkUser()
+    public function getStudyLinkDynamic()
     {
-        return $this->container['study_link_user'];
+        return $this->container['study_link_dynamic'];
     }
 
     /**
-     * Sets study_link_user
-     * @param string $study_link_user Url for the study
+     * Sets study_link_dynamic
+     * @param string $study_link_dynamic Url for the interactive study within the web app
      * @return $this
      */
-    public function setStudyLinkUser($study_link_user)
+    public function setStudyLinkDynamic($study_link_dynamic)
     {
-        $this->container['study_link_user'] = $study_link_user;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_public
-     * @return string
-     */
-    public function getStudyLinkPublic()
-    {
-        return $this->container['study_link_public'];
-    }
-
-    /**
-     * Sets study_link_public
-     * @param string $study_link_public Url for the study
-     * @return $this
-     */
-    public function setStudyLinkPublic($study_link_public)
-    {
-        $this->container['study_link_public'] = $study_link_public;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_google
-     * @return string
-     */
-    public function getStudyLinkGoogle()
-    {
-        return $this->container['study_link_google'];
-    }
-
-    /**
-     * Sets study_link_google
-     * @param string $study_link_google Url for sharing the study on Google+
-     * @return $this
-     */
-    public function setStudyLinkGoogle($study_link_google)
-    {
-        $this->container['study_link_google'] = $study_link_google;
+        $this->container['study_link_dynamic'] = $study_link_dynamic;
 
         return $this;
     }
@@ -1617,6 +1576,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets study_link_google
+     * @return string
+     */
+    public function getStudyLinkGoogle()
+    {
+        return $this->container['study_link_google'];
+    }
+
+    /**
+     * Sets study_link_google
+     * @param string $study_link_google Url for sharing the study on Google+
+     * @return $this
+     */
+    public function setStudyLinkGoogle($study_link_google)
+    {
+        $this->container['study_link_google'] = $study_link_google;
+
+        return $this;
+    }
+
+    /**
      * Gets study_link_twitter
      * @return string
      */
@@ -1633,6 +1613,27 @@ class Correlation implements ArrayAccess
     public function setStudyLinkTwitter($study_link_twitter)
     {
         $this->container['study_link_twitter'] = $study_link_twitter;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_static
+     * @return string
+     */
+    public function getStudyLinkStatic()
+    {
+        return $this->container['study_link_static'];
+    }
+
+    /**
+     * Sets study_link_static
+     * @param string $study_link_static Url for sharing the statically rendered study on social media
+     * @return $this
+     */
+    public function setStudyLinkStatic($study_link_static)
+    {
+        $this->container['study_link_static'] = $study_link_static;
 
         return $this;
     }
@@ -1732,7 +1733,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
+     * @param \DateTime $updated_at When the record in the database was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format. Time zone should be UTC and not local.
      * @return $this
      */
     public function setUpdatedAt($updated_at)

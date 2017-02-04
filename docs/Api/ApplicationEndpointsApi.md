@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **v2ApplicationConnectionsGet**
-> \QuantiModo\Client\Model\InlineResponse2003 v2ApplicationConnectionsGet($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002 v2ApplicationConnectionsGet($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Connections
 
@@ -44,8 +44,8 @@ $update_requested_at = "update_requested_at_example"; // string | Time at which 
 $update_status = "update_status_example"; // string | Indicates whether a connector is currently updated.
 $update_error = "update_error_example"; // string | Indicates if there was an error during the update.
 $last_successful_updated_at = "last_successful_updated_at_example"; // string | The time at which the connector was last successfully updated.
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -72,15 +72,15 @@ Name | Type | Description  | Notes
  **update_status** | **string**| Indicates whether a connector is currently updated. | [optional]
  **update_error** | **string**| Indicates if there was an error during the update. | [optional]
  **last_successful_updated_at** | **string**| The time at which the connector was last successfully updated. | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
 
 ### Authorization
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationCredentialsGet**
-> \QuantiModo\Client\Model\InlineResponse2004 v2ApplicationCredentialsGet($access_token, $user_id, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003 v2ApplicationCredentialsGet($access_token, $user_id, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Credentials
 
@@ -118,8 +118,8 @@ $user_id = 56; // int | User's id
 $connector_id = 56; // int | The id for the connector data source from which the credential was obtained
 $attr_key = "attr_key_example"; // string | Attribute name such as token, userid, username, or password
 $attr_value = "attr_value_example"; // string | Encrypted value for the attribute specified
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -142,15 +142,15 @@ Name | Type | Description  | Notes
  **connector_id** | **int**| The id for the connector data source from which the credential was obtained | [optional]
  **attr_key** | **string**| Attribute name such as token, userid, username, or password | [optional]
  **attr_value** | **string**| Encrypted value for the attribute specified | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationMeasurementsGet**
-> \QuantiModo\Client\Model\InlineResponse2005 v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004 v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
 
 Get measurements for all users using your application
 
@@ -189,7 +189,7 @@ $client_id = "client_id_example"; // string | The ID of the client application w
 $connector_id = 56; // int | The id for the connector data source from which the measurement was obtained
 $variable_id = 56; // int | ID of the variable for which we are creating the measurement records
 $source_id = 56; // int | Application or device used to record the measurement values
-$start_time = "start_time_example"; // string | start time for the measurement event. Use ISO 8601 datetime format
+$start_time = "start_time_example"; // string | start time for the measurement event. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $value = 3.4; // float | The value of the measurement after conversion to the default unit for that variable
 $unit_id = 56; // int | The default unit id for the variable
 $original_value = 3.4; // float | Unconverted value of measurement as originally posted (before conversion to default unit)
@@ -199,8 +199,8 @@ $note = "note_example"; // string | An optional note the user may include with t
 $latitude = 3.4; // float | Latitude at which the measurement was taken
 $longitude = 3.4; // float | Longitude at which the measurement was taken
 $location = "location_example"; // string | Optional human readable name for the location where the measurement was recorded
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $error = "error_example"; // string | An error message if there is a problem with the measurement
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
  **connector_id** | **int**| The id for the connector data source from which the measurement was obtained | [optional]
  **variable_id** | **int**| ID of the variable for which we are creating the measurement records | [optional]
  **source_id** | **int**| Application or device used to record the measurement values | [optional]
- **start_time** | **string**| start time for the measurement event. Use ISO 8601 datetime format | [optional]
+ **start_time** | **string**| start time for the measurement event. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **value** | **float**| The value of the measurement after conversion to the default unit for that variable | [optional]
  **unit_id** | **int**| The default unit id for the variable | [optional]
  **original_value** | **float**| Unconverted value of measurement as originally posted (before conversion to default unit) | [optional]
@@ -235,8 +235,8 @@ Name | Type | Description  | Notes
  **latitude** | **float**| Latitude at which the measurement was taken | [optional]
  **longitude** | **float**| Longitude at which the measurement was taken | [optional]
  **location** | **string**| Optional human readable name for the location where the measurement was recorded | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **error** | **string**| An error message if there is a problem with the measurement | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 ### Authorization
 
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationTrackingRemindersGet**
-> \QuantiModo\Client\Model\InlineResponse2001 v2ApplicationTrackingRemindersGet($access_token, $user_id, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005 v2ApplicationTrackingRemindersGet($access_token, $user_id, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get tracking reminders
 
@@ -280,8 +280,8 @@ $api_instance = new QuantiModo\Client\Api\ApplicationEndpointsApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 $client_id = "client_id_example"; // string | The ID of the client application which last created or updated this trackingReminder
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -302,15 +302,15 @@ Name | Type | Description  | Notes
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
  **client_id** | **string**| The ID of the client application which last created or updated this trackingReminder | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUpdatesGet**
-> \QuantiModo\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $user_id, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $user_id, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Updates
 
@@ -349,8 +349,8 @@ $connector_id = 56; // int | connector_id
 $number_of_measurements = 56; // int | number_of_measurements
 $success = true; // bool | success
 $message = "message_example"; // string | message
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -374,15 +374,15 @@ Name | Type | Description  | Notes
  **number_of_measurements** | **int**| number_of_measurements | [optional]
  **success** | **bool**| success | [optional]
  **message** | **string**| message | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariableRelationshipsGet**
-> \QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariableRelationshipsGet($access_token, $user_id, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008 v2ApplicationUserVariableRelationshipsGet($access_token, $user_id, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
 
 Get all UserVariableRelationships
 
@@ -474,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariablesGet**
-> \QuantiModo\Client\Model\InlineResponse2008 v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
 
 Get all UserVariables
 
@@ -551,8 +551,8 @@ $kurtosis = 3.4; // float | Kurtosis
 $latitude = 3.4; // float | Latitude
 $longitude = 3.4; // float | Longitude
 $location = "location_example"; // string | Location
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $outcome = true; // bool | Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
 $sources = "sources_example"; // string | Comma-separated list of source names to limit variables to those sources
 $earliest_source_time = 56; // int | Earliest source time
@@ -622,8 +622,8 @@ Name | Type | Description  | Notes
  **latitude** | **float**| Latitude | [optional]
  **longitude** | **float**| Longitude | [optional]
  **location** | **string**| Location | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **outcome** | **bool**| Outcome variables (those with &#x60;outcome&#x60; &#x3D;&#x3D; 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables | [optional]
  **sources** | **string**| Comma-separated list of source names to limit variables to those sources | [optional]
  **earliest_source_time** | **int**| Earliest source time | [optional]
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -652,7 +652,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVariableUserSourcesGet**
-> \QuantiModo\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $user_id, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $user_id, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all VariableUserSources
 
@@ -677,8 +677,8 @@ $variable_id = 56; // int | ID of variable
 $timestamp = 56; // int | Time that this measurement occurred Uses epoch minute (epoch time divided by 60)
 $earliest_measurement_time = 56; // int | Earliest measurement time
 $latest_measurement_time = 56; // int | Latest measurement time
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -702,15 +702,15 @@ Name | Type | Description  | Notes
  **timestamp** | **int**| Time that this measurement occurred Uses epoch minute (epoch time divided by 60) | [optional]
  **earliest_measurement_time** | **int**| Earliest measurement time | [optional]
  **latest_measurement_time** | **int**| Latest measurement time | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 ### Authorization
 
@@ -724,7 +724,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVotesGet**
-> \QuantiModo\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $user_id, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $user_id, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Votes
 
@@ -749,8 +749,8 @@ $client_id = "client_id_example"; // string | The ID of the client application w
 $cause_id = 56; // int | ID of predictor variable
 $effect_id = 56; // int | ID of outcome variable
 $value = 56; // int | Value of Vote. 1 is for upvote. 0 is for downvote.  Otherwise, there is no vote.
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -774,15 +774,15 @@ Name | Type | Description  | Notes
  **cause_id** | **int**| ID of predictor variable | [optional]
  **effect_id** | **int**| ID of outcome variable | [optional]
  **value** | **int**| Value of Vote. 1 is for upvote. 0 is for downvote.  Otherwise, there is no vote. | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
 
 ### Authorization
 

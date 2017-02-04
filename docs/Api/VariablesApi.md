@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **v1PublicVariablesGet**
-> \QuantiModo\Client\Model\Variable v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\Variable v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
 
 Get public variables
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PublicVariablesSearchSearchGet**
-> \QuantiModo\Client\Model\Variable v1PublicVariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\Variable v1PublicVariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort)
 
 Get top 5 PUBLIC variables with the most correlations
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 
@@ -172,7 +172,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$variable_id = new \QuantiModo\Client\Model\UserVariableDelete(); // \QuantiModo\Client\Model\UserVariableDelete | Id of the variable whose measurements should be deleted
+$variable_id = new \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete(); // \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete | Id of the variable whose measurements should be deleted
 
 try {
     $api_instance->v1UserVariablesDeletePost($variable_id);
@@ -186,7 +186,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **variable_id** | [**\QuantiModo\Client\Model\UserVariableDelete**](../Model/\QuantiModo\Client\Model\UserVariableDelete.md)| Id of the variable whose measurements should be deleted |
+ **variable_id** | [**\QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete.md)| Id of the variable whose measurements should be deleted |
 
 ### Return type
 
@@ -219,7 +219,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$user_variables = new \QuantiModo\Client\Model\UserVariables(); // \QuantiModo\Client\Model\UserVariables | Variable user settings data
+$user_variables = new \QuantiModo\Client\QuantiModo\Client\Model\UserVariables(); // \QuantiModo\Client\QuantiModo\Client\Model\UserVariables | Variable user settings data
 
 try {
     $api_instance->v1UserVariablesPost($user_variables);
@@ -233,7 +233,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_variables** | [**\QuantiModo\Client\Model\UserVariables**](../Model/\QuantiModo\Client\Model\UserVariables.md)| Variable user settings data |
+ **user_variables** | [**\QuantiModo\Client\QuantiModo\Client\Model\UserVariables**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\UserVariables.md)| Variable user settings data |
 
 ### Return type
 
@@ -266,7 +266,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$variable_id = new \QuantiModo\Client\Model\UserVariableDelete(); // \QuantiModo\Client\Model\UserVariableDelete | Id of the variable that should be reset
+$variable_id = new \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete(); // \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete | Id of the variable that should be reset
 
 try {
     $api_instance->v1UserVariablesResetPost($variable_id);
@@ -280,7 +280,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **variable_id** | [**\QuantiModo\Client\Model\UserVariableDelete**](../Model/\QuantiModo\Client\Model\UserVariableDelete.md)| Id of the variable that should be reset |
+ **variable_id** | [**\QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete.md)| Id of the variable that should be reset |
 
 ### Return type
 
@@ -298,7 +298,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariableCategoriesGet**
-> \QuantiModo\Client\Model\VariableCategory[] v1VariableCategoriesGet()
+> \QuantiModo\Client\QuantiModo\Client\Model\VariableCategory[] v1VariableCategoriesGet()
 
 Variable categories
 
@@ -328,7 +328,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\QuantiModo\Client\Model\VariableCategory[]**](../Model/VariableCategory.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\VariableCategory[]**](../Model/VariableCategory.md)
 
 ### Authorization
 
@@ -342,7 +342,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesGet**
-> \QuantiModo\Client\Model\Variable v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\Variable v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
 
 Get variables with user's settings
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 
@@ -434,7 +434,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$body = new \QuantiModo\Client\Model\VariablesNew(); // \QuantiModo\Client\Model\VariablesNew | Original name for the variable.
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\VariablesNew(); // \QuantiModo\Client\QuantiModo\Client\Model\VariablesNew | Original name for the variable.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -450,7 +450,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\VariablesNew**](../Model/\QuantiModo\Client\Model\VariablesNew.md)| Original name for the variable. |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\VariablesNew**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\VariablesNew.md)| Original name for the variable. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
@@ -470,7 +470,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesSearchSearchGet**
-> \QuantiModo\Client\Model\Variable[] v1VariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset)
+> \QuantiModo\Client\QuantiModo\Client\Model\Variable[] v1VariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset)
 
 Get variables by search query
 
@@ -524,7 +524,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Variable[]**](../Model/Variable.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Variable[]**](../Model/Variable.md)
 
 ### Authorization
 
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VariablesVariableNameGet**
-> \QuantiModo\Client\Model\Variable v1VariablesVariableNameGet($variable_name, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\Variable v1VariablesVariableNameGet($variable_name, $access_token, $user_id)
 
 Get info about a variable
 
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
 
 ### Authorization
 

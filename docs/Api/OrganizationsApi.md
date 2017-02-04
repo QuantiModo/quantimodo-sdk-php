@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **v1OrganizationsOrganizationIdUsersPost**
-> \QuantiModo\Client\Model\UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token, $user_id)
 
 Get user tokens for existing users, create new users
 
@@ -28,7 +28,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key',
 
 $api_instance = new QuantiModo\Client\Api\OrganizationsApi();
 $organization_id = 56; // int | Organization ID
-$body = new \QuantiModo\Client\Model\UserTokenRequest(); // \QuantiModo\Client\Model\UserTokenRequest | Provides organization token and user ID
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequest(); // \QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequest | Provides organization token and user ID
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -46,13 +46,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**| Organization ID |
- **body** | [**\QuantiModo\Client\Model\UserTokenRequest**](../Model/\QuantiModo\Client\Model\UserTokenRequest.md)| Provides organization token and user ID |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequest**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequest.md)| Provides organization token and user ID |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\UserTokenSuccessfulResponse**](../Model/UserTokenSuccessfulResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse**](../Model/UserTokenSuccessfulResponse.md)
 
 ### Authorization
 

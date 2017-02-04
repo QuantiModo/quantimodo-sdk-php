@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **v1UnitCategoriesGet**
-> \QuantiModo\Client\Model\UnitCategory v1UnitCategoriesGet()
+> \QuantiModo\Client\QuantiModo\Client\Model\UnitCategory v1UnitCategoriesGet()
 
 Get unit categories
 
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\QuantiModo\Client\Model\UnitCategory**](../Model/UnitCategory.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\UnitCategory**](../Model/UnitCategory.md)
 
 ### Authorization
 
@@ -54,7 +54,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1UnitsGet**
-> \QuantiModo\Client\Model\Unit[] v1UnitsGet($access_token, $user_id, $id, $unit_name, $abbreviated_unit_name, $unit_category_name)
+> \QuantiModo\Client\QuantiModo\Client\Model\Unit[] v1UnitsGet($access_token, $user_id, $id, $unit_name, $abbreviated_unit_name, $unit_category_name)
 
 Get all available units
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Unit[]**](../Model/Unit.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Unit[]**](../Model/Unit.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1UnitsVariableGet**
-> \QuantiModo\Client\Model\Unit[] v1UnitsVariableGet($access_token, $user_id, $unit_name, $abbreviated_unit_name, $unit_category_name, $variable)
+> \QuantiModo\Client\QuantiModo\Client\Model\Unit[] v1UnitsVariableGet($access_token, $user_id, $unit_name, $abbreviated_unit_name, $unit_category_name, $variable)
 
 Units for Variable
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Unit[]**](../Model/Unit.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Unit[]**](../Model/Unit.md)
 
 ### Authorization
 
