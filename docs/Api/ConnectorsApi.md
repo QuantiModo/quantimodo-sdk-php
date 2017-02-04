@@ -135,7 +135,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
+$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -151,7 +151,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. |
+ **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
@@ -186,7 +186,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
+$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint.
 $parameters = "parameters_example"; // string | JSON Array of Parameters for the request to enable connector.
 $url = "url_example"; // string | URL which should be used to enable the connector.
 $use_popup = true; // bool | Should use popup when enabling connector
@@ -205,7 +205,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. |
+ **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint. |
  **parameters** | **string**| JSON Array of Parameters for the request to enable connector. |
  **url** | **string**| URL which should be used to enable the connector. |
  **use_popup** | **bool**| Should use popup when enabling connector |
@@ -228,7 +228,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorConnectParameterGet**
-> \QuantiModo\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $user_id, $default_value)
+> \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $user_id, $default_value)
 
 Connect Parameter
 
@@ -243,7 +243,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
+$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint.
 $display_name = "display_name_example"; // string | Name of the parameter that is user visible in the form
 $key = "key_example"; // string | Name of the property that the user has to enter such as username or password Connector (used in HTTP request)
 $placeholder = "placeholder_example"; // string | Placeholder hint value for the parameter input tag.
@@ -266,7 +266,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. |
+ **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint. |
  **display_name** | **string**| Name of the parameter that is user visible in the form |
  **key** | **string**| Name of the property that the user has to enter such as username or password Connector (used in HTTP request) |
  **placeholder** | **string**| Placeholder hint value for the parameter input tag. |
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\ConnectorInstruction**](../Model/ConnectorInstruction.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction**](../Model/ConnectorInstruction.md)
 
 ### Authorization
 
@@ -307,7 +307,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
+$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint.
 
 try {
     $api_instance->v1ConnectorsConnectorDisconnectGet($connector);
@@ -321,7 +321,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. |
+ **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint. |
 
 ### Return type
 
@@ -339,7 +339,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorInfoGet**
-> \QuantiModo\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token, $user_id)
 
 Get connector info for user
 
@@ -354,7 +354,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
+$connector = "connector_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -371,13 +371,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint. |
+ **connector** | **string**| Lowercase system name of the source application or device. Get a list of available connectors from the /v1/connectors/list endpoint. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\ConnectorInfo**](../Model/ConnectorInfo.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo**](../Model/ConnectorInfo.md)
 
 ### Authorization
 
@@ -442,7 +442,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsListGet**
-> \QuantiModo\Client\Model\Connector[] v1ConnectorsListGet()
+> \QuantiModo\Client\QuantiModo\Client\Model\Connector[] v1ConnectorsListGet()
 
 List of Connectors
 
@@ -472,7 +472,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Connector[]**](../Model/Connector.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Connector[]**](../Model/Connector.md)
 
 ### Authorization
 

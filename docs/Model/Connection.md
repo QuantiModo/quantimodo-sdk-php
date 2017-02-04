@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **update_status** | **string** | Indicates whether a connector is currently updated. | [optional] 
 **update_error** | **string** | Indicates if there was an error during the update. | [optional] 
 **last_successful_updated_at** | [**\DateTime**](\DateTime.md) | The time at which the connector was last successfully updated. | [optional] 
-**created_at** | [**\DateTime**](\DateTime.md) | When the record was first created. Use ISO 8601 datetime format | [optional] 
-**updated_at** | [**\DateTime**](\DateTime.md) | When the record in the database was last updated. Use ISO 8601 datetime format | [optional] 
+**created_at** | [**\DateTime**](\DateTime.md) | When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional] 
+**updated_at** | [**\DateTime**](\DateTime.md) | When the record in the database was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

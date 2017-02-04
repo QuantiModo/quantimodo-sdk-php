@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **v1TrackingReminderNotificationsGet**
-> \QuantiModo\Client\Model\InlineResponse200 v1TrackingReminderNotificationsGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20012 v1TrackingReminderNotificationsGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get specific pending tracking reminders
 
@@ -32,8 +32,8 @@ $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 $variable_category_name = "variable_category_name_example"; // string | Limit tracking reminder notifications to a specific variable category
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local.
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format. Time zone should be UTC and not local.
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format. Time zone should be UTC and not local.
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -54,15 +54,15 @@ Name | Type | Description  | Notes
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
  **variable_category_name** | **string**| Limit tracking reminder notifications to a specific variable category | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format. Time zone should be UTC and not local. | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format. Time zone should be UTC and not local. | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsSkipPost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSkipPost($body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSkipPost($body, $access_token, $user_id)
 
 Skip a pending tracking reminder
 
@@ -91,7 +91,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
-$body = new \QuantiModo\Client\Model\TrackingReminderNotificationSkip(); // \QuantiModo\Client\Model\TrackingReminderNotificationSkip | Id of the pending reminder to be skipped or deleted
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSkip(); // \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSkip | Id of the pending reminder to be skipped or deleted
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -108,13 +108,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationSkip**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationSkip.md)| Id of the pending reminder to be skipped or deleted |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSkip**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSkip.md)| Id of the pending reminder to be skipped or deleted |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsSnoozePost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSnoozePost($body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsSnoozePost($body, $access_token, $user_id)
 
 Snooze a pending tracking reminder
 
@@ -143,7 +143,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
-$body = new \QuantiModo\Client\Model\TrackingReminderNotificationSnooze(); // \QuantiModo\Client\Model\TrackingReminderNotificationSnooze | Id of the pending reminder to be snoozed
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSnooze(); // \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSnooze | Id of the pending reminder to be snoozed
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -160,13 +160,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationSnooze**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationSnooze.md)| Id of the pending reminder to be snoozed |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSnooze**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationSnooze.md)| Id of the pending reminder to be snoozed |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingReminderNotificationsTrackPost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsTrackPost($body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1TrackingReminderNotificationsTrackPost($body, $access_token, $user_id)
 
 Track a pending tracking reminder
 
@@ -195,7 +195,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
-$body = new \QuantiModo\Client\Model\TrackingReminderNotificationTrack(); // \QuantiModo\Client\Model\TrackingReminderNotificationTrack | Id of the pending reminder to be tracked
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationTrack(); // \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationTrack | Id of the pending reminder to be tracked
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -212,13 +212,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\TrackingReminderNotificationTrack**](../Model/\QuantiModo\Client\Model\TrackingReminderNotificationTrack.md)| Id of the pending reminder to be tracked |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationTrack**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotificationTrack.md)| Id of the pending reminder to be tracked |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersDeletePost**
-> \QuantiModo\Client\Model\CommonResponse v1TrackingRemindersDeletePost($body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1TrackingRemindersDeletePost($body, $access_token, $user_id)
 
 Delete tracking reminder
 
@@ -247,7 +247,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
-$body = new \QuantiModo\Client\Model\TrackingReminderDelete(); // \QuantiModo\Client\Model\TrackingReminderDelete | Id of reminder to be deleted
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderDelete(); // \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderDelete | Id of reminder to be deleted
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -264,13 +264,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\TrackingReminderDelete**](../Model/\QuantiModo\Client\Model\TrackingReminderDelete.md)| Id of reminder to be deleted |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderDelete**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderDelete.md)| Id of reminder to be deleted |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersGet**
-> \QuantiModo\Client\Model\InlineResponse2001 v1TrackingRemindersGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005 v1TrackingRemindersGet($access_token, $user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get repeating tracking reminder settings
 
@@ -302,8 +302,8 @@ $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 $variable_category_name = "variable_category_name_example"; // string | Limit tracking reminders to a specific variable category
-$created_at = "created_at_example"; // string | When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local.
-$updated_at = "updated_at_example"; // string | When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local.
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format. Time zone should be UTC and not local.
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format. Time zone should be UTC and not local.
 $limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
@@ -324,15 +324,15 @@ Name | Type | Description  | Notes
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
  **variable_category_name** | **string**| Limit tracking reminders to a specific variable category | [optional]
- **created_at** | **string**| When the record was first created. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
- **updated_at** | **string**| When the record was last updated. Use ISO 8601 datetime format. Time zone should be UTC and not local. | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format. Time zone should be UTC and not local. | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format. Time zone should be UTC and not local. | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
  **sort** | **string**| Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1TrackingRemindersPost**
-> \QuantiModo\Client\Model\InlineResponse2002 v1TrackingRemindersPost($access_token, $user_id, $body)
+> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20011 v1TrackingRemindersPost($access_token, $user_id, $body)
 
 Store a Tracking Reminder
 
@@ -363,7 +363,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
-$body = new \QuantiModo\Client\Model\TrackingReminder(); // \QuantiModo\Client\Model\TrackingReminder | TrackingReminder that should be stored
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminder(); // \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminder | TrackingReminder that should be stored
 
 try {
     $result = $api_instance->v1TrackingRemindersPost($access_token, $user_id, $body);
@@ -380,11 +380,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
- **body** | [**\QuantiModo\Client\Model\TrackingReminder**](../Model/\QuantiModo\Client\Model\TrackingReminder.md)| TrackingReminder that should be stored | [optional]
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminder**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminder.md)| TrackingReminder that should be stored | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 

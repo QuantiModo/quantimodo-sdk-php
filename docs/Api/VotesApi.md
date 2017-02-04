@@ -1,6 +1,6 @@
 # QuantiModo\Client\VotesApi
 
-All URIs are relative to **
+All URIs are relative to *https://app.quantimo.do/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1VotesDeletePost**
-> \QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1VotesDeletePost($body, $access_token, $user_id)
 
 Delete vote
 
@@ -24,7 +24,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VotesApi();
-$body = new \QuantiModo\Client\Model\VoteDelete(); // \QuantiModo\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\VoteDelete(); // \QuantiModo\Client\QuantiModo\Client\Model\VoteDelete | The cause and effect variable names for the predictor vote to be deleted.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -41,13 +41,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\VoteDelete**](../Model/\QuantiModo\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\VoteDelete**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\VoteDelete.md)| The cause and effect variable names for the predictor vote to be deleted. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1VotesPost**
-> \QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token, $user_id)
+> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1VotesPost($body, $access_token, $user_id)
 
 Post or update vote
 
@@ -76,7 +76,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VotesApi();
-$body = new \QuantiModo\Client\Model\PostVote(); // \QuantiModo\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
+$body = new \QuantiModo\Client\QuantiModo\Client\Model\PostVote(); // \QuantiModo\Client\QuantiModo\Client\Model\PostVote | Contains the cause variable, effect variable, and vote value.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -93,13 +93,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\PostVote**](../Model/\QuantiModo\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
+ **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\PostVote**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\PostVote.md)| Contains the cause variable, effect variable, and vote value. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 

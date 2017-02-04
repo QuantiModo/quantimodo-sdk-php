@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1PairsCsvGet**
-> \QuantiModo\Client\Model\Pairs[] v1PairsCsvGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\Pairs[] v1PairsCsvGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
 
 Get pairs
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Pairs[]**](../Model/Pairs.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]**](../Model/Pairs.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1PairsGet**
-> \QuantiModo\Client\Model\Pairs[] v1PairsGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
+> \QuantiModo\Client\QuantiModo\Client\Model\Pairs[] v1PairsGet($cause, $effect, $access_token, $user_id, $cause_source, $cause_unit, $delay, $duration, $effect_source, $effect_unit, $end_time, $start_time, $limit, $offset, $sort)
 
 Get pairs
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Pairs[]**](../Model/Pairs.md)
+[**\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]**](../Model/Pairs.md)
 
 ### Authorization
 

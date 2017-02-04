@@ -14,7 +14,7 @@
  *
  * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
  *
- * OpenAPI spec version: 4.6.5
+ * OpenAPI spec version: 2.0
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\Api;
+namespace QuantiModo\Client\QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -59,7 +59,6 @@ class ApplicationEndpointsApi
     {
         if ($apiClient === null) {
             $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('https://app.quantimo.do/api');
         }
 
         $this->apiClient = $apiClient;
@@ -102,13 +101,13 @@ class ApplicationEndpointsApi
      * @param string $update_status Indicates whether a connector is currently updated. (optional)
      * @param string $update_error Indicates if there was an error during the update. (optional)
      * @param string $last_successful_updated_at The time at which the connector was last successfully updated. (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2003
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002
      */
     public function v2ApplicationConnectionsGet($access_token = null, $user_id = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -130,13 +129,13 @@ class ApplicationEndpointsApi
      * @param string $update_status Indicates whether a connector is currently updated. (optional)
      * @param string $update_error Indicates if there was an error during the update. (optional)
      * @param string $last_successful_updated_at The time at which the connector was last successfully updated. (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationConnectionsGetWithHttpInfo($access_token = null, $user_id = null, $connector_id = null, $connect_status = null, $connect_error = null, $update_requested_at = null, $update_status = null, $update_error = null, $last_successful_updated_at = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -235,15 +234,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2003',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002',
                 '/v2/application/connections'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2003', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -262,13 +261,13 @@ class ApplicationEndpointsApi
      * @param int $connector_id The id for the connector data source from which the credential was obtained (optional)
      * @param string $attr_key Attribute name such as token, userid, username, or password (optional)
      * @param string $attr_value Encrypted value for the attribute specified (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2004
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003
      */
     public function v2ApplicationCredentialsGet($access_token = null, $user_id = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -286,13 +285,13 @@ class ApplicationEndpointsApi
      * @param int $connector_id The id for the connector data source from which the credential was obtained (optional)
      * @param string $attr_key Attribute name such as token, userid, username, or password (optional)
      * @param string $attr_value Encrypted value for the attribute specified (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationCredentialsGetWithHttpInfo($access_token = null, $user_id = null, $connector_id = null, $attr_key = null, $attr_value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -375,15 +374,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2004',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003',
                 '/v2/application/credentials'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2004', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -403,7 +402,7 @@ class ApplicationEndpointsApi
      * @param int $connector_id The id for the connector data source from which the measurement was obtained (optional)
      * @param int $variable_id ID of the variable for which we are creating the measurement records (optional)
      * @param int $source_id Application or device used to record the measurement values (optional)
-     * @param string $start_time start time for the measurement event. Use ISO 8601 datetime format (optional)
+     * @param string $start_time start time for the measurement event. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param float $value The value of the measurement after conversion to the default unit for that variable (optional)
      * @param int $unit_id The default unit id for the variable (optional)
      * @param float $original_value Unconverted value of measurement as originally posted (before conversion to default unit) (optional)
@@ -413,14 +412,14 @@ class ApplicationEndpointsApi
      * @param float $latitude Latitude at which the measurement was taken (optional)
      * @param float $longitude Longitude at which the measurement was taken (optional)
      * @param string $location Optional human readable name for the location where the measurement was recorded (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param string $error An error message if there is a problem with the measurement (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2005
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004
      */
     public function v2ApplicationMeasurementsGet($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
@@ -439,7 +438,7 @@ class ApplicationEndpointsApi
      * @param int $connector_id The id for the connector data source from which the measurement was obtained (optional)
      * @param int $variable_id ID of the variable for which we are creating the measurement records (optional)
      * @param int $source_id Application or device used to record the measurement values (optional)
-     * @param string $start_time start time for the measurement event. Use ISO 8601 datetime format (optional)
+     * @param string $start_time start time for the measurement event. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param float $value The value of the measurement after conversion to the default unit for that variable (optional)
      * @param int $unit_id The default unit id for the variable (optional)
      * @param float $original_value Unconverted value of measurement as originally posted (before conversion to default unit) (optional)
@@ -449,14 +448,14 @@ class ApplicationEndpointsApi
      * @param float $latitude Latitude at which the measurement was taken (optional)
      * @param float $longitude Longitude at which the measurement was taken (optional)
      * @param string $location Optional human readable name for the location where the measurement was recorded (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param string $error An error message if there is a problem with the measurement (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationMeasurementsGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
@@ -587,15 +586,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2005',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004',
                 '/v2/application/measurements'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2005', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -612,13 +611,13 @@ class ApplicationEndpointsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this trackingReminder (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2001
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005
      */
     public function v2ApplicationTrackingRemindersGet($access_token = null, $user_id = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -634,13 +633,13 @@ class ApplicationEndpointsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @param string $client_id The ID of the client application which last created or updated this trackingReminder (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationTrackingRemindersGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -715,15 +714,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2001',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005',
                 '/v2/application/trackingReminders'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2001', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -743,13 +742,13 @@ class ApplicationEndpointsApi
      * @param int $number_of_measurements number_of_measurements (optional)
      * @param bool $success success (optional)
      * @param string $message message (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2006
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006
      */
     public function v2ApplicationUpdatesGet($access_token = null, $user_id = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -768,13 +767,13 @@ class ApplicationEndpointsApi
      * @param int $number_of_measurements number_of_measurements (optional)
      * @param bool $success success (optional)
      * @param string $message message (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationUpdatesGetWithHttpInfo($access_token = null, $user_id = null, $connector_id = null, $number_of_measurements = null, $success = null, $message = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -861,15 +860,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2006',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006',
                 '/v2/application/updates'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2006', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2006', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -905,7 +904,7 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2007
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008
      */
     public function v2ApplicationUserVariableRelationshipsGet($access_token = null, $user_id = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
     {
@@ -940,7 +939,7 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationUserVariableRelationshipsGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $confidence_level = null, $confidence_score = null, $direction = null, $duration_of_action = null, $error_message = null, $onset_delay = null, $outcome_variable_id = null, $predictor_variable_id = null, $predictor_unit_id = null, $sinn_rank = null, $strength_level = null, $strength_score = null, $vote = null, $value_predicting_high_outcome = null, $value_predicting_low_outcome = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1067,15 +1066,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2007',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008',
                 '/v2/application/userVariableRelationships'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2007', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2007', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1133,8 +1132,8 @@ class ApplicationEndpointsApi
      * @param float $latitude Latitude (optional)
      * @param float $longitude Longitude (optional)
      * @param string $location Location (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param bool $outcome Outcome variables (those with &#x60;outcome&#x60; &#x3D;&#x3D; 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables (optional)
      * @param string $sources Comma-separated list of source names to limit variables to those sources (optional)
      * @param int $earliest_source_time Earliest source time (optional)
@@ -1147,7 +1146,7 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2008
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007
      */
     public function v2ApplicationUserVariablesGet($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1204,8 +1203,8 @@ class ApplicationEndpointsApi
      * @param float $latitude Latitude (optional)
      * @param float $longitude Longitude (optional)
      * @param string $location Location (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param bool $outcome Outcome variables (those with &#x60;outcome&#x60; &#x3D;&#x3D; 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables (optional)
      * @param string $sources Comma-separated list of source names to limit variables to those sources (optional)
      * @param int $earliest_source_time Earliest source time (optional)
@@ -1218,7 +1217,7 @@ class ApplicationEndpointsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationUserVariablesGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1489,15 +1488,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2008',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007',
                 '/v2/application/userVariables'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2008', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2008', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1517,13 +1516,13 @@ class ApplicationEndpointsApi
      * @param int $timestamp Time that this measurement occurred Uses epoch minute (epoch time divided by 60) (optional)
      * @param int $earliest_measurement_time Earliest measurement time (optional)
      * @param int $latest_measurement_time Latest measurement time (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse2009
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009
      */
     public function v2ApplicationVariableUserSourcesGet($access_token = null, $user_id = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1542,13 +1541,13 @@ class ApplicationEndpointsApi
      * @param int $timestamp Time that this measurement occurred Uses epoch minute (epoch time divided by 60) (optional)
      * @param int $earliest_measurement_time Earliest measurement time (optional)
      * @param int $latest_measurement_time Latest measurement time (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationVariableUserSourcesGetWithHttpInfo($access_token = null, $user_id = null, $variable_id = null, $timestamp = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1635,15 +1634,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse2009',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009',
                 '/v2/application/variableUserSources'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2009', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2009', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1663,13 +1662,13 @@ class ApplicationEndpointsApi
      * @param int $cause_id ID of predictor variable (optional)
      * @param int $effect_id ID of outcome variable (optional)
      * @param int $value Value of Vote. 1 is for upvote. 0 is for downvote.  Otherwise, there is no vote. (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\InlineResponse20010
+     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010
      */
     public function v2ApplicationVotesGet($access_token = null, $user_id = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1688,13 +1687,13 @@ class ApplicationEndpointsApi
      * @param int $cause_id ID of predictor variable (optional)
      * @param int $effect_id ID of outcome variable (optional)
      * @param int $value Value of Vote. 1 is for upvote. 0 is for downvote.  Otherwise, there is no vote. (optional)
-     * @param string $created_at When the record was first created. Use ISO 8601 datetime format (optional)
-     * @param string $updated_at When the record was last updated. Use ISO 8601 datetime format (optional)
+     * @param string $created_at When the record was first created. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional)
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2ApplicationVotesGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $cause_id = null, $effect_id = null, $value = null, $created_at = null, $updated_at = null, $limit = null, $offset = null, $sort = null)
     {
@@ -1781,15 +1780,15 @@ class ApplicationEndpointsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\InlineResponse20010',
+                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010',
                 '/v2/application/votes'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse20010', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse20010', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
