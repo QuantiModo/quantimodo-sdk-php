@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -59,7 +59,7 @@ class Unit implements ArrayAccess
         'category' => 'string',
         'minimum_allowed_value' => 'double',
         'maximum_allowed_value' => 'double',
-        'conversion_steps' => '\QuantiModo\Client\QuantiModo\Client\Model\ConversionStep[]'
+        'conversion_steps' => '\QuantiModo\Client\Model\ConversionStep[]'
     ];
 
     public static function swaggerTypes()
@@ -348,7 +348,7 @@ class Unit implements ArrayAccess
 
     /**
      * Gets conversion_steps
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\ConversionStep[]
+     * @return \QuantiModo\Client\Model\ConversionStep[]
      */
     public function getConversionSteps()
     {
@@ -357,7 +357,7 @@ class Unit implements ArrayAccess
 
     /**
      * Sets conversion_steps
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\ConversionStep[] $conversion_steps Conversion steps list
+     * @param \QuantiModo\Client\Model\ConversionStep[] $conversion_steps Conversion steps list
      * @return $this
      */
     public function setConversionSteps($conversion_steps)

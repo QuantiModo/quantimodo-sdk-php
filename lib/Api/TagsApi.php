@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -95,7 +95,7 @@ class TagsApi
      * @param int $tagged_variable_id This is the id of the variable being tagged with an ingredient or something. (required)
      * @param int $tag_variable_id This is the id of the ingredient variable whose value is determined based on the value of the tagged variable. (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
     public function v1UserTagsDeletePost($tagged_variable_id, $tag_variable_id)
     {
@@ -111,7 +111,7 @@ class TagsApi
      * @param int $tagged_variable_id This is the id of the variable being tagged with an ingredient or something. (required)
      * @param int $tag_variable_id This is the id of the ingredient variable whose value is determined based on the value of the tagged variable. (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1UserTagsDeletePostWithHttpInfo($tagged_variable_id, $tag_variable_id)
     {
@@ -165,15 +165,15 @@ class TagsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse',
+                '\QuantiModo\Client\Model\CommonResponse',
                 '/v1/userTags/delete'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -187,11 +187,11 @@ class TagsApi
      *
      * Post or update user tags or ingredients
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserTag $body Contains the new user tag data (required)
+     * @param \QuantiModo\Client\Model\UserTag $body Contains the new user tag data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
     public function v1UserTagsPost($body, $access_token = null, $user_id = null)
     {
@@ -204,11 +204,11 @@ class TagsApi
      *
      * Post or update user tags or ingredients
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserTag $body Contains the new user tag data (required)
+     * @param \QuantiModo\Client\Model\UserTag $body Contains the new user tag data (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1UserTagsPostWithHttpInfo($body, $access_token = null, $user_id = null)
     {
@@ -263,15 +263,15 @@ class TagsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse',
+                '\QuantiModo\Client\Model\CommonResponse',
                 '/v1/userTags'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

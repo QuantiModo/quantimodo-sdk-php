@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -55,7 +55,7 @@ class InlineResponse2009 implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'success' => 'bool',
-        'data' => '\QuantiModo\Client\QuantiModo\Client\Model\VariableUserSource[]'
+        'data' => '\QuantiModo\Client\Model\VariableUserSource[]'
     ];
 
     public static function swaggerTypes()
@@ -175,7 +175,7 @@ class InlineResponse2009 implements ArrayAccess
 
     /**
      * Gets data
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\VariableUserSource[]
+     * @return \QuantiModo\Client\Model\VariableUserSource[]
      */
     public function getData()
     {
@@ -184,7 +184,7 @@ class InlineResponse2009 implements ArrayAccess
 
     /**
      * Sets data
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\VariableUserSource[] $data
+     * @param \QuantiModo\Client\Model\VariableUserSource[] $data
      * @return $this
      */
     public function setData($data)

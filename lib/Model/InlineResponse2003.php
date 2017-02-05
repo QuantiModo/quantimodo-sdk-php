@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -54,7 +54,7 @@ class InlineResponse2003 implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\QuantiModo\Client\QuantiModo\Client\Model\Credential[]',
+        'data' => '\QuantiModo\Client\Model\Credential[]',
         'success' => 'bool'
     ];
 
@@ -154,7 +154,7 @@ class InlineResponse2003 implements ArrayAccess
 
     /**
      * Gets data
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Credential[]
+     * @return \QuantiModo\Client\Model\Credential[]
      */
     public function getData()
     {
@@ -163,7 +163,7 @@ class InlineResponse2003 implements ArrayAccess
 
     /**
      * Sets data
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\Credential[] $data
+     * @param \QuantiModo\Client\Model\Credential[] $data
      * @return $this
      */
     public function setData($data)

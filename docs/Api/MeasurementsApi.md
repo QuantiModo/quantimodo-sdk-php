@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **v1MeasurementSourcesGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource v1MeasurementSourcesGet()
+> \QuantiModo\Client\Model\MeasurementSource v1MeasurementSourcesGet()
 
 Get measurement sources
 
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource**](../Model/MeasurementSource.md)
+[**\QuantiModo\Client\Model\MeasurementSource**](../Model/MeasurementSource.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$body = new \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource(); // \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource | An array of names of data sources you want to add.
+$body = new \QuantiModo\Client\Model\MeasurementSource(); // \QuantiModo\Client\Model\MeasurementSource | An array of names of data sources you want to add.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -97,7 +97,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource.md)| An array of names of data sources you want to add. |
+ **body** | [**\QuantiModo\Client\Model\MeasurementSource**](../Model/\QuantiModo\Client\Model\MeasurementSource.md)| An array of names of data sources you want to add. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
@@ -117,7 +117,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsDailyGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\Measurement v1MeasurementsDailyGet($variable_name, $access_token, $user_id, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Measurement v1MeasurementsDailyGet($variable_name, $access_token, $user_id, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
 
 Get daily measurements for this user
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
+[**\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
 
 ### Authorization
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsDeletePost**
-> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1MeasurementsDeletePost($body)
+> \QuantiModo\Client\Model\CommonResponse v1MeasurementsDeletePost($body)
 
 Delete a measurement
 
@@ -200,7 +200,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$body = new \QuantiModo\Client\QuantiModo\Client\Model\MeasurementDelete(); // \QuantiModo\Client\QuantiModo\Client\Model\MeasurementDelete | The startTime and variableId of the measurement to be deleted.
+$body = new \QuantiModo\Client\Model\MeasurementDelete(); // \QuantiModo\Client\Model\MeasurementDelete | The startTime and variableId of the measurement to be deleted.
 
 try {
     $result = $api_instance->v1MeasurementsDeletePost($body);
@@ -215,11 +215,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\MeasurementDelete**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\MeasurementDelete.md)| The startTime and variableId of the measurement to be deleted. |
+ **body** | [**\QuantiModo\Client\Model\MeasurementDelete**](../Model/\QuantiModo\Client\Model\MeasurementDelete.md)| The startTime and variableId of the measurement to be deleted. |
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_id, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_id, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
 
 Get measurements for this user
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
+[**\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
 
 ### Authorization
 
@@ -328,7 +328,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$body = new \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSet(); // \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSet | An array of measurements you want to insert.
+$body = new \QuantiModo\Client\Model\MeasurementSet(); // \QuantiModo\Client\Model\MeasurementSet | An array of measurements you want to insert.
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
 
@@ -344,7 +344,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSet**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSet.md)| An array of measurements you want to insert. |
+ **body** | [**\QuantiModo\Client\Model\MeasurementSet**](../Model/\QuantiModo\Client\Model\MeasurementSet.md)| An array of measurements you want to insert. |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
 
@@ -364,7 +364,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsRangeGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\MeasurementRange v1MeasurementsRangeGet($sources, $user)
+> \QuantiModo\Client\Model\MeasurementRange v1MeasurementsRangeGet($sources, $user)
 
 Get measurements range for this user
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\MeasurementRange**](../Model/MeasurementRange.md)
+[**\QuantiModo\Client\Model\MeasurementRange**](../Model/MeasurementRange.md)
 
 ### Authorization
 
@@ -414,7 +414,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsUpdatePost**
-> \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse v1MeasurementsUpdatePost($body)
+> \QuantiModo\Client\Model\CommonResponse v1MeasurementsUpdatePost($body)
 
 Update a measurement
 
@@ -429,7 +429,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$body = new \QuantiModo\Client\QuantiModo\Client\Model\MeasurementUpdate(); // \QuantiModo\Client\QuantiModo\Client\Model\MeasurementUpdate | The id as well as the new startTime, note, and/or value of the measurement to be updated
+$body = new \QuantiModo\Client\Model\MeasurementUpdate(); // \QuantiModo\Client\Model\MeasurementUpdate | The id as well as the new startTime, note, and/or value of the measurement to be updated
 
 try {
     $result = $api_instance->v1MeasurementsUpdatePost($body);
@@ -444,11 +444,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\MeasurementUpdate**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\MeasurementUpdate.md)| The id as well as the new startTime, note, and/or value of the measurement to be updated |
+ **body** | [**\QuantiModo\Client\Model\MeasurementUpdate**](../Model/\QuantiModo\Client\Model\MeasurementUpdate.md)| The id as well as the new startTime, note, and/or value of the measurement to be updated |
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdDelete**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001 v2MeasurementsIdDelete($id, $access_token, $user_id)
+> \QuantiModo\Client\Model\InlineResponse2001 v2MeasurementsIdDelete($id, $access_token, $user_id)
 
 Delete Measurement
 
@@ -550,7 +550,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -564,7 +564,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse200 v2MeasurementsIdGet($id, $access_token, $user_id)
+> \QuantiModo\Client\Model\InlineResponse200 v2MeasurementsIdGet($id, $access_token, $user_id)
 
 Get Measurement
 
@@ -602,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\QuantiModo\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -616,7 +616,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2MeasurementsIdPut**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001 v2MeasurementsIdPut($id, $access_token, $user_id, $body)
+> \QuantiModo\Client\Model\InlineResponse2001 v2MeasurementsIdPut($id, $access_token, $user_id, $body)
 
 Update Measurement
 
@@ -634,7 +634,7 @@ $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $id = 56; // int | id of Measurement
 $access_token = "access_token_example"; // string | User's OAuth2 access token
 $user_id = 56; // int | User's id
-$body = new \QuantiModo\Client\QuantiModo\Client\Model\Measurement(); // \QuantiModo\Client\QuantiModo\Client\Model\Measurement | Measurement that should be updated
+$body = new \QuantiModo\Client\Model\Measurement(); // \QuantiModo\Client\Model\Measurement | Measurement that should be updated
 
 try {
     $result = $api_instance->v2MeasurementsIdPut($id, $access_token, $user_id, $body);
@@ -652,11 +652,11 @@ Name | Type | Description  | Notes
  **id** | **int**| id of Measurement |
  **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
  **user_id** | **int**| User&#39;s id | [optional]
- **body** | [**\QuantiModo\Client\QuantiModo\Client\Model\Measurement**](../Model/\QuantiModo\Client\QuantiModo\Client\Model\Measurement.md)| Measurement that should be updated | [optional]
+ **body** | [**\QuantiModo\Client\Model\Measurement**](../Model/\QuantiModo\Client\Model\Measurement.md)| Measurement that should be updated | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

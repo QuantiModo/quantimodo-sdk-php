@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -92,11 +92,11 @@ class VotesApi
      *
      * Delete vote
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
+     * @param \QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
     public function v1VotesDeletePost($body, $access_token = null, $user_id = null)
     {
@@ -109,11 +109,11 @@ class VotesApi
      *
      * Delete vote
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
+     * @param \QuantiModo\Client\Model\VoteDelete $body The cause and effect variable names for the predictor vote to be deleted. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1VotesDeletePostWithHttpInfo($body, $access_token = null, $user_id = null)
     {
@@ -168,15 +168,15 @@ class VotesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse',
+                '\QuantiModo\Client\Model\CommonResponse',
                 '/v1/votes/delete'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -190,11 +190,11 @@ class VotesApi
      *
      * Post or update vote
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
+     * @param \QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
     public function v1VotesPost($body, $access_token = null, $user_id = null)
     {
@@ -207,11 +207,11 @@ class VotesApi
      *
      * Post or update vote
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
+     * @param \QuantiModo\Client\Model\PostVote $body Contains the cause variable, effect variable, and vote value. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1VotesPostWithHttpInfo($body, $access_token = null, $user_id = null)
     {
@@ -266,15 +266,15 @@ class VotesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse',
+                '\QuantiModo\Client\Model\CommonResponse',
                 '/v1/votes'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

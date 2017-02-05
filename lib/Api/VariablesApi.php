@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -107,7 +107,7 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Variable
+     * @return \QuantiModo\Client\Model\Variable
      */
     public function v1PublicVariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
@@ -135,7 +135,7 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1PublicVariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
@@ -229,15 +229,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Variable',
+                '\QuantiModo\Client\Model\Variable',
                 '/v1/public/variables'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -262,7 +262,7 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Variable
+     * @return \QuantiModo\Client\Model\Variable
      */
     public function v1PublicVariablesSearchSearchGet($search, $access_token = null, $user_id = null, $variable_category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
     {
@@ -286,7 +286,7 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1PublicVariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $user_id = null, $variable_category_name = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null, $sort = null)
     {
@@ -372,15 +372,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Variable',
+                '\QuantiModo\Client\Model\Variable',
                 '/v1/public/variables/search/{search}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -394,7 +394,7 @@ class VariablesApi
      *
      * Delete All Measurements For Variable
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable whose measurements should be deleted (required)
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable whose measurements should be deleted (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return void
      */
@@ -409,7 +409,7 @@ class VariablesApi
      *
      * Delete All Measurements For Variable
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable whose measurements should be deleted (required)
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable whose measurements should be deleted (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -476,7 +476,7 @@ class VariablesApi
      *
      * Update User Settings for a Variable
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
+     * @param \QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return void
      */
@@ -491,7 +491,7 @@ class VariablesApi
      *
      * Update User Settings for a Variable
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
+     * @param \QuantiModo\Client\Model\UserVariables $user_variables Variable user settings data (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -558,7 +558,7 @@ class VariablesApi
      *
      * Reset user settings for a variable to defaults
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable that should be reset (required)
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable that should be reset (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return void
      */
@@ -573,7 +573,7 @@ class VariablesApi
      *
      * Reset user settings for a variable to defaults
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable that should be reset (required)
+     * @param \QuantiModo\Client\Model\UserVariableDelete $variable_id Id of the variable that should be reset (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -641,7 +641,7 @@ class VariablesApi
      * Variable categories
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\VariableCategory[]
+     * @return \QuantiModo\Client\Model\VariableCategory[]
      */
     public function v1VariableCategoriesGet()
     {
@@ -655,7 +655,7 @@ class VariablesApi
      * Variable categories
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1VariableCategoriesGetWithHttpInfo()
     {
@@ -693,15 +693,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\VariableCategory[]',
+                '\QuantiModo\Client\Model\VariableCategory[]',
                 '/v1/variableCategories'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\VariableCategory[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\VariableCategory[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -730,7 +730,7 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Variable
+     * @return \QuantiModo\Client\Model\Variable
      */
     public function v1VariablesGet($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
@@ -758,7 +758,7 @@ class VariablesApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1VariablesGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $user_id2 = null, $category = null, $name = null, $last_updated = null, $source = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source = null, $limit = null, $offset = null, $sort = null)
     {
@@ -856,15 +856,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Variable',
+                '\QuantiModo\Client\Model\Variable',
                 '/v1/variables'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -878,7 +878,7 @@ class VariablesApi
      *
      * Create Variables
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
+     * @param \QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
@@ -895,7 +895,7 @@ class VariablesApi
      *
      * Create Variables
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
+     * @param \QuantiModo\Client\Model\VariablesNew $body Original name for the variable. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
@@ -984,7 +984,7 @@ class VariablesApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Variable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function v1VariablesSearchSearchGet($search, $access_token = null, $user_id = null, $variable_category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
     {
@@ -1009,7 +1009,7 @@ class VariablesApi
      * @param int $limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1VariablesSearchSearchGetWithHttpInfo($search, $access_token = null, $user_id = null, $variable_category_name = null, $include_public = null, $manual_tracking = null, $source = null, $effect_or_cause = null, $public_effect_or_cause = null, $limit = null, $offset = null)
     {
@@ -1099,15 +1099,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Variable[]',
+                '\QuantiModo\Client\Model\Variable[]',
                 '/v1/variables/search/{search}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Variable[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1125,7 +1125,7 @@ class VariablesApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Variable
+     * @return \QuantiModo\Client\Model\Variable
      */
     public function v1VariablesVariableNameGet($variable_name, $access_token = null, $user_id = null)
     {
@@ -1142,7 +1142,7 @@ class VariablesApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Variable, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1VariablesVariableNameGetWithHttpInfo($variable_name, $access_token = null, $user_id = null)
     {
@@ -1200,15 +1200,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Variable',
+                '\QuantiModo\Client\Model\Variable',
                 '/v1/variables/{variableName}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

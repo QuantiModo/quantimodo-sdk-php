@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -93,7 +93,7 @@ class MeasurementsApi
      * Get measurement sources
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource
+     * @return \QuantiModo\Client\Model\MeasurementSource
      */
     public function v1MeasurementSourcesGet()
     {
@@ -107,7 +107,7 @@ class MeasurementsApi
      * Get measurement sources
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\MeasurementSource, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1MeasurementSourcesGetWithHttpInfo()
     {
@@ -145,15 +145,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource',
+                '\QuantiModo\Client\Model\MeasurementSource',
                 '/v1/measurementSources'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\MeasurementSource', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\MeasurementSource', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -167,7 +167,7 @@ class MeasurementsApi
      *
      * Add a data source
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource $body An array of names of data sources you want to add. (required)
+     * @param \QuantiModo\Client\Model\MeasurementSource $body An array of names of data sources you want to add. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
@@ -184,7 +184,7 @@ class MeasurementsApi
      *
      * Add a data source
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSource $body An array of names of data sources you want to add. (required)
+     * @param \QuantiModo\Client\Model\MeasurementSource $body An array of names of data sources you want to add. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
@@ -273,7 +273,7 @@ class MeasurementsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Measurement
+     * @return \QuantiModo\Client\Model\Measurement
      */
     public function v1MeasurementsDailyGet($variable_name, $access_token = null, $user_id = null, $abbreviated_unit_name = null, $start_time = null, $end_time = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
@@ -298,7 +298,7 @@ class MeasurementsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Measurement, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Measurement, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1MeasurementsDailyGetWithHttpInfo($variable_name, $access_token = null, $user_id = null, $abbreviated_unit_name = null, $start_time = null, $end_time = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
@@ -384,15 +384,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Measurement',
+                '\QuantiModo\Client\Model\Measurement',
                 '/v1/measurements/daily'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Measurement', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Measurement', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Measurement', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Measurement', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -406,9 +406,9 @@ class MeasurementsApi
      *
      * Delete a measurement
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementDelete $body The startTime and variableId of the measurement to be deleted. (required)
+     * @param \QuantiModo\Client\Model\MeasurementDelete $body The startTime and variableId of the measurement to be deleted. (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
     public function v1MeasurementsDeletePost($body)
     {
@@ -421,9 +421,9 @@ class MeasurementsApi
      *
      * Delete a measurement
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementDelete $body The startTime and variableId of the measurement to be deleted. (required)
+     * @param \QuantiModo\Client\Model\MeasurementDelete $body The startTime and variableId of the measurement to be deleted. (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1MeasurementsDeletePostWithHttpInfo($body)
     {
@@ -470,15 +470,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse',
+                '\QuantiModo\Client\Model\CommonResponse',
                 '/v1/measurements/delete'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -510,7 +510,7 @@ class MeasurementsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Measurement
+     * @return \QuantiModo\Client\Model\Measurement
      */
     public function v1MeasurementsGet($access_token = null, $user_id = null, $id = null, $variable_name = null, $variable_category_name = null, $source_id = null, $value = null, $abbreviated_unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
@@ -541,7 +541,7 @@ class MeasurementsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Measurement, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Measurement, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1MeasurementsGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $variable_name = null, $variable_category_name = null, $source_id = null, $value = null, $abbreviated_unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
@@ -647,15 +647,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Measurement',
+                '\QuantiModo\Client\Model\Measurement',
                 '/v1/measurements'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Measurement', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Measurement', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Measurement', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Measurement', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -669,7 +669,7 @@ class MeasurementsApi
      *
      * Post a new set or update existing measurements to the database
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSet $body An array of measurements you want to insert. (required)
+     * @param \QuantiModo\Client\Model\MeasurementSet $body An array of measurements you want to insert. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
@@ -686,7 +686,7 @@ class MeasurementsApi
      *
      * Post a new set or update existing measurements to the database
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementSet $body An array of measurements you want to insert. (required)
+     * @param \QuantiModo\Client\Model\MeasurementSet $body An array of measurements you want to insert. (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
@@ -766,7 +766,7 @@ class MeasurementsApi
      * @param string $sources Enter source name to limit to specific source (varchar) (optional)
      * @param int $user If not specified, uses currently logged in user (bigint) (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\MeasurementRange
+     * @return \QuantiModo\Client\Model\MeasurementRange
      */
     public function v1MeasurementsRangeGet($sources = null, $user = null)
     {
@@ -782,7 +782,7 @@ class MeasurementsApi
      * @param string $sources Enter source name to limit to specific source (varchar) (optional)
      * @param int $user If not specified, uses currently logged in user (bigint) (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\MeasurementRange, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\MeasurementRange, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1MeasurementsRangeGetWithHttpInfo($sources = null, $user = null)
     {
@@ -828,15 +828,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\MeasurementRange',
+                '\QuantiModo\Client\Model\MeasurementRange',
                 '/v1/measurementsRange'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\MeasurementRange', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\MeasurementRange', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\MeasurementRange', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\MeasurementRange', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -850,9 +850,9 @@ class MeasurementsApi
      *
      * Update a measurement
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementUpdate $body The id as well as the new startTime, note, and/or value of the measurement to be updated (required)
+     * @param \QuantiModo\Client\Model\MeasurementUpdate $body The id as well as the new startTime, note, and/or value of the measurement to be updated (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse
+     * @return \QuantiModo\Client\Model\CommonResponse
      */
     public function v1MeasurementsUpdatePost($body)
     {
@@ -865,9 +865,9 @@ class MeasurementsApi
      *
      * Update a measurement
      *
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\MeasurementUpdate $body The id as well as the new startTime, note, and/or value of the measurement to be updated (required)
+     * @param \QuantiModo\Client\Model\MeasurementUpdate $body The id as well as the new startTime, note, and/or value of the measurement to be updated (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1MeasurementsUpdatePostWithHttpInfo($body)
     {
@@ -914,15 +914,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse',
+                '\QuantiModo\Client\Model\CommonResponse',
                 '/v1/measurements/update'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1027,7 +1027,7 @@ class MeasurementsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001
+     * @return \QuantiModo\Client\Model\InlineResponse2001
      */
     public function v2MeasurementsIdDelete($id, $access_token = null, $user_id = null)
     {
@@ -1044,7 +1044,7 @@ class MeasurementsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2MeasurementsIdDeleteWithHttpInfo($id, $access_token = null, $user_id = null)
     {
@@ -1102,15 +1102,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001',
+                '\QuantiModo\Client\Model\InlineResponse2001',
                 '/v2/measurements/{id}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2001', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1128,7 +1128,7 @@ class MeasurementsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse200
+     * @return \QuantiModo\Client\Model\InlineResponse200
      */
     public function v2MeasurementsIdGet($id, $access_token = null, $user_id = null)
     {
@@ -1145,7 +1145,7 @@ class MeasurementsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2MeasurementsIdGetWithHttpInfo($id, $access_token = null, $user_id = null)
     {
@@ -1203,15 +1203,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse200',
+                '\QuantiModo\Client\Model\InlineResponse200',
                 '/v2/measurements/{id}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse200', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse200', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse200', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse200', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1228,9 +1228,9 @@ class MeasurementsApi
      * @param int $id id of Measurement (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\Measurement $body Measurement that should be updated (optional)
+     * @param \QuantiModo\Client\Model\Measurement $body Measurement that should be updated (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001
+     * @return \QuantiModo\Client\Model\InlineResponse2001
      */
     public function v2MeasurementsIdPut($id, $access_token = null, $user_id = null, $body = null)
     {
@@ -1246,9 +1246,9 @@ class MeasurementsApi
      * @param int $id id of Measurement (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\Measurement $body Measurement that should be updated (optional)
+     * @param \QuantiModo\Client\Model\Measurement $body Measurement that should be updated (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function v2MeasurementsIdPutWithHttpInfo($id, $access_token = null, $user_id = null, $body = null)
     {
@@ -1311,15 +1311,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001',
+                '\QuantiModo\Client\Model\InlineResponse2001',
                 '/v2/measurements/{id}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2001', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\InlineResponse2001', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

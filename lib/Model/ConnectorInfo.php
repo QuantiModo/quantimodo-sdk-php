@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -57,7 +57,7 @@ class ConnectorInfo implements ArrayAccess
         'id' => 'int',
         'connected' => 'bool',
         'error' => 'string',
-        'history' => '\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfoHistoryItem[]'
+        'history' => '\QuantiModo\Client\Model\ConnectorInfoHistoryItem[]'
     ];
 
     public static function swaggerTypes()
@@ -251,7 +251,7 @@ class ConnectorInfo implements ArrayAccess
 
     /**
      * Gets history
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfoHistoryItem[]
+     * @return \QuantiModo\Client\Model\ConnectorInfoHistoryItem[]
      */
     public function getHistory()
     {
@@ -260,7 +260,7 @@ class ConnectorInfo implements ArrayAccess
 
     /**
      * Sets history
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfoHistoryItem[] $history
+     * @param \QuantiModo\Client\Model\ConnectorInfoHistoryItem[] $history
      * @return $this
      */
     public function setHistory($history)

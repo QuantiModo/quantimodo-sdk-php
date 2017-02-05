@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -55,7 +55,7 @@ class InlineResponse2006 implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'success' => 'bool',
-        'data' => '\QuantiModo\Client\QuantiModo\Client\Model\Update[]'
+        'data' => '\QuantiModo\Client\Model\Update[]'
     ];
 
     public static function swaggerTypes()
@@ -175,7 +175,7 @@ class InlineResponse2006 implements ArrayAccess
 
     /**
      * Gets data
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Update[]
+     * @return \QuantiModo\Client\Model\Update[]
      */
     public function getData()
     {
@@ -184,7 +184,7 @@ class InlineResponse2006 implements ArrayAccess
 
     /**
      * Sets data
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\Update[] $data
+     * @param \QuantiModo\Client\Model\Update[] $data
      * @return $this
      */
     public function setData($data)

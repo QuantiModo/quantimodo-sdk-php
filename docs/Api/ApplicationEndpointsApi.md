@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **v2ApplicationConnectionsGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002 v2ApplicationConnectionsGet($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2002 v2ApplicationConnectionsGet($access_token, $user_id, $connector_id, $connect_status, $connect_error, $update_requested_at, $update_status, $update_error, $last_successful_updated_at, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Connections
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\QuantiModo\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
 
 ### Authorization
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationCredentialsGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003 v2ApplicationCredentialsGet($access_token, $user_id, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2003 v2ApplicationCredentialsGet($access_token, $user_id, $connector_id, $attr_key, $attr_value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Credentials
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\QuantiModo\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationMeasurementsGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004 v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2004 v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
 
 Get measurements for all users using your application
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\QuantiModo\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 ### Authorization
 
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationTrackingRemindersGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005 v2ApplicationTrackingRemindersGet($access_token, $user_id, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2005 v2ApplicationTrackingRemindersGet($access_token, $user_id, $client_id, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get tracking reminders
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\QuantiModo\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUpdatesGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $user_id, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2006 v2ApplicationUpdatesGet($access_token, $user_id, $connector_id, $number_of_measurements, $success, $message, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Updates
 
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\QuantiModo\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariableRelationshipsGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008 v2ApplicationUserVariableRelationshipsGet($access_token, $user_id, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2008 v2ApplicationUserVariableRelationshipsGet($access_token, $user_id, $id, $confidence_level, $confidence_score, $direction, $duration_of_action, $error_message, $onset_delay, $outcome_variable_id, $predictor_variable_id, $predictor_unit_id, $sinn_rank, $strength_level, $strength_score, $vote, $value_predicting_high_outcome, $value_predicting_low_outcome, $limit, $offset, $sort)
 
 Get all UserVariableRelationships
 
@@ -474,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\QuantiModo\Client\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariablesGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
 
 Get all UserVariables
 
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\QuantiModo\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -652,7 +652,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVariableUserSourcesGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $user_id, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2009 v2ApplicationVariableUserSourcesGet($access_token, $user_id, $variable_id, $timestamp, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all VariableUserSources
 
@@ -710,7 +710,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\QuantiModo\Client\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 ### Authorization
 
@@ -724,7 +724,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationVotesGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $user_id, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse20010 v2ApplicationVotesGet($access_token, $user_id, $client_id, $cause_id, $effect_id, $value, $created_at, $updated_at, $limit, $offset, $sort)
 
 Get all Votes
 
@@ -782,7 +782,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\QuantiModo\Client\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
 
 ### Authorization
 

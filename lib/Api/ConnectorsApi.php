@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -500,7 +500,7 @@ class ConnectorsApi
      * @param int $user_id User&#39;s id (optional)
      * @param string $default_value Default parameter value (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction
+     * @return \QuantiModo\Client\Model\ConnectorInstruction
      */
     public function v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $user_id = null, $default_value = null)
     {
@@ -523,7 +523,7 @@ class ConnectorsApi
      * @param int $user_id User&#39;s id (optional)
      * @param string $default_value Default parameter value (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\ConnectorInstruction, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1ConnectorsConnectorConnectParameterGetWithHttpInfo($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token = null, $user_id = null, $default_value = null)
     {
@@ -625,15 +625,15 @@ class ConnectorsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction',
+                '\QuantiModo\Client\Model\ConnectorInstruction',
                 '/v1/connectors/{connector}/connectParameter'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\ConnectorInstruction', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\ConnectorInstruction', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -736,7 +736,7 @@ class ConnectorsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo
+     * @return \QuantiModo\Client\Model\ConnectorInfo
      */
     public function v1ConnectorsConnectorInfoGet($connector, $access_token = null, $user_id = null)
     {
@@ -753,7 +753,7 @@ class ConnectorsApi
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\ConnectorInfo, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1ConnectorsConnectorInfoGetWithHttpInfo($connector, $access_token = null, $user_id = null)
     {
@@ -811,15 +811,15 @@ class ConnectorsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo',
+                '\QuantiModo\Client\Model\ConnectorInfo',
                 '/v1/connectors/{connector}/info'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\ConnectorInfo', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\ConnectorInfo', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -931,7 +931,7 @@ class ConnectorsApi
      * List of Connectors
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Connector[]
+     * @return \QuantiModo\Client\Model\Connector[]
      */
     public function v1ConnectorsListGet()
     {
@@ -945,7 +945,7 @@ class ConnectorsApi
      * List of Connectors
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Connector[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Connector[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1ConnectorsListGetWithHttpInfo()
     {
@@ -983,15 +983,15 @@ class ConnectorsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Connector[]',
+                '\QuantiModo\Client\Model\Connector[]',
                 '/v1/connectors/list'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Connector[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Connector[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Connector[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Connector[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

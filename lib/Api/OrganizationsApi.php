@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -93,11 +93,11 @@ class OrganizationsApi
      * Get user tokens for existing users, create new users
      *
      * @param int $organization_id Organization ID (required)
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
+     * @param \QuantiModo\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse
+     * @return \QuantiModo\Client\Model\UserTokenSuccessfulResponse
      */
     public function v1OrganizationsOrganizationIdUsersPost($organization_id, $body, $access_token = null, $user_id = null)
     {
@@ -111,11 +111,11 @@ class OrganizationsApi
      * Get user tokens for existing users, create new users
      *
      * @param int $organization_id Organization ID (required)
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
+     * @param \QuantiModo\Client\Model\UserTokenRequest $body Provides organization token and user ID (required)
      * @param string $access_token User&#39;s OAuth2 access token (optional)
      * @param int $user_id User&#39;s id (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\UserTokenSuccessfulResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1OrganizationsOrganizationIdUsersPostWithHttpInfo($organization_id, $body, $access_token = null, $user_id = null)
     {
@@ -187,27 +187,27 @@ class OrganizationsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse',
+                '\QuantiModo\Client\Model\UserTokenSuccessfulResponse',
                 '/v1/organizations/{organizationId}/users'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 201:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\UserTokenSuccessfulResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenFailedResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\UserTokenFailedResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 403:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenFailedResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\UserTokenFailedResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
