@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -108,7 +108,7 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Pairs[]
+     * @return \QuantiModo\Client\Model\Pairs[]
      */
     public function v1PairsCsvGet($cause, $effect, $access_token = null, $user_id = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -137,7 +137,7 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1PairsCsvGetWithHttpInfo($cause, $effect, $access_token = null, $user_id = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -243,15 +243,15 @@ class PairsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]',
+                '\QuantiModo\Client\Model\Pairs[]',
                 '/v1/pairsCsv'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Pairs[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -281,7 +281,7 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Pairs[]
+     * @return \QuantiModo\Client\Model\Pairs[]
      */
     public function v1PairsGet($cause, $effect, $access_token = null, $user_id = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -310,7 +310,7 @@ class PairsApi
      * @param int $offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
      * @param int $sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Pairs[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1PairsGetWithHttpInfo($cause, $effect, $access_token = null, $user_id = null, $cause_source = null, $cause_unit = null, $delay = null, $duration = null, $effect_source = null, $effect_unit = null, $end_time = null, $start_time = null, $limit = null, $offset = null, $sort = null)
     {
@@ -416,15 +416,15 @@ class PairsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]',
+                '\QuantiModo\Client\Model\Pairs[]',
                 '/v1/pairs'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Pairs[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Pairs[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Pairs[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

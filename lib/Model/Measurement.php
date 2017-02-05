@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -58,7 +58,7 @@ class Measurement implements ArrayAccess
         'source_name' => 'string',
         'start_time_string' => 'string',
         'start_time_epoch' => 'int',
-        'human_time' => '\QuantiModo\Client\QuantiModo\Client\Model\HumanTime',
+        'human_time' => '\QuantiModo\Client\Model\HumanTime',
         'value' => 'double',
         'original_value' => 'int',
         'original_abbreviated_unit_name' => 'string',
@@ -302,7 +302,7 @@ class Measurement implements ArrayAccess
 
     /**
      * Gets human_time
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\HumanTime
+     * @return \QuantiModo\Client\Model\HumanTime
      */
     public function getHumanTime()
     {
@@ -311,7 +311,7 @@ class Measurement implements ArrayAccess
 
     /**
      * Sets human_time
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\HumanTime $human_time
+     * @param \QuantiModo\Client\Model\HumanTime $human_time
      * @return $this
      */
     public function setHumanTime($human_time)

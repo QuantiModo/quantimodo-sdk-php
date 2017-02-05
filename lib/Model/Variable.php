@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -66,9 +66,9 @@ class Variable implements ArrayAccess
         'combination_operation' => 'string',
         'filling_value' => 'double',
         'join_with' => 'string',
-        'joined_variables' => '\QuantiModo\Client\QuantiModo\Client\Model\Variable[]',
+        'joined_variables' => '\QuantiModo\Client\Model\Variable[]',
         'parent' => 'int',
-        'sub_variables' => '\QuantiModo\Client\QuantiModo\Client\Model\Variable[]',
+        'sub_variables' => '\QuantiModo\Client\Model\Variable[]',
         'onset_delay' => 'int',
         'duration_of_action' => 'int',
         'earliest_measurement_time' => 'int',
@@ -757,7 +757,7 @@ class Variable implements ArrayAccess
 
     /**
      * Gets joined_variables
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Variable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getJoinedVariables()
     {
@@ -766,7 +766,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets joined_variables
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\Variable[] $joined_variables Array of Variables that are joined with this Variable
+     * @param \QuantiModo\Client\Model\Variable[] $joined_variables Array of Variables that are joined with this Variable
      * @return $this
      */
     public function setJoinedVariables($joined_variables)
@@ -799,7 +799,7 @@ class Variable implements ArrayAccess
 
     /**
      * Gets sub_variables
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Variable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getSubVariables()
     {
@@ -808,7 +808,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets sub_variables
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\Variable[] $sub_variables Array of Variables that are sub variables to this Variable
+     * @param \QuantiModo\Client\Model\Variable[] $sub_variables Array of Variables that are sub variables to this Variable
      * @return $this
      */
     public function setSubVariables($sub_variables)

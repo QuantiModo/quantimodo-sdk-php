@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -55,7 +55,7 @@ class InlineResponse20012 implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'success' => 'bool',
-        'data' => '\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotification[]'
+        'data' => '\QuantiModo\Client\Model\TrackingReminderNotification[]'
     ];
 
     public static function swaggerTypes()
@@ -175,7 +175,7 @@ class InlineResponse20012 implements ArrayAccess
 
     /**
      * Gets data
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotification[]
+     * @return \QuantiModo\Client\Model\TrackingReminderNotification[]
      */
     public function getData()
     {
@@ -184,7 +184,7 @@ class InlineResponse20012 implements ArrayAccess
 
     /**
      * Sets data
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotification[] $data
+     * @param \QuantiModo\Client\Model\TrackingReminderNotification[] $data
      * @return $this
      */
     public function setData($data)

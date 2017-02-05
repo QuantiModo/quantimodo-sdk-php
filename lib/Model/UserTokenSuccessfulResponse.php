@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -56,7 +56,7 @@ class UserTokenSuccessfulResponse implements ArrayAccess
     protected static $swaggerTypes = [
         'code' => 'int',
         'message' => 'string',
-        'user' => '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponseInnerUserField'
+        'user' => '\QuantiModo\Client\Model\UserTokenSuccessfulResponseInnerUserField'
     ];
 
     public static function swaggerTypes()
@@ -219,7 +219,7 @@ class UserTokenSuccessfulResponse implements ArrayAccess
 
     /**
      * Gets user
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponseInnerUserField
+     * @return \QuantiModo\Client\Model\UserTokenSuccessfulResponseInnerUserField
      */
     public function getUser()
     {
@@ -228,7 +228,7 @@ class UserTokenSuccessfulResponse implements ArrayAccess
 
     /**
      * Sets user
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserTokenSuccessfulResponseInnerUserField $user
+     * @param \QuantiModo\Client\Model\UserTokenSuccessfulResponseInnerUserField $user
      * @return $this
      */
     public function setUser($user)

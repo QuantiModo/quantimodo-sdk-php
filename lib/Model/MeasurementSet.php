@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -54,7 +54,7 @@ class MeasurementSet implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'measurements' => '\QuantiModo\Client\QuantiModo\Client\Model\ValueObject[]',
+        'measurements' => '\QuantiModo\Client\Model\ValueObject[]',
         'variable_name' => 'string',
         'source_name' => 'string',
         'variable_category_name' => 'string',
@@ -221,7 +221,7 @@ class MeasurementSet implements ArrayAccess
 
     /**
      * Gets measurements
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\ValueObject[]
+     * @return \QuantiModo\Client\Model\ValueObject[]
      */
     public function getMeasurements()
     {
@@ -230,7 +230,7 @@ class MeasurementSet implements ArrayAccess
 
     /**
      * Sets measurements
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\ValueObject[] $measurements Array of timestamps, values, and optional notes
+     * @param \QuantiModo\Client\Model\ValueObject[] $measurements Array of timestamps, values, and optional notes
      * @return $this
      */
     public function setMeasurements($measurements)

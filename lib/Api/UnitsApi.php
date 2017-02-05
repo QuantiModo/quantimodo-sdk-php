@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Api;
+namespace QuantiModo\Client\Api;
 
 use \QuantiModo\Client\ApiClient;
 use \QuantiModo\Client\ApiException;
@@ -93,7 +93,7 @@ class UnitsApi
      * Get unit categories
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\UnitCategory
+     * @return \QuantiModo\Client\Model\UnitCategory
      */
     public function v1UnitCategoriesGet()
     {
@@ -107,7 +107,7 @@ class UnitsApi
      * Get unit categories
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\UnitCategory, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\UnitCategory, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1UnitCategoriesGetWithHttpInfo()
     {
@@ -145,15 +145,15 @@ class UnitsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\UnitCategory',
+                '\QuantiModo\Client\Model\UnitCategory',
                 '/v1/unitCategories'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\UnitCategory', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\UnitCategory', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\UnitCategory', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\UnitCategory', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -174,7 +174,7 @@ class UnitsApi
      * @param string $abbreviated_unit_name Restrict the results to a specific unit by providing the unit abbreviation. (optional)
      * @param string $unit_category_name Restrict the results to a specific unit category by providing the unit category name. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Unit[]
+     * @return \QuantiModo\Client\Model\Unit[]
      */
     public function v1UnitsGet($access_token = null, $user_id = null, $id = null, $unit_name = null, $abbreviated_unit_name = null, $unit_category_name = null)
     {
@@ -194,7 +194,7 @@ class UnitsApi
      * @param string $abbreviated_unit_name Restrict the results to a specific unit by providing the unit abbreviation. (optional)
      * @param string $unit_category_name Restrict the results to a specific unit category by providing the unit category name. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Unit[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Unit[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1UnitsGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $unit_name = null, $abbreviated_unit_name = null, $unit_category_name = null)
     {
@@ -256,15 +256,15 @@ class UnitsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Unit[]',
+                '\QuantiModo\Client\Model\Unit[]',
                 '/v1/units'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Unit[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Unit[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Unit[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Unit[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -285,7 +285,7 @@ class UnitsApi
      * @param string $unit_category_name Name of the category you want units for (optional)
      * @param string $variable Name of the variable you want units for (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\Unit[]
+     * @return \QuantiModo\Client\Model\Unit[]
      */
     public function v1UnitsVariableGet($access_token = null, $user_id = null, $unit_name = null, $abbreviated_unit_name = null, $unit_category_name = null, $variable = null)
     {
@@ -305,7 +305,7 @@ class UnitsApi
      * @param string $unit_category_name Name of the category you want units for (optional)
      * @param string $variable Name of the variable you want units for (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\QuantiModo\Client\Model\Unit[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Unit[], HTTP status code, HTTP response headers (array of strings)
      */
     public function v1UnitsVariableGetWithHttpInfo($access_token = null, $user_id = null, $unit_name = null, $abbreviated_unit_name = null, $unit_category_name = null, $variable = null)
     {
@@ -367,15 +367,15 @@ class UnitsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\QuantiModo\Client\Model\Unit[]',
+                '\QuantiModo\Client\Model\Unit[]',
                 '/v1/unitsVariable'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\QuantiModo\Client\Model\Unit[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Unit[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\QuantiModo\Client\Model\Unit[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Unit[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

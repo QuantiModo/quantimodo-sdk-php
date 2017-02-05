@@ -228,7 +228,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorConnectParameterGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $user_id, $default_value)
+> \QuantiModo\Client\Model\ConnectorInstruction v1ConnectorsConnectorConnectParameterGet($connector, $display_name, $key, $placeholder, $type, $use_popup, $access_token, $user_id, $default_value)
 
 Connect Parameter
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInstruction**](../Model/ConnectorInstruction.md)
+[**\QuantiModo\Client\Model\ConnectorInstruction**](../Model/ConnectorInstruction.md)
 
 ### Authorization
 
@@ -339,7 +339,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsConnectorInfoGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token, $user_id)
+> \QuantiModo\Client\Model\ConnectorInfo v1ConnectorsConnectorInfoGet($connector, $access_token, $user_id)
 
 Get connector info for user
 
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\ConnectorInfo**](../Model/ConnectorInfo.md)
+[**\QuantiModo\Client\Model\ConnectorInfo**](../Model/ConnectorInfo.md)
 
 ### Authorization
 
@@ -442,7 +442,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1ConnectorsListGet**
-> \QuantiModo\Client\QuantiModo\Client\Model\Connector[] v1ConnectorsListGet()
+> \QuantiModo\Client\Model\Connector[] v1ConnectorsListGet()
 
 List of Connectors
 
@@ -472,7 +472,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\QuantiModo\Client\QuantiModo\Client\Model\Connector[]**](../Model/Connector.md)
+[**\QuantiModo\Client\Model\Connector[]**](../Model/Connector.md)
 
 ### Authorization
 

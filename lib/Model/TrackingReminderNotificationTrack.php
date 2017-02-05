@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -54,7 +54,7 @@ class TrackingReminderNotificationTrack implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'tracking_reminder_notification' => '\QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotification',
+        'tracking_reminder_notification' => '\QuantiModo\Client\Model\TrackingReminderNotification',
         'modified_value' => 'float'
     ];
 
@@ -160,7 +160,7 @@ class TrackingReminderNotificationTrack implements ArrayAccess
 
     /**
      * Gets tracking_reminder_notification
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotification
+     * @return \QuantiModo\Client\Model\TrackingReminderNotification
      */
     public function getTrackingReminderNotification()
     {
@@ -169,7 +169,7 @@ class TrackingReminderNotificationTrack implements ArrayAccess
 
     /**
      * Sets tracking_reminder_notification
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\TrackingReminderNotification $tracking_reminder_notification
+     * @param \QuantiModo\Client\Model\TrackingReminderNotification $tracking_reminder_notification
      * @return $this
      */
     public function setTrackingReminderNotification($tracking_reminder_notification)

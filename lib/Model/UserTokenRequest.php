@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace QuantiModo\Client\QuantiModo\Client\Model;
+namespace QuantiModo\Client\Model;
 
 use \ArrayAccess;
 
@@ -54,7 +54,7 @@ class UserTokenRequest implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'user' => '\QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequestInnerUserField',
+        'user' => '\QuantiModo\Client\Model\UserTokenRequestInnerUserField',
         'organization_access_token' => 'string'
     ];
 
@@ -160,7 +160,7 @@ class UserTokenRequest implements ArrayAccess
 
     /**
      * Gets user
-     * @return \QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequestInnerUserField
+     * @return \QuantiModo\Client\Model\UserTokenRequestInnerUserField
      */
     public function getUser()
     {
@@ -169,7 +169,7 @@ class UserTokenRequest implements ArrayAccess
 
     /**
      * Sets user
-     * @param \QuantiModo\Client\QuantiModo\Client\Model\UserTokenRequestInnerUserField $user
+     * @param \QuantiModo\Client\Model\UserTokenRequestInnerUserField $user
      * @return $this
      */
     public function setUser($user)
