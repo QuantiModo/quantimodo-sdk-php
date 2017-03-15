@@ -99,9 +99,9 @@ class VariableUserSourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "source_id"
+     * Test attribute "source_name"
      */
-    public function testPropertySourceId()
+    public function testPropertySourceName()
     {
 
     }

@@ -56,7 +56,7 @@ class VariableUserSource implements ArrayAccess
     protected static $swaggerTypes = [
         'user_id' => 'int',
         'variable_id' => 'int',
-        'source_id' => 'int',
+        'source_name' => 'string',
         'timestamp' => 'int',
         'earliest_measurement_time' => 'int',
         'latest_measurement_time' => 'int',
@@ -76,7 +76,7 @@ class VariableUserSource implements ArrayAccess
     protected static $attributeMap = [
         'user_id' => 'user_id',
         'variable_id' => 'variable_id',
-        'source_id' => 'source_id',
+        'source_name' => 'source_name',
         'timestamp' => 'timestamp',
         'earliest_measurement_time' => 'earliest_measurement_time',
         'latest_measurement_time' => 'latest_measurement_time',
@@ -92,7 +92,7 @@ class VariableUserSource implements ArrayAccess
     protected static $setters = [
         'user_id' => 'setUserId',
         'variable_id' => 'setVariableId',
-        'source_id' => 'setSourceId',
+        'source_name' => 'setSourceName',
         'timestamp' => 'setTimestamp',
         'earliest_measurement_time' => 'setEarliestMeasurementTime',
         'latest_measurement_time' => 'setLatestMeasurementTime',
@@ -108,7 +108,7 @@ class VariableUserSource implements ArrayAccess
     protected static $getters = [
         'user_id' => 'getUserId',
         'variable_id' => 'getVariableId',
-        'source_id' => 'getSourceId',
+        'source_name' => 'getSourceName',
         'timestamp' => 'getTimestamp',
         'earliest_measurement_time' => 'getEarliestMeasurementTime',
         'latest_measurement_time' => 'getLatestMeasurementTime',
@@ -149,7 +149,7 @@ class VariableUserSource implements ArrayAccess
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
-        $this->container['source_id'] = isset($data['source_id']) ? $data['source_id'] : null;
+        $this->container['source_name'] = isset($data['source_name']) ? $data['source_name'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
         $this->container['earliest_measurement_time'] = isset($data['earliest_measurement_time']) ? $data['earliest_measurement_time'] : null;
         $this->container['latest_measurement_time'] = isset($data['latest_measurement_time']) ? $data['latest_measurement_time'] : null;
@@ -169,8 +169,8 @@ class VariableUserSource implements ArrayAccess
         if ($this->container['variable_id'] === null) {
             $invalid_properties[] = "'variable_id' can't be null";
         }
-        if ($this->container['source_id'] === null) {
-            $invalid_properties[] = "'source_id' can't be null";
+        if ($this->container['source_name'] === null) {
+            $invalid_properties[] = "'source_name' can't be null";
         }
         if ($this->container['timestamp'] === null) {
             $invalid_properties[] = "'timestamp' can't be null";
@@ -196,7 +196,7 @@ class VariableUserSource implements ArrayAccess
         if ($this->container['variable_id'] === null) {
             return false;
         }
-        if ($this->container['source_id'] === null) {
+        if ($this->container['source_name'] === null) {
             return false;
         }
         if ($this->container['timestamp'] === null) {
@@ -255,22 +255,22 @@ class VariableUserSource implements ArrayAccess
     }
 
     /**
-     * Gets source_id
-     * @return int
+     * Gets source_name
+     * @return string
      */
-    public function getSourceId()
+    public function getSourceName()
     {
-        return $this->container['source_id'];
+        return $this->container['source_name'];
     }
 
     /**
-     * Sets source_id
-     * @param int $source_id ID of source
+     * Sets source_name
+     * @param string $source_name source
      * @return $this
      */
-    public function setSourceId($source_id)
+    public function setSourceName($source_name)
     {
-        $this->container['source_id'] = $source_id;
+        $this->container['source_name'] = $source_name;
 
         return $this;
     }

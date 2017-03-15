@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **average_vote** | **float** | Average Vote | [optional] 
 **causality_factor** | **float** |  | [optional] 
 **cause** | **string** | ORIGINAL variable name of the cause variable for which the user desires correlations. | 
-**cause_category** | **string** | Variable category of the cause variable. | [optional] 
+**cause_variable_category_name** | **string** | Variable category of the cause variable. | [optional] 
 **cause_changes** | **int** | Number of changes in the predictor variable (a.k.a the number of experiments) | [optional] 
 **cause_combination_operation** | **string** | The way cause measurements are aggregated | [optional] 
 **cause_variable_image_url** | **string** |  | [optional] 
@@ -28,13 +28,14 @@ Name | Type | Description | Notes
 **data_sources** | **string** | How the data was obtained | [optional] 
 **duration_of_action** | **float** | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | 
 **effect** | **string** | ORIGINAL variable name of the effect variable for which the user desires correlations. | 
-**effect_category** | **string** | Variable category of the effect variable. | [optional] 
+**effect_variable_category_name** | **string** | Variable category of the effect variable. | [optional] 
 **effect_variable_image_url** | **string** |  | [optional] 
 **effect_variable_ion_icon** | **string** | For use in Ionic apps | [optional] 
 **effect_size** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
 **effect_variable_id** | **string** | Magnitude of the effects of a cause indicating whether it&#39;s practically meaningful. | [optional] 
 **effect_variable_name** | **string** | ORIGINAL variable name of the effect variable for which the user desires correlations. | [optional] 
 **gauge_image** | **string** | Illustrates the strength of the relationship | [optional] 
+**image_url** | **string** | Large image for Facebook | [optional] 
 **number_of_pairs** | **float** | Number of points that went into the correlation calculation | 
 **original_effect** | **string** | effect variable original name. | [optional] 
 **onset_delay** | **double** | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | 

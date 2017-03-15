@@ -143,9 +143,6 @@ class TagsApi
         if ($tag_variable_id !== null) {
             $queryParams['tagVariableId'] = $this->apiClient->getSerializer()->toQueryValue($tag_variable_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -236,9 +233,6 @@ class TagsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {

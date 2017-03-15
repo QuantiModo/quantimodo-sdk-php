@@ -195,9 +195,6 @@ class CorrelationsApi
         if ($outcomes_of_interest !== null) {
             $queryParams['outcomesOfInterest'] = $this->apiClient->getSerializer()->toQueryValue($outcomes_of_interest);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -288,9 +285,6 @@ class CorrelationsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -440,9 +434,6 @@ class CorrelationsApi
         if ($outcomes_of_interest !== null) {
             $queryParams['outcomesOfInterest'] = $this->apiClient->getSerializer()->toQueryValue($outcomes_of_interest);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -585,9 +576,6 @@ class CorrelationsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -730,9 +718,6 @@ class CorrelationsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -847,9 +832,6 @@ class CorrelationsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -936,9 +918,6 @@ class CorrelationsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1043,9 +1022,6 @@ class CorrelationsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1150,9 +1126,6 @@ class CorrelationsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1251,9 +1224,6 @@ class CorrelationsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1344,9 +1314,6 @@ class CorrelationsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -1442,9 +1409,6 @@ class CorrelationsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {

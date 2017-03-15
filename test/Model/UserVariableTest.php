@@ -267,14 +267,6 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "last_source_id"
-     */
-    public function testPropertyLastSourceId()
-    {
-
-    }
-
-    /**
      * Test attribute "number_of_correlations"
      */
     public function testPropertyNumberOfCorrelations()

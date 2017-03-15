@@ -26,7 +26,6 @@ Name | Type | Description | Notes
 **last_original_unit_id** | **int** | ID of last original Unit | [optional] 
 **last_value** | **float** | Last Value | [optional] 
 **last_original_value** | **int** | Last original value which is stored | [optional] 
-**last_source_id** | **int** | ID of last source | [optional] 
 **number_of_correlations** | **int** | Number of correlations for this variable | [optional] 
 **status** | **string** | status | [optional] 
 **error_message** | **string** | error_message | [optional] 

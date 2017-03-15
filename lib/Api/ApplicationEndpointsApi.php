@@ -207,9 +207,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -347,9 +344,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -401,7 +395,7 @@ class ApplicationEndpointsApi
      * @param string $client_id The ID of the client application which originally stored the measurement (optional)
      * @param int $connector_id The id for the connector data source from which the measurement was obtained (optional)
      * @param int $variable_id ID of the variable for which we are creating the measurement records (optional)
-     * @param int $source_id Application or device used to record the measurement values (optional)
+     * @param string $source_name Application or device used to record the measurement values (optional)
      * @param string $start_time start time for the measurement event. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param float $value The value of the measurement after conversion to the default unit for that variable (optional)
      * @param int $unit_id The default unit id for the variable (optional)
@@ -421,9 +415,9 @@ class ApplicationEndpointsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\InlineResponse2004
      */
-    public function v2ApplicationMeasurementsGet($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationMeasurementsGet($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_name = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationMeasurementsGetWithHttpInfo($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationMeasurementsGetWithHttpInfo($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_name, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
         return $response;
     }
 
@@ -437,7 +431,7 @@ class ApplicationEndpointsApi
      * @param string $client_id The ID of the client application which originally stored the measurement (optional)
      * @param int $connector_id The id for the connector data source from which the measurement was obtained (optional)
      * @param int $variable_id ID of the variable for which we are creating the measurement records (optional)
-     * @param int $source_id Application or device used to record the measurement values (optional)
+     * @param string $source_name Application or device used to record the measurement values (optional)
      * @param string $start_time start time for the measurement event. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format (optional)
      * @param float $value The value of the measurement after conversion to the default unit for that variable (optional)
      * @param int $unit_id The default unit id for the variable (optional)
@@ -457,7 +451,7 @@ class ApplicationEndpointsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationMeasurementsGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_id = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationMeasurementsGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $connector_id = null, $variable_id = null, $source_name = null, $start_time = null, $value = null, $unit_id = null, $original_value = null, $original_unit_id = null, $duration = null, $note = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $error = null, $limit = null, $offset = null, $sort = null)
     {
         // parse inputs
         $resourcePath = "/v2/application/measurements";
@@ -492,8 +486,8 @@ class ApplicationEndpointsApi
             $queryParams['variable_id'] = $this->apiClient->getSerializer()->toQueryValue($variable_id);
         }
         // query params
-        if ($source_id !== null) {
-            $queryParams['source_id'] = $this->apiClient->getSerializer()->toQueryValue($source_id);
+        if ($source_name !== null) {
+            $queryParams['source_name'] = $this->apiClient->getSerializer()->toQueryValue($source_name);
         }
         // query params
         if ($start_time !== null) {
@@ -559,9 +553,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -687,9 +678,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -833,9 +821,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1039,9 +1024,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1112,7 +1094,6 @@ class ApplicationEndpointsApi
      * @param int $last_original_unit_id ID of last original Unit (optional)
      * @param int $last_original_value Last original value which is stored (optional)
      * @param float $last_value Last Value (optional)
-     * @param int $last_source_id ID of last source (optional)
      * @param int $number_of_correlations Number of correlations for this variable (optional)
      * @param string $status status (optional)
      * @param string $error_message error_message (optional)
@@ -1148,9 +1129,9 @@ class ApplicationEndpointsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\InlineResponse2007
      */
-    public function v2ApplicationUserVariablesGet($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUserVariablesGet($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v2ApplicationUserVariablesGetWithHttpInfo($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
+        list($response) = $this->v2ApplicationUserVariablesGetWithHttpInfo($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
         return $response;
     }
 
@@ -1183,7 +1164,6 @@ class ApplicationEndpointsApi
      * @param int $last_original_unit_id ID of last original Unit (optional)
      * @param int $last_original_value Last original value which is stored (optional)
      * @param float $last_value Last Value (optional)
-     * @param int $last_source_id ID of last source (optional)
      * @param int $number_of_correlations Number of correlations for this variable (optional)
      * @param string $status status (optional)
      * @param string $error_message error_message (optional)
@@ -1219,7 +1199,7 @@ class ApplicationEndpointsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v2ApplicationUserVariablesGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $last_source_id = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
+    public function v2ApplicationUserVariablesGetWithHttpInfo($access_token = null, $user_id = null, $client_id = null, $parent_id = null, $variable_id = null, $default_unit_id = null, $minimum_allowed_value = null, $maximum_allowed_value = null, $filling_value = null, $join_with = null, $onset_delay = null, $duration_of_action = null, $variable_category_id = null, $updated = null, $public = null, $cause_only = null, $filling_type = null, $number_of_measurements = null, $number_of_processed_measurements = null, $measurements_at_last_analysis = null, $last_unit_id = null, $last_original_unit_id = null, $last_original_value = null, $last_value = null, $number_of_correlations = null, $status = null, $error_message = null, $last_successful_update_time = null, $standard_deviation = null, $variance = null, $minimum_recorded_value = null, $maximum_recorded_value = null, $mean = null, $median = null, $most_common_unit_id = null, $most_common_value = null, $number_of_unique_daily_values = null, $number_of_changes = null, $skewness = null, $kurtosis = null, $latitude = null, $longitude = null, $location = null, $created_at = null, $updated_at = null, $outcome = null, $sources = null, $earliest_source_time = null, $latest_source_time = null, $earliest_measurement_time = null, $latest_measurement_time = null, $earliest_filling_time = null, $latest_filling_time = null, $limit = null, $offset = null, $sort = null)
     {
         // parse inputs
         $resourcePath = "/v2/application/userVariables";
@@ -1328,10 +1308,6 @@ class ApplicationEndpointsApi
         // query params
         if ($last_value !== null) {
             $queryParams['last_value'] = $this->apiClient->getSerializer()->toQueryValue($last_value);
-        }
-        // query params
-        if ($last_source_id !== null) {
-            $queryParams['last_source_id'] = $this->apiClient->getSerializer()->toQueryValue($last_source_id);
         }
         // query params
         if ($number_of_correlations !== null) {
@@ -1461,9 +1437,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1607,9 +1580,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1753,9 +1723,6 @@ class ApplicationEndpointsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {

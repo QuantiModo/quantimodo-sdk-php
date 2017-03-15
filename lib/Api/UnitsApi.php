@@ -123,9 +123,6 @@ class UnitsApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -234,9 +231,6 @@ class UnitsApi
         if ($unit_category_name !== null) {
             $queryParams['unitCategoryName'] = $this->apiClient->getSerializer()->toQueryValue($unit_category_name);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -345,9 +339,6 @@ class UnitsApi
         if ($variable !== null) {
             $queryParams['variable'] = $this->apiClient->getSerializer()->toQueryValue($variable);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
