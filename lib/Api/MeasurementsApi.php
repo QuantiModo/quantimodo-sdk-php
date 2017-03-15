@@ -123,9 +123,6 @@ class MeasurementsApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -216,9 +213,6 @@ class MeasurementsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -362,9 +356,6 @@ class MeasurementsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -443,9 +434,6 @@ class MeasurementsApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -497,7 +485,7 @@ class MeasurementsApi
      * @param int $id Measurement id (optional)
      * @param string $variable_name Name of the variable you want measurements for (optional)
      * @param string $variable_category_name Name of the variable category you want measurements for (optional)
-     * @param int $source_id ID of the source you want measurements for (supports exact name match only) (optional)
+     * @param string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
      * @param string $value Value of measurement (optional)
      * @param string $abbreviated_unit_name The unit you want the measurements returned in (optional)
      * @param string $earliest_measurement_time The lower limit of measurements returned in ISO 8601 format or epoch seconds (unixtime) (optional)
@@ -512,9 +500,9 @@ class MeasurementsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\Measurement
      */
-    public function v1MeasurementsGet($access_token = null, $user_id = null, $id = null, $variable_name = null, $variable_category_name = null, $source_id = null, $value = null, $abbreviated_unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
+    public function v1MeasurementsGet($access_token = null, $user_id = null, $id = null, $variable_name = null, $variable_category_name = null, $source_name = null, $value = null, $abbreviated_unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
-        list($response) = $this->v1MeasurementsGetWithHttpInfo($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_id, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
+        list($response) = $this->v1MeasurementsGetWithHttpInfo($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_name, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
         return $response;
     }
 
@@ -528,7 +516,7 @@ class MeasurementsApi
      * @param int $id Measurement id (optional)
      * @param string $variable_name Name of the variable you want measurements for (optional)
      * @param string $variable_category_name Name of the variable category you want measurements for (optional)
-     * @param int $source_id ID of the source you want measurements for (supports exact name match only) (optional)
+     * @param string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
      * @param string $value Value of measurement (optional)
      * @param string $abbreviated_unit_name The unit you want the measurements returned in (optional)
      * @param string $earliest_measurement_time The lower limit of measurements returned in ISO 8601 format or epoch seconds (unixtime) (optional)
@@ -543,7 +531,7 @@ class MeasurementsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\Measurement, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1MeasurementsGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $variable_name = null, $variable_category_name = null, $source_id = null, $value = null, $abbreviated_unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
+    public function v1MeasurementsGetWithHttpInfo($access_token = null, $user_id = null, $id = null, $variable_name = null, $variable_category_name = null, $source_name = null, $value = null, $abbreviated_unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $updated_at = null, $grouping_width = null, $grouping_timezone = null, $limit = null, $offset = null, $sort = null)
     {
         // parse inputs
         $resourcePath = "/v1/measurements";
@@ -578,8 +566,8 @@ class MeasurementsApi
             $queryParams['variableCategoryName'] = $this->apiClient->getSerializer()->toQueryValue($variable_category_name);
         }
         // query params
-        if ($source_id !== null) {
-            $queryParams['sourceId'] = $this->apiClient->getSerializer()->toQueryValue($source_id);
+        if ($source_name !== null) {
+            $queryParams['sourceName'] = $this->apiClient->getSerializer()->toQueryValue($source_name);
         }
         // query params
         if ($value !== null) {
@@ -625,9 +613,6 @@ class MeasurementsApi
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -718,9 +703,6 @@ class MeasurementsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -806,9 +788,6 @@ class MeasurementsApi
         if ($user !== null) {
             $queryParams['user'] = $this->apiClient->getSerializer()->toQueryValue($user);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -886,9 +865,6 @@ class MeasurementsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         // body params
         $_tempBody = null;
@@ -979,9 +955,6 @@ class MeasurementsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1080,9 +1053,6 @@ class MeasurementsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1181,9 +1151,6 @@ class MeasurementsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1284,9 +1251,6 @@ class MeasurementsApi
                 $resourcePath
             );
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -1376,9 +1340,6 @@ class MeasurementsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1463,9 +1424,6 @@ class MeasurementsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1550,9 +1508,6 @@ class MeasurementsApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {

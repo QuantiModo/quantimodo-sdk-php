@@ -143,9 +143,6 @@ class AuthenticationApi
         if ($provider !== null) {
             $queryParams['provider'] = $this->apiClient->getSerializer()->toQueryValue($provider);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -240,9 +237,6 @@ class AuthenticationApi
         if ($provider !== null) {
             $queryParams['provider'] = $this->apiClient->getSerializer()->toQueryValue($provider);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -331,9 +325,6 @@ class AuthenticationApi
         if ($provider !== null) {
             $queryParams['provider'] = $this->apiClient->getSerializer()->toQueryValue($provider);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -466,9 +457,6 @@ class AuthenticationApi
         if ($state !== null) {
             $queryParams['state'] = $this->apiClient->getSerializer()->toQueryValue($state);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -589,9 +577,6 @@ class AuthenticationApi
         if ($state !== null) {
             $queryParams['state'] = $this->apiClient->getSerializer()->toQueryValue($state);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         
         // for model (json/xml)
         if (isset($_tempBody)) {

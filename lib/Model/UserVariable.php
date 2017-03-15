@@ -77,7 +77,6 @@ class UserVariable implements ArrayAccess
         'last_original_unit_id' => 'int',
         'last_value' => 'float',
         'last_original_value' => 'int',
-        'last_source_id' => 'int',
         'number_of_correlations' => 'int',
         'status' => 'string',
         'error_message' => 'string',
@@ -146,7 +145,6 @@ class UserVariable implements ArrayAccess
         'last_original_unit_id' => 'lastOriginalUnitId',
         'last_value' => 'lastValue',
         'last_original_value' => 'lastOriginalValue',
-        'last_source_id' => 'lastSourceId',
         'number_of_correlations' => 'numberOfCorrelations',
         'status' => 'status',
         'error_message' => 'errorMessage',
@@ -211,7 +209,6 @@ class UserVariable implements ArrayAccess
         'last_original_unit_id' => 'setLastOriginalUnitId',
         'last_value' => 'setLastValue',
         'last_original_value' => 'setLastOriginalValue',
-        'last_source_id' => 'setLastSourceId',
         'number_of_correlations' => 'setNumberOfCorrelations',
         'status' => 'setStatus',
         'error_message' => 'setErrorMessage',
@@ -276,7 +273,6 @@ class UserVariable implements ArrayAccess
         'last_original_unit_id' => 'getLastOriginalUnitId',
         'last_value' => 'getLastValue',
         'last_original_value' => 'getLastOriginalValue',
-        'last_source_id' => 'getLastSourceId',
         'number_of_correlations' => 'getNumberOfCorrelations',
         'status' => 'getStatus',
         'error_message' => 'getErrorMessage',
@@ -366,7 +362,6 @@ class UserVariable implements ArrayAccess
         $this->container['last_original_unit_id'] = isset($data['last_original_unit_id']) ? $data['last_original_unit_id'] : null;
         $this->container['last_value'] = isset($data['last_value']) ? $data['last_value'] : null;
         $this->container['last_original_value'] = isset($data['last_original_value']) ? $data['last_original_value'] : null;
-        $this->container['last_source_id'] = isset($data['last_source_id']) ? $data['last_source_id'] : null;
         $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
@@ -906,27 +901,6 @@ class UserVariable implements ArrayAccess
     public function setLastOriginalValue($last_original_value)
     {
         $this->container['last_original_value'] = $last_original_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_source_id
-     * @return int
-     */
-    public function getLastSourceId()
-    {
-        return $this->container['last_source_id'];
-    }
-
-    /**
-     * Sets last_source_id
-     * @param int $last_source_id ID of last source
-     * @return $this
-     */
-    public function setLastSourceId($last_source_id)
-    {
-        $this->container['last_source_id'] = $last_source_id;
 
         return $this;
     }

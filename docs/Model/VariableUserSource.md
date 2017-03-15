@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **int** | ID of User | [optional] 
 **variable_id** | **int** | ID of variable | 
-**source_id** | **int** | ID of source | 
+**source_name** | **string** | source | 
 **timestamp** | **int** | Time that this measurement occurred Uses epoch minute (epoch time divided by 60) | 
 **earliest_measurement_time** | **int** | Earliest measurement time | 
 **latest_measurement_time** | **int** | Latest measurement time | 

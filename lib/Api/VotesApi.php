@@ -141,9 +141,6 @@ class VotesApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -239,9 +236,6 @@ class VotesApi
         if ($user_id !== null) {
             $queryParams['user_id'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {

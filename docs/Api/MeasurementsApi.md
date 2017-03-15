@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v1MeasurementsGet**
-> \QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_id, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_name, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
 
 Get measurements for this user
 
@@ -253,7 +253,7 @@ $user_id = 56; // int | User's id
 $id = 56; // int | Measurement id
 $variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
 $variable_category_name = "variable_category_name_example"; // string | Name of the variable category you want measurements for
-$source_id = 56; // int | ID of the source you want measurements for (supports exact name match only)
+$source_name = "source_name_example"; // string | ID of the source you want measurements for (supports exact name match only)
 $value = "value_example"; // string | Value of measurement
 $abbreviated_unit_name = "abbreviated_unit_name_example"; // string | The unit you want the measurements returned in
 $earliest_measurement_time = "earliest_measurement_time_example"; // string | The lower limit of measurements returned in ISO 8601 format or epoch seconds (unixtime)
@@ -267,7 +267,7 @@ $offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set t
 $sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
 
 try {
-    $result = $api_instance->v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_id, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
+    $result = $api_instance->v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_name, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->v1MeasurementsGet: ', $e->getMessage(), PHP_EOL;
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
  **id** | **int**| Measurement id | [optional]
  **variable_name** | **string**| Name of the variable you want measurements for | [optional]
  **variable_category_name** | **string**| Name of the variable category you want measurements for | [optional]
- **source_id** | **int**| ID of the source you want measurements for (supports exact name match only) | [optional]
+ **source_name** | **string**| ID of the source you want measurements for (supports exact name match only) | [optional]
  **value** | **string**| Value of measurement | [optional]
  **abbreviated_unit_name** | **string**| The unit you want the measurements returned in | [optional]
  **earliest_measurement_time** | **string**| The lower limit of measurements returned in ISO 8601 format or epoch seconds (unixtime) | [optional]

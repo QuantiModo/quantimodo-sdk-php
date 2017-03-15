@@ -64,7 +64,7 @@ class Correlation implements ArrayAccess
         'average_vote' => 'float',
         'causality_factor' => 'float',
         'cause' => 'string',
-        'cause_category' => 'string',
+        'cause_variable_category_name' => 'string',
         'cause_changes' => 'int',
         'cause_combination_operation' => 'string',
         'cause_variable_image_url' => 'string',
@@ -79,13 +79,14 @@ class Correlation implements ArrayAccess
         'data_sources' => 'string',
         'duration_of_action' => 'float',
         'effect' => 'string',
-        'effect_category' => 'string',
+        'effect_variable_category_name' => 'string',
         'effect_variable_image_url' => 'string',
         'effect_variable_ion_icon' => 'string',
         'effect_size' => 'string',
         'effect_variable_id' => 'string',
         'effect_variable_name' => 'string',
         'gauge_image' => 'string',
+        'image_url' => 'string',
         'number_of_pairs' => 'float',
         'original_effect' => 'string',
         'onset_delay' => 'double',
@@ -140,7 +141,7 @@ class Correlation implements ArrayAccess
         'average_vote' => 'averageVote',
         'causality_factor' => 'causalityFactor',
         'cause' => 'cause',
-        'cause_category' => 'causeCategory',
+        'cause_variable_category_name' => 'causeVariableCategoryName',
         'cause_changes' => 'causeChanges',
         'cause_combination_operation' => 'causeCombinationOperation',
         'cause_variable_image_url' => 'causeVariableImageUrl',
@@ -155,13 +156,14 @@ class Correlation implements ArrayAccess
         'data_sources' => 'dataSources',
         'duration_of_action' => 'durationOfAction',
         'effect' => 'effect',
-        'effect_category' => 'effectCategory',
+        'effect_variable_category_name' => 'effectVariableCategoryName',
         'effect_variable_image_url' => 'effectVariableImageUrl',
         'effect_variable_ion_icon' => 'effectVariableIonIcon',
         'effect_size' => 'effectSize',
         'effect_variable_id' => 'effectVariableId',
         'effect_variable_name' => 'effectVariableName',
         'gauge_image' => 'gaugeImage',
+        'image_url' => 'imageUrl',
         'number_of_pairs' => 'numberOfPairs',
         'original_effect' => 'originalEffect',
         'onset_delay' => 'onsetDelay',
@@ -212,7 +214,7 @@ class Correlation implements ArrayAccess
         'average_vote' => 'setAverageVote',
         'causality_factor' => 'setCausalityFactor',
         'cause' => 'setCause',
-        'cause_category' => 'setCauseCategory',
+        'cause_variable_category_name' => 'setCauseVariableCategoryName',
         'cause_changes' => 'setCauseChanges',
         'cause_combination_operation' => 'setCauseCombinationOperation',
         'cause_variable_image_url' => 'setCauseVariableImageUrl',
@@ -227,13 +229,14 @@ class Correlation implements ArrayAccess
         'data_sources' => 'setDataSources',
         'duration_of_action' => 'setDurationOfAction',
         'effect' => 'setEffect',
-        'effect_category' => 'setEffectCategory',
+        'effect_variable_category_name' => 'setEffectVariableCategoryName',
         'effect_variable_image_url' => 'setEffectVariableImageUrl',
         'effect_variable_ion_icon' => 'setEffectVariableIonIcon',
         'effect_size' => 'setEffectSize',
         'effect_variable_id' => 'setEffectVariableId',
         'effect_variable_name' => 'setEffectVariableName',
         'gauge_image' => 'setGaugeImage',
+        'image_url' => 'setImageUrl',
         'number_of_pairs' => 'setNumberOfPairs',
         'original_effect' => 'setOriginalEffect',
         'onset_delay' => 'setOnsetDelay',
@@ -284,7 +287,7 @@ class Correlation implements ArrayAccess
         'average_vote' => 'getAverageVote',
         'causality_factor' => 'getCausalityFactor',
         'cause' => 'getCause',
-        'cause_category' => 'getCauseCategory',
+        'cause_variable_category_name' => 'getCauseVariableCategoryName',
         'cause_changes' => 'getCauseChanges',
         'cause_combination_operation' => 'getCauseCombinationOperation',
         'cause_variable_image_url' => 'getCauseVariableImageUrl',
@@ -299,13 +302,14 @@ class Correlation implements ArrayAccess
         'data_sources' => 'getDataSources',
         'duration_of_action' => 'getDurationOfAction',
         'effect' => 'getEffect',
-        'effect_category' => 'getEffectCategory',
+        'effect_variable_category_name' => 'getEffectVariableCategoryName',
         'effect_variable_image_url' => 'getEffectVariableImageUrl',
         'effect_variable_ion_icon' => 'getEffectVariableIonIcon',
         'effect_size' => 'getEffectSize',
         'effect_variable_id' => 'getEffectVariableId',
         'effect_variable_name' => 'getEffectVariableName',
         'gauge_image' => 'getGaugeImage',
+        'image_url' => 'getImageUrl',
         'number_of_pairs' => 'getNumberOfPairs',
         'original_effect' => 'getOriginalEffect',
         'onset_delay' => 'getOnsetDelay',
@@ -381,7 +385,7 @@ class Correlation implements ArrayAccess
         $this->container['average_vote'] = isset($data['average_vote']) ? $data['average_vote'] : null;
         $this->container['causality_factor'] = isset($data['causality_factor']) ? $data['causality_factor'] : null;
         $this->container['cause'] = isset($data['cause']) ? $data['cause'] : null;
-        $this->container['cause_category'] = isset($data['cause_category']) ? $data['cause_category'] : null;
+        $this->container['cause_variable_category_name'] = isset($data['cause_variable_category_name']) ? $data['cause_variable_category_name'] : null;
         $this->container['cause_changes'] = isset($data['cause_changes']) ? $data['cause_changes'] : null;
         $this->container['cause_combination_operation'] = isset($data['cause_combination_operation']) ? $data['cause_combination_operation'] : null;
         $this->container['cause_variable_image_url'] = isset($data['cause_variable_image_url']) ? $data['cause_variable_image_url'] : null;
@@ -396,13 +400,14 @@ class Correlation implements ArrayAccess
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
         $this->container['effect'] = isset($data['effect']) ? $data['effect'] : null;
-        $this->container['effect_category'] = isset($data['effect_category']) ? $data['effect_category'] : null;
+        $this->container['effect_variable_category_name'] = isset($data['effect_variable_category_name']) ? $data['effect_variable_category_name'] : null;
         $this->container['effect_variable_image_url'] = isset($data['effect_variable_image_url']) ? $data['effect_variable_image_url'] : null;
         $this->container['effect_variable_ion_icon'] = isset($data['effect_variable_ion_icon']) ? $data['effect_variable_ion_icon'] : null;
         $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
         $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
         $this->container['effect_variable_name'] = isset($data['effect_variable_name']) ? $data['effect_variable_name'] : null;
         $this->container['gauge_image'] = isset($data['gauge_image']) ? $data['gauge_image'] : null;
+        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
         $this->container['original_effect'] = isset($data['original_effect']) ? $data['original_effect'] : null;
         $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
@@ -715,22 +720,22 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets cause_category
+     * Gets cause_variable_category_name
      * @return string
      */
-    public function getCauseCategory()
+    public function getCauseVariableCategoryName()
     {
-        return $this->container['cause_category'];
+        return $this->container['cause_variable_category_name'];
     }
 
     /**
-     * Sets cause_category
-     * @param string $cause_category Variable category of the cause variable.
+     * Sets cause_variable_category_name
+     * @param string $cause_variable_category_name Variable category of the cause variable.
      * @return $this
      */
-    public function setCauseCategory($cause_category)
+    public function setCauseVariableCategoryName($cause_variable_category_name)
     {
-        $this->container['cause_category'] = $cause_category;
+        $this->container['cause_variable_category_name'] = $cause_variable_category_name;
 
         return $this;
     }
@@ -1030,22 +1035,22 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets effect_category
+     * Gets effect_variable_category_name
      * @return string
      */
-    public function getEffectCategory()
+    public function getEffectVariableCategoryName()
     {
-        return $this->container['effect_category'];
+        return $this->container['effect_variable_category_name'];
     }
 
     /**
-     * Sets effect_category
-     * @param string $effect_category Variable category of the effect variable.
+     * Sets effect_variable_category_name
+     * @param string $effect_variable_category_name Variable category of the effect variable.
      * @return $this
      */
-    public function setEffectCategory($effect_category)
+    public function setEffectVariableCategoryName($effect_variable_category_name)
     {
-        $this->container['effect_category'] = $effect_category;
+        $this->container['effect_variable_category_name'] = $effect_variable_category_name;
 
         return $this;
     }
@@ -1172,6 +1177,27 @@ class Correlation implements ArrayAccess
     public function setGaugeImage($gauge_image)
     {
         $this->container['gauge_image'] = $gauge_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     * @param string $image_url Large image for Facebook
+     * @return $this
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
 
         return $this;
     }

@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationMeasurementsGet**
-> \QuantiModo\Client\Model\InlineResponse2004 v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2004 v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_name, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort)
 
 Get measurements for all users using your application
 
@@ -188,7 +188,7 @@ $user_id = 56; // int | User's id
 $client_id = "client_id_example"; // string | The ID of the client application which originally stored the measurement
 $connector_id = 56; // int | The id for the connector data source from which the measurement was obtained
 $variable_id = 56; // int | ID of the variable for which we are creating the measurement records
-$source_id = 56; // int | Application or device used to record the measurement values
+$source_name = "source_name_example"; // string | Application or device used to record the measurement values
 $start_time = "start_time_example"; // string | start time for the measurement event. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
 $value = 3.4; // float | The value of the measurement after conversion to the default unit for that variable
 $unit_id = 56; // int | The default unit id for the variable
@@ -207,7 +207,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_id, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationMeasurementsGet($access_token, $user_id, $client_id, $connector_id, $variable_id, $source_name, $start_time, $value, $unit_id, $original_value, $original_unit_id, $duration, $note, $latitude, $longitude, $location, $created_at, $updated_at, $error, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationMeasurementsGet: ', $e->getMessage(), PHP_EOL;
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
  **client_id** | **string**| The ID of the client application which originally stored the measurement | [optional]
  **connector_id** | **int**| The id for the connector data source from which the measurement was obtained | [optional]
  **variable_id** | **int**| ID of the variable for which we are creating the measurement records | [optional]
- **source_id** | **int**| Application or device used to record the measurement values | [optional]
+ **source_name** | **string**| Application or device used to record the measurement values | [optional]
  **start_time** | **string**| start time for the measurement event. Use UTC ISO 8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot;  datetime format | [optional]
  **value** | **float**| The value of the measurement after conversion to the default unit for that variable | [optional]
  **unit_id** | **int**| The default unit id for the variable | [optional]
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v2ApplicationUserVariablesGet**
-> \QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\InlineResponse2007 v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort)
 
 Get all UserVariables
 
@@ -531,7 +531,6 @@ $last_unit_id = 56; // int | ID of last Unit
 $last_original_unit_id = 56; // int | ID of last original Unit
 $last_original_value = 56; // int | Last original value which is stored
 $last_value = 3.4; // float | Last Value
-$last_source_id = 56; // int | ID of last source
 $number_of_correlations = 56; // int | Number of correlations for this variable
 $status = "status_example"; // string | status
 $error_message = "error_message_example"; // string | error_message
@@ -566,7 +565,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by given field. If the field is prefixed with '-', it will sort in descending order.
 
 try {
-    $result = $api_instance->v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $last_source_id, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
+    $result = $api_instance->v2ApplicationUserVariablesGet($access_token, $user_id, $client_id, $parent_id, $variable_id, $default_unit_id, $minimum_allowed_value, $maximum_allowed_value, $filling_value, $join_with, $onset_delay, $duration_of_action, $variable_category_id, $updated, $public, $cause_only, $filling_type, $number_of_measurements, $number_of_processed_measurements, $measurements_at_last_analysis, $last_unit_id, $last_original_unit_id, $last_original_value, $last_value, $number_of_correlations, $status, $error_message, $last_successful_update_time, $standard_deviation, $variance, $minimum_recorded_value, $maximum_recorded_value, $mean, $median, $most_common_unit_id, $most_common_value, $number_of_unique_daily_values, $number_of_changes, $skewness, $kurtosis, $latitude, $longitude, $location, $created_at, $updated_at, $outcome, $sources, $earliest_source_time, $latest_source_time, $earliest_measurement_time, $latest_measurement_time, $earliest_filling_time, $latest_filling_time, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApplicationEndpointsApi->v2ApplicationUserVariablesGet: ', $e->getMessage(), PHP_EOL;
@@ -602,7 +601,6 @@ Name | Type | Description  | Notes
  **last_original_unit_id** | **int**| ID of last original Unit | [optional]
  **last_original_value** | **int**| Last original value which is stored | [optional]
  **last_value** | **float**| Last Value | [optional]
- **last_source_id** | **int**| ID of last source | [optional]
  **number_of_correlations** | **int**| Number of correlations for this variable | [optional]
  **status** | **string**| status | [optional]
  **error_message** | **string**| error_message | [optional]
