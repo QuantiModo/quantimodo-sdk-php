@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -47,7 +47,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,15 +75,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testCorrelation()
     {
-
-    }
-
-    /**
-     * Test attribute "average_daily_low_cause"
-     */
-    public function testPropertyAverageDailyLowCause()
-    {
-
     }
 
     /**
@@ -95,7 +82,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAverageDailyHighCause()
     {
+    }
 
+    /**
+     * Test attribute "average_daily_low_cause"
+     */
+    public function testPropertyAverageDailyLowCause()
+    {
     }
 
     /**
@@ -103,7 +96,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAverageEffect()
     {
-
     }
 
     /**
@@ -111,15 +103,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAverageEffectFollowingHighCause()
     {
-
-    }
-
-    /**
-     * Test attribute "average_effect_following_low_cause"
-     */
-    public function testPropertyAverageEffectFollowingLowCause()
-    {
-
     }
 
     /**
@@ -127,7 +110,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAverageEffectFollowingHighCauseExplanation()
     {
+    }
 
+    /**
+     * Test attribute "average_effect_following_low_cause"
+     */
+    public function testPropertyAverageEffectFollowingLowCause()
+    {
     }
 
     /**
@@ -135,7 +124,20 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAverageEffectFollowingLowCauseExplanation()
     {
+    }
 
+    /**
+     * Test attribute "average_forward_pearson_correlation_over_onset_delays"
+     */
+    public function testPropertyAverageForwardPearsonCorrelationOverOnsetDelays()
+    {
+    }
+
+    /**
+     * Test attribute "average_reverse_pearson_correlation_over_onset_delays"
+     */
+    public function testPropertyAverageReversePearsonCorrelationOverOnsetDelays()
+    {
     }
 
     /**
@@ -143,31 +145,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAverageVote()
     {
-
-    }
-
-    /**
-     * Test attribute "causality_factor"
-     */
-    public function testPropertyCausalityFactor()
-    {
-
-    }
-
-    /**
-     * Test attribute "cause"
-     */
-    public function testPropertyCause()
-    {
-
-    }
-
-    /**
-     * Test attribute "cause_variable_category_name"
-     */
-    public function testPropertyCauseVariableCategoryName()
-    {
-
     }
 
     /**
@@ -175,47 +152,62 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCauseChanges()
     {
-
     }
 
     /**
-     * Test attribute "cause_combination_operation"
+     * Test attribute "cause_data_source"
      */
-    public function testPropertyCauseCombinationOperation()
+    public function testPropertyCauseDataSource()
     {
-
     }
 
     /**
-     * Test attribute "cause_variable_image_url"
+     * Test attribute "cause_user_variable_share_user_measurements"
      */
-    public function testPropertyCauseVariableImageUrl()
+    public function testPropertyCauseUserVariableShareUserMeasurements()
     {
-
     }
 
     /**
-     * Test attribute "cause_variable_ion_icon"
+     * Test attribute "cause_variable_category_id"
      */
-    public function testPropertyCauseVariableIonIcon()
+    public function testPropertyCauseVariableCategoryId()
     {
-
     }
 
     /**
-     * Test attribute "cause_unit"
+     * Test attribute "cause_variable_category_name"
      */
-    public function testPropertyCauseUnit()
+    public function testPropertyCauseVariableCategoryName()
     {
-
     }
 
     /**
-     * Test attribute "cause_unit_id"
+     * Test attribute "cause_variable_combination_operation"
      */
-    public function testPropertyCauseUnitId()
+    public function testPropertyCauseVariableCombinationOperation()
     {
+    }
 
+    /**
+     * Test attribute "cause_variable_unit_abbreviated_name"
+     */
+    public function testPropertyCauseVariableUnitAbbreviatedName()
+    {
+    }
+
+    /**
+     * Test attribute "cause_variable_unit_id"
+     */
+    public function testPropertyCauseVariableUnitId()
+    {
+    }
+
+    /**
+     * Test attribute "cause_variable_unit_name"
+     */
+    public function testPropertyCauseVariableUnitName()
+    {
     }
 
     /**
@@ -223,7 +215,27 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCauseVariableId()
     {
+    }
 
+    /**
+     * Test attribute "cause_variable_image_url"
+     */
+    public function testPropertyCauseVariableImageUrl()
+    {
+    }
+
+    /**
+     * Test attribute "cause_variable_ion_icon"
+     */
+    public function testPropertyCauseVariableIonIcon()
+    {
+    }
+
+    /**
+     * Test attribute "cause_variable_most_common_connector_id"
+     */
+    public function testPropertyCauseVariableMostCommonConnectorId()
+    {
     }
 
     /**
@@ -231,7 +243,20 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCauseVariableName()
     {
+    }
 
+    /**
+     * Test attribute "confidence_interval"
+     */
+    public function testPropertyConfidenceInterval()
+    {
+    }
+
+    /**
+     * Test attribute "confidence_level"
+     */
+    public function testPropertyConfidenceLevel()
+    {
     }
 
     /**
@@ -239,7 +264,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCorrelationCoefficient()
     {
+    }
 
+    /**
+     * Test attribute "correlation_is_contradictory_to_optimal_values"
+     */
+    public function testPropertyCorrelationIsContradictoryToOptimalValues()
+    {
     }
 
     /**
@@ -247,7 +278,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCreatedAt()
     {
+    }
 
+    /**
+     * Test attribute "critical_t_value"
+     */
+    public function testPropertyCriticalTValue()
+    {
     }
 
     /**
@@ -255,7 +292,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDataAnalysis()
     {
-
     }
 
     /**
@@ -263,7 +299,27 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDataSources()
     {
+    }
 
+    /**
+     * Test attribute "data_sources_paragraph_for_cause"
+     */
+    public function testPropertyDataSourcesParagraphForCause()
+    {
+    }
+
+    /**
+     * Test attribute "data_sources_paragraph_for_effect"
+     */
+    public function testPropertyDataSourcesParagraphForEffect()
+    {
+    }
+
+    /**
+     * Test attribute "direction"
+     */
+    public function testPropertyDirection()
+    {
     }
 
     /**
@@ -271,39 +327,27 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDurationOfAction()
     {
-
     }
 
     /**
-     * Test attribute "effect"
+     * Test attribute "duration_of_action_in_hours"
      */
-    public function testPropertyEffect()
+    public function testPropertyDurationOfActionInHours()
     {
-
     }
 
     /**
-     * Test attribute "effect_variable_category_name"
+     * Test attribute "effect_changes"
      */
-    public function testPropertyEffectVariableCategoryName()
+    public function testPropertyEffectChanges()
     {
-
     }
 
     /**
-     * Test attribute "effect_variable_image_url"
+     * Test attribute "effect_data_source"
      */
-    public function testPropertyEffectVariableImageUrl()
+    public function testPropertyEffectDataSource()
     {
-
-    }
-
-    /**
-     * Test attribute "effect_variable_ion_icon"
-     */
-    public function testPropertyEffectVariableIonIcon()
-    {
-
     }
 
     /**
@@ -311,7 +355,69 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyEffectSize()
     {
+    }
 
+    /**
+     * Test attribute "effect_unit"
+     */
+    public function testPropertyEffectUnit()
+    {
+    }
+
+    /**
+     * Test attribute "effect_user_variable_share_user_measurements"
+     */
+    public function testPropertyEffectUserVariableShareUserMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_category_id"
+     */
+    public function testPropertyEffectVariableCategoryId()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_category_name"
+     */
+    public function testPropertyEffectVariableCategoryName()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_combination_operation"
+     */
+    public function testPropertyEffectVariableCombinationOperation()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_common_alias"
+     */
+    public function testPropertyEffectVariableCommonAlias()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_unit_abbreviated_name"
+     */
+    public function testPropertyEffectVariableUnitAbbreviatedName()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_unit_id"
+     */
+    public function testPropertyEffectVariableUnitId()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_unit_name"
+     */
+    public function testPropertyEffectVariableUnitName()
+    {
     }
 
     /**
@@ -319,7 +425,27 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyEffectVariableId()
     {
+    }
 
+    /**
+     * Test attribute "effect_variable_image_url"
+     */
+    public function testPropertyEffectVariableImageUrl()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_ion_icon"
+     */
+    public function testPropertyEffectVariableIonIcon()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_most_common_connector_id"
+     */
+    public function testPropertyEffectVariableMostCommonConnectorId()
+    {
     }
 
     /**
@@ -327,7 +453,27 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyEffectVariableName()
     {
+    }
 
+    /**
+     * Test attribute "experiment_end_time"
+     */
+    public function testPropertyExperimentEndTime()
+    {
+    }
+
+    /**
+     * Test attribute "experiment_start_time"
+     */
+    public function testPropertyExperimentStartTime()
+    {
+    }
+
+    /**
+     * Test attribute "forward_spearman_correlation_coefficient"
+     */
+    public function testPropertyForwardSpearmanCorrelationCoefficient()
+    {
     }
 
     /**
@@ -335,7 +481,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyGaugeImage()
     {
+    }
 
+    /**
+     * Test attribute "gauge_image_square"
+     */
+    public function testPropertyGaugeImageSquare()
+    {
     }
 
     /**
@@ -343,7 +495,20 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyImageUrl()
     {
+    }
 
+    /**
+     * Test attribute "instructions_for_cause"
+     */
+    public function testPropertyInstructionsForCause()
+    {
+    }
+
+    /**
+     * Test attribute "instructions_for_effect"
+     */
+    public function testPropertyInstructionsForEffect()
+    {
     }
 
     /**
@@ -351,15 +516,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyNumberOfPairs()
     {
-
-    }
-
-    /**
-     * Test attribute "original_effect"
-     */
-    public function testPropertyOriginalEffect()
-    {
-
     }
 
     /**
@@ -367,7 +523,27 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyOnsetDelay()
     {
+    }
 
+    /**
+     * Test attribute "onset_delay_in_hours"
+     */
+    public function testPropertyOnsetDelayInHours()
+    {
+    }
+
+    /**
+     * Test attribute "onset_delay_with_strongest_pearson_correlation"
+     */
+    public function testPropertyOnsetDelayWithStrongestPearsonCorrelation()
+    {
+    }
+
+    /**
+     * Test attribute "onset_delay_with_strongest_pearson_correlation_in_hours"
+     */
+    public function testPropertyOnsetDelayWithStrongestPearsonCorrelationInHours()
+    {
     }
 
     /**
@@ -375,23 +551,55 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyOptimalPearsonProduct()
     {
-
     }
 
     /**
-     * Test attribute "original_cause"
+     * Test attribute "outcome_filling_value"
      */
-    public function testPropertyOriginalCause()
+    public function testPropertyOutcomeFillingValue()
     {
-
     }
 
     /**
-     * Test attribute "outcome_data_sources"
+     * Test attribute "outcome_maximum_allowed_value"
      */
-    public function testPropertyOutcomeDataSources()
+    public function testPropertyOutcomeMaximumAllowedValue()
     {
+    }
 
+    /**
+     * Test attribute "outcome_minimum_allowed_value"
+     */
+    public function testPropertyOutcomeMinimumAllowedValue()
+    {
+    }
+
+    /**
+     * Test attribute "pearson_correlation_with_no_onset_delay"
+     */
+    public function testPropertyPearsonCorrelationWithNoOnsetDelay()
+    {
+    }
+
+    /**
+     * Test attribute "predictive_pearson_correlation"
+     */
+    public function testPropertyPredictivePearsonCorrelation()
+    {
+    }
+
+    /**
+     * Test attribute "predictive_pearson_correlation_coefficient"
+     */
+    public function testPropertyPredictivePearsonCorrelationCoefficient()
+    {
+    }
+
+    /**
+     * Test attribute "predictor_data_sources"
+     */
+    public function testPropertyPredictorDataSources()
+    {
     }
 
     /**
@@ -399,15 +607,62 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyPredictorExplanation()
     {
-
     }
 
     /**
-     * Test attribute "principal_investigator"
+     * Test attribute "predictor_filling_value"
      */
-    public function testPropertyPrincipalInvestigator()
+    public function testPropertyPredictorFillingValue()
     {
+    }
 
+    /**
+     * Test attribute "predictor_maximum_allowed_value"
+     */
+    public function testPropertyPredictorMaximumAllowedValue()
+    {
+    }
+
+    /**
+     * Test attribute "predictor_minimum_allowed_value"
+     */
+    public function testPropertyPredictorMinimumAllowedValue()
+    {
+    }
+
+    /**
+     * Test attribute "predicts_high_effect_change"
+     */
+    public function testPropertyPredictsHighEffectChange()
+    {
+    }
+
+    /**
+     * Test attribute "predicts_high_effect_change_sentence_fragment"
+     */
+    public function testPropertyPredictsHighEffectChangeSentenceFragment()
+    {
+    }
+
+    /**
+     * Test attribute "predicts_low_effect_change"
+     */
+    public function testPropertyPredictsLowEffectChange()
+    {
+    }
+
+    /**
+     * Test attribute "predicts_low_effect_change_sentence_fragment"
+     */
+    public function testPropertyPredictsLowEffectChangeSentenceFragment()
+    {
+    }
+
+    /**
+     * Test attribute "p_value"
+     */
+    public function testPropertyPValue()
+    {
     }
 
     /**
@@ -415,15 +670,20 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyQmScore()
     {
-
     }
 
     /**
-     * Test attribute "reverse_correlation"
+     * Test attribute "reverse_pearson_correlation_coefficient"
      */
-    public function testPropertyReverseCorrelation()
+    public function testPropertyReversePearsonCorrelationCoefficient()
     {
+    }
 
+    /**
+     * Test attribute "share_user_measurements"
+     */
+    public function testPropertyShareUserMeasurements()
+    {
     }
 
     /**
@@ -431,7 +691,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertySignificanceExplanation()
     {
+    }
 
+    /**
+     * Test attribute "significant_difference"
+     */
+    public function testPropertySignificantDifference()
+    {
     }
 
     /**
@@ -439,7 +705,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStatisticalSignificance()
     {
-
     }
 
     /**
@@ -447,7 +712,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStrengthLevel()
     {
+    }
 
+    /**
+     * Test attribute "strongest_pearson_correlation_coefficient"
+     */
+    public function testPropertyStrongestPearsonCorrelationCoefficient()
+    {
     }
 
     /**
@@ -455,15 +726,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyAbstract()
     {
-
-    }
-
-    /**
-     * Test attribute "study_background"
-     */
-    public function testPropertyStudyBackground()
-    {
-
     }
 
     /**
@@ -471,7 +733,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyDesign()
     {
-
     }
 
     /**
@@ -479,7 +740,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyLimitations()
     {
-
     }
 
     /**
@@ -487,7 +747,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyLinkDynamic()
     {
+    }
 
+    /**
+     * Test attribute "study_link_email"
+     */
+    public function testPropertyStudyLinkEmail()
+    {
     }
 
     /**
@@ -495,7 +761,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyLinkFacebook()
     {
-
     }
 
     /**
@@ -503,15 +768,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyLinkGoogle()
     {
-
-    }
-
-    /**
-     * Test attribute "study_link_twitter"
-     */
-    public function testPropertyStudyLinkTwitter()
-    {
-
     }
 
     /**
@@ -519,7 +775,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyLinkStatic()
     {
+    }
 
+    /**
+     * Test attribute "study_link_twitter"
+     */
+    public function testPropertyStudyLinkTwitter()
+    {
     }
 
     /**
@@ -527,7 +789,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyObjective()
     {
-
     }
 
     /**
@@ -535,7 +796,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyResults()
     {
-
     }
 
     /**
@@ -543,7 +803,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStudyTitle()
     {
-
     }
 
     /**
@@ -551,7 +810,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTimestamp()
     {
+    }
 
+    /**
+     * Test attribute "t_value"
+     */
+    public function testPropertyTValue()
+    {
     }
 
     /**
@@ -559,7 +824,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyUpdatedAt()
     {
+    }
 
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
+    {
     }
 
     /**
@@ -567,7 +838,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyUserVote()
     {
-
     }
 
     /**
@@ -575,7 +845,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyValuePredictingHighOutcome()
     {
-
     }
 
     /**
@@ -583,7 +852,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyValuePredictingHighOutcomeExplanation()
     {
-
     }
 
     /**
@@ -591,7 +859,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyValuePredictingLowOutcome()
     {
-
     }
 
     /**
@@ -599,7 +866,418 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyValuePredictingLowOutcomeExplanation()
     {
-
     }
 
+    /**
+     * Test attribute "causality_factor"
+     */
+    public function testPropertyCausalityFactor()
+    {
+    }
+
+    /**
+     * Test attribute "outcome_data_sources"
+     */
+    public function testPropertyOutcomeDataSources()
+    {
+    }
+
+    /**
+     * Test attribute "principal_investigator"
+     */
+    public function testPropertyPrincipalInvestigator()
+    {
+    }
+
+    /**
+     * Test attribute "reverse_correlation"
+     */
+    public function testPropertyReverseCorrelation()
+    {
+    }
+
+    /**
+     * Test attribute "study_background"
+     */
+    public function testPropertyStudyBackground()
+    {
+    }
+
+    /**
+     * Test attribute "study_invitation"
+     */
+    public function testPropertyStudyInvitation()
+    {
+    }
+
+    /**
+     * Test attribute "study_question"
+     */
+    public function testPropertyStudyQuestion()
+    {
+    }
+
+    /**
+     * Test attribute "all_pairs_significance"
+     */
+    public function testPropertyAllPairsSignificance()
+    {
+    }
+
+    /**
+     * Test attribute "average_pearson_correlation_coefficient_over_onset_delays"
+     */
+    public function testPropertyAveragePearsonCorrelationCoefficientOverOnsetDelays()
+    {
+    }
+
+    /**
+     * Test attribute "calculation_start_time"
+     */
+    public function testPropertyCalculationStartTime()
+    {
+    }
+
+    /**
+     * Test attribute "cause_changes_statistical_significance"
+     */
+    public function testPropertyCauseChangesStatisticalSignificance()
+    {
+    }
+
+    /**
+     * Test attribute "cause_number_of_processed_daily_measurements"
+     */
+    public function testPropertyCauseNumberOfProcessedDailyMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "cause_number_of_raw_measurements"
+     */
+    public function testPropertyCauseNumberOfRawMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "cause_value_spread"
+     */
+    public function testPropertyCauseValueSpread()
+    {
+    }
+
+    /**
+     * Test attribute "correlations_over_durations_of_action"
+     */
+    public function testPropertyCorrelationsOverDurationsOfAction()
+    {
+    }
+
+    /**
+     * Test attribute "correlations_over_durations_of_action_chart_config"
+     */
+    public function testPropertyCorrelationsOverDurationsOfActionChartConfig()
+    {
+    }
+
+    /**
+     * Test attribute "correlations_over_onset_delays_chart_config"
+     */
+    public function testPropertyCorrelationsOverOnsetDelaysChartConfig()
+    {
+    }
+
+    /**
+     * Test attribute "data_points"
+     */
+    public function testPropertyDataPoints()
+    {
+    }
+
+    /**
+     * Test attribute "degrees_of_freedom"
+     */
+    public function testPropertyDegreesOfFreedom()
+    {
+    }
+
+    /**
+     * Test attribute "distance_from_middle_to_be_hight_low_effect"
+     */
+    public function testPropertyDistanceFromMiddleToBeHightLowEffect()
+    {
+    }
+
+    /**
+     * Test attribute "effect_number_of_processed_daily_measurements"
+     */
+    public function testPropertyEffectNumberOfProcessedDailyMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "effect_number_of_raw_measurements"
+     */
+    public function testPropertyEffectNumberOfRawMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "effect_value_spread"
+     */
+    public function testPropertyEffectValueSpread()
+    {
+    }
+
+    /**
+     * Test attribute "error"
+     */
+    public function testPropertyError()
+    {
+    }
+
+    /**
+     * Test attribute "maximum_cause_value"
+     */
+    public function testPropertyMaximumCauseValue()
+    {
+    }
+
+    /**
+     * Test attribute "maximum_effect_value"
+     */
+    public function testPropertyMaximumEffectValue()
+    {
+    }
+
+    /**
+     * Test attribute "median_of_lower_half_of_effect_measurements"
+     */
+    public function testPropertyMedianOfLowerHalfOfEffectMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "median_of_upper_half_of_effect_measurements"
+     */
+    public function testPropertyMedianOfUpperHalfOfEffectMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "minimum_cause_value"
+     */
+    public function testPropertyMinimumCauseValue()
+    {
+    }
+
+    /**
+     * Test attribute "minimum_effect_value"
+     */
+    public function testPropertyMinimumEffectValue()
+    {
+    }
+
+    /**
+     * Test attribute "minimum_probability"
+     */
+    public function testPropertyMinimumProbability()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_cause_changes_for_optimal_values"
+     */
+    public function testPropertyNumberOfCauseChangesForOptimalValues()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_days"
+     */
+    public function testPropertyNumberOfDays()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_days_significance"
+     */
+    public function testPropertyNumberOfDaysSignificance()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_effect_changes_for_optimal_values"
+     */
+    public function testPropertyNumberOfEffectChangesForOptimalValues()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_high_effect_pairs"
+     */
+    public function testPropertyNumberOfHighEffectPairs()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_low_effect_pairs"
+     */
+    public function testPropertyNumberOfLowEffectPairs()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_samples"
+     */
+    public function testPropertyNumberOfSamples()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_unique_cause_values_for_optimal_values"
+     */
+    public function testPropertyNumberOfUniqueCauseValuesForOptimalValues()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_unique_effect_values_for_optimal_values"
+     */
+    public function testPropertyNumberOfUniqueEffectValuesForOptimalValues()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_users"
+     */
+    public function testPropertyNumberOfUsers()
+    {
+    }
+
+    /**
+     * Test attribute "optimal_change_spread"
+     */
+    public function testPropertyOptimalChangeSpread()
+    {
+    }
+
+    /**
+     * Test attribute "optimal_change_spread_significance"
+     */
+    public function testPropertyOptimalChangeSpreadSignificance()
+    {
+    }
+
+    /**
+     * Test attribute "pairs_over_time_chart_config"
+     */
+    public function testPropertyPairsOverTimeChartConfig()
+    {
+    }
+
+    /**
+     * Test attribute "per_day_sentence_fragment"
+     */
+    public function testPropertyPerDaySentenceFragment()
+    {
+    }
+
+    /**
+     * Test attribute "raw_cause_measurement_significance"
+     */
+    public function testPropertyRawCauseMeasurementSignificance()
+    {
+    }
+
+    /**
+     * Test attribute "raw_effect_measurement_significance"
+     */
+    public function testPropertyRawEffectMeasurementSignificance()
+    {
+    }
+
+    /**
+     * Test attribute "reverse_pairs_count"
+     */
+    public function testPropertyReversePairsCount()
+    {
+    }
+
+    /**
+     * Test attribute "vote_statistical_significance"
+     */
+    public function testPropertyVoteStatisticalSignificance()
+    {
+    }
+
+    /**
+     * Test attribute "aggregate_qm_score"
+     */
+    public function testPropertyAggregateQmScore()
+    {
+    }
+
+    /**
+     * Test attribute "cause_unit"
+     */
+    public function testPropertyCauseUnit()
+    {
+    }
+
+    /**
+     * Test attribute "cause_variable_common_alias"
+     */
+    public function testPropertyCauseVariableCommonAlias()
+    {
+    }
+
+    /**
+     * Test attribute "cause_variable_informational_url"
+     */
+    public function testPropertyCauseVariableInformationalUrl()
+    {
+    }
+
+    /**
+     * Test attribute "cause_variable_product_url"
+     */
+    public function testPropertyCauseVariableProductUrl()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_informational_url"
+     */
+    public function testPropertyEffectVariableInformationalUrl()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable_product_url"
+     */
+    public function testPropertyEffectVariableProductUrl()
+    {
+    }
+
+    /**
+     * Test attribute "forward_pearson_correlation_coefficient"
+     */
+    public function testPropertyForwardPearsonCorrelationCoefficient()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_correlations"
+     */
+    public function testPropertyNumberOfCorrelations()
+    {
+    }
+
+    /**
+     * Test attribute "vote"
+     */
+    public function testPropertyVote()
+    {
+    }
 }

@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -54,16 +54,105 @@ class Measurement implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'variable_name' => 'string',
-        'source_name' => 'string',
-        'start_time_string' => 'string',
-        'start_time_epoch' => 'int',
-        'human_time' => '\QuantiModo\Client\Model\HumanTime',
-        'value' => 'double',
+        'client_id' => 'string',
+        'connector_id' => 'int',
+        'created_at' => 'string',
+        'icon_icon' => 'string',
+        'id' => 'int',
+        'input_type' => 'string',
+        'ion_icon' => 'string',
+        'manual_tracking' => 'bool',
+        'maximum_allowed_value' => 'int',
+        'minimum_allowed_value' => 'int',
+        'note' => 'string',
+        'originalunit_abbreviated_name' => 'string',
+        'original_unit_abbreviated_name' => 'string',
+        'original_unit_category_id' => 'int',
+        'original_unit_category_name' => 'string',
+        'original_unit_id' => 'int',
+        'original_unit_name' => 'string',
         'original_value' => 'int',
-        'original_abbreviated_unit_name' => 'string',
-        'abbreviated_unit_name' => 'string',
-        'note' => 'string'
+        'png_path' => 'string',
+        'png_url' => 'string',
+        'source_name' => 'string',
+        'start_date' => 'string',
+        'start_time_epoch' => 'int',
+        'start_time_string' => 'string',
+        'svg_url' => 'string',
+        'unit_abbreviated_name' => 'string',
+        'unit_category_id' => 'int',
+        'unit_category_name' => 'string',
+        'unit_id' => 'int',
+        'unit_name' => 'string',
+        'updated_at' => 'string',
+        'user_variable_unit_abbreviated_name' => 'string',
+        'user_variable_unit_category_id' => 'int',
+        'user_variable_unit_category_name' => 'string',
+        'user_variable_unit_id' => 'int',
+        'user_variable_unit_name' => 'string',
+        'user_variable_variable_category_id' => 'int',
+        'user_variable_variable_category_name' => 'string',
+        'valence' => 'string',
+        'value' => 'double',
+        'variable_category_id' => 'int',
+        'variable_category_image_url' => 'string',
+        'variable_category_name' => 'string',
+        'variable_description' => 'string',
+        'variable_id' => 'int',
+        'variable_name' => 'string'
+    ];
+
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'client_id' => null,
+        'connector_id' => null,
+        'created_at' => null,
+        'icon_icon' => null,
+        'id' => null,
+        'input_type' => null,
+        'ion_icon' => null,
+        'manual_tracking' => null,
+        'maximum_allowed_value' => null,
+        'minimum_allowed_value' => null,
+        'note' => null,
+        'originalunit_abbreviated_name' => null,
+        'original_unit_abbreviated_name' => null,
+        'original_unit_category_id' => null,
+        'original_unit_category_name' => null,
+        'original_unit_id' => null,
+        'original_unit_name' => null,
+        'original_value' => null,
+        'png_path' => null,
+        'png_url' => null,
+        'source_name' => null,
+        'start_date' => null,
+        'start_time_epoch' => null,
+        'start_time_string' => null,
+        'svg_url' => null,
+        'unit_abbreviated_name' => null,
+        'unit_category_id' => null,
+        'unit_category_name' => null,
+        'unit_id' => null,
+        'unit_name' => null,
+        'updated_at' => null,
+        'user_variable_unit_abbreviated_name' => null,
+        'user_variable_unit_category_id' => null,
+        'user_variable_unit_category_name' => null,
+        'user_variable_unit_id' => null,
+        'user_variable_unit_name' => null,
+        'user_variable_variable_category_id' => null,
+        'user_variable_variable_category_name' => null,
+        'valence' => null,
+        'value' => 'double',
+        'variable_category_id' => null,
+        'variable_category_image_url' => null,
+        'variable_category_name' => null,
+        'variable_description' => null,
+        'variable_id' => null,
+        'variable_name' => null
     ];
 
     public static function swaggerTypes()
@@ -71,21 +160,62 @@ class Measurement implements ArrayAccess
         return self::$swaggerTypes;
     }
 
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
+    }
+
     /**
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
     protected static $attributeMap = [
-        'variable_name' => 'variableName',
-        'source_name' => 'sourceName',
-        'start_time_string' => 'startTimeString',
-        'start_time_epoch' => 'startTimeEpoch',
-        'human_time' => 'humanTime',
-        'value' => 'value',
+        'client_id' => 'clientId',
+        'connector_id' => 'connectorId',
+        'created_at' => 'createdAt',
+        'icon_icon' => 'iconIcon',
+        'id' => 'id',
+        'input_type' => 'inputType',
+        'ion_icon' => 'ionIcon',
+        'manual_tracking' => 'manualTracking',
+        'maximum_allowed_value' => 'maximumAllowedValue',
+        'minimum_allowed_value' => 'minimumAllowedValue',
+        'note' => 'note',
+        'originalunit_abbreviated_name' => 'originalunitAbbreviatedName',
+        'original_unit_abbreviated_name' => 'originalUnitAbbreviatedName',
+        'original_unit_category_id' => 'originalUnitCategoryId',
+        'original_unit_category_name' => 'originalUnitCategoryName',
+        'original_unit_id' => 'originalUnitId',
+        'original_unit_name' => 'originalUnitName',
         'original_value' => 'originalValue',
-        'original_abbreviated_unit_name' => 'originalAbbreviatedUnitName',
-        'abbreviated_unit_name' => 'abbreviatedUnitName',
-        'note' => 'note'
+        'png_path' => 'pngPath',
+        'png_url' => 'pngUrl',
+        'source_name' => 'sourceName',
+        'start_date' => 'startDate',
+        'start_time_epoch' => 'startTimeEpoch',
+        'start_time_string' => 'startTimeString',
+        'svg_url' => 'svgUrl',
+        'unit_abbreviated_name' => 'unitAbbreviatedName',
+        'unit_category_id' => 'unitCategoryId',
+        'unit_category_name' => 'unitCategoryName',
+        'unit_id' => 'unitId',
+        'unit_name' => 'unitName',
+        'updated_at' => 'updatedAt',
+        'user_variable_unit_abbreviated_name' => 'userVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'userVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'userVariableUnitCategoryName',
+        'user_variable_unit_id' => 'userVariableUnitId',
+        'user_variable_unit_name' => 'userVariableUnitName',
+        'user_variable_variable_category_id' => 'userVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'userVariableVariableCategoryName',
+        'valence' => 'valence',
+        'value' => 'value',
+        'variable_category_id' => 'variableCategoryId',
+        'variable_category_image_url' => 'variableCategoryImageUrl',
+        'variable_category_name' => 'variableCategoryName',
+        'variable_description' => 'variableDescription',
+        'variable_id' => 'variableId',
+        'variable_name' => 'variableName'
     ];
 
 
@@ -94,16 +224,52 @@ class Measurement implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'variable_name' => 'setVariableName',
-        'source_name' => 'setSourceName',
-        'start_time_string' => 'setStartTimeString',
-        'start_time_epoch' => 'setStartTimeEpoch',
-        'human_time' => 'setHumanTime',
-        'value' => 'setValue',
+        'client_id' => 'setClientId',
+        'connector_id' => 'setConnectorId',
+        'created_at' => 'setCreatedAt',
+        'icon_icon' => 'setIconIcon',
+        'id' => 'setId',
+        'input_type' => 'setInputType',
+        'ion_icon' => 'setIonIcon',
+        'manual_tracking' => 'setManualTracking',
+        'maximum_allowed_value' => 'setMaximumAllowedValue',
+        'minimum_allowed_value' => 'setMinimumAllowedValue',
+        'note' => 'setNote',
+        'originalunit_abbreviated_name' => 'setOriginalunitAbbreviatedName',
+        'original_unit_abbreviated_name' => 'setOriginalUnitAbbreviatedName',
+        'original_unit_category_id' => 'setOriginalUnitCategoryId',
+        'original_unit_category_name' => 'setOriginalUnitCategoryName',
+        'original_unit_id' => 'setOriginalUnitId',
+        'original_unit_name' => 'setOriginalUnitName',
         'original_value' => 'setOriginalValue',
-        'original_abbreviated_unit_name' => 'setOriginalAbbreviatedUnitName',
-        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
-        'note' => 'setNote'
+        'png_path' => 'setPngPath',
+        'png_url' => 'setPngUrl',
+        'source_name' => 'setSourceName',
+        'start_date' => 'setStartDate',
+        'start_time_epoch' => 'setStartTimeEpoch',
+        'start_time_string' => 'setStartTimeString',
+        'svg_url' => 'setSvgUrl',
+        'unit_abbreviated_name' => 'setUnitAbbreviatedName',
+        'unit_category_id' => 'setUnitCategoryId',
+        'unit_category_name' => 'setUnitCategoryName',
+        'unit_id' => 'setUnitId',
+        'unit_name' => 'setUnitName',
+        'updated_at' => 'setUpdatedAt',
+        'user_variable_unit_abbreviated_name' => 'setUserVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'setUserVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'setUserVariableUnitCategoryName',
+        'user_variable_unit_id' => 'setUserVariableUnitId',
+        'user_variable_unit_name' => 'setUserVariableUnitName',
+        'user_variable_variable_category_id' => 'setUserVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'setUserVariableVariableCategoryName',
+        'valence' => 'setValence',
+        'value' => 'setValue',
+        'variable_category_id' => 'setVariableCategoryId',
+        'variable_category_image_url' => 'setVariableCategoryImageUrl',
+        'variable_category_name' => 'setVariableCategoryName',
+        'variable_description' => 'setVariableDescription',
+        'variable_id' => 'setVariableId',
+        'variable_name' => 'setVariableName'
     ];
 
 
@@ -112,16 +278,52 @@ class Measurement implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'variable_name' => 'getVariableName',
-        'source_name' => 'getSourceName',
-        'start_time_string' => 'getStartTimeString',
-        'start_time_epoch' => 'getStartTimeEpoch',
-        'human_time' => 'getHumanTime',
-        'value' => 'getValue',
+        'client_id' => 'getClientId',
+        'connector_id' => 'getConnectorId',
+        'created_at' => 'getCreatedAt',
+        'icon_icon' => 'getIconIcon',
+        'id' => 'getId',
+        'input_type' => 'getInputType',
+        'ion_icon' => 'getIonIcon',
+        'manual_tracking' => 'getManualTracking',
+        'maximum_allowed_value' => 'getMaximumAllowedValue',
+        'minimum_allowed_value' => 'getMinimumAllowedValue',
+        'note' => 'getNote',
+        'originalunit_abbreviated_name' => 'getOriginalunitAbbreviatedName',
+        'original_unit_abbreviated_name' => 'getOriginalUnitAbbreviatedName',
+        'original_unit_category_id' => 'getOriginalUnitCategoryId',
+        'original_unit_category_name' => 'getOriginalUnitCategoryName',
+        'original_unit_id' => 'getOriginalUnitId',
+        'original_unit_name' => 'getOriginalUnitName',
         'original_value' => 'getOriginalValue',
-        'original_abbreviated_unit_name' => 'getOriginalAbbreviatedUnitName',
-        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
-        'note' => 'getNote'
+        'png_path' => 'getPngPath',
+        'png_url' => 'getPngUrl',
+        'source_name' => 'getSourceName',
+        'start_date' => 'getStartDate',
+        'start_time_epoch' => 'getStartTimeEpoch',
+        'start_time_string' => 'getStartTimeString',
+        'svg_url' => 'getSvgUrl',
+        'unit_abbreviated_name' => 'getUnitAbbreviatedName',
+        'unit_category_id' => 'getUnitCategoryId',
+        'unit_category_name' => 'getUnitCategoryName',
+        'unit_id' => 'getUnitId',
+        'unit_name' => 'getUnitName',
+        'updated_at' => 'getUpdatedAt',
+        'user_variable_unit_abbreviated_name' => 'getUserVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'getUserVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'getUserVariableUnitCategoryName',
+        'user_variable_unit_id' => 'getUserVariableUnitId',
+        'user_variable_unit_name' => 'getUserVariableUnitName',
+        'user_variable_variable_category_id' => 'getUserVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'getUserVariableVariableCategoryName',
+        'valence' => 'getValence',
+        'value' => 'getValue',
+        'variable_category_id' => 'getVariableCategoryId',
+        'variable_category_image_url' => 'getVariableCategoryImageUrl',
+        'variable_category_name' => 'getVariableCategoryName',
+        'variable_description' => 'getVariableDescription',
+        'variable_id' => 'getVariableId',
+        'variable_name' => 'getVariableName'
     ];
 
     public static function attributeMap()
@@ -155,16 +357,52 @@ class Measurement implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['variable_name'] = isset($data['variable_name']) ? $data['variable_name'] : null;
-        $this->container['source_name'] = isset($data['source_name']) ? $data['source_name'] : null;
-        $this->container['start_time_string'] = isset($data['start_time_string']) ? $data['start_time_string'] : null;
-        $this->container['start_time_epoch'] = isset($data['start_time_epoch']) ? $data['start_time_epoch'] : null;
-        $this->container['human_time'] = isset($data['human_time']) ? $data['human_time'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
-        $this->container['original_value'] = isset($data['original_value']) ? $data['original_value'] : null;
-        $this->container['original_abbreviated_unit_name'] = isset($data['original_abbreviated_unit_name']) ? $data['original_abbreviated_unit_name'] : null;
-        $this->container['abbreviated_unit_name'] = isset($data['abbreviated_unit_name']) ? $data['abbreviated_unit_name'] : null;
+        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
+        $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['icon_icon'] = isset($data['icon_icon']) ? $data['icon_icon'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['input_type'] = isset($data['input_type']) ? $data['input_type'] : null;
+        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
+        $this->container['manual_tracking'] = isset($data['manual_tracking']) ? $data['manual_tracking'] : null;
+        $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
+        $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
         $this->container['note'] = isset($data['note']) ? $data['note'] : null;
+        $this->container['originalunit_abbreviated_name'] = isset($data['originalunit_abbreviated_name']) ? $data['originalunit_abbreviated_name'] : null;
+        $this->container['original_unit_abbreviated_name'] = isset($data['original_unit_abbreviated_name']) ? $data['original_unit_abbreviated_name'] : null;
+        $this->container['original_unit_category_id'] = isset($data['original_unit_category_id']) ? $data['original_unit_category_id'] : null;
+        $this->container['original_unit_category_name'] = isset($data['original_unit_category_name']) ? $data['original_unit_category_name'] : null;
+        $this->container['original_unit_id'] = isset($data['original_unit_id']) ? $data['original_unit_id'] : null;
+        $this->container['original_unit_name'] = isset($data['original_unit_name']) ? $data['original_unit_name'] : null;
+        $this->container['original_value'] = isset($data['original_value']) ? $data['original_value'] : null;
+        $this->container['png_path'] = isset($data['png_path']) ? $data['png_path'] : null;
+        $this->container['png_url'] = isset($data['png_url']) ? $data['png_url'] : null;
+        $this->container['source_name'] = isset($data['source_name']) ? $data['source_name'] : null;
+        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+        $this->container['start_time_epoch'] = isset($data['start_time_epoch']) ? $data['start_time_epoch'] : null;
+        $this->container['start_time_string'] = isset($data['start_time_string']) ? $data['start_time_string'] : null;
+        $this->container['svg_url'] = isset($data['svg_url']) ? $data['svg_url'] : null;
+        $this->container['unit_abbreviated_name'] = isset($data['unit_abbreviated_name']) ? $data['unit_abbreviated_name'] : null;
+        $this->container['unit_category_id'] = isset($data['unit_category_id']) ? $data['unit_category_id'] : null;
+        $this->container['unit_category_name'] = isset($data['unit_category_name']) ? $data['unit_category_name'] : null;
+        $this->container['unit_id'] = isset($data['unit_id']) ? $data['unit_id'] : null;
+        $this->container['unit_name'] = isset($data['unit_name']) ? $data['unit_name'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['user_variable_unit_abbreviated_name'] = isset($data['user_variable_unit_abbreviated_name']) ? $data['user_variable_unit_abbreviated_name'] : null;
+        $this->container['user_variable_unit_category_id'] = isset($data['user_variable_unit_category_id']) ? $data['user_variable_unit_category_id'] : null;
+        $this->container['user_variable_unit_category_name'] = isset($data['user_variable_unit_category_name']) ? $data['user_variable_unit_category_name'] : null;
+        $this->container['user_variable_unit_id'] = isset($data['user_variable_unit_id']) ? $data['user_variable_unit_id'] : null;
+        $this->container['user_variable_unit_name'] = isset($data['user_variable_unit_name']) ? $data['user_variable_unit_name'] : null;
+        $this->container['user_variable_variable_category_id'] = isset($data['user_variable_variable_category_id']) ? $data['user_variable_variable_category_id'] : null;
+        $this->container['user_variable_variable_category_name'] = isset($data['user_variable_variable_category_name']) ? $data['user_variable_variable_category_name'] : null;
+        $this->container['valence'] = isset($data['valence']) ? $data['valence'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['variable_category_id'] = isset($data['variable_category_id']) ? $data['variable_category_id'] : null;
+        $this->container['variable_category_image_url'] = isset($data['variable_category_image_url']) ? $data['variable_category_image_url'] : null;
+        $this->container['variable_category_name'] = isset($data['variable_category_name']) ? $data['variable_category_name'] : null;
+        $this->container['variable_description'] = isset($data['variable_description']) ? $data['variable_description'] : null;
+        $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
+        $this->container['variable_name'] = isset($data['variable_name']) ? $data['variable_name'] : null;
     }
 
     /**
@@ -176,17 +414,20 @@ class Measurement implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['variable_name'] === null) {
-            $invalid_properties[] = "'variable_name' can't be null";
-        }
         if ($this->container['source_name'] === null) {
             $invalid_properties[] = "'source_name' can't be null";
+        }
+        if ($this->container['start_time_string'] === null) {
+            $invalid_properties[] = "'start_time_string' can't be null";
+        }
+        if ($this->container['unit_abbreviated_name'] === null) {
+            $invalid_properties[] = "'unit_abbreviated_name' can't be null";
         }
         if ($this->container['value'] === null) {
             $invalid_properties[] = "'value' can't be null";
         }
-        if ($this->container['abbreviated_unit_name'] === null) {
-            $invalid_properties[] = "'abbreviated_unit_name' can't be null";
+        if ($this->container['variable_name'] === null) {
+            $invalid_properties[] = "'variable_name' can't be null";
         }
         return $invalid_properties;
     }
@@ -200,16 +441,19 @@ class Measurement implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['variable_name'] === null) {
+        if ($this->container['source_name'] === null) {
             return false;
         }
-        if ($this->container['source_name'] === null) {
+        if ($this->container['start_time_string'] === null) {
+            return false;
+        }
+        if ($this->container['unit_abbreviated_name'] === null) {
             return false;
         }
         if ($this->container['value'] === null) {
             return false;
         }
-        if ($this->container['abbreviated_unit_name'] === null) {
+        if ($this->container['variable_name'] === null) {
             return false;
         }
         return true;
@@ -217,127 +461,358 @@ class Measurement implements ArrayAccess
 
 
     /**
-     * Gets variable_name
+     * Gets client_id
      * @return string
      */
-    public function getVariableName()
+    public function getClientId()
     {
-        return $this->container['variable_name'];
+        return $this->container['client_id'];
     }
 
     /**
-     * Sets variable_name
-     * @param string $variable_name Name of the variable for which we are creating the measurement records
+     * Sets client_id
+     * @param string $client_id Example: quantimodo
      * @return $this
      */
-    public function setVariableName($variable_name)
+    public function setClientId($client_id)
     {
-        $this->container['variable_name'] = $variable_name;
+        $this->container['client_id'] = $client_id;
 
         return $this;
     }
 
     /**
-     * Gets source_name
-     * @return string
-     */
-    public function getSourceName()
-    {
-        return $this->container['source_name'];
-    }
-
-    /**
-     * Sets source_name
-     * @param string $source_name Application or device used to record the measurement values
-     * @return $this
-     */
-    public function setSourceName($source_name)
-    {
-        $this->container['source_name'] = $source_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_time_string
-     * @return string
-     */
-    public function getStartTimeString()
-    {
-        return $this->container['start_time_string'];
-    }
-
-    /**
-     * Sets start_time_string
-     * @param string $start_time_string Start Time for the measurement event in UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"
-     * @return $this
-     */
-    public function setStartTimeString($start_time_string)
-    {
-        $this->container['start_time_string'] = $start_time_string;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_time_epoch
+     * Gets connector_id
      * @return int
      */
-    public function getStartTimeEpoch()
+    public function getConnectorId()
     {
-        return $this->container['start_time_epoch'];
+        return $this->container['connector_id'];
     }
 
     /**
-     * Sets start_time_epoch
-     * @param int $start_time_epoch Seconds between the start of the event measured and 1970 (Unix timestamp)
+     * Sets connector_id
+     * @param int $connector_id Example: 13
      * @return $this
      */
-    public function setStartTimeEpoch($start_time_epoch)
+    public function setConnectorId($connector_id)
     {
-        $this->container['start_time_epoch'] = $start_time_epoch;
+        $this->container['connector_id'] = $connector_id;
 
         return $this;
     }
 
     /**
-     * Gets human_time
-     * @return \QuantiModo\Client\Model\HumanTime
+     * Gets created_at
+     * @return string
      */
-    public function getHumanTime()
+    public function getCreatedAt()
     {
-        return $this->container['human_time'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets human_time
-     * @param \QuantiModo\Client\Model\HumanTime $human_time
+     * Sets created_at
+     * @param string $created_at Example: 2017-07-30 21:08:36
      * @return $this
      */
-    public function setHumanTime($human_time)
+    public function setCreatedAt($created_at)
     {
-        $this->container['human_time'] = $human_time;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets value
-     * @return double
+     * Gets icon_icon
+     * @return string
      */
-    public function getValue()
+    public function getIconIcon()
     {
-        return $this->container['value'];
+        return $this->container['icon_icon'];
     }
 
     /**
-     * Sets value
-     * @param double $value Converted measurement value in requested unit
+     * Sets icon_icon
+     * @param string $icon_icon Example: ion-sad-outline
      * @return $this
      */
-    public function setValue($value)
+    public function setIconIcon($icon_icon)
     {
-        $this->container['value'] = $value;
+        $this->container['icon_icon'] = $icon_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     * @param int $id Example: 1051466127
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets input_type
+     * @return string
+     */
+    public function getInputType()
+    {
+        return $this->container['input_type'];
+    }
+
+    /**
+     * Sets input_type
+     * @param string $input_type Example: value
+     * @return $this
+     */
+    public function setInputType($input_type)
+    {
+        $this->container['input_type'] = $input_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets ion_icon
+     * @return string
+     */
+    public function getIonIcon()
+    {
+        return $this->container['ion_icon'];
+    }
+
+    /**
+     * Sets ion_icon
+     * @param string $ion_icon Example: ion-ios-medkit-outline
+     * @return $this
+     */
+    public function setIonIcon($ion_icon)
+    {
+        $this->container['ion_icon'] = $ion_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets manual_tracking
+     * @return bool
+     */
+    public function getManualTracking()
+    {
+        return $this->container['manual_tracking'];
+    }
+
+    /**
+     * Sets manual_tracking
+     * @param bool $manual_tracking Example: 1
+     * @return $this
+     */
+    public function setManualTracking($manual_tracking)
+    {
+        $this->container['manual_tracking'] = $manual_tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_allowed_value
+     * @return int
+     */
+    public function getMaximumAllowedValue()
+    {
+        return $this->container['maximum_allowed_value'];
+    }
+
+    /**
+     * Sets maximum_allowed_value
+     * @param int $maximum_allowed_value Example: 5
+     * @return $this
+     */
+    public function setMaximumAllowedValue($maximum_allowed_value)
+    {
+        $this->container['maximum_allowed_value'] = $maximum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_allowed_value
+     * @return int
+     */
+    public function getMinimumAllowedValue()
+    {
+        return $this->container['minimum_allowed_value'];
+    }
+
+    /**
+     * Sets minimum_allowed_value
+     * @param int $minimum_allowed_value Example: 1
+     * @return $this
+     */
+    public function setMinimumAllowedValue($minimum_allowed_value)
+    {
+        $this->container['minimum_allowed_value'] = $minimum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     * @param string $note Note of measurement
+     * @return $this
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Gets originalunit_abbreviated_name
+     * @return string
+     */
+    public function getOriginalunitAbbreviatedName()
+    {
+        return $this->container['originalunit_abbreviated_name'];
+    }
+
+    /**
+     * Sets originalunit_abbreviated_name
+     * @param string $originalunit_abbreviated_name Original Unit of measurement as originally submitted
+     * @return $this
+     */
+    public function setOriginalunitAbbreviatedName($originalunit_abbreviated_name)
+    {
+        $this->container['originalunit_abbreviated_name'] = $originalunit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_unit_abbreviated_name
+     * @return string
+     */
+    public function getOriginalUnitAbbreviatedName()
+    {
+        return $this->container['original_unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets original_unit_abbreviated_name
+     * @param string $original_unit_abbreviated_name Example: count
+     * @return $this
+     */
+    public function setOriginalUnitAbbreviatedName($original_unit_abbreviated_name)
+    {
+        $this->container['original_unit_abbreviated_name'] = $original_unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_unit_category_id
+     * @return int
+     */
+    public function getOriginalUnitCategoryId()
+    {
+        return $this->container['original_unit_category_id'];
+    }
+
+    /**
+     * Sets original_unit_category_id
+     * @param int $original_unit_category_id Example: 6
+     * @return $this
+     */
+    public function setOriginalUnitCategoryId($original_unit_category_id)
+    {
+        $this->container['original_unit_category_id'] = $original_unit_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_unit_category_name
+     * @return string
+     */
+    public function getOriginalUnitCategoryName()
+    {
+        return $this->container['original_unit_category_name'];
+    }
+
+    /**
+     * Sets original_unit_category_name
+     * @param string $original_unit_category_name Example: Miscellany
+     * @return $this
+     */
+    public function setOriginalUnitCategoryName($original_unit_category_name)
+    {
+        $this->container['original_unit_category_name'] = $original_unit_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_unit_id
+     * @return int
+     */
+    public function getOriginalUnitId()
+    {
+        return $this->container['original_unit_id'];
+    }
+
+    /**
+     * Sets original_unit_id
+     * @param int $original_unit_id Example: 23
+     * @return $this
+     */
+    public function setOriginalUnitId($original_unit_id)
+    {
+        $this->container['original_unit_id'] = $original_unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_unit_name
+     * @return string
+     */
+    public function getOriginalUnitName()
+    {
+        return $this->container['original_unit_name'];
+    }
+
+    /**
+     * Sets original_unit_name
+     * @param string $original_unit_name Example: Count
+     * @return $this
+     */
+    public function setOriginalUnitName($original_unit_name)
+    {
+        $this->container['original_unit_name'] = $original_unit_name;
 
         return $this;
     }
@@ -364,64 +839,589 @@ class Measurement implements ArrayAccess
     }
 
     /**
-     * Gets original_abbreviated_unit_name
+     * Gets png_path
      * @return string
      */
-    public function getOriginalAbbreviatedUnitName()
+    public function getPngPath()
     {
-        return $this->container['original_abbreviated_unit_name'];
+        return $this->container['png_path'];
     }
 
     /**
-     * Sets original_abbreviated_unit_name
-     * @param string $original_abbreviated_unit_name Original Unit of measurement as originally submitted
+     * Sets png_path
+     * @param string $png_path Example: img/variable_categories/treatments.png
      * @return $this
      */
-    public function setOriginalAbbreviatedUnitName($original_abbreviated_unit_name)
+    public function setPngPath($png_path)
     {
-        $this->container['original_abbreviated_unit_name'] = $original_abbreviated_unit_name;
+        $this->container['png_path'] = $png_path;
 
         return $this;
     }
 
     /**
-     * Gets abbreviated_unit_name
+     * Gets png_url
      * @return string
      */
-    public function getAbbreviatedUnitName()
+    public function getPngUrl()
     {
-        return $this->container['abbreviated_unit_name'];
+        return $this->container['png_url'];
     }
 
     /**
-     * Sets abbreviated_unit_name
-     * @param string $abbreviated_unit_name Abbreviated name for the unit of measurement
+     * Sets png_url
+     * @param string $png_url Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/treatments.png
      * @return $this
      */
-    public function setAbbreviatedUnitName($abbreviated_unit_name)
+    public function setPngUrl($png_url)
     {
-        $this->container['abbreviated_unit_name'] = $abbreviated_unit_name;
+        $this->container['png_url'] = $png_url;
 
         return $this;
     }
 
     /**
-     * Gets note
+     * Gets source_name
      * @return string
      */
-    public function getNote()
+    public function getSourceName()
     {
-        return $this->container['note'];
+        return $this->container['source_name'];
     }
 
     /**
-     * Sets note
-     * @param string $note Note of measurement
+     * Sets source_name
+     * @param string $source_name Application or device used to record the measurement values
      * @return $this
      */
-    public function setNote($note)
+    public function setSourceName($source_name)
     {
-        $this->container['note'] = $note;
+        $this->container['source_name'] = $source_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     * @return string
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     * @param string $start_date Example: 2014-08-27
+     * @return $this
+     */
+    public function setStartDate($start_date)
+    {
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_time_epoch
+     * @return int
+     */
+    public function getStartTimeEpoch()
+    {
+        return $this->container['start_time_epoch'];
+    }
+
+    /**
+     * Sets start_time_epoch
+     * @param int $start_time_epoch Seconds between the start of the event measured and 1970 (Unix timestamp)
+     * @return $this
+     */
+    public function setStartTimeEpoch($start_time_epoch)
+    {
+        $this->container['start_time_epoch'] = $start_time_epoch;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_time_string
+     * @return string
+     */
+    public function getStartTimeString()
+    {
+        return $this->container['start_time_string'];
+    }
+
+    /**
+     * Sets start_time_string
+     * @param string $start_time_string Start Time for the measurement event in UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`
+     * @return $this
+     */
+    public function setStartTimeString($start_time_string)
+    {
+        $this->container['start_time_string'] = $start_time_string;
+
+        return $this;
+    }
+
+    /**
+     * Gets svg_url
+     * @return string
+     */
+    public function getSvgUrl()
+    {
+        return $this->container['svg_url'];
+    }
+
+    /**
+     * Sets svg_url
+     * @param string $svg_url Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/treatments.svg
+     * @return $this
+     */
+    public function setSvgUrl($svg_url)
+    {
+        $this->container['svg_url'] = $svg_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_abbreviated_name
+     * @return string
+     */
+    public function getUnitAbbreviatedName()
+    {
+        return $this->container['unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets unit_abbreviated_name
+     * @param string $unit_abbreviated_name Abbreviated name for the unit of measurement
+     * @return $this
+     */
+    public function setUnitAbbreviatedName($unit_abbreviated_name)
+    {
+        $this->container['unit_abbreviated_name'] = $unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_category_id
+     * @return int
+     */
+    public function getUnitCategoryId()
+    {
+        return $this->container['unit_category_id'];
+    }
+
+    /**
+     * Sets unit_category_id
+     * @param int $unit_category_id Example: 6
+     * @return $this
+     */
+    public function setUnitCategoryId($unit_category_id)
+    {
+        $this->container['unit_category_id'] = $unit_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_category_name
+     * @return string
+     */
+    public function getUnitCategoryName()
+    {
+        return $this->container['unit_category_name'];
+    }
+
+    /**
+     * Sets unit_category_name
+     * @param string $unit_category_name Example: Miscellany
+     * @return $this
+     */
+    public function setUnitCategoryName($unit_category_name)
+    {
+        $this->container['unit_category_name'] = $unit_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_id
+     * @return int
+     */
+    public function getUnitId()
+    {
+        return $this->container['unit_id'];
+    }
+
+    /**
+     * Sets unit_id
+     * @param int $unit_id Example: 23
+     * @return $this
+     */
+    public function setUnitId($unit_id)
+    {
+        $this->container['unit_id'] = $unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_name
+     * @return string
+     */
+    public function getUnitName()
+    {
+        return $this->container['unit_name'];
+    }
+
+    /**
+     * Sets unit_name
+     * @param string $unit_name Example: Count
+     * @return $this
+     */
+    public function setUnitName($unit_name)
+    {
+        $this->container['unit_name'] = $unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     * @return string
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     * @param string $updated_at Example: 2017-07-30 21:08:36
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_abbreviated_name
+     * @return string
+     */
+    public function getUserVariableUnitAbbreviatedName()
+    {
+        return $this->container['user_variable_unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_abbreviated_name
+     * @param string $user_variable_unit_abbreviated_name Example: count
+     * @return $this
+     */
+    public function setUserVariableUnitAbbreviatedName($user_variable_unit_abbreviated_name)
+    {
+        $this->container['user_variable_unit_abbreviated_name'] = $user_variable_unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_category_id
+     * @return int
+     */
+    public function getUserVariableUnitCategoryId()
+    {
+        return $this->container['user_variable_unit_category_id'];
+    }
+
+    /**
+     * Sets user_variable_unit_category_id
+     * @param int $user_variable_unit_category_id Example: 6
+     * @return $this
+     */
+    public function setUserVariableUnitCategoryId($user_variable_unit_category_id)
+    {
+        $this->container['user_variable_unit_category_id'] = $user_variable_unit_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_category_name
+     * @return string
+     */
+    public function getUserVariableUnitCategoryName()
+    {
+        return $this->container['user_variable_unit_category_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_category_name
+     * @param string $user_variable_unit_category_name Example: Miscellany
+     * @return $this
+     */
+    public function setUserVariableUnitCategoryName($user_variable_unit_category_name)
+    {
+        $this->container['user_variable_unit_category_name'] = $user_variable_unit_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_id
+     * @return int
+     */
+    public function getUserVariableUnitId()
+    {
+        return $this->container['user_variable_unit_id'];
+    }
+
+    /**
+     * Sets user_variable_unit_id
+     * @param int $user_variable_unit_id Example: 23
+     * @return $this
+     */
+    public function setUserVariableUnitId($user_variable_unit_id)
+    {
+        $this->container['user_variable_unit_id'] = $user_variable_unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_name
+     * @return string
+     */
+    public function getUserVariableUnitName()
+    {
+        return $this->container['user_variable_unit_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_name
+     * @param string $user_variable_unit_name Example: Count
+     * @return $this
+     */
+    public function setUserVariableUnitName($user_variable_unit_name)
+    {
+        $this->container['user_variable_unit_name'] = $user_variable_unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_variable_category_id
+     * @return int
+     */
+    public function getUserVariableVariableCategoryId()
+    {
+        return $this->container['user_variable_variable_category_id'];
+    }
+
+    /**
+     * Sets user_variable_variable_category_id
+     * @param int $user_variable_variable_category_id Example: 13
+     * @return $this
+     */
+    public function setUserVariableVariableCategoryId($user_variable_variable_category_id)
+    {
+        $this->container['user_variable_variable_category_id'] = $user_variable_variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_variable_category_name
+     * @return string
+     */
+    public function getUserVariableVariableCategoryName()
+    {
+        return $this->container['user_variable_variable_category_name'];
+    }
+
+    /**
+     * Sets user_variable_variable_category_name
+     * @param string $user_variable_variable_category_name Example: Treatments
+     * @return $this
+     */
+    public function setUserVariableVariableCategoryName($user_variable_variable_category_name)
+    {
+        $this->container['user_variable_variable_category_name'] = $user_variable_variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets valence
+     * @return string
+     */
+    public function getValence()
+    {
+        return $this->container['valence'];
+    }
+
+    /**
+     * Sets valence
+     * @param string $valence Example: negative
+     * @return $this
+     */
+    public function setValence($valence)
+    {
+        $this->container['valence'] = $valence;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     * @return double
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     * @param double $value Converted measurement value in requested unit
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_id
+     * @return int
+     */
+    public function getVariableCategoryId()
+    {
+        return $this->container['variable_category_id'];
+    }
+
+    /**
+     * Sets variable_category_id
+     * @param int $variable_category_id Example: 13
+     * @return $this
+     */
+    public function setVariableCategoryId($variable_category_id)
+    {
+        $this->container['variable_category_id'] = $variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_image_url
+     * @return string
+     */
+    public function getVariableCategoryImageUrl()
+    {
+        return $this->container['variable_category_image_url'];
+    }
+
+    /**
+     * Sets variable_category_image_url
+     * @param string $variable_category_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Healthcare/pill-96.png
+     * @return $this
+     */
+    public function setVariableCategoryImageUrl($variable_category_image_url)
+    {
+        $this->container['variable_category_image_url'] = $variable_category_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_name
+     * @return string
+     */
+    public function getVariableCategoryName()
+    {
+        return $this->container['variable_category_name'];
+    }
+
+    /**
+     * Sets variable_category_name
+     * @param string $variable_category_name Example: Treatments
+     * @return $this
+     */
+    public function setVariableCategoryName($variable_category_name)
+    {
+        $this->container['variable_category_name'] = $variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_description
+     * @return string
+     */
+    public function getVariableDescription()
+    {
+        return $this->container['variable_description'];
+    }
+
+    /**
+     * Sets variable_description
+     * @param string $variable_description Example: negative
+     * @return $this
+     */
+    public function setVariableDescription($variable_description)
+    {
+        $this->container['variable_description'] = $variable_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_id
+     * @return int
+     */
+    public function getVariableId()
+    {
+        return $this->container['variable_id'];
+    }
+
+    /**
+     * Sets variable_id
+     * @param int $variable_id Example: 5956846
+     * @return $this
+     */
+    public function setVariableId($variable_id)
+    {
+        $this->container['variable_id'] = $variable_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_name
+     * @return string
+     */
+    public function getVariableName()
+    {
+        return $this->container['variable_name'];
+    }
+
+    /**
+     * Sets variable_name
+     * @param string $variable_name Name of the variable for which we are creating the measurement records
+     * @return $this
+     */
+    public function setVariableName($variable_name)
+    {
+        $this->container['variable_name'] = $variable_name;
 
         return $this;
     }

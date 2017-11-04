@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -54,62 +54,305 @@ class UserVariable implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'parent_id' => 'int',
-        'user_id' => 'int',
-        'client_id' => 'string',
-        'variable_id' => 'int',
-        'default_unit_id' => 'int',
-        'minimum_allowed_value' => 'float',
-        'maximum_allowed_value' => 'float',
-        'filling_value' => 'float',
-        'join_with' => 'int',
-        'onset_delay' => 'int',
-        'duration_of_action' => 'int',
-        'variable_category_id' => 'int',
-        'updated' => 'int',
-        'public' => 'int',
+        'alias' => 'string',
+        'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'cause_only' => 'bool',
-        'filling_type' => 'string',
-        'number_of_measurements' => 'int',
-        'number_of_processed_measurements' => 'int',
-        'measurements_at_last_analysis' => 'int',
-        'last_unit_id' => 'int',
-        'last_original_unit_id' => 'int',
-        'last_value' => 'float',
-        'last_original_value' => 'int',
-        'number_of_correlations' => 'int',
-        'status' => 'string',
+        'charts' => 'object',
+        'charts_link_dynamic' => 'string',
+        'charts_link_email' => 'string',
+        'charts_link_facebook' => 'string',
+        'charts_link_google' => 'string',
+        'charts_link_static' => 'string',
+        'charts_link_twitter' => 'string',
+        'child_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'client_id' => 'string',
+        'combination_operation' => 'string',
+        'common_alias' => 'string',
+        'common_tagged_variables' => '\QuantiModo\Client\Model\CommonVariableArray',
+        'common_tag_variables' => '\QuantiModo\Client\Model\CommonVariableArray',
+        'common_variable_most_common_connector_id' => 'int',
+        'common_variable_updated_at' => '\DateTime',
+        'created_at' => '\DateTime',
+        'unit_abbreviated_name' => 'string',
+        'unit_category_id' => 'int',
+        'unit_category_name' => 'string',
+        'unit_id' => 'int',
+        'unit_name' => 'string',
+        'description' => 'string',
+        'duration_of_action' => 'int',
+        'duration_of_action_in_hours' => 'int',
+        'earliest_filling_time' => 'int',
+        'earliest_measurement_time' => 'int',
+        'earliest_source_time' => 'int',
         'error_message' => 'string',
+        'experiment_end_time' => '\DateTime',
+        'experiment_end_time_seconds' => 'int',
+        'experiment_end_time_string' => '\DateTime',
+        'experiment_start_time' => '\DateTime',
+        'experiment_start_time_seconds' => 'int',
+        'experiment_start_time_string' => '\DateTime',
+        'filling_type' => 'string',
+        'filling_value' => 'float',
+        'icon_icon' => 'string',
+        'highcharts' => '\QuantiModo\Client\Model\HighchartArray',
+        'id' => 'int',
+        'image_url' => 'string',
+        'informational_url' => 'string',
+        'ingredient_of_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'ingredient_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'input_type' => 'string',
+        'ion_icon' => 'string',
+        'joined_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'join_with' => 'int',
+        'kurtosis' => 'float',
+        'last_original_unit_id' => 'int',
+        'last_original_value' => 'int',
+        'last_processed_daily_value' => 'double',
         'last_successful_update_time' => '\DateTime',
-        'standard_deviation' => 'float',
-        'variance' => 'float',
-        'minimum_recorded_value' => 'float',
+        'last_unit_id' => 'int',
+        'last_value' => 'float',
+        'latest_filling_time' => 'int',
+        'latest_measurement_time' => 'int',
+        'latest_source_time' => 'int',
+        'latest_user_measurement_time' => 'int',
+        'latitude' => 'float',
+        'location' => 'string',
+        'longitude' => 'float',
+        'manual_tracking' => 'bool',
+        'maximum_allowed_value' => 'float',
         'maximum_recorded_daily_value' => 'float',
+        'maximum_recorded_value' => 'double',
         'mean' => 'float',
+        'measurements_at_last_analysis' => 'int',
         'median' => 'float',
+        'minimum_allowed_value' => 'float',
+        'minimum_recorded_value' => 'float',
+        'most_common_connector_id' => 'int',
+        'most_common_original_unit_id' => 'int',
         'most_common_unit_id' => 'int',
         'most_common_value' => 'float',
-        'number_of_unique_daily_values' => 'float',
+        'name' => 'string',
+        'number_of_aggregate_correlations_as_cause' => 'int',
+        'number_of_aggregate_correlations_as_effect' => 'int',
         'number_of_changes' => 'int',
-        'skewness' => 'float',
-        'kurtosis' => 'float',
-        'latitude' => 'float',
-        'longitude' => 'float',
-        'location' => 'string',
-        'experiment_start_time' => '\DateTime',
-        'experiment_end_time' => '\DateTime',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
+        'number_of_correlations' => 'int',
+        'number_of_measurements' => 'int',
+        'number_of_processed_daily_measurements' => 'int',
+        'number_of_raw_measurements' => 'int',
+        'number_of_tracking_reminders' => 'int',
+        'number_of_unique_daily_values' => 'float',
+        'number_of_unique_values' => 'int',
+        'number_of_user_correlations_as_cause' => 'int',
+        'number_of_user_correlations_as_effect' => 'int',
+        'number_of_user_variables' => 'int',
+        'onset_delay' => 'int',
+        'onset_delay_in_hours' => 'double',
         'outcome' => 'bool',
+        'outcome_of_interest' => 'int',
+        'parent' => 'string',
+        'parent_id' => 'int',
+        'parent_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'png_path' => 'string',
+        'png_url' => 'string',
+        'predictor_of_interest' => 'int',
+        'price' => 'double',
+        'product_url' => 'string',
+        'public' => 'int',
+        'raw_measurements_at_last_analysis' => 'int',
+        'second_most_common_value' => 'double',
+        'second_to_last_value' => 'double',
+        'share_user_measurements' => 'bool',
+        'skewness' => 'float',
         'sources' => 'string',
-        'earliest_source_time' => 'int',
-        'latest_source_time' => 'int',
-        'earliest_measurement_time' => 'int',
-        'latest_measurement_time' => 'int',
-        'earliest_filling_time' => 'int',
-        'latest_filling_time' => 'int',
-        'image_url' => 'string',
-        'ion_icon' => 'string'
+        'standard_deviation' => 'float',
+        'standard_deviation' => 'double',
+        'status' => 'string',
+        'subtitle' => 'string',
+        'svg_url' => 'string',
+        'third_most_common_value' => 'double',
+        'third_to_last_value' => 'double',
+        'unit' => '\QuantiModo\Client\Model\Unit',
+        'updated' => 'int',
+        'updated_at' => '\DateTime',
+        'updated_time' => '\DateTime',
+        'user_id' => 'int',
+        'user_tagged_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'user_variable_unit_abbreviated_name' => 'string',
+        'user_variable_unit_category_id' => 'int',
+        'user_variable_unit_category_name' => 'string',
+        'user_variable_unit_id' => 'int',
+        'user_variable_unit_name' => 'string',
+        'user_variable_filling_value' => 'double',
+        'user_variable_most_common_connector_id' => 'int',
+        'user_variable_updated_at' => '\DateTime',
+        'user_variable_valence' => 'string',
+        'user_variable_variable_category_id' => 'int',
+        'user_variable_variable_category_name' => 'string',
+        'user_variable_wikipedia_title' => 'string',
+        'valence' => 'string',
+        'variable_category' => '\QuantiModo\Client\Model\VariableCategory',
+        'variable_category_id' => 'int',
+        'variable_category_image_url' => 'string',
+        'variable_category_name' => 'string',
+        'variable_filling_value' => 'double',
+        'variable_id' => 'int',
+        'variable_name' => 'string',
+        'variance' => 'float',
+        'wikipedia_title' => 'string'
+    ];
+
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'alias' => null,
+        'available_units' => null,
+        'cause_only' => null,
+        'charts' => null,
+        'charts_link_dynamic' => null,
+        'charts_link_email' => null,
+        'charts_link_facebook' => null,
+        'charts_link_google' => null,
+        'charts_link_static' => null,
+        'charts_link_twitter' => null,
+        'child_user_tag_variables' => null,
+        'client_id' => null,
+        'combination_operation' => null,
+        'common_alias' => null,
+        'common_tagged_variables' => null,
+        'common_tag_variables' => null,
+        'common_variable_most_common_connector_id' => null,
+        'common_variable_updated_at' => 'date-time',
+        'created_at' => 'date-time',
+        'unit_abbreviated_name' => null,
+        'unit_category_id' => null,
+        'unit_category_name' => null,
+        'unit_id' => 'int32',
+        'unit_name' => null,
+        'description' => null,
+        'duration_of_action' => 'int32',
+        'duration_of_action_in_hours' => null,
+        'earliest_filling_time' => 'int32',
+        'earliest_measurement_time' => 'int32',
+        'earliest_source_time' => 'int32',
+        'error_message' => null,
+        'experiment_end_time' => 'date-time',
+        'experiment_end_time_seconds' => null,
+        'experiment_end_time_string' => 'date-time',
+        'experiment_start_time' => 'date-time',
+        'experiment_start_time_seconds' => null,
+        'experiment_start_time_string' => 'date-time',
+        'filling_type' => null,
+        'filling_value' => 'float',
+        'icon_icon' => null,
+        'highcharts' => null,
+        'id' => null,
+        'image_url' => null,
+        'informational_url' => null,
+        'ingredient_of_user_tag_variables' => null,
+        'ingredient_user_tag_variables' => null,
+        'input_type' => null,
+        'ion_icon' => null,
+        'joined_user_tag_variables' => null,
+        'join_with' => 'int32',
+        'kurtosis' => 'float',
+        'last_original_unit_id' => 'int32',
+        'last_original_value' => 'int32',
+        'last_processed_daily_value' => 'double',
+        'last_successful_update_time' => 'date-time',
+        'last_unit_id' => 'int32',
+        'last_value' => 'float',
+        'latest_filling_time' => 'int32',
+        'latest_measurement_time' => 'int32',
+        'latest_source_time' => 'int32',
+        'latest_user_measurement_time' => null,
+        'latitude' => 'float',
+        'location' => null,
+        'longitude' => 'float',
+        'manual_tracking' => null,
+        'maximum_allowed_value' => 'float',
+        'maximum_recorded_daily_value' => 'float',
+        'maximum_recorded_value' => 'double',
+        'mean' => 'float',
+        'measurements_at_last_analysis' => 'int32',
+        'median' => 'float',
+        'minimum_allowed_value' => 'float',
+        'minimum_recorded_value' => 'float',
+        'most_common_connector_id' => null,
+        'most_common_original_unit_id' => null,
+        'most_common_unit_id' => 'int32',
+        'most_common_value' => 'float',
+        'name' => null,
+        'number_of_aggregate_correlations_as_cause' => null,
+        'number_of_aggregate_correlations_as_effect' => null,
+        'number_of_changes' => 'int32',
+        'number_of_correlations' => 'int32',
+        'number_of_measurements' => 'int32',
+        'number_of_processed_daily_measurements' => 'int32',
+        'number_of_raw_measurements' => null,
+        'number_of_tracking_reminders' => null,
+        'number_of_unique_daily_values' => 'float',
+        'number_of_unique_values' => null,
+        'number_of_user_correlations_as_cause' => null,
+        'number_of_user_correlations_as_effect' => null,
+        'number_of_user_variables' => null,
+        'onset_delay' => 'int32',
+        'onset_delay_in_hours' => 'double',
+        'outcome' => null,
+        'outcome_of_interest' => null,
+        'parent' => null,
+        'parent_id' => 'int32',
+        'parent_user_tag_variables' => null,
+        'png_path' => null,
+        'png_url' => null,
+        'predictor_of_interest' => null,
+        'price' => 'double',
+        'product_url' => null,
+        'public' => 'int32',
+        'raw_measurements_at_last_analysis' => null,
+        'second_most_common_value' => 'double',
+        'second_to_last_value' => 'double',
+        'share_user_measurements' => null,
+        'skewness' => 'float',
+        'sources' => null,
+        'standard_deviation' => 'float',
+        'standard_deviation' => 'double',
+        'status' => null,
+        'subtitle' => null,
+        'svg_url' => null,
+        'third_most_common_value' => 'double',
+        'third_to_last_value' => 'double',
+        'unit' => null,
+        'updated' => 'int32',
+        'updated_at' => 'date-time',
+        'updated_time' => 'date-time',
+        'user_id' => 'int32',
+        'user_tagged_variables' => null,
+        'user_tag_variables' => null,
+        'user_variable_unit_abbreviated_name' => null,
+        'user_variable_unit_category_id' => null,
+        'user_variable_unit_category_name' => null,
+        'user_variable_unit_id' => null,
+        'user_variable_unit_name' => null,
+        'user_variable_filling_value' => 'double',
+        'user_variable_most_common_connector_id' => null,
+        'user_variable_updated_at' => 'date-time',
+        'user_variable_valence' => null,
+        'user_variable_variable_category_id' => null,
+        'user_variable_variable_category_name' => null,
+        'user_variable_wikipedia_title' => null,
+        'valence' => null,
+        'variable_category' => null,
+        'variable_category_id' => 'int32',
+        'variable_category_image_url' => null,
+        'variable_category_name' => null,
+        'variable_filling_value' => 'double',
+        'variable_id' => 'int32',
+        'variable_name' => null,
+        'variance' => 'float',
+        'wikipedia_title' => null
     ];
 
     public static function swaggerTypes()
@@ -117,67 +360,162 @@ class UserVariable implements ArrayAccess
         return self::$swaggerTypes;
     }
 
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
+    }
+
     /**
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
     protected static $attributeMap = [
-        'parent_id' => 'parentId',
-        'user_id' => 'userId',
-        'client_id' => 'clientId',
-        'variable_id' => 'variableId',
-        'default_unit_id' => 'defaultUnitId',
-        'minimum_allowed_value' => 'minimumAllowedValue',
-        'maximum_allowed_value' => 'maximumAllowedValue',
-        'filling_value' => 'fillingValue',
-        'join_with' => 'joinWith',
-        'onset_delay' => 'onsetDelay',
-        'duration_of_action' => 'durationOfAction',
-        'variable_category_id' => 'variableCategoryId',
-        'updated' => 'updated',
-        'public' => 'public',
+        'alias' => 'alias',
+        'available_units' => 'availableUnits',
         'cause_only' => 'causeOnly',
-        'filling_type' => 'fillingType',
-        'number_of_measurements' => 'numberOfMeasurements',
-        'number_of_processed_measurements' => 'numberOfProcessedMeasurements',
-        'measurements_at_last_analysis' => 'measurementsAtLastAnalysis',
-        'last_unit_id' => 'lastUnitId',
-        'last_original_unit_id' => 'lastOriginalUnitId',
-        'last_value' => 'lastValue',
-        'last_original_value' => 'lastOriginalValue',
-        'number_of_correlations' => 'numberOfCorrelations',
-        'status' => 'status',
+        'charts' => 'charts',
+        'charts_link_dynamic' => 'chartsLinkDynamic',
+        'charts_link_email' => 'chartsLinkEmail',
+        'charts_link_facebook' => 'chartsLinkFacebook',
+        'charts_link_google' => 'chartsLinkGoogle',
+        'charts_link_static' => 'chartsLinkStatic',
+        'charts_link_twitter' => 'chartsLinkTwitter',
+        'child_user_tag_variables' => 'childUserTagVariables',
+        'client_id' => 'clientId',
+        'combination_operation' => 'combinationOperation',
+        'common_alias' => 'commonAlias',
+        'common_tagged_variables' => 'commonTaggedVariables',
+        'common_tag_variables' => 'commonTagVariables',
+        'common_variable_most_common_connector_id' => 'commonVariableMostCommonConnectorId',
+        'common_variable_updated_at' => 'commonVariableUpdatedAt',
+        'created_at' => 'createdAt',
+        'unit_abbreviated_name' => 'unitAbbreviatedName',
+        'unit_category_id' => 'unitCategoryId',
+        'unit_category_name' => 'unitCategoryName',
+        'unit_id' => 'unitId',
+        'unit_name' => 'unitName',
+        'description' => 'description',
+        'duration_of_action' => 'durationOfAction',
+        'duration_of_action_in_hours' => 'durationOfActionInHours',
+        'earliest_filling_time' => 'earliestFillingTime',
+        'earliest_measurement_time' => 'earliestMeasurementTime',
+        'earliest_source_time' => 'earliestSourceTime',
         'error_message' => 'errorMessage',
+        'experiment_end_time' => 'experimentEndTime',
+        'experiment_end_time_seconds' => 'experimentEndTimeSeconds',
+        'experiment_end_time_string' => 'experimentEndTimeString',
+        'experiment_start_time' => 'experimentStartTime',
+        'experiment_start_time_seconds' => 'experimentStartTimeSeconds',
+        'experiment_start_time_string' => 'experimentStartTimeString',
+        'filling_type' => 'fillingType',
+        'filling_value' => 'fillingValue',
+        'icon_icon' => 'iconIcon',
+        'highcharts' => 'highcharts',
+        'id' => 'id',
+        'image_url' => 'imageUrl',
+        'informational_url' => 'informationalUrl',
+        'ingredient_of_user_tag_variables' => 'ingredientOfUserTagVariables',
+        'ingredient_user_tag_variables' => 'ingredientUserTagVariables',
+        'input_type' => 'inputType',
+        'ion_icon' => 'ionIcon',
+        'joined_user_tag_variables' => 'joinedUserTagVariables',
+        'join_with' => 'joinWith',
+        'kurtosis' => 'kurtosis',
+        'last_original_unit_id' => 'lastOriginalUnitId',
+        'last_original_value' => 'lastOriginalValue',
+        'last_processed_daily_value' => 'lastProcessedDailyValue',
         'last_successful_update_time' => 'lastSuccessfulUpdateTime',
-        'standard_deviation' => 'standard_deviation',
-        'variance' => 'variance',
-        'minimum_recorded_value' => 'minimumRecordedValue',
+        'last_unit_id' => 'lastUnitId',
+        'last_value' => 'lastValue',
+        'latest_filling_time' => 'latestFillingTime',
+        'latest_measurement_time' => 'latestMeasurementTime',
+        'latest_source_time' => 'latestSourceTime',
+        'latest_user_measurement_time' => 'latestUserMeasurementTime',
+        'latitude' => 'latitude',
+        'location' => 'location',
+        'longitude' => 'longitude',
+        'manual_tracking' => 'manualTracking',
+        'maximum_allowed_value' => 'maximumAllowedValue',
         'maximum_recorded_daily_value' => 'maximumRecordedDailyValue',
+        'maximum_recorded_value' => 'maximumRecordedValue',
         'mean' => 'mean',
+        'measurements_at_last_analysis' => 'measurementsAtLastAnalysis',
         'median' => 'median',
+        'minimum_allowed_value' => 'minimumAllowedValue',
+        'minimum_recorded_value' => 'minimumRecordedValue',
+        'most_common_connector_id' => 'mostCommonConnectorId',
+        'most_common_original_unit_id' => 'mostCommonOriginalUnitId',
         'most_common_unit_id' => 'mostCommonUnitId',
         'most_common_value' => 'mostCommonValue',
-        'number_of_unique_daily_values' => 'numberOfUniqueDailyValues',
+        'name' => 'name',
+        'number_of_aggregate_correlations_as_cause' => 'numberOfAggregateCorrelationsAsCause',
+        'number_of_aggregate_correlations_as_effect' => 'numberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'numberOfChanges',
-        'skewness' => 'skewness',
-        'kurtosis' => 'kurtosis',
-        'latitude' => 'latitude',
-        'longitude' => 'longitude',
-        'location' => 'location',
-        'experiment_start_time' => 'experimentStartTime',
-        'experiment_end_time' => 'experimentEndTime',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
+        'number_of_correlations' => 'numberOfCorrelations',
+        'number_of_measurements' => 'numberOfMeasurements',
+        'number_of_processed_daily_measurements' => 'numberOfProcessedDailyMeasurements',
+        'number_of_raw_measurements' => 'numberOfRawMeasurements',
+        'number_of_tracking_reminders' => 'numberOfTrackingReminders',
+        'number_of_unique_daily_values' => 'numberOfUniqueDailyValues',
+        'number_of_unique_values' => 'numberOfUniqueValues',
+        'number_of_user_correlations_as_cause' => 'numberOfUserCorrelationsAsCause',
+        'number_of_user_correlations_as_effect' => 'numberOfUserCorrelationsAsEffect',
+        'number_of_user_variables' => 'numberOfUserVariables',
+        'onset_delay' => 'onsetDelay',
+        'onset_delay_in_hours' => 'onsetDelayInHours',
         'outcome' => 'outcome',
+        'outcome_of_interest' => 'outcomeOfInterest',
+        'parent' => 'parent',
+        'parent_id' => 'parentId',
+        'parent_user_tag_variables' => 'parentUserTagVariables',
+        'png_path' => 'pngPath',
+        'png_url' => 'pngUrl',
+        'predictor_of_interest' => 'predictorOfInterest',
+        'price' => 'price',
+        'product_url' => 'productUrl',
+        'public' => 'public',
+        'raw_measurements_at_last_analysis' => 'rawMeasurementsAtLastAnalysis',
+        'second_most_common_value' => 'secondMostCommonValue',
+        'second_to_last_value' => 'secondToLastValue',
+        'share_user_measurements' => 'shareUserMeasurements',
+        'skewness' => 'skewness',
         'sources' => 'sources',
-        'earliest_source_time' => 'earliestSourceTime',
-        'latest_source_time' => 'latestSourceTime',
-        'earliest_measurement_time' => 'earliestMeasurementTime',
-        'latest_measurement_time' => 'latestMeasurementTime',
-        'earliest_filling_time' => 'earliestFillingTime',
-        'latest_filling_time' => 'latestFillingTime',
-        'image_url' => 'imageUrl',
-        'ion_icon' => 'ionIcon'
+        'standard_deviation' => 'standard_deviation',
+        'standard_deviation' => 'standardDeviation',
+        'status' => 'status',
+        'subtitle' => 'subtitle',
+        'svg_url' => 'svgUrl',
+        'third_most_common_value' => 'thirdMostCommonValue',
+        'third_to_last_value' => 'thirdToLastValue',
+        'unit' => 'unit',
+        'updated' => 'updated',
+        'updated_at' => 'updatedAt',
+        'updated_time' => 'updatedTime',
+        'user_id' => 'userId',
+        'user_tagged_variables' => 'userTaggedVariables',
+        'user_tag_variables' => 'userTagVariables',
+        'user_variable_unit_abbreviated_name' => 'userVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'userVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'userVariableUnitCategoryName',
+        'user_variable_unit_id' => 'userVariableUnitId',
+        'user_variable_unit_name' => 'userVariableUnitName',
+        'user_variable_filling_value' => 'userVariableFillingValue',
+        'user_variable_most_common_connector_id' => 'userVariableMostCommonConnectorId',
+        'user_variable_updated_at' => 'userVariableUpdatedAt',
+        'user_variable_valence' => 'userVariableValence',
+        'user_variable_variable_category_id' => 'userVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'userVariableVariableCategoryName',
+        'user_variable_wikipedia_title' => 'userVariableWikipediaTitle',
+        'valence' => 'valence',
+        'variable_category' => 'variableCategory',
+        'variable_category_id' => 'variableCategoryId',
+        'variable_category_image_url' => 'variableCategoryImageUrl',
+        'variable_category_name' => 'variableCategoryName',
+        'variable_filling_value' => 'variableFillingValue',
+        'variable_id' => 'variableId',
+        'variable_name' => 'variableName',
+        'variance' => 'variance',
+        'wikipedia_title' => 'wikipediaTitle'
     ];
 
 
@@ -186,62 +524,152 @@ class UserVariable implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'parent_id' => 'setParentId',
-        'user_id' => 'setUserId',
-        'client_id' => 'setClientId',
-        'variable_id' => 'setVariableId',
-        'default_unit_id' => 'setDefaultUnitId',
-        'minimum_allowed_value' => 'setMinimumAllowedValue',
-        'maximum_allowed_value' => 'setMaximumAllowedValue',
-        'filling_value' => 'setFillingValue',
-        'join_with' => 'setJoinWith',
-        'onset_delay' => 'setOnsetDelay',
-        'duration_of_action' => 'setDurationOfAction',
-        'variable_category_id' => 'setVariableCategoryId',
-        'updated' => 'setUpdated',
-        'public' => 'setPublic',
+        'alias' => 'setAlias',
+        'available_units' => 'setAvailableUnits',
         'cause_only' => 'setCauseOnly',
-        'filling_type' => 'setFillingType',
-        'number_of_measurements' => 'setNumberOfMeasurements',
-        'number_of_processed_measurements' => 'setNumberOfProcessedMeasurements',
-        'measurements_at_last_analysis' => 'setMeasurementsAtLastAnalysis',
-        'last_unit_id' => 'setLastUnitId',
-        'last_original_unit_id' => 'setLastOriginalUnitId',
-        'last_value' => 'setLastValue',
-        'last_original_value' => 'setLastOriginalValue',
-        'number_of_correlations' => 'setNumberOfCorrelations',
-        'status' => 'setStatus',
+        'charts' => 'setCharts',
+        'charts_link_dynamic' => 'setChartsLinkDynamic',
+        'charts_link_email' => 'setChartsLinkEmail',
+        'charts_link_facebook' => 'setChartsLinkFacebook',
+        'charts_link_google' => 'setChartsLinkGoogle',
+        'charts_link_static' => 'setChartsLinkStatic',
+        'charts_link_twitter' => 'setChartsLinkTwitter',
+        'child_user_tag_variables' => 'setChildUserTagVariables',
+        'client_id' => 'setClientId',
+        'combination_operation' => 'setCombinationOperation',
+        'common_alias' => 'setCommonAlias',
+        'common_tagged_variables' => 'setCommonTaggedVariables',
+        'common_tag_variables' => 'setCommonTagVariables',
+        'common_variable_most_common_connector_id' => 'setCommonVariableMostCommonConnectorId',
+        'common_variable_updated_at' => 'setCommonVariableUpdatedAt',
+        'created_at' => 'setCreatedAt',
+        'unit_abbreviated_name' => 'setUnitAbbreviatedName',
+        'unit_category_id' => 'setUnitCategoryId',
+        'unit_category_name' => 'setUnitCategoryName',
+        'unit_id' => 'setUnitId',
+        'unit_name' => 'setUnitName',
+        'description' => 'setDescription',
+        'duration_of_action' => 'setDurationOfAction',
+        'duration_of_action_in_hours' => 'setDurationOfActionInHours',
+        'earliest_filling_time' => 'setEarliestFillingTime',
+        'earliest_measurement_time' => 'setEarliestMeasurementTime',
+        'earliest_source_time' => 'setEarliestSourceTime',
         'error_message' => 'setErrorMessage',
+        'experiment_end_time' => 'setExperimentEndTime',
+        'experiment_end_time_seconds' => 'setExperimentEndTimeSeconds',
+        'experiment_end_time_string' => 'setExperimentEndTimeString',
+        'experiment_start_time' => 'setExperimentStartTime',
+        'experiment_start_time_seconds' => 'setExperimentStartTimeSeconds',
+        'experiment_start_time_string' => 'setExperimentStartTimeString',
+        'filling_type' => 'setFillingType',
+        'filling_value' => 'setFillingValue',
+        'icon_icon' => 'setIconIcon',
+        'highcharts' => 'setHighcharts',
+        'id' => 'setId',
+        'image_url' => 'setImageUrl',
+        'informational_url' => 'setInformationalUrl',
+        'ingredient_of_user_tag_variables' => 'setIngredientOfUserTagVariables',
+        'ingredient_user_tag_variables' => 'setIngredientUserTagVariables',
+        'input_type' => 'setInputType',
+        'ion_icon' => 'setIonIcon',
+        'joined_user_tag_variables' => 'setJoinedUserTagVariables',
+        'join_with' => 'setJoinWith',
+        'kurtosis' => 'setKurtosis',
+        'last_original_unit_id' => 'setLastOriginalUnitId',
+        'last_original_value' => 'setLastOriginalValue',
+        'last_processed_daily_value' => 'setLastProcessedDailyValue',
         'last_successful_update_time' => 'setLastSuccessfulUpdateTime',
-        'standard_deviation' => 'setStandardDeviation',
-        'variance' => 'setVariance',
-        'minimum_recorded_value' => 'setMinimumRecordedValue',
+        'last_unit_id' => 'setLastUnitId',
+        'last_value' => 'setLastValue',
+        'latest_filling_time' => 'setLatestFillingTime',
+        'latest_measurement_time' => 'setLatestMeasurementTime',
+        'latest_source_time' => 'setLatestSourceTime',
+        'latest_user_measurement_time' => 'setLatestUserMeasurementTime',
+        'latitude' => 'setLatitude',
+        'location' => 'setLocation',
+        'longitude' => 'setLongitude',
+        'manual_tracking' => 'setManualTracking',
+        'maximum_allowed_value' => 'setMaximumAllowedValue',
         'maximum_recorded_daily_value' => 'setMaximumRecordedDailyValue',
+        'maximum_recorded_value' => 'setMaximumRecordedValue',
         'mean' => 'setMean',
+        'measurements_at_last_analysis' => 'setMeasurementsAtLastAnalysis',
         'median' => 'setMedian',
+        'minimum_allowed_value' => 'setMinimumAllowedValue',
+        'minimum_recorded_value' => 'setMinimumRecordedValue',
+        'most_common_connector_id' => 'setMostCommonConnectorId',
+        'most_common_original_unit_id' => 'setMostCommonOriginalUnitId',
         'most_common_unit_id' => 'setMostCommonUnitId',
         'most_common_value' => 'setMostCommonValue',
-        'number_of_unique_daily_values' => 'setNumberOfUniqueDailyValues',
+        'name' => 'setName',
+        'number_of_aggregate_correlations_as_cause' => 'setNumberOfAggregateCorrelationsAsCause',
+        'number_of_aggregate_correlations_as_effect' => 'setNumberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'setNumberOfChanges',
-        'skewness' => 'setSkewness',
-        'kurtosis' => 'setKurtosis',
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude',
-        'location' => 'setLocation',
-        'experiment_start_time' => 'setExperimentStartTime',
-        'experiment_end_time' => 'setExperimentEndTime',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'number_of_correlations' => 'setNumberOfCorrelations',
+        'number_of_measurements' => 'setNumberOfMeasurements',
+        'number_of_processed_daily_measurements' => 'setNumberOfProcessedDailyMeasurements',
+        'number_of_raw_measurements' => 'setNumberOfRawMeasurements',
+        'number_of_tracking_reminders' => 'setNumberOfTrackingReminders',
+        'number_of_unique_daily_values' => 'setNumberOfUniqueDailyValues',
+        'number_of_unique_values' => 'setNumberOfUniqueValues',
+        'number_of_user_correlations_as_cause' => 'setNumberOfUserCorrelationsAsCause',
+        'number_of_user_correlations_as_effect' => 'setNumberOfUserCorrelationsAsEffect',
+        'number_of_user_variables' => 'setNumberOfUserVariables',
+        'onset_delay' => 'setOnsetDelay',
+        'onset_delay_in_hours' => 'setOnsetDelayInHours',
         'outcome' => 'setOutcome',
+        'outcome_of_interest' => 'setOutcomeOfInterest',
+        'parent' => 'setParent',
+        'parent_id' => 'setParentId',
+        'parent_user_tag_variables' => 'setParentUserTagVariables',
+        'png_path' => 'setPngPath',
+        'png_url' => 'setPngUrl',
+        'predictor_of_interest' => 'setPredictorOfInterest',
+        'price' => 'setPrice',
+        'product_url' => 'setProductUrl',
+        'public' => 'setPublic',
+        'raw_measurements_at_last_analysis' => 'setRawMeasurementsAtLastAnalysis',
+        'second_most_common_value' => 'setSecondMostCommonValue',
+        'second_to_last_value' => 'setSecondToLastValue',
+        'share_user_measurements' => 'setShareUserMeasurements',
+        'skewness' => 'setSkewness',
         'sources' => 'setSources',
-        'earliest_source_time' => 'setEarliestSourceTime',
-        'latest_source_time' => 'setLatestSourceTime',
-        'earliest_measurement_time' => 'setEarliestMeasurementTime',
-        'latest_measurement_time' => 'setLatestMeasurementTime',
-        'earliest_filling_time' => 'setEarliestFillingTime',
-        'latest_filling_time' => 'setLatestFillingTime',
-        'image_url' => 'setImageUrl',
-        'ion_icon' => 'setIonIcon'
+        'standard_deviation' => 'setStandardDeviation',
+        'standard_deviation' => 'setStandardDeviation',
+        'status' => 'setStatus',
+        'subtitle' => 'setSubtitle',
+        'svg_url' => 'setSvgUrl',
+        'third_most_common_value' => 'setThirdMostCommonValue',
+        'third_to_last_value' => 'setThirdToLastValue',
+        'unit' => 'setUnit',
+        'updated' => 'setUpdated',
+        'updated_at' => 'setUpdatedAt',
+        'updated_time' => 'setUpdatedTime',
+        'user_id' => 'setUserId',
+        'user_tagged_variables' => 'setUserTaggedVariables',
+        'user_tag_variables' => 'setUserTagVariables',
+        'user_variable_unit_abbreviated_name' => 'setUserVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'setUserVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'setUserVariableUnitCategoryName',
+        'user_variable_unit_id' => 'setUserVariableUnitId',
+        'user_variable_unit_name' => 'setUserVariableUnitName',
+        'user_variable_filling_value' => 'setUserVariableFillingValue',
+        'user_variable_most_common_connector_id' => 'setUserVariableMostCommonConnectorId',
+        'user_variable_updated_at' => 'setUserVariableUpdatedAt',
+        'user_variable_valence' => 'setUserVariableValence',
+        'user_variable_variable_category_id' => 'setUserVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'setUserVariableVariableCategoryName',
+        'user_variable_wikipedia_title' => 'setUserVariableWikipediaTitle',
+        'valence' => 'setValence',
+        'variable_category' => 'setVariableCategory',
+        'variable_category_id' => 'setVariableCategoryId',
+        'variable_category_image_url' => 'setVariableCategoryImageUrl',
+        'variable_category_name' => 'setVariableCategoryName',
+        'variable_filling_value' => 'setVariableFillingValue',
+        'variable_id' => 'setVariableId',
+        'variable_name' => 'setVariableName',
+        'variance' => 'setVariance',
+        'wikipedia_title' => 'setWikipediaTitle'
     ];
 
 
@@ -250,62 +678,152 @@ class UserVariable implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'parent_id' => 'getParentId',
-        'user_id' => 'getUserId',
-        'client_id' => 'getClientId',
-        'variable_id' => 'getVariableId',
-        'default_unit_id' => 'getDefaultUnitId',
-        'minimum_allowed_value' => 'getMinimumAllowedValue',
-        'maximum_allowed_value' => 'getMaximumAllowedValue',
-        'filling_value' => 'getFillingValue',
-        'join_with' => 'getJoinWith',
-        'onset_delay' => 'getOnsetDelay',
-        'duration_of_action' => 'getDurationOfAction',
-        'variable_category_id' => 'getVariableCategoryId',
-        'updated' => 'getUpdated',
-        'public' => 'getPublic',
+        'alias' => 'getAlias',
+        'available_units' => 'getAvailableUnits',
         'cause_only' => 'getCauseOnly',
-        'filling_type' => 'getFillingType',
-        'number_of_measurements' => 'getNumberOfMeasurements',
-        'number_of_processed_measurements' => 'getNumberOfProcessedMeasurements',
-        'measurements_at_last_analysis' => 'getMeasurementsAtLastAnalysis',
-        'last_unit_id' => 'getLastUnitId',
-        'last_original_unit_id' => 'getLastOriginalUnitId',
-        'last_value' => 'getLastValue',
-        'last_original_value' => 'getLastOriginalValue',
-        'number_of_correlations' => 'getNumberOfCorrelations',
-        'status' => 'getStatus',
+        'charts' => 'getCharts',
+        'charts_link_dynamic' => 'getChartsLinkDynamic',
+        'charts_link_email' => 'getChartsLinkEmail',
+        'charts_link_facebook' => 'getChartsLinkFacebook',
+        'charts_link_google' => 'getChartsLinkGoogle',
+        'charts_link_static' => 'getChartsLinkStatic',
+        'charts_link_twitter' => 'getChartsLinkTwitter',
+        'child_user_tag_variables' => 'getChildUserTagVariables',
+        'client_id' => 'getClientId',
+        'combination_operation' => 'getCombinationOperation',
+        'common_alias' => 'getCommonAlias',
+        'common_tagged_variables' => 'getCommonTaggedVariables',
+        'common_tag_variables' => 'getCommonTagVariables',
+        'common_variable_most_common_connector_id' => 'getCommonVariableMostCommonConnectorId',
+        'common_variable_updated_at' => 'getCommonVariableUpdatedAt',
+        'created_at' => 'getCreatedAt',
+        'unit_abbreviated_name' => 'getUnitAbbreviatedName',
+        'unit_category_id' => 'getUnitCategoryId',
+        'unit_category_name' => 'getUnitCategoryName',
+        'unit_id' => 'getUnitId',
+        'unit_name' => 'getUnitName',
+        'description' => 'getDescription',
+        'duration_of_action' => 'getDurationOfAction',
+        'duration_of_action_in_hours' => 'getDurationOfActionInHours',
+        'earliest_filling_time' => 'getEarliestFillingTime',
+        'earliest_measurement_time' => 'getEarliestMeasurementTime',
+        'earliest_source_time' => 'getEarliestSourceTime',
         'error_message' => 'getErrorMessage',
+        'experiment_end_time' => 'getExperimentEndTime',
+        'experiment_end_time_seconds' => 'getExperimentEndTimeSeconds',
+        'experiment_end_time_string' => 'getExperimentEndTimeString',
+        'experiment_start_time' => 'getExperimentStartTime',
+        'experiment_start_time_seconds' => 'getExperimentStartTimeSeconds',
+        'experiment_start_time_string' => 'getExperimentStartTimeString',
+        'filling_type' => 'getFillingType',
+        'filling_value' => 'getFillingValue',
+        'icon_icon' => 'getIconIcon',
+        'highcharts' => 'getHighcharts',
+        'id' => 'getId',
+        'image_url' => 'getImageUrl',
+        'informational_url' => 'getInformationalUrl',
+        'ingredient_of_user_tag_variables' => 'getIngredientOfUserTagVariables',
+        'ingredient_user_tag_variables' => 'getIngredientUserTagVariables',
+        'input_type' => 'getInputType',
+        'ion_icon' => 'getIonIcon',
+        'joined_user_tag_variables' => 'getJoinedUserTagVariables',
+        'join_with' => 'getJoinWith',
+        'kurtosis' => 'getKurtosis',
+        'last_original_unit_id' => 'getLastOriginalUnitId',
+        'last_original_value' => 'getLastOriginalValue',
+        'last_processed_daily_value' => 'getLastProcessedDailyValue',
         'last_successful_update_time' => 'getLastSuccessfulUpdateTime',
-        'standard_deviation' => 'getStandardDeviation',
-        'variance' => 'getVariance',
-        'minimum_recorded_value' => 'getMinimumRecordedValue',
+        'last_unit_id' => 'getLastUnitId',
+        'last_value' => 'getLastValue',
+        'latest_filling_time' => 'getLatestFillingTime',
+        'latest_measurement_time' => 'getLatestMeasurementTime',
+        'latest_source_time' => 'getLatestSourceTime',
+        'latest_user_measurement_time' => 'getLatestUserMeasurementTime',
+        'latitude' => 'getLatitude',
+        'location' => 'getLocation',
+        'longitude' => 'getLongitude',
+        'manual_tracking' => 'getManualTracking',
+        'maximum_allowed_value' => 'getMaximumAllowedValue',
         'maximum_recorded_daily_value' => 'getMaximumRecordedDailyValue',
+        'maximum_recorded_value' => 'getMaximumRecordedValue',
         'mean' => 'getMean',
+        'measurements_at_last_analysis' => 'getMeasurementsAtLastAnalysis',
         'median' => 'getMedian',
+        'minimum_allowed_value' => 'getMinimumAllowedValue',
+        'minimum_recorded_value' => 'getMinimumRecordedValue',
+        'most_common_connector_id' => 'getMostCommonConnectorId',
+        'most_common_original_unit_id' => 'getMostCommonOriginalUnitId',
         'most_common_unit_id' => 'getMostCommonUnitId',
         'most_common_value' => 'getMostCommonValue',
-        'number_of_unique_daily_values' => 'getNumberOfUniqueDailyValues',
+        'name' => 'getName',
+        'number_of_aggregate_correlations_as_cause' => 'getNumberOfAggregateCorrelationsAsCause',
+        'number_of_aggregate_correlations_as_effect' => 'getNumberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'getNumberOfChanges',
-        'skewness' => 'getSkewness',
-        'kurtosis' => 'getKurtosis',
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude',
-        'location' => 'getLocation',
-        'experiment_start_time' => 'getExperimentStartTime',
-        'experiment_end_time' => 'getExperimentEndTime',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'number_of_correlations' => 'getNumberOfCorrelations',
+        'number_of_measurements' => 'getNumberOfMeasurements',
+        'number_of_processed_daily_measurements' => 'getNumberOfProcessedDailyMeasurements',
+        'number_of_raw_measurements' => 'getNumberOfRawMeasurements',
+        'number_of_tracking_reminders' => 'getNumberOfTrackingReminders',
+        'number_of_unique_daily_values' => 'getNumberOfUniqueDailyValues',
+        'number_of_unique_values' => 'getNumberOfUniqueValues',
+        'number_of_user_correlations_as_cause' => 'getNumberOfUserCorrelationsAsCause',
+        'number_of_user_correlations_as_effect' => 'getNumberOfUserCorrelationsAsEffect',
+        'number_of_user_variables' => 'getNumberOfUserVariables',
+        'onset_delay' => 'getOnsetDelay',
+        'onset_delay_in_hours' => 'getOnsetDelayInHours',
         'outcome' => 'getOutcome',
+        'outcome_of_interest' => 'getOutcomeOfInterest',
+        'parent' => 'getParent',
+        'parent_id' => 'getParentId',
+        'parent_user_tag_variables' => 'getParentUserTagVariables',
+        'png_path' => 'getPngPath',
+        'png_url' => 'getPngUrl',
+        'predictor_of_interest' => 'getPredictorOfInterest',
+        'price' => 'getPrice',
+        'product_url' => 'getProductUrl',
+        'public' => 'getPublic',
+        'raw_measurements_at_last_analysis' => 'getRawMeasurementsAtLastAnalysis',
+        'second_most_common_value' => 'getSecondMostCommonValue',
+        'second_to_last_value' => 'getSecondToLastValue',
+        'share_user_measurements' => 'getShareUserMeasurements',
+        'skewness' => 'getSkewness',
         'sources' => 'getSources',
-        'earliest_source_time' => 'getEarliestSourceTime',
-        'latest_source_time' => 'getLatestSourceTime',
-        'earliest_measurement_time' => 'getEarliestMeasurementTime',
-        'latest_measurement_time' => 'getLatestMeasurementTime',
-        'earliest_filling_time' => 'getEarliestFillingTime',
-        'latest_filling_time' => 'getLatestFillingTime',
-        'image_url' => 'getImageUrl',
-        'ion_icon' => 'getIonIcon'
+        'standard_deviation' => 'getStandardDeviation',
+        'standard_deviation' => 'getStandardDeviation',
+        'status' => 'getStatus',
+        'subtitle' => 'getSubtitle',
+        'svg_url' => 'getSvgUrl',
+        'third_most_common_value' => 'getThirdMostCommonValue',
+        'third_to_last_value' => 'getThirdToLastValue',
+        'unit' => 'getUnit',
+        'updated' => 'getUpdated',
+        'updated_at' => 'getUpdatedAt',
+        'updated_time' => 'getUpdatedTime',
+        'user_id' => 'getUserId',
+        'user_tagged_variables' => 'getUserTaggedVariables',
+        'user_tag_variables' => 'getUserTagVariables',
+        'user_variable_unit_abbreviated_name' => 'getUserVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'getUserVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'getUserVariableUnitCategoryName',
+        'user_variable_unit_id' => 'getUserVariableUnitId',
+        'user_variable_unit_name' => 'getUserVariableUnitName',
+        'user_variable_filling_value' => 'getUserVariableFillingValue',
+        'user_variable_most_common_connector_id' => 'getUserVariableMostCommonConnectorId',
+        'user_variable_updated_at' => 'getUserVariableUpdatedAt',
+        'user_variable_valence' => 'getUserVariableValence',
+        'user_variable_variable_category_id' => 'getUserVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'getUserVariableVariableCategoryName',
+        'user_variable_wikipedia_title' => 'getUserVariableWikipediaTitle',
+        'valence' => 'getValence',
+        'variable_category' => 'getVariableCategory',
+        'variable_category_id' => 'getVariableCategoryId',
+        'variable_category_image_url' => 'getVariableCategoryImageUrl',
+        'variable_category_name' => 'getVariableCategoryName',
+        'variable_filling_value' => 'getVariableFillingValue',
+        'variable_id' => 'getVariableId',
+        'variable_name' => 'getVariableName',
+        'variance' => 'getVariance',
+        'wikipedia_title' => 'getWikipediaTitle'
     ];
 
     public static function attributeMap()
@@ -339,62 +857,152 @@ class UserVariable implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
-        $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
-        $this->container['default_unit_id'] = isset($data['default_unit_id']) ? $data['default_unit_id'] : null;
-        $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
-        $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
-        $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
-        $this->container['join_with'] = isset($data['join_with']) ? $data['join_with'] : null;
-        $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
-        $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
-        $this->container['variable_category_id'] = isset($data['variable_category_id']) ? $data['variable_category_id'] : null;
-        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
-        $this->container['public'] = isset($data['public']) ? $data['public'] : null;
+        $this->container['alias'] = isset($data['alias']) ? $data['alias'] : null;
+        $this->container['available_units'] = isset($data['available_units']) ? $data['available_units'] : null;
         $this->container['cause_only'] = isset($data['cause_only']) ? $data['cause_only'] : null;
-        $this->container['filling_type'] = isset($data['filling_type']) ? $data['filling_type'] : null;
-        $this->container['number_of_measurements'] = isset($data['number_of_measurements']) ? $data['number_of_measurements'] : null;
-        $this->container['number_of_processed_measurements'] = isset($data['number_of_processed_measurements']) ? $data['number_of_processed_measurements'] : null;
-        $this->container['measurements_at_last_analysis'] = isset($data['measurements_at_last_analysis']) ? $data['measurements_at_last_analysis'] : null;
-        $this->container['last_unit_id'] = isset($data['last_unit_id']) ? $data['last_unit_id'] : null;
-        $this->container['last_original_unit_id'] = isset($data['last_original_unit_id']) ? $data['last_original_unit_id'] : null;
-        $this->container['last_value'] = isset($data['last_value']) ? $data['last_value'] : null;
-        $this->container['last_original_value'] = isset($data['last_original_value']) ? $data['last_original_value'] : null;
-        $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['charts'] = isset($data['charts']) ? $data['charts'] : null;
+        $this->container['charts_link_dynamic'] = isset($data['charts_link_dynamic']) ? $data['charts_link_dynamic'] : null;
+        $this->container['charts_link_email'] = isset($data['charts_link_email']) ? $data['charts_link_email'] : null;
+        $this->container['charts_link_facebook'] = isset($data['charts_link_facebook']) ? $data['charts_link_facebook'] : null;
+        $this->container['charts_link_google'] = isset($data['charts_link_google']) ? $data['charts_link_google'] : null;
+        $this->container['charts_link_static'] = isset($data['charts_link_static']) ? $data['charts_link_static'] : null;
+        $this->container['charts_link_twitter'] = isset($data['charts_link_twitter']) ? $data['charts_link_twitter'] : null;
+        $this->container['child_user_tag_variables'] = isset($data['child_user_tag_variables']) ? $data['child_user_tag_variables'] : null;
+        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
+        $this->container['combination_operation'] = isset($data['combination_operation']) ? $data['combination_operation'] : null;
+        $this->container['common_alias'] = isset($data['common_alias']) ? $data['common_alias'] : null;
+        $this->container['common_tagged_variables'] = isset($data['common_tagged_variables']) ? $data['common_tagged_variables'] : null;
+        $this->container['common_tag_variables'] = isset($data['common_tag_variables']) ? $data['common_tag_variables'] : null;
+        $this->container['common_variable_most_common_connector_id'] = isset($data['common_variable_most_common_connector_id']) ? $data['common_variable_most_common_connector_id'] : null;
+        $this->container['common_variable_updated_at'] = isset($data['common_variable_updated_at']) ? $data['common_variable_updated_at'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['unit_abbreviated_name'] = isset($data['unit_abbreviated_name']) ? $data['unit_abbreviated_name'] : null;
+        $this->container['unit_category_id'] = isset($data['unit_category_id']) ? $data['unit_category_id'] : null;
+        $this->container['unit_category_name'] = isset($data['unit_category_name']) ? $data['unit_category_name'] : null;
+        $this->container['unit_id'] = isset($data['unit_id']) ? $data['unit_id'] : null;
+        $this->container['unit_name'] = isset($data['unit_name']) ? $data['unit_name'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
+        $this->container['duration_of_action_in_hours'] = isset($data['duration_of_action_in_hours']) ? $data['duration_of_action_in_hours'] : null;
+        $this->container['earliest_filling_time'] = isset($data['earliest_filling_time']) ? $data['earliest_filling_time'] : null;
+        $this->container['earliest_measurement_time'] = isset($data['earliest_measurement_time']) ? $data['earliest_measurement_time'] : null;
+        $this->container['earliest_source_time'] = isset($data['earliest_source_time']) ? $data['earliest_source_time'] : null;
         $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
+        $this->container['experiment_end_time'] = isset($data['experiment_end_time']) ? $data['experiment_end_time'] : null;
+        $this->container['experiment_end_time_seconds'] = isset($data['experiment_end_time_seconds']) ? $data['experiment_end_time_seconds'] : null;
+        $this->container['experiment_end_time_string'] = isset($data['experiment_end_time_string']) ? $data['experiment_end_time_string'] : null;
+        $this->container['experiment_start_time'] = isset($data['experiment_start_time']) ? $data['experiment_start_time'] : null;
+        $this->container['experiment_start_time_seconds'] = isset($data['experiment_start_time_seconds']) ? $data['experiment_start_time_seconds'] : null;
+        $this->container['experiment_start_time_string'] = isset($data['experiment_start_time_string']) ? $data['experiment_start_time_string'] : null;
+        $this->container['filling_type'] = isset($data['filling_type']) ? $data['filling_type'] : null;
+        $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
+        $this->container['icon_icon'] = isset($data['icon_icon']) ? $data['icon_icon'] : null;
+        $this->container['highcharts'] = isset($data['highcharts']) ? $data['highcharts'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
+        $this->container['informational_url'] = isset($data['informational_url']) ? $data['informational_url'] : null;
+        $this->container['ingredient_of_user_tag_variables'] = isset($data['ingredient_of_user_tag_variables']) ? $data['ingredient_of_user_tag_variables'] : null;
+        $this->container['ingredient_user_tag_variables'] = isset($data['ingredient_user_tag_variables']) ? $data['ingredient_user_tag_variables'] : null;
+        $this->container['input_type'] = isset($data['input_type']) ? $data['input_type'] : null;
+        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
+        $this->container['joined_user_tag_variables'] = isset($data['joined_user_tag_variables']) ? $data['joined_user_tag_variables'] : null;
+        $this->container['join_with'] = isset($data['join_with']) ? $data['join_with'] : null;
+        $this->container['kurtosis'] = isset($data['kurtosis']) ? $data['kurtosis'] : null;
+        $this->container['last_original_unit_id'] = isset($data['last_original_unit_id']) ? $data['last_original_unit_id'] : null;
+        $this->container['last_original_value'] = isset($data['last_original_value']) ? $data['last_original_value'] : null;
+        $this->container['last_processed_daily_value'] = isset($data['last_processed_daily_value']) ? $data['last_processed_daily_value'] : null;
         $this->container['last_successful_update_time'] = isset($data['last_successful_update_time']) ? $data['last_successful_update_time'] : null;
-        $this->container['standard_deviation'] = isset($data['standard_deviation']) ? $data['standard_deviation'] : null;
-        $this->container['variance'] = isset($data['variance']) ? $data['variance'] : null;
-        $this->container['minimum_recorded_value'] = isset($data['minimum_recorded_value']) ? $data['minimum_recorded_value'] : null;
+        $this->container['last_unit_id'] = isset($data['last_unit_id']) ? $data['last_unit_id'] : null;
+        $this->container['last_value'] = isset($data['last_value']) ? $data['last_value'] : null;
+        $this->container['latest_filling_time'] = isset($data['latest_filling_time']) ? $data['latest_filling_time'] : null;
+        $this->container['latest_measurement_time'] = isset($data['latest_measurement_time']) ? $data['latest_measurement_time'] : null;
+        $this->container['latest_source_time'] = isset($data['latest_source_time']) ? $data['latest_source_time'] : null;
+        $this->container['latest_user_measurement_time'] = isset($data['latest_user_measurement_time']) ? $data['latest_user_measurement_time'] : null;
+        $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
+        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
+        $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
+        $this->container['manual_tracking'] = isset($data['manual_tracking']) ? $data['manual_tracking'] : null;
+        $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
         $this->container['maximum_recorded_daily_value'] = isset($data['maximum_recorded_daily_value']) ? $data['maximum_recorded_daily_value'] : null;
+        $this->container['maximum_recorded_value'] = isset($data['maximum_recorded_value']) ? $data['maximum_recorded_value'] : null;
         $this->container['mean'] = isset($data['mean']) ? $data['mean'] : null;
+        $this->container['measurements_at_last_analysis'] = isset($data['measurements_at_last_analysis']) ? $data['measurements_at_last_analysis'] : null;
         $this->container['median'] = isset($data['median']) ? $data['median'] : null;
+        $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
+        $this->container['minimum_recorded_value'] = isset($data['minimum_recorded_value']) ? $data['minimum_recorded_value'] : null;
+        $this->container['most_common_connector_id'] = isset($data['most_common_connector_id']) ? $data['most_common_connector_id'] : null;
+        $this->container['most_common_original_unit_id'] = isset($data['most_common_original_unit_id']) ? $data['most_common_original_unit_id'] : null;
         $this->container['most_common_unit_id'] = isset($data['most_common_unit_id']) ? $data['most_common_unit_id'] : null;
         $this->container['most_common_value'] = isset($data['most_common_value']) ? $data['most_common_value'] : null;
-        $this->container['number_of_unique_daily_values'] = isset($data['number_of_unique_daily_values']) ? $data['number_of_unique_daily_values'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['number_of_aggregate_correlations_as_cause'] = isset($data['number_of_aggregate_correlations_as_cause']) ? $data['number_of_aggregate_correlations_as_cause'] : null;
+        $this->container['number_of_aggregate_correlations_as_effect'] = isset($data['number_of_aggregate_correlations_as_effect']) ? $data['number_of_aggregate_correlations_as_effect'] : null;
         $this->container['number_of_changes'] = isset($data['number_of_changes']) ? $data['number_of_changes'] : null;
-        $this->container['skewness'] = isset($data['skewness']) ? $data['skewness'] : null;
-        $this->container['kurtosis'] = isset($data['kurtosis']) ? $data['kurtosis'] : null;
-        $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
-        $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
-        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
-        $this->container['experiment_start_time'] = isset($data['experiment_start_time']) ? $data['experiment_start_time'] : null;
-        $this->container['experiment_end_time'] = isset($data['experiment_end_time']) ? $data['experiment_end_time'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
+        $this->container['number_of_measurements'] = isset($data['number_of_measurements']) ? $data['number_of_measurements'] : null;
+        $this->container['number_of_processed_daily_measurements'] = isset($data['number_of_processed_daily_measurements']) ? $data['number_of_processed_daily_measurements'] : null;
+        $this->container['number_of_raw_measurements'] = isset($data['number_of_raw_measurements']) ? $data['number_of_raw_measurements'] : null;
+        $this->container['number_of_tracking_reminders'] = isset($data['number_of_tracking_reminders']) ? $data['number_of_tracking_reminders'] : null;
+        $this->container['number_of_unique_daily_values'] = isset($data['number_of_unique_daily_values']) ? $data['number_of_unique_daily_values'] : null;
+        $this->container['number_of_unique_values'] = isset($data['number_of_unique_values']) ? $data['number_of_unique_values'] : null;
+        $this->container['number_of_user_correlations_as_cause'] = isset($data['number_of_user_correlations_as_cause']) ? $data['number_of_user_correlations_as_cause'] : null;
+        $this->container['number_of_user_correlations_as_effect'] = isset($data['number_of_user_correlations_as_effect']) ? $data['number_of_user_correlations_as_effect'] : null;
+        $this->container['number_of_user_variables'] = isset($data['number_of_user_variables']) ? $data['number_of_user_variables'] : null;
+        $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
+        $this->container['onset_delay_in_hours'] = isset($data['onset_delay_in_hours']) ? $data['onset_delay_in_hours'] : null;
         $this->container['outcome'] = isset($data['outcome']) ? $data['outcome'] : null;
+        $this->container['outcome_of_interest'] = isset($data['outcome_of_interest']) ? $data['outcome_of_interest'] : null;
+        $this->container['parent'] = isset($data['parent']) ? $data['parent'] : null;
+        $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
+        $this->container['parent_user_tag_variables'] = isset($data['parent_user_tag_variables']) ? $data['parent_user_tag_variables'] : null;
+        $this->container['png_path'] = isset($data['png_path']) ? $data['png_path'] : null;
+        $this->container['png_url'] = isset($data['png_url']) ? $data['png_url'] : null;
+        $this->container['predictor_of_interest'] = isset($data['predictor_of_interest']) ? $data['predictor_of_interest'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['product_url'] = isset($data['product_url']) ? $data['product_url'] : null;
+        $this->container['public'] = isset($data['public']) ? $data['public'] : null;
+        $this->container['raw_measurements_at_last_analysis'] = isset($data['raw_measurements_at_last_analysis']) ? $data['raw_measurements_at_last_analysis'] : null;
+        $this->container['second_most_common_value'] = isset($data['second_most_common_value']) ? $data['second_most_common_value'] : null;
+        $this->container['second_to_last_value'] = isset($data['second_to_last_value']) ? $data['second_to_last_value'] : null;
+        $this->container['share_user_measurements'] = isset($data['share_user_measurements']) ? $data['share_user_measurements'] : null;
+        $this->container['skewness'] = isset($data['skewness']) ? $data['skewness'] : null;
         $this->container['sources'] = isset($data['sources']) ? $data['sources'] : null;
-        $this->container['earliest_source_time'] = isset($data['earliest_source_time']) ? $data['earliest_source_time'] : null;
-        $this->container['latest_source_time'] = isset($data['latest_source_time']) ? $data['latest_source_time'] : null;
-        $this->container['earliest_measurement_time'] = isset($data['earliest_measurement_time']) ? $data['earliest_measurement_time'] : null;
-        $this->container['latest_measurement_time'] = isset($data['latest_measurement_time']) ? $data['latest_measurement_time'] : null;
-        $this->container['earliest_filling_time'] = isset($data['earliest_filling_time']) ? $data['earliest_filling_time'] : null;
-        $this->container['latest_filling_time'] = isset($data['latest_filling_time']) ? $data['latest_filling_time'] : null;
-        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
-        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
+        $this->container['standard_deviation'] = isset($data['standard_deviation']) ? $data['standard_deviation'] : null;
+        $this->container['standard_deviation'] = isset($data['standard_deviation']) ? $data['standard_deviation'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['subtitle'] = isset($data['subtitle']) ? $data['subtitle'] : null;
+        $this->container['svg_url'] = isset($data['svg_url']) ? $data['svg_url'] : null;
+        $this->container['third_most_common_value'] = isset($data['third_most_common_value']) ? $data['third_most_common_value'] : null;
+        $this->container['third_to_last_value'] = isset($data['third_to_last_value']) ? $data['third_to_last_value'] : null;
+        $this->container['unit'] = isset($data['unit']) ? $data['unit'] : null;
+        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['updated_time'] = isset($data['updated_time']) ? $data['updated_time'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['user_tagged_variables'] = isset($data['user_tagged_variables']) ? $data['user_tagged_variables'] : null;
+        $this->container['user_tag_variables'] = isset($data['user_tag_variables']) ? $data['user_tag_variables'] : null;
+        $this->container['user_variable_unit_abbreviated_name'] = isset($data['user_variable_unit_abbreviated_name']) ? $data['user_variable_unit_abbreviated_name'] : null;
+        $this->container['user_variable_unit_category_id'] = isset($data['user_variable_unit_category_id']) ? $data['user_variable_unit_category_id'] : null;
+        $this->container['user_variable_unit_category_name'] = isset($data['user_variable_unit_category_name']) ? $data['user_variable_unit_category_name'] : null;
+        $this->container['user_variable_unit_id'] = isset($data['user_variable_unit_id']) ? $data['user_variable_unit_id'] : null;
+        $this->container['user_variable_unit_name'] = isset($data['user_variable_unit_name']) ? $data['user_variable_unit_name'] : null;
+        $this->container['user_variable_filling_value'] = isset($data['user_variable_filling_value']) ? $data['user_variable_filling_value'] : null;
+        $this->container['user_variable_most_common_connector_id'] = isset($data['user_variable_most_common_connector_id']) ? $data['user_variable_most_common_connector_id'] : null;
+        $this->container['user_variable_updated_at'] = isset($data['user_variable_updated_at']) ? $data['user_variable_updated_at'] : null;
+        $this->container['user_variable_valence'] = isset($data['user_variable_valence']) ? $data['user_variable_valence'] : null;
+        $this->container['user_variable_variable_category_id'] = isset($data['user_variable_variable_category_id']) ? $data['user_variable_variable_category_id'] : null;
+        $this->container['user_variable_variable_category_name'] = isset($data['user_variable_variable_category_name']) ? $data['user_variable_variable_category_name'] : null;
+        $this->container['user_variable_wikipedia_title'] = isset($data['user_variable_wikipedia_title']) ? $data['user_variable_wikipedia_title'] : null;
+        $this->container['valence'] = isset($data['valence']) ? $data['valence'] : null;
+        $this->container['variable_category'] = isset($data['variable_category']) ? $data['variable_category'] : null;
+        $this->container['variable_category_id'] = isset($data['variable_category_id']) ? $data['variable_category_id'] : null;
+        $this->container['variable_category_image_url'] = isset($data['variable_category_image_url']) ? $data['variable_category_image_url'] : null;
+        $this->container['variable_category_name'] = isset($data['variable_category_name']) ? $data['variable_category_name'] : null;
+        $this->container['variable_filling_value'] = isset($data['variable_filling_value']) ? $data['variable_filling_value'] : null;
+        $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
+        $this->container['variable_name'] = isset($data['variable_name']) ? $data['variable_name'] : null;
+        $this->container['variance'] = isset($data['variance']) ? $data['variance'] : null;
+        $this->container['wikipedia_title'] = isset($data['wikipedia_title']) ? $data['wikipedia_title'] : null;
     }
 
     /**
@@ -406,6 +1014,63 @@ class UserVariable implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['alias'] === null) {
+            $invalid_properties[] = "'alias' can't be null";
+        }
+        if ($this->container['available_units'] === null) {
+            $invalid_properties[] = "'available_units' can't be null";
+        }
+        if ($this->container['child_user_tag_variables'] === null) {
+            $invalid_properties[] = "'child_user_tag_variables' can't be null";
+        }
+        if ($this->container['common_tagged_variables'] === null) {
+            $invalid_properties[] = "'common_tagged_variables' can't be null";
+        }
+        if ($this->container['common_tag_variables'] === null) {
+            $invalid_properties[] = "'common_tag_variables' can't be null";
+        }
+        if ($this->container['informational_url'] === null) {
+            $invalid_properties[] = "'informational_url' can't be null";
+        }
+        if ($this->container['ingredient_of_user_tag_variables'] === null) {
+            $invalid_properties[] = "'ingredient_of_user_tag_variables' can't be null";
+        }
+        if ($this->container['ingredient_user_tag_variables'] === null) {
+            $invalid_properties[] = "'ingredient_user_tag_variables' can't be null";
+        }
+        if ($this->container['joined_user_tag_variables'] === null) {
+            $invalid_properties[] = "'joined_user_tag_variables' can't be null";
+        }
+        if ($this->container['parent'] === null) {
+            $invalid_properties[] = "'parent' can't be null";
+        }
+        if ($this->container['parent_user_tag_variables'] === null) {
+            $invalid_properties[] = "'parent_user_tag_variables' can't be null";
+        }
+        if ($this->container['price'] === null) {
+            $invalid_properties[] = "'price' can't be null";
+        }
+        if ($this->container['product_url'] === null) {
+            $invalid_properties[] = "'product_url' can't be null";
+        }
+        if ($this->container['user_tagged_variables'] === null) {
+            $invalid_properties[] = "'user_tagged_variables' can't be null";
+        }
+        if ($this->container['user_tag_variables'] === null) {
+            $invalid_properties[] = "'user_tag_variables' can't be null";
+        }
+        if ($this->container['user_variable_valence'] === null) {
+            $invalid_properties[] = "'user_variable_valence' can't be null";
+        }
+        if ($this->container['user_variable_wikipedia_title'] === null) {
+            $invalid_properties[] = "'user_variable_wikipedia_title' can't be null";
+        }
+        if ($this->container['variable_id'] === null) {
+            $invalid_properties[] = "'variable_id' can't be null";
+        }
+        if ($this->container['wikipedia_title'] === null) {
+            $invalid_properties[] = "'wikipedia_title' can't be null";
+        }
         return $invalid_properties;
     }
 
@@ -418,300 +1083,105 @@ class UserVariable implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['alias'] === null) {
+            return false;
+        }
+        if ($this->container['available_units'] === null) {
+            return false;
+        }
+        if ($this->container['child_user_tag_variables'] === null) {
+            return false;
+        }
+        if ($this->container['common_tagged_variables'] === null) {
+            return false;
+        }
+        if ($this->container['common_tag_variables'] === null) {
+            return false;
+        }
+        if ($this->container['informational_url'] === null) {
+            return false;
+        }
+        if ($this->container['ingredient_of_user_tag_variables'] === null) {
+            return false;
+        }
+        if ($this->container['ingredient_user_tag_variables'] === null) {
+            return false;
+        }
+        if ($this->container['joined_user_tag_variables'] === null) {
+            return false;
+        }
+        if ($this->container['parent'] === null) {
+            return false;
+        }
+        if ($this->container['parent_user_tag_variables'] === null) {
+            return false;
+        }
+        if ($this->container['price'] === null) {
+            return false;
+        }
+        if ($this->container['product_url'] === null) {
+            return false;
+        }
+        if ($this->container['user_tagged_variables'] === null) {
+            return false;
+        }
+        if ($this->container['user_tag_variables'] === null) {
+            return false;
+        }
+        if ($this->container['user_variable_valence'] === null) {
+            return false;
+        }
+        if ($this->container['user_variable_wikipedia_title'] === null) {
+            return false;
+        }
+        if ($this->container['variable_id'] === null) {
+            return false;
+        }
+        if ($this->container['wikipedia_title'] === null) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets parent_id
-     * @return int
-     */
-    public function getParentId()
-    {
-        return $this->container['parent_id'];
-    }
-
-    /**
-     * Sets parent_id
-     * @param int $parent_id ID of the parent variable if this variable has any parent
-     * @return $this
-     */
-    public function setParentId($parent_id)
-    {
-        $this->container['parent_id'] = $parent_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     * @param int $user_id User ID
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets client_id
+     * Gets alias
      * @return string
      */
-    public function getClientId()
+    public function getAlias()
     {
-        return $this->container['client_id'];
+        return $this->container['alias'];
     }
 
     /**
-     * Sets client_id
-     * @param string $client_id client_id
+     * Sets alias
+     * @param string $alias Example:
      * @return $this
      */
-    public function setClientId($client_id)
+    public function setAlias($alias)
     {
-        $this->container['client_id'] = $client_id;
+        $this->container['alias'] = $alias;
 
         return $this;
     }
 
     /**
-     * Gets variable_id
-     * @return int
+     * Gets available_units
+     * @return \QuantiModo\Client\Model\Unit[]
      */
-    public function getVariableId()
+    public function getAvailableUnits()
     {
-        return $this->container['variable_id'];
+        return $this->container['available_units'];
     }
 
     /**
-     * Sets variable_id
-     * @param int $variable_id ID of variable
+     * Sets available_units
+     * @param \QuantiModo\Client\Model\Unit[] $available_units
      * @return $this
      */
-    public function setVariableId($variable_id)
+    public function setAvailableUnits($available_units)
     {
-        $this->container['variable_id'] = $variable_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets default_unit_id
-     * @return int
-     */
-    public function getDefaultUnitId()
-    {
-        return $this->container['default_unit_id'];
-    }
-
-    /**
-     * Sets default_unit_id
-     * @param int $default_unit_id ID of unit to use for this variable
-     * @return $this
-     */
-    public function setDefaultUnitId($default_unit_id)
-    {
-        $this->container['default_unit_id'] = $default_unit_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets minimum_allowed_value
-     * @return float
-     */
-    public function getMinimumAllowedValue()
-    {
-        return $this->container['minimum_allowed_value'];
-    }
-
-    /**
-     * Sets minimum_allowed_value
-     * @param float $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
-     * @return $this
-     */
-    public function setMinimumAllowedValue($minimum_allowed_value)
-    {
-        $this->container['minimum_allowed_value'] = $minimum_allowed_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets maximum_allowed_value
-     * @return float
-     */
-    public function getMaximumAllowedValue()
-    {
-        return $this->container['maximum_allowed_value'];
-    }
-
-    /**
-     * Sets maximum_allowed_value
-     * @param float $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
-     * @return $this
-     */
-    public function setMaximumAllowedValue($maximum_allowed_value)
-    {
-        $this->container['maximum_allowed_value'] = $maximum_allowed_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets filling_value
-     * @return float
-     */
-    public function getFillingValue()
-    {
-        return $this->container['filling_value'];
-    }
-
-    /**
-     * Sets filling_value
-     * @param float $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
-     * @return $this
-     */
-    public function setFillingValue($filling_value)
-    {
-        $this->container['filling_value'] = $filling_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets join_with
-     * @return int
-     */
-    public function getJoinWith()
-    {
-        return $this->container['join_with'];
-    }
-
-    /**
-     * Sets join_with
-     * @param int $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
-     * @return $this
-     */
-    public function setJoinWith($join_with)
-    {
-        $this->container['join_with'] = $join_with;
-
-        return $this;
-    }
-
-    /**
-     * Gets onset_delay
-     * @return int
-     */
-    public function getOnsetDelay()
-    {
-        return $this->container['onset_delay'];
-    }
-
-    /**
-     * Sets onset_delay
-     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
-     * @return $this
-     */
-    public function setOnsetDelay($onset_delay)
-    {
-        $this->container['onset_delay'] = $onset_delay;
-
-        return $this;
-    }
-
-    /**
-     * Gets duration_of_action
-     * @return int
-     */
-    public function getDurationOfAction()
-    {
-        return $this->container['duration_of_action'];
-    }
-
-    /**
-     * Sets duration_of_action
-     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
-     * @return $this
-     */
-    public function setDurationOfAction($duration_of_action)
-    {
-        $this->container['duration_of_action'] = $duration_of_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets variable_category_id
-     * @return int
-     */
-    public function getVariableCategoryId()
-    {
-        return $this->container['variable_category_id'];
-    }
-
-    /**
-     * Sets variable_category_id
-     * @param int $variable_category_id ID of variable category
-     * @return $this
-     */
-    public function setVariableCategoryId($variable_category_id)
-    {
-        $this->container['variable_category_id'] = $variable_category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     * @return int
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     * @param int $updated updated
-     * @return $this
-     */
-    public function setUpdated($updated)
-    {
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets public
-     * @return int
-     */
-    public function getPublic()
-    {
-        return $this->container['public'];
-    }
-
-    /**
-     * Sets public
-     * @param int $public Is variable public
-     * @return $this
-     */
-    public function setPublic($public)
-    {
-        $this->container['public'] = $public;
+        $this->container['available_units'] = $available_units;
 
         return $this;
     }
@@ -738,211 +1208,568 @@ class UserVariable implements ArrayAccess
     }
 
     /**
-     * Gets filling_type
+     * Gets charts
+     * @return object
+     */
+    public function getCharts()
+    {
+        return $this->container['charts'];
+    }
+
+    /**
+     * Sets charts
+     * @param object $charts Highcharts configs you can use if you add highcharts.js to your page
+     * @return $this
+     */
+    public function setCharts($charts)
+    {
+        $this->container['charts'] = $charts;
+
+        return $this;
+    }
+
+    /**
+     * Gets charts_link_dynamic
      * @return string
      */
-    public function getFillingType()
+    public function getChartsLinkDynamic()
     {
-        return $this->container['filling_type'];
+        return $this->container['charts_link_dynamic'];
     }
 
     /**
-     * Sets filling_type
-     * @param string $filling_type 0 -> No filling, 1 -> Use filling-value
+     * Sets charts_link_dynamic
+     * @param string $charts_link_dynamic Example: https://local.quantimo.do/ionic/Modo/www/#/app/charts/Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29?variableName=Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29&userId=230&pngUrl=https%3A%2F%2Fapp.quantimo.do%2Fionic%2FModo%2Fwww%2Fimg%2Fvariable_categories%2Ftreatments.png
      * @return $this
      */
-    public function setFillingType($filling_type)
+    public function setChartsLinkDynamic($charts_link_dynamic)
     {
-        $this->container['filling_type'] = $filling_type;
+        $this->container['charts_link_dynamic'] = $charts_link_dynamic;
 
         return $this;
     }
 
     /**
-     * Gets number_of_measurements
-     * @return int
-     */
-    public function getNumberOfMeasurements()
-    {
-        return $this->container['number_of_measurements'];
-    }
-
-    /**
-     * Sets number_of_measurements
-     * @param int $number_of_measurements Number of measurements
-     * @return $this
-     */
-    public function setNumberOfMeasurements($number_of_measurements)
-    {
-        $this->container['number_of_measurements'] = $number_of_measurements;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_processed_measurements
-     * @return int
-     */
-    public function getNumberOfProcessedMeasurements()
-    {
-        return $this->container['number_of_processed_measurements'];
-    }
-
-    /**
-     * Sets number_of_processed_measurements
-     * @param int $number_of_processed_measurements Number of processed measurements
-     * @return $this
-     */
-    public function setNumberOfProcessedMeasurements($number_of_processed_measurements)
-    {
-        $this->container['number_of_processed_measurements'] = $number_of_processed_measurements;
-
-        return $this;
-    }
-
-    /**
-     * Gets measurements_at_last_analysis
-     * @return int
-     */
-    public function getMeasurementsAtLastAnalysis()
-    {
-        return $this->container['measurements_at_last_analysis'];
-    }
-
-    /**
-     * Sets measurements_at_last_analysis
-     * @param int $measurements_at_last_analysis Number of measurements at last analysis
-     * @return $this
-     */
-    public function setMeasurementsAtLastAnalysis($measurements_at_last_analysis)
-    {
-        $this->container['measurements_at_last_analysis'] = $measurements_at_last_analysis;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_unit_id
-     * @return int
-     */
-    public function getLastUnitId()
-    {
-        return $this->container['last_unit_id'];
-    }
-
-    /**
-     * Sets last_unit_id
-     * @param int $last_unit_id ID of last Unit
-     * @return $this
-     */
-    public function setLastUnitId($last_unit_id)
-    {
-        $this->container['last_unit_id'] = $last_unit_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_original_unit_id
-     * @return int
-     */
-    public function getLastOriginalUnitId()
-    {
-        return $this->container['last_original_unit_id'];
-    }
-
-    /**
-     * Sets last_original_unit_id
-     * @param int $last_original_unit_id ID of last original Unit
-     * @return $this
-     */
-    public function setLastOriginalUnitId($last_original_unit_id)
-    {
-        $this->container['last_original_unit_id'] = $last_original_unit_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_value
-     * @return float
-     */
-    public function getLastValue()
-    {
-        return $this->container['last_value'];
-    }
-
-    /**
-     * Sets last_value
-     * @param float $last_value Last Value
-     * @return $this
-     */
-    public function setLastValue($last_value)
-    {
-        $this->container['last_value'] = $last_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_original_value
-     * @return int
-     */
-    public function getLastOriginalValue()
-    {
-        return $this->container['last_original_value'];
-    }
-
-    /**
-     * Sets last_original_value
-     * @param int $last_original_value Last original value which is stored
-     * @return $this
-     */
-    public function setLastOriginalValue($last_original_value)
-    {
-        $this->container['last_original_value'] = $last_original_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_correlations
-     * @return int
-     */
-    public function getNumberOfCorrelations()
-    {
-        return $this->container['number_of_correlations'];
-    }
-
-    /**
-     * Sets number_of_correlations
-     * @param int $number_of_correlations Number of correlations for this variable
-     * @return $this
-     */
-    public function setNumberOfCorrelations($number_of_correlations)
-    {
-        $this->container['number_of_correlations'] = $number_of_correlations;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
+     * Gets charts_link_email
      * @return string
      */
-    public function getStatus()
+    public function getChartsLinkEmail()
     {
-        return $this->container['status'];
+        return $this->container['charts_link_email'];
     }
 
     /**
-     * Sets status
-     * @param string $status status
+     * Sets charts_link_email
+     * @param string $charts_link_email Example: mailto:?subject=Check%20out%20my%20Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29%20data%21&body=See%20my%20Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29%20history%20at%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png%0A%0AHave%20a%20great%20day!
      * @return $this
      */
-    public function setStatus($status)
+    public function setChartsLinkEmail($charts_link_email)
     {
-        $this->container['status'] = $status;
+        $this->container['charts_link_email'] = $charts_link_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets charts_link_facebook
+     * @return string
+     */
+    public function getChartsLinkFacebook()
+    {
+        return $this->container['charts_link_facebook'];
+    }
+
+    /**
+     * Sets charts_link_facebook
+     * @param string $charts_link_facebook Example: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png
+     * @return $this
+     */
+    public function setChartsLinkFacebook($charts_link_facebook)
+    {
+        $this->container['charts_link_facebook'] = $charts_link_facebook;
+
+        return $this;
+    }
+
+    /**
+     * Gets charts_link_google
+     * @return string
+     */
+    public function getChartsLinkGoogle()
+    {
+        return $this->container['charts_link_google'];
+    }
+
+    /**
+     * Sets charts_link_google
+     * @param string $charts_link_google Example: https://plus.google.com/share?url=https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png
+     * @return $this
+     */
+    public function setChartsLinkGoogle($charts_link_google)
+    {
+        $this->container['charts_link_google'] = $charts_link_google;
+
+        return $this;
+    }
+
+    /**
+     * Gets charts_link_static
+     * @return string
+     */
+    public function getChartsLinkStatic()
+    {
+        return $this->container['charts_link_static'];
+    }
+
+    /**
+     * Sets charts_link_static
+     * @param string $charts_link_static Example: https://local.quantimo.do/api/v2/charts?variableName=Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29&userId=230&pngUrl=https%3A%2F%2Fapp.quantimo.do%2Fionic%2FModo%2Fwww%2Fimg%2Fvariable_categories%2Ftreatments.png
+     * @return $this
+     */
+    public function setChartsLinkStatic($charts_link_static)
+    {
+        $this->container['charts_link_static'] = $charts_link_static;
+
+        return $this;
+    }
+
+    /**
+     * Gets charts_link_twitter
+     * @return string
+     */
+    public function getChartsLinkTwitter()
+    {
+        return $this->container['charts_link_twitter'];
+    }
+
+    /**
+     * Sets charts_link_twitter
+     * @param string $charts_link_twitter Example: https://twitter.com/home?status=Check%20out%20my%20Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29%20data%21%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png%20%40quantimodo
+     * @return $this
+     */
+    public function setChartsLinkTwitter($charts_link_twitter)
+    {
+        $this->container['charts_link_twitter'] = $charts_link_twitter;
+
+        return $this;
+    }
+
+    /**
+     * Gets child_user_tag_variables
+     * @return \QuantiModo\Client\Model\UserVariableArray
+     */
+    public function getChildUserTagVariables()
+    {
+        return $this->container['child_user_tag_variables'];
+    }
+
+    /**
+     * Sets child_user_tag_variables
+     * @param \QuantiModo\Client\Model\UserVariableArray $child_user_tag_variables
+     * @return $this
+     */
+    public function setChildUserTagVariables($child_user_tag_variables)
+    {
+        $this->container['child_user_tag_variables'] = $child_user_tag_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_id
+     * @return string
+     */
+    public function getClientId()
+    {
+        return $this->container['client_id'];
+    }
+
+    /**
+     * Sets client_id
+     * @param string $client_id clientId
+     * @return $this
+     */
+    public function setClientId($client_id)
+    {
+        $this->container['client_id'] = $client_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets combination_operation
+     * @return string
+     */
+    public function getCombinationOperation()
+    {
+        return $this->container['combination_operation'];
+    }
+
+    /**
+     * Sets combination_operation
+     * @param string $combination_operation Example: MEAN
+     * @return $this
+     */
+    public function setCombinationOperation($combination_operation)
+    {
+        $this->container['combination_operation'] = $combination_operation;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_alias
+     * @return string
+     */
+    public function getCommonAlias()
+    {
+        return $this->container['common_alias'];
+    }
+
+    /**
+     * Sets common_alias
+     * @param string $common_alias Example: Anxiety / Nervousness
+     * @return $this
+     */
+    public function setCommonAlias($common_alias)
+    {
+        $this->container['common_alias'] = $common_alias;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_tagged_variables
+     * @return \QuantiModo\Client\Model\CommonVariableArray
+     */
+    public function getCommonTaggedVariables()
+    {
+        return $this->container['common_tagged_variables'];
+    }
+
+    /**
+     * Sets common_tagged_variables
+     * @param \QuantiModo\Client\Model\CommonVariableArray $common_tagged_variables
+     * @return $this
+     */
+    public function setCommonTaggedVariables($common_tagged_variables)
+    {
+        $this->container['common_tagged_variables'] = $common_tagged_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_tag_variables
+     * @return \QuantiModo\Client\Model\CommonVariableArray
+     */
+    public function getCommonTagVariables()
+    {
+        return $this->container['common_tag_variables'];
+    }
+
+    /**
+     * Sets common_tag_variables
+     * @param \QuantiModo\Client\Model\CommonVariableArray $common_tag_variables
+     * @return $this
+     */
+    public function setCommonTagVariables($common_tag_variables)
+    {
+        $this->container['common_tag_variables'] = $common_tag_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_variable_most_common_connector_id
+     * @return int
+     */
+    public function getCommonVariableMostCommonConnectorId()
+    {
+        return $this->container['common_variable_most_common_connector_id'];
+    }
+
+    /**
+     * Sets common_variable_most_common_connector_id
+     * @param int $common_variable_most_common_connector_id Example: 51
+     * @return $this
+     */
+    public function setCommonVariableMostCommonConnectorId($common_variable_most_common_connector_id)
+    {
+        $this->container['common_variable_most_common_connector_id'] = $common_variable_most_common_connector_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_variable_updated_at
+     * @return \DateTime
+     */
+    public function getCommonVariableUpdatedAt()
+    {
+        return $this->container['common_variable_updated_at'];
+    }
+
+    /**
+     * Sets common_variable_updated_at
+     * @param \DateTime $common_variable_updated_at Example: 2017-02-07 23:43:39
+     * @return $this
+     */
+    public function setCommonVariableUpdatedAt($common_variable_updated_at)
+    {
+        $this->container['common_variable_updated_at'] = $common_variable_updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at When the record was first created. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_abbreviated_name
+     * @return string
+     */
+    public function getUnitAbbreviatedName()
+    {
+        return $this->container['unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets unit_abbreviated_name
+     * @param string $unit_abbreviated_name Example: count
+     * @return $this
+     */
+    public function setUnitAbbreviatedName($unit_abbreviated_name)
+    {
+        $this->container['unit_abbreviated_name'] = $unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_category_id
+     * @return int
+     */
+    public function getUnitCategoryId()
+    {
+        return $this->container['unit_category_id'];
+    }
+
+    /**
+     * Sets unit_category_id
+     * @param int $unit_category_id Example: 6
+     * @return $this
+     */
+    public function setUnitCategoryId($unit_category_id)
+    {
+        $this->container['unit_category_id'] = $unit_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_category_name
+     * @return string
+     */
+    public function getUnitCategoryName()
+    {
+        return $this->container['unit_category_name'];
+    }
+
+    /**
+     * Sets unit_category_name
+     * @param string $unit_category_name Example: Miscellany
+     * @return $this
+     */
+    public function setUnitCategoryName($unit_category_name)
+    {
+        $this->container['unit_category_name'] = $unit_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_id
+     * @return int
+     */
+    public function getUnitId()
+    {
+        return $this->container['unit_id'];
+    }
+
+    /**
+     * Sets unit_id
+     * @param int $unit_id ID of unit to use for this variable
+     * @return $this
+     */
+    public function setUnitId($unit_id)
+    {
+        $this->container['unit_id'] = $unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_name
+     * @return string
+     */
+    public function getUnitName()
+    {
+        return $this->container['unit_name'];
+    }
+
+    /**
+     * Sets unit_name
+     * @param string $unit_name Example: Count
+     * @return $this
+     */
+    public function setUnitName($unit_name)
+    {
+        $this->container['unit_name'] = $unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     * @param string $description Example: negative
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets duration_of_action
+     * @return int
+     */
+    public function getDurationOfAction()
+    {
+        return $this->container['duration_of_action'];
+    }
+
+    /**
+     * Sets duration_of_action
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
+     * @return $this
+     */
+    public function setDurationOfAction($duration_of_action)
+    {
+        $this->container['duration_of_action'] = $duration_of_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets duration_of_action_in_hours
+     * @return int
+     */
+    public function getDurationOfActionInHours()
+    {
+        return $this->container['duration_of_action_in_hours'];
+    }
+
+    /**
+     * Sets duration_of_action_in_hours
+     * @param int $duration_of_action_in_hours Example: 168
+     * @return $this
+     */
+    public function setDurationOfActionInHours($duration_of_action_in_hours)
+    {
+        $this->container['duration_of_action_in_hours'] = $duration_of_action_in_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets earliest_filling_time
+     * @return int
+     */
+    public function getEarliestFillingTime()
+    {
+        return $this->container['earliest_filling_time'];
+    }
+
+    /**
+     * Sets earliest_filling_time
+     * @param int $earliest_filling_time Earliest filling time
+     * @return $this
+     */
+    public function setEarliestFillingTime($earliest_filling_time)
+    {
+        $this->container['earliest_filling_time'] = $earliest_filling_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets earliest_measurement_time
+     * @return int
+     */
+    public function getEarliestMeasurementTime()
+    {
+        return $this->container['earliest_measurement_time'];
+    }
+
+    /**
+     * Sets earliest_measurement_time
+     * @param int $earliest_measurement_time Earliest measurement time
+     * @return $this
+     */
+    public function setEarliestMeasurementTime($earliest_measurement_time)
+    {
+        $this->container['earliest_measurement_time'] = $earliest_measurement_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets earliest_source_time
+     * @return int
+     */
+    public function getEarliestSourceTime()
+    {
+        return $this->container['earliest_source_time'];
+    }
+
+    /**
+     * Sets earliest_source_time
+     * @param int $earliest_source_time Earliest source time
+     * @return $this
+     */
+    public function setEarliestSourceTime($earliest_source_time)
+    {
+        $this->container['earliest_source_time'] = $earliest_source_time;
 
         return $this;
     }
@@ -969,6 +1796,489 @@ class UserVariable implements ArrayAccess
     }
 
     /**
+     * Gets experiment_end_time
+     * @return \DateTime
+     */
+    public function getExperimentEndTime()
+    {
+        return $this->container['experiment_end_time'];
+    }
+
+    /**
+     * Sets experiment_end_time
+     * @param \DateTime $experiment_end_time Latest measurement start_time to be used in analysis. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format
+     * @return $this
+     */
+    public function setExperimentEndTime($experiment_end_time)
+    {
+        $this->container['experiment_end_time'] = $experiment_end_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets experiment_end_time_seconds
+     * @return int
+     */
+    public function getExperimentEndTimeSeconds()
+    {
+        return $this->container['experiment_end_time_seconds'];
+    }
+
+    /**
+     * Sets experiment_end_time_seconds
+     * @param int $experiment_end_time_seconds Example: 1893477600
+     * @return $this
+     */
+    public function setExperimentEndTimeSeconds($experiment_end_time_seconds)
+    {
+        $this->container['experiment_end_time_seconds'] = $experiment_end_time_seconds;
+
+        return $this;
+    }
+
+    /**
+     * Gets experiment_end_time_string
+     * @return \DateTime
+     */
+    public function getExperimentEndTimeString()
+    {
+        return $this->container['experiment_end_time_string'];
+    }
+
+    /**
+     * Sets experiment_end_time_string
+     * @param \DateTime $experiment_end_time_string Example: 2030-01-01 06:00:00
+     * @return $this
+     */
+    public function setExperimentEndTimeString($experiment_end_time_string)
+    {
+        $this->container['experiment_end_time_string'] = $experiment_end_time_string;
+
+        return $this;
+    }
+
+    /**
+     * Gets experiment_start_time
+     * @return \DateTime
+     */
+    public function getExperimentStartTime()
+    {
+        return $this->container['experiment_start_time'];
+    }
+
+    /**
+     * Sets experiment_start_time
+     * @param \DateTime $experiment_start_time Earliest measurement start_time to be used in analysis. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format
+     * @return $this
+     */
+    public function setExperimentStartTime($experiment_start_time)
+    {
+        $this->container['experiment_start_time'] = $experiment_start_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets experiment_start_time_seconds
+     * @return int
+     */
+    public function getExperimentStartTimeSeconds()
+    {
+        return $this->container['experiment_start_time_seconds'];
+    }
+
+    /**
+     * Sets experiment_start_time_seconds
+     * @param int $experiment_start_time_seconds Example: 1269307902
+     * @return $this
+     */
+    public function setExperimentStartTimeSeconds($experiment_start_time_seconds)
+    {
+        $this->container['experiment_start_time_seconds'] = $experiment_start_time_seconds;
+
+        return $this;
+    }
+
+    /**
+     * Gets experiment_start_time_string
+     * @return \DateTime
+     */
+    public function getExperimentStartTimeString()
+    {
+        return $this->container['experiment_start_time_string'];
+    }
+
+    /**
+     * Sets experiment_start_time_string
+     * @param \DateTime $experiment_start_time_string Example: 2010-03-23 01:31:42
+     * @return $this
+     */
+    public function setExperimentStartTimeString($experiment_start_time_string)
+    {
+        $this->container['experiment_start_time_string'] = $experiment_start_time_string;
+
+        return $this;
+    }
+
+    /**
+     * Gets filling_type
+     * @return string
+     */
+    public function getFillingType()
+    {
+        return $this->container['filling_type'];
+    }
+
+    /**
+     * Sets filling_type
+     * @param string $filling_type 0 -> No filling, 1 -> Use filling-value
+     * @return $this
+     */
+    public function setFillingType($filling_type)
+    {
+        $this->container['filling_type'] = $filling_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets filling_value
+     * @return float
+     */
+    public function getFillingValue()
+    {
+        return $this->container['filling_value'];
+    }
+
+    /**
+     * Sets filling_value
+     * @param float $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
+     * @return $this
+     */
+    public function setFillingValue($filling_value)
+    {
+        $this->container['filling_value'] = $filling_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets icon_icon
+     * @return string
+     */
+    public function getIconIcon()
+    {
+        return $this->container['icon_icon'];
+    }
+
+    /**
+     * Sets icon_icon
+     * @param string $icon_icon Example: ion-sad-outline
+     * @return $this
+     */
+    public function setIconIcon($icon_icon)
+    {
+        $this->container['icon_icon'] = $icon_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets highcharts
+     * @return \QuantiModo\Client\Model\HighchartArray
+     */
+    public function getHighcharts()
+    {
+        return $this->container['highcharts'];
+    }
+
+    /**
+     * Sets highcharts
+     * @param \QuantiModo\Client\Model\HighchartArray $highcharts
+     * @return $this
+     */
+    public function setHighcharts($highcharts)
+    {
+        $this->container['highcharts'] = $highcharts;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     * @param int $id Example: 95614
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     * @param string $image_url 
+     * @return $this
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets informational_url
+     * @return string
+     */
+    public function getInformationalUrl()
+    {
+        return $this->container['informational_url'];
+    }
+
+    /**
+     * Sets informational_url
+     * @param string $informational_url Example:
+     * @return $this
+     */
+    public function setInformationalUrl($informational_url)
+    {
+        $this->container['informational_url'] = $informational_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets ingredient_of_user_tag_variables
+     * @return \QuantiModo\Client\Model\UserVariableArray
+     */
+    public function getIngredientOfUserTagVariables()
+    {
+        return $this->container['ingredient_of_user_tag_variables'];
+    }
+
+    /**
+     * Sets ingredient_of_user_tag_variables
+     * @param \QuantiModo\Client\Model\UserVariableArray $ingredient_of_user_tag_variables
+     * @return $this
+     */
+    public function setIngredientOfUserTagVariables($ingredient_of_user_tag_variables)
+    {
+        $this->container['ingredient_of_user_tag_variables'] = $ingredient_of_user_tag_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets ingredient_user_tag_variables
+     * @return \QuantiModo\Client\Model\UserVariableArray
+     */
+    public function getIngredientUserTagVariables()
+    {
+        return $this->container['ingredient_user_tag_variables'];
+    }
+
+    /**
+     * Sets ingredient_user_tag_variables
+     * @param \QuantiModo\Client\Model\UserVariableArray $ingredient_user_tag_variables
+     * @return $this
+     */
+    public function setIngredientUserTagVariables($ingredient_user_tag_variables)
+    {
+        $this->container['ingredient_user_tag_variables'] = $ingredient_user_tag_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets input_type
+     * @return string
+     */
+    public function getInputType()
+    {
+        return $this->container['input_type'];
+    }
+
+    /**
+     * Sets input_type
+     * @param string $input_type Example: value
+     * @return $this
+     */
+    public function setInputType($input_type)
+    {
+        $this->container['input_type'] = $input_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets ion_icon
+     * @return string
+     */
+    public function getIonIcon()
+    {
+        return $this->container['ion_icon'];
+    }
+
+    /**
+     * Sets ion_icon
+     * @param string $ion_icon 
+     * @return $this
+     */
+    public function setIonIcon($ion_icon)
+    {
+        $this->container['ion_icon'] = $ion_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets joined_user_tag_variables
+     * @return \QuantiModo\Client\Model\UserVariableArray
+     */
+    public function getJoinedUserTagVariables()
+    {
+        return $this->container['joined_user_tag_variables'];
+    }
+
+    /**
+     * Sets joined_user_tag_variables
+     * @param \QuantiModo\Client\Model\UserVariableArray $joined_user_tag_variables
+     * @return $this
+     */
+    public function setJoinedUserTagVariables($joined_user_tag_variables)
+    {
+        $this->container['joined_user_tag_variables'] = $joined_user_tag_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets join_with
+     * @return int
+     */
+    public function getJoinWith()
+    {
+        return $this->container['join_with'];
+    }
+
+    /**
+     * Sets join_with
+     * @param int $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
+     * @return $this
+     */
+    public function setJoinWith($join_with)
+    {
+        $this->container['join_with'] = $join_with;
+
+        return $this;
+    }
+
+    /**
+     * Gets kurtosis
+     * @return float
+     */
+    public function getKurtosis()
+    {
+        return $this->container['kurtosis'];
+    }
+
+    /**
+     * Sets kurtosis
+     * @param float $kurtosis Kurtosis
+     * @return $this
+     */
+    public function setKurtosis($kurtosis)
+    {
+        $this->container['kurtosis'] = $kurtosis;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_original_unit_id
+     * @return int
+     */
+    public function getLastOriginalUnitId()
+    {
+        return $this->container['last_original_unit_id'];
+    }
+
+    /**
+     * Sets last_original_unit_id
+     * @param int $last_original_unit_id ID of last original Unit
+     * @return $this
+     */
+    public function setLastOriginalUnitId($last_original_unit_id)
+    {
+        $this->container['last_original_unit_id'] = $last_original_unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_original_value
+     * @return int
+     */
+    public function getLastOriginalValue()
+    {
+        return $this->container['last_original_value'];
+    }
+
+    /**
+     * Sets last_original_value
+     * @param int $last_original_value Last original value which is stored
+     * @return $this
+     */
+    public function setLastOriginalValue($last_original_value)
+    {
+        $this->container['last_original_value'] = $last_original_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_processed_daily_value
+     * @return double
+     */
+    public function getLastProcessedDailyValue()
+    {
+        return $this->container['last_processed_daily_value'];
+    }
+
+    /**
+     * Sets last_processed_daily_value
+     * @param double $last_processed_daily_value Example: 500
+     * @return $this
+     */
+    public function setLastProcessedDailyValue($last_processed_daily_value)
+    {
+        $this->container['last_processed_daily_value'] = $last_processed_daily_value;
+
+        return $this;
+    }
+
+    /**
      * Gets last_successful_update_time
      * @return \DateTime
      */
@@ -990,64 +2300,232 @@ class UserVariable implements ArrayAccess
     }
 
     /**
-     * Gets standard_deviation
-     * @return float
+     * Gets last_unit_id
+     * @return int
      */
-    public function getStandardDeviation()
+    public function getLastUnitId()
     {
-        return $this->container['standard_deviation'];
+        return $this->container['last_unit_id'];
     }
 
     /**
-     * Sets standard_deviation
-     * @param float $standard_deviation Standard deviation
+     * Sets last_unit_id
+     * @param int $last_unit_id ID of last Unit
      * @return $this
      */
-    public function setStandardDeviation($standard_deviation)
+    public function setLastUnitId($last_unit_id)
     {
-        $this->container['standard_deviation'] = $standard_deviation;
+        $this->container['last_unit_id'] = $last_unit_id;
 
         return $this;
     }
 
     /**
-     * Gets variance
+     * Gets last_value
      * @return float
      */
-    public function getVariance()
+    public function getLastValue()
     {
-        return $this->container['variance'];
+        return $this->container['last_value'];
     }
 
     /**
-     * Sets variance
-     * @param float $variance Variance
+     * Sets last_value
+     * @param float $last_value Last Value
      * @return $this
      */
-    public function setVariance($variance)
+    public function setLastValue($last_value)
     {
-        $this->container['variance'] = $variance;
+        $this->container['last_value'] = $last_value;
 
         return $this;
     }
 
     /**
-     * Gets minimum_recorded_value
-     * @return float
+     * Gets latest_filling_time
+     * @return int
      */
-    public function getMinimumRecordedValue()
+    public function getLatestFillingTime()
     {
-        return $this->container['minimum_recorded_value'];
+        return $this->container['latest_filling_time'];
     }
 
     /**
-     * Sets minimum_recorded_value
-     * @param float $minimum_recorded_value Minimum recorded value of this variable
+     * Sets latest_filling_time
+     * @param int $latest_filling_time Latest filling time
      * @return $this
      */
-    public function setMinimumRecordedValue($minimum_recorded_value)
+    public function setLatestFillingTime($latest_filling_time)
     {
-        $this->container['minimum_recorded_value'] = $minimum_recorded_value;
+        $this->container['latest_filling_time'] = $latest_filling_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets latest_measurement_time
+     * @return int
+     */
+    public function getLatestMeasurementTime()
+    {
+        return $this->container['latest_measurement_time'];
+    }
+
+    /**
+     * Sets latest_measurement_time
+     * @param int $latest_measurement_time Latest measurement time
+     * @return $this
+     */
+    public function setLatestMeasurementTime($latest_measurement_time)
+    {
+        $this->container['latest_measurement_time'] = $latest_measurement_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets latest_source_time
+     * @return int
+     */
+    public function getLatestSourceTime()
+    {
+        return $this->container['latest_source_time'];
+    }
+
+    /**
+     * Sets latest_source_time
+     * @param int $latest_source_time Latest source time
+     * @return $this
+     */
+    public function setLatestSourceTime($latest_source_time)
+    {
+        $this->container['latest_source_time'] = $latest_source_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets latest_user_measurement_time
+     * @return int
+     */
+    public function getLatestUserMeasurementTime()
+    {
+        return $this->container['latest_user_measurement_time'];
+    }
+
+    /**
+     * Sets latest_user_measurement_time
+     * @param int $latest_user_measurement_time Example: 1501383600
+     * @return $this
+     */
+    public function setLatestUserMeasurementTime($latest_user_measurement_time)
+    {
+        $this->container['latest_user_measurement_time'] = $latest_user_measurement_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets latitude
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->container['latitude'];
+    }
+
+    /**
+     * Sets latitude
+     * @param float $latitude Latitude
+     * @return $this
+     */
+    public function setLatitude($latitude)
+    {
+        $this->container['latitude'] = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Gets location
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /**
+     * Sets location
+     * @param string $location Location
+     * @return $this
+     */
+    public function setLocation($location)
+    {
+        $this->container['location'] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Gets longitude
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->container['longitude'];
+    }
+
+    /**
+     * Sets longitude
+     * @param float $longitude Longitude
+     * @return $this
+     */
+    public function setLongitude($longitude)
+    {
+        $this->container['longitude'] = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Gets manual_tracking
+     * @return bool
+     */
+    public function getManualTracking()
+    {
+        return $this->container['manual_tracking'];
+    }
+
+    /**
+     * Sets manual_tracking
+     * @param bool $manual_tracking Example: 1
+     * @return $this
+     */
+    public function setManualTracking($manual_tracking)
+    {
+        $this->container['manual_tracking'] = $manual_tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_allowed_value
+     * @return float
+     */
+    public function getMaximumAllowedValue()
+    {
+        return $this->container['maximum_allowed_value'];
+    }
+
+    /**
+     * Sets maximum_allowed_value
+     * @param float $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
+     * @return $this
+     */
+    public function setMaximumAllowedValue($maximum_allowed_value)
+    {
+        $this->container['maximum_allowed_value'] = $maximum_allowed_value;
 
         return $this;
     }
@@ -1074,6 +2552,27 @@ class UserVariable implements ArrayAccess
     }
 
     /**
+     * Gets maximum_recorded_value
+     * @return double
+     */
+    public function getMaximumRecordedValue()
+    {
+        return $this->container['maximum_recorded_value'];
+    }
+
+    /**
+     * Sets maximum_recorded_value
+     * @param double $maximum_recorded_value Example: 1
+     * @return $this
+     */
+    public function setMaximumRecordedValue($maximum_recorded_value)
+    {
+        $this->container['maximum_recorded_value'] = $maximum_recorded_value;
+
+        return $this;
+    }
+
+    /**
      * Gets mean
      * @return float
      */
@@ -1095,6 +2594,27 @@ class UserVariable implements ArrayAccess
     }
 
     /**
+     * Gets measurements_at_last_analysis
+     * @return int
+     */
+    public function getMeasurementsAtLastAnalysis()
+    {
+        return $this->container['measurements_at_last_analysis'];
+    }
+
+    /**
+     * Sets measurements_at_last_analysis
+     * @param int $measurements_at_last_analysis Number of measurements at last analysis
+     * @return $this
+     */
+    public function setMeasurementsAtLastAnalysis($measurements_at_last_analysis)
+    {
+        $this->container['measurements_at_last_analysis'] = $measurements_at_last_analysis;
+
+        return $this;
+    }
+
+    /**
      * Gets median
      * @return float
      */
@@ -1111,6 +2631,90 @@ class UserVariable implements ArrayAccess
     public function setMedian($median)
     {
         $this->container['median'] = $median;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_allowed_value
+     * @return float
+     */
+    public function getMinimumAllowedValue()
+    {
+        return $this->container['minimum_allowed_value'];
+    }
+
+    /**
+     * Sets minimum_allowed_value
+     * @param float $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
+     * @return $this
+     */
+    public function setMinimumAllowedValue($minimum_allowed_value)
+    {
+        $this->container['minimum_allowed_value'] = $minimum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_recorded_value
+     * @return float
+     */
+    public function getMinimumRecordedValue()
+    {
+        return $this->container['minimum_recorded_value'];
+    }
+
+    /**
+     * Sets minimum_recorded_value
+     * @param float $minimum_recorded_value Minimum recorded value of this variable
+     * @return $this
+     */
+    public function setMinimumRecordedValue($minimum_recorded_value)
+    {
+        $this->container['minimum_recorded_value'] = $minimum_recorded_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets most_common_connector_id
+     * @return int
+     */
+    public function getMostCommonConnectorId()
+    {
+        return $this->container['most_common_connector_id'];
+    }
+
+    /**
+     * Sets most_common_connector_id
+     * @param int $most_common_connector_id Example: 51
+     * @return $this
+     */
+    public function setMostCommonConnectorId($most_common_connector_id)
+    {
+        $this->container['most_common_connector_id'] = $most_common_connector_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets most_common_original_unit_id
+     * @return int
+     */
+    public function getMostCommonOriginalUnitId()
+    {
+        return $this->container['most_common_original_unit_id'];
+    }
+
+    /**
+     * Sets most_common_original_unit_id
+     * @param int $most_common_original_unit_id Example: 23
+     * @return $this
+     */
+    public function setMostCommonOriginalUnitId($most_common_original_unit_id)
+    {
+        $this->container['most_common_original_unit_id'] = $most_common_original_unit_id;
 
         return $this;
     }
@@ -1158,22 +2762,64 @@ class UserVariable implements ArrayAccess
     }
 
     /**
-     * Gets number_of_unique_daily_values
-     * @return float
+     * Gets name
+     * @return string
      */
-    public function getNumberOfUniqueDailyValues()
+    public function getName()
     {
-        return $this->container['number_of_unique_daily_values'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets number_of_unique_daily_values
-     * @param float $number_of_unique_daily_values Number of unique daily values
+     * Sets name
+     * @param string $name Example: Trader Joes Bedtime Tea / Sleepytime Tea (any Brand)
      * @return $this
      */
-    public function setNumberOfUniqueDailyValues($number_of_unique_daily_values)
+    public function setName($name)
     {
-        $this->container['number_of_unique_daily_values'] = $number_of_unique_daily_values;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_aggregate_correlations_as_cause
+     * @return int
+     */
+    public function getNumberOfAggregateCorrelationsAsCause()
+    {
+        return $this->container['number_of_aggregate_correlations_as_cause'];
+    }
+
+    /**
+     * Sets number_of_aggregate_correlations_as_cause
+     * @param int $number_of_aggregate_correlations_as_cause Example: 1
+     * @return $this
+     */
+    public function setNumberOfAggregateCorrelationsAsCause($number_of_aggregate_correlations_as_cause)
+    {
+        $this->container['number_of_aggregate_correlations_as_cause'] = $number_of_aggregate_correlations_as_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_aggregate_correlations_as_effect
+     * @return int
+     */
+    public function getNumberOfAggregateCorrelationsAsEffect()
+    {
+        return $this->container['number_of_aggregate_correlations_as_effect'];
+    }
+
+    /**
+     * Sets number_of_aggregate_correlations_as_effect
+     * @param int $number_of_aggregate_correlations_as_effect Example: 310
+     * @return $this
+     */
+    public function setNumberOfAggregateCorrelationsAsEffect($number_of_aggregate_correlations_as_effect)
+    {
+        $this->container['number_of_aggregate_correlations_as_effect'] = $number_of_aggregate_correlations_as_effect;
 
         return $this;
     }
@@ -1200,6 +2846,573 @@ class UserVariable implements ArrayAccess
     }
 
     /**
+     * Gets number_of_correlations
+     * @return int
+     */
+    public function getNumberOfCorrelations()
+    {
+        return $this->container['number_of_correlations'];
+    }
+
+    /**
+     * Sets number_of_correlations
+     * @param int $number_of_correlations Number of correlations for this variable
+     * @return $this
+     */
+    public function setNumberOfCorrelations($number_of_correlations)
+    {
+        $this->container['number_of_correlations'] = $number_of_correlations;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_measurements
+     * @return int
+     */
+    public function getNumberOfMeasurements()
+    {
+        return $this->container['number_of_measurements'];
+    }
+
+    /**
+     * Sets number_of_measurements
+     * @param int $number_of_measurements Number of measurements
+     * @return $this
+     */
+    public function setNumberOfMeasurements($number_of_measurements)
+    {
+        $this->container['number_of_measurements'] = $number_of_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_processed_daily_measurements
+     * @return int
+     */
+    public function getNumberOfProcessedDailyMeasurements()
+    {
+        return $this->container['number_of_processed_daily_measurements'];
+    }
+
+    /**
+     * Sets number_of_processed_daily_measurements
+     * @param int $number_of_processed_daily_measurements Number of processed measurements
+     * @return $this
+     */
+    public function setNumberOfProcessedDailyMeasurements($number_of_processed_daily_measurements)
+    {
+        $this->container['number_of_processed_daily_measurements'] = $number_of_processed_daily_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_raw_measurements
+     * @return int
+     */
+    public function getNumberOfRawMeasurements()
+    {
+        return $this->container['number_of_raw_measurements'];
+    }
+
+    /**
+     * Sets number_of_raw_measurements
+     * @param int $number_of_raw_measurements Example: 295
+     * @return $this
+     */
+    public function setNumberOfRawMeasurements($number_of_raw_measurements)
+    {
+        $this->container['number_of_raw_measurements'] = $number_of_raw_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_tracking_reminders
+     * @return int
+     */
+    public function getNumberOfTrackingReminders()
+    {
+        return $this->container['number_of_tracking_reminders'];
+    }
+
+    /**
+     * Sets number_of_tracking_reminders
+     * @param int $number_of_tracking_reminders Example: 1
+     * @return $this
+     */
+    public function setNumberOfTrackingReminders($number_of_tracking_reminders)
+    {
+        $this->container['number_of_tracking_reminders'] = $number_of_tracking_reminders;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_unique_daily_values
+     * @return float
+     */
+    public function getNumberOfUniqueDailyValues()
+    {
+        return $this->container['number_of_unique_daily_values'];
+    }
+
+    /**
+     * Sets number_of_unique_daily_values
+     * @param float $number_of_unique_daily_values Number of unique daily values
+     * @return $this
+     */
+    public function setNumberOfUniqueDailyValues($number_of_unique_daily_values)
+    {
+        $this->container['number_of_unique_daily_values'] = $number_of_unique_daily_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_unique_values
+     * @return int
+     */
+    public function getNumberOfUniqueValues()
+    {
+        return $this->container['number_of_unique_values'];
+    }
+
+    /**
+     * Sets number_of_unique_values
+     * @param int $number_of_unique_values Example: 2
+     * @return $this
+     */
+    public function setNumberOfUniqueValues($number_of_unique_values)
+    {
+        $this->container['number_of_unique_values'] = $number_of_unique_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_user_correlations_as_cause
+     * @return int
+     */
+    public function getNumberOfUserCorrelationsAsCause()
+    {
+        return $this->container['number_of_user_correlations_as_cause'];
+    }
+
+    /**
+     * Sets number_of_user_correlations_as_cause
+     * @param int $number_of_user_correlations_as_cause Example: 115
+     * @return $this
+     */
+    public function setNumberOfUserCorrelationsAsCause($number_of_user_correlations_as_cause)
+    {
+        $this->container['number_of_user_correlations_as_cause'] = $number_of_user_correlations_as_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_user_correlations_as_effect
+     * @return int
+     */
+    public function getNumberOfUserCorrelationsAsEffect()
+    {
+        return $this->container['number_of_user_correlations_as_effect'];
+    }
+
+    /**
+     * Sets number_of_user_correlations_as_effect
+     * @param int $number_of_user_correlations_as_effect Example: 29014
+     * @return $this
+     */
+    public function setNumberOfUserCorrelationsAsEffect($number_of_user_correlations_as_effect)
+    {
+        $this->container['number_of_user_correlations_as_effect'] = $number_of_user_correlations_as_effect;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_user_variables
+     * @return int
+     */
+    public function getNumberOfUserVariables()
+    {
+        return $this->container['number_of_user_variables'];
+    }
+
+    /**
+     * Sets number_of_user_variables
+     * @param int $number_of_user_variables Example: 2
+     * @return $this
+     */
+    public function setNumberOfUserVariables($number_of_user_variables)
+    {
+        $this->container['number_of_user_variables'] = $number_of_user_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets onset_delay
+     * @return int
+     */
+    public function getOnsetDelay()
+    {
+        return $this->container['onset_delay'];
+    }
+
+    /**
+     * Sets onset_delay
+     * @param int $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
+     * @return $this
+     */
+    public function setOnsetDelay($onset_delay)
+    {
+        $this->container['onset_delay'] = $onset_delay;
+
+        return $this;
+    }
+
+    /**
+     * Gets onset_delay_in_hours
+     * @return double
+     */
+    public function getOnsetDelayInHours()
+    {
+        return $this->container['onset_delay_in_hours'];
+    }
+
+    /**
+     * Sets onset_delay_in_hours
+     * @param double $onset_delay_in_hours Example: 0.5
+     * @return $this
+     */
+    public function setOnsetDelayInHours($onset_delay_in_hours)
+    {
+        $this->container['onset_delay_in_hours'] = $onset_delay_in_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets outcome
+     * @return bool
+     */
+    public function getOutcome()
+    {
+        return $this->container['outcome'];
+    }
+
+    /**
+     * Sets outcome
+     * @param bool $outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors. These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
+     * @return $this
+     */
+    public function setOutcome($outcome)
+    {
+        $this->container['outcome'] = $outcome;
+
+        return $this;
+    }
+
+    /**
+     * Gets outcome_of_interest
+     * @return int
+     */
+    public function getOutcomeOfInterest()
+    {
+        return $this->container['outcome_of_interest'];
+    }
+
+    /**
+     * Sets outcome_of_interest
+     * @param int $outcome_of_interest Example: 1
+     * @return $this
+     */
+    public function setOutcomeOfInterest($outcome_of_interest)
+    {
+        $this->container['outcome_of_interest'] = $outcome_of_interest;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent
+     * @return string
+     */
+    public function getParent()
+    {
+        return $this->container['parent'];
+    }
+
+    /**
+     * Sets parent
+     * @param string $parent Example:
+     * @return $this
+     */
+    public function setParent($parent)
+    {
+        $this->container['parent'] = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     * @return int
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     * @param int $parent_id ID of the parent variable if this variable has any parent
+     * @return $this
+     */
+    public function setParentId($parent_id)
+    {
+        $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_user_tag_variables
+     * @return \QuantiModo\Client\Model\UserVariableArray
+     */
+    public function getParentUserTagVariables()
+    {
+        return $this->container['parent_user_tag_variables'];
+    }
+
+    /**
+     * Sets parent_user_tag_variables
+     * @param \QuantiModo\Client\Model\UserVariableArray $parent_user_tag_variables
+     * @return $this
+     */
+    public function setParentUserTagVariables($parent_user_tag_variables)
+    {
+        $this->container['parent_user_tag_variables'] = $parent_user_tag_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets png_path
+     * @return string
+     */
+    public function getPngPath()
+    {
+        return $this->container['png_path'];
+    }
+
+    /**
+     * Sets png_path
+     * @param string $png_path Example: img/variable_categories/treatments.png
+     * @return $this
+     */
+    public function setPngPath($png_path)
+    {
+        $this->container['png_path'] = $png_path;
+
+        return $this;
+    }
+
+    /**
+     * Gets png_url
+     * @return string
+     */
+    public function getPngUrl()
+    {
+        return $this->container['png_url'];
+    }
+
+    /**
+     * Sets png_url
+     * @param string $png_url Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/treatments.png
+     * @return $this
+     */
+    public function setPngUrl($png_url)
+    {
+        $this->container['png_url'] = $png_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_of_interest
+     * @return int
+     */
+    public function getPredictorOfInterest()
+    {
+        return $this->container['predictor_of_interest'];
+    }
+
+    /**
+     * Sets predictor_of_interest
+     * @param int $predictor_of_interest Example: 0
+     * @return $this
+     */
+    public function setPredictorOfInterest($predictor_of_interest)
+    {
+        $this->container['predictor_of_interest'] = $predictor_of_interest;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     * @return double
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     * @param double $price Example: 95.4
+     * @return $this
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_url
+     * @return string
+     */
+    public function getProductUrl()
+    {
+        return $this->container['product_url'];
+    }
+
+    /**
+     * Sets product_url
+     * @param string $product_url Example:
+     * @return $this
+     */
+    public function setProductUrl($product_url)
+    {
+        $this->container['product_url'] = $product_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets public
+     * @return int
+     */
+    public function getPublic()
+    {
+        return $this->container['public'];
+    }
+
+    /**
+     * Sets public
+     * @param int $public Is variable public
+     * @return $this
+     */
+    public function setPublic($public)
+    {
+        $this->container['public'] = $public;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_measurements_at_last_analysis
+     * @return int
+     */
+    public function getRawMeasurementsAtLastAnalysis()
+    {
+        return $this->container['raw_measurements_at_last_analysis'];
+    }
+
+    /**
+     * Sets raw_measurements_at_last_analysis
+     * @param int $raw_measurements_at_last_analysis Example: 131
+     * @return $this
+     */
+    public function setRawMeasurementsAtLastAnalysis($raw_measurements_at_last_analysis)
+    {
+        $this->container['raw_measurements_at_last_analysis'] = $raw_measurements_at_last_analysis;
+
+        return $this;
+    }
+
+    /**
+     * Gets second_most_common_value
+     * @return double
+     */
+    public function getSecondMostCommonValue()
+    {
+        return $this->container['second_most_common_value'];
+    }
+
+    /**
+     * Sets second_most_common_value
+     * @param double $second_most_common_value Example: 1
+     * @return $this
+     */
+    public function setSecondMostCommonValue($second_most_common_value)
+    {
+        $this->container['second_most_common_value'] = $second_most_common_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets second_to_last_value
+     * @return double
+     */
+    public function getSecondToLastValue()
+    {
+        return $this->container['second_to_last_value'];
+    }
+
+    /**
+     * Sets second_to_last_value
+     * @param double $second_to_last_value Example: 250
+     * @return $this
+     */
+    public function setSecondToLastValue($second_to_last_value)
+    {
+        $this->container['second_to_last_value'] = $second_to_last_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_user_measurements
+     * @return bool
+     */
+    public function getShareUserMeasurements()
+    {
+        return $this->container['share_user_measurements'];
+    }
+
+    /**
+     * Sets share_user_measurements
+     * @param bool $share_user_measurements Example: 1
+     * @return $this
+     */
+    public function setShareUserMeasurements($share_user_measurements)
+    {
+        $this->container['share_user_measurements'] = $share_user_measurements;
+
+        return $this;
+    }
+
+    /**
      * Gets skewness
      * @return float
      */
@@ -1216,195 +3429,6 @@ class UserVariable implements ArrayAccess
     public function setSkewness($skewness)
     {
         $this->container['skewness'] = $skewness;
-
-        return $this;
-    }
-
-    /**
-     * Gets kurtosis
-     * @return float
-     */
-    public function getKurtosis()
-    {
-        return $this->container['kurtosis'];
-    }
-
-    /**
-     * Sets kurtosis
-     * @param float $kurtosis Kurtosis
-     * @return $this
-     */
-    public function setKurtosis($kurtosis)
-    {
-        $this->container['kurtosis'] = $kurtosis;
-
-        return $this;
-    }
-
-    /**
-     * Gets latitude
-     * @return float
-     */
-    public function getLatitude()
-    {
-        return $this->container['latitude'];
-    }
-
-    /**
-     * Sets latitude
-     * @param float $latitude Latitude
-     * @return $this
-     */
-    public function setLatitude($latitude)
-    {
-        $this->container['latitude'] = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * Gets longitude
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->container['longitude'];
-    }
-
-    /**
-     * Sets longitude
-     * @param float $longitude Longitude
-     * @return $this
-     */
-    public function setLongitude($longitude)
-    {
-        $this->container['longitude'] = $longitude;
-
-        return $this;
-    }
-
-    /**
-     * Gets location
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /**
-     * Sets location
-     * @param string $location Location
-     * @return $this
-     */
-    public function setLocation($location)
-    {
-        $this->container['location'] = $location;
-
-        return $this;
-    }
-
-    /**
-     * Gets experiment_start_time
-     * @return \DateTime
-     */
-    public function getExperimentStartTime()
-    {
-        return $this->container['experiment_start_time'];
-    }
-
-    /**
-     * Sets experiment_start_time
-     * @param \DateTime $experiment_start_time Earliest measurement start_time to be used in analysis. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
-     * @return $this
-     */
-    public function setExperimentStartTime($experiment_start_time)
-    {
-        $this->container['experiment_start_time'] = $experiment_start_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets experiment_end_time
-     * @return \DateTime
-     */
-    public function getExperimentEndTime()
-    {
-        return $this->container['experiment_end_time'];
-    }
-
-    /**
-     * Sets experiment_end_time
-     * @param \DateTime $experiment_end_time Latest measurement start_time to be used in analysis. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
-     * @return $this
-     */
-    public function setExperimentEndTime($experiment_end_time)
-    {
-        $this->container['experiment_end_time'] = $experiment_end_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets outcome
-     * @return bool
-     */
-    public function getOutcome()
-    {
-        return $this->container['outcome'];
-    }
-
-    /**
-     * Sets outcome
-     * @param bool $outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
-     * @return $this
-     */
-    public function setOutcome($outcome)
-    {
-        $this->container['outcome'] = $outcome;
 
         return $this;
     }
@@ -1431,169 +3455,757 @@ class UserVariable implements ArrayAccess
     }
 
     /**
-     * Gets earliest_source_time
-     * @return int
+     * Gets standard_deviation
+     * @return float
      */
-    public function getEarliestSourceTime()
+    public function getStandardDeviation()
     {
-        return $this->container['earliest_source_time'];
+        return $this->container['standard_deviation'];
     }
 
     /**
-     * Sets earliest_source_time
-     * @param int $earliest_source_time Earliest source time
+     * Sets standard_deviation
+     * @param float $standard_deviation Standard deviation
      * @return $this
      */
-    public function setEarliestSourceTime($earliest_source_time)
+    public function setStandardDeviation($standard_deviation)
     {
-        $this->container['earliest_source_time'] = $earliest_source_time;
+        $this->container['standard_deviation'] = $standard_deviation;
 
         return $this;
     }
 
     /**
-     * Gets latest_source_time
-     * @return int
+     * Gets standard_deviation
+     * @return double
      */
-    public function getLatestSourceTime()
+    public function getStandardDeviation()
     {
-        return $this->container['latest_source_time'];
+        return $this->container['standard_deviation'];
     }
 
     /**
-     * Sets latest_source_time
-     * @param int $latest_source_time Latest source time
+     * Sets standard_deviation
+     * @param double $standard_deviation Example: 0.46483219855434
      * @return $this
      */
-    public function setLatestSourceTime($latest_source_time)
+    public function setStandardDeviation($standard_deviation)
     {
-        $this->container['latest_source_time'] = $latest_source_time;
+        $this->container['standard_deviation'] = $standard_deviation;
 
         return $this;
     }
 
     /**
-     * Gets earliest_measurement_time
-     * @return int
-     */
-    public function getEarliestMeasurementTime()
-    {
-        return $this->container['earliest_measurement_time'];
-    }
-
-    /**
-     * Sets earliest_measurement_time
-     * @param int $earliest_measurement_time Earliest measurement time
-     * @return $this
-     */
-    public function setEarliestMeasurementTime($earliest_measurement_time)
-    {
-        $this->container['earliest_measurement_time'] = $earliest_measurement_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets latest_measurement_time
-     * @return int
-     */
-    public function getLatestMeasurementTime()
-    {
-        return $this->container['latest_measurement_time'];
-    }
-
-    /**
-     * Sets latest_measurement_time
-     * @param int $latest_measurement_time Latest measurement time
-     * @return $this
-     */
-    public function setLatestMeasurementTime($latest_measurement_time)
-    {
-        $this->container['latest_measurement_time'] = $latest_measurement_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets earliest_filling_time
-     * @return int
-     */
-    public function getEarliestFillingTime()
-    {
-        return $this->container['earliest_filling_time'];
-    }
-
-    /**
-     * Sets earliest_filling_time
-     * @param int $earliest_filling_time Earliest filling time
-     * @return $this
-     */
-    public function setEarliestFillingTime($earliest_filling_time)
-    {
-        $this->container['earliest_filling_time'] = $earliest_filling_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets latest_filling_time
-     * @return int
-     */
-    public function getLatestFillingTime()
-    {
-        return $this->container['latest_filling_time'];
-    }
-
-    /**
-     * Sets latest_filling_time
-     * @param int $latest_filling_time Latest filling time
-     * @return $this
-     */
-    public function setLatestFillingTime($latest_filling_time)
-    {
-        $this->container['latest_filling_time'] = $latest_filling_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
+     * Gets status
      * @return string
      */
-    public function getImageUrl()
+    public function getStatus()
     {
-        return $this->container['image_url'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets image_url
-     * @param string $image_url 
+     * Sets status
+     * @param string $status status
      * @return $this
      */
-    public function setImageUrl($image_url)
+    public function setStatus($status)
     {
-        $this->container['image_url'] = $image_url;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets ion_icon
+     * Gets subtitle
      * @return string
      */
-    public function getIonIcon()
+    public function getSubtitle()
     {
-        return $this->container['ion_icon'];
+        return $this->container['subtitle'];
     }
 
     /**
-     * Sets ion_icon
-     * @param string $ion_icon 
+     * Sets subtitle
+     * @param string $subtitle Based on sort filter and can be shown beneath variable name on search list
      * @return $this
      */
-    public function setIonIcon($ion_icon)
+    public function setSubtitle($subtitle)
     {
-        $this->container['ion_icon'] = $ion_icon;
+        $this->container['subtitle'] = $subtitle;
+
+        return $this;
+    }
+
+    /**
+     * Gets svg_url
+     * @return string
+     */
+    public function getSvgUrl()
+    {
+        return $this->container['svg_url'];
+    }
+
+    /**
+     * Sets svg_url
+     * @param string $svg_url Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/treatments.svg
+     * @return $this
+     */
+    public function setSvgUrl($svg_url)
+    {
+        $this->container['svg_url'] = $svg_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets third_most_common_value
+     * @return double
+     */
+    public function getThirdMostCommonValue()
+    {
+        return $this->container['third_most_common_value'];
+    }
+
+    /**
+     * Sets third_most_common_value
+     * @param double $third_most_common_value Example: 6
+     * @return $this
+     */
+    public function setThirdMostCommonValue($third_most_common_value)
+    {
+        $this->container['third_most_common_value'] = $third_most_common_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets third_to_last_value
+     * @return double
+     */
+    public function getThirdToLastValue()
+    {
+        return $this->container['third_to_last_value'];
+    }
+
+    /**
+     * Sets third_to_last_value
+     * @param double $third_to_last_value Example: 250
+     * @return $this
+     */
+    public function setThirdToLastValue($third_to_last_value)
+    {
+        $this->container['third_to_last_value'] = $third_to_last_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit
+     * @return \QuantiModo\Client\Model\Unit
+     */
+    public function getUnit()
+    {
+        return $this->container['unit'];
+    }
+
+    /**
+     * Sets unit
+     * @param \QuantiModo\Client\Model\Unit $unit
+     * @return $this
+     */
+    public function setUnit($unit)
+    {
+        $this->container['unit'] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     * @return int
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     * @param int $updated updated
+     * @return $this
+     */
+    public function setUpdated($updated)
+    {
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     * @param \DateTime $updated_at When the record in the database was last updated. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_time
+     * @return \DateTime
+     */
+    public function getUpdatedTime()
+    {
+        return $this->container['updated_time'];
+    }
+
+    /**
+     * Sets updated_time
+     * @param \DateTime $updated_time Example: 2017-07-30 14:58:26
+     * @return $this
+     */
+    public function setUpdatedTime($updated_time)
+    {
+        $this->container['updated_time'] = $updated_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     * @param int $user_id User ID
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_tagged_variables
+     * @return \QuantiModo\Client\Model\UserVariableArray
+     */
+    public function getUserTaggedVariables()
+    {
+        return $this->container['user_tagged_variables'];
+    }
+
+    /**
+     * Sets user_tagged_variables
+     * @param \QuantiModo\Client\Model\UserVariableArray $user_tagged_variables
+     * @return $this
+     */
+    public function setUserTaggedVariables($user_tagged_variables)
+    {
+        $this->container['user_tagged_variables'] = $user_tagged_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_tag_variables
+     * @return \QuantiModo\Client\Model\UserVariableArray
+     */
+    public function getUserTagVariables()
+    {
+        return $this->container['user_tag_variables'];
+    }
+
+    /**
+     * Sets user_tag_variables
+     * @param \QuantiModo\Client\Model\UserVariableArray $user_tag_variables
+     * @return $this
+     */
+    public function setUserTagVariables($user_tag_variables)
+    {
+        $this->container['user_tag_variables'] = $user_tag_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_abbreviated_name
+     * @return string
+     */
+    public function getUserVariableUnitAbbreviatedName()
+    {
+        return $this->container['user_variable_unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_abbreviated_name
+     * @param string $user_variable_unit_abbreviated_name Example: count
+     * @return $this
+     */
+    public function setUserVariableUnitAbbreviatedName($user_variable_unit_abbreviated_name)
+    {
+        $this->container['user_variable_unit_abbreviated_name'] = $user_variable_unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_category_id
+     * @return int
+     */
+    public function getUserVariableUnitCategoryId()
+    {
+        return $this->container['user_variable_unit_category_id'];
+    }
+
+    /**
+     * Sets user_variable_unit_category_id
+     * @param int $user_variable_unit_category_id Example: 6
+     * @return $this
+     */
+    public function setUserVariableUnitCategoryId($user_variable_unit_category_id)
+    {
+        $this->container['user_variable_unit_category_id'] = $user_variable_unit_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_category_name
+     * @return string
+     */
+    public function getUserVariableUnitCategoryName()
+    {
+        return $this->container['user_variable_unit_category_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_category_name
+     * @param string $user_variable_unit_category_name Example: Miscellany
+     * @return $this
+     */
+    public function setUserVariableUnitCategoryName($user_variable_unit_category_name)
+    {
+        $this->container['user_variable_unit_category_name'] = $user_variable_unit_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_id
+     * @return int
+     */
+    public function getUserVariableUnitId()
+    {
+        return $this->container['user_variable_unit_id'];
+    }
+
+    /**
+     * Sets user_variable_unit_id
+     * @param int $user_variable_unit_id Example: 23
+     * @return $this
+     */
+    public function setUserVariableUnitId($user_variable_unit_id)
+    {
+        $this->container['user_variable_unit_id'] = $user_variable_unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_name
+     * @return string
+     */
+    public function getUserVariableUnitName()
+    {
+        return $this->container['user_variable_unit_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_name
+     * @param string $user_variable_unit_name Example: Count
+     * @return $this
+     */
+    public function setUserVariableUnitName($user_variable_unit_name)
+    {
+        $this->container['user_variable_unit_name'] = $user_variable_unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_filling_value
+     * @return double
+     */
+    public function getUserVariableFillingValue()
+    {
+        return $this->container['user_variable_filling_value'];
+    }
+
+    /**
+     * Sets user_variable_filling_value
+     * @param double $user_variable_filling_value Example: -1
+     * @return $this
+     */
+    public function setUserVariableFillingValue($user_variable_filling_value)
+    {
+        $this->container['user_variable_filling_value'] = $user_variable_filling_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_most_common_connector_id
+     * @return int
+     */
+    public function getUserVariableMostCommonConnectorId()
+    {
+        return $this->container['user_variable_most_common_connector_id'];
+    }
+
+    /**
+     * Sets user_variable_most_common_connector_id
+     * @param int $user_variable_most_common_connector_id Example: 51
+     * @return $this
+     */
+    public function setUserVariableMostCommonConnectorId($user_variable_most_common_connector_id)
+    {
+        $this->container['user_variable_most_common_connector_id'] = $user_variable_most_common_connector_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_updated_at
+     * @return \DateTime
+     */
+    public function getUserVariableUpdatedAt()
+    {
+        return $this->container['user_variable_updated_at'];
+    }
+
+    /**
+     * Sets user_variable_updated_at
+     * @param \DateTime $user_variable_updated_at Example: 2017-07-30 14:58:26
+     * @return $this
+     */
+    public function setUserVariableUpdatedAt($user_variable_updated_at)
+    {
+        $this->container['user_variable_updated_at'] = $user_variable_updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_valence
+     * @return string
+     */
+    public function getUserVariableValence()
+    {
+        return $this->container['user_variable_valence'];
+    }
+
+    /**
+     * Sets user_variable_valence
+     * @param string $user_variable_valence Example:
+     * @return $this
+     */
+    public function setUserVariableValence($user_variable_valence)
+    {
+        $this->container['user_variable_valence'] = $user_variable_valence;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_variable_category_id
+     * @return int
+     */
+    public function getUserVariableVariableCategoryId()
+    {
+        return $this->container['user_variable_variable_category_id'];
+    }
+
+    /**
+     * Sets user_variable_variable_category_id
+     * @param int $user_variable_variable_category_id Example: 13
+     * @return $this
+     */
+    public function setUserVariableVariableCategoryId($user_variable_variable_category_id)
+    {
+        $this->container['user_variable_variable_category_id'] = $user_variable_variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_variable_category_name
+     * @return string
+     */
+    public function getUserVariableVariableCategoryName()
+    {
+        return $this->container['user_variable_variable_category_name'];
+    }
+
+    /**
+     * Sets user_variable_variable_category_name
+     * @param string $user_variable_variable_category_name Example: Treatments
+     * @return $this
+     */
+    public function setUserVariableVariableCategoryName($user_variable_variable_category_name)
+    {
+        $this->container['user_variable_variable_category_name'] = $user_variable_variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_wikipedia_title
+     * @return string
+     */
+    public function getUserVariableWikipediaTitle()
+    {
+        return $this->container['user_variable_wikipedia_title'];
+    }
+
+    /**
+     * Sets user_variable_wikipedia_title
+     * @param string $user_variable_wikipedia_title Example:
+     * @return $this
+     */
+    public function setUserVariableWikipediaTitle($user_variable_wikipedia_title)
+    {
+        $this->container['user_variable_wikipedia_title'] = $user_variable_wikipedia_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets valence
+     * @return string
+     */
+    public function getValence()
+    {
+        return $this->container['valence'];
+    }
+
+    /**
+     * Sets valence
+     * @param string $valence Example: negative
+     * @return $this
+     */
+    public function setValence($valence)
+    {
+        $this->container['valence'] = $valence;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category
+     * @return \QuantiModo\Client\Model\VariableCategory
+     */
+    public function getVariableCategory()
+    {
+        return $this->container['variable_category'];
+    }
+
+    /**
+     * Sets variable_category
+     * @param \QuantiModo\Client\Model\VariableCategory $variable_category
+     * @return $this
+     */
+    public function setVariableCategory($variable_category)
+    {
+        $this->container['variable_category'] = $variable_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_id
+     * @return int
+     */
+    public function getVariableCategoryId()
+    {
+        return $this->container['variable_category_id'];
+    }
+
+    /**
+     * Sets variable_category_id
+     * @param int $variable_category_id ID of variable category
+     * @return $this
+     */
+    public function setVariableCategoryId($variable_category_id)
+    {
+        $this->container['variable_category_id'] = $variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_image_url
+     * @return string
+     */
+    public function getVariableCategoryImageUrl()
+    {
+        return $this->container['variable_category_image_url'];
+    }
+
+    /**
+     * Sets variable_category_image_url
+     * @param string $variable_category_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Healthcare/pill-96.png
+     * @return $this
+     */
+    public function setVariableCategoryImageUrl($variable_category_image_url)
+    {
+        $this->container['variable_category_image_url'] = $variable_category_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_name
+     * @return string
+     */
+    public function getVariableCategoryName()
+    {
+        return $this->container['variable_category_name'];
+    }
+
+    /**
+     * Sets variable_category_name
+     * @param string $variable_category_name Example: Treatments
+     * @return $this
+     */
+    public function setVariableCategoryName($variable_category_name)
+    {
+        $this->container['variable_category_name'] = $variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_filling_value
+     * @return double
+     */
+    public function getVariableFillingValue()
+    {
+        return $this->container['variable_filling_value'];
+    }
+
+    /**
+     * Sets variable_filling_value
+     * @param double $variable_filling_value Example: -1
+     * @return $this
+     */
+    public function setVariableFillingValue($variable_filling_value)
+    {
+        $this->container['variable_filling_value'] = $variable_filling_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_id
+     * @return int
+     */
+    public function getVariableId()
+    {
+        return $this->container['variable_id'];
+    }
+
+    /**
+     * Sets variable_id
+     * @param int $variable_id ID of variable
+     * @return $this
+     */
+    public function setVariableId($variable_id)
+    {
+        $this->container['variable_id'] = $variable_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_name
+     * @return string
+     */
+    public function getVariableName()
+    {
+        return $this->container['variable_name'];
+    }
+
+    /**
+     * Sets variable_name
+     * @param string $variable_name Example: Trader Joes Bedtime Tea / Sleepytime Tea (any Brand)
+     * @return $this
+     */
+    public function setVariableName($variable_name)
+    {
+        $this->container['variable_name'] = $variable_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets variance
+     * @return float
+     */
+    public function getVariance()
+    {
+        return $this->container['variance'];
+    }
+
+    /**
+     * Sets variance
+     * @param float $variance Variance
+     * @return $this
+     */
+    public function setVariance($variance)
+    {
+        $this->container['variance'] = $variance;
+
+        return $this;
+    }
+
+    /**
+     * Gets wikipedia_title
+     * @return string
+     */
+    public function getWikipediaTitle()
+    {
+        return $this->container['wikipedia_title'];
+    }
+
+    /**
+     * Sets wikipedia_title
+     * @param string $wikipedia_title Example:
+     * @return $this
+     */
+    public function setWikipediaTitle($wikipedia_title)
+    {
+        $this->container['wikipedia_title'] = $wikipedia_title;
 
         return $this;
     }

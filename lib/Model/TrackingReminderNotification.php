@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -54,23 +54,145 @@ class TrackingReminderNotification implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'tracking_reminder_id' => 'int',
+        'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]',
+        'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'client_id' => 'string',
-        'user_id' => 'int',
-        'variable_id' => 'int',
-        'pending_reminder_time' => '\DateTime',
+        'combination_operation' => 'string',
+        'created_at' => '\DateTime',
+        'unit_abbreviated_name' => 'string',
+        'unit_category_id' => 'int',
+        'unit_category_name' => 'string',
+        'unit_id' => 'int',
+        'unit_name' => 'string',
         'default_value' => 'float',
-        'reminder_sound' => 'string',
-        'pop_up' => 'bool',
-        'sms' => 'bool',
+        'description' => 'string',
         'email' => 'bool',
+        'filling_value' => 'int',
+        'icon_icon' => 'string',
+        'id' => 'int',
+        'image_url' => 'string',
+        'input_type' => 'string',
+        'ion_icon' => 'string',
+        'last_value' => 'double',
+        'manual_tracking' => 'bool',
+        'maximum_allowed_value' => 'int',
+        'minimum_allowed_value' => 'int',
+        'most_common_value' => 'double',
         'notification_bar' => 'bool',
+        'notified_at' => '\DateTime',
+        'number_of_unique_values' => 'int',
+        'png_path' => 'string',
+        'png_url' => 'string',
+        'pop_up' => 'bool',
+        'reminder_end_time' => '\DateTime',
+        'reminder_frequency' => 'int',
+        'reminder_sound' => 'string',
+        'reminder_start_time' => 'string',
+        'reminder_time' => '\DateTime',
+        'second_most_common_value' => 'double',
+        'second_to_last_value' => 'double',
+        'sms' => 'bool',
+        'svg_url' => 'string',
+        'third_most_common_value' => 'double',
+        'third_to_last_value' => 'double',
+        'title' => 'string',
+        'total' => 'double',
+        'track_all_actions' => '\QuantiModo\Client\Model\TrackingReminderNotificationTrackAllAction[]',
+        'tracking_reminder_id' => 'int',
+        'tracking_reminder_image_url' => 'string',
+        'tracking_reminder_notification_id' => 'int',
+        'tracking_reminder_notification_time' => '\DateTime',
+        'tracking_reminder_notification_time_epoch' => 'int',
+        'tracking_reminder_notification_time_local' => 'string',
         'updated_at' => '\DateTime',
-        'variable_name' => 'string',
+        'user_id' => 'int',
+        'user_variable_unit_abbreviated_name' => 'string',
+        'user_variable_unit_category_id' => 'int',
+        'user_variable_unit_category_name' => 'string',
+        'user_variable_unit_id' => 'int',
+        'user_variable_unit_name' => 'string',
+        'user_variable_variable_category_id' => 'int',
+        'user_variable_variable_category_name' => 'string',
+        'valence' => 'string',
+        'variable_category_id' => 'int',
+        'variable_category_image_url' => 'string',
         'variable_category_name' => 'string',
-        'abbreviated_unit_name' => 'string',
-        'combination_operation' => 'string'
+        'variable_id' => 'int',
+        'variable_image_url' => 'string',
+        'variable_name' => 'string'
+    ];
+
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'action_array' => null,
+        'available_units' => null,
+        'client_id' => null,
+        'combination_operation' => null,
+        'created_at' => 'date-time',
+        'unit_abbreviated_name' => null,
+        'unit_category_id' => null,
+        'unit_category_name' => null,
+        'unit_id' => null,
+        'unit_name' => null,
+        'default_value' => 'float',
+        'description' => null,
+        'email' => null,
+        'filling_value' => null,
+        'icon_icon' => null,
+        'id' => 'int32',
+        'image_url' => null,
+        'input_type' => null,
+        'ion_icon' => null,
+        'last_value' => 'double',
+        'manual_tracking' => null,
+        'maximum_allowed_value' => null,
+        'minimum_allowed_value' => null,
+        'most_common_value' => 'double',
+        'notification_bar' => null,
+        'notified_at' => 'date-time',
+        'number_of_unique_values' => null,
+        'png_path' => null,
+        'png_url' => null,
+        'pop_up' => null,
+        'reminder_end_time' => 'date-time',
+        'reminder_frequency' => null,
+        'reminder_sound' => null,
+        'reminder_start_time' => null,
+        'reminder_time' => 'date-time',
+        'second_most_common_value' => 'double',
+        'second_to_last_value' => 'double',
+        'sms' => null,
+        'svg_url' => null,
+        'third_most_common_value' => 'double',
+        'third_to_last_value' => 'double',
+        'title' => null,
+        'total' => 'double',
+        'track_all_actions' => null,
+        'tracking_reminder_id' => 'int32',
+        'tracking_reminder_image_url' => null,
+        'tracking_reminder_notification_id' => null,
+        'tracking_reminder_notification_time' => 'date-time',
+        'tracking_reminder_notification_time_epoch' => null,
+        'tracking_reminder_notification_time_local' => null,
+        'updated_at' => 'date-time',
+        'user_id' => 'int32',
+        'user_variable_unit_abbreviated_name' => null,
+        'user_variable_unit_category_id' => null,
+        'user_variable_unit_category_name' => null,
+        'user_variable_unit_id' => null,
+        'user_variable_unit_name' => null,
+        'user_variable_variable_category_id' => null,
+        'user_variable_variable_category_name' => null,
+        'valence' => null,
+        'variable_category_id' => null,
+        'variable_category_image_url' => null,
+        'variable_category_name' => null,
+        'variable_id' => 'int32',
+        'variable_image_url' => null,
+        'variable_name' => null
     ];
 
     public static function swaggerTypes()
@@ -78,28 +200,82 @@ class TrackingReminderNotification implements ArrayAccess
         return self::$swaggerTypes;
     }
 
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
+    }
+
     /**
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'tracking_reminder_id' => 'trackingReminderId',
+        'action_array' => 'actionArray',
+        'available_units' => 'availableUnits',
         'client_id' => 'clientId',
-        'user_id' => 'userId',
-        'variable_id' => 'variableId',
-        'pending_reminder_time' => 'pendingReminderTime',
+        'combination_operation' => 'combinationOperation',
+        'created_at' => 'createdAt',
+        'unit_abbreviated_name' => 'unitAbbreviatedName',
+        'unit_category_id' => 'unitCategoryId',
+        'unit_category_name' => 'unitCategoryName',
+        'unit_id' => 'unitId',
+        'unit_name' => 'unitName',
         'default_value' => 'defaultValue',
-        'reminder_sound' => 'reminderSound',
-        'pop_up' => 'popUp',
-        'sms' => 'sms',
+        'description' => 'description',
         'email' => 'email',
+        'filling_value' => 'fillingValue',
+        'icon_icon' => 'iconIcon',
+        'id' => 'id',
+        'image_url' => 'imageUrl',
+        'input_type' => 'inputType',
+        'ion_icon' => 'ionIcon',
+        'last_value' => 'lastValue',
+        'manual_tracking' => 'manualTracking',
+        'maximum_allowed_value' => 'maximumAllowedValue',
+        'minimum_allowed_value' => 'minimumAllowedValue',
+        'most_common_value' => 'mostCommonValue',
         'notification_bar' => 'notificationBar',
+        'notified_at' => 'notifiedAt',
+        'number_of_unique_values' => 'numberOfUniqueValues',
+        'png_path' => 'pngPath',
+        'png_url' => 'pngUrl',
+        'pop_up' => 'popUp',
+        'reminder_end_time' => 'reminderEndTime',
+        'reminder_frequency' => 'reminderFrequency',
+        'reminder_sound' => 'reminderSound',
+        'reminder_start_time' => 'reminderStartTime',
+        'reminder_time' => 'reminderTime',
+        'second_most_common_value' => 'secondMostCommonValue',
+        'second_to_last_value' => 'secondToLastValue',
+        'sms' => 'sms',
+        'svg_url' => 'svgUrl',
+        'third_most_common_value' => 'thirdMostCommonValue',
+        'third_to_last_value' => 'thirdToLastValue',
+        'title' => 'title',
+        'total' => 'total',
+        'track_all_actions' => 'trackAllActions',
+        'tracking_reminder_id' => 'trackingReminderId',
+        'tracking_reminder_image_url' => 'trackingReminderImageUrl',
+        'tracking_reminder_notification_id' => 'trackingReminderNotificationId',
+        'tracking_reminder_notification_time' => 'trackingReminderNotificationTime',
+        'tracking_reminder_notification_time_epoch' => 'trackingReminderNotificationTimeEpoch',
+        'tracking_reminder_notification_time_local' => 'trackingReminderNotificationTimeLocal',
         'updated_at' => 'updatedAt',
-        'variable_name' => 'variableName',
+        'user_id' => 'userId',
+        'user_variable_unit_abbreviated_name' => 'userVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'userVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'userVariableUnitCategoryName',
+        'user_variable_unit_id' => 'userVariableUnitId',
+        'user_variable_unit_name' => 'userVariableUnitName',
+        'user_variable_variable_category_id' => 'userVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'userVariableVariableCategoryName',
+        'valence' => 'valence',
+        'variable_category_id' => 'variableCategoryId',
+        'variable_category_image_url' => 'variableCategoryImageUrl',
         'variable_category_name' => 'variableCategoryName',
-        'abbreviated_unit_name' => 'abbreviatedUnitName',
-        'combination_operation' => 'combinationOperation'
+        'variable_id' => 'variableId',
+        'variable_image_url' => 'variableImageUrl',
+        'variable_name' => 'variableName'
     ];
 
 
@@ -108,23 +284,72 @@ class TrackingReminderNotification implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'tracking_reminder_id' => 'setTrackingReminderId',
+        'action_array' => 'setActionArray',
+        'available_units' => 'setAvailableUnits',
         'client_id' => 'setClientId',
-        'user_id' => 'setUserId',
-        'variable_id' => 'setVariableId',
-        'pending_reminder_time' => 'setPendingReminderTime',
+        'combination_operation' => 'setCombinationOperation',
+        'created_at' => 'setCreatedAt',
+        'unit_abbreviated_name' => 'setUnitAbbreviatedName',
+        'unit_category_id' => 'setUnitCategoryId',
+        'unit_category_name' => 'setUnitCategoryName',
+        'unit_id' => 'setUnitId',
+        'unit_name' => 'setUnitName',
         'default_value' => 'setDefaultValue',
-        'reminder_sound' => 'setReminderSound',
-        'pop_up' => 'setPopUp',
-        'sms' => 'setSms',
+        'description' => 'setDescription',
         'email' => 'setEmail',
+        'filling_value' => 'setFillingValue',
+        'icon_icon' => 'setIconIcon',
+        'id' => 'setId',
+        'image_url' => 'setImageUrl',
+        'input_type' => 'setInputType',
+        'ion_icon' => 'setIonIcon',
+        'last_value' => 'setLastValue',
+        'manual_tracking' => 'setManualTracking',
+        'maximum_allowed_value' => 'setMaximumAllowedValue',
+        'minimum_allowed_value' => 'setMinimumAllowedValue',
+        'most_common_value' => 'setMostCommonValue',
         'notification_bar' => 'setNotificationBar',
+        'notified_at' => 'setNotifiedAt',
+        'number_of_unique_values' => 'setNumberOfUniqueValues',
+        'png_path' => 'setPngPath',
+        'png_url' => 'setPngUrl',
+        'pop_up' => 'setPopUp',
+        'reminder_end_time' => 'setReminderEndTime',
+        'reminder_frequency' => 'setReminderFrequency',
+        'reminder_sound' => 'setReminderSound',
+        'reminder_start_time' => 'setReminderStartTime',
+        'reminder_time' => 'setReminderTime',
+        'second_most_common_value' => 'setSecondMostCommonValue',
+        'second_to_last_value' => 'setSecondToLastValue',
+        'sms' => 'setSms',
+        'svg_url' => 'setSvgUrl',
+        'third_most_common_value' => 'setThirdMostCommonValue',
+        'third_to_last_value' => 'setThirdToLastValue',
+        'title' => 'setTitle',
+        'total' => 'setTotal',
+        'track_all_actions' => 'setTrackAllActions',
+        'tracking_reminder_id' => 'setTrackingReminderId',
+        'tracking_reminder_image_url' => 'setTrackingReminderImageUrl',
+        'tracking_reminder_notification_id' => 'setTrackingReminderNotificationId',
+        'tracking_reminder_notification_time' => 'setTrackingReminderNotificationTime',
+        'tracking_reminder_notification_time_epoch' => 'setTrackingReminderNotificationTimeEpoch',
+        'tracking_reminder_notification_time_local' => 'setTrackingReminderNotificationTimeLocal',
         'updated_at' => 'setUpdatedAt',
-        'variable_name' => 'setVariableName',
+        'user_id' => 'setUserId',
+        'user_variable_unit_abbreviated_name' => 'setUserVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'setUserVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'setUserVariableUnitCategoryName',
+        'user_variable_unit_id' => 'setUserVariableUnitId',
+        'user_variable_unit_name' => 'setUserVariableUnitName',
+        'user_variable_variable_category_id' => 'setUserVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'setUserVariableVariableCategoryName',
+        'valence' => 'setValence',
+        'variable_category_id' => 'setVariableCategoryId',
+        'variable_category_image_url' => 'setVariableCategoryImageUrl',
         'variable_category_name' => 'setVariableCategoryName',
-        'abbreviated_unit_name' => 'setAbbreviatedUnitName',
-        'combination_operation' => 'setCombinationOperation'
+        'variable_id' => 'setVariableId',
+        'variable_image_url' => 'setVariableImageUrl',
+        'variable_name' => 'setVariableName'
     ];
 
 
@@ -133,23 +358,72 @@ class TrackingReminderNotification implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'tracking_reminder_id' => 'getTrackingReminderId',
+        'action_array' => 'getActionArray',
+        'available_units' => 'getAvailableUnits',
         'client_id' => 'getClientId',
-        'user_id' => 'getUserId',
-        'variable_id' => 'getVariableId',
-        'pending_reminder_time' => 'getPendingReminderTime',
+        'combination_operation' => 'getCombinationOperation',
+        'created_at' => 'getCreatedAt',
+        'unit_abbreviated_name' => 'getUnitAbbreviatedName',
+        'unit_category_id' => 'getUnitCategoryId',
+        'unit_category_name' => 'getUnitCategoryName',
+        'unit_id' => 'getUnitId',
+        'unit_name' => 'getUnitName',
         'default_value' => 'getDefaultValue',
-        'reminder_sound' => 'getReminderSound',
-        'pop_up' => 'getPopUp',
-        'sms' => 'getSms',
+        'description' => 'getDescription',
         'email' => 'getEmail',
+        'filling_value' => 'getFillingValue',
+        'icon_icon' => 'getIconIcon',
+        'id' => 'getId',
+        'image_url' => 'getImageUrl',
+        'input_type' => 'getInputType',
+        'ion_icon' => 'getIonIcon',
+        'last_value' => 'getLastValue',
+        'manual_tracking' => 'getManualTracking',
+        'maximum_allowed_value' => 'getMaximumAllowedValue',
+        'minimum_allowed_value' => 'getMinimumAllowedValue',
+        'most_common_value' => 'getMostCommonValue',
         'notification_bar' => 'getNotificationBar',
+        'notified_at' => 'getNotifiedAt',
+        'number_of_unique_values' => 'getNumberOfUniqueValues',
+        'png_path' => 'getPngPath',
+        'png_url' => 'getPngUrl',
+        'pop_up' => 'getPopUp',
+        'reminder_end_time' => 'getReminderEndTime',
+        'reminder_frequency' => 'getReminderFrequency',
+        'reminder_sound' => 'getReminderSound',
+        'reminder_start_time' => 'getReminderStartTime',
+        'reminder_time' => 'getReminderTime',
+        'second_most_common_value' => 'getSecondMostCommonValue',
+        'second_to_last_value' => 'getSecondToLastValue',
+        'sms' => 'getSms',
+        'svg_url' => 'getSvgUrl',
+        'third_most_common_value' => 'getThirdMostCommonValue',
+        'third_to_last_value' => 'getThirdToLastValue',
+        'title' => 'getTitle',
+        'total' => 'getTotal',
+        'track_all_actions' => 'getTrackAllActions',
+        'tracking_reminder_id' => 'getTrackingReminderId',
+        'tracking_reminder_image_url' => 'getTrackingReminderImageUrl',
+        'tracking_reminder_notification_id' => 'getTrackingReminderNotificationId',
+        'tracking_reminder_notification_time' => 'getTrackingReminderNotificationTime',
+        'tracking_reminder_notification_time_epoch' => 'getTrackingReminderNotificationTimeEpoch',
+        'tracking_reminder_notification_time_local' => 'getTrackingReminderNotificationTimeLocal',
         'updated_at' => 'getUpdatedAt',
-        'variable_name' => 'getVariableName',
+        'user_id' => 'getUserId',
+        'user_variable_unit_abbreviated_name' => 'getUserVariableUnitAbbreviatedName',
+        'user_variable_unit_category_id' => 'getUserVariableUnitCategoryId',
+        'user_variable_unit_category_name' => 'getUserVariableUnitCategoryName',
+        'user_variable_unit_id' => 'getUserVariableUnitId',
+        'user_variable_unit_name' => 'getUserVariableUnitName',
+        'user_variable_variable_category_id' => 'getUserVariableVariableCategoryId',
+        'user_variable_variable_category_name' => 'getUserVariableVariableCategoryName',
+        'valence' => 'getValence',
+        'variable_category_id' => 'getVariableCategoryId',
+        'variable_category_image_url' => 'getVariableCategoryImageUrl',
         'variable_category_name' => 'getVariableCategoryName',
-        'abbreviated_unit_name' => 'getAbbreviatedUnitName',
-        'combination_operation' => 'getCombinationOperation'
+        'variable_id' => 'getVariableId',
+        'variable_image_url' => 'getVariableImageUrl',
+        'variable_name' => 'getVariableName'
     ];
 
     public static function attributeMap()
@@ -197,23 +471,72 @@ class TrackingReminderNotification implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['tracking_reminder_id'] = isset($data['tracking_reminder_id']) ? $data['tracking_reminder_id'] : null;
+        $this->container['action_array'] = isset($data['action_array']) ? $data['action_array'] : null;
+        $this->container['available_units'] = isset($data['available_units']) ? $data['available_units'] : null;
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
-        $this->container['pending_reminder_time'] = isset($data['pending_reminder_time']) ? $data['pending_reminder_time'] : null;
-        $this->container['default_value'] = isset($data['default_value']) ? $data['default_value'] : null;
-        $this->container['reminder_sound'] = isset($data['reminder_sound']) ? $data['reminder_sound'] : null;
-        $this->container['pop_up'] = isset($data['pop_up']) ? $data['pop_up'] : null;
-        $this->container['sms'] = isset($data['sms']) ? $data['sms'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['notification_bar'] = isset($data['notification_bar']) ? $data['notification_bar'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
-        $this->container['variable_name'] = isset($data['variable_name']) ? $data['variable_name'] : null;
-        $this->container['variable_category_name'] = isset($data['variable_category_name']) ? $data['variable_category_name'] : null;
-        $this->container['abbreviated_unit_name'] = isset($data['abbreviated_unit_name']) ? $data['abbreviated_unit_name'] : null;
         $this->container['combination_operation'] = isset($data['combination_operation']) ? $data['combination_operation'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['unit_abbreviated_name'] = isset($data['unit_abbreviated_name']) ? $data['unit_abbreviated_name'] : null;
+        $this->container['unit_category_id'] = isset($data['unit_category_id']) ? $data['unit_category_id'] : null;
+        $this->container['unit_category_name'] = isset($data['unit_category_name']) ? $data['unit_category_name'] : null;
+        $this->container['unit_id'] = isset($data['unit_id']) ? $data['unit_id'] : null;
+        $this->container['unit_name'] = isset($data['unit_name']) ? $data['unit_name'] : null;
+        $this->container['default_value'] = isset($data['default_value']) ? $data['default_value'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
+        $this->container['icon_icon'] = isset($data['icon_icon']) ? $data['icon_icon'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
+        $this->container['input_type'] = isset($data['input_type']) ? $data['input_type'] : null;
+        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
+        $this->container['last_value'] = isset($data['last_value']) ? $data['last_value'] : null;
+        $this->container['manual_tracking'] = isset($data['manual_tracking']) ? $data['manual_tracking'] : null;
+        $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
+        $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
+        $this->container['most_common_value'] = isset($data['most_common_value']) ? $data['most_common_value'] : null;
+        $this->container['notification_bar'] = isset($data['notification_bar']) ? $data['notification_bar'] : null;
+        $this->container['notified_at'] = isset($data['notified_at']) ? $data['notified_at'] : null;
+        $this->container['number_of_unique_values'] = isset($data['number_of_unique_values']) ? $data['number_of_unique_values'] : null;
+        $this->container['png_path'] = isset($data['png_path']) ? $data['png_path'] : null;
+        $this->container['png_url'] = isset($data['png_url']) ? $data['png_url'] : null;
+        $this->container['pop_up'] = isset($data['pop_up']) ? $data['pop_up'] : null;
+        $this->container['reminder_end_time'] = isset($data['reminder_end_time']) ? $data['reminder_end_time'] : null;
+        $this->container['reminder_frequency'] = isset($data['reminder_frequency']) ? $data['reminder_frequency'] : null;
+        $this->container['reminder_sound'] = isset($data['reminder_sound']) ? $data['reminder_sound'] : null;
+        $this->container['reminder_start_time'] = isset($data['reminder_start_time']) ? $data['reminder_start_time'] : null;
+        $this->container['reminder_time'] = isset($data['reminder_time']) ? $data['reminder_time'] : null;
+        $this->container['second_most_common_value'] = isset($data['second_most_common_value']) ? $data['second_most_common_value'] : null;
+        $this->container['second_to_last_value'] = isset($data['second_to_last_value']) ? $data['second_to_last_value'] : null;
+        $this->container['sms'] = isset($data['sms']) ? $data['sms'] : null;
+        $this->container['svg_url'] = isset($data['svg_url']) ? $data['svg_url'] : null;
+        $this->container['third_most_common_value'] = isset($data['third_most_common_value']) ? $data['third_most_common_value'] : null;
+        $this->container['third_to_last_value'] = isset($data['third_to_last_value']) ? $data['third_to_last_value'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['track_all_actions'] = isset($data['track_all_actions']) ? $data['track_all_actions'] : null;
+        $this->container['tracking_reminder_id'] = isset($data['tracking_reminder_id']) ? $data['tracking_reminder_id'] : null;
+        $this->container['tracking_reminder_image_url'] = isset($data['tracking_reminder_image_url']) ? $data['tracking_reminder_image_url'] : null;
+        $this->container['tracking_reminder_notification_id'] = isset($data['tracking_reminder_notification_id']) ? $data['tracking_reminder_notification_id'] : null;
+        $this->container['tracking_reminder_notification_time'] = isset($data['tracking_reminder_notification_time']) ? $data['tracking_reminder_notification_time'] : null;
+        $this->container['tracking_reminder_notification_time_epoch'] = isset($data['tracking_reminder_notification_time_epoch']) ? $data['tracking_reminder_notification_time_epoch'] : null;
+        $this->container['tracking_reminder_notification_time_local'] = isset($data['tracking_reminder_notification_time_local']) ? $data['tracking_reminder_notification_time_local'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['user_variable_unit_abbreviated_name'] = isset($data['user_variable_unit_abbreviated_name']) ? $data['user_variable_unit_abbreviated_name'] : null;
+        $this->container['user_variable_unit_category_id'] = isset($data['user_variable_unit_category_id']) ? $data['user_variable_unit_category_id'] : null;
+        $this->container['user_variable_unit_category_name'] = isset($data['user_variable_unit_category_name']) ? $data['user_variable_unit_category_name'] : null;
+        $this->container['user_variable_unit_id'] = isset($data['user_variable_unit_id']) ? $data['user_variable_unit_id'] : null;
+        $this->container['user_variable_unit_name'] = isset($data['user_variable_unit_name']) ? $data['user_variable_unit_name'] : null;
+        $this->container['user_variable_variable_category_id'] = isset($data['user_variable_variable_category_id']) ? $data['user_variable_variable_category_id'] : null;
+        $this->container['user_variable_variable_category_name'] = isset($data['user_variable_variable_category_name']) ? $data['user_variable_variable_category_name'] : null;
+        $this->container['valence'] = isset($data['valence']) ? $data['valence'] : null;
+        $this->container['variable_category_id'] = isset($data['variable_category_id']) ? $data['variable_category_id'] : null;
+        $this->container['variable_category_image_url'] = isset($data['variable_category_image_url']) ? $data['variable_category_image_url'] : null;
+        $this->container['variable_category_name'] = isset($data['variable_category_name']) ? $data['variable_category_name'] : null;
+        $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
+        $this->container['variable_image_url'] = isset($data['variable_image_url']) ? $data['variable_image_url'] : null;
+        $this->container['variable_name'] = isset($data['variable_name']) ? $data['variable_name'] : null;
     }
 
     /**
@@ -225,17 +548,29 @@ class TrackingReminderNotification implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['action_array'] === null) {
+            $invalid_properties[] = "'action_array' can't be null";
+        }
+        if ($this->container['available_units'] === null) {
+            $invalid_properties[] = "'available_units' can't be null";
+        }
+        $allowed_values = $this->getCombinationOperationAllowableValues();
+        if (!in_array($this->container['combination_operation'], $allowed_values)) {
+            $invalid_properties[] = sprintf(
+                "invalid value for 'combination_operation', must be one of '%s'",
+                implode("', '", $allowed_values)
+            );
+        }
+
+        if ($this->container['filling_value'] === null) {
+            $invalid_properties[] = "'filling_value' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalid_properties[] = "'id' can't be null";
         }
-        if ($this->container['tracking_reminder_id'] === null) {
-            $invalid_properties[] = "'tracking_reminder_id' can't be null";
+        if ($this->container['track_all_actions'] === null) {
+            $invalid_properties[] = "'track_all_actions' can't be null";
         }
-        $allowed_values = ["MEAN", "SUM"];
-        if (!in_array($this->container['combination_operation'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'combination_operation', must be one of 'MEAN', 'SUM'.";
-        }
-
         return $invalid_properties;
     }
 
@@ -248,14 +583,23 @@ class TrackingReminderNotification implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['action_array'] === null) {
+            return false;
+        }
+        if ($this->container['available_units'] === null) {
+            return false;
+        }
+        $allowed_values = $this->getCombinationOperationAllowableValues();
+        if (!in_array($this->container['combination_operation'], $allowed_values)) {
+            return false;
+        }
+        if ($this->container['filling_value'] === null) {
+            return false;
+        }
         if ($this->container['id'] === null) {
             return false;
         }
-        if ($this->container['tracking_reminder_id'] === null) {
-            return false;
-        }
-        $allowed_values = ["MEAN", "SUM"];
-        if (!in_array($this->container['combination_operation'], $allowed_values)) {
+        if ($this->container['track_all_actions'] === null) {
             return false;
         }
         return true;
@@ -263,43 +607,43 @@ class TrackingReminderNotification implements ArrayAccess
 
 
     /**
-     * Gets id
-     * @return int
+     * Gets action_array
+     * @return \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]
      */
-    public function getId()
+    public function getActionArray()
     {
-        return $this->container['id'];
+        return $this->container['action_array'];
     }
 
     /**
-     * Sets id
-     * @param int $id id for the specific PENDING tracking remidner
+     * Sets action_array
+     * @param \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[] $action_array
      * @return $this
      */
-    public function setId($id)
+    public function setActionArray($action_array)
     {
-        $this->container['id'] = $id;
+        $this->container['action_array'] = $action_array;
 
         return $this;
     }
 
     /**
-     * Gets tracking_reminder_id
-     * @return int
+     * Gets available_units
+     * @return \QuantiModo\Client\Model\Unit[]
      */
-    public function getTrackingReminderId()
+    public function getAvailableUnits()
     {
-        return $this->container['tracking_reminder_id'];
+        return $this->container['available_units'];
     }
 
     /**
-     * Sets tracking_reminder_id
-     * @param int $tracking_reminder_id id for the repeating tracking remidner
+     * Sets available_units
+     * @param \QuantiModo\Client\Model\Unit[] $available_units
      * @return $this
      */
-    public function setTrackingReminderId($tracking_reminder_id)
+    public function setAvailableUnits($available_units)
     {
-        $this->container['tracking_reminder_id'] = $tracking_reminder_id;
+        $this->container['available_units'] = $available_units;
 
         return $this;
     }
@@ -326,64 +670,157 @@ class TrackingReminderNotification implements ArrayAccess
     }
 
     /**
-     * Gets user_id
-     * @return int
+     * Gets combination_operation
+     * @return string
      */
-    public function getUserId()
+    public function getCombinationOperation()
     {
-        return $this->container['user_id'];
+        return $this->container['combination_operation'];
     }
 
     /**
-     * Sets user_id
-     * @param int $user_id ID of User
+     * Sets combination_operation
+     * @param string $combination_operation The way multiple measurements are aggregated over time
      * @return $this
      */
-    public function setUserId($user_id)
+    public function setCombinationOperation($combination_operation)
     {
-        $this->container['user_id'] = $user_id;
+        $allowed_values = $this->getCombinationOperationAllowableValues();
+        if (!is_null($combination_operation) && !in_array($combination_operation, $allowed_values)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'combination_operation', must be one of '%s'",
+                    implode("', '", $allowed_values)
+                )
+            );
+        }
+        $this->container['combination_operation'] = $combination_operation;
 
         return $this;
     }
 
     /**
-     * Gets variable_id
-     * @return int
-     */
-    public function getVariableId()
-    {
-        return $this->container['variable_id'];
-    }
-
-    /**
-     * Sets variable_id
-     * @param int $variable_id Id for the variable to be tracked
-     * @return $this
-     */
-    public function setVariableId($variable_id)
-    {
-        $this->container['variable_id'] = $variable_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets pending_reminder_time
+     * Gets created_at
      * @return \DateTime
      */
-    public function getPendingReminderTime()
+    public function getCreatedAt()
     {
-        return $this->container['pending_reminder_time'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets pending_reminder_time
-     * @param \DateTime $pending_reminder_time UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  timestamp for the specific time the variable should be tracked in UTC.  This will be used for the measurement startTime if the track endpoint is used.
+     * Sets created_at
+     * @param \DateTime $created_at Example: 2017-07-29 20:49:54
      * @return $this
      */
-    public function setPendingReminderTime($pending_reminder_time)
+    public function setCreatedAt($created_at)
     {
-        $this->container['pending_reminder_time'] = $pending_reminder_time;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_abbreviated_name
+     * @return string
+     */
+    public function getUnitAbbreviatedName()
+    {
+        return $this->container['unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets unit_abbreviated_name
+     * @param string $unit_abbreviated_name Example: /5
+     * @return $this
+     */
+    public function setUnitAbbreviatedName($unit_abbreviated_name)
+    {
+        $this->container['unit_abbreviated_name'] = $unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_category_id
+     * @return int
+     */
+    public function getUnitCategoryId()
+    {
+        return $this->container['unit_category_id'];
+    }
+
+    /**
+     * Sets unit_category_id
+     * @param int $unit_category_id Example: 5
+     * @return $this
+     */
+    public function setUnitCategoryId($unit_category_id)
+    {
+        $this->container['unit_category_id'] = $unit_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_category_name
+     * @return string
+     */
+    public function getUnitCategoryName()
+    {
+        return $this->container['unit_category_name'];
+    }
+
+    /**
+     * Sets unit_category_name
+     * @param string $unit_category_name Example: Rating
+     * @return $this
+     */
+    public function setUnitCategoryName($unit_category_name)
+    {
+        $this->container['unit_category_name'] = $unit_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_id
+     * @return int
+     */
+    public function getUnitId()
+    {
+        return $this->container['unit_id'];
+    }
+
+    /**
+     * Sets unit_id
+     * @param int $unit_id Example: 10
+     * @return $this
+     */
+    public function setUnitId($unit_id)
+    {
+        $this->container['unit_id'] = $unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_name
+     * @return string
+     */
+    public function getUnitName()
+    {
+        return $this->container['unit_name'];
+    }
+
+    /**
+     * Sets unit_name
+     * @param string $unit_name Example: 1 to 5 Rating
+     * @return $this
+     */
+    public function setUnitName($unit_name)
+    {
+        $this->container['unit_name'] = $unit_name;
 
         return $this;
     }
@@ -410,64 +847,22 @@ class TrackingReminderNotification implements ArrayAccess
     }
 
     /**
-     * Gets reminder_sound
+     * Gets description
      * @return string
      */
-    public function getReminderSound()
+    public function getDescription()
     {
-        return $this->container['reminder_sound'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets reminder_sound
-     * @param string $reminder_sound String identifier for the sound to accompany the reminder
+     * Sets description
+     * @param string $description Example: positive
      * @return $this
      */
-    public function setReminderSound($reminder_sound)
+    public function setDescription($description)
     {
-        $this->container['reminder_sound'] = $reminder_sound;
-
-        return $this;
-    }
-
-    /**
-     * Gets pop_up
-     * @return bool
-     */
-    public function getPopUp()
-    {
-        return $this->container['pop_up'];
-    }
-
-    /**
-     * Sets pop_up
-     * @param bool $pop_up True if the reminders should appear as a popup notification
-     * @return $this
-     */
-    public function setPopUp($pop_up)
-    {
-        $this->container['pop_up'] = $pop_up;
-
-        return $this;
-    }
-
-    /**
-     * Gets sms
-     * @return bool
-     */
-    public function getSms()
-    {
-        return $this->container['sms'];
-    }
-
-    /**
-     * Sets sms
-     * @param bool $sms True if the reminders should be delivered via SMS
-     * @return $this
-     */
-    public function setSms($sms)
-    {
-        $this->container['sms'] = $sms;
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -494,6 +889,237 @@ class TrackingReminderNotification implements ArrayAccess
     }
 
     /**
+     * Gets filling_value
+     * @return int
+     */
+    public function getFillingValue()
+    {
+        return $this->container['filling_value'];
+    }
+
+    /**
+     * Sets filling_value
+     * @param int $filling_value Example: 0
+     * @return $this
+     */
+    public function setFillingValue($filling_value)
+    {
+        $this->container['filling_value'] = $filling_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets icon_icon
+     * @return string
+     */
+    public function getIconIcon()
+    {
+        return $this->container['icon_icon'];
+    }
+
+    /**
+     * Sets icon_icon
+     * @param string $icon_icon Example: ion-sad-outline
+     * @return $this
+     */
+    public function setIconIcon($icon_icon)
+    {
+        $this->container['icon_icon'] = $icon_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     * @param int $id id for the specific PENDING tracking remidner
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     * @param string $image_url Example: https://rximage.nlm.nih.gov/image/images/gallery/original/55111-0129-60_RXNAVIMAGE10_B051D81E.jpg
+     * @return $this
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets input_type
+     * @return string
+     */
+    public function getInputType()
+    {
+        return $this->container['input_type'];
+    }
+
+    /**
+     * Sets input_type
+     * @param string $input_type Example: happiestFaceIsFive
+     * @return $this
+     */
+    public function setInputType($input_type)
+    {
+        $this->container['input_type'] = $input_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets ion_icon
+     * @return string
+     */
+    public function getIonIcon()
+    {
+        return $this->container['ion_icon'];
+    }
+
+    /**
+     * Sets ion_icon
+     * @param string $ion_icon Example: ion-happy-outline
+     * @return $this
+     */
+    public function setIonIcon($ion_icon)
+    {
+        $this->container['ion_icon'] = $ion_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_value
+     * @return double
+     */
+    public function getLastValue()
+    {
+        return $this->container['last_value'];
+    }
+
+    /**
+     * Sets last_value
+     * @param double $last_value Example: 3
+     * @return $this
+     */
+    public function setLastValue($last_value)
+    {
+        $this->container['last_value'] = $last_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets manual_tracking
+     * @return bool
+     */
+    public function getManualTracking()
+    {
+        return $this->container['manual_tracking'];
+    }
+
+    /**
+     * Sets manual_tracking
+     * @param bool $manual_tracking Example: 1
+     * @return $this
+     */
+    public function setManualTracking($manual_tracking)
+    {
+        $this->container['manual_tracking'] = $manual_tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_allowed_value
+     * @return int
+     */
+    public function getMaximumAllowedValue()
+    {
+        return $this->container['maximum_allowed_value'];
+    }
+
+    /**
+     * Sets maximum_allowed_value
+     * @param int $maximum_allowed_value Example: 5
+     * @return $this
+     */
+    public function setMaximumAllowedValue($maximum_allowed_value)
+    {
+        $this->container['maximum_allowed_value'] = $maximum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_allowed_value
+     * @return int
+     */
+    public function getMinimumAllowedValue()
+    {
+        return $this->container['minimum_allowed_value'];
+    }
+
+    /**
+     * Sets minimum_allowed_value
+     * @param int $minimum_allowed_value Example: 1
+     * @return $this
+     */
+    public function setMinimumAllowedValue($minimum_allowed_value)
+    {
+        $this->container['minimum_allowed_value'] = $minimum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets most_common_value
+     * @return double
+     */
+    public function getMostCommonValue()
+    {
+        return $this->container['most_common_value'];
+    }
+
+    /**
+     * Sets most_common_value
+     * @param double $most_common_value Example: 3
+     * @return $this
+     */
+    public function setMostCommonValue($most_common_value)
+    {
+        $this->container['most_common_value'] = $most_common_value;
+
+        return $this;
+    }
+
+    /**
      * Gets notification_bar
      * @return bool
      */
@@ -515,6 +1141,531 @@ class TrackingReminderNotification implements ArrayAccess
     }
 
     /**
+     * Gets notified_at
+     * @return \DateTime
+     */
+    public function getNotifiedAt()
+    {
+        return $this->container['notified_at'];
+    }
+
+    /**
+     * Sets notified_at
+     * @param \DateTime $notified_at Example:
+     * @return $this
+     */
+    public function setNotifiedAt($notified_at)
+    {
+        $this->container['notified_at'] = $notified_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_unique_values
+     * @return int
+     */
+    public function getNumberOfUniqueValues()
+    {
+        return $this->container['number_of_unique_values'];
+    }
+
+    /**
+     * Sets number_of_unique_values
+     * @param int $number_of_unique_values Example: 5
+     * @return $this
+     */
+    public function setNumberOfUniqueValues($number_of_unique_values)
+    {
+        $this->container['number_of_unique_values'] = $number_of_unique_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets png_path
+     * @return string
+     */
+    public function getPngPath()
+    {
+        return $this->container['png_path'];
+    }
+
+    /**
+     * Sets png_path
+     * @param string $png_path Example: img/variable_categories/emotions.png
+     * @return $this
+     */
+    public function setPngPath($png_path)
+    {
+        $this->container['png_path'] = $png_path;
+
+        return $this;
+    }
+
+    /**
+     * Gets png_url
+     * @return string
+     */
+    public function getPngUrl()
+    {
+        return $this->container['png_url'];
+    }
+
+    /**
+     * Sets png_url
+     * @param string $png_url Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/emotions.png
+     * @return $this
+     */
+    public function setPngUrl($png_url)
+    {
+        $this->container['png_url'] = $png_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets pop_up
+     * @return bool
+     */
+    public function getPopUp()
+    {
+        return $this->container['pop_up'];
+    }
+
+    /**
+     * Sets pop_up
+     * @param bool $pop_up True if the reminders should appear as a popup notification
+     * @return $this
+     */
+    public function setPopUp($pop_up)
+    {
+        $this->container['pop_up'] = $pop_up;
+
+        return $this;
+    }
+
+    /**
+     * Gets reminder_end_time
+     * @return \DateTime
+     */
+    public function getReminderEndTime()
+    {
+        return $this->container['reminder_end_time'];
+    }
+
+    /**
+     * Sets reminder_end_time
+     * @param \DateTime $reminder_end_time Example:
+     * @return $this
+     */
+    public function setReminderEndTime($reminder_end_time)
+    {
+        $this->container['reminder_end_time'] = $reminder_end_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets reminder_frequency
+     * @return int
+     */
+    public function getReminderFrequency()
+    {
+        return $this->container['reminder_frequency'];
+    }
+
+    /**
+     * Sets reminder_frequency
+     * @param int $reminder_frequency How often user should be reminded in seconds. Example: 86400
+     * @return $this
+     */
+    public function setReminderFrequency($reminder_frequency)
+    {
+        $this->container['reminder_frequency'] = $reminder_frequency;
+
+        return $this;
+    }
+
+    /**
+     * Gets reminder_sound
+     * @return string
+     */
+    public function getReminderSound()
+    {
+        return $this->container['reminder_sound'];
+    }
+
+    /**
+     * Sets reminder_sound
+     * @param string $reminder_sound String identifier for the sound to accompany the reminder
+     * @return $this
+     */
+    public function setReminderSound($reminder_sound)
+    {
+        $this->container['reminder_sound'] = $reminder_sound;
+
+        return $this;
+    }
+
+    /**
+     * Gets reminder_start_time
+     * @return string
+     */
+    public function getReminderStartTime()
+    {
+        return $this->container['reminder_start_time'];
+    }
+
+    /**
+     * Sets reminder_start_time
+     * @param string $reminder_start_time Earliest time of day at which reminders should appear in UTC HH:MM:SS format
+     * @return $this
+     */
+    public function setReminderStartTime($reminder_start_time)
+    {
+        $this->container['reminder_start_time'] = $reminder_start_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets reminder_time
+     * @return \DateTime
+     */
+    public function getReminderTime()
+    {
+        return $this->container['reminder_time'];
+    }
+
+    /**
+     * Sets reminder_time
+     * @param \DateTime $reminder_time UTC ISO 8601 `YYYY-MM-DDThh:mm:ss` timestamp for the specific time the variable should be tracked in UTC.  This will be used for the measurement startTime if the track endpoint is used.
+     * @return $this
+     */
+    public function setReminderTime($reminder_time)
+    {
+        $this->container['reminder_time'] = $reminder_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets second_most_common_value
+     * @return double
+     */
+    public function getSecondMostCommonValue()
+    {
+        return $this->container['second_most_common_value'];
+    }
+
+    /**
+     * Sets second_most_common_value
+     * @param double $second_most_common_value Example: 4
+     * @return $this
+     */
+    public function setSecondMostCommonValue($second_most_common_value)
+    {
+        $this->container['second_most_common_value'] = $second_most_common_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets second_to_last_value
+     * @return double
+     */
+    public function getSecondToLastValue()
+    {
+        return $this->container['second_to_last_value'];
+    }
+
+    /**
+     * Sets second_to_last_value
+     * @param double $second_to_last_value Example: 1
+     * @return $this
+     */
+    public function setSecondToLastValue($second_to_last_value)
+    {
+        $this->container['second_to_last_value'] = $second_to_last_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets sms
+     * @return bool
+     */
+    public function getSms()
+    {
+        return $this->container['sms'];
+    }
+
+    /**
+     * Sets sms
+     * @param bool $sms True if the reminders should be delivered via SMS
+     * @return $this
+     */
+    public function setSms($sms)
+    {
+        $this->container['sms'] = $sms;
+
+        return $this;
+    }
+
+    /**
+     * Gets svg_url
+     * @return string
+     */
+    public function getSvgUrl()
+    {
+        return $this->container['svg_url'];
+    }
+
+    /**
+     * Sets svg_url
+     * @param string $svg_url Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/emotions.svg
+     * @return $this
+     */
+    public function setSvgUrl($svg_url)
+    {
+        $this->container['svg_url'] = $svg_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets third_most_common_value
+     * @return double
+     */
+    public function getThirdMostCommonValue()
+    {
+        return $this->container['third_most_common_value'];
+    }
+
+    /**
+     * Sets third_most_common_value
+     * @param double $third_most_common_value Example: 2
+     * @return $this
+     */
+    public function setThirdMostCommonValue($third_most_common_value)
+    {
+        $this->container['third_most_common_value'] = $third_most_common_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets third_to_last_value
+     * @return double
+     */
+    public function getThirdToLastValue()
+    {
+        return $this->container['third_to_last_value'];
+    }
+
+    /**
+     * Sets third_to_last_value
+     * @param double $third_to_last_value Example: 2
+     * @return $this
+     */
+    public function setThirdToLastValue($third_to_last_value)
+    {
+        $this->container['third_to_last_value'] = $third_to_last_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     * @param string $title Example: Rate Overall Mood
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     * @return double
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     * @param double $total Example: 3
+     * @return $this
+     */
+    public function setTotal($total)
+    {
+        $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets track_all_actions
+     * @return \QuantiModo\Client\Model\TrackingReminderNotificationTrackAllAction[]
+     */
+    public function getTrackAllActions()
+    {
+        return $this->container['track_all_actions'];
+    }
+
+    /**
+     * Sets track_all_actions
+     * @param \QuantiModo\Client\Model\TrackingReminderNotificationTrackAllAction[] $track_all_actions
+     * @return $this
+     */
+    public function setTrackAllActions($track_all_actions)
+    {
+        $this->container['track_all_actions'] = $track_all_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_reminder_id
+     * @return int
+     */
+    public function getTrackingReminderId()
+    {
+        return $this->container['tracking_reminder_id'];
+    }
+
+    /**
+     * Sets tracking_reminder_id
+     * @param int $tracking_reminder_id id for the repeating tracking remidner
+     * @return $this
+     */
+    public function setTrackingReminderId($tracking_reminder_id)
+    {
+        $this->container['tracking_reminder_id'] = $tracking_reminder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_reminder_image_url
+     * @return string
+     */
+    public function getTrackingReminderImageUrl()
+    {
+        return $this->container['tracking_reminder_image_url'];
+    }
+
+    /**
+     * Sets tracking_reminder_image_url
+     * @param string $tracking_reminder_image_url Example: https://rximage.nlm.nih.gov/image/images/gallery/original/55111-0129-60_RXNAVIMAGE10_B051D81E.jpg
+     * @return $this
+     */
+    public function setTrackingReminderImageUrl($tracking_reminder_image_url)
+    {
+        $this->container['tracking_reminder_image_url'] = $tracking_reminder_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_reminder_notification_id
+     * @return int
+     */
+    public function getTrackingReminderNotificationId()
+    {
+        return $this->container['tracking_reminder_notification_id'];
+    }
+
+    /**
+     * Sets tracking_reminder_notification_id
+     * @param int $tracking_reminder_notification_id Example: 5072482
+     * @return $this
+     */
+    public function setTrackingReminderNotificationId($tracking_reminder_notification_id)
+    {
+        $this->container['tracking_reminder_notification_id'] = $tracking_reminder_notification_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_reminder_notification_time
+     * @return \DateTime
+     */
+    public function getTrackingReminderNotificationTime()
+    {
+        return $this->container['tracking_reminder_notification_time'];
+    }
+
+    /**
+     * Sets tracking_reminder_notification_time
+     * @param \DateTime $tracking_reminder_notification_time UTC ISO 8601 `YYYY-MM-DDThh:mm:ss` timestamp for the specific time the variable should be tracked in UTC.  This will be used for the measurement startTime if the track endpoint is used.
+     * @return $this
+     */
+    public function setTrackingReminderNotificationTime($tracking_reminder_notification_time)
+    {
+        $this->container['tracking_reminder_notification_time'] = $tracking_reminder_notification_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_reminder_notification_time_epoch
+     * @return int
+     */
+    public function getTrackingReminderNotificationTimeEpoch()
+    {
+        return $this->container['tracking_reminder_notification_time_epoch'];
+    }
+
+    /**
+     * Sets tracking_reminder_notification_time_epoch
+     * @param int $tracking_reminder_notification_time_epoch Example: 1501534124
+     * @return $this
+     */
+    public function setTrackingReminderNotificationTimeEpoch($tracking_reminder_notification_time_epoch)
+    {
+        $this->container['tracking_reminder_notification_time_epoch'] = $tracking_reminder_notification_time_epoch;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_reminder_notification_time_local
+     * @return string
+     */
+    public function getTrackingReminderNotificationTimeLocal()
+    {
+        return $this->container['tracking_reminder_notification_time_local'];
+    }
+
+    /**
+     * Sets tracking_reminder_notification_time_local
+     * @param string $tracking_reminder_notification_time_local Example: 15:48:44
+     * @return $this
+     */
+    public function setTrackingReminderNotificationTimeLocal($tracking_reminder_notification_time_local)
+    {
+        $this->container['tracking_reminder_notification_time_local'] = $tracking_reminder_notification_time_local;
+
+        return $this;
+    }
+
+    /**
      * Gets updated_at
      * @return \DateTime
      */
@@ -525,7 +1676,7 @@ class TrackingReminderNotification implements ArrayAccess
 
     /**
      * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format. Time zone should be UTC and not local.
+     * @param \DateTime $updated_at When the record in the database was last updated. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
      * @return $this
      */
     public function setUpdatedAt($updated_at)
@@ -536,22 +1687,232 @@ class TrackingReminderNotification implements ArrayAccess
     }
 
     /**
-     * Gets variable_name
-     * @return string
+     * Gets user_id
+     * @return int
      */
-    public function getVariableName()
+    public function getUserId()
     {
-        return $this->container['variable_name'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets variable_name
-     * @param string $variable_name Name of the variable to be used when sending measurements
+     * Sets user_id
+     * @param int $user_id ID of User
      * @return $this
      */
-    public function setVariableName($variable_name)
+    public function setUserId($user_id)
     {
-        $this->container['variable_name'] = $variable_name;
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_abbreviated_name
+     * @return string
+     */
+    public function getUserVariableUnitAbbreviatedName()
+    {
+        return $this->container['user_variable_unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_abbreviated_name
+     * @param string $user_variable_unit_abbreviated_name Example: /5
+     * @return $this
+     */
+    public function setUserVariableUnitAbbreviatedName($user_variable_unit_abbreviated_name)
+    {
+        $this->container['user_variable_unit_abbreviated_name'] = $user_variable_unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_category_id
+     * @return int
+     */
+    public function getUserVariableUnitCategoryId()
+    {
+        return $this->container['user_variable_unit_category_id'];
+    }
+
+    /**
+     * Sets user_variable_unit_category_id
+     * @param int $user_variable_unit_category_id Example: 5
+     * @return $this
+     */
+    public function setUserVariableUnitCategoryId($user_variable_unit_category_id)
+    {
+        $this->container['user_variable_unit_category_id'] = $user_variable_unit_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_category_name
+     * @return string
+     */
+    public function getUserVariableUnitCategoryName()
+    {
+        return $this->container['user_variable_unit_category_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_category_name
+     * @param string $user_variable_unit_category_name Example: Rating
+     * @return $this
+     */
+    public function setUserVariableUnitCategoryName($user_variable_unit_category_name)
+    {
+        $this->container['user_variable_unit_category_name'] = $user_variable_unit_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_id
+     * @return int
+     */
+    public function getUserVariableUnitId()
+    {
+        return $this->container['user_variable_unit_id'];
+    }
+
+    /**
+     * Sets user_variable_unit_id
+     * @param int $user_variable_unit_id Example: 10
+     * @return $this
+     */
+    public function setUserVariableUnitId($user_variable_unit_id)
+    {
+        $this->container['user_variable_unit_id'] = $user_variable_unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_unit_name
+     * @return string
+     */
+    public function getUserVariableUnitName()
+    {
+        return $this->container['user_variable_unit_name'];
+    }
+
+    /**
+     * Sets user_variable_unit_name
+     * @param string $user_variable_unit_name Example: 1 to 5 Rating
+     * @return $this
+     */
+    public function setUserVariableUnitName($user_variable_unit_name)
+    {
+        $this->container['user_variable_unit_name'] = $user_variable_unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_variable_category_id
+     * @return int
+     */
+    public function getUserVariableVariableCategoryId()
+    {
+        return $this->container['user_variable_variable_category_id'];
+    }
+
+    /**
+     * Sets user_variable_variable_category_id
+     * @param int $user_variable_variable_category_id Example: 1
+     * @return $this
+     */
+    public function setUserVariableVariableCategoryId($user_variable_variable_category_id)
+    {
+        $this->container['user_variable_variable_category_id'] = $user_variable_variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_variable_variable_category_name
+     * @return string
+     */
+    public function getUserVariableVariableCategoryName()
+    {
+        return $this->container['user_variable_variable_category_name'];
+    }
+
+    /**
+     * Sets user_variable_variable_category_name
+     * @param string $user_variable_variable_category_name Example: Emotions
+     * @return $this
+     */
+    public function setUserVariableVariableCategoryName($user_variable_variable_category_name)
+    {
+        $this->container['user_variable_variable_category_name'] = $user_variable_variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets valence
+     * @return string
+     */
+    public function getValence()
+    {
+        return $this->container['valence'];
+    }
+
+    /**
+     * Sets valence
+     * @param string $valence Example: positive
+     * @return $this
+     */
+    public function setValence($valence)
+    {
+        $this->container['valence'] = $valence;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_id
+     * @return int
+     */
+    public function getVariableCategoryId()
+    {
+        return $this->container['variable_category_id'];
+    }
+
+    /**
+     * Sets variable_category_id
+     * @param int $variable_category_id Example: 1
+     * @return $this
+     */
+    public function setVariableCategoryId($variable_category_id)
+    {
+        $this->container['variable_category_id'] = $variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_category_image_url
+     * @return string
+     */
+    public function getVariableCategoryImageUrl()
+    {
+        return $this->container['variable_category_image_url'];
+    }
+
+    /**
+     * Sets variable_category_image_url
+     * @param string $variable_category_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Cinema/theatre_mask-96.png
+     * @return $this
+     */
+    public function setVariableCategoryImageUrl($variable_category_image_url)
+    {
+        $this->container['variable_category_image_url'] = $variable_category_image_url;
 
         return $this;
     }
@@ -578,47 +1939,64 @@ class TrackingReminderNotification implements ArrayAccess
     }
 
     /**
-     * Gets abbreviated_unit_name
-     * @return string
+     * Gets variable_id
+     * @return int
      */
-    public function getAbbreviatedUnitName()
+    public function getVariableId()
     {
-        return $this->container['abbreviated_unit_name'];
+        return $this->container['variable_id'];
     }
 
     /**
-     * Sets abbreviated_unit_name
-     * @param string $abbreviated_unit_name Abbreviated name of the unit to be used when sending measurements
+     * Sets variable_id
+     * @param int $variable_id Id for the variable to be tracked
      * @return $this
      */
-    public function setAbbreviatedUnitName($abbreviated_unit_name)
+    public function setVariableId($variable_id)
     {
-        $this->container['abbreviated_unit_name'] = $abbreviated_unit_name;
+        $this->container['variable_id'] = $variable_id;
 
         return $this;
     }
 
     /**
-     * Gets combination_operation
+     * Gets variable_image_url
      * @return string
      */
-    public function getCombinationOperation()
+    public function getVariableImageUrl()
     {
-        return $this->container['combination_operation'];
+        return $this->container['variable_image_url'];
     }
 
     /**
-     * Sets combination_operation
-     * @param string $combination_operation The way multiple measurements are aggregated over time
+     * Sets variable_image_url
+     * @param string $variable_image_url Example:
      * @return $this
      */
-    public function setCombinationOperation($combination_operation)
+    public function setVariableImageUrl($variable_image_url)
     {
-        $allowed_values = array('MEAN', 'SUM');
-        if (!is_null($combination_operation) && (!in_array($combination_operation, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'combination_operation', must be one of 'MEAN', 'SUM'");
-        }
-        $this->container['combination_operation'] = $combination_operation;
+        $this->container['variable_image_url'] = $variable_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets variable_name
+     * @return string
+     */
+    public function getVariableName()
+    {
+        return $this->container['variable_name'];
+    }
+
+    /**
+     * Sets variable_name
+     * @param string $variable_name Name of the variable to be used when sending measurements
+     * @return $this
+     */
+    public function setVariableName($variable_name)
+    {
+        $this->container['variable_name'] = $variable_name;
 
         return $this;
     }

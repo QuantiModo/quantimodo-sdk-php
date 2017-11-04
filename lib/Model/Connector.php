@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -54,16 +54,75 @@ class Connector implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'display_name' => 'string',
-        'image' => 'string',
-        'get_it_url' => 'string',
+        'affiliate' => 'bool',
+        'buttons' => '\QuantiModo\Client\Model\Button[]',
+        'client_id' => 'string',
         'connected' => 'string',
+        'connect_error' => 'string',
         'connect_instructions' => 'string',
+        'connector_client_id' => 'string',
+        'connector_id' => 'int',
+        'connect_status' => 'string',
+        'created_at' => '\DateTime',
+        'default_variable_category_name' => 'string',
+        'display_name' => 'string',
+        'enabled' => 'int',
+        'get_it_url' => 'string',
+        'id' => 'int',
+        'image' => 'string',
+        'image_html' => 'string',
+        'last_successful_updated_at' => '\DateTime',
         'last_update' => 'int',
+        'linked_display_name_html' => 'string',
+        'long_description' => 'string',
+        'message' => 'string',
+        'name' => 'string',
+        'oauth' => 'object',
+        'scopes' => '\QuantiModo\Client\Model\Scope[]',
+        'short_description' => 'string',
         'total_measurements_in_last_update' => 'int',
-        'no_data_yet' => 'bool'
+        'updated_at' => '\DateTime',
+        'update_requested_at' => '\DateTime',
+        'update_status' => 'string',
+        'user_id' => 'int'
+    ];
+
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'affiliate' => null,
+        'buttons' => null,
+        'client_id' => null,
+        'connected' => null,
+        'connect_error' => null,
+        'connect_instructions' => null,
+        'connector_client_id' => null,
+        'connector_id' => null,
+        'connect_status' => null,
+        'created_at' => 'date-time',
+        'default_variable_category_name' => null,
+        'display_name' => null,
+        'enabled' => null,
+        'get_it_url' => null,
+        'id' => null,
+        'image' => null,
+        'image_html' => null,
+        'last_successful_updated_at' => 'date-time',
+        'last_update' => null,
+        'linked_display_name_html' => null,
+        'long_description' => null,
+        'message' => null,
+        'name' => null,
+        'oauth' => null,
+        'scopes' => null,
+        'short_description' => null,
+        'total_measurements_in_last_update' => null,
+        'updated_at' => 'date-time',
+        'update_requested_at' => 'date-time',
+        'update_status' => null,
+        'user_id' => null
     ];
 
     public static function swaggerTypes()
@@ -71,21 +130,47 @@ class Connector implements ArrayAccess
         return self::$swaggerTypes;
     }
 
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
+    }
+
     /**
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'display_name' => 'displayName',
-        'image' => 'image',
-        'get_it_url' => 'getItUrl',
+        'affiliate' => 'affiliate',
+        'buttons' => 'buttons',
+        'client_id' => 'clientId',
         'connected' => 'connected',
+        'connect_error' => 'connectError',
         'connect_instructions' => 'connectInstructions',
+        'connector_client_id' => 'connectorClientId',
+        'connector_id' => 'connectorId',
+        'connect_status' => 'connectStatus',
+        'created_at' => 'createdAt',
+        'default_variable_category_name' => 'defaultVariableCategoryName',
+        'display_name' => 'displayName',
+        'enabled' => 'enabled',
+        'get_it_url' => 'getItUrl',
+        'id' => 'id',
+        'image' => 'image',
+        'image_html' => 'imageHtml',
+        'last_successful_updated_at' => 'lastSuccessfulUpdatedAt',
         'last_update' => 'lastUpdate',
+        'linked_display_name_html' => 'linkedDisplayNameHtml',
+        'long_description' => 'longDescription',
+        'message' => 'message',
+        'name' => 'name',
+        'oauth' => 'oauth',
+        'scopes' => 'scopes',
+        'short_description' => 'shortDescription',
         'total_measurements_in_last_update' => 'totalMeasurementsInLastUpdate',
-        'no_data_yet' => 'noDataYet'
+        'updated_at' => 'updatedAt',
+        'update_requested_at' => 'updateRequestedAt',
+        'update_status' => 'updateStatus',
+        'user_id' => 'userId'
     ];
 
 
@@ -94,16 +179,37 @@ class Connector implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'display_name' => 'setDisplayName',
-        'image' => 'setImage',
-        'get_it_url' => 'setGetItUrl',
+        'affiliate' => 'setAffiliate',
+        'buttons' => 'setButtons',
+        'client_id' => 'setClientId',
         'connected' => 'setConnected',
+        'connect_error' => 'setConnectError',
         'connect_instructions' => 'setConnectInstructions',
+        'connector_client_id' => 'setConnectorClientId',
+        'connector_id' => 'setConnectorId',
+        'connect_status' => 'setConnectStatus',
+        'created_at' => 'setCreatedAt',
+        'default_variable_category_name' => 'setDefaultVariableCategoryName',
+        'display_name' => 'setDisplayName',
+        'enabled' => 'setEnabled',
+        'get_it_url' => 'setGetItUrl',
+        'id' => 'setId',
+        'image' => 'setImage',
+        'image_html' => 'setImageHtml',
+        'last_successful_updated_at' => 'setLastSuccessfulUpdatedAt',
         'last_update' => 'setLastUpdate',
+        'linked_display_name_html' => 'setLinkedDisplayNameHtml',
+        'long_description' => 'setLongDescription',
+        'message' => 'setMessage',
+        'name' => 'setName',
+        'oauth' => 'setOauth',
+        'scopes' => 'setScopes',
+        'short_description' => 'setShortDescription',
         'total_measurements_in_last_update' => 'setTotalMeasurementsInLastUpdate',
-        'no_data_yet' => 'setNoDataYet'
+        'updated_at' => 'setUpdatedAt',
+        'update_requested_at' => 'setUpdateRequestedAt',
+        'update_status' => 'setUpdateStatus',
+        'user_id' => 'setUserId'
     ];
 
 
@@ -112,16 +218,37 @@ class Connector implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'display_name' => 'getDisplayName',
-        'image' => 'getImage',
-        'get_it_url' => 'getGetItUrl',
+        'affiliate' => 'getAffiliate',
+        'buttons' => 'getButtons',
+        'client_id' => 'getClientId',
         'connected' => 'getConnected',
+        'connect_error' => 'getConnectError',
         'connect_instructions' => 'getConnectInstructions',
+        'connector_client_id' => 'getConnectorClientId',
+        'connector_id' => 'getConnectorId',
+        'connect_status' => 'getConnectStatus',
+        'created_at' => 'getCreatedAt',
+        'default_variable_category_name' => 'getDefaultVariableCategoryName',
+        'display_name' => 'getDisplayName',
+        'enabled' => 'getEnabled',
+        'get_it_url' => 'getGetItUrl',
+        'id' => 'getId',
+        'image' => 'getImage',
+        'image_html' => 'getImageHtml',
+        'last_successful_updated_at' => 'getLastSuccessfulUpdatedAt',
         'last_update' => 'getLastUpdate',
+        'linked_display_name_html' => 'getLinkedDisplayNameHtml',
+        'long_description' => 'getLongDescription',
+        'message' => 'getMessage',
+        'name' => 'getName',
+        'oauth' => 'getOauth',
+        'scopes' => 'getScopes',
+        'short_description' => 'getShortDescription',
         'total_measurements_in_last_update' => 'getTotalMeasurementsInLastUpdate',
-        'no_data_yet' => 'getNoDataYet'
+        'updated_at' => 'getUpdatedAt',
+        'update_requested_at' => 'getUpdateRequestedAt',
+        'update_status' => 'getUpdateStatus',
+        'user_id' => 'getUserId'
     ];
 
     public static function attributeMap()
@@ -155,16 +282,37 @@ class Connector implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
-        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
-        $this->container['get_it_url'] = isset($data['get_it_url']) ? $data['get_it_url'] : null;
+        $this->container['affiliate'] = isset($data['affiliate']) ? $data['affiliate'] : null;
+        $this->container['buttons'] = isset($data['buttons']) ? $data['buttons'] : null;
+        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
         $this->container['connected'] = isset($data['connected']) ? $data['connected'] : null;
+        $this->container['connect_error'] = isset($data['connect_error']) ? $data['connect_error'] : null;
         $this->container['connect_instructions'] = isset($data['connect_instructions']) ? $data['connect_instructions'] : null;
+        $this->container['connector_client_id'] = isset($data['connector_client_id']) ? $data['connector_client_id'] : null;
+        $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
+        $this->container['connect_status'] = isset($data['connect_status']) ? $data['connect_status'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['default_variable_category_name'] = isset($data['default_variable_category_name']) ? $data['default_variable_category_name'] : null;
+        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
+        $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : null;
+        $this->container['get_it_url'] = isset($data['get_it_url']) ? $data['get_it_url'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['image_html'] = isset($data['image_html']) ? $data['image_html'] : null;
+        $this->container['last_successful_updated_at'] = isset($data['last_successful_updated_at']) ? $data['last_successful_updated_at'] : null;
         $this->container['last_update'] = isset($data['last_update']) ? $data['last_update'] : null;
+        $this->container['linked_display_name_html'] = isset($data['linked_display_name_html']) ? $data['linked_display_name_html'] : null;
+        $this->container['long_description'] = isset($data['long_description']) ? $data['long_description'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['oauth'] = isset($data['oauth']) ? $data['oauth'] : null;
+        $this->container['scopes'] = isset($data['scopes']) ? $data['scopes'] : null;
+        $this->container['short_description'] = isset($data['short_description']) ? $data['short_description'] : null;
         $this->container['total_measurements_in_last_update'] = isset($data['total_measurements_in_last_update']) ? $data['total_measurements_in_last_update'] : null;
-        $this->container['no_data_yet'] = isset($data['no_data_yet']) ? $data['no_data_yet'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['update_requested_at'] = isset($data['update_requested_at']) ? $data['update_requested_at'] : null;
+        $this->container['update_status'] = isset($data['update_status']) ? $data['update_status'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
     }
 
     /**
@@ -176,35 +324,32 @@ class Connector implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['id'] === null) {
-            $invalid_properties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalid_properties[] = "'name' can't be null";
-        }
-        if ($this->container['display_name'] === null) {
-            $invalid_properties[] = "'display_name' can't be null";
-        }
-        if ($this->container['image'] === null) {
-            $invalid_properties[] = "'image' can't be null";
-        }
-        if ($this->container['get_it_url'] === null) {
-            $invalid_properties[] = "'get_it_url' can't be null";
-        }
         if ($this->container['connected'] === null) {
             $invalid_properties[] = "'connected' can't be null";
         }
         if ($this->container['connect_instructions'] === null) {
             $invalid_properties[] = "'connect_instructions' can't be null";
         }
+        if ($this->container['display_name'] === null) {
+            $invalid_properties[] = "'display_name' can't be null";
+        }
+        if ($this->container['get_it_url'] === null) {
+            $invalid_properties[] = "'get_it_url' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalid_properties[] = "'id' can't be null";
+        }
+        if ($this->container['image'] === null) {
+            $invalid_properties[] = "'image' can't be null";
+        }
         if ($this->container['last_update'] === null) {
             $invalid_properties[] = "'last_update' can't be null";
         }
+        if ($this->container['name'] === null) {
+            $invalid_properties[] = "'name' can't be null";
+        }
         if ($this->container['total_measurements_in_last_update'] === null) {
             $invalid_properties[] = "'total_measurements_in_last_update' can't be null";
-        }
-        if ($this->container['no_data_yet'] === null) {
-            $invalid_properties[] = "'no_data_yet' can't be null";
         }
         return $invalid_properties;
     }
@@ -218,34 +363,31 @@ class Connector implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
-            return false;
-        }
-        if ($this->container['name'] === null) {
-            return false;
-        }
-        if ($this->container['display_name'] === null) {
-            return false;
-        }
-        if ($this->container['image'] === null) {
-            return false;
-        }
-        if ($this->container['get_it_url'] === null) {
-            return false;
-        }
         if ($this->container['connected'] === null) {
             return false;
         }
         if ($this->container['connect_instructions'] === null) {
             return false;
         }
+        if ($this->container['display_name'] === null) {
+            return false;
+        }
+        if ($this->container['get_it_url'] === null) {
+            return false;
+        }
+        if ($this->container['id'] === null) {
+            return false;
+        }
+        if ($this->container['image'] === null) {
+            return false;
+        }
         if ($this->container['last_update'] === null) {
             return false;
         }
-        if ($this->container['total_measurements_in_last_update'] === null) {
+        if ($this->container['name'] === null) {
             return false;
         }
-        if ($this->container['no_data_yet'] === null) {
+        if ($this->container['total_measurements_in_last_update'] === null) {
             return false;
         }
         return true;
@@ -253,106 +395,64 @@ class Connector implements ArrayAccess
 
 
     /**
-     * Gets id
-     * @return int
+     * Gets affiliate
+     * @return bool
      */
-    public function getId()
+    public function getAffiliate()
     {
-        return $this->container['id'];
+        return $this->container['affiliate'];
     }
 
     /**
-     * Sets id
-     * @param int $id Connector ID number
+     * Sets affiliate
+     * @param bool $affiliate Example: false
      * @return $this
      */
-    public function setId($id)
+    public function setAffiliate($affiliate)
     {
-        $this->container['id'] = $id;
+        $this->container['affiliate'] = $affiliate;
 
         return $this;
     }
 
     /**
-     * Gets name
-     * @return string
+     * Gets buttons
+     * @return \QuantiModo\Client\Model\Button[]
      */
-    public function getName()
+    public function getButtons()
     {
-        return $this->container['name'];
+        return $this->container['buttons'];
     }
 
     /**
-     * Sets name
-     * @param string $name Connector lowercase system name
+     * Sets buttons
+     * @param \QuantiModo\Client\Model\Button[] $buttons
      * @return $this
      */
-    public function setName($name)
+    public function setButtons($buttons)
     {
-        $this->container['name'] = $name;
+        $this->container['buttons'] = $buttons;
 
         return $this;
     }
 
     /**
-     * Gets display_name
+     * Gets client_id
      * @return string
      */
-    public function getDisplayName()
+    public function getClientId()
     {
-        return $this->container['display_name'];
+        return $this->container['client_id'];
     }
 
     /**
-     * Sets display_name
-     * @param string $display_name Connector pretty display name
+     * Sets client_id
+     * @param string $client_id Example: ghostInspector
      * @return $this
      */
-    public function setDisplayName($display_name)
+    public function setClientId($client_id)
     {
-        $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     * @param string $image URL to the image of the connector logo
-     * @return $this
-     */
-    public function setImage($image)
-    {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets get_it_url
-     * @return string
-     */
-    public function getGetItUrl()
-    {
-        return $this->container['get_it_url'];
-    }
-
-    /**
-     * Sets get_it_url
-     * @param string $get_it_url URL to a site where one can get this device or application
-     * @return $this
-     */
-    public function setGetItUrl($get_it_url)
-    {
-        $this->container['get_it_url'] = $get_it_url;
+        $this->container['client_id'] = $client_id;
 
         return $this;
     }
@@ -379,6 +479,27 @@ class Connector implements ArrayAccess
     }
 
     /**
+     * Gets connect_error
+     * @return string
+     */
+    public function getConnectError()
+    {
+        return $this->container['connect_error'];
+    }
+
+    /**
+     * Sets connect_error
+     * @param string $connect_error Example: Your token is expired. Please re-connect
+     * @return $this
+     */
+    public function setConnectError($connect_error)
+    {
+        $this->container['connect_error'] = $connect_error;
+
+        return $this;
+    }
+
+    /**
      * Gets connect_instructions
      * @return string
      */
@@ -395,6 +516,258 @@ class Connector implements ArrayAccess
     public function setConnectInstructions($connect_instructions)
     {
         $this->container['connect_instructions'] = $connect_instructions;
+
+        return $this;
+    }
+
+    /**
+     * Gets connector_client_id
+     * @return string
+     */
+    public function getConnectorClientId()
+    {
+        return $this->container['connector_client_id'];
+    }
+
+    /**
+     * Sets connector_client_id
+     * @param string $connector_client_id Example: 225078261031461
+     * @return $this
+     */
+    public function setConnectorClientId($connector_client_id)
+    {
+        $this->container['connector_client_id'] = $connector_client_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets connector_id
+     * @return int
+     */
+    public function getConnectorId()
+    {
+        return $this->container['connector_id'];
+    }
+
+    /**
+     * Sets connector_id
+     * @param int $connector_id Example: 8
+     * @return $this
+     */
+    public function setConnectorId($connector_id)
+    {
+        $this->container['connector_id'] = $connector_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets connect_status
+     * @return string
+     */
+    public function getConnectStatus()
+    {
+        return $this->container['connect_status'];
+    }
+
+    /**
+     * Sets connect_status
+     * @param string $connect_status Example: CONNECTED
+     * @return $this
+     */
+    public function setConnectStatus($connect_status)
+    {
+        $this->container['connect_status'] = $connect_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at Example: 2000-01-01 00:00:00
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_variable_category_name
+     * @return string
+     */
+    public function getDefaultVariableCategoryName()
+    {
+        return $this->container['default_variable_category_name'];
+    }
+
+    /**
+     * Sets default_variable_category_name
+     * @param string $default_variable_category_name Example: Social Interactions
+     * @return $this
+     */
+    public function setDefaultVariableCategoryName($default_variable_category_name)
+    {
+        $this->container['default_variable_category_name'] = $default_variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     * @param string $display_name Connector pretty display name
+     * @return $this
+     */
+    public function setDisplayName($display_name)
+    {
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets enabled
+     * @return int
+     */
+    public function getEnabled()
+    {
+        return $this->container['enabled'];
+    }
+
+    /**
+     * Sets enabled
+     * @param int $enabled Example: 1
+     * @return $this
+     */
+    public function setEnabled($enabled)
+    {
+        $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets get_it_url
+     * @return string
+     */
+    public function getGetItUrl()
+    {
+        return $this->container['get_it_url'];
+    }
+
+    /**
+     * Sets get_it_url
+     * @param string $get_it_url URL to a site where one can get this device or application
+     * @return $this
+     */
+    public function setGetItUrl($get_it_url)
+    {
+        $this->container['get_it_url'] = $get_it_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     * @param int $id Connector ID number
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets image
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->container['image'];
+    }
+
+    /**
+     * Sets image
+     * @param string $image URL to the image of the connector logo
+     * @return $this
+     */
+    public function setImage($image)
+    {
+        $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_html
+     * @return string
+     */
+    public function getImageHtml()
+    {
+        return $this->container['image_html'];
+    }
+
+    /**
+     * Sets image_html
+     * @param string $image_html Example: <a href=\"http://www.facebook.com\"><img id=\"facebook_image\" title=\"Facebook\" src=\"https://i.imgur.com/GhwqK4f.png\" alt=\"Facebook\"></a>
+     * @return $this
+     */
+    public function setImageHtml($image_html)
+    {
+        $this->container['image_html'] = $image_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_successful_updated_at
+     * @return \DateTime
+     */
+    public function getLastSuccessfulUpdatedAt()
+    {
+        return $this->container['last_successful_updated_at'];
+    }
+
+    /**
+     * Sets last_successful_updated_at
+     * @param \DateTime $last_successful_updated_at Example: 2017-07-31 10:10:34
+     * @return $this
+     */
+    public function setLastSuccessfulUpdatedAt($last_successful_updated_at)
+    {
+        $this->container['last_successful_updated_at'] = $last_successful_updated_at;
 
         return $this;
     }
@@ -421,6 +794,153 @@ class Connector implements ArrayAccess
     }
 
     /**
+     * Gets linked_display_name_html
+     * @return string
+     */
+    public function getLinkedDisplayNameHtml()
+    {
+        return $this->container['linked_display_name_html'];
+    }
+
+    /**
+     * Sets linked_display_name_html
+     * @param string $linked_display_name_html Example: <a href=\"http://www.facebook.com\">Facebook</a>
+     * @return $this
+     */
+    public function setLinkedDisplayNameHtml($linked_display_name_html)
+    {
+        $this->container['linked_display_name_html'] = $linked_display_name_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_description
+     * @return string
+     */
+    public function getLongDescription()
+    {
+        return $this->container['long_description'];
+    }
+
+    /**
+     * Sets long_description
+     * @param string $long_description Example: Facebook is a social networking website where users may create a personal profile, add other users as friends, and exchange messages.
+     * @return $this
+     */
+    public function setLongDescription($long_description)
+    {
+        $this->container['long_description'] = $long_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     * @param string $message Example: Got 412 new measurements on 2017-07-31 10:10:34
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     * @param string $name Connector lowercase system name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets oauth
+     * @return object
+     */
+    public function getOauth()
+    {
+        return $this->container['oauth'];
+    }
+
+    /**
+     * Sets oauth
+     * @param object $oauth Example: {}
+     * @return $this
+     */
+    public function setOauth($oauth)
+    {
+        $this->container['oauth'] = $oauth;
+
+        return $this;
+    }
+
+    /**
+     * Gets scopes
+     * @return \QuantiModo\Client\Model\Scope[]
+     */
+    public function getScopes()
+    {
+        return $this->container['scopes'];
+    }
+
+    /**
+     * Sets scopes
+     * @param \QuantiModo\Client\Model\Scope[] $scopes
+     * @return $this
+     */
+    public function setScopes($scopes)
+    {
+        $this->container['scopes'] = $scopes;
+
+        return $this;
+    }
+
+    /**
+     * Gets short_description
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->container['short_description'];
+    }
+
+    /**
+     * Sets short_description
+     * @param string $short_description Example: Tracks social interaction. QuantiModo requires permission to access your Facebook \"user likes\" and \"user posts\".
+     * @return $this
+     */
+    public function setShortDescription($short_description)
+    {
+        $this->container['short_description'] = $short_description;
+
+        return $this;
+    }
+
+    /**
      * Gets total_measurements_in_last_update
      * @return int
      */
@@ -442,22 +962,85 @@ class Connector implements ArrayAccess
     }
 
     /**
-     * Gets no_data_yet
-     * @return bool
+     * Gets updated_at
+     * @return \DateTime
      */
-    public function getNoDataYet()
+    public function getUpdatedAt()
     {
-        return $this->container['no_data_yet'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets no_data_yet
-     * @param bool $no_data_yet True if user has no measurements for this connector
+     * Sets updated_at
+     * @param \DateTime $updated_at Example: 2017-07-31 10:10:34
      * @return $this
      */
-    public function setNoDataYet($no_data_yet)
+    public function setUpdatedAt($updated_at)
     {
-        $this->container['no_data_yet'] = $no_data_yet;
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_requested_at
+     * @return \DateTime
+     */
+    public function getUpdateRequestedAt()
+    {
+        return $this->container['update_requested_at'];
+    }
+
+    /**
+     * Sets update_requested_at
+     * @param \DateTime $update_requested_at Example: 2017-07-18 05:16:31
+     * @return $this
+     */
+    public function setUpdateRequestedAt($update_requested_at)
+    {
+        $this->container['update_requested_at'] = $update_requested_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_status
+     * @return string
+     */
+    public function getUpdateStatus()
+    {
+        return $this->container['update_status'];
+    }
+
+    /**
+     * Sets update_status
+     * @param string $update_status Example: UPDATED
+     * @return $this
+     */
+    public function setUpdateStatus($update_status)
+    {
+        $this->container['update_status'] = $update_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     * @param int $user_id Example: 230
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }

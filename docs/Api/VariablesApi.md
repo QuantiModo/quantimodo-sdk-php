@@ -4,54 +4,44 @@ All URIs are relative to *https://app.quantimo.do/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1PublicVariablesGet**](VariablesApi.md#v1PublicVariablesGet) | **GET** /v1/public/variables | Get public variables
-[**v1PublicVariablesSearchSearchGet**](VariablesApi.md#v1PublicVariablesSearchSearchGet) | **GET** /v1/public/variables/search/{search} | Get top 5 PUBLIC variables with the most correlations
-[**v1UserVariablesDeletePost**](VariablesApi.md#v1UserVariablesDeletePost) | **POST** /v1/userVariables/delete | Delete All Measurements For Variable
-[**v1UserVariablesPost**](VariablesApi.md#v1UserVariablesPost) | **POST** /v1/userVariables | Update User Settings for a Variable
-[**v1UserVariablesResetPost**](VariablesApi.md#v1UserVariablesResetPost) | **POST** /v1/userVariables/reset | Reset user settings for a variable to defaults
-[**v1VariableCategoriesGet**](VariablesApi.md#v1VariableCategoriesGet) | **GET** /v1/variableCategories | Variable categories
-[**v1VariablesGet**](VariablesApi.md#v1VariablesGet) | **GET** /v1/variables | Get variables with user&#39;s settings
-[**v1VariablesPost**](VariablesApi.md#v1VariablesPost) | **POST** /v1/variables | Create Variables
-[**v1VariablesSearchSearchGet**](VariablesApi.md#v1VariablesSearchSearchGet) | **GET** /v1/variables/search/{search} | Get variables by search query
-[**v1VariablesVariableNameGet**](VariablesApi.md#v1VariablesVariableNameGet) | **GET** /v1/variables/{variableName} | Get info about a variable
+[**deleteUserTag**](VariablesApi.md#deleteUserTag) | **DELETE** /v3/userTags/delete | Delete user tag or ingredient
+[**deleteUserVariable**](VariablesApi.md#deleteUserVariable) | **DELETE** /v3/userVariables/delete | Delete All Measurements For Variable
+[**getCommonVariables**](VariablesApi.md#getCommonVariables) | **GET** /v3/public/variables | Get common variables with aggregated instead of user-specific data
+[**getUserVariables**](VariablesApi.md#getUserVariables) | **GET** /v3/userVariables | Get variables along with related user-specific analysis settings and statistics
+[**getVariableCategories**](VariablesApi.md#getVariableCategories) | **GET** /v3/variableCategories | Variable categories
+[**postUserTags**](VariablesApi.md#postUserTags) | **POST** /v3/userTags | Post or update user tags or ingredients
+[**postUserVariables**](VariablesApi.md#postUserVariables) | **POST** /v3/userVariables | Update User Settings for a Variable
+[**resetUserVariableSettings**](VariablesApi.md#resetUserVariableSettings) | **POST** /v3/userVariables/reset | Reset user settings for a variable to defaults
 
 
-# **v1PublicVariablesGet**
-> \QuantiModo\Client\Model\Variable v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
+# **deleteUserTag**
+> \QuantiModo\Client\Model\CommonResponse deleteUserTag($tagged_variable_id, $tag_variable_id)
 
-Get public variables
+Delete user tag or ingredient
 
-This endpoint retrieves an array of all public variables. Public variables are things like foods, medications, symptoms, conditions, and anything not unique to a particular user. For instance, a telephone number or name would not be a public variable.
+Delete previously created user tags or ingredients.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-$id = 56; // int | Common variable id
-$user_id2 = 56; // int | User id
-$category = "category_example"; // string | Filter data by category
-$name = "name_example"; // string | Original name of the variable (supports exact name match only)
-$last_updated = "last_updated_example"; // string | Filter by the last time any of the properties of the variable were changed. Uses UTC format \"YYYY-MM-DDThh:mm:ss\"
-$source = "source_example"; // string | The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here
-$latest_measurement_time = "latest_measurement_time_example"; // string | Filter variables based on the last time a measurement for them was created or updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"
-$number_of_raw_measurements = "number_of_raw_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
-$last_source = "last_source_example"; // string | Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only)
-$limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
-$offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
-$sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
+$tagged_variable_id = 56; // int | This is the id of the variable being tagged with an ingredient or something.
+$tag_variable_id = 56; // int | This is the id of the ingredient variable whose value is determined based on the value of the tagged variable.
 
 try {
-    $result = $api_instance->v1PublicVariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort);
+    $result = $api_instance->deleteUserTag($tagged_variable_id, $tag_variable_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1PublicVariablesGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->deleteUserTag: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -60,28 +50,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
- **id** | **int**| Common variable id | [optional]
- **user_id2** | **int**| User id | [optional]
- **category** | **string**| Filter data by category | [optional]
- **name** | **string**| Original name of the variable (supports exact name match only) | [optional]
- **last_updated** | **string**| Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
- **source** | **string**| The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here | [optional]
- **latest_measurement_time** | **string**| Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
- **number_of_raw_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
- **last_source** | **string**| Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) | [optional]
- **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
- **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
- **sort** | **int**| Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. | [optional]
+ **tagged_variable_id** | **int**| This is the id of the variable being tagged with an ingredient or something. |
+ **tag_variable_id** | **int**| This is the id of the ingredient variable whose value is determined based on the value of the tagged variable. |
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -90,74 +68,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1PublicVariablesSearchSearchGet**
-> \QuantiModo\Client\Model\Variable v1PublicVariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort)
-
-Get top 5 PUBLIC variables with the most correlations
-
-Get top 5 PUBLIC variables with the most correlations containing the entered search characters. For example, search for 'mood' as an effect. Since 'Overall Mood' has a lot of correlations with other variables, it should be in the autocomplete list.<br>Supported filter parameters:<br><ul><li><b>category</b> - Category of Variable</li></ul><br>
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\VariablesApi();
-$search = "search_example"; // string | Search query can be some fraction of a variable name.
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-$variable_category_name = "variable_category_name_example"; // string | Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work.
-$source = "source_example"; // string | Specify a data source name to only return variables from a specific data source.
-$effect_or_cause = "effect_or_cause_example"; // string | Indicate if you only want variables that have user correlations.  Possible values are effect and cause.
-$public_effect_or_cause = "public_effect_or_cause_example"; // string | Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause.
-$limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
-$offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
-$sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
-
-try {
-    $result = $api_instance->v1PublicVariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset, $sort);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1PublicVariablesSearchSearchGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **string**| Search query can be some fraction of a variable name. |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
- **variable_category_name** | **string**| Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. | [optional]
- **source** | **string**| Specify a data source name to only return variables from a specific data source. | [optional]
- **effect_or_cause** | **string**| Indicate if you only want variables that have user correlations.  Possible values are effect and cause. | [optional]
- **public_effect_or_cause** | **string**| Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause. | [optional]
- **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
- **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
- **sort** | **int**| Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1UserVariablesDeletePost**
-> v1UserVariablesDeletePost($variable_id)
+# **deleteUserVariable**
+> deleteUserVariable($variable_id)
 
 Delete All Measurements For Variable
 
@@ -168,16 +80,20 @@ Users can delete all of their measurements for a variable
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
 $variable_id = new \QuantiModo\Client\Model\UserVariableDelete(); // \QuantiModo\Client\Model\UserVariableDelete | Id of the variable whose measurements should be deleted
 
 try {
-    $api_instance->v1UserVariablesDeletePost($variable_id);
+    $api_instance->deleteUserVariable($variable_id);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1UserVariablesDeletePost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->deleteUserVariable: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -186,7 +102,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **variable_id** | [**\QuantiModo\Client\Model\UserVariableDelete**](../Model/\QuantiModo\Client\Model\UserVariableDelete.md)| Id of the variable whose measurements should be deleted |
+ **variable_id** | [**\QuantiModo\Client\Model\UserVariableDelete**](../Model/UserVariableDelete.md)| Id of the variable whose measurements should be deleted |
 
 ### Return type
 
@@ -194,7 +110,7 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -203,28 +119,54 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1UserVariablesPost**
-> v1UserVariablesPost($user_variables)
+# **getCommonVariables**
+> \QuantiModo\Client\Model\CommonVariableArray getCommonVariables($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms)
 
-Update User Settings for a Variable
+Get common variables with aggregated instead of user-specific data
 
-Users can change the parameters used in analysis of that variable such as the expected duration of action for a variable to have an effect, the estimated delay before the onset of action. In order to filter out erroneous data, they are able to set the maximum and minimum reasonable daily values for a variable.
+This endpoint retrieves an array of all public variables. Public variables are things like foods, medications, symptoms, conditions, and anything not unique to a particular user. For instance, a telephone number or name would not be a public variable.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$user_variables = new \QuantiModo\Client\Model\UserVariables(); // \QuantiModo\Client\Model\UserVariables | Variable user settings data
+$offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+$user_id = 3.4; // float | User's id
+$variable_category_name = "variable_category_name_example"; // string | Limit results to a specific variable category
+$name = "name_example"; // string | Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain `Mood`, the following query should be used: ?variableName=%Mood%
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss` datetime format. Time zone should be UTC and not local.
+$source_name = "source_name_example"; // string | ID of the source you want measurements for (supports exact name match only)
+$earliest_measurement_time = "earliest_measurement_time_example"; // string | Excluded records with measurement times earlier than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$latest_measurement_time = "latest_measurement_time_example"; // string | Excluded records with measurement times later than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$number_of_raw_measurements = "number_of_raw_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
+$last_source_name = "last_source_name_example"; // string | Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here
+$limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+$id = 56; // int | Common variable id
+$sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
+$effect_or_cause = "effect_or_cause_example"; // string | Example:
+$public_effect_or_cause = "public_effect_or_cause_example"; // string | Example:
+$exact_match = true; // bool | Example:
+$manual_tracking = true; // bool | Example:
+$variable_category_id = 56; // int | Example: 13
+$include_private = true; // bool | Example:
+$client_id = "client_id_example"; // string | Example: oauth_test_client
+$search_phrase = "search_phrase_example"; // string | Example: %Body Fat%
+$synonyms = "synonyms_example"; // string | Example: %McDonalds hotcake%
 
 try {
-    $api_instance->v1UserVariablesPost($user_variables);
+    $result = $api_instance->getCommonVariables($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1UserVariablesPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->getCommonVariables: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -233,15 +175,36 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_variables** | [**\QuantiModo\Client\Model\UserVariables**](../Model/\QuantiModo\Client\Model\UserVariables.md)| Variable user settings data |
+ **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
+ **user_id** | **float**| User&#39;s id | [optional]
+ **variable_category_name** | **string**| Limit results to a specific variable category | [optional]
+ **name** | **string**| Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. | [optional]
+ **source_name** | **string**| ID of the source you want measurements for (supports exact name match only) | [optional]
+ **earliest_measurement_time** | **string**| Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **latest_measurement_time** | **string**| Excluded records with measurement times later than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **number_of_raw_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
+ **last_source_name** | **string**| Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here | [optional]
+ **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
+ **id** | **int**| Common variable id | [optional]
+ **sort** | **string**| Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. | [optional]
+ **effect_or_cause** | **string**| Example: | [optional]
+ **public_effect_or_cause** | **string**| Example: | [optional]
+ **exact_match** | **bool**| Example: | [optional]
+ **manual_tracking** | **bool**| Example: | [optional]
+ **variable_category_id** | **int**| Example: 13 | [optional]
+ **include_private** | **bool**| Example: | [optional]
+ **client_id** | **string**| Example: oauth_test_client | [optional]
+ **search_phrase** | **string**| Example: %Body Fat% | [optional]
+ **synonyms** | **string**| Example: %McDonalds hotcake% | [optional]
 
 ### Return type
 
-void (empty response body)
+[**\QuantiModo\Client\Model\CommonVariableArray**](../Model/CommonVariableArray.md)
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -250,28 +213,50 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1UserVariablesResetPost**
-> v1UserVariablesResetPost($variable_id)
+# **getUserVariables**
+> \QuantiModo\Client\Model\UserVariable[] getUserVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id)
 
-Reset user settings for a variable to defaults
+Get variables along with related user-specific analysis settings and statistics
 
-Reset user settings for a variable to defaults
+Get variables for which the user has measurements. If the user has specified variable settings, these are provided instead of the common variable defaults.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$variable_id = new \QuantiModo\Client\Model\UserVariableDelete(); // \QuantiModo\Client\Model\UserVariableDelete | Id of the variable that should be reset
+$include_charts = true; // bool | Return highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
+$number_of_raw_measurements = "number_of_raw_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
+$user_id = 3.4; // float | User's id
+$variable_category_name = "variable_category_name_example"; // string | Limit results to a specific variable category
+$name = "name_example"; // string | Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain `Mood`, the following query should be used: ?variableName=%Mood%
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss` datetime format. Time zone should be UTC and not local.
+$source_name = "source_name_example"; // string | ID of the source you want measurements for (supports exact name match only)
+$earliest_measurement_time = "earliest_measurement_time_example"; // string | Excluded records with measurement times earlier than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$latest_measurement_time = "latest_measurement_time_example"; // string | Excluded records with measurement times later than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$id = 56; // int | Common variable id
+$last_source_name = "last_source_name_example"; // string | Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here
+$limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+$offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+$sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
+$include_public = true; // bool | Example: true
+$manual_tracking = true; // bool | Example:
+$app_name = "app_name_example"; // string | Example: MoodiModo
+$client_id = "client_id_example"; // string | Example: oauth_test_client
 
 try {
-    $api_instance->v1UserVariablesResetPost($variable_id);
+    $result = $api_instance->getUserVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1UserVariablesResetPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->getUserVariables: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -280,15 +265,32 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **variable_id** | [**\QuantiModo\Client\Model\UserVariableDelete**](../Model/\QuantiModo\Client\Model\UserVariableDelete.md)| Id of the variable that should be reset |
+ **include_charts** | **bool**| Return highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
+ **number_of_raw_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
+ **user_id** | **float**| User&#39;s id | [optional]
+ **variable_category_name** | **string**| Limit results to a specific variable category | [optional]
+ **name** | **string**| Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. | [optional]
+ **source_name** | **string**| ID of the source you want measurements for (supports exact name match only) | [optional]
+ **earliest_measurement_time** | **string**| Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **latest_measurement_time** | **string**| Excluded records with measurement times later than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **id** | **int**| Common variable id | [optional]
+ **last_source_name** | **string**| Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here | [optional]
+ **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
+ **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
+ **sort** | **string**| Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. | [optional]
+ **include_public** | **bool**| Example: true | [optional]
+ **manual_tracking** | **bool**| Example: | [optional]
+ **app_name** | **string**| Example: MoodiModo | [optional]
+ **client_id** | **string**| Example: oauth_test_client | [optional]
 
 ### Return type
 
-void (empty response body)
+[**\QuantiModo\Client\Model\UserVariable[]**](../Model/UserVariable.md)
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -297,8 +299,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1VariableCategoriesGet**
-> \QuantiModo\Client\Model\VariableCategory[] v1VariableCategoriesGet()
+# **getVariableCategories**
+> \QuantiModo\Client\Model\VariableCategory[] getVariableCategories()
 
 Variable categories
 
@@ -309,16 +311,20 @@ The variable categories include Activity, Causes of Illness, Cognitive Performan
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
 
 try {
-    $result = $api_instance->v1VariableCategoriesGet();
+    $result = $api_instance->getVariableCategories();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1VariableCategoriesGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->getVariableCategories: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -332,7 +338,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -341,45 +347,34 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1VariablesGet**
-> \QuantiModo\Client\Model\Variable v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort)
+# **postUserTags**
+> \QuantiModo\Client\Model\CommonResponse postUserTags($body, $user_id)
 
-Get variables with user's settings
+Post or update user tags or ingredients
 
-Get variables for which the user has measurements. If the user has specified variable settings, these are provided instead of the common variable defaults.
+This endpoint allows users to tag foods with their ingredients.  This information will then be used to infer the user intake of the different ingredients by just entering the foods. The inferred intake levels will then be used to determine the effects of different nutrients on the user during analysis.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-// Configure HTTP basic authorization: basicAuth
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-$id = 56; // int | Common variable id
-$user_id2 = 56; // int | User id
-$category = "category_example"; // string | Filter data by category
-$name = "name_example"; // string | Original name of the variable (supports exact name match only)
-$last_updated = "last_updated_example"; // string | Filter by the last time any of the properties of the variable were changed. Uses UTC format \"YYYY-MM-DDThh:mm:ss\"
-$source = "source_example"; // string | The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here
-$latest_measurement_time = "latest_measurement_time_example"; // string | Filter variables based on the last time a measurement for them was created or updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"
-$number_of_raw_measurements = "number_of_raw_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
-$last_source = "last_source_example"; // string | Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only)
-$limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
-$offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
-$sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
+$body = new \QuantiModo\Client\Model\UserTag(); // \QuantiModo\Client\Model\UserTag | Contains the new user tag data
+$user_id = 3.4; // float | User's id
 
 try {
-    $result = $api_instance->v1VariablesGet($access_token, $user_id, $id, $user_id2, $category, $name, $last_updated, $source, $latest_measurement_time, $number_of_raw_measurements, $last_source, $limit, $offset, $sort);
+    $result = $api_instance->postUserTags($body, $user_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1VariablesGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->postUserTags: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -388,28 +383,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
- **id** | **int**| Common variable id | [optional]
- **user_id2** | **int**| User id | [optional]
- **category** | **string**| Filter data by category | [optional]
- **name** | **string**| Original name of the variable (supports exact name match only) | [optional]
- **last_updated** | **string**| Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
- **source** | **string**| The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here | [optional]
- **latest_measurement_time** | **string**| Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot; | [optional]
- **number_of_raw_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
- **last_source** | **string**| Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only) | [optional]
- **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
- **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
- **sort** | **int**| Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. | [optional]
+ **body** | [**\QuantiModo\Client\Model\UserTag**](../Model/UserTag.md)| Contains the new user tag data |
+ **user_id** | **float**| User&#39;s id | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2), [basicAuth](../../README.md#basicAuth)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -418,30 +401,43 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1VariablesPost**
-> v1VariablesPost($body, $access_token, $user_id)
+# **postUserVariables**
+> \QuantiModo\Client\Model\CommonResponse postUserVariables($user_variables, $include_private, $client_id, $include_public, $search_phrase, $app_name, $exact_match, $manual_tracking, $variable_category_name, $variable_category_id, $synonyms)
 
-Create Variables
+Update User Settings for a Variable
 
-Allows the client to create a new variable in the `variables` table.
+Users can change the parameters used in analysis of that variable such as the expected duration of action for a variable to have an effect, the estimated delay before the onset of action. In order to filter out erroneous data, they are able to set the maximum and minimum reasonable daily values for a variable.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$body = new \QuantiModo\Client\Model\VariablesNew(); // \QuantiModo\Client\Model\VariablesNew | Original name for the variable.
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
+$user_variables = array(new \QuantiModo\Client\Model\UserVariable()); // \QuantiModo\Client\Model\UserVariable[] | Variable user settings data
+$include_private = true; // bool | Example:
+$client_id = "client_id_example"; // string | Example: oauth_test_client
+$include_public = true; // bool | Example: true
+$search_phrase = "search_phrase_example"; // string | Example: %Body Fat%
+$app_name = "app_name_example"; // string | Example: MoodiModo
+$exact_match = true; // bool | Example:
+$manual_tracking = true; // bool | Example:
+$variable_category_name = "variable_category_name_example"; // string | Limit results to a specific variable category
+$variable_category_id = 56; // int | Example: 13
+$synonyms = "synonyms_example"; // string | Example: %McDonalds hotcake%
 
 try {
-    $api_instance->v1VariablesPost($body, $access_token, $user_id);
+    $result = $api_instance->postUserVariables($user_variables, $include_private, $client_id, $include_public, $search_phrase, $app_name, $exact_match, $manual_tracking, $variable_category_name, $variable_category_id, $synonyms);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1VariablesPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->postUserVariables: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -450,9 +446,68 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\VariablesNew**](../Model/\QuantiModo\Client\Model\VariablesNew.md)| Original name for the variable. |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
+ **user_variables** | [**\QuantiModo\Client\Model\UserVariable[]**](../Model/UserVariable.md)| Variable user settings data |
+ **include_private** | **bool**| Example: | [optional]
+ **client_id** | **string**| Example: oauth_test_client | [optional]
+ **include_public** | **bool**| Example: true | [optional]
+ **search_phrase** | **string**| Example: %Body Fat% | [optional]
+ **app_name** | **string**| Example: MoodiModo | [optional]
+ **exact_match** | **bool**| Example: | [optional]
+ **manual_tracking** | **bool**| Example: | [optional]
+ **variable_category_name** | **string**| Limit results to a specific variable category | [optional]
+ **variable_category_id** | **int**| Example: 13 | [optional]
+ **synonyms** | **string**| Example: %McDonalds hotcake% | [optional]
+
+### Return type
+
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
+
+### Authorization
+
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **resetUserVariableSettings**
+> resetUserVariableSettings($variable_id)
+
+Reset user settings for a variable to defaults
+
+Reset user settings for a variable to defaults
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new QuantiModo\Client\Api\VariablesApi();
+$variable_id = new \QuantiModo\Client\Model\UserVariableDelete(); // \QuantiModo\Client\Model\UserVariableDelete | Id of the variable whose measurements should be deleted
+
+try {
+    $api_instance->resetUserVariableSettings($variable_id);
+} catch (Exception $e) {
+    echo 'Exception when calling VariablesApi->resetUserVariableSettings: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **variable_id** | [**\QuantiModo\Client\Model\UserVariableDelete**](../Model/UserVariableDelete.md)| Id of the variable whose measurements should be deleted |
 
 ### Return type
 
@@ -460,127 +515,7 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1VariablesSearchSearchGet**
-> \QuantiModo\Client\Model\Variable[] v1VariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset)
-
-Get variables by search query
-
-Get variables containing the search characters for which the currently logged in user has measurements. Used to provide auto-complete function in variable search boxes.
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\VariablesApi();
-$search = "search_example"; // string | Search query which may be an entire variable name or a fragment of one.
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-$variable_category_name = "variable_category_name_example"; // string | Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work.
-$include_public = true; // bool | Set to true if you would like to include public variables when no user variables are found.
-$manual_tracking = true; // bool | Set to true if you would like to exlude variables like apps and website names.
-$source = "source_example"; // string | Specify a data source name to only return variables from a specific data source.
-$effect_or_cause = "effect_or_cause_example"; // string | Indicate if you only want variables that have user correlations.  Possible values are effect and cause.
-$public_effect_or_cause = "public_effect_or_cause_example"; // string | Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause.
-$limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
-$offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
-
-try {
-    $result = $api_instance->v1VariablesSearchSearchGet($search, $access_token, $user_id, $variable_category_name, $include_public, $manual_tracking, $source, $effect_or_cause, $public_effect_or_cause, $limit, $offset);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1VariablesSearchSearchGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **string**| Search query which may be an entire variable name or a fragment of one. |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
- **variable_category_name** | **string**| Filter variables by category name. The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work. | [optional]
- **include_public** | **bool**| Set to true if you would like to include public variables when no user variables are found. | [optional]
- **manual_tracking** | **bool**| Set to true if you would like to exlude variables like apps and website names. | [optional]
- **source** | **string**| Specify a data source name to only return variables from a specific data source. | [optional]
- **effect_or_cause** | **string**| Indicate if you only want variables that have user correlations.  Possible values are effect and cause. | [optional]
- **public_effect_or_cause** | **string**| Indicate if you only want variables that have aggregated correlations.  Possible values are effect and cause. | [optional]
- **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
- **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\Variable[]**](../Model/Variable.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1VariablesVariableNameGet**
-> \QuantiModo\Client\Model\Variable v1VariablesVariableNameGet($variable_name, $access_token, $user_id)
-
-Get info about a variable
-
-Get all of the settings and information about a variable by its name. If the logged in user has modified the settings for the variable, these will be provided instead of the default settings for that variable.
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\VariablesApi();
-$variable_name = "variable_name_example"; // string | Variable name
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-
-try {
-    $result = $api_instance->v1VariablesVariableNameGet($variable_name, $access_token, $user_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->v1VariablesVariableNameGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **variable_name** | **string**| Variable name |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\Variable**](../Model/Variable.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 

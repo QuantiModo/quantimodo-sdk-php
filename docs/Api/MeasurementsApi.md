@@ -4,188 +4,16 @@ All URIs are relative to *https://app.quantimo.do/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1MeasurementSourcesGet**](MeasurementsApi.md#v1MeasurementSourcesGet) | **GET** /v1/measurementSources | Get measurement sources
-[**v1MeasurementSourcesPost**](MeasurementsApi.md#v1MeasurementSourcesPost) | **POST** /v1/measurementSources | Add a data source
-[**v1MeasurementsDailyGet**](MeasurementsApi.md#v1MeasurementsDailyGet) | **GET** /v1/measurements/daily | Get daily measurements for this user
-[**v1MeasurementsDeletePost**](MeasurementsApi.md#v1MeasurementsDeletePost) | **POST** /v1/measurements/delete | Delete a measurement
-[**v1MeasurementsGet**](MeasurementsApi.md#v1MeasurementsGet) | **GET** /v1/measurements | Get measurements for this user
-[**v1MeasurementsPost**](MeasurementsApi.md#v1MeasurementsPost) | **POST** /v1/measurements | Post a new set or update existing measurements to the database
-[**v1MeasurementsRangeGet**](MeasurementsApi.md#v1MeasurementsRangeGet) | **GET** /v1/measurementsRange | Get measurements range for this user
-[**v1MeasurementsUpdatePost**](MeasurementsApi.md#v1MeasurementsUpdatePost) | **POST** /v1/measurements/update | Update a measurement
-[**v2MeasurementsCsvGet**](MeasurementsApi.md#v2MeasurementsCsvGet) | **GET** /v2/measurements/csv | Get Measurements CSV
-[**v2MeasurementsIdDelete**](MeasurementsApi.md#v2MeasurementsIdDelete) | **DELETE** /v2/measurements/{id} | Delete Measurement
-[**v2MeasurementsIdGet**](MeasurementsApi.md#v2MeasurementsIdGet) | **GET** /v2/measurements/{id} | Get Measurement
-[**v2MeasurementsIdPut**](MeasurementsApi.md#v2MeasurementsIdPut) | **PUT** /v2/measurements/{id} | Update Measurement
-[**v2MeasurementsRequestCsvPost**](MeasurementsApi.md#v2MeasurementsRequestCsvPost) | **POST** /v2/measurements/request_csv | Post Request for Measurements CSV
-[**v2MeasurementsRequestPdfPost**](MeasurementsApi.md#v2MeasurementsRequestPdfPost) | **POST** /v2/measurements/request_pdf | Post Request for Measurements PDF
-[**v2MeasurementsRequestXlsPost**](MeasurementsApi.md#v2MeasurementsRequestXlsPost) | **POST** /v2/measurements/request_xls | Post Request for Measurements XLS
+[**deleteMeasurement**](MeasurementsApi.md#deleteMeasurement) | **DELETE** /v3/measurements/delete | Delete a measurement
+[**getMeasurements**](MeasurementsApi.md#getMeasurements) | **GET** /v3/measurements | Get measurements for this user
+[**getPairs**](MeasurementsApi.md#getPairs) | **GET** /v3/pairs | Get pairs of measurements for correlational analysis
+[**measurementExportRequest**](MeasurementsApi.md#measurementExportRequest) | **POST** /v2/measurements/exportRequest | Post Request for Measurements CSV
+[**postMeasurements**](MeasurementsApi.md#postMeasurements) | **POST** /v3/measurements/post | Post a new set or update existing measurements to the database
+[**v3MeasurementsUpdatePost**](MeasurementsApi.md#v3MeasurementsUpdatePost) | **POST** /v3/measurements/update | Update a measurement
 
 
-# **v1MeasurementSourcesGet**
-> \QuantiModo\Client\Model\MeasurementSource v1MeasurementSourcesGet()
-
-Get measurement sources
-
-Returns a list of all the apps from which measurement data is obtained.
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-
-try {
-    $result = $api_instance->v1MeasurementSourcesGet();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementSourcesGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\QuantiModo\Client\Model\MeasurementSource**](../Model/MeasurementSource.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1MeasurementSourcesPost**
-> v1MeasurementSourcesPost($body, $access_token, $user_id)
-
-Add a data source
-
-Add a life-tracking app or device to the QuantiModo list of data sources.
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$body = new \QuantiModo\Client\Model\MeasurementSource(); // \QuantiModo\Client\Model\MeasurementSource | An array of names of data sources you want to add.
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-
-try {
-    $api_instance->v1MeasurementSourcesPost($body, $access_token, $user_id);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementSourcesPost: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\MeasurementSource**](../Model/\QuantiModo\Client\Model\MeasurementSource.md)| An array of names of data sources you want to add. |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1MeasurementsDailyGet**
-> \QuantiModo\Client\Model\Measurement v1MeasurementsDailyGet($variable_name, $access_token, $user_id, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
-
-Get daily measurements for this user
-
-Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten. <br>Supported filter parameters:<br><ul><li><b>value</b> - Value of measurement</li><li><b>lastUpdated</b> - The time that this measurement was created or last updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"</li></ul><br>
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-$abbreviated_unit_name = "abbreviated_unit_name_example"; // string | The unit your want the measurements in
-$start_time = "start_time_example"; // string | The lower limit of measurements returned (UTC Iso8601 \"YYYY-MM-DDThh:mm:ss\" format)
-$end_time = "end_time_example"; // string | The upper limit of measurements returned (UTC Iso8601 \"YYYY-MM-DDThh:mm:ss\" format)
-$grouping_width = 56; // int | The time (in seconds) over which measurements are grouped together
-$grouping_timezone = "grouping_timezone_example"; // string | The time (in seconds) over which measurements are grouped together
-$limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
-$offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
-$sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
-
-try {
-    $result = $api_instance->v1MeasurementsDailyGet($variable_name, $access_token, $user_id, $abbreviated_unit_name, $start_time, $end_time, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementsDailyGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **variable_name** | **string**| Name of the variable you want measurements for |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
- **abbreviated_unit_name** | **string**| The unit your want the measurements in | [optional]
- **start_time** | **string**| The lower limit of measurements returned (UTC Iso8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot; format) | [optional]
- **end_time** | **string**| The upper limit of measurements returned (UTC Iso8601 \&quot;YYYY-MM-DDThh:mm:ss\&quot; format) | [optional]
- **grouping_width** | **int**| The time (in seconds) over which measurements are grouped together | [optional]
- **grouping_timezone** | **string**| The time (in seconds) over which measurements are grouped together | [optional]
- **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
- **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
- **sort** | **int**| Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1MeasurementsDeletePost**
-> \QuantiModo\Client\Model\CommonResponse v1MeasurementsDeletePost($body)
+# **deleteMeasurement**
+> \QuantiModo\Client\Model\CommonResponse deleteMeasurement($body)
 
 Delete a measurement
 
@@ -196,17 +24,21 @@ Delete a previously submitted measurement
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $body = new \QuantiModo\Client\Model\MeasurementDelete(); // \QuantiModo\Client\Model\MeasurementDelete | The startTime and variableId of the measurement to be deleted.
 
 try {
-    $result = $api_instance->v1MeasurementsDeletePost($body);
+    $result = $api_instance->deleteMeasurement($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementsDeletePost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MeasurementsApi->deleteMeasurement: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -215,7 +47,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\MeasurementDelete**](../Model/\QuantiModo\Client\Model\MeasurementDelete.md)| The startTime and variableId of the measurement to be deleted. |
+ **body** | [**\QuantiModo\Client\Model\MeasurementDelete**](../Model/MeasurementDelete.md)| The startTime and variableId of the measurement to be deleted. |
 
 ### Return type
 
@@ -223,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -232,45 +64,53 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1MeasurementsGet**
-> \QuantiModo\Client\Model\Measurement v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_name, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort)
+# **getMeasurements**
+> \QuantiModo\Client\Model\MeasurementArray getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter)
 
 Get measurements for this user
 
-Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten. <br>Supported filter parameters:<br><ul><li><b>value</b> - Value of measurement</li><li><b>lastUpdated</b> - The time that this measurement was created or last updated in the UTC format \"YYYY-MM-DDThh:mm:ss\"</li></ul><br>
+Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-$id = 56; // int | Measurement id
 $variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
-$variable_category_name = "variable_category_name_example"; // string | Name of the variable category you want measurements for
+$sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
+$limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+$offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+$variable_category_name = "variable_category_name_example"; // string | Limit results to a specific variable category
+$updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss` datetime format. Time zone should be UTC and not local.
+$user_id = 3.4; // float | User's id
 $source_name = "source_name_example"; // string | ID of the source you want measurements for (supports exact name match only)
 $value = "value_example"; // string | Value of measurement
-$abbreviated_unit_name = "abbreviated_unit_name_example"; // string | The unit you want the measurements returned in
-$earliest_measurement_time = "earliest_measurement_time_example"; // string | The lower limit of measurements returned in ISO 8601 format or epoch seconds (unixtime)
-$latest_measurement_time = "latest_measurement_time_example"; // string | The upper limit of measurements returned in ISO 8601 format or epoch seconds (unixtime)
-$created_at = "created_at_example"; // string | The time the measurement record was first created in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local.
-$updated_at = "updated_at_example"; // string | The time the measurement record was last changed in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local.
+$unit_name = "unit_name_example"; // string | Example: 86400
+$earliest_measurement_time = "earliest_measurement_time_example"; // string | Excluded records with measurement times earlier than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$latest_measurement_time = "latest_measurement_time_example"; // string | Excluded records with measurement times later than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss` datetime format. Time zone should be UTC and not local.
+$id = 56; // int | Measurement id
 $grouping_width = 56; // int | The time (in seconds) over which measurements are grouped together
 $grouping_timezone = "grouping_timezone_example"; // string | The time (in seconds) over which measurements are grouped together
-$limit = 56; // int | The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
-$offset = 56; // int | Now suppose you wanted to show results 11-20. You'd set the offset to 10 and the limit to 10.
-$sort = 56; // int | Sort by given field. If the field is prefixed with `-, it will sort in descending order.
+$do_not_process = true; // bool | Example: true
+$app_name = "app_name_example"; // string | Example: MoodiModo
+$client_id = "client_id_example"; // string | Example: oauth_test_client
+$do_not_convert = true; // bool | Example: 1
+$min_max_filter = true; // bool | Example: 1
 
 try {
-    $result = $api_instance->v1MeasurementsGet($access_token, $user_id, $id, $variable_name, $variable_category_name, $source_name, $value, $abbreviated_unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $updated_at, $grouping_width, $grouping_timezone, $limit, $offset, $sort);
+    $result = $api_instance->getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MeasurementsApi->getMeasurements: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -279,31 +119,35 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
- **id** | **int**| Measurement id | [optional]
  **variable_name** | **string**| Name of the variable you want measurements for | [optional]
- **variable_category_name** | **string**| Name of the variable category you want measurements for | [optional]
+ **sort** | **string**| Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. | [optional]
+ **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
+ **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
+ **variable_category_name** | **string**| Limit results to a specific variable category | [optional]
+ **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. | [optional]
+ **user_id** | **float**| User&#39;s id | [optional]
  **source_name** | **string**| ID of the source you want measurements for (supports exact name match only) | [optional]
  **value** | **string**| Value of measurement | [optional]
- **abbreviated_unit_name** | **string**| The unit you want the measurements returned in | [optional]
- **earliest_measurement_time** | **string**| The lower limit of measurements returned in ISO 8601 format or epoch seconds (unixtime) | [optional]
- **latest_measurement_time** | **string**| The upper limit of measurements returned in ISO 8601 format or epoch seconds (unixtime) | [optional]
- **created_at** | **string**| The time the measurement record was first created in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. | [optional]
- **updated_at** | **string**| The time the measurement record was last changed in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. | [optional]
+ **unit_name** | **string**| Example: 86400 | [optional]
+ **earliest_measurement_time** | **string**| Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **latest_measurement_time** | **string**| Excluded records with measurement times later than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **created_at** | **string**| When the record was first created. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. | [optional]
+ **id** | **int**| Measurement id | [optional]
  **grouping_width** | **int**| The time (in seconds) over which measurements are grouped together | [optional]
  **grouping_timezone** | **string**| The time (in seconds) over which measurements are grouped together | [optional]
- **limit** | **int**| The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. | [optional]
- **offset** | **int**| Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. | [optional]
- **sort** | **int**| Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. | [optional]
+ **do_not_process** | **bool**| Example: true | [optional]
+ **app_name** | **string**| Example: MoodiModo | [optional]
+ **client_id** | **string**| Example: oauth_test_client | [optional]
+ **do_not_convert** | **bool**| Example: 1 | [optional]
+ **min_max_filter** | **bool**| Example: 1 | [optional]
 
 ### Return type
 
-[**\QuantiModo\Client\Model\Measurement**](../Model/Measurement.md)
+[**\QuantiModo\Client\Model\MeasurementArray**](../Model/MeasurementArray.md)
 
 ### Authorization
 
-[oauth2](../../README.md#oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -312,179 +156,44 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v1MeasurementsPost**
-> v1MeasurementsPost($body, $access_token, $user_id)
+# **getPairs**
+> \QuantiModo\Client\Model\PairArray getPairs($cause_variable_name, $effect_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort)
 
-Post a new set or update existing measurements to the database
+Get pairs of measurements for correlational analysis
 
-You can submit or update multiple measurements in a \"measurements\" sub-array.  If the variable these measurements correspond to does not already exist in the database, it will be automatically added.  The request body should look something like [{\"measurements\":[{\"startTime\":1439389320,\"value\":\"3\"}, {\"startTime\":1439389319,\"value\":\"2\"}],\"name\":\"Acne (out of 5)\",\"source\":\"QuantiModo\",\"category\":\"Symptoms\",\"combinationOperation\":\"MEAN\",\"unit\":\"/5\"}]
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$body = new \QuantiModo\Client\Model\MeasurementSet(); // \QuantiModo\Client\Model\MeasurementSet | An array of measurements you want to insert.
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-
-try {
-    $api_instance->v1MeasurementsPost($body, $access_token, $user_id);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementsPost: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\MeasurementSet**](../Model/\QuantiModo\Client\Model\MeasurementSet.md)| An array of measurements you want to insert. |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1MeasurementsRangeGet**
-> \QuantiModo\Client\Model\MeasurementRange v1MeasurementsRangeGet($sources, $user)
-
-Get measurements range for this user
-
-Get Unix time-stamp (epoch time) of the user's first and last measurements taken.
+Pairs cause measurements with effect measurements grouped over the duration of action after the onset delay.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$sources = "sources_example"; // string | Enter source name to limit to specific source (varchar)
-$user = 56; // int | If not specified, uses currently logged in user (bigint)
-
-try {
-    $result = $api_instance->v1MeasurementsRangeGet($sources, $user);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementsRangeGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sources** | **string**| Enter source name to limit to specific source (varchar) | [optional]
- **user** | **int**| If not specified, uses currently logged in user (bigint) | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\MeasurementRange**](../Model/MeasurementRange.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v1MeasurementsUpdatePost**
-> \QuantiModo\Client\Model\CommonResponse v1MeasurementsUpdatePost($body)
-
-Update a measurement
-
-Delete a previously submitted measurement
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$body = new \QuantiModo\Client\Model\MeasurementUpdate(); // \QuantiModo\Client\Model\MeasurementUpdate | The id as well as the new startTime, note, and/or value of the measurement to be updated
-
-try {
-    $result = $api_instance->v1MeasurementsUpdatePost($body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v1MeasurementsUpdatePost: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\MeasurementUpdate**](../Model/\QuantiModo\Client\Model\MeasurementUpdate.md)| The id as well as the new startTime, note, and/or value of the measurement to be updated |
-
-### Return type
-
-[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v2MeasurementsCsvGet**
-> \SplFileObject v2MeasurementsCsvGet($access_token, $user_id)
-
-Get Measurements CSV
-
-Download a CSV containing all user measurements
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
+$cause_variable_name = "cause_variable_name_example"; // string | Variable name of the hypothetical cause variable.  Example: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Variable name of the hypothetical effect variable.  Example: Overall Mood
+$effect_unit_name = "effect_unit_name_example"; // string | Name for the unit effect measurements to be returned in
+$user_id = 3.4; // float | User's id
+$cause_unit_name = "cause_unit_name_example"; // string | Name for the unit cause measurements to be returned in
+$onset_delay = "onset_delay_example"; // string | The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
+$duration_of_action = "duration_of_action_example"; // string | The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
+$earliest_measurement_time = "earliest_measurement_time_example"; // string | Excluded records with measurement times earlier than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$latest_measurement_time = "latest_measurement_time_example"; // string | Excluded records with measurement times later than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
+$limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+$offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+$sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
 
 try {
-    $result = $api_instance->v2MeasurementsCsvGet($access_token, $user_id);
+    $result = $api_instance->getPairs($cause_variable_name, $effect_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v2MeasurementsCsvGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MeasurementsApi->getPairs: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -493,68 +202,26 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
+ **cause_variable_name** | **string**| Variable name of the hypothetical cause variable.  Example: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Variable name of the hypothetical effect variable.  Example: Overall Mood | [optional]
+ **effect_unit_name** | **string**| Name for the unit effect measurements to be returned in | [optional]
+ **user_id** | **float**| User&#39;s id | [optional]
+ **cause_unit_name** | **string**| Name for the unit cause measurements to be returned in | [optional]
+ **onset_delay** | **string**| The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. | [optional]
+ **duration_of_action** | **string**| The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. | [optional]
+ **earliest_measurement_time** | **string**| Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **latest_measurement_time** | **string**| Excluded records with measurement times later than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]
+ **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
+ **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
+ **sort** | **string**| Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. | [optional]
 
 ### Return type
 
-[**\SplFileObject**](../Model/\SplFileObject.md)
+[**\QuantiModo\Client\Model\PairArray**](../Model/PairArray.md)
 
 ### Authorization
 
-[quantimodo_oauth2](../../README.md#quantimodo_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: text/csv
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v2MeasurementsIdDelete**
-> \QuantiModo\Client\Model\InlineResponse2001 v2MeasurementsIdDelete($id, $access_token, $user_id)
-
-Delete Measurement
-
-Delete Measurement
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$id = 56; // int | id of Measurement
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-
-try {
-    $result = $api_instance->v2MeasurementsIdDelete($id, $access_token, $user_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v2MeasurementsIdDelete: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| id of Measurement |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
-
-### Authorization
-
-[quantimodo_oauth2](../../README.md#quantimodo_oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -563,114 +230,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v2MeasurementsIdGet**
-> \QuantiModo\Client\Model\InlineResponse200 v2MeasurementsIdGet($id, $access_token, $user_id)
-
-Get Measurement
-
-Get Measurement
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$id = 56; // int | id of Measurement
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-
-try {
-    $result = $api_instance->v2MeasurementsIdGet($id, $access_token, $user_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v2MeasurementsIdGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| id of Measurement |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
-
-### Authorization
-
-[quantimodo_oauth2](../../README.md#quantimodo_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v2MeasurementsIdPut**
-> \QuantiModo\Client\Model\InlineResponse2001 v2MeasurementsIdPut($id, $access_token, $user_id, $body)
-
-Update Measurement
-
-Update Measurement
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$id = 56; // int | id of Measurement
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
-$body = new \QuantiModo\Client\Model\Measurement(); // \QuantiModo\Client\Model\Measurement | Measurement that should be updated
-
-try {
-    $result = $api_instance->v2MeasurementsIdPut($id, $access_token, $user_id, $body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v2MeasurementsIdPut: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| id of Measurement |
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
- **body** | [**\QuantiModo\Client\Model\Measurement**](../Model/\QuantiModo\Client\Model\Measurement.md)| Measurement that should be updated | [optional]
-
-### Return type
-
-[**\QuantiModo\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
-
-### Authorization
-
-[quantimodo_oauth2](../../README.md#quantimodo_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **v2MeasurementsRequestCsvPost**
-> int v2MeasurementsRequestCsvPost($access_token, $user_id)
+# **measurementExportRequest**
+> int measurementExportRequest($user_id)
 
 Post Request for Measurements CSV
 
@@ -681,18 +242,21 @@ Use this endpoint to schedule a CSV export containing all user measurements to b
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
+$user_id = 3.4; // float | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsRequestCsvPost($access_token, $user_id);
+    $result = $api_instance->measurementExportRequest($user_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v2MeasurementsRequestCsvPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MeasurementsApi->measurementExportRequest: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -701,8 +265,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
+ **user_id** | **float**| User&#39;s id | [optional]
 
 ### Return type
 
@@ -710,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[quantimodo_oauth2](../../README.md#quantimodo_oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -719,30 +282,34 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v2MeasurementsRequestPdfPost**
-> int v2MeasurementsRequestPdfPost($access_token, $user_id)
+# **postMeasurements**
+> \QuantiModo\Client\Model\PostMeasurementsResponse postMeasurements($body, $user_id)
 
-Post Request for Measurements PDF
+Post a new set or update existing measurements to the database
 
-Use this endpoint to schedule a PDF export containing all user measurements to be emailed to the user within 24 hours.
+You can submit or update multiple measurements in a \"measurements\" sub-array.  If the variable these measurements correspond to does not already exist in the database, it will be automatically added.
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
+$body = array(new \QuantiModo\Client\Model\MeasurementSet()); // \QuantiModo\Client\Model\MeasurementSet[] | An array of measurement sets containing measurement items you want to insert.
+$user_id = 3.4; // float | User's id
 
 try {
-    $result = $api_instance->v2MeasurementsRequestPdfPost($access_token, $user_id);
+    $result = $api_instance->postMeasurements($body, $user_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v2MeasurementsRequestPdfPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MeasurementsApi->postMeasurements: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -751,16 +318,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
+ **body** | [**\QuantiModo\Client\Model\MeasurementSet[]**](../Model/MeasurementSet.md)| An array of measurement sets containing measurement items you want to insert. |
+ **user_id** | **float**| User&#39;s id | [optional]
 
 ### Return type
 
-**int**
+[**\QuantiModo\Client\Model\PostMeasurementsResponse**](../Model/PostMeasurementsResponse.md)
 
 ### Authorization
 
-[quantimodo_oauth2](../../README.md#quantimodo_oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 
@@ -769,30 +336,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v2MeasurementsRequestXlsPost**
-> int v2MeasurementsRequestXlsPost($access_token, $user_id)
+# **v3MeasurementsUpdatePost**
+> \QuantiModo\Client\Model\CommonResponse v3MeasurementsUpdatePost($body)
 
-Post Request for Measurements XLS
+Update a measurement
 
-Use this endpoint to schedule a XLS export containing all user measurements to be emailed to the user within 24 hours.
+Delete a previously submitted measurement
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: access_token
+QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
-$access_token = "access_token_example"; // string | User's OAuth2 access token
-$user_id = 56; // int | User's id
+$body = new \QuantiModo\Client\Model\MeasurementUpdate(); // \QuantiModo\Client\Model\MeasurementUpdate | The id as well as the new startTime, note, and/or value of the measurement to be updated
 
 try {
-    $result = $api_instance->v2MeasurementsRequestXlsPost($access_token, $user_id);
+    $result = $api_instance->v3MeasurementsUpdatePost($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v2MeasurementsRequestXlsPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MeasurementsApi->v3MeasurementsUpdatePost: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -801,16 +371,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token** | **string**| User&#39;s OAuth2 access token | [optional]
- **user_id** | **int**| User&#39;s id | [optional]
+ **body** | [**\QuantiModo\Client\Model\MeasurementUpdate**](../Model/MeasurementUpdate.md)| The id as well as the new startTime, note, and/or value of the measurement to be updated |
 
 ### Return type
 
-**int**
+[**\QuantiModo\Client\Model\CommonResponse**](../Model/CommonResponse.md)
 
 ### Authorization
 
-[quantimodo_oauth2](../../README.md#quantimodo_oauth2)
+[access_token](../../README.md#access_token), [quantimodo_oauth2](../../README.md#quantimodo_oauth2)
 
 ### HTTP request headers
 

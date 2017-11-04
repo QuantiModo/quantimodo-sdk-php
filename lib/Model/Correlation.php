@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -54,71 +54,357 @@ class Correlation implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'average_daily_low_cause' => 'float',
-        'average_daily_high_cause' => 'float',
-        'average_effect' => 'float',
-        'average_effect_following_high_cause' => 'float',
-        'average_effect_following_low_cause' => 'float',
+        'average_daily_high_cause' => 'double',
+        'average_daily_low_cause' => 'double',
+        'average_effect' => 'double',
+        'average_effect_following_high_cause' => 'double',
         'average_effect_following_high_cause_explanation' => 'string',
+        'average_effect_following_low_cause' => 'double',
         'average_effect_following_low_cause_explanation' => 'string',
-        'average_vote' => 'float',
-        'causality_factor' => 'float',
-        'cause' => 'string',
-        'cause_variable_category_name' => 'string',
+        'average_forward_pearson_correlation_over_onset_delays' => 'double',
+        'average_reverse_pearson_correlation_over_onset_delays' => 'double',
+        'average_vote' => 'string',
         'cause_changes' => 'int',
-        'cause_combination_operation' => 'string',
+        'cause_data_source' => '\QuantiModo\Client\Model\DataSource',
+        'cause_user_variable_share_user_measurements' => 'int',
+        'cause_variable_category_id' => 'int',
+        'cause_variable_category_name' => 'string',
+        'cause_variable_combination_operation' => 'string',
+        'cause_variable_unit_abbreviated_name' => 'string',
+        'cause_variable_unit_id' => 'int',
+        'cause_variable_unit_name' => 'string',
+        'cause_variable_id' => 'int',
         'cause_variable_image_url' => 'string',
         'cause_variable_ion_icon' => 'string',
-        'cause_unit' => 'string',
-        'cause_unit_id' => 'int',
-        'cause_variable_id' => 'int',
+        'cause_variable_most_common_connector_id' => 'int',
         'cause_variable_name' => 'string',
-        'correlation_coefficient' => 'float',
+        'confidence_interval' => 'double',
+        'confidence_level' => 'string',
+        'correlation_coefficient' => 'double',
+        'correlation_is_contradictory_to_optimal_values' => 'bool',
         'created_at' => '\DateTime',
+        'critical_t_value' => 'double',
         'data_analysis' => 'string',
         'data_sources' => 'string',
-        'duration_of_action' => 'float',
-        'effect' => 'string',
+        'data_sources_paragraph_for_cause' => 'string',
+        'data_sources_paragraph_for_effect' => 'string',
+        'direction' => 'string',
+        'duration_of_action' => 'int',
+        'duration_of_action_in_hours' => 'int',
+        'effect_changes' => 'int',
+        'effect_data_source' => '\QuantiModo\Client\Model\DataSource',
+        'effect_size' => 'string',
+        'effect_unit' => 'string',
+        'effect_user_variable_share_user_measurements' => 'int',
+        'effect_variable_category_id' => 'int',
         'effect_variable_category_name' => 'string',
+        'effect_variable_combination_operation' => 'string',
+        'effect_variable_common_alias' => 'string',
+        'effect_variable_unit_abbreviated_name' => 'string',
+        'effect_variable_unit_id' => 'int',
+        'effect_variable_unit_name' => 'string',
+        'effect_variable_id' => 'int',
         'effect_variable_image_url' => 'string',
         'effect_variable_ion_icon' => 'string',
-        'effect_size' => 'string',
-        'effect_variable_id' => 'string',
+        'effect_variable_most_common_connector_id' => 'int',
         'effect_variable_name' => 'string',
+        'experiment_end_time' => '\DateTime',
+        'experiment_start_time' => '\DateTime',
+        'forward_spearman_correlation_coefficient' => 'double',
         'gauge_image' => 'string',
+        'gauge_image_square' => 'string',
         'image_url' => 'string',
-        'number_of_pairs' => 'float',
-        'original_effect' => 'string',
-        'onset_delay' => 'double',
-        'optimal_pearson_product' => 'float',
-        'original_cause' => 'string',
-        'outcome_data_sources' => 'string',
+        'instructions_for_cause' => 'string',
+        'instructions_for_effect' => 'string',
+        'number_of_pairs' => 'int',
+        'onset_delay' => 'int',
+        'onset_delay_in_hours' => 'int',
+        'onset_delay_with_strongest_pearson_correlation' => 'int',
+        'onset_delay_with_strongest_pearson_correlation_in_hours' => 'int',
+        'optimal_pearson_product' => 'double',
+        'outcome_filling_value' => 'int',
+        'outcome_maximum_allowed_value' => 'double',
+        'outcome_minimum_allowed_value' => 'double',
+        'pearson_correlation_with_no_onset_delay' => 'double',
+        'predictive_pearson_correlation' => 'double',
+        'predictive_pearson_correlation_coefficient' => 'double',
+        'predictor_data_sources' => 'string',
         'predictor_explanation' => 'string',
-        'principal_investigator' => 'string',
-        'qm_score' => 'float',
-        'reverse_correlation' => 'float',
+        'predictor_filling_value' => 'int',
+        'predictor_maximum_allowed_value' => 'double',
+        'predictor_minimum_allowed_value' => 'double',
+        'predicts_high_effect_change' => 'int',
+        'predicts_high_effect_change_sentence_fragment' => 'string',
+        'predicts_low_effect_change' => 'int',
+        'predicts_low_effect_change_sentence_fragment' => 'string',
+        'p_value' => 'double',
+        'qm_score' => 'double',
+        'reverse_pearson_correlation_coefficient' => 'double',
+        'share_user_measurements' => 'bool',
         'significance_explanation' => 'string',
-        'statistical_significance' => 'string',
+        'significant_difference' => 'bool',
+        'statistical_significance' => 'double',
         'strength_level' => 'string',
+        'strongest_pearson_correlation_coefficient' => 'double',
         'study_abstract' => 'string',
-        'study_background' => 'string',
         'study_design' => 'string',
         'study_limitations' => 'string',
         'study_link_dynamic' => 'string',
+        'study_link_email' => 'string',
         'study_link_facebook' => 'string',
         'study_link_google' => 'string',
-        'study_link_twitter' => 'string',
         'study_link_static' => 'string',
+        'study_link_twitter' => 'string',
         'study_objective' => 'string',
         'study_results' => 'string',
         'study_title' => 'string',
-        'timestamp' => 'float',
+        'timestamp' => 'int',
+        't_value' => 'double',
         'updated_at' => '\DateTime',
-        'user_vote' => 'float',
-        'value_predicting_high_outcome' => 'float',
+        'user_id' => 'int',
+        'user_vote' => 'int',
+        'value_predicting_high_outcome' => 'double',
         'value_predicting_high_outcome_explanation' => 'string',
-        'value_predicting_low_outcome' => 'float',
-        'value_predicting_low_outcome_explanation' => 'string'
+        'value_predicting_low_outcome' => 'double',
+        'value_predicting_low_outcome_explanation' => 'string',
+        'causality_factor' => 'float',
+        'outcome_data_sources' => 'string',
+        'principal_investigator' => 'string',
+        'reverse_correlation' => 'float',
+        'study_background' => 'string',
+        'study_invitation' => 'string',
+        'study_question' => 'string',
+        'all_pairs_significance' => 'double',
+        'average_pearson_correlation_coefficient_over_onset_delays' => 'string',
+        'calculation_start_time' => '\DateTime',
+        'cause_changes_statistical_significance' => 'double',
+        'cause_number_of_processed_daily_measurements' => 'int',
+        'cause_number_of_raw_measurements' => 'int',
+        'cause_value_spread' => 'double',
+        'correlations_over_durations_of_action' => 'string',
+        'correlations_over_durations_of_action_chart_config' => 'string',
+        'correlations_over_onset_delays_chart_config' => 'string',
+        'data_points' => 'string',
+        'degrees_of_freedom' => 'int',
+        'distance_from_middle_to_be_hight_low_effect' => 'int',
+        'effect_number_of_processed_daily_measurements' => 'int',
+        'effect_number_of_raw_measurements' => 'int',
+        'effect_value_spread' => 'double',
+        'error' => 'string',
+        'maximum_cause_value' => 'double',
+        'maximum_effect_value' => 'double',
+        'median_of_lower_half_of_effect_measurements' => 'string',
+        'median_of_upper_half_of_effect_measurements' => 'string',
+        'minimum_cause_value' => 'double',
+        'minimum_effect_value' => 'double',
+        'minimum_probability' => 'double',
+        'number_of_cause_changes_for_optimal_values' => 'int',
+        'number_of_days' => 'int',
+        'number_of_days_significance' => 'double',
+        'number_of_effect_changes_for_optimal_values' => 'int',
+        'number_of_high_effect_pairs' => 'int',
+        'number_of_low_effect_pairs' => 'int',
+        'number_of_samples' => 'int',
+        'number_of_unique_cause_values_for_optimal_values' => 'int',
+        'number_of_unique_effect_values_for_optimal_values' => 'int',
+        'number_of_users' => 'string',
+        'optimal_change_spread' => 'double',
+        'optimal_change_spread_significance' => 'double',
+        'pairs_over_time_chart_config' => '\DateTime',
+        'per_day_sentence_fragment' => 'string',
+        'raw_cause_measurement_significance' => 'double',
+        'raw_effect_measurement_significance' => 'double',
+        'reverse_pairs_count' => 'string',
+        'vote_statistical_significance' => 'int',
+        'aggregate_qm_score' => 'double',
+        'cause_unit' => 'string',
+        'cause_variable_common_alias' => 'string',
+        'cause_variable_informational_url' => 'string',
+        'cause_variable_product_url' => 'string',
+        'effect_variable_informational_url' => 'string',
+        'effect_variable_product_url' => 'string',
+        'forward_pearson_correlation_coefficient' => 'double',
+        'number_of_correlations' => 'int',
+        'vote' => 'string'
+    ];
+
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'average_daily_high_cause' => 'double',
+        'average_daily_low_cause' => 'double',
+        'average_effect' => 'double',
+        'average_effect_following_high_cause' => 'double',
+        'average_effect_following_high_cause_explanation' => null,
+        'average_effect_following_low_cause' => 'double',
+        'average_effect_following_low_cause_explanation' => null,
+        'average_forward_pearson_correlation_over_onset_delays' => 'double',
+        'average_reverse_pearson_correlation_over_onset_delays' => 'double',
+        'average_vote' => null,
+        'cause_changes' => null,
+        'cause_data_source' => null,
+        'cause_user_variable_share_user_measurements' => null,
+        'cause_variable_category_id' => null,
+        'cause_variable_category_name' => null,
+        'cause_variable_combination_operation' => null,
+        'cause_variable_unit_abbreviated_name' => null,
+        'cause_variable_unit_id' => null,
+        'cause_variable_unit_name' => null,
+        'cause_variable_id' => null,
+        'cause_variable_image_url' => null,
+        'cause_variable_ion_icon' => null,
+        'cause_variable_most_common_connector_id' => null,
+        'cause_variable_name' => null,
+        'confidence_interval' => 'double',
+        'confidence_level' => null,
+        'correlation_coefficient' => 'double',
+        'correlation_is_contradictory_to_optimal_values' => null,
+        'created_at' => 'date-time',
+        'critical_t_value' => 'double',
+        'data_analysis' => null,
+        'data_sources' => null,
+        'data_sources_paragraph_for_cause' => null,
+        'data_sources_paragraph_for_effect' => null,
+        'direction' => null,
+        'duration_of_action' => null,
+        'duration_of_action_in_hours' => null,
+        'effect_changes' => null,
+        'effect_data_source' => null,
+        'effect_size' => null,
+        'effect_unit' => null,
+        'effect_user_variable_share_user_measurements' => null,
+        'effect_variable_category_id' => null,
+        'effect_variable_category_name' => null,
+        'effect_variable_combination_operation' => null,
+        'effect_variable_common_alias' => null,
+        'effect_variable_unit_abbreviated_name' => null,
+        'effect_variable_unit_id' => null,
+        'effect_variable_unit_name' => null,
+        'effect_variable_id' => null,
+        'effect_variable_image_url' => null,
+        'effect_variable_ion_icon' => null,
+        'effect_variable_most_common_connector_id' => null,
+        'effect_variable_name' => null,
+        'experiment_end_time' => 'date-time',
+        'experiment_start_time' => 'date-time',
+        'forward_spearman_correlation_coefficient' => 'double',
+        'gauge_image' => null,
+        'gauge_image_square' => null,
+        'image_url' => null,
+        'instructions_for_cause' => null,
+        'instructions_for_effect' => null,
+        'number_of_pairs' => null,
+        'onset_delay' => null,
+        'onset_delay_in_hours' => null,
+        'onset_delay_with_strongest_pearson_correlation' => null,
+        'onset_delay_with_strongest_pearson_correlation_in_hours' => null,
+        'optimal_pearson_product' => 'double',
+        'outcome_filling_value' => null,
+        'outcome_maximum_allowed_value' => 'double',
+        'outcome_minimum_allowed_value' => 'double',
+        'pearson_correlation_with_no_onset_delay' => 'double',
+        'predictive_pearson_correlation' => 'double',
+        'predictive_pearson_correlation_coefficient' => 'double',
+        'predictor_data_sources' => null,
+        'predictor_explanation' => null,
+        'predictor_filling_value' => null,
+        'predictor_maximum_allowed_value' => 'double',
+        'predictor_minimum_allowed_value' => 'double',
+        'predicts_high_effect_change' => null,
+        'predicts_high_effect_change_sentence_fragment' => null,
+        'predicts_low_effect_change' => null,
+        'predicts_low_effect_change_sentence_fragment' => null,
+        'p_value' => 'double',
+        'qm_score' => 'double',
+        'reverse_pearson_correlation_coefficient' => 'double',
+        'share_user_measurements' => null,
+        'significance_explanation' => null,
+        'significant_difference' => null,
+        'statistical_significance' => 'double',
+        'strength_level' => null,
+        'strongest_pearson_correlation_coefficient' => 'double',
+        'study_abstract' => null,
+        'study_design' => null,
+        'study_limitations' => null,
+        'study_link_dynamic' => null,
+        'study_link_email' => null,
+        'study_link_facebook' => null,
+        'study_link_google' => null,
+        'study_link_static' => null,
+        'study_link_twitter' => null,
+        'study_objective' => null,
+        'study_results' => null,
+        'study_title' => null,
+        'timestamp' => null,
+        't_value' => 'double',
+        'updated_at' => 'date-time',
+        'user_id' => null,
+        'user_vote' => null,
+        'value_predicting_high_outcome' => 'double',
+        'value_predicting_high_outcome_explanation' => null,
+        'value_predicting_low_outcome' => 'double',
+        'value_predicting_low_outcome_explanation' => null,
+        'causality_factor' => null,
+        'outcome_data_sources' => null,
+        'principal_investigator' => null,
+        'reverse_correlation' => null,
+        'study_background' => null,
+        'study_invitation' => null,
+        'study_question' => null,
+        'all_pairs_significance' => 'double',
+        'average_pearson_correlation_coefficient_over_onset_delays' => null,
+        'calculation_start_time' => 'date-time',
+        'cause_changes_statistical_significance' => 'double',
+        'cause_number_of_processed_daily_measurements' => null,
+        'cause_number_of_raw_measurements' => null,
+        'cause_value_spread' => 'double',
+        'correlations_over_durations_of_action' => null,
+        'correlations_over_durations_of_action_chart_config' => null,
+        'correlations_over_onset_delays_chart_config' => null,
+        'data_points' => null,
+        'degrees_of_freedom' => null,
+        'distance_from_middle_to_be_hight_low_effect' => null,
+        'effect_number_of_processed_daily_measurements' => null,
+        'effect_number_of_raw_measurements' => null,
+        'effect_value_spread' => 'double',
+        'error' => null,
+        'maximum_cause_value' => 'double',
+        'maximum_effect_value' => 'double',
+        'median_of_lower_half_of_effect_measurements' => null,
+        'median_of_upper_half_of_effect_measurements' => null,
+        'minimum_cause_value' => 'double',
+        'minimum_effect_value' => 'double',
+        'minimum_probability' => 'double',
+        'number_of_cause_changes_for_optimal_values' => null,
+        'number_of_days' => null,
+        'number_of_days_significance' => 'double',
+        'number_of_effect_changes_for_optimal_values' => null,
+        'number_of_high_effect_pairs' => null,
+        'number_of_low_effect_pairs' => null,
+        'number_of_samples' => null,
+        'number_of_unique_cause_values_for_optimal_values' => null,
+        'number_of_unique_effect_values_for_optimal_values' => null,
+        'number_of_users' => null,
+        'optimal_change_spread' => 'double',
+        'optimal_change_spread_significance' => 'double',
+        'pairs_over_time_chart_config' => 'date-time',
+        'per_day_sentence_fragment' => null,
+        'raw_cause_measurement_significance' => 'double',
+        'raw_effect_measurement_significance' => 'double',
+        'reverse_pairs_count' => null,
+        'vote_statistical_significance' => null,
+        'aggregate_qm_score' => 'double',
+        'cause_unit' => null,
+        'cause_variable_common_alias' => null,
+        'cause_variable_informational_url' => null,
+        'cause_variable_product_url' => null,
+        'effect_variable_informational_url' => null,
+        'effect_variable_product_url' => null,
+        'forward_pearson_correlation_coefficient' => 'double',
+        'number_of_correlations' => null,
+        'vote' => null
     ];
 
     public static function swaggerTypes()
@@ -126,76 +412,188 @@ class Correlation implements ArrayAccess
         return self::$swaggerTypes;
     }
 
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
+    }
+
     /**
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
     protected static $attributeMap = [
-        'average_daily_low_cause' => 'averageDailyLowCause',
         'average_daily_high_cause' => 'averageDailyHighCause',
+        'average_daily_low_cause' => 'averageDailyLowCause',
         'average_effect' => 'averageEffect',
         'average_effect_following_high_cause' => 'averageEffectFollowingHighCause',
-        'average_effect_following_low_cause' => 'averageEffectFollowingLowCause',
         'average_effect_following_high_cause_explanation' => 'averageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause' => 'averageEffectFollowingLowCause',
         'average_effect_following_low_cause_explanation' => 'averageEffectFollowingLowCauseExplanation',
+        'average_forward_pearson_correlation_over_onset_delays' => 'averageForwardPearsonCorrelationOverOnsetDelays',
+        'average_reverse_pearson_correlation_over_onset_delays' => 'averageReversePearsonCorrelationOverOnsetDelays',
         'average_vote' => 'averageVote',
-        'causality_factor' => 'causalityFactor',
-        'cause' => 'cause',
-        'cause_variable_category_name' => 'causeVariableCategoryName',
         'cause_changes' => 'causeChanges',
-        'cause_combination_operation' => 'causeCombinationOperation',
+        'cause_data_source' => 'causeDataSource',
+        'cause_user_variable_share_user_measurements' => 'causeUserVariableShareUserMeasurements',
+        'cause_variable_category_id' => 'causeVariableCategoryId',
+        'cause_variable_category_name' => 'causeVariableCategoryName',
+        'cause_variable_combination_operation' => 'causeVariableCombinationOperation',
+        'cause_variable_unit_abbreviated_name' => 'causeVariableUnitAbbreviatedName',
+        'cause_variable_unit_id' => 'causeVariableUnitId',
+        'cause_variable_unit_name' => 'causeVariableUnitName',
+        'cause_variable_id' => 'causeVariableId',
         'cause_variable_image_url' => 'causeVariableImageUrl',
         'cause_variable_ion_icon' => 'causeVariableIonIcon',
-        'cause_unit' => 'causeUnit',
-        'cause_unit_id' => 'causeUnitId',
-        'cause_variable_id' => 'causeVariableId',
+        'cause_variable_most_common_connector_id' => 'causeVariableMostCommonConnectorId',
         'cause_variable_name' => 'causeVariableName',
+        'confidence_interval' => 'confidenceInterval',
+        'confidence_level' => 'confidenceLevel',
         'correlation_coefficient' => 'correlationCoefficient',
+        'correlation_is_contradictory_to_optimal_values' => 'correlationIsContradictoryToOptimalValues',
         'created_at' => 'createdAt',
+        'critical_t_value' => 'criticalTValue',
         'data_analysis' => 'dataAnalysis',
         'data_sources' => 'dataSources',
+        'data_sources_paragraph_for_cause' => 'dataSourcesParagraphForCause',
+        'data_sources_paragraph_for_effect' => 'dataSourcesParagraphForEffect',
+        'direction' => 'direction',
         'duration_of_action' => 'durationOfAction',
-        'effect' => 'effect',
+        'duration_of_action_in_hours' => 'durationOfActionInHours',
+        'effect_changes' => 'effectChanges',
+        'effect_data_source' => 'effectDataSource',
+        'effect_size' => 'effectSize',
+        'effect_unit' => 'effectUnit',
+        'effect_user_variable_share_user_measurements' => 'effectUserVariableShareUserMeasurements',
+        'effect_variable_category_id' => 'effectVariableCategoryId',
         'effect_variable_category_name' => 'effectVariableCategoryName',
+        'effect_variable_combination_operation' => 'effectVariableCombinationOperation',
+        'effect_variable_common_alias' => 'effectVariableCommonAlias',
+        'effect_variable_unit_abbreviated_name' => 'effectVariableUnitAbbreviatedName',
+        'effect_variable_unit_id' => 'effectVariableUnitId',
+        'effect_variable_unit_name' => 'effectVariableUnitName',
+        'effect_variable_id' => 'effectVariableId',
         'effect_variable_image_url' => 'effectVariableImageUrl',
         'effect_variable_ion_icon' => 'effectVariableIonIcon',
-        'effect_size' => 'effectSize',
-        'effect_variable_id' => 'effectVariableId',
+        'effect_variable_most_common_connector_id' => 'effectVariableMostCommonConnectorId',
         'effect_variable_name' => 'effectVariableName',
+        'experiment_end_time' => 'experimentEndTime',
+        'experiment_start_time' => 'experimentStartTime',
+        'forward_spearman_correlation_coefficient' => 'forwardSpearmanCorrelationCoefficient',
         'gauge_image' => 'gaugeImage',
+        'gauge_image_square' => 'gaugeImageSquare',
         'image_url' => 'imageUrl',
+        'instructions_for_cause' => 'instructionsForCause',
+        'instructions_for_effect' => 'instructionsForEffect',
         'number_of_pairs' => 'numberOfPairs',
-        'original_effect' => 'originalEffect',
         'onset_delay' => 'onsetDelay',
+        'onset_delay_in_hours' => 'onsetDelayInHours',
+        'onset_delay_with_strongest_pearson_correlation' => 'onsetDelayWithStrongestPearsonCorrelation',
+        'onset_delay_with_strongest_pearson_correlation_in_hours' => 'onsetDelayWithStrongestPearsonCorrelationInHours',
         'optimal_pearson_product' => 'optimalPearsonProduct',
-        'original_cause' => 'originalCause',
-        'outcome_data_sources' => 'outcomeDataSources',
+        'outcome_filling_value' => 'outcomeFillingValue',
+        'outcome_maximum_allowed_value' => 'outcomeMaximumAllowedValue',
+        'outcome_minimum_allowed_value' => 'outcomeMinimumAllowedValue',
+        'pearson_correlation_with_no_onset_delay' => 'pearsonCorrelationWithNoOnsetDelay',
+        'predictive_pearson_correlation' => 'predictivePearsonCorrelation',
+        'predictive_pearson_correlation_coefficient' => 'predictivePearsonCorrelationCoefficient',
+        'predictor_data_sources' => 'predictorDataSources',
         'predictor_explanation' => 'predictorExplanation',
-        'principal_investigator' => 'principalInvestigator',
+        'predictor_filling_value' => 'predictorFillingValue',
+        'predictor_maximum_allowed_value' => 'predictorMaximumAllowedValue',
+        'predictor_minimum_allowed_value' => 'predictorMinimumAllowedValue',
+        'predicts_high_effect_change' => 'predictsHighEffectChange',
+        'predicts_high_effect_change_sentence_fragment' => 'predictsHighEffectChangeSentenceFragment',
+        'predicts_low_effect_change' => 'predictsLowEffectChange',
+        'predicts_low_effect_change_sentence_fragment' => 'predictsLowEffectChangeSentenceFragment',
+        'p_value' => 'pValue',
         'qm_score' => 'qmScore',
-        'reverse_correlation' => 'reverseCorrelation',
+        'reverse_pearson_correlation_coefficient' => 'reversePearsonCorrelationCoefficient',
+        'share_user_measurements' => 'shareUserMeasurements',
         'significance_explanation' => 'significanceExplanation',
+        'significant_difference' => 'significantDifference',
         'statistical_significance' => 'statisticalSignificance',
         'strength_level' => 'strengthLevel',
+        'strongest_pearson_correlation_coefficient' => 'strongestPearsonCorrelationCoefficient',
         'study_abstract' => 'studyAbstract',
-        'study_background' => 'studyBackground',
         'study_design' => 'studyDesign',
         'study_limitations' => 'studyLimitations',
         'study_link_dynamic' => 'studyLinkDynamic',
+        'study_link_email' => 'studyLinkEmail',
         'study_link_facebook' => 'studyLinkFacebook',
         'study_link_google' => 'studyLinkGoogle',
-        'study_link_twitter' => 'studyLinkTwitter',
         'study_link_static' => 'studyLinkStatic',
+        'study_link_twitter' => 'studyLinkTwitter',
         'study_objective' => 'studyObjective',
         'study_results' => 'studyResults',
         'study_title' => 'studyTitle',
         'timestamp' => 'timestamp',
+        't_value' => 'tValue',
         'updated_at' => 'updatedAt',
+        'user_id' => 'userId',
         'user_vote' => 'userVote',
         'value_predicting_high_outcome' => 'valuePredictingHighOutcome',
         'value_predicting_high_outcome_explanation' => 'valuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'valuePredictingLowOutcome',
-        'value_predicting_low_outcome_explanation' => 'valuePredictingLowOutcomeExplanation'
+        'value_predicting_low_outcome_explanation' => 'valuePredictingLowOutcomeExplanation',
+        'causality_factor' => 'causalityFactor',
+        'outcome_data_sources' => 'outcomeDataSources',
+        'principal_investigator' => 'principalInvestigator',
+        'reverse_correlation' => 'reverseCorrelation',
+        'study_background' => 'studyBackground',
+        'study_invitation' => 'studyInvitation',
+        'study_question' => 'studyQuestion',
+        'all_pairs_significance' => 'allPairsSignificance',
+        'average_pearson_correlation_coefficient_over_onset_delays' => 'averagePearsonCorrelationCoefficientOverOnsetDelays',
+        'calculation_start_time' => 'calculationStartTime',
+        'cause_changes_statistical_significance' => 'causeChangesStatisticalSignificance',
+        'cause_number_of_processed_daily_measurements' => 'causeNumberOfProcessedDailyMeasurements',
+        'cause_number_of_raw_measurements' => 'causeNumberOfRawMeasurements',
+        'cause_value_spread' => 'causeValueSpread',
+        'correlations_over_durations_of_action' => 'correlationsOverDurationsOfAction',
+        'correlations_over_durations_of_action_chart_config' => 'correlationsOverDurationsOfActionChartConfig',
+        'correlations_over_onset_delays_chart_config' => 'correlationsOverOnsetDelaysChartConfig',
+        'data_points' => 'dataPoints',
+        'degrees_of_freedom' => 'degreesOfFreedom',
+        'distance_from_middle_to_be_hight_low_effect' => 'distanceFromMiddleToBeHightLowEffect',
+        'effect_number_of_processed_daily_measurements' => 'effectNumberOfProcessedDailyMeasurements',
+        'effect_number_of_raw_measurements' => 'effectNumberOfRawMeasurements',
+        'effect_value_spread' => 'effectValueSpread',
+        'error' => 'error',
+        'maximum_cause_value' => 'maximumCauseValue',
+        'maximum_effect_value' => 'maximumEffectValue',
+        'median_of_lower_half_of_effect_measurements' => 'medianOfLowerHalfOfEffectMeasurements',
+        'median_of_upper_half_of_effect_measurements' => 'medianOfUpperHalfOfEffectMeasurements',
+        'minimum_cause_value' => 'minimumCauseValue',
+        'minimum_effect_value' => 'minimumEffectValue',
+        'minimum_probability' => 'minimumProbability',
+        'number_of_cause_changes_for_optimal_values' => 'numberOfCauseChangesForOptimalValues',
+        'number_of_days' => 'numberOfDays',
+        'number_of_days_significance' => 'numberOfDaysSignificance',
+        'number_of_effect_changes_for_optimal_values' => 'numberOfEffectChangesForOptimalValues',
+        'number_of_high_effect_pairs' => 'numberOfHighEffectPairs',
+        'number_of_low_effect_pairs' => 'numberOfLowEffectPairs',
+        'number_of_samples' => 'numberOfSamples',
+        'number_of_unique_cause_values_for_optimal_values' => 'numberOfUniqueCauseValuesForOptimalValues',
+        'number_of_unique_effect_values_for_optimal_values' => 'numberOfUniqueEffectValuesForOptimalValues',
+        'number_of_users' => 'numberOfUsers',
+        'optimal_change_spread' => 'optimalChangeSpread',
+        'optimal_change_spread_significance' => 'optimalChangeSpreadSignificance',
+        'pairs_over_time_chart_config' => 'pairsOverTimeChartConfig',
+        'per_day_sentence_fragment' => 'perDaySentenceFragment',
+        'raw_cause_measurement_significance' => 'rawCauseMeasurementSignificance',
+        'raw_effect_measurement_significance' => 'rawEffectMeasurementSignificance',
+        'reverse_pairs_count' => 'reversePairsCount',
+        'vote_statistical_significance' => 'voteStatisticalSignificance',
+        'aggregate_qm_score' => 'aggregateQMScore',
+        'cause_unit' => 'causeUnit',
+        'cause_variable_common_alias' => 'causeVariableCommonAlias',
+        'cause_variable_informational_url' => 'causeVariableInformationalUrl',
+        'cause_variable_product_url' => 'causeVariableProductUrl',
+        'effect_variable_informational_url' => 'effectVariableInformationalUrl',
+        'effect_variable_product_url' => 'effectVariableProductUrl',
+        'forward_pearson_correlation_coefficient' => 'forwardPearsonCorrelationCoefficient',
+        'number_of_correlations' => 'numberOfCorrelations',
+        'vote' => 'vote'
     ];
 
 
@@ -204,71 +602,178 @@ class Correlation implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'average_daily_low_cause' => 'setAverageDailyLowCause',
         'average_daily_high_cause' => 'setAverageDailyHighCause',
+        'average_daily_low_cause' => 'setAverageDailyLowCause',
         'average_effect' => 'setAverageEffect',
         'average_effect_following_high_cause' => 'setAverageEffectFollowingHighCause',
-        'average_effect_following_low_cause' => 'setAverageEffectFollowingLowCause',
         'average_effect_following_high_cause_explanation' => 'setAverageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause' => 'setAverageEffectFollowingLowCause',
         'average_effect_following_low_cause_explanation' => 'setAverageEffectFollowingLowCauseExplanation',
+        'average_forward_pearson_correlation_over_onset_delays' => 'setAverageForwardPearsonCorrelationOverOnsetDelays',
+        'average_reverse_pearson_correlation_over_onset_delays' => 'setAverageReversePearsonCorrelationOverOnsetDelays',
         'average_vote' => 'setAverageVote',
-        'causality_factor' => 'setCausalityFactor',
-        'cause' => 'setCause',
-        'cause_variable_category_name' => 'setCauseVariableCategoryName',
         'cause_changes' => 'setCauseChanges',
-        'cause_combination_operation' => 'setCauseCombinationOperation',
+        'cause_data_source' => 'setCauseDataSource',
+        'cause_user_variable_share_user_measurements' => 'setCauseUserVariableShareUserMeasurements',
+        'cause_variable_category_id' => 'setCauseVariableCategoryId',
+        'cause_variable_category_name' => 'setCauseVariableCategoryName',
+        'cause_variable_combination_operation' => 'setCauseVariableCombinationOperation',
+        'cause_variable_unit_abbreviated_name' => 'setCauseVariableUnitAbbreviatedName',
+        'cause_variable_unit_id' => 'setCauseVariableUnitId',
+        'cause_variable_unit_name' => 'setCauseVariableUnitName',
+        'cause_variable_id' => 'setCauseVariableId',
         'cause_variable_image_url' => 'setCauseVariableImageUrl',
         'cause_variable_ion_icon' => 'setCauseVariableIonIcon',
-        'cause_unit' => 'setCauseUnit',
-        'cause_unit_id' => 'setCauseUnitId',
-        'cause_variable_id' => 'setCauseVariableId',
+        'cause_variable_most_common_connector_id' => 'setCauseVariableMostCommonConnectorId',
         'cause_variable_name' => 'setCauseVariableName',
+        'confidence_interval' => 'setConfidenceInterval',
+        'confidence_level' => 'setConfidenceLevel',
         'correlation_coefficient' => 'setCorrelationCoefficient',
+        'correlation_is_contradictory_to_optimal_values' => 'setCorrelationIsContradictoryToOptimalValues',
         'created_at' => 'setCreatedAt',
+        'critical_t_value' => 'setCriticalTValue',
         'data_analysis' => 'setDataAnalysis',
         'data_sources' => 'setDataSources',
+        'data_sources_paragraph_for_cause' => 'setDataSourcesParagraphForCause',
+        'data_sources_paragraph_for_effect' => 'setDataSourcesParagraphForEffect',
+        'direction' => 'setDirection',
         'duration_of_action' => 'setDurationOfAction',
-        'effect' => 'setEffect',
+        'duration_of_action_in_hours' => 'setDurationOfActionInHours',
+        'effect_changes' => 'setEffectChanges',
+        'effect_data_source' => 'setEffectDataSource',
+        'effect_size' => 'setEffectSize',
+        'effect_unit' => 'setEffectUnit',
+        'effect_user_variable_share_user_measurements' => 'setEffectUserVariableShareUserMeasurements',
+        'effect_variable_category_id' => 'setEffectVariableCategoryId',
         'effect_variable_category_name' => 'setEffectVariableCategoryName',
+        'effect_variable_combination_operation' => 'setEffectVariableCombinationOperation',
+        'effect_variable_common_alias' => 'setEffectVariableCommonAlias',
+        'effect_variable_unit_abbreviated_name' => 'setEffectVariableUnitAbbreviatedName',
+        'effect_variable_unit_id' => 'setEffectVariableUnitId',
+        'effect_variable_unit_name' => 'setEffectVariableUnitName',
+        'effect_variable_id' => 'setEffectVariableId',
         'effect_variable_image_url' => 'setEffectVariableImageUrl',
         'effect_variable_ion_icon' => 'setEffectVariableIonIcon',
-        'effect_size' => 'setEffectSize',
-        'effect_variable_id' => 'setEffectVariableId',
+        'effect_variable_most_common_connector_id' => 'setEffectVariableMostCommonConnectorId',
         'effect_variable_name' => 'setEffectVariableName',
+        'experiment_end_time' => 'setExperimentEndTime',
+        'experiment_start_time' => 'setExperimentStartTime',
+        'forward_spearman_correlation_coefficient' => 'setForwardSpearmanCorrelationCoefficient',
         'gauge_image' => 'setGaugeImage',
+        'gauge_image_square' => 'setGaugeImageSquare',
         'image_url' => 'setImageUrl',
+        'instructions_for_cause' => 'setInstructionsForCause',
+        'instructions_for_effect' => 'setInstructionsForEffect',
         'number_of_pairs' => 'setNumberOfPairs',
-        'original_effect' => 'setOriginalEffect',
         'onset_delay' => 'setOnsetDelay',
+        'onset_delay_in_hours' => 'setOnsetDelayInHours',
+        'onset_delay_with_strongest_pearson_correlation' => 'setOnsetDelayWithStrongestPearsonCorrelation',
+        'onset_delay_with_strongest_pearson_correlation_in_hours' => 'setOnsetDelayWithStrongestPearsonCorrelationInHours',
         'optimal_pearson_product' => 'setOptimalPearsonProduct',
-        'original_cause' => 'setOriginalCause',
-        'outcome_data_sources' => 'setOutcomeDataSources',
+        'outcome_filling_value' => 'setOutcomeFillingValue',
+        'outcome_maximum_allowed_value' => 'setOutcomeMaximumAllowedValue',
+        'outcome_minimum_allowed_value' => 'setOutcomeMinimumAllowedValue',
+        'pearson_correlation_with_no_onset_delay' => 'setPearsonCorrelationWithNoOnsetDelay',
+        'predictive_pearson_correlation' => 'setPredictivePearsonCorrelation',
+        'predictive_pearson_correlation_coefficient' => 'setPredictivePearsonCorrelationCoefficient',
+        'predictor_data_sources' => 'setPredictorDataSources',
         'predictor_explanation' => 'setPredictorExplanation',
-        'principal_investigator' => 'setPrincipalInvestigator',
+        'predictor_filling_value' => 'setPredictorFillingValue',
+        'predictor_maximum_allowed_value' => 'setPredictorMaximumAllowedValue',
+        'predictor_minimum_allowed_value' => 'setPredictorMinimumAllowedValue',
+        'predicts_high_effect_change' => 'setPredictsHighEffectChange',
+        'predicts_high_effect_change_sentence_fragment' => 'setPredictsHighEffectChangeSentenceFragment',
+        'predicts_low_effect_change' => 'setPredictsLowEffectChange',
+        'predicts_low_effect_change_sentence_fragment' => 'setPredictsLowEffectChangeSentenceFragment',
+        'p_value' => 'setPValue',
         'qm_score' => 'setQmScore',
-        'reverse_correlation' => 'setReverseCorrelation',
+        'reverse_pearson_correlation_coefficient' => 'setReversePearsonCorrelationCoefficient',
+        'share_user_measurements' => 'setShareUserMeasurements',
         'significance_explanation' => 'setSignificanceExplanation',
+        'significant_difference' => 'setSignificantDifference',
         'statistical_significance' => 'setStatisticalSignificance',
         'strength_level' => 'setStrengthLevel',
+        'strongest_pearson_correlation_coefficient' => 'setStrongestPearsonCorrelationCoefficient',
         'study_abstract' => 'setStudyAbstract',
-        'study_background' => 'setStudyBackground',
         'study_design' => 'setStudyDesign',
         'study_limitations' => 'setStudyLimitations',
         'study_link_dynamic' => 'setStudyLinkDynamic',
+        'study_link_email' => 'setStudyLinkEmail',
         'study_link_facebook' => 'setStudyLinkFacebook',
         'study_link_google' => 'setStudyLinkGoogle',
-        'study_link_twitter' => 'setStudyLinkTwitter',
         'study_link_static' => 'setStudyLinkStatic',
+        'study_link_twitter' => 'setStudyLinkTwitter',
         'study_objective' => 'setStudyObjective',
         'study_results' => 'setStudyResults',
         'study_title' => 'setStudyTitle',
         'timestamp' => 'setTimestamp',
+        't_value' => 'setTValue',
         'updated_at' => 'setUpdatedAt',
+        'user_id' => 'setUserId',
         'user_vote' => 'setUserVote',
         'value_predicting_high_outcome' => 'setValuePredictingHighOutcome',
         'value_predicting_high_outcome_explanation' => 'setValuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'setValuePredictingLowOutcome',
-        'value_predicting_low_outcome_explanation' => 'setValuePredictingLowOutcomeExplanation'
+        'value_predicting_low_outcome_explanation' => 'setValuePredictingLowOutcomeExplanation',
+        'causality_factor' => 'setCausalityFactor',
+        'outcome_data_sources' => 'setOutcomeDataSources',
+        'principal_investigator' => 'setPrincipalInvestigator',
+        'reverse_correlation' => 'setReverseCorrelation',
+        'study_background' => 'setStudyBackground',
+        'study_invitation' => 'setStudyInvitation',
+        'study_question' => 'setStudyQuestion',
+        'all_pairs_significance' => 'setAllPairsSignificance',
+        'average_pearson_correlation_coefficient_over_onset_delays' => 'setAveragePearsonCorrelationCoefficientOverOnsetDelays',
+        'calculation_start_time' => 'setCalculationStartTime',
+        'cause_changes_statistical_significance' => 'setCauseChangesStatisticalSignificance',
+        'cause_number_of_processed_daily_measurements' => 'setCauseNumberOfProcessedDailyMeasurements',
+        'cause_number_of_raw_measurements' => 'setCauseNumberOfRawMeasurements',
+        'cause_value_spread' => 'setCauseValueSpread',
+        'correlations_over_durations_of_action' => 'setCorrelationsOverDurationsOfAction',
+        'correlations_over_durations_of_action_chart_config' => 'setCorrelationsOverDurationsOfActionChartConfig',
+        'correlations_over_onset_delays_chart_config' => 'setCorrelationsOverOnsetDelaysChartConfig',
+        'data_points' => 'setDataPoints',
+        'degrees_of_freedom' => 'setDegreesOfFreedom',
+        'distance_from_middle_to_be_hight_low_effect' => 'setDistanceFromMiddleToBeHightLowEffect',
+        'effect_number_of_processed_daily_measurements' => 'setEffectNumberOfProcessedDailyMeasurements',
+        'effect_number_of_raw_measurements' => 'setEffectNumberOfRawMeasurements',
+        'effect_value_spread' => 'setEffectValueSpread',
+        'error' => 'setError',
+        'maximum_cause_value' => 'setMaximumCauseValue',
+        'maximum_effect_value' => 'setMaximumEffectValue',
+        'median_of_lower_half_of_effect_measurements' => 'setMedianOfLowerHalfOfEffectMeasurements',
+        'median_of_upper_half_of_effect_measurements' => 'setMedianOfUpperHalfOfEffectMeasurements',
+        'minimum_cause_value' => 'setMinimumCauseValue',
+        'minimum_effect_value' => 'setMinimumEffectValue',
+        'minimum_probability' => 'setMinimumProbability',
+        'number_of_cause_changes_for_optimal_values' => 'setNumberOfCauseChangesForOptimalValues',
+        'number_of_days' => 'setNumberOfDays',
+        'number_of_days_significance' => 'setNumberOfDaysSignificance',
+        'number_of_effect_changes_for_optimal_values' => 'setNumberOfEffectChangesForOptimalValues',
+        'number_of_high_effect_pairs' => 'setNumberOfHighEffectPairs',
+        'number_of_low_effect_pairs' => 'setNumberOfLowEffectPairs',
+        'number_of_samples' => 'setNumberOfSamples',
+        'number_of_unique_cause_values_for_optimal_values' => 'setNumberOfUniqueCauseValuesForOptimalValues',
+        'number_of_unique_effect_values_for_optimal_values' => 'setNumberOfUniqueEffectValuesForOptimalValues',
+        'number_of_users' => 'setNumberOfUsers',
+        'optimal_change_spread' => 'setOptimalChangeSpread',
+        'optimal_change_spread_significance' => 'setOptimalChangeSpreadSignificance',
+        'pairs_over_time_chart_config' => 'setPairsOverTimeChartConfig',
+        'per_day_sentence_fragment' => 'setPerDaySentenceFragment',
+        'raw_cause_measurement_significance' => 'setRawCauseMeasurementSignificance',
+        'raw_effect_measurement_significance' => 'setRawEffectMeasurementSignificance',
+        'reverse_pairs_count' => 'setReversePairsCount',
+        'vote_statistical_significance' => 'setVoteStatisticalSignificance',
+        'aggregate_qm_score' => 'setAggregateQmScore',
+        'cause_unit' => 'setCauseUnit',
+        'cause_variable_common_alias' => 'setCauseVariableCommonAlias',
+        'cause_variable_informational_url' => 'setCauseVariableInformationalUrl',
+        'cause_variable_product_url' => 'setCauseVariableProductUrl',
+        'effect_variable_informational_url' => 'setEffectVariableInformationalUrl',
+        'effect_variable_product_url' => 'setEffectVariableProductUrl',
+        'forward_pearson_correlation_coefficient' => 'setForwardPearsonCorrelationCoefficient',
+        'number_of_correlations' => 'setNumberOfCorrelations',
+        'vote' => 'setVote'
     ];
 
 
@@ -277,71 +782,178 @@ class Correlation implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'average_daily_low_cause' => 'getAverageDailyLowCause',
         'average_daily_high_cause' => 'getAverageDailyHighCause',
+        'average_daily_low_cause' => 'getAverageDailyLowCause',
         'average_effect' => 'getAverageEffect',
         'average_effect_following_high_cause' => 'getAverageEffectFollowingHighCause',
-        'average_effect_following_low_cause' => 'getAverageEffectFollowingLowCause',
         'average_effect_following_high_cause_explanation' => 'getAverageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause' => 'getAverageEffectFollowingLowCause',
         'average_effect_following_low_cause_explanation' => 'getAverageEffectFollowingLowCauseExplanation',
+        'average_forward_pearson_correlation_over_onset_delays' => 'getAverageForwardPearsonCorrelationOverOnsetDelays',
+        'average_reverse_pearson_correlation_over_onset_delays' => 'getAverageReversePearsonCorrelationOverOnsetDelays',
         'average_vote' => 'getAverageVote',
-        'causality_factor' => 'getCausalityFactor',
-        'cause' => 'getCause',
-        'cause_variable_category_name' => 'getCauseVariableCategoryName',
         'cause_changes' => 'getCauseChanges',
-        'cause_combination_operation' => 'getCauseCombinationOperation',
+        'cause_data_source' => 'getCauseDataSource',
+        'cause_user_variable_share_user_measurements' => 'getCauseUserVariableShareUserMeasurements',
+        'cause_variable_category_id' => 'getCauseVariableCategoryId',
+        'cause_variable_category_name' => 'getCauseVariableCategoryName',
+        'cause_variable_combination_operation' => 'getCauseVariableCombinationOperation',
+        'cause_variable_unit_abbreviated_name' => 'getCauseVariableUnitAbbreviatedName',
+        'cause_variable_unit_id' => 'getCauseVariableUnitId',
+        'cause_variable_unit_name' => 'getCauseVariableUnitName',
+        'cause_variable_id' => 'getCauseVariableId',
         'cause_variable_image_url' => 'getCauseVariableImageUrl',
         'cause_variable_ion_icon' => 'getCauseVariableIonIcon',
-        'cause_unit' => 'getCauseUnit',
-        'cause_unit_id' => 'getCauseUnitId',
-        'cause_variable_id' => 'getCauseVariableId',
+        'cause_variable_most_common_connector_id' => 'getCauseVariableMostCommonConnectorId',
         'cause_variable_name' => 'getCauseVariableName',
+        'confidence_interval' => 'getConfidenceInterval',
+        'confidence_level' => 'getConfidenceLevel',
         'correlation_coefficient' => 'getCorrelationCoefficient',
+        'correlation_is_contradictory_to_optimal_values' => 'getCorrelationIsContradictoryToOptimalValues',
         'created_at' => 'getCreatedAt',
+        'critical_t_value' => 'getCriticalTValue',
         'data_analysis' => 'getDataAnalysis',
         'data_sources' => 'getDataSources',
+        'data_sources_paragraph_for_cause' => 'getDataSourcesParagraphForCause',
+        'data_sources_paragraph_for_effect' => 'getDataSourcesParagraphForEffect',
+        'direction' => 'getDirection',
         'duration_of_action' => 'getDurationOfAction',
-        'effect' => 'getEffect',
+        'duration_of_action_in_hours' => 'getDurationOfActionInHours',
+        'effect_changes' => 'getEffectChanges',
+        'effect_data_source' => 'getEffectDataSource',
+        'effect_size' => 'getEffectSize',
+        'effect_unit' => 'getEffectUnit',
+        'effect_user_variable_share_user_measurements' => 'getEffectUserVariableShareUserMeasurements',
+        'effect_variable_category_id' => 'getEffectVariableCategoryId',
         'effect_variable_category_name' => 'getEffectVariableCategoryName',
+        'effect_variable_combination_operation' => 'getEffectVariableCombinationOperation',
+        'effect_variable_common_alias' => 'getEffectVariableCommonAlias',
+        'effect_variable_unit_abbreviated_name' => 'getEffectVariableUnitAbbreviatedName',
+        'effect_variable_unit_id' => 'getEffectVariableUnitId',
+        'effect_variable_unit_name' => 'getEffectVariableUnitName',
+        'effect_variable_id' => 'getEffectVariableId',
         'effect_variable_image_url' => 'getEffectVariableImageUrl',
         'effect_variable_ion_icon' => 'getEffectVariableIonIcon',
-        'effect_size' => 'getEffectSize',
-        'effect_variable_id' => 'getEffectVariableId',
+        'effect_variable_most_common_connector_id' => 'getEffectVariableMostCommonConnectorId',
         'effect_variable_name' => 'getEffectVariableName',
+        'experiment_end_time' => 'getExperimentEndTime',
+        'experiment_start_time' => 'getExperimentStartTime',
+        'forward_spearman_correlation_coefficient' => 'getForwardSpearmanCorrelationCoefficient',
         'gauge_image' => 'getGaugeImage',
+        'gauge_image_square' => 'getGaugeImageSquare',
         'image_url' => 'getImageUrl',
+        'instructions_for_cause' => 'getInstructionsForCause',
+        'instructions_for_effect' => 'getInstructionsForEffect',
         'number_of_pairs' => 'getNumberOfPairs',
-        'original_effect' => 'getOriginalEffect',
         'onset_delay' => 'getOnsetDelay',
+        'onset_delay_in_hours' => 'getOnsetDelayInHours',
+        'onset_delay_with_strongest_pearson_correlation' => 'getOnsetDelayWithStrongestPearsonCorrelation',
+        'onset_delay_with_strongest_pearson_correlation_in_hours' => 'getOnsetDelayWithStrongestPearsonCorrelationInHours',
         'optimal_pearson_product' => 'getOptimalPearsonProduct',
-        'original_cause' => 'getOriginalCause',
-        'outcome_data_sources' => 'getOutcomeDataSources',
+        'outcome_filling_value' => 'getOutcomeFillingValue',
+        'outcome_maximum_allowed_value' => 'getOutcomeMaximumAllowedValue',
+        'outcome_minimum_allowed_value' => 'getOutcomeMinimumAllowedValue',
+        'pearson_correlation_with_no_onset_delay' => 'getPearsonCorrelationWithNoOnsetDelay',
+        'predictive_pearson_correlation' => 'getPredictivePearsonCorrelation',
+        'predictive_pearson_correlation_coefficient' => 'getPredictivePearsonCorrelationCoefficient',
+        'predictor_data_sources' => 'getPredictorDataSources',
         'predictor_explanation' => 'getPredictorExplanation',
-        'principal_investigator' => 'getPrincipalInvestigator',
+        'predictor_filling_value' => 'getPredictorFillingValue',
+        'predictor_maximum_allowed_value' => 'getPredictorMaximumAllowedValue',
+        'predictor_minimum_allowed_value' => 'getPredictorMinimumAllowedValue',
+        'predicts_high_effect_change' => 'getPredictsHighEffectChange',
+        'predicts_high_effect_change_sentence_fragment' => 'getPredictsHighEffectChangeSentenceFragment',
+        'predicts_low_effect_change' => 'getPredictsLowEffectChange',
+        'predicts_low_effect_change_sentence_fragment' => 'getPredictsLowEffectChangeSentenceFragment',
+        'p_value' => 'getPValue',
         'qm_score' => 'getQmScore',
-        'reverse_correlation' => 'getReverseCorrelation',
+        'reverse_pearson_correlation_coefficient' => 'getReversePearsonCorrelationCoefficient',
+        'share_user_measurements' => 'getShareUserMeasurements',
         'significance_explanation' => 'getSignificanceExplanation',
+        'significant_difference' => 'getSignificantDifference',
         'statistical_significance' => 'getStatisticalSignificance',
         'strength_level' => 'getStrengthLevel',
+        'strongest_pearson_correlation_coefficient' => 'getStrongestPearsonCorrelationCoefficient',
         'study_abstract' => 'getStudyAbstract',
-        'study_background' => 'getStudyBackground',
         'study_design' => 'getStudyDesign',
         'study_limitations' => 'getStudyLimitations',
         'study_link_dynamic' => 'getStudyLinkDynamic',
+        'study_link_email' => 'getStudyLinkEmail',
         'study_link_facebook' => 'getStudyLinkFacebook',
         'study_link_google' => 'getStudyLinkGoogle',
-        'study_link_twitter' => 'getStudyLinkTwitter',
         'study_link_static' => 'getStudyLinkStatic',
+        'study_link_twitter' => 'getStudyLinkTwitter',
         'study_objective' => 'getStudyObjective',
         'study_results' => 'getStudyResults',
         'study_title' => 'getStudyTitle',
         'timestamp' => 'getTimestamp',
+        't_value' => 'getTValue',
         'updated_at' => 'getUpdatedAt',
+        'user_id' => 'getUserId',
         'user_vote' => 'getUserVote',
         'value_predicting_high_outcome' => 'getValuePredictingHighOutcome',
         'value_predicting_high_outcome_explanation' => 'getValuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'getValuePredictingLowOutcome',
-        'value_predicting_low_outcome_explanation' => 'getValuePredictingLowOutcomeExplanation'
+        'value_predicting_low_outcome_explanation' => 'getValuePredictingLowOutcomeExplanation',
+        'causality_factor' => 'getCausalityFactor',
+        'outcome_data_sources' => 'getOutcomeDataSources',
+        'principal_investigator' => 'getPrincipalInvestigator',
+        'reverse_correlation' => 'getReverseCorrelation',
+        'study_background' => 'getStudyBackground',
+        'study_invitation' => 'getStudyInvitation',
+        'study_question' => 'getStudyQuestion',
+        'all_pairs_significance' => 'getAllPairsSignificance',
+        'average_pearson_correlation_coefficient_over_onset_delays' => 'getAveragePearsonCorrelationCoefficientOverOnsetDelays',
+        'calculation_start_time' => 'getCalculationStartTime',
+        'cause_changes_statistical_significance' => 'getCauseChangesStatisticalSignificance',
+        'cause_number_of_processed_daily_measurements' => 'getCauseNumberOfProcessedDailyMeasurements',
+        'cause_number_of_raw_measurements' => 'getCauseNumberOfRawMeasurements',
+        'cause_value_spread' => 'getCauseValueSpread',
+        'correlations_over_durations_of_action' => 'getCorrelationsOverDurationsOfAction',
+        'correlations_over_durations_of_action_chart_config' => 'getCorrelationsOverDurationsOfActionChartConfig',
+        'correlations_over_onset_delays_chart_config' => 'getCorrelationsOverOnsetDelaysChartConfig',
+        'data_points' => 'getDataPoints',
+        'degrees_of_freedom' => 'getDegreesOfFreedom',
+        'distance_from_middle_to_be_hight_low_effect' => 'getDistanceFromMiddleToBeHightLowEffect',
+        'effect_number_of_processed_daily_measurements' => 'getEffectNumberOfProcessedDailyMeasurements',
+        'effect_number_of_raw_measurements' => 'getEffectNumberOfRawMeasurements',
+        'effect_value_spread' => 'getEffectValueSpread',
+        'error' => 'getError',
+        'maximum_cause_value' => 'getMaximumCauseValue',
+        'maximum_effect_value' => 'getMaximumEffectValue',
+        'median_of_lower_half_of_effect_measurements' => 'getMedianOfLowerHalfOfEffectMeasurements',
+        'median_of_upper_half_of_effect_measurements' => 'getMedianOfUpperHalfOfEffectMeasurements',
+        'minimum_cause_value' => 'getMinimumCauseValue',
+        'minimum_effect_value' => 'getMinimumEffectValue',
+        'minimum_probability' => 'getMinimumProbability',
+        'number_of_cause_changes_for_optimal_values' => 'getNumberOfCauseChangesForOptimalValues',
+        'number_of_days' => 'getNumberOfDays',
+        'number_of_days_significance' => 'getNumberOfDaysSignificance',
+        'number_of_effect_changes_for_optimal_values' => 'getNumberOfEffectChangesForOptimalValues',
+        'number_of_high_effect_pairs' => 'getNumberOfHighEffectPairs',
+        'number_of_low_effect_pairs' => 'getNumberOfLowEffectPairs',
+        'number_of_samples' => 'getNumberOfSamples',
+        'number_of_unique_cause_values_for_optimal_values' => 'getNumberOfUniqueCauseValuesForOptimalValues',
+        'number_of_unique_effect_values_for_optimal_values' => 'getNumberOfUniqueEffectValuesForOptimalValues',
+        'number_of_users' => 'getNumberOfUsers',
+        'optimal_change_spread' => 'getOptimalChangeSpread',
+        'optimal_change_spread_significance' => 'getOptimalChangeSpreadSignificance',
+        'pairs_over_time_chart_config' => 'getPairsOverTimeChartConfig',
+        'per_day_sentence_fragment' => 'getPerDaySentenceFragment',
+        'raw_cause_measurement_significance' => 'getRawCauseMeasurementSignificance',
+        'raw_effect_measurement_significance' => 'getRawEffectMeasurementSignificance',
+        'reverse_pairs_count' => 'getReversePairsCount',
+        'vote_statistical_significance' => 'getVoteStatisticalSignificance',
+        'aggregate_qm_score' => 'getAggregateQmScore',
+        'cause_unit' => 'getCauseUnit',
+        'cause_variable_common_alias' => 'getCauseVariableCommonAlias',
+        'cause_variable_informational_url' => 'getCauseVariableInformationalUrl',
+        'cause_variable_product_url' => 'getCauseVariableProductUrl',
+        'effect_variable_informational_url' => 'getEffectVariableInformationalUrl',
+        'effect_variable_product_url' => 'getEffectVariableProductUrl',
+        'forward_pearson_correlation_coefficient' => 'getForwardPearsonCorrelationCoefficient',
+        'number_of_correlations' => 'getNumberOfCorrelations',
+        'vote' => 'getVote'
     ];
 
     public static function attributeMap()
@@ -375,71 +987,178 @@ class Correlation implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['average_daily_low_cause'] = isset($data['average_daily_low_cause']) ? $data['average_daily_low_cause'] : null;
         $this->container['average_daily_high_cause'] = isset($data['average_daily_high_cause']) ? $data['average_daily_high_cause'] : null;
+        $this->container['average_daily_low_cause'] = isset($data['average_daily_low_cause']) ? $data['average_daily_low_cause'] : null;
         $this->container['average_effect'] = isset($data['average_effect']) ? $data['average_effect'] : null;
         $this->container['average_effect_following_high_cause'] = isset($data['average_effect_following_high_cause']) ? $data['average_effect_following_high_cause'] : null;
-        $this->container['average_effect_following_low_cause'] = isset($data['average_effect_following_low_cause']) ? $data['average_effect_following_low_cause'] : null;
         $this->container['average_effect_following_high_cause_explanation'] = isset($data['average_effect_following_high_cause_explanation']) ? $data['average_effect_following_high_cause_explanation'] : null;
+        $this->container['average_effect_following_low_cause'] = isset($data['average_effect_following_low_cause']) ? $data['average_effect_following_low_cause'] : null;
         $this->container['average_effect_following_low_cause_explanation'] = isset($data['average_effect_following_low_cause_explanation']) ? $data['average_effect_following_low_cause_explanation'] : null;
+        $this->container['average_forward_pearson_correlation_over_onset_delays'] = isset($data['average_forward_pearson_correlation_over_onset_delays']) ? $data['average_forward_pearson_correlation_over_onset_delays'] : null;
+        $this->container['average_reverse_pearson_correlation_over_onset_delays'] = isset($data['average_reverse_pearson_correlation_over_onset_delays']) ? $data['average_reverse_pearson_correlation_over_onset_delays'] : null;
         $this->container['average_vote'] = isset($data['average_vote']) ? $data['average_vote'] : null;
-        $this->container['causality_factor'] = isset($data['causality_factor']) ? $data['causality_factor'] : null;
-        $this->container['cause'] = isset($data['cause']) ? $data['cause'] : null;
-        $this->container['cause_variable_category_name'] = isset($data['cause_variable_category_name']) ? $data['cause_variable_category_name'] : null;
         $this->container['cause_changes'] = isset($data['cause_changes']) ? $data['cause_changes'] : null;
-        $this->container['cause_combination_operation'] = isset($data['cause_combination_operation']) ? $data['cause_combination_operation'] : null;
+        $this->container['cause_data_source'] = isset($data['cause_data_source']) ? $data['cause_data_source'] : null;
+        $this->container['cause_user_variable_share_user_measurements'] = isset($data['cause_user_variable_share_user_measurements']) ? $data['cause_user_variable_share_user_measurements'] : null;
+        $this->container['cause_variable_category_id'] = isset($data['cause_variable_category_id']) ? $data['cause_variable_category_id'] : null;
+        $this->container['cause_variable_category_name'] = isset($data['cause_variable_category_name']) ? $data['cause_variable_category_name'] : null;
+        $this->container['cause_variable_combination_operation'] = isset($data['cause_variable_combination_operation']) ? $data['cause_variable_combination_operation'] : null;
+        $this->container['cause_variable_unit_abbreviated_name'] = isset($data['cause_variable_unit_abbreviated_name']) ? $data['cause_variable_unit_abbreviated_name'] : null;
+        $this->container['cause_variable_unit_id'] = isset($data['cause_variable_unit_id']) ? $data['cause_variable_unit_id'] : null;
+        $this->container['cause_variable_unit_name'] = isset($data['cause_variable_unit_name']) ? $data['cause_variable_unit_name'] : null;
+        $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
         $this->container['cause_variable_image_url'] = isset($data['cause_variable_image_url']) ? $data['cause_variable_image_url'] : null;
         $this->container['cause_variable_ion_icon'] = isset($data['cause_variable_ion_icon']) ? $data['cause_variable_ion_icon'] : null;
-        $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
-        $this->container['cause_unit_id'] = isset($data['cause_unit_id']) ? $data['cause_unit_id'] : null;
-        $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
+        $this->container['cause_variable_most_common_connector_id'] = isset($data['cause_variable_most_common_connector_id']) ? $data['cause_variable_most_common_connector_id'] : null;
         $this->container['cause_variable_name'] = isset($data['cause_variable_name']) ? $data['cause_variable_name'] : null;
+        $this->container['confidence_interval'] = isset($data['confidence_interval']) ? $data['confidence_interval'] : null;
+        $this->container['confidence_level'] = isset($data['confidence_level']) ? $data['confidence_level'] : null;
         $this->container['correlation_coefficient'] = isset($data['correlation_coefficient']) ? $data['correlation_coefficient'] : null;
+        $this->container['correlation_is_contradictory_to_optimal_values'] = isset($data['correlation_is_contradictory_to_optimal_values']) ? $data['correlation_is_contradictory_to_optimal_values'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['critical_t_value'] = isset($data['critical_t_value']) ? $data['critical_t_value'] : null;
         $this->container['data_analysis'] = isset($data['data_analysis']) ? $data['data_analysis'] : null;
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
+        $this->container['data_sources_paragraph_for_cause'] = isset($data['data_sources_paragraph_for_cause']) ? $data['data_sources_paragraph_for_cause'] : null;
+        $this->container['data_sources_paragraph_for_effect'] = isset($data['data_sources_paragraph_for_effect']) ? $data['data_sources_paragraph_for_effect'] : null;
+        $this->container['direction'] = isset($data['direction']) ? $data['direction'] : null;
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
-        $this->container['effect'] = isset($data['effect']) ? $data['effect'] : null;
+        $this->container['duration_of_action_in_hours'] = isset($data['duration_of_action_in_hours']) ? $data['duration_of_action_in_hours'] : null;
+        $this->container['effect_changes'] = isset($data['effect_changes']) ? $data['effect_changes'] : null;
+        $this->container['effect_data_source'] = isset($data['effect_data_source']) ? $data['effect_data_source'] : null;
+        $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
+        $this->container['effect_unit'] = isset($data['effect_unit']) ? $data['effect_unit'] : null;
+        $this->container['effect_user_variable_share_user_measurements'] = isset($data['effect_user_variable_share_user_measurements']) ? $data['effect_user_variable_share_user_measurements'] : null;
+        $this->container['effect_variable_category_id'] = isset($data['effect_variable_category_id']) ? $data['effect_variable_category_id'] : null;
         $this->container['effect_variable_category_name'] = isset($data['effect_variable_category_name']) ? $data['effect_variable_category_name'] : null;
+        $this->container['effect_variable_combination_operation'] = isset($data['effect_variable_combination_operation']) ? $data['effect_variable_combination_operation'] : null;
+        $this->container['effect_variable_common_alias'] = isset($data['effect_variable_common_alias']) ? $data['effect_variable_common_alias'] : null;
+        $this->container['effect_variable_unit_abbreviated_name'] = isset($data['effect_variable_unit_abbreviated_name']) ? $data['effect_variable_unit_abbreviated_name'] : null;
+        $this->container['effect_variable_unit_id'] = isset($data['effect_variable_unit_id']) ? $data['effect_variable_unit_id'] : null;
+        $this->container['effect_variable_unit_name'] = isset($data['effect_variable_unit_name']) ? $data['effect_variable_unit_name'] : null;
+        $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
         $this->container['effect_variable_image_url'] = isset($data['effect_variable_image_url']) ? $data['effect_variable_image_url'] : null;
         $this->container['effect_variable_ion_icon'] = isset($data['effect_variable_ion_icon']) ? $data['effect_variable_ion_icon'] : null;
-        $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
-        $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
+        $this->container['effect_variable_most_common_connector_id'] = isset($data['effect_variable_most_common_connector_id']) ? $data['effect_variable_most_common_connector_id'] : null;
         $this->container['effect_variable_name'] = isset($data['effect_variable_name']) ? $data['effect_variable_name'] : null;
+        $this->container['experiment_end_time'] = isset($data['experiment_end_time']) ? $data['experiment_end_time'] : null;
+        $this->container['experiment_start_time'] = isset($data['experiment_start_time']) ? $data['experiment_start_time'] : null;
+        $this->container['forward_spearman_correlation_coefficient'] = isset($data['forward_spearman_correlation_coefficient']) ? $data['forward_spearman_correlation_coefficient'] : null;
         $this->container['gauge_image'] = isset($data['gauge_image']) ? $data['gauge_image'] : null;
+        $this->container['gauge_image_square'] = isset($data['gauge_image_square']) ? $data['gauge_image_square'] : null;
         $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
+        $this->container['instructions_for_cause'] = isset($data['instructions_for_cause']) ? $data['instructions_for_cause'] : null;
+        $this->container['instructions_for_effect'] = isset($data['instructions_for_effect']) ? $data['instructions_for_effect'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
-        $this->container['original_effect'] = isset($data['original_effect']) ? $data['original_effect'] : null;
         $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
+        $this->container['onset_delay_in_hours'] = isset($data['onset_delay_in_hours']) ? $data['onset_delay_in_hours'] : null;
+        $this->container['onset_delay_with_strongest_pearson_correlation'] = isset($data['onset_delay_with_strongest_pearson_correlation']) ? $data['onset_delay_with_strongest_pearson_correlation'] : null;
+        $this->container['onset_delay_with_strongest_pearson_correlation_in_hours'] = isset($data['onset_delay_with_strongest_pearson_correlation_in_hours']) ? $data['onset_delay_with_strongest_pearson_correlation_in_hours'] : null;
         $this->container['optimal_pearson_product'] = isset($data['optimal_pearson_product']) ? $data['optimal_pearson_product'] : null;
-        $this->container['original_cause'] = isset($data['original_cause']) ? $data['original_cause'] : null;
-        $this->container['outcome_data_sources'] = isset($data['outcome_data_sources']) ? $data['outcome_data_sources'] : null;
+        $this->container['outcome_filling_value'] = isset($data['outcome_filling_value']) ? $data['outcome_filling_value'] : null;
+        $this->container['outcome_maximum_allowed_value'] = isset($data['outcome_maximum_allowed_value']) ? $data['outcome_maximum_allowed_value'] : null;
+        $this->container['outcome_minimum_allowed_value'] = isset($data['outcome_minimum_allowed_value']) ? $data['outcome_minimum_allowed_value'] : null;
+        $this->container['pearson_correlation_with_no_onset_delay'] = isset($data['pearson_correlation_with_no_onset_delay']) ? $data['pearson_correlation_with_no_onset_delay'] : null;
+        $this->container['predictive_pearson_correlation'] = isset($data['predictive_pearson_correlation']) ? $data['predictive_pearson_correlation'] : null;
+        $this->container['predictive_pearson_correlation_coefficient'] = isset($data['predictive_pearson_correlation_coefficient']) ? $data['predictive_pearson_correlation_coefficient'] : null;
+        $this->container['predictor_data_sources'] = isset($data['predictor_data_sources']) ? $data['predictor_data_sources'] : null;
         $this->container['predictor_explanation'] = isset($data['predictor_explanation']) ? $data['predictor_explanation'] : null;
-        $this->container['principal_investigator'] = isset($data['principal_investigator']) ? $data['principal_investigator'] : null;
+        $this->container['predictor_filling_value'] = isset($data['predictor_filling_value']) ? $data['predictor_filling_value'] : null;
+        $this->container['predictor_maximum_allowed_value'] = isset($data['predictor_maximum_allowed_value']) ? $data['predictor_maximum_allowed_value'] : null;
+        $this->container['predictor_minimum_allowed_value'] = isset($data['predictor_minimum_allowed_value']) ? $data['predictor_minimum_allowed_value'] : null;
+        $this->container['predicts_high_effect_change'] = isset($data['predicts_high_effect_change']) ? $data['predicts_high_effect_change'] : null;
+        $this->container['predicts_high_effect_change_sentence_fragment'] = isset($data['predicts_high_effect_change_sentence_fragment']) ? $data['predicts_high_effect_change_sentence_fragment'] : null;
+        $this->container['predicts_low_effect_change'] = isset($data['predicts_low_effect_change']) ? $data['predicts_low_effect_change'] : null;
+        $this->container['predicts_low_effect_change_sentence_fragment'] = isset($data['predicts_low_effect_change_sentence_fragment']) ? $data['predicts_low_effect_change_sentence_fragment'] : null;
+        $this->container['p_value'] = isset($data['p_value']) ? $data['p_value'] : null;
         $this->container['qm_score'] = isset($data['qm_score']) ? $data['qm_score'] : null;
-        $this->container['reverse_correlation'] = isset($data['reverse_correlation']) ? $data['reverse_correlation'] : null;
+        $this->container['reverse_pearson_correlation_coefficient'] = isset($data['reverse_pearson_correlation_coefficient']) ? $data['reverse_pearson_correlation_coefficient'] : null;
+        $this->container['share_user_measurements'] = isset($data['share_user_measurements']) ? $data['share_user_measurements'] : null;
         $this->container['significance_explanation'] = isset($data['significance_explanation']) ? $data['significance_explanation'] : null;
+        $this->container['significant_difference'] = isset($data['significant_difference']) ? $data['significant_difference'] : null;
         $this->container['statistical_significance'] = isset($data['statistical_significance']) ? $data['statistical_significance'] : null;
         $this->container['strength_level'] = isset($data['strength_level']) ? $data['strength_level'] : null;
+        $this->container['strongest_pearson_correlation_coefficient'] = isset($data['strongest_pearson_correlation_coefficient']) ? $data['strongest_pearson_correlation_coefficient'] : null;
         $this->container['study_abstract'] = isset($data['study_abstract']) ? $data['study_abstract'] : null;
-        $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
         $this->container['study_design'] = isset($data['study_design']) ? $data['study_design'] : null;
         $this->container['study_limitations'] = isset($data['study_limitations']) ? $data['study_limitations'] : null;
         $this->container['study_link_dynamic'] = isset($data['study_link_dynamic']) ? $data['study_link_dynamic'] : null;
+        $this->container['study_link_email'] = isset($data['study_link_email']) ? $data['study_link_email'] : null;
         $this->container['study_link_facebook'] = isset($data['study_link_facebook']) ? $data['study_link_facebook'] : null;
         $this->container['study_link_google'] = isset($data['study_link_google']) ? $data['study_link_google'] : null;
-        $this->container['study_link_twitter'] = isset($data['study_link_twitter']) ? $data['study_link_twitter'] : null;
         $this->container['study_link_static'] = isset($data['study_link_static']) ? $data['study_link_static'] : null;
+        $this->container['study_link_twitter'] = isset($data['study_link_twitter']) ? $data['study_link_twitter'] : null;
         $this->container['study_objective'] = isset($data['study_objective']) ? $data['study_objective'] : null;
         $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['t_value'] = isset($data['t_value']) ? $data['t_value'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['user_vote'] = isset($data['user_vote']) ? $data['user_vote'] : null;
         $this->container['value_predicting_high_outcome'] = isset($data['value_predicting_high_outcome']) ? $data['value_predicting_high_outcome'] : null;
         $this->container['value_predicting_high_outcome_explanation'] = isset($data['value_predicting_high_outcome_explanation']) ? $data['value_predicting_high_outcome_explanation'] : null;
         $this->container['value_predicting_low_outcome'] = isset($data['value_predicting_low_outcome']) ? $data['value_predicting_low_outcome'] : null;
         $this->container['value_predicting_low_outcome_explanation'] = isset($data['value_predicting_low_outcome_explanation']) ? $data['value_predicting_low_outcome_explanation'] : null;
+        $this->container['causality_factor'] = isset($data['causality_factor']) ? $data['causality_factor'] : null;
+        $this->container['outcome_data_sources'] = isset($data['outcome_data_sources']) ? $data['outcome_data_sources'] : null;
+        $this->container['principal_investigator'] = isset($data['principal_investigator']) ? $data['principal_investigator'] : null;
+        $this->container['reverse_correlation'] = isset($data['reverse_correlation']) ? $data['reverse_correlation'] : null;
+        $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
+        $this->container['study_invitation'] = isset($data['study_invitation']) ? $data['study_invitation'] : null;
+        $this->container['study_question'] = isset($data['study_question']) ? $data['study_question'] : null;
+        $this->container['all_pairs_significance'] = isset($data['all_pairs_significance']) ? $data['all_pairs_significance'] : null;
+        $this->container['average_pearson_correlation_coefficient_over_onset_delays'] = isset($data['average_pearson_correlation_coefficient_over_onset_delays']) ? $data['average_pearson_correlation_coefficient_over_onset_delays'] : null;
+        $this->container['calculation_start_time'] = isset($data['calculation_start_time']) ? $data['calculation_start_time'] : null;
+        $this->container['cause_changes_statistical_significance'] = isset($data['cause_changes_statistical_significance']) ? $data['cause_changes_statistical_significance'] : null;
+        $this->container['cause_number_of_processed_daily_measurements'] = isset($data['cause_number_of_processed_daily_measurements']) ? $data['cause_number_of_processed_daily_measurements'] : null;
+        $this->container['cause_number_of_raw_measurements'] = isset($data['cause_number_of_raw_measurements']) ? $data['cause_number_of_raw_measurements'] : null;
+        $this->container['cause_value_spread'] = isset($data['cause_value_spread']) ? $data['cause_value_spread'] : null;
+        $this->container['correlations_over_durations_of_action'] = isset($data['correlations_over_durations_of_action']) ? $data['correlations_over_durations_of_action'] : null;
+        $this->container['correlations_over_durations_of_action_chart_config'] = isset($data['correlations_over_durations_of_action_chart_config']) ? $data['correlations_over_durations_of_action_chart_config'] : null;
+        $this->container['correlations_over_onset_delays_chart_config'] = isset($data['correlations_over_onset_delays_chart_config']) ? $data['correlations_over_onset_delays_chart_config'] : null;
+        $this->container['data_points'] = isset($data['data_points']) ? $data['data_points'] : null;
+        $this->container['degrees_of_freedom'] = isset($data['degrees_of_freedom']) ? $data['degrees_of_freedom'] : null;
+        $this->container['distance_from_middle_to_be_hight_low_effect'] = isset($data['distance_from_middle_to_be_hight_low_effect']) ? $data['distance_from_middle_to_be_hight_low_effect'] : null;
+        $this->container['effect_number_of_processed_daily_measurements'] = isset($data['effect_number_of_processed_daily_measurements']) ? $data['effect_number_of_processed_daily_measurements'] : null;
+        $this->container['effect_number_of_raw_measurements'] = isset($data['effect_number_of_raw_measurements']) ? $data['effect_number_of_raw_measurements'] : null;
+        $this->container['effect_value_spread'] = isset($data['effect_value_spread']) ? $data['effect_value_spread'] : null;
+        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
+        $this->container['maximum_cause_value'] = isset($data['maximum_cause_value']) ? $data['maximum_cause_value'] : null;
+        $this->container['maximum_effect_value'] = isset($data['maximum_effect_value']) ? $data['maximum_effect_value'] : null;
+        $this->container['median_of_lower_half_of_effect_measurements'] = isset($data['median_of_lower_half_of_effect_measurements']) ? $data['median_of_lower_half_of_effect_measurements'] : null;
+        $this->container['median_of_upper_half_of_effect_measurements'] = isset($data['median_of_upper_half_of_effect_measurements']) ? $data['median_of_upper_half_of_effect_measurements'] : null;
+        $this->container['minimum_cause_value'] = isset($data['minimum_cause_value']) ? $data['minimum_cause_value'] : null;
+        $this->container['minimum_effect_value'] = isset($data['minimum_effect_value']) ? $data['minimum_effect_value'] : null;
+        $this->container['minimum_probability'] = isset($data['minimum_probability']) ? $data['minimum_probability'] : null;
+        $this->container['number_of_cause_changes_for_optimal_values'] = isset($data['number_of_cause_changes_for_optimal_values']) ? $data['number_of_cause_changes_for_optimal_values'] : null;
+        $this->container['number_of_days'] = isset($data['number_of_days']) ? $data['number_of_days'] : null;
+        $this->container['number_of_days_significance'] = isset($data['number_of_days_significance']) ? $data['number_of_days_significance'] : null;
+        $this->container['number_of_effect_changes_for_optimal_values'] = isset($data['number_of_effect_changes_for_optimal_values']) ? $data['number_of_effect_changes_for_optimal_values'] : null;
+        $this->container['number_of_high_effect_pairs'] = isset($data['number_of_high_effect_pairs']) ? $data['number_of_high_effect_pairs'] : null;
+        $this->container['number_of_low_effect_pairs'] = isset($data['number_of_low_effect_pairs']) ? $data['number_of_low_effect_pairs'] : null;
+        $this->container['number_of_samples'] = isset($data['number_of_samples']) ? $data['number_of_samples'] : null;
+        $this->container['number_of_unique_cause_values_for_optimal_values'] = isset($data['number_of_unique_cause_values_for_optimal_values']) ? $data['number_of_unique_cause_values_for_optimal_values'] : null;
+        $this->container['number_of_unique_effect_values_for_optimal_values'] = isset($data['number_of_unique_effect_values_for_optimal_values']) ? $data['number_of_unique_effect_values_for_optimal_values'] : null;
+        $this->container['number_of_users'] = isset($data['number_of_users']) ? $data['number_of_users'] : null;
+        $this->container['optimal_change_spread'] = isset($data['optimal_change_spread']) ? $data['optimal_change_spread'] : null;
+        $this->container['optimal_change_spread_significance'] = isset($data['optimal_change_spread_significance']) ? $data['optimal_change_spread_significance'] : null;
+        $this->container['pairs_over_time_chart_config'] = isset($data['pairs_over_time_chart_config']) ? $data['pairs_over_time_chart_config'] : null;
+        $this->container['per_day_sentence_fragment'] = isset($data['per_day_sentence_fragment']) ? $data['per_day_sentence_fragment'] : null;
+        $this->container['raw_cause_measurement_significance'] = isset($data['raw_cause_measurement_significance']) ? $data['raw_cause_measurement_significance'] : null;
+        $this->container['raw_effect_measurement_significance'] = isset($data['raw_effect_measurement_significance']) ? $data['raw_effect_measurement_significance'] : null;
+        $this->container['reverse_pairs_count'] = isset($data['reverse_pairs_count']) ? $data['reverse_pairs_count'] : null;
+        $this->container['vote_statistical_significance'] = isset($data['vote_statistical_significance']) ? $data['vote_statistical_significance'] : null;
+        $this->container['aggregate_qm_score'] = isset($data['aggregate_qm_score']) ? $data['aggregate_qm_score'] : null;
+        $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
+        $this->container['cause_variable_common_alias'] = isset($data['cause_variable_common_alias']) ? $data['cause_variable_common_alias'] : null;
+        $this->container['cause_variable_informational_url'] = isset($data['cause_variable_informational_url']) ? $data['cause_variable_informational_url'] : null;
+        $this->container['cause_variable_product_url'] = isset($data['cause_variable_product_url']) ? $data['cause_variable_product_url'] : null;
+        $this->container['effect_variable_informational_url'] = isset($data['effect_variable_informational_url']) ? $data['effect_variable_informational_url'] : null;
+        $this->container['effect_variable_product_url'] = isset($data['effect_variable_product_url']) ? $data['effect_variable_product_url'] : null;
+        $this->container['forward_pearson_correlation_coefficient'] = isset($data['forward_pearson_correlation_coefficient']) ? $data['forward_pearson_correlation_coefficient'] : null;
+        $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
+        $this->container['vote'] = isset($data['vote']) ? $data['vote'] : null;
     }
 
     /**
@@ -451,17 +1170,182 @@ class Correlation implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['cause'] === null) {
-            $invalid_properties[] = "'cause' can't be null";
+        if ($this->container['average_daily_high_cause'] === null) {
+            $invalid_properties[] = "'average_daily_high_cause' can't be null";
+        }
+        if ($this->container['average_daily_low_cause'] === null) {
+            $invalid_properties[] = "'average_daily_low_cause' can't be null";
+        }
+        if ($this->container['average_effect'] === null) {
+            $invalid_properties[] = "'average_effect' can't be null";
+        }
+        if ($this->container['average_effect_following_high_cause'] === null) {
+            $invalid_properties[] = "'average_effect_following_high_cause' can't be null";
+        }
+        if ($this->container['average_effect_following_high_cause_explanation'] === null) {
+            $invalid_properties[] = "'average_effect_following_high_cause_explanation' can't be null";
+        }
+        if ($this->container['average_effect_following_low_cause'] === null) {
+            $invalid_properties[] = "'average_effect_following_low_cause' can't be null";
+        }
+        if ($this->container['average_effect_following_low_cause_explanation'] === null) {
+            $invalid_properties[] = "'average_effect_following_low_cause_explanation' can't be null";
+        }
+        if ($this->container['average_forward_pearson_correlation_over_onset_delays'] === null) {
+            $invalid_properties[] = "'average_forward_pearson_correlation_over_onset_delays' can't be null";
+        }
+        if ($this->container['average_reverse_pearson_correlation_over_onset_delays'] === null) {
+            $invalid_properties[] = "'average_reverse_pearson_correlation_over_onset_delays' can't be null";
+        }
+        if ($this->container['average_vote'] === null) {
+            $invalid_properties[] = "'average_vote' can't be null";
+        }
+        if ($this->container['cause_changes'] === null) {
+            $invalid_properties[] = "'cause_changes' can't be null";
+        }
+        if ($this->container['cause_user_variable_share_user_measurements'] === null) {
+            $invalid_properties[] = "'cause_user_variable_share_user_measurements' can't be null";
+        }
+        if ($this->container['cause_variable_category_id'] === null) {
+            $invalid_properties[] = "'cause_variable_category_id' can't be null";
+        }
+        if ($this->container['cause_variable_category_name'] === null) {
+            $invalid_properties[] = "'cause_variable_category_name' can't be null";
+        }
+        if ($this->container['cause_variable_combination_operation'] === null) {
+            $invalid_properties[] = "'cause_variable_combination_operation' can't be null";
+        }
+        if ($this->container['cause_variable_unit_abbreviated_name'] === null) {
+            $invalid_properties[] = "'cause_variable_unit_abbreviated_name' can't be null";
+        }
+        if ($this->container['cause_variable_unit_id'] === null) {
+            $invalid_properties[] = "'cause_variable_unit_id' can't be null";
+        }
+        if ($this->container['cause_variable_unit_name'] === null) {
+            $invalid_properties[] = "'cause_variable_unit_name' can't be null";
+        }
+        if ($this->container['cause_variable_id'] === null) {
+            $invalid_properties[] = "'cause_variable_id' can't be null";
+        }
+        if ($this->container['cause_variable_image_url'] === null) {
+            $invalid_properties[] = "'cause_variable_image_url' can't be null";
+        }
+        if ($this->container['cause_variable_ion_icon'] === null) {
+            $invalid_properties[] = "'cause_variable_ion_icon' can't be null";
+        }
+        if ($this->container['cause_variable_most_common_connector_id'] === null) {
+            $invalid_properties[] = "'cause_variable_most_common_connector_id' can't be null";
+        }
+        if ($this->container['cause_variable_name'] === null) {
+            $invalid_properties[] = "'cause_variable_name' can't be null";
+        }
+        if ($this->container['confidence_interval'] === null) {
+            $invalid_properties[] = "'confidence_interval' can't be null";
+        }
+        if ($this->container['confidence_level'] === null) {
+            $invalid_properties[] = "'confidence_level' can't be null";
         }
         if ($this->container['correlation_coefficient'] === null) {
             $invalid_properties[] = "'correlation_coefficient' can't be null";
         }
+        if ($this->container['created_at'] === null) {
+            $invalid_properties[] = "'created_at' can't be null";
+        }
+        if ($this->container['critical_t_value'] === null) {
+            $invalid_properties[] = "'critical_t_value' can't be null";
+        }
+        if ($this->container['data_analysis'] === null) {
+            $invalid_properties[] = "'data_analysis' can't be null";
+        }
+        if ($this->container['data_sources'] === null) {
+            $invalid_properties[] = "'data_sources' can't be null";
+        }
+        if ($this->container['data_sources_paragraph_for_cause'] === null) {
+            $invalid_properties[] = "'data_sources_paragraph_for_cause' can't be null";
+        }
+        if ($this->container['data_sources_paragraph_for_effect'] === null) {
+            $invalid_properties[] = "'data_sources_paragraph_for_effect' can't be null";
+        }
+        if ($this->container['direction'] === null) {
+            $invalid_properties[] = "'direction' can't be null";
+        }
         if ($this->container['duration_of_action'] === null) {
             $invalid_properties[] = "'duration_of_action' can't be null";
         }
-        if ($this->container['effect'] === null) {
-            $invalid_properties[] = "'effect' can't be null";
+        if ($this->container['duration_of_action_in_hours'] === null) {
+            $invalid_properties[] = "'duration_of_action_in_hours' can't be null";
+        }
+        if ($this->container['effect_changes'] === null) {
+            $invalid_properties[] = "'effect_changes' can't be null";
+        }
+        if ($this->container['effect_size'] === null) {
+            $invalid_properties[] = "'effect_size' can't be null";
+        }
+        if ($this->container['effect_unit'] === null) {
+            $invalid_properties[] = "'effect_unit' can't be null";
+        }
+        if ($this->container['effect_user_variable_share_user_measurements'] === null) {
+            $invalid_properties[] = "'effect_user_variable_share_user_measurements' can't be null";
+        }
+        if ($this->container['effect_variable_category_id'] === null) {
+            $invalid_properties[] = "'effect_variable_category_id' can't be null";
+        }
+        if ($this->container['effect_variable_category_name'] === null) {
+            $invalid_properties[] = "'effect_variable_category_name' can't be null";
+        }
+        if ($this->container['effect_variable_combination_operation'] === null) {
+            $invalid_properties[] = "'effect_variable_combination_operation' can't be null";
+        }
+        if ($this->container['effect_variable_common_alias'] === null) {
+            $invalid_properties[] = "'effect_variable_common_alias' can't be null";
+        }
+        if ($this->container['effect_variable_unit_abbreviated_name'] === null) {
+            $invalid_properties[] = "'effect_variable_unit_abbreviated_name' can't be null";
+        }
+        if ($this->container['effect_variable_unit_id'] === null) {
+            $invalid_properties[] = "'effect_variable_unit_id' can't be null";
+        }
+        if ($this->container['effect_variable_unit_name'] === null) {
+            $invalid_properties[] = "'effect_variable_unit_name' can't be null";
+        }
+        if ($this->container['effect_variable_id'] === null) {
+            $invalid_properties[] = "'effect_variable_id' can't be null";
+        }
+        if ($this->container['effect_variable_image_url'] === null) {
+            $invalid_properties[] = "'effect_variable_image_url' can't be null";
+        }
+        if ($this->container['effect_variable_ion_icon'] === null) {
+            $invalid_properties[] = "'effect_variable_ion_icon' can't be null";
+        }
+        if ($this->container['effect_variable_most_common_connector_id'] === null) {
+            $invalid_properties[] = "'effect_variable_most_common_connector_id' can't be null";
+        }
+        if ($this->container['effect_variable_name'] === null) {
+            $invalid_properties[] = "'effect_variable_name' can't be null";
+        }
+        if ($this->container['experiment_end_time'] === null) {
+            $invalid_properties[] = "'experiment_end_time' can't be null";
+        }
+        if ($this->container['experiment_start_time'] === null) {
+            $invalid_properties[] = "'experiment_start_time' can't be null";
+        }
+        if ($this->container['forward_spearman_correlation_coefficient'] === null) {
+            $invalid_properties[] = "'forward_spearman_correlation_coefficient' can't be null";
+        }
+        if ($this->container['gauge_image'] === null) {
+            $invalid_properties[] = "'gauge_image' can't be null";
+        }
+        if ($this->container['gauge_image_square'] === null) {
+            $invalid_properties[] = "'gauge_image_square' can't be null";
+        }
+        if ($this->container['image_url'] === null) {
+            $invalid_properties[] = "'image_url' can't be null";
+        }
+        if ($this->container['instructions_for_cause'] === null) {
+            $invalid_properties[] = "'instructions_for_cause' can't be null";
+        }
+        if ($this->container['instructions_for_effect'] === null) {
+            $invalid_properties[] = "'instructions_for_effect' can't be null";
         }
         if ($this->container['number_of_pairs'] === null) {
             $invalid_properties[] = "'number_of_pairs' can't be null";
@@ -469,8 +1353,143 @@ class Correlation implements ArrayAccess
         if ($this->container['onset_delay'] === null) {
             $invalid_properties[] = "'onset_delay' can't be null";
         }
+        if ($this->container['onset_delay_in_hours'] === null) {
+            $invalid_properties[] = "'onset_delay_in_hours' can't be null";
+        }
+        if ($this->container['onset_delay_with_strongest_pearson_correlation'] === null) {
+            $invalid_properties[] = "'onset_delay_with_strongest_pearson_correlation' can't be null";
+        }
+        if ($this->container['onset_delay_with_strongest_pearson_correlation_in_hours'] === null) {
+            $invalid_properties[] = "'onset_delay_with_strongest_pearson_correlation_in_hours' can't be null";
+        }
+        if ($this->container['optimal_pearson_product'] === null) {
+            $invalid_properties[] = "'optimal_pearson_product' can't be null";
+        }
+        if ($this->container['outcome_filling_value'] === null) {
+            $invalid_properties[] = "'outcome_filling_value' can't be null";
+        }
+        if ($this->container['pearson_correlation_with_no_onset_delay'] === null) {
+            $invalid_properties[] = "'pearson_correlation_with_no_onset_delay' can't be null";
+        }
+        if ($this->container['predictive_pearson_correlation'] === null) {
+            $invalid_properties[] = "'predictive_pearson_correlation' can't be null";
+        }
+        if ($this->container['predictive_pearson_correlation_coefficient'] === null) {
+            $invalid_properties[] = "'predictive_pearson_correlation_coefficient' can't be null";
+        }
+        if ($this->container['predictor_data_sources'] === null) {
+            $invalid_properties[] = "'predictor_data_sources' can't be null";
+        }
+        if ($this->container['predictor_explanation'] === null) {
+            $invalid_properties[] = "'predictor_explanation' can't be null";
+        }
+        if ($this->container['predictor_filling_value'] === null) {
+            $invalid_properties[] = "'predictor_filling_value' can't be null";
+        }
+        if ($this->container['predictor_maximum_allowed_value'] === null) {
+            $invalid_properties[] = "'predictor_maximum_allowed_value' can't be null";
+        }
+        if ($this->container['predictor_minimum_allowed_value'] === null) {
+            $invalid_properties[] = "'predictor_minimum_allowed_value' can't be null";
+        }
+        if ($this->container['predicts_high_effect_change'] === null) {
+            $invalid_properties[] = "'predicts_high_effect_change' can't be null";
+        }
+        if ($this->container['predicts_high_effect_change_sentence_fragment'] === null) {
+            $invalid_properties[] = "'predicts_high_effect_change_sentence_fragment' can't be null";
+        }
+        if ($this->container['predicts_low_effect_change'] === null) {
+            $invalid_properties[] = "'predicts_low_effect_change' can't be null";
+        }
+        if ($this->container['predicts_low_effect_change_sentence_fragment'] === null) {
+            $invalid_properties[] = "'predicts_low_effect_change_sentence_fragment' can't be null";
+        }
+        if ($this->container['qm_score'] === null) {
+            $invalid_properties[] = "'qm_score' can't be null";
+        }
+        if ($this->container['reverse_pearson_correlation_coefficient'] === null) {
+            $invalid_properties[] = "'reverse_pearson_correlation_coefficient' can't be null";
+        }
+        if ($this->container['share_user_measurements'] === null) {
+            $invalid_properties[] = "'share_user_measurements' can't be null";
+        }
+        if ($this->container['significance_explanation'] === null) {
+            $invalid_properties[] = "'significance_explanation' can't be null";
+        }
+        if ($this->container['significant_difference'] === null) {
+            $invalid_properties[] = "'significant_difference' can't be null";
+        }
+        if ($this->container['statistical_significance'] === null) {
+            $invalid_properties[] = "'statistical_significance' can't be null";
+        }
+        if ($this->container['strength_level'] === null) {
+            $invalid_properties[] = "'strength_level' can't be null";
+        }
+        if ($this->container['strongest_pearson_correlation_coefficient'] === null) {
+            $invalid_properties[] = "'strongest_pearson_correlation_coefficient' can't be null";
+        }
+        if ($this->container['study_abstract'] === null) {
+            $invalid_properties[] = "'study_abstract' can't be null";
+        }
+        if ($this->container['study_design'] === null) {
+            $invalid_properties[] = "'study_design' can't be null";
+        }
+        if ($this->container['study_limitations'] === null) {
+            $invalid_properties[] = "'study_limitations' can't be null";
+        }
+        if ($this->container['study_link_dynamic'] === null) {
+            $invalid_properties[] = "'study_link_dynamic' can't be null";
+        }
+        if ($this->container['study_link_email'] === null) {
+            $invalid_properties[] = "'study_link_email' can't be null";
+        }
+        if ($this->container['study_link_facebook'] === null) {
+            $invalid_properties[] = "'study_link_facebook' can't be null";
+        }
+        if ($this->container['study_link_google'] === null) {
+            $invalid_properties[] = "'study_link_google' can't be null";
+        }
+        if ($this->container['study_link_static'] === null) {
+            $invalid_properties[] = "'study_link_static' can't be null";
+        }
+        if ($this->container['study_link_twitter'] === null) {
+            $invalid_properties[] = "'study_link_twitter' can't be null";
+        }
+        if ($this->container['study_objective'] === null) {
+            $invalid_properties[] = "'study_objective' can't be null";
+        }
+        if ($this->container['study_results'] === null) {
+            $invalid_properties[] = "'study_results' can't be null";
+        }
+        if ($this->container['study_title'] === null) {
+            $invalid_properties[] = "'study_title' can't be null";
+        }
         if ($this->container['timestamp'] === null) {
             $invalid_properties[] = "'timestamp' can't be null";
+        }
+        if ($this->container['t_value'] === null) {
+            $invalid_properties[] = "'t_value' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalid_properties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['user_id'] === null) {
+            $invalid_properties[] = "'user_id' can't be null";
+        }
+        if ($this->container['user_vote'] === null) {
+            $invalid_properties[] = "'user_vote' can't be null";
+        }
+        if ($this->container['value_predicting_high_outcome'] === null) {
+            $invalid_properties[] = "'value_predicting_high_outcome' can't be null";
+        }
+        if ($this->container['value_predicting_high_outcome_explanation'] === null) {
+            $invalid_properties[] = "'value_predicting_high_outcome_explanation' can't be null";
+        }
+        if ($this->container['value_predicting_low_outcome'] === null) {
+            $invalid_properties[] = "'value_predicting_low_outcome' can't be null";
+        }
+        if ($this->container['value_predicting_low_outcome_explanation'] === null) {
+            $invalid_properties[] = "'value_predicting_low_outcome_explanation' can't be null";
         }
         return $invalid_properties;
     }
@@ -484,16 +1503,181 @@ class Correlation implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['cause'] === null) {
+        if ($this->container['average_daily_high_cause'] === null) {
+            return false;
+        }
+        if ($this->container['average_daily_low_cause'] === null) {
+            return false;
+        }
+        if ($this->container['average_effect'] === null) {
+            return false;
+        }
+        if ($this->container['average_effect_following_high_cause'] === null) {
+            return false;
+        }
+        if ($this->container['average_effect_following_high_cause_explanation'] === null) {
+            return false;
+        }
+        if ($this->container['average_effect_following_low_cause'] === null) {
+            return false;
+        }
+        if ($this->container['average_effect_following_low_cause_explanation'] === null) {
+            return false;
+        }
+        if ($this->container['average_forward_pearson_correlation_over_onset_delays'] === null) {
+            return false;
+        }
+        if ($this->container['average_reverse_pearson_correlation_over_onset_delays'] === null) {
+            return false;
+        }
+        if ($this->container['average_vote'] === null) {
+            return false;
+        }
+        if ($this->container['cause_changes'] === null) {
+            return false;
+        }
+        if ($this->container['cause_user_variable_share_user_measurements'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_category_id'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_category_name'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_combination_operation'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_unit_abbreviated_name'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_unit_id'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_unit_name'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_id'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_image_url'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_ion_icon'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_most_common_connector_id'] === null) {
+            return false;
+        }
+        if ($this->container['cause_variable_name'] === null) {
+            return false;
+        }
+        if ($this->container['confidence_interval'] === null) {
+            return false;
+        }
+        if ($this->container['confidence_level'] === null) {
             return false;
         }
         if ($this->container['correlation_coefficient'] === null) {
             return false;
         }
+        if ($this->container['created_at'] === null) {
+            return false;
+        }
+        if ($this->container['critical_t_value'] === null) {
+            return false;
+        }
+        if ($this->container['data_analysis'] === null) {
+            return false;
+        }
+        if ($this->container['data_sources'] === null) {
+            return false;
+        }
+        if ($this->container['data_sources_paragraph_for_cause'] === null) {
+            return false;
+        }
+        if ($this->container['data_sources_paragraph_for_effect'] === null) {
+            return false;
+        }
+        if ($this->container['direction'] === null) {
+            return false;
+        }
         if ($this->container['duration_of_action'] === null) {
             return false;
         }
-        if ($this->container['effect'] === null) {
+        if ($this->container['duration_of_action_in_hours'] === null) {
+            return false;
+        }
+        if ($this->container['effect_changes'] === null) {
+            return false;
+        }
+        if ($this->container['effect_size'] === null) {
+            return false;
+        }
+        if ($this->container['effect_unit'] === null) {
+            return false;
+        }
+        if ($this->container['effect_user_variable_share_user_measurements'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_category_id'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_category_name'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_combination_operation'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_common_alias'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_unit_abbreviated_name'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_unit_id'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_unit_name'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_id'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_image_url'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_ion_icon'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_most_common_connector_id'] === null) {
+            return false;
+        }
+        if ($this->container['effect_variable_name'] === null) {
+            return false;
+        }
+        if ($this->container['experiment_end_time'] === null) {
+            return false;
+        }
+        if ($this->container['experiment_start_time'] === null) {
+            return false;
+        }
+        if ($this->container['forward_spearman_correlation_coefficient'] === null) {
+            return false;
+        }
+        if ($this->container['gauge_image'] === null) {
+            return false;
+        }
+        if ($this->container['gauge_image_square'] === null) {
+            return false;
+        }
+        if ($this->container['image_url'] === null) {
+            return false;
+        }
+        if ($this->container['instructions_for_cause'] === null) {
+            return false;
+        }
+        if ($this->container['instructions_for_effect'] === null) {
             return false;
         }
         if ($this->container['number_of_pairs'] === null) {
@@ -502,7 +1686,142 @@ class Correlation implements ArrayAccess
         if ($this->container['onset_delay'] === null) {
             return false;
         }
+        if ($this->container['onset_delay_in_hours'] === null) {
+            return false;
+        }
+        if ($this->container['onset_delay_with_strongest_pearson_correlation'] === null) {
+            return false;
+        }
+        if ($this->container['onset_delay_with_strongest_pearson_correlation_in_hours'] === null) {
+            return false;
+        }
+        if ($this->container['optimal_pearson_product'] === null) {
+            return false;
+        }
+        if ($this->container['outcome_filling_value'] === null) {
+            return false;
+        }
+        if ($this->container['pearson_correlation_with_no_onset_delay'] === null) {
+            return false;
+        }
+        if ($this->container['predictive_pearson_correlation'] === null) {
+            return false;
+        }
+        if ($this->container['predictive_pearson_correlation_coefficient'] === null) {
+            return false;
+        }
+        if ($this->container['predictor_data_sources'] === null) {
+            return false;
+        }
+        if ($this->container['predictor_explanation'] === null) {
+            return false;
+        }
+        if ($this->container['predictor_filling_value'] === null) {
+            return false;
+        }
+        if ($this->container['predictor_maximum_allowed_value'] === null) {
+            return false;
+        }
+        if ($this->container['predictor_minimum_allowed_value'] === null) {
+            return false;
+        }
+        if ($this->container['predicts_high_effect_change'] === null) {
+            return false;
+        }
+        if ($this->container['predicts_high_effect_change_sentence_fragment'] === null) {
+            return false;
+        }
+        if ($this->container['predicts_low_effect_change'] === null) {
+            return false;
+        }
+        if ($this->container['predicts_low_effect_change_sentence_fragment'] === null) {
+            return false;
+        }
+        if ($this->container['qm_score'] === null) {
+            return false;
+        }
+        if ($this->container['reverse_pearson_correlation_coefficient'] === null) {
+            return false;
+        }
+        if ($this->container['share_user_measurements'] === null) {
+            return false;
+        }
+        if ($this->container['significance_explanation'] === null) {
+            return false;
+        }
+        if ($this->container['significant_difference'] === null) {
+            return false;
+        }
+        if ($this->container['statistical_significance'] === null) {
+            return false;
+        }
+        if ($this->container['strength_level'] === null) {
+            return false;
+        }
+        if ($this->container['strongest_pearson_correlation_coefficient'] === null) {
+            return false;
+        }
+        if ($this->container['study_abstract'] === null) {
+            return false;
+        }
+        if ($this->container['study_design'] === null) {
+            return false;
+        }
+        if ($this->container['study_limitations'] === null) {
+            return false;
+        }
+        if ($this->container['study_link_dynamic'] === null) {
+            return false;
+        }
+        if ($this->container['study_link_email'] === null) {
+            return false;
+        }
+        if ($this->container['study_link_facebook'] === null) {
+            return false;
+        }
+        if ($this->container['study_link_google'] === null) {
+            return false;
+        }
+        if ($this->container['study_link_static'] === null) {
+            return false;
+        }
+        if ($this->container['study_link_twitter'] === null) {
+            return false;
+        }
+        if ($this->container['study_objective'] === null) {
+            return false;
+        }
+        if ($this->container['study_results'] === null) {
+            return false;
+        }
+        if ($this->container['study_title'] === null) {
+            return false;
+        }
         if ($this->container['timestamp'] === null) {
+            return false;
+        }
+        if ($this->container['t_value'] === null) {
+            return false;
+        }
+        if ($this->container['updated_at'] === null) {
+            return false;
+        }
+        if ($this->container['user_id'] === null) {
+            return false;
+        }
+        if ($this->container['user_vote'] === null) {
+            return false;
+        }
+        if ($this->container['value_predicting_high_outcome'] === null) {
+            return false;
+        }
+        if ($this->container['value_predicting_high_outcome_explanation'] === null) {
+            return false;
+        }
+        if ($this->container['value_predicting_low_outcome'] === null) {
+            return false;
+        }
+        if ($this->container['value_predicting_low_outcome_explanation'] === null) {
             return false;
         }
         return true;
@@ -510,29 +1829,8 @@ class Correlation implements ArrayAccess
 
 
     /**
-     * Gets average_daily_low_cause
-     * @return float
-     */
-    public function getAverageDailyLowCause()
-    {
-        return $this->container['average_daily_low_cause'];
-    }
-
-    /**
-     * Sets average_daily_low_cause
-     * @param float $average_daily_low_cause 
-     * @return $this
-     */
-    public function setAverageDailyLowCause($average_daily_low_cause)
-    {
-        $this->container['average_daily_low_cause'] = $average_daily_low_cause;
-
-        return $this;
-    }
-
-    /**
      * Gets average_daily_high_cause
-     * @return float
+     * @return double
      */
     public function getAverageDailyHighCause()
     {
@@ -541,7 +1839,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets average_daily_high_cause
-     * @param float $average_daily_high_cause 
+     * @param double $average_daily_high_cause Example: 4.19
      * @return $this
      */
     public function setAverageDailyHighCause($average_daily_high_cause)
@@ -552,8 +1850,29 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets average_daily_low_cause
+     * @return double
+     */
+    public function getAverageDailyLowCause()
+    {
+        return $this->container['average_daily_low_cause'];
+    }
+
+    /**
+     * Sets average_daily_low_cause
+     * @param double $average_daily_low_cause Example: 1.97
+     * @return $this
+     */
+    public function setAverageDailyLowCause($average_daily_low_cause)
+    {
+        $this->container['average_daily_low_cause'] = $average_daily_low_cause;
+
+        return $this;
+    }
+
+    /**
      * Gets average_effect
-     * @return float
+     * @return double
      */
     public function getAverageEffect()
     {
@@ -562,7 +1881,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets average_effect
-     * @param float $average_effect 
+     * @param double $average_effect Example: 3.0791054117396
      * @return $this
      */
     public function setAverageEffect($average_effect)
@@ -574,7 +1893,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Gets average_effect_following_high_cause
-     * @return float
+     * @return double
      */
     public function getAverageEffectFollowingHighCause()
     {
@@ -583,33 +1902,12 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets average_effect_following_high_cause
-     * @param float $average_effect_following_high_cause 
+     * @param double $average_effect_following_high_cause Example: 3.55
      * @return $this
      */
     public function setAverageEffectFollowingHighCause($average_effect_following_high_cause)
     {
         $this->container['average_effect_following_high_cause'] = $average_effect_following_high_cause;
-
-        return $this;
-    }
-
-    /**
-     * Gets average_effect_following_low_cause
-     * @return float
-     */
-    public function getAverageEffectFollowingLowCause()
-    {
-        return $this->container['average_effect_following_low_cause'];
-    }
-
-    /**
-     * Sets average_effect_following_low_cause
-     * @param float $average_effect_following_low_cause 
-     * @return $this
-     */
-    public function setAverageEffectFollowingLowCause($average_effect_following_low_cause)
-    {
-        $this->container['average_effect_following_low_cause'] = $average_effect_following_low_cause;
 
         return $this;
     }
@@ -625,12 +1923,33 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets average_effect_following_high_cause_explanation
-     * @param string $average_effect_following_high_cause_explanation 
+     * @param string $average_effect_following_high_cause_explanation Example: Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality
      * @return $this
      */
     public function setAverageEffectFollowingHighCauseExplanation($average_effect_following_high_cause_explanation)
     {
         $this->container['average_effect_following_high_cause_explanation'] = $average_effect_following_high_cause_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_effect_following_low_cause
+     * @return double
+     */
+    public function getAverageEffectFollowingLowCause()
+    {
+        return $this->container['average_effect_following_low_cause'];
+    }
+
+    /**
+     * Sets average_effect_following_low_cause
+     * @param double $average_effect_following_low_cause Example: 2.65
+     * @return $this
+     */
+    public function setAverageEffectFollowingLowCause($average_effect_following_low_cause)
+    {
+        $this->container['average_effect_following_low_cause'] = $average_effect_following_low_cause;
 
         return $this;
     }
@@ -646,7 +1965,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets average_effect_following_low_cause_explanation
-     * @param string $average_effect_following_low_cause_explanation 
+     * @param string $average_effect_following_low_cause_explanation Example: Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality
      * @return $this
      */
     public function setAverageEffectFollowingLowCauseExplanation($average_effect_following_low_cause_explanation)
@@ -657,8 +1976,50 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets average_forward_pearson_correlation_over_onset_delays
+     * @return double
+     */
+    public function getAverageForwardPearsonCorrelationOverOnsetDelays()
+    {
+        return $this->container['average_forward_pearson_correlation_over_onset_delays'];
+    }
+
+    /**
+     * Sets average_forward_pearson_correlation_over_onset_delays
+     * @param double $average_forward_pearson_correlation_over_onset_delays Example: 0.396
+     * @return $this
+     */
+    public function setAverageForwardPearsonCorrelationOverOnsetDelays($average_forward_pearson_correlation_over_onset_delays)
+    {
+        $this->container['average_forward_pearson_correlation_over_onset_delays'] = $average_forward_pearson_correlation_over_onset_delays;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_reverse_pearson_correlation_over_onset_delays
+     * @return double
+     */
+    public function getAverageReversePearsonCorrelationOverOnsetDelays()
+    {
+        return $this->container['average_reverse_pearson_correlation_over_onset_delays'];
+    }
+
+    /**
+     * Sets average_reverse_pearson_correlation_over_onset_delays
+     * @param double $average_reverse_pearson_correlation_over_onset_delays Example: 0.453667
+     * @return $this
+     */
+    public function setAverageReversePearsonCorrelationOverOnsetDelays($average_reverse_pearson_correlation_over_onset_delays)
+    {
+        $this->container['average_reverse_pearson_correlation_over_onset_delays'] = $average_reverse_pearson_correlation_over_onset_delays;
+
+        return $this;
+    }
+
+    /**
      * Gets average_vote
-     * @return float
+     * @return string
      */
     public function getAverageVote()
     {
@@ -667,12 +2028,2175 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets average_vote
-     * @param float $average_vote Average Vote
+     * @param string $average_vote Example: 0.9855
      * @return $this
      */
     public function setAverageVote($average_vote)
     {
         $this->container['average_vote'] = $average_vote;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_changes
+     * @return int
+     */
+    public function getCauseChanges()
+    {
+        return $this->container['cause_changes'];
+    }
+
+    /**
+     * Sets cause_changes
+     * @param int $cause_changes Example: 164
+     * @return $this
+     */
+    public function setCauseChanges($cause_changes)
+    {
+        $this->container['cause_changes'] = $cause_changes;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_data_source
+     * @return \QuantiModo\Client\Model\DataSource
+     */
+    public function getCauseDataSource()
+    {
+        return $this->container['cause_data_source'];
+    }
+
+    /**
+     * Sets cause_data_source
+     * @param \QuantiModo\Client\Model\DataSource $cause_data_source
+     * @return $this
+     */
+    public function setCauseDataSource($cause_data_source)
+    {
+        $this->container['cause_data_source'] = $cause_data_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_user_variable_share_user_measurements
+     * @return int
+     */
+    public function getCauseUserVariableShareUserMeasurements()
+    {
+        return $this->container['cause_user_variable_share_user_measurements'];
+    }
+
+    /**
+     * Sets cause_user_variable_share_user_measurements
+     * @param int $cause_user_variable_share_user_measurements Example: 1
+     * @return $this
+     */
+    public function setCauseUserVariableShareUserMeasurements($cause_user_variable_share_user_measurements)
+    {
+        $this->container['cause_user_variable_share_user_measurements'] = $cause_user_variable_share_user_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_category_id
+     * @return int
+     */
+    public function getCauseVariableCategoryId()
+    {
+        return $this->container['cause_variable_category_id'];
+    }
+
+    /**
+     * Sets cause_variable_category_id
+     * @param int $cause_variable_category_id Example: 6
+     * @return $this
+     */
+    public function setCauseVariableCategoryId($cause_variable_category_id)
+    {
+        $this->container['cause_variable_category_id'] = $cause_variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_category_name
+     * @return string
+     */
+    public function getCauseVariableCategoryName()
+    {
+        return $this->container['cause_variable_category_name'];
+    }
+
+    /**
+     * Sets cause_variable_category_name
+     * @param string $cause_variable_category_name Example: Sleep
+     * @return $this
+     */
+    public function setCauseVariableCategoryName($cause_variable_category_name)
+    {
+        $this->container['cause_variable_category_name'] = $cause_variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_combination_operation
+     * @return string
+     */
+    public function getCauseVariableCombinationOperation()
+    {
+        return $this->container['cause_variable_combination_operation'];
+    }
+
+    /**
+     * Sets cause_variable_combination_operation
+     * @param string $cause_variable_combination_operation Example: MEAN
+     * @return $this
+     */
+    public function setCauseVariableCombinationOperation($cause_variable_combination_operation)
+    {
+        $this->container['cause_variable_combination_operation'] = $cause_variable_combination_operation;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_unit_abbreviated_name
+     * @return string
+     */
+    public function getCauseVariableUnitAbbreviatedName()
+    {
+        return $this->container['cause_variable_unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets cause_variable_unit_abbreviated_name
+     * @param string $cause_variable_unit_abbreviated_name Example: /5
+     * @return $this
+     */
+    public function setCauseVariableUnitAbbreviatedName($cause_variable_unit_abbreviated_name)
+    {
+        $this->container['cause_variable_unit_abbreviated_name'] = $cause_variable_unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_unit_id
+     * @return int
+     */
+    public function getCauseVariableUnitId()
+    {
+        return $this->container['cause_variable_unit_id'];
+    }
+
+    /**
+     * Sets cause_variable_unit_id
+     * @param int $cause_variable_unit_id Example: 10
+     * @return $this
+     */
+    public function setCauseVariableUnitId($cause_variable_unit_id)
+    {
+        $this->container['cause_variable_unit_id'] = $cause_variable_unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_unit_name
+     * @return string
+     */
+    public function getCauseVariableUnitName()
+    {
+        return $this->container['cause_variable_unit_name'];
+    }
+
+    /**
+     * Sets cause_variable_unit_name
+     * @param string $cause_variable_unit_name Example: 1 to 5 Rating
+     * @return $this
+     */
+    public function setCauseVariableUnitName($cause_variable_unit_name)
+    {
+        $this->container['cause_variable_unit_name'] = $cause_variable_unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_id
+     * @return int
+     */
+    public function getCauseVariableId()
+    {
+        return $this->container['cause_variable_id'];
+    }
+
+    /**
+     * Sets cause_variable_id
+     * @param int $cause_variable_id Example: 1448
+     * @return $this
+     */
+    public function setCauseVariableId($cause_variable_id)
+    {
+        $this->container['cause_variable_id'] = $cause_variable_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_image_url
+     * @return string
+     */
+    public function getCauseVariableImageUrl()
+    {
+        return $this->container['cause_variable_image_url'];
+    }
+
+    /**
+     * Sets cause_variable_image_url
+     * @param string $cause_variable_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Household/sleeping_in_bed-96.png
+     * @return $this
+     */
+    public function setCauseVariableImageUrl($cause_variable_image_url)
+    {
+        $this->container['cause_variable_image_url'] = $cause_variable_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_ion_icon
+     * @return string
+     */
+    public function getCauseVariableIonIcon()
+    {
+        return $this->container['cause_variable_ion_icon'];
+    }
+
+    /**
+     * Sets cause_variable_ion_icon
+     * @param string $cause_variable_ion_icon Example: ion-ios-cloudy-night-outline
+     * @return $this
+     */
+    public function setCauseVariableIonIcon($cause_variable_ion_icon)
+    {
+        $this->container['cause_variable_ion_icon'] = $cause_variable_ion_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_most_common_connector_id
+     * @return int
+     */
+    public function getCauseVariableMostCommonConnectorId()
+    {
+        return $this->container['cause_variable_most_common_connector_id'];
+    }
+
+    /**
+     * Sets cause_variable_most_common_connector_id
+     * @param int $cause_variable_most_common_connector_id Example: 6
+     * @return $this
+     */
+    public function setCauseVariableMostCommonConnectorId($cause_variable_most_common_connector_id)
+    {
+        $this->container['cause_variable_most_common_connector_id'] = $cause_variable_most_common_connector_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_name
+     * @return string
+     */
+    public function getCauseVariableName()
+    {
+        return $this->container['cause_variable_name'];
+    }
+
+    /**
+     * Sets cause_variable_name
+     * @param string $cause_variable_name Example: Sleep Quality
+     * @return $this
+     */
+    public function setCauseVariableName($cause_variable_name)
+    {
+        $this->container['cause_variable_name'] = $cause_variable_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets confidence_interval
+     * @return double
+     */
+    public function getConfidenceInterval()
+    {
+        return $this->container['confidence_interval'];
+    }
+
+    /**
+     * Sets confidence_interval
+     * @param double $confidence_interval Example: 0.14344467795996
+     * @return $this
+     */
+    public function setConfidenceInterval($confidence_interval)
+    {
+        $this->container['confidence_interval'] = $confidence_interval;
+
+        return $this;
+    }
+
+    /**
+     * Gets confidence_level
+     * @return string
+     */
+    public function getConfidenceLevel()
+    {
+        return $this->container['confidence_level'];
+    }
+
+    /**
+     * Sets confidence_level
+     * @param string $confidence_level Example: high
+     * @return $this
+     */
+    public function setConfidenceLevel($confidence_level)
+    {
+        $this->container['confidence_level'] = $confidence_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets correlation_coefficient
+     * @return double
+     */
+    public function getCorrelationCoefficient()
+    {
+        return $this->container['correlation_coefficient'];
+    }
+
+    /**
+     * Sets correlation_coefficient
+     * @param double $correlation_coefficient Example: 0.538
+     * @return $this
+     */
+    public function setCorrelationCoefficient($correlation_coefficient)
+    {
+        $this->container['correlation_coefficient'] = $correlation_coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Gets correlation_is_contradictory_to_optimal_values
+     * @return bool
+     */
+    public function getCorrelationIsContradictoryToOptimalValues()
+    {
+        return $this->container['correlation_is_contradictory_to_optimal_values'];
+    }
+
+    /**
+     * Sets correlation_is_contradictory_to_optimal_values
+     * @param bool $correlation_is_contradictory_to_optimal_values Example: false
+     * @return $this
+     */
+    public function setCorrelationIsContradictoryToOptimalValues($correlation_is_contradictory_to_optimal_values)
+    {
+        $this->container['correlation_is_contradictory_to_optimal_values'] = $correlation_is_contradictory_to_optimal_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at Example: 2016-12-28 20:47:30
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets critical_t_value
+     * @return double
+     */
+    public function getCriticalTValue()
+    {
+        return $this->container['critical_t_value'];
+    }
+
+    /**
+     * Sets critical_t_value
+     * @param double $critical_t_value Example: 1.646
+     * @return $this
+     */
+    public function setCriticalTValue($critical_t_value)
+    {
+        $this->container['critical_t_value'] = $critical_t_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_analysis
+     * @return string
+     */
+    public function getDataAnalysis()
+    {
+        return $this->container['data_analysis'];
+    }
+
+    /**
+     * Sets data_analysis
+     * @param string $data_analysis Example: It was assumed that 0 hours would pass before a change in Sleep Quality would produce an observable change in Overall Mood.  It was assumed that Sleep Quality could produce an observable change in Overall Mood for as much as 7 days after the stimulus event.
+     * @return $this
+     */
+    public function setDataAnalysis($data_analysis)
+    {
+        $this->container['data_analysis'] = $data_analysis;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_sources
+     * @return string
+     */
+    public function getDataSources()
+    {
+        return $this->container['data_sources'];
+    }
+
+    /**
+     * Sets data_sources
+     * @param string $data_sources Example: Sleep Quality data was primarily collected using <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Up by Jawbone</a>.  UP by Jawbone is a wristband and app that tracks how you sleep, move and eat and then helps you use that information to feel your best.<br>Overall Mood data was primarily collected using <a href=\"https://quantimo.do\">QuantiModo</a>.  <a href=\"https://quantimo.do\">QuantiModo</a> is a Chrome extension, Android app, iOS app, and web app that allows you to easily track mood, symptoms, or any outcome you want to optimize in a fraction of a second.  You can also import your data from over 30 other apps and devices like Fitbit, Rescuetime, Jawbone Up, Withings, Facebook, Github, Google Calendar, Runkeeper, MoodPanda, Slice, Google Fit, and more.  <a href=\"https://quantimo.do\">QuantiModo</a> then analyzes your data to identify which hidden factors are most likely to be influencing your mood or symptoms and their optimal daily values.
+     * @return $this
+     */
+    public function setDataSources($data_sources)
+    {
+        $this->container['data_sources'] = $data_sources;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_sources_paragraph_for_cause
+     * @return string
+     */
+    public function getDataSourcesParagraphForCause()
+    {
+        return $this->container['data_sources_paragraph_for_cause'];
+    }
+
+    /**
+     * Sets data_sources_paragraph_for_cause
+     * @param string $data_sources_paragraph_for_cause Example: Sleep Quality data was primarily collected using <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Up by Jawbone</a>.  UP by Jawbone is a wristband and app that tracks how you sleep, move and eat and then helps you use that information to feel your best.
+     * @return $this
+     */
+    public function setDataSourcesParagraphForCause($data_sources_paragraph_for_cause)
+    {
+        $this->container['data_sources_paragraph_for_cause'] = $data_sources_paragraph_for_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_sources_paragraph_for_effect
+     * @return string
+     */
+    public function getDataSourcesParagraphForEffect()
+    {
+        return $this->container['data_sources_paragraph_for_effect'];
+    }
+
+    /**
+     * Sets data_sources_paragraph_for_effect
+     * @param string $data_sources_paragraph_for_effect Example: Overall Mood data was primarily collected using <a href=\"https://quantimo.do\">QuantiModo</a>.  <a href=\"https://quantimo.do\">QuantiModo</a> is a Chrome extension, Android app, iOS app, and web app that allows you to easily track mood, symptoms, or any outcome you want to optimize in a fraction of a second.  You can also import your data from over 30 other apps and devices like Fitbit, Rescuetime, Jawbone Up, Withings, Facebook, Github, Google Calendar, Runkeeper, MoodPanda, Slice, Google Fit, and more.  <a href=\"https://quantimo.do\">QuantiModo</a> then analyzes your data to identify which hidden factors are most likely to be influencing your mood or symptoms and their optimal daily values.
+     * @return $this
+     */
+    public function setDataSourcesParagraphForEffect($data_sources_paragraph_for_effect)
+    {
+        $this->container['data_sources_paragraph_for_effect'] = $data_sources_paragraph_for_effect;
+
+        return $this;
+    }
+
+    /**
+     * Gets direction
+     * @return string
+     */
+    public function getDirection()
+    {
+        return $this->container['direction'];
+    }
+
+    /**
+     * Sets direction
+     * @param string $direction Example: higher
+     * @return $this
+     */
+    public function setDirection($direction)
+    {
+        $this->container['direction'] = $direction;
+
+        return $this;
+    }
+
+    /**
+     * Gets duration_of_action
+     * @return int
+     */
+    public function getDurationOfAction()
+    {
+        return $this->container['duration_of_action'];
+    }
+
+    /**
+     * Sets duration_of_action
+     * @param int $duration_of_action Example: 604800
+     * @return $this
+     */
+    public function setDurationOfAction($duration_of_action)
+    {
+        $this->container['duration_of_action'] = $duration_of_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets duration_of_action_in_hours
+     * @return int
+     */
+    public function getDurationOfActionInHours()
+    {
+        return $this->container['duration_of_action_in_hours'];
+    }
+
+    /**
+     * Sets duration_of_action_in_hours
+     * @param int $duration_of_action_in_hours Example: 168
+     * @return $this
+     */
+    public function setDurationOfActionInHours($duration_of_action_in_hours)
+    {
+        $this->container['duration_of_action_in_hours'] = $duration_of_action_in_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_changes
+     * @return int
+     */
+    public function getEffectChanges()
+    {
+        return $this->container['effect_changes'];
+    }
+
+    /**
+     * Sets effect_changes
+     * @param int $effect_changes Example: 193
+     * @return $this
+     */
+    public function setEffectChanges($effect_changes)
+    {
+        $this->container['effect_changes'] = $effect_changes;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_data_source
+     * @return \QuantiModo\Client\Model\DataSource
+     */
+    public function getEffectDataSource()
+    {
+        return $this->container['effect_data_source'];
+    }
+
+    /**
+     * Sets effect_data_source
+     * @param \QuantiModo\Client\Model\DataSource $effect_data_source
+     * @return $this
+     */
+    public function setEffectDataSource($effect_data_source)
+    {
+        $this->container['effect_data_source'] = $effect_data_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_size
+     * @return string
+     */
+    public function getEffectSize()
+    {
+        return $this->container['effect_size'];
+    }
+
+    /**
+     * Sets effect_size
+     * @param string $effect_size Example: moderately positive
+     * @return $this
+     */
+    public function setEffectSize($effect_size)
+    {
+        $this->container['effect_size'] = $effect_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_unit
+     * @return string
+     */
+    public function getEffectUnit()
+    {
+        return $this->container['effect_unit'];
+    }
+
+    /**
+     * Sets effect_unit
+     * @param string $effect_unit Example: /5
+     * @return $this
+     */
+    public function setEffectUnit($effect_unit)
+    {
+        $this->container['effect_unit'] = $effect_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_user_variable_share_user_measurements
+     * @return int
+     */
+    public function getEffectUserVariableShareUserMeasurements()
+    {
+        return $this->container['effect_user_variable_share_user_measurements'];
+    }
+
+    /**
+     * Sets effect_user_variable_share_user_measurements
+     * @param int $effect_user_variable_share_user_measurements Example: 1
+     * @return $this
+     */
+    public function setEffectUserVariableShareUserMeasurements($effect_user_variable_share_user_measurements)
+    {
+        $this->container['effect_user_variable_share_user_measurements'] = $effect_user_variable_share_user_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_category_id
+     * @return int
+     */
+    public function getEffectVariableCategoryId()
+    {
+        return $this->container['effect_variable_category_id'];
+    }
+
+    /**
+     * Sets effect_variable_category_id
+     * @param int $effect_variable_category_id Example: 1
+     * @return $this
+     */
+    public function setEffectVariableCategoryId($effect_variable_category_id)
+    {
+        $this->container['effect_variable_category_id'] = $effect_variable_category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_category_name
+     * @return string
+     */
+    public function getEffectVariableCategoryName()
+    {
+        return $this->container['effect_variable_category_name'];
+    }
+
+    /**
+     * Sets effect_variable_category_name
+     * @param string $effect_variable_category_name Example: Emotions
+     * @return $this
+     */
+    public function setEffectVariableCategoryName($effect_variable_category_name)
+    {
+        $this->container['effect_variable_category_name'] = $effect_variable_category_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_combination_operation
+     * @return string
+     */
+    public function getEffectVariableCombinationOperation()
+    {
+        return $this->container['effect_variable_combination_operation'];
+    }
+
+    /**
+     * Sets effect_variable_combination_operation
+     * @param string $effect_variable_combination_operation Example: MEAN
+     * @return $this
+     */
+    public function setEffectVariableCombinationOperation($effect_variable_combination_operation)
+    {
+        $this->container['effect_variable_combination_operation'] = $effect_variable_combination_operation;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_common_alias
+     * @return string
+     */
+    public function getEffectVariableCommonAlias()
+    {
+        return $this->container['effect_variable_common_alias'];
+    }
+
+    /**
+     * Sets effect_variable_common_alias
+     * @param string $effect_variable_common_alias Example: Mood_(psychology)
+     * @return $this
+     */
+    public function setEffectVariableCommonAlias($effect_variable_common_alias)
+    {
+        $this->container['effect_variable_common_alias'] = $effect_variable_common_alias;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_unit_abbreviated_name
+     * @return string
+     */
+    public function getEffectVariableUnitAbbreviatedName()
+    {
+        return $this->container['effect_variable_unit_abbreviated_name'];
+    }
+
+    /**
+     * Sets effect_variable_unit_abbreviated_name
+     * @param string $effect_variable_unit_abbreviated_name Example: /5
+     * @return $this
+     */
+    public function setEffectVariableUnitAbbreviatedName($effect_variable_unit_abbreviated_name)
+    {
+        $this->container['effect_variable_unit_abbreviated_name'] = $effect_variable_unit_abbreviated_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_unit_id
+     * @return int
+     */
+    public function getEffectVariableUnitId()
+    {
+        return $this->container['effect_variable_unit_id'];
+    }
+
+    /**
+     * Sets effect_variable_unit_id
+     * @param int $effect_variable_unit_id Example: 10
+     * @return $this
+     */
+    public function setEffectVariableUnitId($effect_variable_unit_id)
+    {
+        $this->container['effect_variable_unit_id'] = $effect_variable_unit_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_unit_name
+     * @return string
+     */
+    public function getEffectVariableUnitName()
+    {
+        return $this->container['effect_variable_unit_name'];
+    }
+
+    /**
+     * Sets effect_variable_unit_name
+     * @param string $effect_variable_unit_name Example: 1 to 5 Rating
+     * @return $this
+     */
+    public function setEffectVariableUnitName($effect_variable_unit_name)
+    {
+        $this->container['effect_variable_unit_name'] = $effect_variable_unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_id
+     * @return int
+     */
+    public function getEffectVariableId()
+    {
+        return $this->container['effect_variable_id'];
+    }
+
+    /**
+     * Sets effect_variable_id
+     * @param int $effect_variable_id Example: 1398
+     * @return $this
+     */
+    public function setEffectVariableId($effect_variable_id)
+    {
+        $this->container['effect_variable_id'] = $effect_variable_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_image_url
+     * @return string
+     */
+    public function getEffectVariableImageUrl()
+    {
+        return $this->container['effect_variable_image_url'];
+    }
+
+    /**
+     * Sets effect_variable_image_url
+     * @param string $effect_variable_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Cinema/theatre_mask-96.png
+     * @return $this
+     */
+    public function setEffectVariableImageUrl($effect_variable_image_url)
+    {
+        $this->container['effect_variable_image_url'] = $effect_variable_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_ion_icon
+     * @return string
+     */
+    public function getEffectVariableIonIcon()
+    {
+        return $this->container['effect_variable_ion_icon'];
+    }
+
+    /**
+     * Sets effect_variable_ion_icon
+     * @param string $effect_variable_ion_icon Example: ion-happy-outline
+     * @return $this
+     */
+    public function setEffectVariableIonIcon($effect_variable_ion_icon)
+    {
+        $this->container['effect_variable_ion_icon'] = $effect_variable_ion_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_most_common_connector_id
+     * @return int
+     */
+    public function getEffectVariableMostCommonConnectorId()
+    {
+        return $this->container['effect_variable_most_common_connector_id'];
+    }
+
+    /**
+     * Sets effect_variable_most_common_connector_id
+     * @param int $effect_variable_most_common_connector_id Example: 10
+     * @return $this
+     */
+    public function setEffectVariableMostCommonConnectorId($effect_variable_most_common_connector_id)
+    {
+        $this->container['effect_variable_most_common_connector_id'] = $effect_variable_most_common_connector_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_name
+     * @return string
+     */
+    public function getEffectVariableName()
+    {
+        return $this->container['effect_variable_name'];
+    }
+
+    /**
+     * Sets effect_variable_name
+     * @param string $effect_variable_name Example: Overall Mood
+     * @return $this
+     */
+    public function setEffectVariableName($effect_variable_name)
+    {
+        $this->container['effect_variable_name'] = $effect_variable_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets experiment_end_time
+     * @return \DateTime
+     */
+    public function getExperimentEndTime()
+    {
+        return $this->container['experiment_end_time'];
+    }
+
+    /**
+     * Sets experiment_end_time
+     * @param \DateTime $experiment_end_time Example: 2014-07-30 12:50:00
+     * @return $this
+     */
+    public function setExperimentEndTime($experiment_end_time)
+    {
+        $this->container['experiment_end_time'] = $experiment_end_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets experiment_start_time
+     * @return \DateTime
+     */
+    public function getExperimentStartTime()
+    {
+        return $this->container['experiment_start_time'];
+    }
+
+    /**
+     * Sets experiment_start_time
+     * @param \DateTime $experiment_start_time Example: 2012-05-06 21:15:00
+     * @return $this
+     */
+    public function setExperimentStartTime($experiment_start_time)
+    {
+        $this->container['experiment_start_time'] = $experiment_start_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets forward_spearman_correlation_coefficient
+     * @return double
+     */
+    public function getForwardSpearmanCorrelationCoefficient()
+    {
+        return $this->container['forward_spearman_correlation_coefficient'];
+    }
+
+    /**
+     * Sets forward_spearman_correlation_coefficient
+     * @param double $forward_spearman_correlation_coefficient Example: 0.528359
+     * @return $this
+     */
+    public function setForwardSpearmanCorrelationCoefficient($forward_spearman_correlation_coefficient)
+    {
+        $this->container['forward_spearman_correlation_coefficient'] = $forward_spearman_correlation_coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Gets gauge_image
+     * @return string
+     */
+    public function getGaugeImage()
+    {
+        return $this->container['gauge_image'];
+    }
+
+    /**
+     * Sets gauge_image
+     * @param string $gauge_image Example: https://s3.amazonaws.com/quantimodo-docs/images/gauge-moderately-positive-relationship.png
+     * @return $this
+     */
+    public function setGaugeImage($gauge_image)
+    {
+        $this->container['gauge_image'] = $gauge_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets gauge_image_square
+     * @return string
+     */
+    public function getGaugeImageSquare()
+    {
+        return $this->container['gauge_image_square'];
+    }
+
+    /**
+     * Sets gauge_image_square
+     * @param string $gauge_image_square Example: https://s3.amazonaws.com/quantimodo-docs/images/gauge-moderately-positive-relationship-200-200.png
+     * @return $this
+     */
+    public function setGaugeImageSquare($gauge_image_square)
+    {
+        $this->container['gauge_image_square'] = $gauge_image_square;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     * @param string $image_url Example: https://s3-us-west-1.amazonaws.com/qmimages/variable_categories_gauges_logo_background/gauge-moderately-positive-relationship_sleep_emotions_logo_background.png
+     * @return $this
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets instructions_for_cause
+     * @return string
+     */
+    public function getInstructionsForCause()
+    {
+        return $this->container['instructions_for_cause'];
+    }
+
+    /**
+     * Sets instructions_for_cause
+     * @param string $instructions_for_cause Example: <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Obtain Up by Jawbone</a> and use it to record your Sleep Quality. Once you have a <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Up by Jawbone</a> account, <a href=\"https://app.quantimo.do/ionic/Modo/www/#/app/import\">connect your  Up by Jawbone account at QuantiModo</a> to automatically import and analyze your data.
+     * @return $this
+     */
+    public function setInstructionsForCause($instructions_for_cause)
+    {
+        $this->container['instructions_for_cause'] = $instructions_for_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets instructions_for_effect
+     * @return string
+     */
+    public function getInstructionsForEffect()
+    {
+        return $this->container['instructions_for_effect'];
+    }
+
+    /**
+     * Sets instructions_for_effect
+     * @param string $instructions_for_effect Example: <a href=\"https://quantimo.do\">Obtain QuantiModo</a> and use it to record your Overall Mood. Once you have a <a href=\"https://quantimo.do\">QuantiModo</a> account, <a href=\"https://app.quantimo.do/ionic/Modo/www/#/app/import\">connect your  QuantiModo account at QuantiModo</a> to automatically import and analyze your data.
+     * @return $this
+     */
+    public function setInstructionsForEffect($instructions_for_effect)
+    {
+        $this->container['instructions_for_effect'] = $instructions_for_effect;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_pairs
+     * @return int
+     */
+    public function getNumberOfPairs()
+    {
+        return $this->container['number_of_pairs'];
+    }
+
+    /**
+     * Sets number_of_pairs
+     * @param int $number_of_pairs Example: 298
+     * @return $this
+     */
+    public function setNumberOfPairs($number_of_pairs)
+    {
+        $this->container['number_of_pairs'] = $number_of_pairs;
+
+        return $this;
+    }
+
+    /**
+     * Gets onset_delay
+     * @return int
+     */
+    public function getOnsetDelay()
+    {
+        return $this->container['onset_delay'];
+    }
+
+    /**
+     * Sets onset_delay
+     * @param int $onset_delay Example: 0
+     * @return $this
+     */
+    public function setOnsetDelay($onset_delay)
+    {
+        $this->container['onset_delay'] = $onset_delay;
+
+        return $this;
+    }
+
+    /**
+     * Gets onset_delay_in_hours
+     * @return int
+     */
+    public function getOnsetDelayInHours()
+    {
+        return $this->container['onset_delay_in_hours'];
+    }
+
+    /**
+     * Sets onset_delay_in_hours
+     * @param int $onset_delay_in_hours Example: 0
+     * @return $this
+     */
+    public function setOnsetDelayInHours($onset_delay_in_hours)
+    {
+        $this->container['onset_delay_in_hours'] = $onset_delay_in_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets onset_delay_with_strongest_pearson_correlation
+     * @return int
+     */
+    public function getOnsetDelayWithStrongestPearsonCorrelation()
+    {
+        return $this->container['onset_delay_with_strongest_pearson_correlation'];
+    }
+
+    /**
+     * Sets onset_delay_with_strongest_pearson_correlation
+     * @param int $onset_delay_with_strongest_pearson_correlation Example: -86400
+     * @return $this
+     */
+    public function setOnsetDelayWithStrongestPearsonCorrelation($onset_delay_with_strongest_pearson_correlation)
+    {
+        $this->container['onset_delay_with_strongest_pearson_correlation'] = $onset_delay_with_strongest_pearson_correlation;
+
+        return $this;
+    }
+
+    /**
+     * Gets onset_delay_with_strongest_pearson_correlation_in_hours
+     * @return int
+     */
+    public function getOnsetDelayWithStrongestPearsonCorrelationInHours()
+    {
+        return $this->container['onset_delay_with_strongest_pearson_correlation_in_hours'];
+    }
+
+    /**
+     * Sets onset_delay_with_strongest_pearson_correlation_in_hours
+     * @param int $onset_delay_with_strongest_pearson_correlation_in_hours Example: -24
+     * @return $this
+     */
+    public function setOnsetDelayWithStrongestPearsonCorrelationInHours($onset_delay_with_strongest_pearson_correlation_in_hours)
+    {
+        $this->container['onset_delay_with_strongest_pearson_correlation_in_hours'] = $onset_delay_with_strongest_pearson_correlation_in_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimal_pearson_product
+     * @return double
+     */
+    public function getOptimalPearsonProduct()
+    {
+        return $this->container['optimal_pearson_product'];
+    }
+
+    /**
+     * Sets optimal_pearson_product
+     * @param double $optimal_pearson_product Example: 0.68582816186982
+     * @return $this
+     */
+    public function setOptimalPearsonProduct($optimal_pearson_product)
+    {
+        $this->container['optimal_pearson_product'] = $optimal_pearson_product;
+
+        return $this;
+    }
+
+    /**
+     * Gets outcome_filling_value
+     * @return int
+     */
+    public function getOutcomeFillingValue()
+    {
+        return $this->container['outcome_filling_value'];
+    }
+
+    /**
+     * Sets outcome_filling_value
+     * @param int $outcome_filling_value Example: -1
+     * @return $this
+     */
+    public function setOutcomeFillingValue($outcome_filling_value)
+    {
+        $this->container['outcome_filling_value'] = $outcome_filling_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets outcome_maximum_allowed_value
+     * @return double
+     */
+    public function getOutcomeMaximumAllowedValue()
+    {
+        return $this->container['outcome_maximum_allowed_value'];
+    }
+
+    /**
+     * Sets outcome_maximum_allowed_value
+     * @param double $outcome_maximum_allowed_value Example: 23
+     * @return $this
+     */
+    public function setOutcomeMaximumAllowedValue($outcome_maximum_allowed_value)
+    {
+        $this->container['outcome_maximum_allowed_value'] = $outcome_maximum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets outcome_minimum_allowed_value
+     * @return double
+     */
+    public function getOutcomeMinimumAllowedValue()
+    {
+        return $this->container['outcome_minimum_allowed_value'];
+    }
+
+    /**
+     * Sets outcome_minimum_allowed_value
+     * @param double $outcome_minimum_allowed_value Example: 0.1
+     * @return $this
+     */
+    public function setOutcomeMinimumAllowedValue($outcome_minimum_allowed_value)
+    {
+        $this->container['outcome_minimum_allowed_value'] = $outcome_minimum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets pearson_correlation_with_no_onset_delay
+     * @return double
+     */
+    public function getPearsonCorrelationWithNoOnsetDelay()
+    {
+        return $this->container['pearson_correlation_with_no_onset_delay'];
+    }
+
+    /**
+     * Sets pearson_correlation_with_no_onset_delay
+     * @param double $pearson_correlation_with_no_onset_delay Example: 0.477
+     * @return $this
+     */
+    public function setPearsonCorrelationWithNoOnsetDelay($pearson_correlation_with_no_onset_delay)
+    {
+        $this->container['pearson_correlation_with_no_onset_delay'] = $pearson_correlation_with_no_onset_delay;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictive_pearson_correlation
+     * @return double
+     */
+    public function getPredictivePearsonCorrelation()
+    {
+        return $this->container['predictive_pearson_correlation'];
+    }
+
+    /**
+     * Sets predictive_pearson_correlation
+     * @param double $predictive_pearson_correlation Example: 0.538
+     * @return $this
+     */
+    public function setPredictivePearsonCorrelation($predictive_pearson_correlation)
+    {
+        $this->container['predictive_pearson_correlation'] = $predictive_pearson_correlation;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictive_pearson_correlation_coefficient
+     * @return double
+     */
+    public function getPredictivePearsonCorrelationCoefficient()
+    {
+        return $this->container['predictive_pearson_correlation_coefficient'];
+    }
+
+    /**
+     * Sets predictive_pearson_correlation_coefficient
+     * @param double $predictive_pearson_correlation_coefficient Example: 0.538
+     * @return $this
+     */
+    public function setPredictivePearsonCorrelationCoefficient($predictive_pearson_correlation_coefficient)
+    {
+        $this->container['predictive_pearson_correlation_coefficient'] = $predictive_pearson_correlation_coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_data_sources
+     * @return string
+     */
+    public function getPredictorDataSources()
+    {
+        return $this->container['predictor_data_sources'];
+    }
+
+    /**
+     * Sets predictor_data_sources
+     * @param string $predictor_data_sources Example: RescueTime
+     * @return $this
+     */
+    public function setPredictorDataSources($predictor_data_sources)
+    {
+        $this->container['predictor_data_sources'] = $predictor_data_sources;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_explanation
+     * @return string
+     */
+    public function getPredictorExplanation()
+    {
+        return $this->container['predictor_explanation'];
+    }
+
+    /**
+     * Sets predictor_explanation
+     * @param string $predictor_explanation Example: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setPredictorExplanation($predictor_explanation)
+    {
+        $this->container['predictor_explanation'] = $predictor_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_filling_value
+     * @return int
+     */
+    public function getPredictorFillingValue()
+    {
+        return $this->container['predictor_filling_value'];
+    }
+
+    /**
+     * Sets predictor_filling_value
+     * @param int $predictor_filling_value Example: -1
+     * @return $this
+     */
+    public function setPredictorFillingValue($predictor_filling_value)
+    {
+        $this->container['predictor_filling_value'] = $predictor_filling_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_maximum_allowed_value
+     * @return double
+     */
+    public function getPredictorMaximumAllowedValue()
+    {
+        return $this->container['predictor_maximum_allowed_value'];
+    }
+
+    /**
+     * Sets predictor_maximum_allowed_value
+     * @param double $predictor_maximum_allowed_value Example: 200
+     * @return $this
+     */
+    public function setPredictorMaximumAllowedValue($predictor_maximum_allowed_value)
+    {
+        $this->container['predictor_maximum_allowed_value'] = $predictor_maximum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_minimum_allowed_value
+     * @return double
+     */
+    public function getPredictorMinimumAllowedValue()
+    {
+        return $this->container['predictor_minimum_allowed_value'];
+    }
+
+    /**
+     * Sets predictor_minimum_allowed_value
+     * @param double $predictor_minimum_allowed_value Example: 30
+     * @return $this
+     */
+    public function setPredictorMinimumAllowedValue($predictor_minimum_allowed_value)
+    {
+        $this->container['predictor_minimum_allowed_value'] = $predictor_minimum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets predicts_high_effect_change
+     * @return int
+     */
+    public function getPredictsHighEffectChange()
+    {
+        return $this->container['predicts_high_effect_change'];
+    }
+
+    /**
+     * Sets predicts_high_effect_change
+     * @param int $predicts_high_effect_change Example: 17
+     * @return $this
+     */
+    public function setPredictsHighEffectChange($predicts_high_effect_change)
+    {
+        $this->container['predicts_high_effect_change'] = $predicts_high_effect_change;
+
+        return $this;
+    }
+
+    /**
+     * Gets predicts_high_effect_change_sentence_fragment
+     * @return string
+     */
+    public function getPredictsHighEffectChangeSentenceFragment()
+    {
+        return $this->container['predicts_high_effect_change_sentence_fragment'];
+    }
+
+    /**
+     * Sets predicts_high_effect_change_sentence_fragment
+     * @param string $predicts_high_effect_change_sentence_fragment Example: , on average, 17%
+     * @return $this
+     */
+    public function setPredictsHighEffectChangeSentenceFragment($predicts_high_effect_change_sentence_fragment)
+    {
+        $this->container['predicts_high_effect_change_sentence_fragment'] = $predicts_high_effect_change_sentence_fragment;
+
+        return $this;
+    }
+
+    /**
+     * Gets predicts_low_effect_change
+     * @return int
+     */
+    public function getPredictsLowEffectChange()
+    {
+        return $this->container['predicts_low_effect_change'];
+    }
+
+    /**
+     * Sets predicts_low_effect_change
+     * @param int $predicts_low_effect_change Example: -11
+     * @return $this
+     */
+    public function setPredictsLowEffectChange($predicts_low_effect_change)
+    {
+        $this->container['predicts_low_effect_change'] = $predicts_low_effect_change;
+
+        return $this;
+    }
+
+    /**
+     * Gets predicts_low_effect_change_sentence_fragment
+     * @return string
+     */
+    public function getPredictsLowEffectChangeSentenceFragment()
+    {
+        return $this->container['predicts_low_effect_change_sentence_fragment'];
+    }
+
+    /**
+     * Sets predicts_low_effect_change_sentence_fragment
+     * @param string $predicts_low_effect_change_sentence_fragment Example: , on average, 11%
+     * @return $this
+     */
+    public function setPredictsLowEffectChangeSentenceFragment($predicts_low_effect_change_sentence_fragment)
+    {
+        $this->container['predicts_low_effect_change_sentence_fragment'] = $predicts_low_effect_change_sentence_fragment;
+
+        return $this;
+    }
+
+    /**
+     * Gets p_value
+     * @return double
+     */
+    public function getPValue()
+    {
+        return $this->container['p_value'];
+    }
+
+    /**
+     * Sets p_value
+     * @param double $p_value Example: 0.39628900511586
+     * @return $this
+     */
+    public function setPValue($p_value)
+    {
+        $this->container['p_value'] = $p_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets qm_score
+     * @return double
+     */
+    public function getQmScore()
+    {
+        return $this->container['qm_score'];
+    }
+
+    /**
+     * Sets qm_score
+     * @param double $qm_score Example: 0.528
+     * @return $this
+     */
+    public function setQmScore($qm_score)
+    {
+        $this->container['qm_score'] = $qm_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets reverse_pearson_correlation_coefficient
+     * @return double
+     */
+    public function getReversePearsonCorrelationCoefficient()
+    {
+        return $this->container['reverse_pearson_correlation_coefficient'];
+    }
+
+    /**
+     * Sets reverse_pearson_correlation_coefficient
+     * @param double $reverse_pearson_correlation_coefficient Example: 0.01377184270977
+     * @return $this
+     */
+    public function setReversePearsonCorrelationCoefficient($reverse_pearson_correlation_coefficient)
+    {
+        $this->container['reverse_pearson_correlation_coefficient'] = $reverse_pearson_correlation_coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_user_measurements
+     * @return bool
+     */
+    public function getShareUserMeasurements()
+    {
+        return $this->container['share_user_measurements'];
+    }
+
+    /**
+     * Sets share_user_measurements
+     * @param bool $share_user_measurements Example: 1
+     * @return $this
+     */
+    public function setShareUserMeasurements($share_user_measurements)
+    {
+        $this->container['share_user_measurements'] = $share_user_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets significance_explanation
+     * @return string
+     */
+    public function getSignificanceExplanation()
+    {
+        return $this->container['significance_explanation'];
+    }
+
+    /**
+     * Sets significance_explanation
+     * @param string $significance_explanation Example: Using a two-tailed t-test with alpha = 0.05, it was determined that the change in Overall Mood is statistically significant at 95% confidence interval.
+     * @return $this
+     */
+    public function setSignificanceExplanation($significance_explanation)
+    {
+        $this->container['significance_explanation'] = $significance_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets significant_difference
+     * @return bool
+     */
+    public function getSignificantDifference()
+    {
+        return $this->container['significant_difference'];
+    }
+
+    /**
+     * Sets significant_difference
+     * @param bool $significant_difference Example: 1
+     * @return $this
+     */
+    public function setSignificantDifference($significant_difference)
+    {
+        $this->container['significant_difference'] = $significant_difference;
+
+        return $this;
+    }
+
+    /**
+     * Gets statistical_significance
+     * @return double
+     */
+    public function getStatisticalSignificance()
+    {
+        return $this->container['statistical_significance'];
+    }
+
+    /**
+     * Sets statistical_significance
+     * @param double $statistical_significance Example: 0.9813
+     * @return $this
+     */
+    public function setStatisticalSignificance($statistical_significance)
+    {
+        $this->container['statistical_significance'] = $statistical_significance;
+
+        return $this;
+    }
+
+    /**
+     * Gets strength_level
+     * @return string
+     */
+    public function getStrengthLevel()
+    {
+        return $this->container['strength_level'];
+    }
+
+    /**
+     * Sets strength_level
+     * @param string $strength_level Example: moderate
+     * @return $this
+     */
+    public function setStrengthLevel($strength_level)
+    {
+        $this->container['strength_level'] = $strength_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets strongest_pearson_correlation_coefficient
+     * @return double
+     */
+    public function getStrongestPearsonCorrelationCoefficient()
+    {
+        return $this->container['strongest_pearson_correlation_coefficient'];
+    }
+
+    /**
+     * Sets strongest_pearson_correlation_coefficient
+     * @param double $strongest_pearson_correlation_coefficient Example: 0.613
+     * @return $this
+     */
+    public function setStrongestPearsonCorrelationCoefficient($strongest_pearson_correlation_coefficient)
+    {
+        $this->container['strongest_pearson_correlation_coefficient'] = $strongest_pearson_correlation_coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_abstract
+     * @return string
+     */
+    public function getStudyAbstract()
+    {
+        return $this->container['study_abstract'];
+    }
+
+    /**
+     * Sets study_abstract
+     * @param string $study_abstract Example: Your data suggests with a high degree of confidence (p=0) that Sleep Quality (Sleep) has a moderately positive predictive relationship (R=0.538) with Overall Mood  (Emotions).  The highest quartile of Overall Mood  measurements were observed following an average 4.14/5 Sleep Quality.  The lowest quartile of Overall Mood measurements were observed following an average 3.03/5 Sleep Quality.
+     * @return $this
+     */
+    public function setStudyAbstract($study_abstract)
+    {
+        $this->container['study_abstract'] = $study_abstract;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_design
+     * @return string
+     */
+    public function getStudyDesign()
+    {
+        return $this->container['study_design'];
+    }
+
+    /**
+     * Sets study_design
+     * @param string $study_design Example: This study is based on data donated by one QuantiModo user. Thus, the study design is consistent with an n=1 observational natural experiment.
+     * @return $this
+     */
+    public function setStudyDesign($study_design)
+    {
+        $this->container['study_design'] = $study_design;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_limitations
+     * @return string
+     */
+    public function getStudyLimitations()
+    {
+        return $this->container['study_limitations'];
+    }
+
+    /**
+     * Sets study_limitations
+     * @param string $study_limitations Example: As with any human experiment, it was impossible to control for all potentially confounding variables.              Correlation does not necessarily imply correlation.  We can never know for sure if one factor is definitely the cause of an outcome.             However, lack of correlation definitely implies the lack of a causal relationship.  Hence, we can with great             confidence rule out non-existent relationships. For instance, if we discover no relationship between mood             and an antidepressant this information is just as or even more valuable than the discovery that there is a relationship.             <br>             <br>              We can also take advantage of several characteristics of time series data from many subjects  to infer the likelihood of a causal relationship if we do find a correlational relationship.             The criteria for causation are a group of minimal conditions necessary to provide adequate evidence of a causal relationship between an incidence and a possible consequence.             The list of the criteria is as follows:             <br>             1. Strength (effect size): A small association does not mean that there is not a causal effect, though the larger the association, the more likely that it is causal.             <br>             2. Consistency (reproducibility): Consistent findings observed by different persons in different places with different samples strengthens the likelihood of an effect.             <br>             3. Specificity: Causation is likely if a very specific population at a specific site and disease with no other likely explanation. The more specific an association between a factor and an effect is, the bigger the probability of a causal relationship.             <br>             4. Temporality: The effect has to occur after the cause (and if there is an expected delay between the cause and expected effect, then the effect must occur after that delay).             <br>             5. Biological gradient: Greater exposure should generally lead to greater incidence of the effect. However, in some cases, the mere presence of the factor can trigger the effect. In other cases, an inverse proportion is observed: greater exposure leads to lower incidence.             <br>             6. Plausibility: A plausible mechanism between cause and effect is helpful.             <br>             7. Coherence: Coherence between epidemiological and laboratory findings increases the likelihood of an effect.             <br>             8. Experiment: \"Occasionally it is possible to appeal to experimental evidence\".             <br>             9. Analogy: The effect of similar factors may be considered.             <br>             <br>               The confidence in a causal relationship is bolstered by the fact that time-precedence was taken into account in all calculations. Furthermore, in accordance with the law of large numbers (LLN), the predictive power and accuracy of these results will continually grow over time.  298 paired data points were used in this analysis.   Assuming that the relationship is merely coincidental, as the participant independently modifies their Sleep Quality values, the observed strength of the relationship will decline until it is below the threshold of significance.  To it another way, in the case that we do find a spurious correlation, suggesting that banana intake improves mood for instance,             one will likely increase their banana intake.  Due to the fact that this correlation is spurious, it is unlikely             that you will see a continued and persistent corresponding increase in mood.  So over time, the spurious correlation will             naturally dissipate.Furthermore, it will be very enlightening to aggregate this data with the data from other participants  with similar genetic, diseasomic, environmentomic, and demographic profiles.
+     * @return $this
+     */
+    public function setStudyLimitations($study_limitations)
+    {
+        $this->container['study_limitations'] = $study_limitations;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_dynamic
+     * @return string
+     */
+    public function getStudyLinkDynamic()
+    {
+        return $this->container['study_link_dynamic'];
+    }
+
+    /**
+     * Sets study_link_dynamic
+     * @param string $study_link_dynamic Example: https://local.quantimo.do/ionic/Modo/www/index.html#/app/study?causeVariableName=Sleep%20Quality&effectVariableName=Overall%20Mood&userId=230
+     * @return $this
+     */
+    public function setStudyLinkDynamic($study_link_dynamic)
+    {
+        $this->container['study_link_dynamic'] = $study_link_dynamic;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_email
+     * @return string
+     */
+    public function getStudyLinkEmail()
+    {
+        return $this->container['study_link_email'];
+    }
+
+    /**
+     * Sets study_link_email
+     * @param string $study_link_email Example: mailto:?subject=N1%20Study%3A%20Sleep%20Quality%20Predicts%20Higher%20Overall%20Mood&body=Check%20out%20my%20study%20at%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230%0A%0AHave%20a%20great%20day!
+     * @return $this
+     */
+    public function setStudyLinkEmail($study_link_email)
+    {
+        $this->container['study_link_email'] = $study_link_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_facebook
+     * @return string
+     */
+    public function getStudyLinkFacebook()
+    {
+        return $this->container['study_link_facebook'];
+    }
+
+    /**
+     * Sets study_link_facebook
+     * @param string $study_link_facebook Example: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230
+     * @return $this
+     */
+    public function setStudyLinkFacebook($study_link_facebook)
+    {
+        $this->container['study_link_facebook'] = $study_link_facebook;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_google
+     * @return string
+     */
+    public function getStudyLinkGoogle()
+    {
+        return $this->container['study_link_google'];
+    }
+
+    /**
+     * Sets study_link_google
+     * @param string $study_link_google Example: https://plus.google.com/share?url=https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230
+     * @return $this
+     */
+    public function setStudyLinkGoogle($study_link_google)
+    {
+        $this->container['study_link_google'] = $study_link_google;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_static
+     * @return string
+     */
+    public function getStudyLinkStatic()
+    {
+        return $this->container['study_link_static'];
+    }
+
+    /**
+     * Sets study_link_static
+     * @param string $study_link_static Example: https://local.quantimo.do/api/v2/study?causeVariableName=Sleep%20Quality&effectVariableName=Overall%20Mood&userId=230
+     * @return $this
+     */
+    public function setStudyLinkStatic($study_link_static)
+    {
+        $this->container['study_link_static'] = $study_link_static;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_link_twitter
+     * @return string
+     */
+    public function getStudyLinkTwitter()
+    {
+        return $this->container['study_link_twitter'];
+    }
+
+    /**
+     * Sets study_link_twitter
+     * @param string $study_link_twitter Example: https://twitter.com/home?status=Sleep%20Quality%20Predicts%20Higher%20Overall%20Mood%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230%20%40quantimodo
+     * @return $this
+     */
+    public function setStudyLinkTwitter($study_link_twitter)
+    {
+        $this->container['study_link_twitter'] = $study_link_twitter;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_objective
+     * @return string
+     */
+    public function getStudyObjective()
+    {
+        return $this->container['study_objective'];
+    }
+
+    /**
+     * Sets study_objective
+     * @param string $study_objective Example: The objective of this study is to determine the nature of the relationship (if any) between the Sleep Quality and the Overall Mood. Additionally, we attempt to determine the Sleep Quality values most likely to produce optimal Overall Mood values.
+     * @return $this
+     */
+    public function setStudyObjective($study_objective)
+    {
+        $this->container['study_objective'] = $study_objective;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_results
+     * @return string
+     */
+    public function getStudyResults()
+    {
+        return $this->container['study_results'];
+    }
+
+    /**
+     * Sets study_results
+     * @param string $study_results Example: This analysis suggests that higher Sleep Quality (Sleep) generally predicts higher Overall Mood (p = 0).  Overall Mood is, on average, 17%  higher after around 4.14 Sleep Quality.  After an onset delay of 168 hours, Overall Mood is, on average, 11%  lower than its average over the 168 hours following around 3.03 Sleep Quality.  298 data points were used in this analysis.  The value for Sleep Quality changed 164 times, effectively running 82 separate natural experiments.  The top quartile outcome values are preceded by an average 4.14 /5 of Sleep Quality.  The bottom quartile outcome values are preceded by an average 3.03 /5 of Sleep Quality.  Forward Pearson Correlation Coefficient was 0.538 (p=0, 95% CI 0.395 to 0.681 onset delay = 0 hours, duration of action = 168 hours) .  The Reverse Pearson Correlation Coefficient was 0 (P=0, 95% CI -0.143 to 0.143, onset delay = -0 hours, duration of action = -168 hours). When the Sleep Quality value is closer to 4.14 /5 than 3.03 /5, the Overall Mood value which follows is, on average, 17%  percent higher than its typical value.  When the Sleep Quality value is closer to 3.03 /5 than 4.14 /5, the Overall Mood value which follows is 0% lower than its typical value.  Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality  Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality
+     * @return $this
+     */
+    public function setStudyResults($study_results)
+    {
+        $this->container['study_results'] = $study_results;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_title
+     * @return string
+     */
+    public function getStudyTitle()
+    {
+        return $this->container['study_title'];
+    }
+
+    /**
+     * Sets study_title
+     * @param string $study_title Example: N1 Study: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setStudyTitle($study_title)
+    {
+        $this->container['study_title'] = $study_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     * @param int $timestamp Example: 1494085127
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets t_value
+     * @return double
+     */
+    public function getTValue()
+    {
+        return $this->container['t_value'];
+    }
+
+    /**
+     * Sets t_value
+     * @param double $t_value Example: 9.6986079652717
+     * @return $this
+     */
+    public function setTValue($t_value)
+    {
+        $this->container['t_value'] = $t_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     * @param \DateTime $updated_at Example: 2017-05-06 15:40:38
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     * @param int $user_id Example: 230
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_vote
+     * @return int
+     */
+    public function getUserVote()
+    {
+        return $this->container['user_vote'];
+    }
+
+    /**
+     * Sets user_vote
+     * @param int $user_vote Example: 1
+     * @return $this
+     */
+    public function setUserVote($user_vote)
+    {
+        $this->container['user_vote'] = $user_vote;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_predicting_high_outcome
+     * @return double
+     */
+    public function getValuePredictingHighOutcome()
+    {
+        return $this->container['value_predicting_high_outcome'];
+    }
+
+    /**
+     * Sets value_predicting_high_outcome
+     * @param double $value_predicting_high_outcome Example: 4.14
+     * @return $this
+     */
+    public function setValuePredictingHighOutcome($value_predicting_high_outcome)
+    {
+        $this->container['value_predicting_high_outcome'] = $value_predicting_high_outcome;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_predicting_high_outcome_explanation
+     * @return string
+     */
+    public function getValuePredictingHighOutcomeExplanation()
+    {
+        return $this->container['value_predicting_high_outcome_explanation'];
+    }
+
+    /**
+     * Sets value_predicting_high_outcome_explanation
+     * @param string $value_predicting_high_outcome_explanation Example: Overall Mood, on average, 17% higher after around 4.14/5 Sleep Quality
+     * @return $this
+     */
+    public function setValuePredictingHighOutcomeExplanation($value_predicting_high_outcome_explanation)
+    {
+        $this->container['value_predicting_high_outcome_explanation'] = $value_predicting_high_outcome_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_predicting_low_outcome
+     * @return double
+     */
+    public function getValuePredictingLowOutcome()
+    {
+        return $this->container['value_predicting_low_outcome'];
+    }
+
+    /**
+     * Sets value_predicting_low_outcome
+     * @param double $value_predicting_low_outcome Example: 3.03
+     * @return $this
+     */
+    public function setValuePredictingLowOutcome($value_predicting_low_outcome)
+    {
+        $this->container['value_predicting_low_outcome'] = $value_predicting_low_outcome;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_predicting_low_outcome_explanation
+     * @return string
+     */
+    public function getValuePredictingLowOutcomeExplanation()
+    {
+        return $this->container['value_predicting_low_outcome_explanation'];
+    }
+
+    /**
+     * Sets value_predicting_low_outcome_explanation
+     * @param string $value_predicting_low_outcome_explanation Example: Overall Mood, on average, 11% lower after around 3.03/5 Sleep Quality
+     * @return $this
+     */
+    public function setValuePredictingLowOutcomeExplanation($value_predicting_low_outcome_explanation)
+    {
+        $this->container['value_predicting_low_outcome_explanation'] = $value_predicting_low_outcome_explanation;
 
         return $this;
     }
@@ -699,615 +4223,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets cause
-     * @return string
-     */
-    public function getCause()
-    {
-        return $this->container['cause'];
-    }
-
-    /**
-     * Sets cause
-     * @param string $cause ORIGINAL variable name of the cause variable for which the user desires correlations.
-     * @return $this
-     */
-    public function setCause($cause)
-    {
-        $this->container['cause'] = $cause;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_category_name
-     * @return string
-     */
-    public function getCauseVariableCategoryName()
-    {
-        return $this->container['cause_variable_category_name'];
-    }
-
-    /**
-     * Sets cause_variable_category_name
-     * @param string $cause_variable_category_name Variable category of the cause variable.
-     * @return $this
-     */
-    public function setCauseVariableCategoryName($cause_variable_category_name)
-    {
-        $this->container['cause_variable_category_name'] = $cause_variable_category_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_changes
-     * @return int
-     */
-    public function getCauseChanges()
-    {
-        return $this->container['cause_changes'];
-    }
-
-    /**
-     * Sets cause_changes
-     * @param int $cause_changes Number of changes in the predictor variable (a.k.a the number of experiments)
-     * @return $this
-     */
-    public function setCauseChanges($cause_changes)
-    {
-        $this->container['cause_changes'] = $cause_changes;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_combination_operation
-     * @return string
-     */
-    public function getCauseCombinationOperation()
-    {
-        return $this->container['cause_combination_operation'];
-    }
-
-    /**
-     * Sets cause_combination_operation
-     * @param string $cause_combination_operation The way cause measurements are aggregated
-     * @return $this
-     */
-    public function setCauseCombinationOperation($cause_combination_operation)
-    {
-        $this->container['cause_combination_operation'] = $cause_combination_operation;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_image_url
-     * @return string
-     */
-    public function getCauseVariableImageUrl()
-    {
-        return $this->container['cause_variable_image_url'];
-    }
-
-    /**
-     * Sets cause_variable_image_url
-     * @param string $cause_variable_image_url 
-     * @return $this
-     */
-    public function setCauseVariableImageUrl($cause_variable_image_url)
-    {
-        $this->container['cause_variable_image_url'] = $cause_variable_image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_ion_icon
-     * @return string
-     */
-    public function getCauseVariableIonIcon()
-    {
-        return $this->container['cause_variable_ion_icon'];
-    }
-
-    /**
-     * Sets cause_variable_ion_icon
-     * @param string $cause_variable_ion_icon For use in Ionic apps
-     * @return $this
-     */
-    public function setCauseVariableIonIcon($cause_variable_ion_icon)
-    {
-        $this->container['cause_variable_ion_icon'] = $cause_variable_ion_icon;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_unit
-     * @return string
-     */
-    public function getCauseUnit()
-    {
-        return $this->container['cause_unit'];
-    }
-
-    /**
-     * Sets cause_unit
-     * @param string $cause_unit Unit of the predictor variable
-     * @return $this
-     */
-    public function setCauseUnit($cause_unit)
-    {
-        $this->container['cause_unit'] = $cause_unit;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_unit_id
-     * @return int
-     */
-    public function getCauseUnitId()
-    {
-        return $this->container['cause_unit_id'];
-    }
-
-    /**
-     * Sets cause_unit_id
-     * @param int $cause_unit_id Unit Id of the predictor variable
-     * @return $this
-     */
-    public function setCauseUnitId($cause_unit_id)
-    {
-        $this->container['cause_unit_id'] = $cause_unit_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_id
-     * @return int
-     */
-    public function getCauseVariableId()
-    {
-        return $this->container['cause_variable_id'];
-    }
-
-    /**
-     * Sets cause_variable_id
-     * @param int $cause_variable_id 
-     * @return $this
-     */
-    public function setCauseVariableId($cause_variable_id)
-    {
-        $this->container['cause_variable_id'] = $cause_variable_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_name
-     * @return string
-     */
-    public function getCauseVariableName()
-    {
-        return $this->container['cause_variable_name'];
-    }
-
-    /**
-     * Sets cause_variable_name
-     * @param string $cause_variable_name ORIGINAL variable name of the cause variable for which the user desires correlations.
-     * @return $this
-     */
-    public function setCauseVariableName($cause_variable_name)
-    {
-        $this->container['cause_variable_name'] = $cause_variable_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets correlation_coefficient
-     * @return float
-     */
-    public function getCorrelationCoefficient()
-    {
-        return $this->container['correlation_coefficient'];
-    }
-
-    /**
-     * Sets correlation_coefficient
-     * @param float $correlation_coefficient Pearson correlation coefficient between cause and effect measurements
-     * @return $this
-     */
-    public function setCorrelationCoefficient($correlation_coefficient)
-    {
-        $this->container['correlation_coefficient'] = $correlation_coefficient;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     * @param \DateTime $created_at When the record was first created. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_analysis
-     * @return string
-     */
-    public function getDataAnalysis()
-    {
-        return $this->container['data_analysis'];
-    }
-
-    /**
-     * Sets data_analysis
-     * @param string $data_analysis How the data was analyzed
-     * @return $this
-     */
-    public function setDataAnalysis($data_analysis)
-    {
-        $this->container['data_analysis'] = $data_analysis;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_sources
-     * @return string
-     */
-    public function getDataSources()
-    {
-        return $this->container['data_sources'];
-    }
-
-    /**
-     * Sets data_sources
-     * @param string $data_sources How the data was obtained
-     * @return $this
-     */
-    public function setDataSources($data_sources)
-    {
-        $this->container['data_sources'] = $data_sources;
-
-        return $this;
-    }
-
-    /**
-     * Gets duration_of_action
-     * @return float
-     */
-    public function getDurationOfAction()
-    {
-        return $this->container['duration_of_action'];
-    }
-
-    /**
-     * Sets duration_of_action
-     * @param float $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable’s value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
-     * @return $this
-     */
-    public function setDurationOfAction($duration_of_action)
-    {
-        $this->container['duration_of_action'] = $duration_of_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect
-     * @return string
-     */
-    public function getEffect()
-    {
-        return $this->container['effect'];
-    }
-
-    /**
-     * Sets effect
-     * @param string $effect ORIGINAL variable name of the effect variable for which the user desires correlations.
-     * @return $this
-     */
-    public function setEffect($effect)
-    {
-        $this->container['effect'] = $effect;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_category_name
-     * @return string
-     */
-    public function getEffectVariableCategoryName()
-    {
-        return $this->container['effect_variable_category_name'];
-    }
-
-    /**
-     * Sets effect_variable_category_name
-     * @param string $effect_variable_category_name Variable category of the effect variable.
-     * @return $this
-     */
-    public function setEffectVariableCategoryName($effect_variable_category_name)
-    {
-        $this->container['effect_variable_category_name'] = $effect_variable_category_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_image_url
-     * @return string
-     */
-    public function getEffectVariableImageUrl()
-    {
-        return $this->container['effect_variable_image_url'];
-    }
-
-    /**
-     * Sets effect_variable_image_url
-     * @param string $effect_variable_image_url 
-     * @return $this
-     */
-    public function setEffectVariableImageUrl($effect_variable_image_url)
-    {
-        $this->container['effect_variable_image_url'] = $effect_variable_image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_ion_icon
-     * @return string
-     */
-    public function getEffectVariableIonIcon()
-    {
-        return $this->container['effect_variable_ion_icon'];
-    }
-
-    /**
-     * Sets effect_variable_ion_icon
-     * @param string $effect_variable_ion_icon For use in Ionic apps
-     * @return $this
-     */
-    public function setEffectVariableIonIcon($effect_variable_ion_icon)
-    {
-        $this->container['effect_variable_ion_icon'] = $effect_variable_ion_icon;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_size
-     * @return string
-     */
-    public function getEffectSize()
-    {
-        return $this->container['effect_size'];
-    }
-
-    /**
-     * Sets effect_size
-     * @param string $effect_size Magnitude of the effects of a cause indicating whether it's practically meaningful.
-     * @return $this
-     */
-    public function setEffectSize($effect_size)
-    {
-        $this->container['effect_size'] = $effect_size;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_id
-     * @return string
-     */
-    public function getEffectVariableId()
-    {
-        return $this->container['effect_variable_id'];
-    }
-
-    /**
-     * Sets effect_variable_id
-     * @param string $effect_variable_id Magnitude of the effects of a cause indicating whether it's practically meaningful.
-     * @return $this
-     */
-    public function setEffectVariableId($effect_variable_id)
-    {
-        $this->container['effect_variable_id'] = $effect_variable_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_name
-     * @return string
-     */
-    public function getEffectVariableName()
-    {
-        return $this->container['effect_variable_name'];
-    }
-
-    /**
-     * Sets effect_variable_name
-     * @param string $effect_variable_name ORIGINAL variable name of the effect variable for which the user desires correlations.
-     * @return $this
-     */
-    public function setEffectVariableName($effect_variable_name)
-    {
-        $this->container['effect_variable_name'] = $effect_variable_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets gauge_image
-     * @return string
-     */
-    public function getGaugeImage()
-    {
-        return $this->container['gauge_image'];
-    }
-
-    /**
-     * Sets gauge_image
-     * @param string $gauge_image Illustrates the strength of the relationship
-     * @return $this
-     */
-    public function setGaugeImage($gauge_image)
-    {
-        $this->container['gauge_image'] = $gauge_image;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->container['image_url'];
-    }
-
-    /**
-     * Sets image_url
-     * @param string $image_url Large image for Facebook
-     * @return $this
-     */
-    public function setImageUrl($image_url)
-    {
-        $this->container['image_url'] = $image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_pairs
-     * @return float
-     */
-    public function getNumberOfPairs()
-    {
-        return $this->container['number_of_pairs'];
-    }
-
-    /**
-     * Sets number_of_pairs
-     * @param float $number_of_pairs Number of points that went into the correlation calculation
-     * @return $this
-     */
-    public function setNumberOfPairs($number_of_pairs)
-    {
-        $this->container['number_of_pairs'] = $number_of_pairs;
-
-        return $this;
-    }
-
-    /**
-     * Gets original_effect
-     * @return string
-     */
-    public function getOriginalEffect()
-    {
-        return $this->container['original_effect'];
-    }
-
-    /**
-     * Sets original_effect
-     * @param string $original_effect effect variable original name.
-     * @return $this
-     */
-    public function setOriginalEffect($original_effect)
-    {
-        $this->container['original_effect'] = $original_effect;
-
-        return $this;
-    }
-
-    /**
-     * Gets onset_delay
-     * @return double
-     */
-    public function getOnsetDelay()
-    {
-        return $this->container['onset_delay'];
-    }
-
-    /**
-     * Sets onset_delay
-     * @param double $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the “onset delay”. For example, the “onset delay” between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
-     * @return $this
-     */
-    public function setOnsetDelay($onset_delay)
-    {
-        $this->container['onset_delay'] = $onset_delay;
-
-        return $this;
-    }
-
-    /**
-     * Gets optimal_pearson_product
-     * @return float
-     */
-    public function getOptimalPearsonProduct()
-    {
-        return $this->container['optimal_pearson_product'];
-    }
-
-    /**
-     * Sets optimal_pearson_product
-     * @param float $optimal_pearson_product Optimal Pearson Product
-     * @return $this
-     */
-    public function setOptimalPearsonProduct($optimal_pearson_product)
-    {
-        $this->container['optimal_pearson_product'] = $optimal_pearson_product;
-
-        return $this;
-    }
-
-    /**
-     * Gets original_cause
-     * @return string
-     */
-    public function getOriginalCause()
-    {
-        return $this->container['original_cause'];
-    }
-
-    /**
-     * Sets original_cause
-     * @param string $original_cause original name of the cause.
-     * @return $this
-     */
-    public function setOriginalCause($original_cause)
-    {
-        $this->container['original_cause'] = $original_cause;
-
-        return $this;
-    }
-
-    /**
      * Gets outcome_data_sources
      * @return string
      */
@@ -1324,27 +4239,6 @@ class Correlation implements ArrayAccess
     public function setOutcomeDataSources($outcome_data_sources)
     {
         $this->container['outcome_data_sources'] = $outcome_data_sources;
-
-        return $this;
-    }
-
-    /**
-     * Gets predictor_explanation
-     * @return string
-     */
-    public function getPredictorExplanation()
-    {
-        return $this->container['predictor_explanation'];
-    }
-
-    /**
-     * Sets predictor_explanation
-     * @param string $predictor_explanation HIGHER Remeron predicts HIGHER Overall Mood
-     * @return $this
-     */
-    public function setPredictorExplanation($predictor_explanation)
-    {
-        $this->container['predictor_explanation'] = $predictor_explanation;
 
         return $this;
     }
@@ -1371,27 +4265,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets qm_score
-     * @return float
-     */
-    public function getQmScore()
-    {
-        return $this->container['qm_score'];
-    }
-
-    /**
-     * Sets qm_score
-     * @param float $qm_score Value representing the significance of the relationship as a function of crowdsourced insights, predictive strength, data quantity, and data quality
-     * @return $this
-     */
-    public function setQmScore($qm_score)
-    {
-        $this->container['qm_score'] = $qm_score;
-
-        return $this;
-    }
-
-    /**
      * Gets reverse_correlation
      * @return float
      */
@@ -1408,90 +4281,6 @@ class Correlation implements ArrayAccess
     public function setReverseCorrelation($reverse_correlation)
     {
         $this->container['reverse_correlation'] = $reverse_correlation;
-
-        return $this;
-    }
-
-    /**
-     * Gets significance_explanation
-     * @return string
-     */
-    public function getSignificanceExplanation()
-    {
-        return $this->container['significance_explanation'];
-    }
-
-    /**
-     * Sets significance_explanation
-     * @param string $significance_explanation Using a two-tailed t-test with alpha = 0.05, it was determined that the change...
-     * @return $this
-     */
-    public function setSignificanceExplanation($significance_explanation)
-    {
-        $this->container['significance_explanation'] = $significance_explanation;
-
-        return $this;
-    }
-
-    /**
-     * Gets statistical_significance
-     * @return string
-     */
-    public function getStatisticalSignificance()
-    {
-        return $this->container['statistical_significance'];
-    }
-
-    /**
-     * Sets statistical_significance
-     * @param string $statistical_significance A function of the effect size and sample size
-     * @return $this
-     */
-    public function setStatisticalSignificance($statistical_significance)
-    {
-        $this->container['statistical_significance'] = $statistical_significance;
-
-        return $this;
-    }
-
-    /**
-     * Gets strength_level
-     * @return string
-     */
-    public function getStrengthLevel()
-    {
-        return $this->container['strength_level'];
-    }
-
-    /**
-     * Sets strength_level
-     * @param string $strength_level weak, moderate, strong
-     * @return $this
-     */
-    public function setStrengthLevel($strength_level)
-    {
-        $this->container['strength_level'] = $strength_level;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_abstract
-     * @return string
-     */
-    public function getStudyAbstract()
-    {
-        return $this->container['study_abstract'];
-    }
-
-    /**
-     * Sets study_abstract
-     * @param string $study_abstract These data suggest with a high degree of confidence...
-     * @return $this
-     */
-    public function setStudyAbstract($study_abstract)
-    {
-        $this->container['study_abstract'] = $study_abstract;
 
         return $this;
     }
@@ -1518,358 +4307,1135 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets study_design
+     * Gets study_invitation
      * @return string
      */
-    public function getStudyDesign()
+    public function getStudyInvitation()
     {
-        return $this->container['study_design'];
+        return $this->container['study_invitation'];
     }
 
     /**
-     * Sets study_design
-     * @param string $study_design This study is based on data donated by one QuantiModo user...
+     * Sets study_invitation
+     * @param string $study_invitation Help us determine if Remeron affects Overall Mood!
      * @return $this
      */
-    public function setStudyDesign($study_design)
+    public function setStudyInvitation($study_invitation)
     {
-        $this->container['study_design'] = $study_design;
+        $this->container['study_invitation'] = $study_invitation;
 
         return $this;
     }
 
     /**
-     * Gets study_limitations
+     * Gets study_question
      * @return string
      */
-    public function getStudyLimitations()
+    public function getStudyQuestion()
     {
-        return $this->container['study_limitations'];
+        return $this->container['study_question'];
     }
 
     /**
-     * Sets study_limitations
-     * @param string $study_limitations As with any human experiment, it was impossible to control for all potentially confounding variables...
+     * Sets study_question
+     * @param string $study_question Does Remeron affect Overall Mood?
      * @return $this
      */
-    public function setStudyLimitations($study_limitations)
+    public function setStudyQuestion($study_question)
     {
-        $this->container['study_limitations'] = $study_limitations;
+        $this->container['study_question'] = $study_question;
 
         return $this;
     }
 
     /**
-     * Gets study_link_dynamic
+     * Gets all_pairs_significance
+     * @return double
+     */
+    public function getAllPairsSignificance()
+    {
+        return $this->container['all_pairs_significance'];
+    }
+
+    /**
+     * Sets all_pairs_significance
+     * @param double $all_pairs_significance Example: 0.99994982531794
+     * @return $this
+     */
+    public function setAllPairsSignificance($all_pairs_significance)
+    {
+        $this->container['all_pairs_significance'] = $all_pairs_significance;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_pearson_correlation_coefficient_over_onset_delays
      * @return string
      */
-    public function getStudyLinkDynamic()
+    public function getAveragePearsonCorrelationCoefficientOverOnsetDelays()
     {
-        return $this->container['study_link_dynamic'];
+        return $this->container['average_pearson_correlation_coefficient_over_onset_delays'];
     }
 
     /**
-     * Sets study_link_dynamic
-     * @param string $study_link_dynamic Url for the interactive study within the web app
+     * Sets average_pearson_correlation_coefficient_over_onset_delays
+     * @param string $average_pearson_correlation_coefficient_over_onset_delays Example:
      * @return $this
      */
-    public function setStudyLinkDynamic($study_link_dynamic)
+    public function setAveragePearsonCorrelationCoefficientOverOnsetDelays($average_pearson_correlation_coefficient_over_onset_delays)
     {
-        $this->container['study_link_dynamic'] = $study_link_dynamic;
+        $this->container['average_pearson_correlation_coefficient_over_onset_delays'] = $average_pearson_correlation_coefficient_over_onset_delays;
 
         return $this;
     }
 
     /**
-     * Gets study_link_facebook
-     * @return string
-     */
-    public function getStudyLinkFacebook()
-    {
-        return $this->container['study_link_facebook'];
-    }
-
-    /**
-     * Sets study_link_facebook
-     * @param string $study_link_facebook Url for sharing the study on Facebook
-     * @return $this
-     */
-    public function setStudyLinkFacebook($study_link_facebook)
-    {
-        $this->container['study_link_facebook'] = $study_link_facebook;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_google
-     * @return string
-     */
-    public function getStudyLinkGoogle()
-    {
-        return $this->container['study_link_google'];
-    }
-
-    /**
-     * Sets study_link_google
-     * @param string $study_link_google Url for sharing the study on Google+
-     * @return $this
-     */
-    public function setStudyLinkGoogle($study_link_google)
-    {
-        $this->container['study_link_google'] = $study_link_google;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_twitter
-     * @return string
-     */
-    public function getStudyLinkTwitter()
-    {
-        return $this->container['study_link_twitter'];
-    }
-
-    /**
-     * Sets study_link_twitter
-     * @param string $study_link_twitter Url for sharing the study on Twitter
-     * @return $this
-     */
-    public function setStudyLinkTwitter($study_link_twitter)
-    {
-        $this->container['study_link_twitter'] = $study_link_twitter;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_static
-     * @return string
-     */
-    public function getStudyLinkStatic()
-    {
-        return $this->container['study_link_static'];
-    }
-
-    /**
-     * Sets study_link_static
-     * @param string $study_link_static Url for sharing the statically rendered study on social media
-     * @return $this
-     */
-    public function setStudyLinkStatic($study_link_static)
-    {
-        $this->container['study_link_static'] = $study_link_static;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_objective
-     * @return string
-     */
-    public function getStudyObjective()
-    {
-        return $this->container['study_objective'];
-    }
-
-    /**
-     * Sets study_objective
-     * @param string $study_objective The objective of this study is to determine...
-     * @return $this
-     */
-    public function setStudyObjective($study_objective)
-    {
-        $this->container['study_objective'] = $study_objective;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_results
-     * @return string
-     */
-    public function getStudyResults()
-    {
-        return $this->container['study_results'];
-    }
-
-    /**
-     * Sets study_results
-     * @param string $study_results This analysis suggests that...
-     * @return $this
-     */
-    public function setStudyResults($study_results)
-    {
-        $this->container['study_results'] = $study_results;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_title
-     * @return string
-     */
-    public function getStudyTitle()
-    {
-        return $this->container['study_title'];
-    }
-
-    /**
-     * Sets study_title
-     * @param string $study_title N1 Study HIGHER Remeron predicts HIGHER Overall Mood
-     * @return $this
-     */
-    public function setStudyTitle($study_title)
-    {
-        $this->container['study_title'] = $study_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     * @return float
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     * @param float $timestamp Time at which correlation was calculated
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
+     * Gets calculation_start_time
      * @return \DateTime
      */
-    public function getUpdatedAt()
+    public function getCalculationStartTime()
     {
-        return $this->container['updated_at'];
+        return $this->container['calculation_start_time'];
     }
 
     /**
-     * Sets updated_at
-     * @param \DateTime $updated_at When the record in the database was last updated. Use UTC ISO 8601 \"YYYY-MM-DDThh:mm:ss\"  datetime format. Time zone should be UTC and not local.
+     * Sets calculation_start_time
+     * @param \DateTime $calculation_start_time Example:
      * @return $this
      */
-    public function setUpdatedAt($updated_at)
+    public function setCalculationStartTime($calculation_start_time)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['calculation_start_time'] = $calculation_start_time;
 
         return $this;
     }
 
     /**
-     * Gets user_vote
-     * @return float
+     * Gets cause_changes_statistical_significance
+     * @return double
      */
-    public function getUserVote()
+    public function getCauseChangesStatisticalSignificance()
     {
-        return $this->container['user_vote'];
+        return $this->container['cause_changes_statistical_significance'];
     }
 
     /**
-     * Sets user_vote
-     * @param float $user_vote User Vote
+     * Sets cause_changes_statistical_significance
+     * @param double $cause_changes_statistical_significance Example: 0.9999299755903
      * @return $this
      */
-    public function setUserVote($user_vote)
+    public function setCauseChangesStatisticalSignificance($cause_changes_statistical_significance)
     {
-        $this->container['user_vote'] = $user_vote;
+        $this->container['cause_changes_statistical_significance'] = $cause_changes_statistical_significance;
 
         return $this;
     }
 
     /**
-     * Gets value_predicting_high_outcome
-     * @return float
+     * Gets cause_number_of_processed_daily_measurements
+     * @return int
      */
-    public function getValuePredictingHighOutcome()
+    public function getCauseNumberOfProcessedDailyMeasurements()
     {
-        return $this->container['value_predicting_high_outcome'];
+        return $this->container['cause_number_of_processed_daily_measurements'];
     }
 
     /**
-     * Sets value_predicting_high_outcome
-     * @param float $value_predicting_high_outcome cause value that predicts an above average effect value (in default unit for cause variable)
+     * Sets cause_number_of_processed_daily_measurements
+     * @param int $cause_number_of_processed_daily_measurements Example: 1364
      * @return $this
      */
-    public function setValuePredictingHighOutcome($value_predicting_high_outcome)
+    public function setCauseNumberOfProcessedDailyMeasurements($cause_number_of_processed_daily_measurements)
     {
-        $this->container['value_predicting_high_outcome'] = $value_predicting_high_outcome;
+        $this->container['cause_number_of_processed_daily_measurements'] = $cause_number_of_processed_daily_measurements;
 
         return $this;
     }
 
     /**
-     * Gets value_predicting_high_outcome_explanation
+     * Gets cause_number_of_raw_measurements
+     * @return int
+     */
+    public function getCauseNumberOfRawMeasurements()
+    {
+        return $this->container['cause_number_of_raw_measurements'];
+    }
+
+    /**
+     * Sets cause_number_of_raw_measurements
+     * @param int $cause_number_of_raw_measurements Example: 14764
+     * @return $this
+     */
+    public function setCauseNumberOfRawMeasurements($cause_number_of_raw_measurements)
+    {
+        $this->container['cause_number_of_raw_measurements'] = $cause_number_of_raw_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_value_spread
+     * @return double
+     */
+    public function getCauseValueSpread()
+    {
+        return $this->container['cause_value_spread'];
+    }
+
+    /**
+     * Sets cause_value_spread
+     * @param double $cause_value_spread Example: 99032.44787234
+     * @return $this
+     */
+    public function setCauseValueSpread($cause_value_spread)
+    {
+        $this->container['cause_value_spread'] = $cause_value_spread;
+
+        return $this;
+    }
+
+    /**
+     * Gets correlations_over_durations_of_action
      * @return string
      */
-    public function getValuePredictingHighOutcomeExplanation()
+    public function getCorrelationsOverDurationsOfAction()
     {
-        return $this->container['value_predicting_high_outcome_explanation'];
+        return $this->container['correlations_over_durations_of_action'];
     }
 
     /**
-     * Sets value_predicting_high_outcome_explanation
-     * @param string $value_predicting_high_outcome_explanation Overall Mood, on average, 34% HIGHER after around 3.98mg Remeron
+     * Sets correlations_over_durations_of_action
+     * @param string $correlations_over_durations_of_action Example:
      * @return $this
      */
-    public function setValuePredictingHighOutcomeExplanation($value_predicting_high_outcome_explanation)
+    public function setCorrelationsOverDurationsOfAction($correlations_over_durations_of_action)
     {
-        $this->container['value_predicting_high_outcome_explanation'] = $value_predicting_high_outcome_explanation;
+        $this->container['correlations_over_durations_of_action'] = $correlations_over_durations_of_action;
 
         return $this;
     }
 
     /**
-     * Gets value_predicting_low_outcome
-     * @return float
-     */
-    public function getValuePredictingLowOutcome()
-    {
-        return $this->container['value_predicting_low_outcome'];
-    }
-
-    /**
-     * Sets value_predicting_low_outcome
-     * @param float $value_predicting_low_outcome cause value that predicts a below average effect value (in default unit for cause variable)
-     * @return $this
-     */
-    public function setValuePredictingLowOutcome($value_predicting_low_outcome)
-    {
-        $this->container['value_predicting_low_outcome'] = $value_predicting_low_outcome;
-
-        return $this;
-    }
-
-    /**
-     * Gets value_predicting_low_outcome_explanation
+     * Gets correlations_over_durations_of_action_chart_config
      * @return string
      */
-    public function getValuePredictingLowOutcomeExplanation()
+    public function getCorrelationsOverDurationsOfActionChartConfig()
     {
-        return $this->container['value_predicting_low_outcome_explanation'];
+        return $this->container['correlations_over_durations_of_action_chart_config'];
     }
 
     /**
-     * Sets value_predicting_low_outcome_explanation
-     * @param string $value_predicting_low_outcome_explanation Overall Mood, on average, 4% LOWER after around 0mg Remeron
+     * Sets correlations_over_durations_of_action_chart_config
+     * @param string $correlations_over_durations_of_action_chart_config Example:
      * @return $this
      */
-    public function setValuePredictingLowOutcomeExplanation($value_predicting_low_outcome_explanation)
+    public function setCorrelationsOverDurationsOfActionChartConfig($correlations_over_durations_of_action_chart_config)
     {
-        $this->container['value_predicting_low_outcome_explanation'] = $value_predicting_low_outcome_explanation;
+        $this->container['correlations_over_durations_of_action_chart_config'] = $correlations_over_durations_of_action_chart_config;
+
+        return $this;
+    }
+
+    /**
+     * Gets correlations_over_onset_delays_chart_config
+     * @return string
+     */
+    public function getCorrelationsOverOnsetDelaysChartConfig()
+    {
+        return $this->container['correlations_over_onset_delays_chart_config'];
+    }
+
+    /**
+     * Sets correlations_over_onset_delays_chart_config
+     * @param string $correlations_over_onset_delays_chart_config Example:
+     * @return $this
+     */
+    public function setCorrelationsOverOnsetDelaysChartConfig($correlations_over_onset_delays_chart_config)
+    {
+        $this->container['correlations_over_onset_delays_chart_config'] = $correlations_over_onset_delays_chart_config;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_points
+     * @return string
+     */
+    public function getDataPoints()
+    {
+        return $this->container['data_points'];
+    }
+
+    /**
+     * Sets data_points
+     * @param string $data_points Example:
+     * @return $this
+     */
+    public function setDataPoints($data_points)
+    {
+        $this->container['data_points'] = $data_points;
+
+        return $this;
+    }
+
+    /**
+     * Gets degrees_of_freedom
+     * @return int
+     */
+    public function getDegreesOfFreedom()
+    {
+        return $this->container['degrees_of_freedom'];
+    }
+
+    /**
+     * Sets degrees_of_freedom
+     * @param int $degrees_of_freedom Example: 200
+     * @return $this
+     */
+    public function setDegreesOfFreedom($degrees_of_freedom)
+    {
+        $this->container['degrees_of_freedom'] = $degrees_of_freedom;
+
+        return $this;
+    }
+
+    /**
+     * Gets distance_from_middle_to_be_hight_low_effect
+     * @return int
+     */
+    public function getDistanceFromMiddleToBeHightLowEffect()
+    {
+        return $this->container['distance_from_middle_to_be_hight_low_effect'];
+    }
+
+    /**
+     * Sets distance_from_middle_to_be_hight_low_effect
+     * @param int $distance_from_middle_to_be_hight_low_effect Example: 25
+     * @return $this
+     */
+    public function setDistanceFromMiddleToBeHightLowEffect($distance_from_middle_to_be_hight_low_effect)
+    {
+        $this->container['distance_from_middle_to_be_hight_low_effect'] = $distance_from_middle_to_be_hight_low_effect;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_number_of_processed_daily_measurements
+     * @return int
+     */
+    public function getEffectNumberOfProcessedDailyMeasurements()
+    {
+        return $this->container['effect_number_of_processed_daily_measurements'];
+    }
+
+    /**
+     * Sets effect_number_of_processed_daily_measurements
+     * @param int $effect_number_of_processed_daily_measurements Example: 145
+     * @return $this
+     */
+    public function setEffectNumberOfProcessedDailyMeasurements($effect_number_of_processed_daily_measurements)
+    {
+        $this->container['effect_number_of_processed_daily_measurements'] = $effect_number_of_processed_daily_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_number_of_raw_measurements
+     * @return int
+     */
+    public function getEffectNumberOfRawMeasurements()
+    {
+        return $this->container['effect_number_of_raw_measurements'];
+    }
+
+    /**
+     * Sets effect_number_of_raw_measurements
+     * @param int $effect_number_of_raw_measurements Example: 4045
+     * @return $this
+     */
+    public function setEffectNumberOfRawMeasurements($effect_number_of_raw_measurements)
+    {
+        $this->container['effect_number_of_raw_measurements'] = $effect_number_of_raw_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_value_spread
+     * @return double
+     */
+    public function getEffectValueSpread()
+    {
+        return $this->container['effect_value_spread'];
+    }
+
+    /**
+     * Sets effect_value_spread
+     * @param double $effect_value_spread Example: 20.2
+     * @return $this
+     */
+    public function setEffectValueSpread($effect_value_spread)
+    {
+        $this->container['effect_value_spread'] = $effect_value_spread;
+
+        return $this;
+    }
+
+    /**
+     * Gets error
+     * @return string
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /**
+     * Sets error
+     * @param string $error Example: optimalPearsonProduct is not defined
+     * @return $this
+     */
+    public function setError($error)
+    {
+        $this->container['error'] = $error;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_cause_value
+     * @return double
+     */
+    public function getMaximumCauseValue()
+    {
+        return $this->container['maximum_cause_value'];
+    }
+
+    /**
+     * Sets maximum_cause_value
+     * @param double $maximum_cause_value Example: 104300
+     * @return $this
+     */
+    public function setMaximumCauseValue($maximum_cause_value)
+    {
+        $this->container['maximum_cause_value'] = $maximum_cause_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_effect_value
+     * @return double
+     */
+    public function getMaximumEffectValue()
+    {
+        return $this->container['maximum_effect_value'];
+    }
+
+    /**
+     * Sets maximum_effect_value
+     * @param double $maximum_effect_value Example: 20.38
+     * @return $this
+     */
+    public function setMaximumEffectValue($maximum_effect_value)
+    {
+        $this->container['maximum_effect_value'] = $maximum_effect_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets median_of_lower_half_of_effect_measurements
+     * @return string
+     */
+    public function getMedianOfLowerHalfOfEffectMeasurements()
+    {
+        return $this->container['median_of_lower_half_of_effect_measurements'];
+    }
+
+    /**
+     * Sets median_of_lower_half_of_effect_measurements
+     * @param string $median_of_lower_half_of_effect_measurements Example:
+     * @return $this
+     */
+    public function setMedianOfLowerHalfOfEffectMeasurements($median_of_lower_half_of_effect_measurements)
+    {
+        $this->container['median_of_lower_half_of_effect_measurements'] = $median_of_lower_half_of_effect_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets median_of_upper_half_of_effect_measurements
+     * @return string
+     */
+    public function getMedianOfUpperHalfOfEffectMeasurements()
+    {
+        return $this->container['median_of_upper_half_of_effect_measurements'];
+    }
+
+    /**
+     * Sets median_of_upper_half_of_effect_measurements
+     * @param string $median_of_upper_half_of_effect_measurements Example:
+     * @return $this
+     */
+    public function setMedianOfUpperHalfOfEffectMeasurements($median_of_upper_half_of_effect_measurements)
+    {
+        $this->container['median_of_upper_half_of_effect_measurements'] = $median_of_upper_half_of_effect_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_cause_value
+     * @return double
+     */
+    public function getMinimumCauseValue()
+    {
+        return $this->container['minimum_cause_value'];
+    }
+
+    /**
+     * Sets minimum_cause_value
+     * @param double $minimum_cause_value Example: 5267.5521276596
+     * @return $this
+     */
+    public function setMinimumCauseValue($minimum_cause_value)
+    {
+        $this->container['minimum_cause_value'] = $minimum_cause_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_effect_value
+     * @return double
+     */
+    public function getMinimumEffectValue()
+    {
+        return $this->container['minimum_effect_value'];
+    }
+
+    /**
+     * Sets minimum_effect_value
+     * @param double $minimum_effect_value Example: 0.18
+     * @return $this
+     */
+    public function setMinimumEffectValue($minimum_effect_value)
+    {
+        $this->container['minimum_effect_value'] = $minimum_effect_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_probability
+     * @return double
+     */
+    public function getMinimumProbability()
+    {
+        return $this->container['minimum_probability'];
+    }
+
+    /**
+     * Sets minimum_probability
+     * @param double $minimum_probability Example: 0.05
+     * @return $this
+     */
+    public function setMinimumProbability($minimum_probability)
+    {
+        $this->container['minimum_probability'] = $minimum_probability;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_cause_changes_for_optimal_values
+     * @return int
+     */
+    public function getNumberOfCauseChangesForOptimalValues()
+    {
+        return $this->container['number_of_cause_changes_for_optimal_values'];
+    }
+
+    /**
+     * Sets number_of_cause_changes_for_optimal_values
+     * @param int $number_of_cause_changes_for_optimal_values Example: 287
+     * @return $this
+     */
+    public function setNumberOfCauseChangesForOptimalValues($number_of_cause_changes_for_optimal_values)
+    {
+        $this->container['number_of_cause_changes_for_optimal_values'] = $number_of_cause_changes_for_optimal_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_days
+     * @return int
+     */
+    public function getNumberOfDays()
+    {
+        return $this->container['number_of_days'];
+    }
+
+    /**
+     * Sets number_of_days
+     * @param int $number_of_days Example: 425
+     * @return $this
+     */
+    public function setNumberOfDays($number_of_days)
+    {
+        $this->container['number_of_days'] = $number_of_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_days_significance
+     * @return double
+     */
+    public function getNumberOfDaysSignificance()
+    {
+        return $this->container['number_of_days_significance'];
+    }
+
+    /**
+     * Sets number_of_days_significance
+     * @param double $number_of_days_significance Example: 0.99999929612614
+     * @return $this
+     */
+    public function setNumberOfDaysSignificance($number_of_days_significance)
+    {
+        $this->container['number_of_days_significance'] = $number_of_days_significance;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_effect_changes_for_optimal_values
+     * @return int
+     */
+    public function getNumberOfEffectChangesForOptimalValues()
+    {
+        return $this->container['number_of_effect_changes_for_optimal_values'];
+    }
+
+    /**
+     * Sets number_of_effect_changes_for_optimal_values
+     * @param int $number_of_effect_changes_for_optimal_values Example: 295
+     * @return $this
+     */
+    public function setNumberOfEffectChangesForOptimalValues($number_of_effect_changes_for_optimal_values)
+    {
+        $this->container['number_of_effect_changes_for_optimal_values'] = $number_of_effect_changes_for_optimal_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_high_effect_pairs
+     * @return int
+     */
+    public function getNumberOfHighEffectPairs()
+    {
+        return $this->container['number_of_high_effect_pairs'];
+    }
+
+    /**
+     * Sets number_of_high_effect_pairs
+     * @param int $number_of_high_effect_pairs Example: 27
+     * @return $this
+     */
+    public function setNumberOfHighEffectPairs($number_of_high_effect_pairs)
+    {
+        $this->container['number_of_high_effect_pairs'] = $number_of_high_effect_pairs;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_low_effect_pairs
+     * @return int
+     */
+    public function getNumberOfLowEffectPairs()
+    {
+        return $this->container['number_of_low_effect_pairs'];
+    }
+
+    /**
+     * Sets number_of_low_effect_pairs
+     * @param int $number_of_low_effect_pairs Example: 57
+     * @return $this
+     */
+    public function setNumberOfLowEffectPairs($number_of_low_effect_pairs)
+    {
+        $this->container['number_of_low_effect_pairs'] = $number_of_low_effect_pairs;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_samples
+     * @return int
+     */
+    public function getNumberOfSamples()
+    {
+        return $this->container['number_of_samples'];
+    }
+
+    /**
+     * Sets number_of_samples
+     * @param int $number_of_samples Example: 297
+     * @return $this
+     */
+    public function setNumberOfSamples($number_of_samples)
+    {
+        $this->container['number_of_samples'] = $number_of_samples;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_unique_cause_values_for_optimal_values
+     * @return int
+     */
+    public function getNumberOfUniqueCauseValuesForOptimalValues()
+    {
+        return $this->container['number_of_unique_cause_values_for_optimal_values'];
+    }
+
+    /**
+     * Sets number_of_unique_cause_values_for_optimal_values
+     * @param int $number_of_unique_cause_values_for_optimal_values Example: 201
+     * @return $this
+     */
+    public function setNumberOfUniqueCauseValuesForOptimalValues($number_of_unique_cause_values_for_optimal_values)
+    {
+        $this->container['number_of_unique_cause_values_for_optimal_values'] = $number_of_unique_cause_values_for_optimal_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_unique_effect_values_for_optimal_values
+     * @return int
+     */
+    public function getNumberOfUniqueEffectValuesForOptimalValues()
+    {
+        return $this->container['number_of_unique_effect_values_for_optimal_values'];
+    }
+
+    /**
+     * Sets number_of_unique_effect_values_for_optimal_values
+     * @param int $number_of_unique_effect_values_for_optimal_values Example: 264
+     * @return $this
+     */
+    public function setNumberOfUniqueEffectValuesForOptimalValues($number_of_unique_effect_values_for_optimal_values)
+    {
+        $this->container['number_of_unique_effect_values_for_optimal_values'] = $number_of_unique_effect_values_for_optimal_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_users
+     * @return string
+     */
+    public function getNumberOfUsers()
+    {
+        return $this->container['number_of_users'];
+    }
+
+    /**
+     * Sets number_of_users
+     * @param string $number_of_users Example:
+     * @return $this
+     */
+    public function setNumberOfUsers($number_of_users)
+    {
+        $this->container['number_of_users'] = $number_of_users;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimal_change_spread
+     * @return double
+     */
+    public function getOptimalChangeSpread()
+    {
+        return $this->container['optimal_change_spread'];
+    }
+
+    /**
+     * Sets optimal_change_spread
+     * @param double $optimal_change_spread Example: 83.44
+     * @return $this
+     */
+    public function setOptimalChangeSpread($optimal_change_spread)
+    {
+        $this->container['optimal_change_spread'] = $optimal_change_spread;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimal_change_spread_significance
+     * @return double
+     */
+    public function getOptimalChangeSpreadSignificance()
+    {
+        return $this->container['optimal_change_spread_significance'];
+    }
+
+    /**
+     * Sets optimal_change_spread_significance
+     * @param double $optimal_change_spread_significance Example: 0.99999999999917
+     * @return $this
+     */
+    public function setOptimalChangeSpreadSignificance($optimal_change_spread_significance)
+    {
+        $this->container['optimal_change_spread_significance'] = $optimal_change_spread_significance;
+
+        return $this;
+    }
+
+    /**
+     * Gets pairs_over_time_chart_config
+     * @return \DateTime
+     */
+    public function getPairsOverTimeChartConfig()
+    {
+        return $this->container['pairs_over_time_chart_config'];
+    }
+
+    /**
+     * Sets pairs_over_time_chart_config
+     * @param \DateTime $pairs_over_time_chart_config Example:
+     * @return $this
+     */
+    public function setPairsOverTimeChartConfig($pairs_over_time_chart_config)
+    {
+        $this->container['pairs_over_time_chart_config'] = $pairs_over_time_chart_config;
+
+        return $this;
+    }
+
+    /**
+     * Gets per_day_sentence_fragment
+     * @return string
+     */
+    public function getPerDaySentenceFragment()
+    {
+        return $this->container['per_day_sentence_fragment'];
+    }
+
+    /**
+     * Sets per_day_sentence_fragment
+     * @param string $per_day_sentence_fragment Example:
+     * @return $this
+     */
+    public function setPerDaySentenceFragment($per_day_sentence_fragment)
+    {
+        $this->container['per_day_sentence_fragment'] = $per_day_sentence_fragment;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_cause_measurement_significance
+     * @return double
+     */
+    public function getRawCauseMeasurementSignificance()
+    {
+        return $this->container['raw_cause_measurement_significance'];
+    }
+
+    /**
+     * Sets raw_cause_measurement_significance
+     * @param double $raw_cause_measurement_significance Example: 1
+     * @return $this
+     */
+    public function setRawCauseMeasurementSignificance($raw_cause_measurement_significance)
+    {
+        $this->container['raw_cause_measurement_significance'] = $raw_cause_measurement_significance;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_effect_measurement_significance
+     * @return double
+     */
+    public function getRawEffectMeasurementSignificance()
+    {
+        return $this->container['raw_effect_measurement_significance'];
+    }
+
+    /**
+     * Sets raw_effect_measurement_significance
+     * @param double $raw_effect_measurement_significance Example: 1
+     * @return $this
+     */
+    public function setRawEffectMeasurementSignificance($raw_effect_measurement_significance)
+    {
+        $this->container['raw_effect_measurement_significance'] = $raw_effect_measurement_significance;
+
+        return $this;
+    }
+
+    /**
+     * Gets reverse_pairs_count
+     * @return string
+     */
+    public function getReversePairsCount()
+    {
+        return $this->container['reverse_pairs_count'];
+    }
+
+    /**
+     * Sets reverse_pairs_count
+     * @param string $reverse_pairs_count Example:
+     * @return $this
+     */
+    public function setReversePairsCount($reverse_pairs_count)
+    {
+        $this->container['reverse_pairs_count'] = $reverse_pairs_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets vote_statistical_significance
+     * @return int
+     */
+    public function getVoteStatisticalSignificance()
+    {
+        return $this->container['vote_statistical_significance'];
+    }
+
+    /**
+     * Sets vote_statistical_significance
+     * @param int $vote_statistical_significance Example: 1
+     * @return $this
+     */
+    public function setVoteStatisticalSignificance($vote_statistical_significance)
+    {
+        $this->container['vote_statistical_significance'] = $vote_statistical_significance;
+
+        return $this;
+    }
+
+    /**
+     * Gets aggregate_qm_score
+     * @return double
+     */
+    public function getAggregateQmScore()
+    {
+        return $this->container['aggregate_qm_score'];
+    }
+
+    /**
+     * Sets aggregate_qm_score
+     * @param double $aggregate_qm_score Example: 0.011598441286655
+     * @return $this
+     */
+    public function setAggregateQmScore($aggregate_qm_score)
+    {
+        $this->container['aggregate_qm_score'] = $aggregate_qm_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_unit
+     * @return string
+     */
+    public function getCauseUnit()
+    {
+        return $this->container['cause_unit'];
+    }
+
+    /**
+     * Sets cause_unit
+     * @param string $cause_unit Unit of the predictor variable
+     * @return $this
+     */
+    public function setCauseUnit($cause_unit)
+    {
+        $this->container['cause_unit'] = $cause_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_common_alias
+     * @return string
+     */
+    public function getCauseVariableCommonAlias()
+    {
+        return $this->container['cause_variable_common_alias'];
+    }
+
+    /**
+     * Sets cause_variable_common_alias
+     * @param string $cause_variable_common_alias Example:
+     * @return $this
+     */
+    public function setCauseVariableCommonAlias($cause_variable_common_alias)
+    {
+        $this->container['cause_variable_common_alias'] = $cause_variable_common_alias;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_informational_url
+     * @return string
+     */
+    public function getCauseVariableInformationalUrl()
+    {
+        return $this->container['cause_variable_informational_url'];
+    }
+
+    /**
+     * Sets cause_variable_informational_url
+     * @param string $cause_variable_informational_url Example:
+     * @return $this
+     */
+    public function setCauseVariableInformationalUrl($cause_variable_informational_url)
+    {
+        $this->container['cause_variable_informational_url'] = $cause_variable_informational_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets cause_variable_product_url
+     * @return string
+     */
+    public function getCauseVariableProductUrl()
+    {
+        return $this->container['cause_variable_product_url'];
+    }
+
+    /**
+     * Sets cause_variable_product_url
+     * @param string $cause_variable_product_url Example:
+     * @return $this
+     */
+    public function setCauseVariableProductUrl($cause_variable_product_url)
+    {
+        $this->container['cause_variable_product_url'] = $cause_variable_product_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_informational_url
+     * @return string
+     */
+    public function getEffectVariableInformationalUrl()
+    {
+        return $this->container['effect_variable_informational_url'];
+    }
+
+    /**
+     * Sets effect_variable_informational_url
+     * @param string $effect_variable_informational_url Example:
+     * @return $this
+     */
+    public function setEffectVariableInformationalUrl($effect_variable_informational_url)
+    {
+        $this->container['effect_variable_informational_url'] = $effect_variable_informational_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_variable_product_url
+     * @return string
+     */
+    public function getEffectVariableProductUrl()
+    {
+        return $this->container['effect_variable_product_url'];
+    }
+
+    /**
+     * Sets effect_variable_product_url
+     * @param string $effect_variable_product_url Example:
+     * @return $this
+     */
+    public function setEffectVariableProductUrl($effect_variable_product_url)
+    {
+        $this->container['effect_variable_product_url'] = $effect_variable_product_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets forward_pearson_correlation_coefficient
+     * @return double
+     */
+    public function getForwardPearsonCorrelationCoefficient()
+    {
+        return $this->container['forward_pearson_correlation_coefficient'];
+    }
+
+    /**
+     * Sets forward_pearson_correlation_coefficient
+     * @param double $forward_pearson_correlation_coefficient Example: 0.0333
+     * @return $this
+     */
+    public function setForwardPearsonCorrelationCoefficient($forward_pearson_correlation_coefficient)
+    {
+        $this->container['forward_pearson_correlation_coefficient'] = $forward_pearson_correlation_coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_correlations
+     * @return int
+     */
+    public function getNumberOfCorrelations()
+    {
+        return $this->container['number_of_correlations'];
+    }
+
+    /**
+     * Sets number_of_correlations
+     * @param int $number_of_correlations Example: 6
+     * @return $this
+     */
+    public function setNumberOfCorrelations($number_of_correlations)
+    {
+        $this->container['number_of_correlations'] = $number_of_correlations;
+
+        return $this;
+    }
+
+    /**
+     * Gets vote
+     * @return string
+     */
+    public function getVote()
+    {
+        return $this->container['vote'];
+    }
+
+    /**
+     * Sets vote
+     * @param string $vote Example:
+     * @return $this
+     */
+    public function setVote($vote)
+    {
+        $this->container['vote'] = $vote;
 
         return $this;
     }

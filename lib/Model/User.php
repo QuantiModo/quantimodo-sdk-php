@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -54,13 +54,99 @@ class User implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'wp_id' => 'int',
+        'access_token' => 'string',
+        'access_token_expires' => 'string',
+        'access_token_expires_at_milliseconds' => 'int',
+        'administrator' => 'bool',
+        'avatar' => 'string',
+        'avatar_image' => 'string',
+        'capabilities' => 'string',
+        'client_id' => 'string',
+        'client_user_id' => 'string',
+        'combine_notifications' => 'bool',
         'display_name' => 'string',
-        'login_name' => 'string',
+        'earliest_reminder_time' => '\DateTime',
         'email' => 'string',
-        'token' => 'string',
-        'administrator' => 'bool'
+        'first_name' => 'string',
+        'get_preview_builds' => 'bool',
+        'has_android_app' => 'bool',
+        'has_chrome_extension' => 'bool',
+        'has_ios_app' => 'bool',
+        'id' => 'int',
+        'last_four' => 'string',
+        'last_name' => 'string',
+        'last_sms_tracking_reminder_notification_id' => 'string',
+        'latest_reminder_time' => 'string',
+        'login_name' => 'string',
+        'password' => 'string',
+        'phone_number' => 'string',
+        'phone_verification_code' => 'string',
+        'push_notifications_enabled' => 'bool',
+        'refresh_token' => 'string',
+        'roles' => 'string',
+        'send_predictor_emails' => 'bool',
+        'send_reminder_notification_emails' => 'bool',
+        'sms_notifications_enabled' => 'bool',
+        'stripe_active' => 'bool',
+        'stripe_id' => 'string',
+        'stripe_plan' => 'string',
+        'stripe_subscription' => 'string',
+        'subscription_ends_at' => '\DateTime',
+        'subscription_provider' => 'string',
+        'time_zone_offset' => 'int',
+        'track_location' => 'bool',
+        'user_registered' => '\DateTime',
+        'user_url' => 'string'
+    ];
+
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'access_token' => null,
+        'access_token_expires' => null,
+        'access_token_expires_at_milliseconds' => null,
+        'administrator' => null,
+        'avatar' => null,
+        'avatar_image' => null,
+        'capabilities' => null,
+        'client_id' => null,
+        'client_user_id' => null,
+        'combine_notifications' => null,
+        'display_name' => null,
+        'earliest_reminder_time' => 'date-time',
+        'email' => null,
+        'first_name' => null,
+        'get_preview_builds' => null,
+        'has_android_app' => null,
+        'has_chrome_extension' => null,
+        'has_ios_app' => null,
+        'id' => null,
+        'last_four' => null,
+        'last_name' => null,
+        'last_sms_tracking_reminder_notification_id' => null,
+        'latest_reminder_time' => null,
+        'login_name' => null,
+        'password' => null,
+        'phone_number' => null,
+        'phone_verification_code' => null,
+        'push_notifications_enabled' => null,
+        'refresh_token' => null,
+        'roles' => null,
+        'send_predictor_emails' => null,
+        'send_reminder_notification_emails' => null,
+        'sms_notifications_enabled' => null,
+        'stripe_active' => null,
+        'stripe_id' => null,
+        'stripe_plan' => null,
+        'stripe_subscription' => null,
+        'subscription_ends_at' => 'date-time',
+        'subscription_provider' => null,
+        'time_zone_offset' => null,
+        'track_location' => null,
+        'user_registered' => 'date-time',
+        'user_url' => null
     ];
 
     public static function swaggerTypes()
@@ -68,18 +154,59 @@ class User implements ArrayAccess
         return self::$swaggerTypes;
     }
 
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
+    }
+
     /**
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'wp_id' => 'wpId',
+        'access_token' => 'accessToken',
+        'access_token_expires' => 'accessTokenExpires',
+        'access_token_expires_at_milliseconds' => 'accessTokenExpiresAtMilliseconds',
+        'administrator' => 'administrator',
+        'avatar' => 'avatar',
+        'avatar_image' => 'avatarImage',
+        'capabilities' => 'capabilities',
+        'client_id' => 'clientId',
+        'client_user_id' => 'clientUserId',
+        'combine_notifications' => 'combineNotifications',
         'display_name' => 'displayName',
-        'login_name' => 'loginName',
+        'earliest_reminder_time' => 'earliestReminderTime',
         'email' => 'email',
-        'token' => 'token',
-        'administrator' => 'administrator'
+        'first_name' => 'firstName',
+        'get_preview_builds' => 'getPreviewBuilds',
+        'has_android_app' => 'hasAndroidApp',
+        'has_chrome_extension' => 'hasChromeExtension',
+        'has_ios_app' => 'hasIosApp',
+        'id' => 'id',
+        'last_four' => 'lastFour',
+        'last_name' => 'lastName',
+        'last_sms_tracking_reminder_notification_id' => 'lastSmsTrackingReminderNotificationId',
+        'latest_reminder_time' => 'latestReminderTime',
+        'login_name' => 'loginName',
+        'password' => 'password',
+        'phone_number' => 'phoneNumber',
+        'phone_verification_code' => 'phoneVerificationCode',
+        'push_notifications_enabled' => 'pushNotificationsEnabled',
+        'refresh_token' => 'refreshToken',
+        'roles' => 'roles',
+        'send_predictor_emails' => 'sendPredictorEmails',
+        'send_reminder_notification_emails' => 'sendReminderNotificationEmails',
+        'sms_notifications_enabled' => 'smsNotificationsEnabled',
+        'stripe_active' => 'stripeActive',
+        'stripe_id' => 'stripeId',
+        'stripe_plan' => 'stripePlan',
+        'stripe_subscription' => 'stripeSubscription',
+        'subscription_ends_at' => 'subscriptionEndsAt',
+        'subscription_provider' => 'subscriptionProvider',
+        'time_zone_offset' => 'timeZoneOffset',
+        'track_location' => 'trackLocation',
+        'user_registered' => 'userRegistered',
+        'user_url' => 'userUrl'
     ];
 
 
@@ -88,13 +215,49 @@ class User implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'wp_id' => 'setWpId',
+        'access_token' => 'setAccessToken',
+        'access_token_expires' => 'setAccessTokenExpires',
+        'access_token_expires_at_milliseconds' => 'setAccessTokenExpiresAtMilliseconds',
+        'administrator' => 'setAdministrator',
+        'avatar' => 'setAvatar',
+        'avatar_image' => 'setAvatarImage',
+        'capabilities' => 'setCapabilities',
+        'client_id' => 'setClientId',
+        'client_user_id' => 'setClientUserId',
+        'combine_notifications' => 'setCombineNotifications',
         'display_name' => 'setDisplayName',
-        'login_name' => 'setLoginName',
+        'earliest_reminder_time' => 'setEarliestReminderTime',
         'email' => 'setEmail',
-        'token' => 'setToken',
-        'administrator' => 'setAdministrator'
+        'first_name' => 'setFirstName',
+        'get_preview_builds' => 'setGetPreviewBuilds',
+        'has_android_app' => 'setHasAndroidApp',
+        'has_chrome_extension' => 'setHasChromeExtension',
+        'has_ios_app' => 'setHasIosApp',
+        'id' => 'setId',
+        'last_four' => 'setLastFour',
+        'last_name' => 'setLastName',
+        'last_sms_tracking_reminder_notification_id' => 'setLastSmsTrackingReminderNotificationId',
+        'latest_reminder_time' => 'setLatestReminderTime',
+        'login_name' => 'setLoginName',
+        'password' => 'setPassword',
+        'phone_number' => 'setPhoneNumber',
+        'phone_verification_code' => 'setPhoneVerificationCode',
+        'push_notifications_enabled' => 'setPushNotificationsEnabled',
+        'refresh_token' => 'setRefreshToken',
+        'roles' => 'setRoles',
+        'send_predictor_emails' => 'setSendPredictorEmails',
+        'send_reminder_notification_emails' => 'setSendReminderNotificationEmails',
+        'sms_notifications_enabled' => 'setSmsNotificationsEnabled',
+        'stripe_active' => 'setStripeActive',
+        'stripe_id' => 'setStripeId',
+        'stripe_plan' => 'setStripePlan',
+        'stripe_subscription' => 'setStripeSubscription',
+        'subscription_ends_at' => 'setSubscriptionEndsAt',
+        'subscription_provider' => 'setSubscriptionProvider',
+        'time_zone_offset' => 'setTimeZoneOffset',
+        'track_location' => 'setTrackLocation',
+        'user_registered' => 'setUserRegistered',
+        'user_url' => 'setUserUrl'
     ];
 
 
@@ -103,13 +266,49 @@ class User implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'wp_id' => 'getWpId',
+        'access_token' => 'getAccessToken',
+        'access_token_expires' => 'getAccessTokenExpires',
+        'access_token_expires_at_milliseconds' => 'getAccessTokenExpiresAtMilliseconds',
+        'administrator' => 'getAdministrator',
+        'avatar' => 'getAvatar',
+        'avatar_image' => 'getAvatarImage',
+        'capabilities' => 'getCapabilities',
+        'client_id' => 'getClientId',
+        'client_user_id' => 'getClientUserId',
+        'combine_notifications' => 'getCombineNotifications',
         'display_name' => 'getDisplayName',
-        'login_name' => 'getLoginName',
+        'earliest_reminder_time' => 'getEarliestReminderTime',
         'email' => 'getEmail',
-        'token' => 'getToken',
-        'administrator' => 'getAdministrator'
+        'first_name' => 'getFirstName',
+        'get_preview_builds' => 'getGetPreviewBuilds',
+        'has_android_app' => 'getHasAndroidApp',
+        'has_chrome_extension' => 'getHasChromeExtension',
+        'has_ios_app' => 'getHasIosApp',
+        'id' => 'getId',
+        'last_four' => 'getLastFour',
+        'last_name' => 'getLastName',
+        'last_sms_tracking_reminder_notification_id' => 'getLastSmsTrackingReminderNotificationId',
+        'latest_reminder_time' => 'getLatestReminderTime',
+        'login_name' => 'getLoginName',
+        'password' => 'getPassword',
+        'phone_number' => 'getPhoneNumber',
+        'phone_verification_code' => 'getPhoneVerificationCode',
+        'push_notifications_enabled' => 'getPushNotificationsEnabled',
+        'refresh_token' => 'getRefreshToken',
+        'roles' => 'getRoles',
+        'send_predictor_emails' => 'getSendPredictorEmails',
+        'send_reminder_notification_emails' => 'getSendReminderNotificationEmails',
+        'sms_notifications_enabled' => 'getSmsNotificationsEnabled',
+        'stripe_active' => 'getStripeActive',
+        'stripe_id' => 'getStripeId',
+        'stripe_plan' => 'getStripePlan',
+        'stripe_subscription' => 'getStripeSubscription',
+        'subscription_ends_at' => 'getSubscriptionEndsAt',
+        'subscription_provider' => 'getSubscriptionProvider',
+        'time_zone_offset' => 'getTimeZoneOffset',
+        'track_location' => 'getTrackLocation',
+        'user_registered' => 'getUserRegistered',
+        'user_url' => 'getUserUrl'
     ];
 
     public static function attributeMap()
@@ -143,13 +342,49 @@ class User implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['wp_id'] = isset($data['wp_id']) ? $data['wp_id'] : null;
-        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
-        $this->container['login_name'] = isset($data['login_name']) ? $data['login_name'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['token'] = isset($data['token']) ? $data['token'] : null;
+        $this->container['access_token'] = isset($data['access_token']) ? $data['access_token'] : null;
+        $this->container['access_token_expires'] = isset($data['access_token_expires']) ? $data['access_token_expires'] : null;
+        $this->container['access_token_expires_at_milliseconds'] = isset($data['access_token_expires_at_milliseconds']) ? $data['access_token_expires_at_milliseconds'] : null;
         $this->container['administrator'] = isset($data['administrator']) ? $data['administrator'] : null;
+        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
+        $this->container['avatar_image'] = isset($data['avatar_image']) ? $data['avatar_image'] : null;
+        $this->container['capabilities'] = isset($data['capabilities']) ? $data['capabilities'] : null;
+        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
+        $this->container['client_user_id'] = isset($data['client_user_id']) ? $data['client_user_id'] : null;
+        $this->container['combine_notifications'] = isset($data['combine_notifications']) ? $data['combine_notifications'] : null;
+        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
+        $this->container['earliest_reminder_time'] = isset($data['earliest_reminder_time']) ? $data['earliest_reminder_time'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
+        $this->container['get_preview_builds'] = isset($data['get_preview_builds']) ? $data['get_preview_builds'] : null;
+        $this->container['has_android_app'] = isset($data['has_android_app']) ? $data['has_android_app'] : null;
+        $this->container['has_chrome_extension'] = isset($data['has_chrome_extension']) ? $data['has_chrome_extension'] : null;
+        $this->container['has_ios_app'] = isset($data['has_ios_app']) ? $data['has_ios_app'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['last_four'] = isset($data['last_four']) ? $data['last_four'] : null;
+        $this->container['last_name'] = isset($data['last_name']) ? $data['last_name'] : null;
+        $this->container['last_sms_tracking_reminder_notification_id'] = isset($data['last_sms_tracking_reminder_notification_id']) ? $data['last_sms_tracking_reminder_notification_id'] : null;
+        $this->container['latest_reminder_time'] = isset($data['latest_reminder_time']) ? $data['latest_reminder_time'] : null;
+        $this->container['login_name'] = isset($data['login_name']) ? $data['login_name'] : null;
+        $this->container['password'] = isset($data['password']) ? $data['password'] : null;
+        $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
+        $this->container['phone_verification_code'] = isset($data['phone_verification_code']) ? $data['phone_verification_code'] : null;
+        $this->container['push_notifications_enabled'] = isset($data['push_notifications_enabled']) ? $data['push_notifications_enabled'] : null;
+        $this->container['refresh_token'] = isset($data['refresh_token']) ? $data['refresh_token'] : null;
+        $this->container['roles'] = isset($data['roles']) ? $data['roles'] : null;
+        $this->container['send_predictor_emails'] = isset($data['send_predictor_emails']) ? $data['send_predictor_emails'] : null;
+        $this->container['send_reminder_notification_emails'] = isset($data['send_reminder_notification_emails']) ? $data['send_reminder_notification_emails'] : null;
+        $this->container['sms_notifications_enabled'] = isset($data['sms_notifications_enabled']) ? $data['sms_notifications_enabled'] : null;
+        $this->container['stripe_active'] = isset($data['stripe_active']) ? $data['stripe_active'] : null;
+        $this->container['stripe_id'] = isset($data['stripe_id']) ? $data['stripe_id'] : null;
+        $this->container['stripe_plan'] = isset($data['stripe_plan']) ? $data['stripe_plan'] : null;
+        $this->container['stripe_subscription'] = isset($data['stripe_subscription']) ? $data['stripe_subscription'] : null;
+        $this->container['subscription_ends_at'] = isset($data['subscription_ends_at']) ? $data['subscription_ends_at'] : null;
+        $this->container['subscription_provider'] = isset($data['subscription_provider']) ? $data['subscription_provider'] : null;
+        $this->container['time_zone_offset'] = isset($data['time_zone_offset']) ? $data['time_zone_offset'] : null;
+        $this->container['track_location'] = isset($data['track_location']) ? $data['track_location'] : null;
+        $this->container['user_registered'] = isset($data['user_registered']) ? $data['user_registered'] : null;
+        $this->container['user_url'] = isset($data['user_url']) ? $data['user_url'] : null;
     }
 
     /**
@@ -161,26 +396,23 @@ class User implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['id'] === null) {
-            $invalid_properties[] = "'id' can't be null";
+        if ($this->container['access_token'] === null) {
+            $invalid_properties[] = "'access_token' can't be null";
         }
-        if ($this->container['wp_id'] === null) {
-            $invalid_properties[] = "'wp_id' can't be null";
+        if ($this->container['administrator'] === null) {
+            $invalid_properties[] = "'administrator' can't be null";
         }
         if ($this->container['display_name'] === null) {
             $invalid_properties[] = "'display_name' can't be null";
         }
-        if ($this->container['login_name'] === null) {
-            $invalid_properties[] = "'login_name' can't be null";
-        }
         if ($this->container['email'] === null) {
             $invalid_properties[] = "'email' can't be null";
         }
-        if ($this->container['token'] === null) {
-            $invalid_properties[] = "'token' can't be null";
+        if ($this->container['id'] === null) {
+            $invalid_properties[] = "'id' can't be null";
         }
-        if ($this->container['administrator'] === null) {
-            $invalid_properties[] = "'administrator' can't be null";
+        if ($this->container['login_name'] === null) {
+            $invalid_properties[] = "'login_name' can't be null";
         }
         return $invalid_properties;
     }
@@ -194,25 +426,22 @@ class User implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
+        if ($this->container['access_token'] === null) {
             return false;
         }
-        if ($this->container['wp_id'] === null) {
+        if ($this->container['administrator'] === null) {
             return false;
         }
         if ($this->container['display_name'] === null) {
             return false;
         }
-        if ($this->container['login_name'] === null) {
-            return false;
-        }
         if ($this->container['email'] === null) {
             return false;
         }
-        if ($this->container['token'] === null) {
+        if ($this->container['id'] === null) {
             return false;
         }
-        if ($this->container['administrator'] === null) {
+        if ($this->container['login_name'] === null) {
             return false;
         }
         return true;
@@ -220,43 +449,211 @@ class User implements ArrayAccess
 
 
     /**
-     * Gets id
-     * @return int
+     * Gets access_token
+     * @return string
      */
-    public function getId()
+    public function getAccessToken()
     {
-        return $this->container['id'];
+        return $this->container['access_token'];
     }
 
     /**
-     * Sets id
-     * @param int $id User id
+     * Sets access_token
+     * @param string $access_token User access token
      * @return $this
      */
-    public function setId($id)
+    public function setAccessToken($access_token)
     {
-        $this->container['id'] = $id;
+        $this->container['access_token'] = $access_token;
 
         return $this;
     }
 
     /**
-     * Gets wp_id
-     * @return int
+     * Gets access_token_expires
+     * @return string
      */
-    public function getWpId()
+    public function getAccessTokenExpires()
     {
-        return $this->container['wp_id'];
+        return $this->container['access_token_expires'];
     }
 
     /**
-     * Sets wp_id
-     * @param int $wp_id Wordpress user id
+     * Sets access_token_expires
+     * @param string $access_token_expires Example: 2018-08-08 02:41:19
      * @return $this
      */
-    public function setWpId($wp_id)
+    public function setAccessTokenExpires($access_token_expires)
     {
-        $this->container['wp_id'] = $wp_id;
+        $this->container['access_token_expires'] = $access_token_expires;
+
+        return $this;
+    }
+
+    /**
+     * Gets access_token_expires_at_milliseconds
+     * @return int
+     */
+    public function getAccessTokenExpiresAtMilliseconds()
+    {
+        return $this->container['access_token_expires_at_milliseconds'];
+    }
+
+    /**
+     * Sets access_token_expires_at_milliseconds
+     * @param int $access_token_expires_at_milliseconds Example: 1533696079000
+     * @return $this
+     */
+    public function setAccessTokenExpiresAtMilliseconds($access_token_expires_at_milliseconds)
+    {
+        $this->container['access_token_expires_at_milliseconds'] = $access_token_expires_at_milliseconds;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrator
+     * @return bool
+     */
+    public function getAdministrator()
+    {
+        return $this->container['administrator'];
+    }
+
+    /**
+     * Sets administrator
+     * @param bool $administrator Is user administrator
+     * @return $this
+     */
+    public function setAdministrator($administrator)
+    {
+        $this->container['administrator'] = $administrator;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->container['avatar'];
+    }
+
+    /**
+     * Sets avatar
+     * @param string $avatar Example: https://lh6.googleusercontent.com/-BHr4hyUWqZU/AAAAAAAAAAI/AAAAAAAIG28/2Lv0en738II/photo.jpg?sz=50
+     * @return $this
+     */
+    public function setAvatar($avatar)
+    {
+        $this->container['avatar'] = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar_image
+     * @return string
+     */
+    public function getAvatarImage()
+    {
+        return $this->container['avatar_image'];
+    }
+
+    /**
+     * Sets avatar_image
+     * @param string $avatar_image Example: https://lh6.googleusercontent.com/-BHr4hyUWqZU/AAAAAAAAAAI/AAAAAAAIG28/2Lv0en738II/photo.jpg?sz=50
+     * @return $this
+     */
+    public function setAvatarImage($avatar_image)
+    {
+        $this->container['avatar_image'] = $avatar_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets capabilities
+     * @return string
+     */
+    public function getCapabilities()
+    {
+        return $this->container['capabilities'];
+    }
+
+    /**
+     * Sets capabilities
+     * @param string $capabilities Example: a:1:{s:13:\"administrator\";b:1;}
+     * @return $this
+     */
+    public function setCapabilities($capabilities)
+    {
+        $this->container['capabilities'] = $capabilities;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_id
+     * @return string
+     */
+    public function getClientId()
+    {
+        return $this->container['client_id'];
+    }
+
+    /**
+     * Sets client_id
+     * @param string $client_id Example: quantimodo
+     * @return $this
+     */
+    public function setClientId($client_id)
+    {
+        $this->container['client_id'] = $client_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_user_id
+     * @return string
+     */
+    public function getClientUserId()
+    {
+        return $this->container['client_user_id'];
+    }
+
+    /**
+     * Sets client_user_id
+     * @param string $client_user_id Example: 118444693184829555362
+     * @return $this
+     */
+    public function setClientUserId($client_user_id)
+    {
+        $this->container['client_user_id'] = $client_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets combine_notifications
+     * @return bool
+     */
+    public function getCombineNotifications()
+    {
+        return $this->container['combine_notifications'];
+    }
+
+    /**
+     * Sets combine_notifications
+     * @param bool $combine_notifications Example: 1
+     * @return $this
+     */
+    public function setCombineNotifications($combine_notifications)
+    {
+        $this->container['combine_notifications'] = $combine_notifications;
 
         return $this;
     }
@@ -283,22 +680,22 @@ class User implements ArrayAccess
     }
 
     /**
-     * Gets login_name
-     * @return string
+     * Gets earliest_reminder_time
+     * @return \DateTime
      */
-    public function getLoginName()
+    public function getEarliestReminderTime()
     {
-        return $this->container['login_name'];
+        return $this->container['earliest_reminder_time'];
     }
 
     /**
-     * Sets login_name
-     * @param string $login_name User login name
+     * Sets earliest_reminder_time
+     * @param \DateTime $earliest_reminder_time Earliest time user should get notifications. Example: 05:00:00
      * @return $this
      */
-    public function setLoginName($login_name)
+    public function setEarliestReminderTime($earliest_reminder_time)
     {
-        $this->container['login_name'] = $login_name;
+        $this->container['earliest_reminder_time'] = $earliest_reminder_time;
 
         return $this;
     }
@@ -325,43 +722,631 @@ class User implements ArrayAccess
     }
 
     /**
-     * Gets token
+     * Gets first_name
      * @return string
      */
-    public function getToken()
+    public function getFirstName()
     {
-        return $this->container['token'];
+        return $this->container['first_name'];
     }
 
     /**
-     * Sets token
-     * @param string $token User token
+     * Sets first_name
+     * @param string $first_name Example: Mike
      * @return $this
      */
-    public function setToken($token)
+    public function setFirstName($first_name)
     {
-        $this->container['token'] = $token;
+        $this->container['first_name'] = $first_name;
 
         return $this;
     }
 
     /**
-     * Gets administrator
+     * Gets get_preview_builds
      * @return bool
      */
-    public function getAdministrator()
+    public function getGetPreviewBuilds()
     {
-        return $this->container['administrator'];
+        return $this->container['get_preview_builds'];
     }
 
     /**
-     * Sets administrator
-     * @param bool $administrator Is user administrator
+     * Sets get_preview_builds
+     * @param bool $get_preview_builds Example: false
      * @return $this
      */
-    public function setAdministrator($administrator)
+    public function setGetPreviewBuilds($get_preview_builds)
     {
-        $this->container['administrator'] = $administrator;
+        $this->container['get_preview_builds'] = $get_preview_builds;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_android_app
+     * @return bool
+     */
+    public function getHasAndroidApp()
+    {
+        return $this->container['has_android_app'];
+    }
+
+    /**
+     * Sets has_android_app
+     * @param bool $has_android_app Example: false
+     * @return $this
+     */
+    public function setHasAndroidApp($has_android_app)
+    {
+        $this->container['has_android_app'] = $has_android_app;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_chrome_extension
+     * @return bool
+     */
+    public function getHasChromeExtension()
+    {
+        return $this->container['has_chrome_extension'];
+    }
+
+    /**
+     * Sets has_chrome_extension
+     * @param bool $has_chrome_extension Example: false
+     * @return $this
+     */
+    public function setHasChromeExtension($has_chrome_extension)
+    {
+        $this->container['has_chrome_extension'] = $has_chrome_extension;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_ios_app
+     * @return bool
+     */
+    public function getHasIosApp()
+    {
+        return $this->container['has_ios_app'];
+    }
+
+    /**
+     * Sets has_ios_app
+     * @param bool $has_ios_app Example: false
+     * @return $this
+     */
+    public function setHasIosApp($has_ios_app)
+    {
+        $this->container['has_ios_app'] = $has_ios_app;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     * @param int $id User id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_four
+     * @return string
+     */
+    public function getLastFour()
+    {
+        return $this->container['last_four'];
+    }
+
+    /**
+     * Sets last_four
+     * @param string $last_four Example: 2009
+     * @return $this
+     */
+    public function setLastFour($last_four)
+    {
+        $this->container['last_four'] = $last_four;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_name
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->container['last_name'];
+    }
+
+    /**
+     * Sets last_name
+     * @param string $last_name Example: Sinn
+     * @return $this
+     */
+    public function setLastName($last_name)
+    {
+        $this->container['last_name'] = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_sms_tracking_reminder_notification_id
+     * @return string
+     */
+    public function getLastSmsTrackingReminderNotificationId()
+    {
+        return $this->container['last_sms_tracking_reminder_notification_id'];
+    }
+
+    /**
+     * Sets last_sms_tracking_reminder_notification_id
+     * @param string $last_sms_tracking_reminder_notification_id Example:
+     * @return $this
+     */
+    public function setLastSmsTrackingReminderNotificationId($last_sms_tracking_reminder_notification_id)
+    {
+        $this->container['last_sms_tracking_reminder_notification_id'] = $last_sms_tracking_reminder_notification_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets latest_reminder_time
+     * @return string
+     */
+    public function getLatestReminderTime()
+    {
+        return $this->container['latest_reminder_time'];
+    }
+
+    /**
+     * Sets latest_reminder_time
+     * @param string $latest_reminder_time Latest time user should get notifications. Example: 23:00:00
+     * @return $this
+     */
+    public function setLatestReminderTime($latest_reminder_time)
+    {
+        $this->container['latest_reminder_time'] = $latest_reminder_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets login_name
+     * @return string
+     */
+    public function getLoginName()
+    {
+        return $this->container['login_name'];
+    }
+
+    /**
+     * Sets login_name
+     * @param string $login_name User login name
+     * @return $this
+     */
+    public function setLoginName($login_name)
+    {
+        $this->container['login_name'] = $login_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets password
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /**
+     * Sets password
+     * @param string $password Example: PASSWORD
+     * @return $this
+     */
+    public function setPassword($password)
+    {
+        $this->container['password'] = $password;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     * @param string $phone_number Example:
+     * @return $this
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_verification_code
+     * @return string
+     */
+    public function getPhoneVerificationCode()
+    {
+        return $this->container['phone_verification_code'];
+    }
+
+    /**
+     * Sets phone_verification_code
+     * @param string $phone_verification_code Example:
+     * @return $this
+     */
+    public function setPhoneVerificationCode($phone_verification_code)
+    {
+        $this->container['phone_verification_code'] = $phone_verification_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets push_notifications_enabled
+     * @return bool
+     */
+    public function getPushNotificationsEnabled()
+    {
+        return $this->container['push_notifications_enabled'];
+    }
+
+    /**
+     * Sets push_notifications_enabled
+     * @param bool $push_notifications_enabled Example: 1
+     * @return $this
+     */
+    public function setPushNotificationsEnabled($push_notifications_enabled)
+    {
+        $this->container['push_notifications_enabled'] = $push_notifications_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets refresh_token
+     * @return string
+     */
+    public function getRefreshToken()
+    {
+        return $this->container['refresh_token'];
+    }
+
+    /**
+     * Sets refresh_token
+     * @param string $refresh_token Example: 6e99b113d85586de1f92468433f2df1e666647cb
+     * @return $this
+     */
+    public function setRefreshToken($refresh_token)
+    {
+        $this->container['refresh_token'] = $refresh_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets roles
+     * @return string
+     */
+    public function getRoles()
+    {
+        return $this->container['roles'];
+    }
+
+    /**
+     * Sets roles
+     * @param string $roles Example: [\"admin\"]
+     * @return $this
+     */
+    public function setRoles($roles)
+    {
+        $this->container['roles'] = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_predictor_emails
+     * @return bool
+     */
+    public function getSendPredictorEmails()
+    {
+        return $this->container['send_predictor_emails'];
+    }
+
+    /**
+     * Sets send_predictor_emails
+     * @param bool $send_predictor_emails Example: 1
+     * @return $this
+     */
+    public function setSendPredictorEmails($send_predictor_emails)
+    {
+        $this->container['send_predictor_emails'] = $send_predictor_emails;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_reminder_notification_emails
+     * @return bool
+     */
+    public function getSendReminderNotificationEmails()
+    {
+        return $this->container['send_reminder_notification_emails'];
+    }
+
+    /**
+     * Sets send_reminder_notification_emails
+     * @param bool $send_reminder_notification_emails Example: 1
+     * @return $this
+     */
+    public function setSendReminderNotificationEmails($send_reminder_notification_emails)
+    {
+        $this->container['send_reminder_notification_emails'] = $send_reminder_notification_emails;
+
+        return $this;
+    }
+
+    /**
+     * Gets sms_notifications_enabled
+     * @return bool
+     */
+    public function getSmsNotificationsEnabled()
+    {
+        return $this->container['sms_notifications_enabled'];
+    }
+
+    /**
+     * Sets sms_notifications_enabled
+     * @param bool $sms_notifications_enabled Example: false
+     * @return $this
+     */
+    public function setSmsNotificationsEnabled($sms_notifications_enabled)
+    {
+        $this->container['sms_notifications_enabled'] = $sms_notifications_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets stripe_active
+     * @return bool
+     */
+    public function getStripeActive()
+    {
+        return $this->container['stripe_active'];
+    }
+
+    /**
+     * Sets stripe_active
+     * @param bool $stripe_active Example: 1
+     * @return $this
+     */
+    public function setStripeActive($stripe_active)
+    {
+        $this->container['stripe_active'] = $stripe_active;
+
+        return $this;
+    }
+
+    /**
+     * Gets stripe_id
+     * @return string
+     */
+    public function getStripeId()
+    {
+        return $this->container['stripe_id'];
+    }
+
+    /**
+     * Sets stripe_id
+     * @param string $stripe_id Example: cus_A8CEmcvl8jwLhV
+     * @return $this
+     */
+    public function setStripeId($stripe_id)
+    {
+        $this->container['stripe_id'] = $stripe_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets stripe_plan
+     * @return string
+     */
+    public function getStripePlan()
+    {
+        return $this->container['stripe_plan'];
+    }
+
+    /**
+     * Sets stripe_plan
+     * @param string $stripe_plan Example: monthly7
+     * @return $this
+     */
+    public function setStripePlan($stripe_plan)
+    {
+        $this->container['stripe_plan'] = $stripe_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets stripe_subscription
+     * @return string
+     */
+    public function getStripeSubscription()
+    {
+        return $this->container['stripe_subscription'];
+    }
+
+    /**
+     * Sets stripe_subscription
+     * @param string $stripe_subscription Example: sub_ANTx3nOE7nzjQf
+     * @return $this
+     */
+    public function setStripeSubscription($stripe_subscription)
+    {
+        $this->container['stripe_subscription'] = $stripe_subscription;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_ends_at
+     * @return \DateTime
+     */
+    public function getSubscriptionEndsAt()
+    {
+        return $this->container['subscription_ends_at'];
+    }
+
+    /**
+     * Sets subscription_ends_at
+     * @param \DateTime $subscription_ends_at Example:
+     * @return $this
+     */
+    public function setSubscriptionEndsAt($subscription_ends_at)
+    {
+        $this->container['subscription_ends_at'] = $subscription_ends_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_provider
+     * @return string
+     */
+    public function getSubscriptionProvider()
+    {
+        return $this->container['subscription_provider'];
+    }
+
+    /**
+     * Sets subscription_provider
+     * @param string $subscription_provider Example: google
+     * @return $this
+     */
+    public function setSubscriptionProvider($subscription_provider)
+    {
+        $this->container['subscription_provider'] = $subscription_provider;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_zone_offset
+     * @return int
+     */
+    public function getTimeZoneOffset()
+    {
+        return $this->container['time_zone_offset'];
+    }
+
+    /**
+     * Sets time_zone_offset
+     * @param int $time_zone_offset Example: 300
+     * @return $this
+     */
+    public function setTimeZoneOffset($time_zone_offset)
+    {
+        $this->container['time_zone_offset'] = $time_zone_offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets track_location
+     * @return bool
+     */
+    public function getTrackLocation()
+    {
+        return $this->container['track_location'];
+    }
+
+    /**
+     * Sets track_location
+     * @param bool $track_location Example: 1
+     * @return $this
+     */
+    public function setTrackLocation($track_location)
+    {
+        $this->container['track_location'] = $track_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_registered
+     * @return \DateTime
+     */
+    public function getUserRegistered()
+    {
+        return $this->container['user_registered'];
+    }
+
+    /**
+     * Sets user_registered
+     * @param \DateTime $user_registered Example: 2013-12-03 15:25:13
+     * @return $this
+     */
+    public function setUserRegistered($user_registered)
+    {
+        $this->container['user_registered'] = $user_registered;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_url
+     * @return string
+     */
+    public function getUserUrl()
+    {
+        return $this->container['user_url'];
+    }
+
+    /**
+     * Sets user_url
+     * @param string $user_url Example: https://plus.google.com/+MikeSinn
+     * @return $this
+     */
+    public function setUserUrl($user_url)
+    {
+        $this->container['user_url'] = $user_url;
 
         return $this;
     }

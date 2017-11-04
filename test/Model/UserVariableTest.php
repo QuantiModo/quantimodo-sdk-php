@@ -11,11 +11,11 @@
  */
 
 /**
- * QuantiModo
+ * quantimodo
  *
- * Welcome to QuantiModo API! QuantiModo makes it easy to retrieve normalized user data from a wide array of devices and applications. [Learn about QuantiModo](https://quantimo.do) or contact us at <api@quantimo.do>.         Before you get started, you will need to: * Sign in/Sign up, and add some data at [https://app.quantimo.do/api/v2/account/connectors](https://app.quantimo.do/api/v2/account/connectors) to try out the API for yourself * Create an app to get your client id and secret at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps) * As long as you're signed in, it will use your browser's cookie for authentication.  However, client applications must use OAuth2 tokens to access the API.     ## Application Endpoints These endpoints give you access to all authorized users' data for that application. ### Getting Application Token Make a `POST` request to `/api/v2/oauth/access_token`         * `grant_type` Must be `client_credentials`.         * `clientId` Your application's clientId.         * `client_secret` Your application's client_secret.         * `redirect_uri` Your application's redirect url.                ## Example Queries ### Query Options The standard query options for QuantiModo API are as described in the table below. These are the available query options in QuantiModo API: <table>            <thead>                <tr>                    <th>Parameter</th>                    <th>Description</th>                </tr>            </thead>            <tbody>                <tr>                    <td>limit</td>                    <td>The LIMIT is used to limit the number of results returned.  So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</td>                </tr>                <tr>                    <td>offset</td>                    <td>Suppose you wanted to show results 11-20. You'd set the    offset to 10 and the limit to 10.</td>                </tr>                <tr>                    <td>sort</td>                    <td>Sort by given field. If the field is prefixed with '-', it    will sort in descending order.</td>                </tr>            </tbody>        </table>         ### Pagination Conventions Since the maximum limit is 200 records, to get more than that you'll have to make multiple API calls and page through the results. To retrieve all the data, you can iterate through data by using the `limit` and `offset` query parameters.For example, if you want to retrieve data from 61-80 then you can use a query with the following parameters,         `/v2/variables?limit=20&offset=60`         Generally, you'll be retrieving new or updated user data. To avoid unnecessary API calls, you'll want to store your last refresh time locally.  Initially, it should be set to 0. Then whenever you make a request to get new data, you should limit the returned results to those updated since your last refresh by appending append         `?lastUpdated=(ge)&quot2013-01-D01T01:01:01&quot`         to your request.         Also for better pagination, you can get link to the records of first, last, next and previous page from response headers: * `Total-Count` - Total number of results for given query * `Link-First` - Link to get first page records * `Link-Last` - Link to get last page records * `Link-Prev` - Link to get previous records set * `Link-Next` - Link to get next records set         Remember, response header will be only sent when the record set is available. e.g. You will not get a ```Link-Last``` & ```Link-Next``` when you query for the last page.         ### Filter operators support API supports the following operators with filter parameters: <br> **Comparison operators**         Comparison operators allow you to limit results to those greater than, less than, or equal to a specified value for a specified attribute. These operators can be used with strings, numbers, and dates. The following comparison operators are available: * `gt` for `greater than` comparison * `ge` for `greater than or equal` comparison * `lt` for `less than` comparison * `le` for `less than or equal` comparison         They are included in queries using the following format:         `(<operator>)<value>`         For example, in order to filter value which is greater than 21, the following query parameter should be used:         `?value=(gt)21` <br><br> **Equals/In Operators**         It also allows filtering by the exact value of an attribute or by a set of values, depending on the type of value passed as a query parameter. If the value contains commas, the parameter is split on commas and used as array input for `IN` filtering, otherwise the exact match is applied. In order to only show records which have the value 42, the following query should be used:         `?value=42`         In order to filter records which have value 42 or 43, the following query should be used:         `?value=42,43` <br><br> **Like operators**         Like operators allow filtering using `LIKE` query. This operator is triggered if exact match operator is used, but value contains `%` sign as the first or last character. In order to filter records which category that start with `Food`, the following query should be used:         `?category=Food%` <br><br> **Negation operator**         It is possible to get negated results of a query by prefixed the operator with `!`. Some examples:         `//filter records except those with value are not 42 or 43`<br> `?value=!42,43`         `//filter records with value not greater than 21`<br> `?value=!(ge)21` <br><br> **Multiple constraints for single attribute**         It is possible to apply multiple constraints by providing an array of query filters:         Filter all records which value is greater than 20.2 and less than 20.3<br> `?value[]=(gt)20.2&value[]=(lt)20.3`         Filter all records which value is greater than 20.2 and less than 20.3 but not 20.2778<br> `?value[]=(gt)20.2&value[]=(lt)20.3&value[]=!20.2778`<br><br>
+ * We make it easy to retrieve and analyze normalized user data from a wide array of devices and applications. Check out our [docs and sdk's](https://github.com/QuantiModo/docs) or [contact us](https://help.quantimo.do).
  *
- * OpenAPI spec version: 2.0
+ * OpenAPI spec version: 5.8.100414
  * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  *
@@ -47,7 +47,6 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,119 +75,20 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function testUserVariable()
     {
-
     }
 
     /**
-     * Test attribute "parent_id"
+     * Test attribute "alias"
      */
-    public function testPropertyParentId()
+    public function testPropertyAlias()
     {
-
     }
 
     /**
-     * Test attribute "user_id"
+     * Test attribute "available_units"
      */
-    public function testPropertyUserId()
+    public function testPropertyAvailableUnits()
     {
-
-    }
-
-    /**
-     * Test attribute "client_id"
-     */
-    public function testPropertyClientId()
-    {
-
-    }
-
-    /**
-     * Test attribute "variable_id"
-     */
-    public function testPropertyVariableId()
-    {
-
-    }
-
-    /**
-     * Test attribute "default_unit_id"
-     */
-    public function testPropertyDefaultUnitId()
-    {
-
-    }
-
-    /**
-     * Test attribute "minimum_allowed_value"
-     */
-    public function testPropertyMinimumAllowedValue()
-    {
-
-    }
-
-    /**
-     * Test attribute "maximum_allowed_value"
-     */
-    public function testPropertyMaximumAllowedValue()
-    {
-
-    }
-
-    /**
-     * Test attribute "filling_value"
-     */
-    public function testPropertyFillingValue()
-    {
-
-    }
-
-    /**
-     * Test attribute "join_with"
-     */
-    public function testPropertyJoinWith()
-    {
-
-    }
-
-    /**
-     * Test attribute "onset_delay"
-     */
-    public function testPropertyOnsetDelay()
-    {
-
-    }
-
-    /**
-     * Test attribute "duration_of_action"
-     */
-    public function testPropertyDurationOfAction()
-    {
-
-    }
-
-    /**
-     * Test attribute "variable_category_id"
-     */
-    public function testPropertyVariableCategoryId()
-    {
-
-    }
-
-    /**
-     * Test attribute "updated"
-     */
-    public function testPropertyUpdated()
-    {
-
-    }
-
-    /**
-     * Test attribute "public"
-     */
-    public function testPropertyPublic()
-    {
-
     }
 
     /**
@@ -199,239 +96,111 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCauseOnly()
     {
-
     }
 
     /**
-     * Test attribute "filling_type"
+     * Test attribute "charts"
      */
-    public function testPropertyFillingType()
+    public function testPropertyCharts()
     {
-
     }
 
     /**
-     * Test attribute "number_of_measurements"
+     * Test attribute "charts_link_dynamic"
      */
-    public function testPropertyNumberOfMeasurements()
+    public function testPropertyChartsLinkDynamic()
     {
-
     }
 
     /**
-     * Test attribute "number_of_processed_measurements"
+     * Test attribute "charts_link_email"
      */
-    public function testPropertyNumberOfProcessedMeasurements()
+    public function testPropertyChartsLinkEmail()
     {
-
     }
 
     /**
-     * Test attribute "measurements_at_last_analysis"
+     * Test attribute "charts_link_facebook"
      */
-    public function testPropertyMeasurementsAtLastAnalysis()
+    public function testPropertyChartsLinkFacebook()
     {
-
     }
 
     /**
-     * Test attribute "last_unit_id"
+     * Test attribute "charts_link_google"
      */
-    public function testPropertyLastUnitId()
+    public function testPropertyChartsLinkGoogle()
     {
-
     }
 
     /**
-     * Test attribute "last_original_unit_id"
+     * Test attribute "charts_link_static"
      */
-    public function testPropertyLastOriginalUnitId()
+    public function testPropertyChartsLinkStatic()
     {
-
     }
 
     /**
-     * Test attribute "last_value"
+     * Test attribute "charts_link_twitter"
      */
-    public function testPropertyLastValue()
+    public function testPropertyChartsLinkTwitter()
     {
-
     }
 
     /**
-     * Test attribute "last_original_value"
+     * Test attribute "child_user_tag_variables"
      */
-    public function testPropertyLastOriginalValue()
+    public function testPropertyChildUserTagVariables()
     {
-
     }
 
     /**
-     * Test attribute "number_of_correlations"
+     * Test attribute "client_id"
      */
-    public function testPropertyNumberOfCorrelations()
+    public function testPropertyClientId()
     {
-
     }
 
     /**
-     * Test attribute "status"
+     * Test attribute "combination_operation"
      */
-    public function testPropertyStatus()
+    public function testPropertyCombinationOperation()
     {
-
     }
 
     /**
-     * Test attribute "error_message"
+     * Test attribute "common_alias"
      */
-    public function testPropertyErrorMessage()
+    public function testPropertyCommonAlias()
     {
-
     }
 
     /**
-     * Test attribute "last_successful_update_time"
+     * Test attribute "common_tagged_variables"
      */
-    public function testPropertyLastSuccessfulUpdateTime()
+    public function testPropertyCommonTaggedVariables()
     {
-
     }
 
     /**
-     * Test attribute "standard_deviation"
+     * Test attribute "common_tag_variables"
      */
-    public function testPropertyStandardDeviation()
+    public function testPropertyCommonTagVariables()
     {
-
     }
 
     /**
-     * Test attribute "variance"
+     * Test attribute "common_variable_most_common_connector_id"
      */
-    public function testPropertyVariance()
+    public function testPropertyCommonVariableMostCommonConnectorId()
     {
-
     }
 
     /**
-     * Test attribute "minimum_recorded_value"
+     * Test attribute "common_variable_updated_at"
      */
-    public function testPropertyMinimumRecordedValue()
+    public function testPropertyCommonVariableUpdatedAt()
     {
-
-    }
-
-    /**
-     * Test attribute "maximum_recorded_daily_value"
-     */
-    public function testPropertyMaximumRecordedDailyValue()
-    {
-
-    }
-
-    /**
-     * Test attribute "mean"
-     */
-    public function testPropertyMean()
-    {
-
-    }
-
-    /**
-     * Test attribute "median"
-     */
-    public function testPropertyMedian()
-    {
-
-    }
-
-    /**
-     * Test attribute "most_common_unit_id"
-     */
-    public function testPropertyMostCommonUnitId()
-    {
-
-    }
-
-    /**
-     * Test attribute "most_common_value"
-     */
-    public function testPropertyMostCommonValue()
-    {
-
-    }
-
-    /**
-     * Test attribute "number_of_unique_daily_values"
-     */
-    public function testPropertyNumberOfUniqueDailyValues()
-    {
-
-    }
-
-    /**
-     * Test attribute "number_of_changes"
-     */
-    public function testPropertyNumberOfChanges()
-    {
-
-    }
-
-    /**
-     * Test attribute "skewness"
-     */
-    public function testPropertySkewness()
-    {
-
-    }
-
-    /**
-     * Test attribute "kurtosis"
-     */
-    public function testPropertyKurtosis()
-    {
-
-    }
-
-    /**
-     * Test attribute "latitude"
-     */
-    public function testPropertyLatitude()
-    {
-
-    }
-
-    /**
-     * Test attribute "longitude"
-     */
-    public function testPropertyLongitude()
-    {
-
-    }
-
-    /**
-     * Test attribute "location"
-     */
-    public function testPropertyLocation()
-    {
-
-    }
-
-    /**
-     * Test attribute "experiment_start_time"
-     */
-    public function testPropertyExperimentStartTime()
-    {
-
-    }
-
-    /**
-     * Test attribute "experiment_end_time"
-     */
-    public function testPropertyExperimentEndTime()
-    {
-
     }
 
     /**
@@ -439,63 +208,62 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCreatedAt()
     {
-
     }
 
     /**
-     * Test attribute "updated_at"
+     * Test attribute "unit_abbreviated_name"
      */
-    public function testPropertyUpdatedAt()
+    public function testPropertyUnitAbbreviatedName()
     {
-
     }
 
     /**
-     * Test attribute "outcome"
+     * Test attribute "unit_category_id"
      */
-    public function testPropertyOutcome()
+    public function testPropertyUnitCategoryId()
     {
-
     }
 
     /**
-     * Test attribute "sources"
+     * Test attribute "unit_category_name"
      */
-    public function testPropertySources()
+    public function testPropertyUnitCategoryName()
     {
-
     }
 
     /**
-     * Test attribute "earliest_source_time"
+     * Test attribute "unit_id"
      */
-    public function testPropertyEarliestSourceTime()
+    public function testPropertyUnitId()
     {
-
     }
 
     /**
-     * Test attribute "latest_source_time"
+     * Test attribute "unit_name"
      */
-    public function testPropertyLatestSourceTime()
+    public function testPropertyUnitName()
     {
-
     }
 
     /**
-     * Test attribute "earliest_measurement_time"
+     * Test attribute "description"
      */
-    public function testPropertyEarliestMeasurementTime()
+    public function testPropertyDescription()
     {
-
     }
 
     /**
-     * Test attribute "latest_measurement_time"
+     * Test attribute "duration_of_action"
      */
-    public function testPropertyLatestMeasurementTime()
+    public function testPropertyDurationOfAction()
     {
+    }
 
+    /**
+     * Test attribute "duration_of_action_in_hours"
+     */
+    public function testPropertyDurationOfActionInHours()
+    {
     }
 
     /**
@@ -503,15 +271,104 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyEarliestFillingTime()
     {
-
     }
 
     /**
-     * Test attribute "latest_filling_time"
+     * Test attribute "earliest_measurement_time"
      */
-    public function testPropertyLatestFillingTime()
+    public function testPropertyEarliestMeasurementTime()
     {
+    }
 
+    /**
+     * Test attribute "earliest_source_time"
+     */
+    public function testPropertyEarliestSourceTime()
+    {
+    }
+
+    /**
+     * Test attribute "error_message"
+     */
+    public function testPropertyErrorMessage()
+    {
+    }
+
+    /**
+     * Test attribute "experiment_end_time"
+     */
+    public function testPropertyExperimentEndTime()
+    {
+    }
+
+    /**
+     * Test attribute "experiment_end_time_seconds"
+     */
+    public function testPropertyExperimentEndTimeSeconds()
+    {
+    }
+
+    /**
+     * Test attribute "experiment_end_time_string"
+     */
+    public function testPropertyExperimentEndTimeString()
+    {
+    }
+
+    /**
+     * Test attribute "experiment_start_time"
+     */
+    public function testPropertyExperimentStartTime()
+    {
+    }
+
+    /**
+     * Test attribute "experiment_start_time_seconds"
+     */
+    public function testPropertyExperimentStartTimeSeconds()
+    {
+    }
+
+    /**
+     * Test attribute "experiment_start_time_string"
+     */
+    public function testPropertyExperimentStartTimeString()
+    {
+    }
+
+    /**
+     * Test attribute "filling_type"
+     */
+    public function testPropertyFillingType()
+    {
+    }
+
+    /**
+     * Test attribute "filling_value"
+     */
+    public function testPropertyFillingValue()
+    {
+    }
+
+    /**
+     * Test attribute "icon_icon"
+     */
+    public function testPropertyIconIcon()
+    {
+    }
+
+    /**
+     * Test attribute "highcharts"
+     */
+    public function testPropertyHighcharts()
+    {
+    }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
     }
 
     /**
@@ -519,7 +376,34 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyImageUrl()
     {
+    }
 
+    /**
+     * Test attribute "informational_url"
+     */
+    public function testPropertyInformationalUrl()
+    {
+    }
+
+    /**
+     * Test attribute "ingredient_of_user_tag_variables"
+     */
+    public function testPropertyIngredientOfUserTagVariables()
+    {
+    }
+
+    /**
+     * Test attribute "ingredient_user_tag_variables"
+     */
+    public function testPropertyIngredientUserTagVariables()
+    {
+    }
+
+    /**
+     * Test attribute "input_type"
+     */
+    public function testPropertyInputType()
+    {
     }
 
     /**
@@ -527,7 +411,691 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyIonIcon()
     {
-
     }
 
+    /**
+     * Test attribute "joined_user_tag_variables"
+     */
+    public function testPropertyJoinedUserTagVariables()
+    {
+    }
+
+    /**
+     * Test attribute "join_with"
+     */
+    public function testPropertyJoinWith()
+    {
+    }
+
+    /**
+     * Test attribute "kurtosis"
+     */
+    public function testPropertyKurtosis()
+    {
+    }
+
+    /**
+     * Test attribute "last_original_unit_id"
+     */
+    public function testPropertyLastOriginalUnitId()
+    {
+    }
+
+    /**
+     * Test attribute "last_original_value"
+     */
+    public function testPropertyLastOriginalValue()
+    {
+    }
+
+    /**
+     * Test attribute "last_processed_daily_value"
+     */
+    public function testPropertyLastProcessedDailyValue()
+    {
+    }
+
+    /**
+     * Test attribute "last_successful_update_time"
+     */
+    public function testPropertyLastSuccessfulUpdateTime()
+    {
+    }
+
+    /**
+     * Test attribute "last_unit_id"
+     */
+    public function testPropertyLastUnitId()
+    {
+    }
+
+    /**
+     * Test attribute "last_value"
+     */
+    public function testPropertyLastValue()
+    {
+    }
+
+    /**
+     * Test attribute "latest_filling_time"
+     */
+    public function testPropertyLatestFillingTime()
+    {
+    }
+
+    /**
+     * Test attribute "latest_measurement_time"
+     */
+    public function testPropertyLatestMeasurementTime()
+    {
+    }
+
+    /**
+     * Test attribute "latest_source_time"
+     */
+    public function testPropertyLatestSourceTime()
+    {
+    }
+
+    /**
+     * Test attribute "latest_user_measurement_time"
+     */
+    public function testPropertyLatestUserMeasurementTime()
+    {
+    }
+
+    /**
+     * Test attribute "latitude"
+     */
+    public function testPropertyLatitude()
+    {
+    }
+
+    /**
+     * Test attribute "location"
+     */
+    public function testPropertyLocation()
+    {
+    }
+
+    /**
+     * Test attribute "longitude"
+     */
+    public function testPropertyLongitude()
+    {
+    }
+
+    /**
+     * Test attribute "manual_tracking"
+     */
+    public function testPropertyManualTracking()
+    {
+    }
+
+    /**
+     * Test attribute "maximum_allowed_value"
+     */
+    public function testPropertyMaximumAllowedValue()
+    {
+    }
+
+    /**
+     * Test attribute "maximum_recorded_daily_value"
+     */
+    public function testPropertyMaximumRecordedDailyValue()
+    {
+    }
+
+    /**
+     * Test attribute "maximum_recorded_value"
+     */
+    public function testPropertyMaximumRecordedValue()
+    {
+    }
+
+    /**
+     * Test attribute "mean"
+     */
+    public function testPropertyMean()
+    {
+    }
+
+    /**
+     * Test attribute "measurements_at_last_analysis"
+     */
+    public function testPropertyMeasurementsAtLastAnalysis()
+    {
+    }
+
+    /**
+     * Test attribute "median"
+     */
+    public function testPropertyMedian()
+    {
+    }
+
+    /**
+     * Test attribute "minimum_allowed_value"
+     */
+    public function testPropertyMinimumAllowedValue()
+    {
+    }
+
+    /**
+     * Test attribute "minimum_recorded_value"
+     */
+    public function testPropertyMinimumRecordedValue()
+    {
+    }
+
+    /**
+     * Test attribute "most_common_connector_id"
+     */
+    public function testPropertyMostCommonConnectorId()
+    {
+    }
+
+    /**
+     * Test attribute "most_common_original_unit_id"
+     */
+    public function testPropertyMostCommonOriginalUnitId()
+    {
+    }
+
+    /**
+     * Test attribute "most_common_unit_id"
+     */
+    public function testPropertyMostCommonUnitId()
+    {
+    }
+
+    /**
+     * Test attribute "most_common_value"
+     */
+    public function testPropertyMostCommonValue()
+    {
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_aggregate_correlations_as_cause"
+     */
+    public function testPropertyNumberOfAggregateCorrelationsAsCause()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_aggregate_correlations_as_effect"
+     */
+    public function testPropertyNumberOfAggregateCorrelationsAsEffect()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_changes"
+     */
+    public function testPropertyNumberOfChanges()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_correlations"
+     */
+    public function testPropertyNumberOfCorrelations()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_measurements"
+     */
+    public function testPropertyNumberOfMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_processed_daily_measurements"
+     */
+    public function testPropertyNumberOfProcessedDailyMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_raw_measurements"
+     */
+    public function testPropertyNumberOfRawMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_tracking_reminders"
+     */
+    public function testPropertyNumberOfTrackingReminders()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_unique_daily_values"
+     */
+    public function testPropertyNumberOfUniqueDailyValues()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_unique_values"
+     */
+    public function testPropertyNumberOfUniqueValues()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_user_correlations_as_cause"
+     */
+    public function testPropertyNumberOfUserCorrelationsAsCause()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_user_correlations_as_effect"
+     */
+    public function testPropertyNumberOfUserCorrelationsAsEffect()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_user_variables"
+     */
+    public function testPropertyNumberOfUserVariables()
+    {
+    }
+
+    /**
+     * Test attribute "onset_delay"
+     */
+    public function testPropertyOnsetDelay()
+    {
+    }
+
+    /**
+     * Test attribute "onset_delay_in_hours"
+     */
+    public function testPropertyOnsetDelayInHours()
+    {
+    }
+
+    /**
+     * Test attribute "outcome"
+     */
+    public function testPropertyOutcome()
+    {
+    }
+
+    /**
+     * Test attribute "outcome_of_interest"
+     */
+    public function testPropertyOutcomeOfInterest()
+    {
+    }
+
+    /**
+     * Test attribute "parent"
+     */
+    public function testPropertyParent()
+    {
+    }
+
+    /**
+     * Test attribute "parent_id"
+     */
+    public function testPropertyParentId()
+    {
+    }
+
+    /**
+     * Test attribute "parent_user_tag_variables"
+     */
+    public function testPropertyParentUserTagVariables()
+    {
+    }
+
+    /**
+     * Test attribute "png_path"
+     */
+    public function testPropertyPngPath()
+    {
+    }
+
+    /**
+     * Test attribute "png_url"
+     */
+    public function testPropertyPngUrl()
+    {
+    }
+
+    /**
+     * Test attribute "predictor_of_interest"
+     */
+    public function testPropertyPredictorOfInterest()
+    {
+    }
+
+    /**
+     * Test attribute "price"
+     */
+    public function testPropertyPrice()
+    {
+    }
+
+    /**
+     * Test attribute "product_url"
+     */
+    public function testPropertyProductUrl()
+    {
+    }
+
+    /**
+     * Test attribute "public"
+     */
+    public function testPropertyPublic()
+    {
+    }
+
+    /**
+     * Test attribute "raw_measurements_at_last_analysis"
+     */
+    public function testPropertyRawMeasurementsAtLastAnalysis()
+    {
+    }
+
+    /**
+     * Test attribute "second_most_common_value"
+     */
+    public function testPropertySecondMostCommonValue()
+    {
+    }
+
+    /**
+     * Test attribute "second_to_last_value"
+     */
+    public function testPropertySecondToLastValue()
+    {
+    }
+
+    /**
+     * Test attribute "share_user_measurements"
+     */
+    public function testPropertyShareUserMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "skewness"
+     */
+    public function testPropertySkewness()
+    {
+    }
+
+    /**
+     * Test attribute "sources"
+     */
+    public function testPropertySources()
+    {
+    }
+
+    /**
+     * Test attribute "standard_deviation"
+     */
+    public function testPropertyStandardDeviation()
+    {
+    }
+
+    /**
+     * Test attribute "standard_deviation"
+     */
+    public function testPropertyStandardDeviation()
+    {
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+    }
+
+    /**
+     * Test attribute "subtitle"
+     */
+    public function testPropertySubtitle()
+    {
+    }
+
+    /**
+     * Test attribute "svg_url"
+     */
+    public function testPropertySvgUrl()
+    {
+    }
+
+    /**
+     * Test attribute "third_most_common_value"
+     */
+    public function testPropertyThirdMostCommonValue()
+    {
+    }
+
+    /**
+     * Test attribute "third_to_last_value"
+     */
+    public function testPropertyThirdToLastValue()
+    {
+    }
+
+    /**
+     * Test attribute "unit"
+     */
+    public function testPropertyUnit()
+    {
+    }
+
+    /**
+     * Test attribute "updated"
+     */
+    public function testPropertyUpdated()
+    {
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
+    {
+    }
+
+    /**
+     * Test attribute "updated_time"
+     */
+    public function testPropertyUpdatedTime()
+    {
+    }
+
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
+    {
+    }
+
+    /**
+     * Test attribute "user_tagged_variables"
+     */
+    public function testPropertyUserTaggedVariables()
+    {
+    }
+
+    /**
+     * Test attribute "user_tag_variables"
+     */
+    public function testPropertyUserTagVariables()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_unit_abbreviated_name"
+     */
+    public function testPropertyUserVariableUnitAbbreviatedName()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_unit_category_id"
+     */
+    public function testPropertyUserVariableUnitCategoryId()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_unit_category_name"
+     */
+    public function testPropertyUserVariableUnitCategoryName()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_unit_id"
+     */
+    public function testPropertyUserVariableUnitId()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_unit_name"
+     */
+    public function testPropertyUserVariableUnitName()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_filling_value"
+     */
+    public function testPropertyUserVariableFillingValue()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_most_common_connector_id"
+     */
+    public function testPropertyUserVariableMostCommonConnectorId()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_updated_at"
+     */
+    public function testPropertyUserVariableUpdatedAt()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_valence"
+     */
+    public function testPropertyUserVariableValence()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_variable_category_id"
+     */
+    public function testPropertyUserVariableVariableCategoryId()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_variable_category_name"
+     */
+    public function testPropertyUserVariableVariableCategoryName()
+    {
+    }
+
+    /**
+     * Test attribute "user_variable_wikipedia_title"
+     */
+    public function testPropertyUserVariableWikipediaTitle()
+    {
+    }
+
+    /**
+     * Test attribute "valence"
+     */
+    public function testPropertyValence()
+    {
+    }
+
+    /**
+     * Test attribute "variable_category"
+     */
+    public function testPropertyVariableCategory()
+    {
+    }
+
+    /**
+     * Test attribute "variable_category_id"
+     */
+    public function testPropertyVariableCategoryId()
+    {
+    }
+
+    /**
+     * Test attribute "variable_category_image_url"
+     */
+    public function testPropertyVariableCategoryImageUrl()
+    {
+    }
+
+    /**
+     * Test attribute "variable_category_name"
+     */
+    public function testPropertyVariableCategoryName()
+    {
+    }
+
+    /**
+     * Test attribute "variable_filling_value"
+     */
+    public function testPropertyVariableFillingValue()
+    {
+    }
+
+    /**
+     * Test attribute "variable_id"
+     */
+    public function testPropertyVariableId()
+    {
+    }
+
+    /**
+     * Test attribute "variable_name"
+     */
+    public function testPropertyVariableName()
+    {
+    }
+
+    /**
+     * Test attribute "variance"
+     */
+    public function testPropertyVariance()
+    {
+    }
+
+    /**
+     * Test attribute "wikipedia_title"
+     */
+    public function testPropertyWikipediaTitle()
+    {
+    }
 }
