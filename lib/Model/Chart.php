@@ -54,15 +54,12 @@ class Chart implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'animation' => '\QuantiModo\Client\Model\Animation',
-        'chart_config' => '\QuantiModo\Client\Model\ChartConfig',
+        'highchart_config' => 'string',
         'chart_id' => 'string',
         'chart_title' => 'string',
         'explanation' => 'string',
-        'height' => 'int',
-        'render_to' => 'string',
-        'type' => 'string',
-        'zoom_type' => 'string'
+        'svg_url' => 'string',
+        'svg' => 'string'
     ];
 
     /**
@@ -70,15 +67,12 @@ class Chart implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'animation' => null,
-        'chart_config' => null,
+        'highchart_config' => null,
         'chart_id' => null,
         'chart_title' => null,
         'explanation' => null,
-        'height' => null,
-        'render_to' => null,
-        'type' => null,
-        'zoom_type' => null
+        'svg_url' => null,
+        'svg' => null
     ];
 
     public static function swaggerTypes()
@@ -96,15 +90,12 @@ class Chart implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'animation' => 'animation',
-        'chart_config' => 'chartConfig',
+        'highchart_config' => 'highchartConfig',
         'chart_id' => 'chartId',
         'chart_title' => 'chartTitle',
         'explanation' => 'explanation',
-        'height' => 'height',
-        'render_to' => 'renderTo',
-        'type' => 'type',
-        'zoom_type' => 'zoomType'
+        'svg_url' => 'svgUrl',
+        'svg' => 'svg'
     ];
 
 
@@ -113,15 +104,12 @@ class Chart implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'animation' => 'setAnimation',
-        'chart_config' => 'setChartConfig',
+        'highchart_config' => 'setHighchartConfig',
         'chart_id' => 'setChartId',
         'chart_title' => 'setChartTitle',
         'explanation' => 'setExplanation',
-        'height' => 'setHeight',
-        'render_to' => 'setRenderTo',
-        'type' => 'setType',
-        'zoom_type' => 'setZoomType'
+        'svg_url' => 'setSvgUrl',
+        'svg' => 'setSvg'
     ];
 
 
@@ -130,15 +118,12 @@ class Chart implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'animation' => 'getAnimation',
-        'chart_config' => 'getChartConfig',
+        'highchart_config' => 'getHighchartConfig',
         'chart_id' => 'getChartId',
         'chart_title' => 'getChartTitle',
         'explanation' => 'getExplanation',
-        'height' => 'getHeight',
-        'render_to' => 'getRenderTo',
-        'type' => 'getType',
-        'zoom_type' => 'getZoomType'
+        'svg_url' => 'getSvgUrl',
+        'svg' => 'getSvg'
     ];
 
     public static function attributeMap()
@@ -172,15 +157,12 @@ class Chart implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['animation'] = isset($data['animation']) ? $data['animation'] : null;
-        $this->container['chart_config'] = isset($data['chart_config']) ? $data['chart_config'] : null;
+        $this->container['highchart_config'] = isset($data['highchart_config']) ? $data['highchart_config'] : null;
         $this->container['chart_id'] = isset($data['chart_id']) ? $data['chart_id'] : null;
         $this->container['chart_title'] = isset($data['chart_title']) ? $data['chart_title'] : null;
         $this->container['explanation'] = isset($data['explanation']) ? $data['explanation'] : null;
-        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
-        $this->container['render_to'] = isset($data['render_to']) ? $data['render_to'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['zoom_type'] = isset($data['zoom_type']) ? $data['zoom_type'] : null;
+        $this->container['svg_url'] = isset($data['svg_url']) ? $data['svg_url'] : null;
+        $this->container['svg'] = isset($data['svg']) ? $data['svg'] : null;
     }
 
     /**
@@ -192,33 +174,6 @@ class Chart implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['animation'] === null) {
-            $invalid_properties[] = "'animation' can't be null";
-        }
-        if ($this->container['chart_config'] === null) {
-            $invalid_properties[] = "'chart_config' can't be null";
-        }
-        if ($this->container['chart_id'] === null) {
-            $invalid_properties[] = "'chart_id' can't be null";
-        }
-        if ($this->container['chart_title'] === null) {
-            $invalid_properties[] = "'chart_title' can't be null";
-        }
-        if ($this->container['explanation'] === null) {
-            $invalid_properties[] = "'explanation' can't be null";
-        }
-        if ($this->container['height'] === null) {
-            $invalid_properties[] = "'height' can't be null";
-        }
-        if ($this->container['render_to'] === null) {
-            $invalid_properties[] = "'render_to' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalid_properties[] = "'type' can't be null";
-        }
-        if ($this->container['zoom_type'] === null) {
-            $invalid_properties[] = "'zoom_type' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -231,75 +186,27 @@ class Chart implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['animation'] === null) {
-            return false;
-        }
-        if ($this->container['chart_config'] === null) {
-            return false;
-        }
-        if ($this->container['chart_id'] === null) {
-            return false;
-        }
-        if ($this->container['chart_title'] === null) {
-            return false;
-        }
-        if ($this->container['explanation'] === null) {
-            return false;
-        }
-        if ($this->container['height'] === null) {
-            return false;
-        }
-        if ($this->container['render_to'] === null) {
-            return false;
-        }
-        if ($this->container['type'] === null) {
-            return false;
-        }
-        if ($this->container['zoom_type'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets animation
-     * @return \QuantiModo\Client\Model\Animation
+     * Gets highchart_config
+     * @return string
      */
-    public function getAnimation()
+    public function getHighchartConfig()
     {
-        return $this->container['animation'];
+        return $this->container['highchart_config'];
     }
 
     /**
-     * Sets animation
-     * @param \QuantiModo\Client\Model\Animation $animation
+     * Sets highchart_config
+     * @param string $highchart_config Highcharts config that can be used if you have highcharts.js included on the page
      * @return $this
      */
-    public function setAnimation($animation)
+    public function setHighchartConfig($highchart_config)
     {
-        $this->container['animation'] = $animation;
-
-        return $this;
-    }
-
-    /**
-     * Gets chart_config
-     * @return \QuantiModo\Client\Model\ChartConfig
-     */
-    public function getChartConfig()
-    {
-        return $this->container['chart_config'];
-    }
-
-    /**
-     * Sets chart_config
-     * @param \QuantiModo\Client\Model\ChartConfig $chart_config
-     * @return $this
-     */
-    public function setChartConfig($chart_config)
-    {
-        $this->container['chart_config'] = $chart_config;
+        $this->container['highchart_config'] = $highchart_config;
 
         return $this;
     }
@@ -336,7 +243,7 @@ class Chart implements ArrayAccess
 
     /**
      * Sets chart_title
-     * @param string $chart_title Example: Reference And Learning Hours following Barometric Pressure (R = 0.147)
+     * @param string $chart_title Example: Overall Mood following Sleep Duration (R = -0.173)
      * @return $this
      */
     public function setChartTitle($chart_title)
@@ -357,7 +264,7 @@ class Chart implements ArrayAccess
 
     /**
      * Sets explanation
-     * @param string $explanation Example: The chart above indicates that an increase in Barometric Pressure is usually followed by an increase in Reference And Learning Hours.
+     * @param string $explanation Example: The chart above indicates that an increase in Sleep Duration is usually followed by an decrease in Overall Mood.
      * @return $this
      */
     public function setExplanation($explanation)
@@ -368,85 +275,43 @@ class Chart implements ArrayAccess
     }
 
     /**
-     * Gets height
-     * @return int
+     * Gets svg_url
+     * @return string
      */
-    public function getHeight()
+    public function getSvgUrl()
     {
-        return $this->container['height'];
+        return $this->container['svg_url'];
     }
 
     /**
-     * Sets height
-     * @param int $height Example: 300
+     * Sets svg_url
+     * @param string $svg_url Url to a static svg of the chart
      * @return $this
      */
-    public function setHeight($height)
+    public function setSvgUrl($svg_url)
     {
-        $this->container['height'] = $height;
+        $this->container['svg_url'] = $svg_url;
 
         return $this;
     }
 
     /**
-     * Gets render_to
+     * Gets svg
      * @return string
      */
-    public function getRenderTo()
+    public function getSvg()
     {
-        return $this->container['render_to'];
+        return $this->container['svg'];
     }
 
     /**
-     * Sets render_to
-     * @param string $render_to Example: BarContainer
+     * Sets svg
+     * @param string $svg Url to a static svg of the chart
      * @return $this
      */
-    public function setRenderTo($render_to)
+    public function setSvg($svg)
     {
-        $this->container['render_to'] = $render_to;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     * @param string $type Example: scatter
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets zoom_type
-     * @return string
-     */
-    public function getZoomType()
-    {
-        return $this->container['zoom_type'];
-    }
-
-    /**
-     * Sets zoom_type
-     * @param string $zoom_type Example: xy
-     * @return $this
-     */
-    public function setZoomType($zoom_type)
-    {
-        $this->container['zoom_type'] = $zoom_type;
+        $this->container['svg'] = $svg;
 
         return $this;
     }

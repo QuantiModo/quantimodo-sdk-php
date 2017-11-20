@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **client_user_id** | **string** | Example: 118444693184829555362 | [optional] 
 **combine_notifications** | **bool** | Example: 1 | [optional] 
 **display_name** | **string** | User display name | 
-**earliest_reminder_time** | [**\DateTime**](\DateTime.md) | Earliest time user should get notifications. Example: 05:00:00 | [optional] 
+**earliest_reminder_time** | **string** | Earliest time user should get notifications. Example: 05:00:00 | [optional] 
 **email** | **string** | User email | 
 **first_name** | **string** | Example: Mike | [optional] 
 **get_preview_builds** | **bool** | Example: false | [optional] 

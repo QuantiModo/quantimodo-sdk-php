@@ -792,6 +792,13 @@ class UserStudyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "study_html"
+     */
+    public function testPropertyStudyHtml()
+    {
+    }
+
+    /**
      * Test attribute "study_limitations"
      */
     public function testPropertyStudyLimitations()

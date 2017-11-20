@@ -57,7 +57,7 @@ class UserVariable implements ArrayAccess
         'alias' => 'string',
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'cause_only' => 'bool',
-        'charts' => 'object',
+        'charts' => '\QuantiModo\Client\Model\Chart[]',
         'charts_link_dynamic' => 'string',
         'charts_link_email' => 'string',
         'charts_link_facebook' => 'string',
@@ -94,7 +94,6 @@ class UserVariable implements ArrayAccess
         'filling_type' => 'string',
         'filling_value' => 'float',
         'icon_icon' => 'string',
-        'highcharts' => '\QuantiModo\Client\Model\HighchartArray',
         'id' => 'int',
         'image_url' => 'string',
         'informational_url' => 'string',
@@ -247,7 +246,6 @@ class UserVariable implements ArrayAccess
         'filling_type' => null,
         'filling_value' => 'float',
         'icon_icon' => null,
-        'highcharts' => null,
         'id' => null,
         'image_url' => null,
         'informational_url' => null,
@@ -410,7 +408,6 @@ class UserVariable implements ArrayAccess
         'filling_type' => 'fillingType',
         'filling_value' => 'fillingValue',
         'icon_icon' => 'iconIcon',
-        'highcharts' => 'highcharts',
         'id' => 'id',
         'image_url' => 'imageUrl',
         'informational_url' => 'informationalUrl',
@@ -564,7 +561,6 @@ class UserVariable implements ArrayAccess
         'filling_type' => 'setFillingType',
         'filling_value' => 'setFillingValue',
         'icon_icon' => 'setIconIcon',
-        'highcharts' => 'setHighcharts',
         'id' => 'setId',
         'image_url' => 'setImageUrl',
         'informational_url' => 'setInformationalUrl',
@@ -718,7 +714,6 @@ class UserVariable implements ArrayAccess
         'filling_type' => 'getFillingType',
         'filling_value' => 'getFillingValue',
         'icon_icon' => 'getIconIcon',
-        'highcharts' => 'getHighcharts',
         'id' => 'getId',
         'image_url' => 'getImageUrl',
         'informational_url' => 'getInformationalUrl',
@@ -897,7 +892,6 @@ class UserVariable implements ArrayAccess
         $this->container['filling_type'] = isset($data['filling_type']) ? $data['filling_type'] : null;
         $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
         $this->container['icon_icon'] = isset($data['icon_icon']) ? $data['icon_icon'] : null;
-        $this->container['highcharts'] = isset($data['highcharts']) ? $data['highcharts'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
         $this->container['informational_url'] = isset($data['informational_url']) ? $data['informational_url'] : null;
@@ -1209,7 +1203,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets charts
-     * @return object
+     * @return \QuantiModo\Client\Model\Chart[]
      */
     public function getCharts()
     {
@@ -1218,7 +1212,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets charts
-     * @param object $charts Highcharts configs you can use if you add highcharts.js to your page
+     * @param \QuantiModo\Client\Model\Chart[] $charts
      * @return $this
      */
     public function setCharts($charts)
@@ -1980,27 +1974,6 @@ class UserVariable implements ArrayAccess
     public function setIconIcon($icon_icon)
     {
         $this->container['icon_icon'] = $icon_icon;
-
-        return $this;
-    }
-
-    /**
-     * Gets highcharts
-     * @return \QuantiModo\Client\Model\HighchartArray
-     */
-    public function getHighcharts()
-    {
-        return $this->container['highcharts'];
-    }
-
-    /**
-     * Sets highcharts
-     * @param \QuantiModo\Client\Model\HighchartArray $highcharts
-     * @return $this
-     */
-    public function setHighcharts($highcharts)
-    {
-        $this->container['highcharts'] = $highcharts;
 
         return $this;
     }

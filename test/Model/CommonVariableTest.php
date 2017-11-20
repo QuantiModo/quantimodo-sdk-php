@@ -106,6 +106,13 @@ class CommonVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "charts"
+     */
+    public function testPropertyCharts()
+    {
+    }
+
+    /**
      * Test attribute "charts_link_dynamic"
      */
     public function testPropertyChartsLinkDynamic()
@@ -214,13 +221,6 @@ class CommonVariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "data_source"
      */
     public function testPropertyDataSource()
-    {
-    }
-
-    /**
-     * Test attribute "highcharts"
-     */
-    public function testPropertyHighcharts()
     {
     }
 

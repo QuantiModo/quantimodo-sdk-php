@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\QuantiModo\Client\Model\GetStudyDataResponse**](GetStudyDataResponse.md) |  | [optional] 
 **message** | **string** | Message | [optional] 
 **status** | **int** | Status code | 
 **success** | **bool** |  | 

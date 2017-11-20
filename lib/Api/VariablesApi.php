@@ -295,12 +295,13 @@ class VariablesApi
      * @param string $client_id Example: oauth_test_client (optional)
      * @param string $search_phrase Example: %Body Fat% (optional)
      * @param string $synonyms Example: %McDonalds hotcake% (optional)
+     * @param string $upc UPC or other barcode scan result (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\CommonVariableArray
      */
-    public function getCommonVariables($offset = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source_name = null, $limit = '100', $id = null, $sort = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $manual_tracking = null, $variable_category_id = null, $include_private = null, $client_id = null, $search_phrase = null, $synonyms = null)
+    public function getCommonVariables($offset = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source_name = null, $limit = '100', $id = null, $sort = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $manual_tracking = null, $variable_category_id = null, $include_private = null, $client_id = null, $search_phrase = null, $synonyms = null, $upc = null)
     {
-        list($response) = $this->getCommonVariablesWithHttpInfo($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms);
+        list($response) = $this->getCommonVariablesWithHttpInfo($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms, $upc);
         return $response;
     }
 
@@ -331,10 +332,11 @@ class VariablesApi
      * @param string $client_id Example: oauth_test_client (optional)
      * @param string $search_phrase Example: %Body Fat% (optional)
      * @param string $synonyms Example: %McDonalds hotcake% (optional)
+     * @param string $upc UPC or other barcode scan result (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\CommonVariableArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommonVariablesWithHttpInfo($offset = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source_name = null, $limit = '100', $id = null, $sort = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $manual_tracking = null, $variable_category_id = null, $include_private = null, $client_id = null, $search_phrase = null, $synonyms = null)
+    public function getCommonVariablesWithHttpInfo($offset = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source_name = null, $limit = '100', $id = null, $sort = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $manual_tracking = null, $variable_category_id = null, $include_private = null, $client_id = null, $search_phrase = null, $synonyms = null, $upc = null)
     {
         if (!is_null($offset) && ($offset < 0)) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling VariablesApi.getCommonVariables, must be bigger than or equal to 0.');
@@ -440,6 +442,10 @@ class VariablesApi
         if ($synonyms !== null) {
             $queryParams['synonyms'] = $this->apiClient->getSerializer()->toQueryValue($synonyms);
         }
+        // query params
+        if ($upc !== null) {
+            $queryParams['upc'] = $this->apiClient->getSerializer()->toQueryValue($upc);
+        }
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -486,7 +492,7 @@ class VariablesApi
      *
      * Get variables along with related user-specific analysis settings and statistics
      *
-     * @param bool $include_charts Return highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
+     * @param bool $include_charts Return Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param float $user_id User&#39;s id (optional)
      * @param string $variable_category_name Limit results to a specific variable category (optional)
@@ -504,12 +510,13 @@ class VariablesApi
      * @param bool $manual_tracking Example: (optional)
      * @param string $app_name Example: MoodiModo (optional)
      * @param string $client_id Example: oauth_test_client (optional)
+     * @param string $upc UPC or other barcode scan result (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\UserVariable[]
      */
-    public function getUserVariables($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null)
+    public function getUserVariables($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null, $upc = null)
     {
-        list($response) = $this->getUserVariablesWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id);
+        list($response) = $this->getUserVariablesWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id, $upc);
         return $response;
     }
 
@@ -518,7 +525,7 @@ class VariablesApi
      *
      * Get variables along with related user-specific analysis settings and statistics
      *
-     * @param bool $include_charts Return highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
+     * @param bool $include_charts Return Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param float $user_id User&#39;s id (optional)
      * @param string $variable_category_name Limit results to a specific variable category (optional)
@@ -536,10 +543,11 @@ class VariablesApi
      * @param bool $manual_tracking Example: (optional)
      * @param string $app_name Example: MoodiModo (optional)
      * @param string $client_id Example: oauth_test_client (optional)
+     * @param string $upc UPC or other barcode scan result (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\UserVariable[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserVariablesWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null)
+    public function getUserVariablesWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null, $upc = null)
     {
         if (!is_null($offset) && ($offset < 0)) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling VariablesApi.getUserVariables, must be bigger than or equal to 0.');
@@ -628,6 +636,10 @@ class VariablesApi
         // query params
         if ($client_id !== null) {
             $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
+        }
+        // query params
+        if ($upc !== null) {
+            $queryParams['upc'] = $this->apiClient->getSerializer()->toQueryValue($upc);
         }
 
         // for model (json/xml)

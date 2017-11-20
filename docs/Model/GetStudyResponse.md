@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **data** | [**\QuantiModo\Client\Model\GetStudyDataResponse**](GetStudyDataResponse.md) |  | [optional] 
 **effect_processed_daily_measurements** | [**\QuantiModo\Client\Model\ProcessedDailyMeasurement[]**](ProcessedDailyMeasurement.md) |  | [optional] 
 **effect_variable** | [**\QuantiModo\Client\Model\UserVariable**](UserVariable.md) |  | [optional] 
-**highcharts** | [**\QuantiModo\Client\Model\HighchartArray**](HighchartArray.md) |  | [optional] 
 **message** | **string** | Message | [optional] 
 **pairs** | [**\QuantiModo\Client\Model\Pair[]**](Pair.md) |  | [optional] 
 **pairs_of_averages_for_all_users** | [**\QuantiModo\Client\Model\PairsOfAveragesForAllUser[]**](PairsOfAveragesForAllUser.md) |  | [optional] 

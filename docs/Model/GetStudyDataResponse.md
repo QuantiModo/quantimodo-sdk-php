@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **effect_processed_daily_measurements** | [**\QuantiModo\Client\Model\ProcessedDailyMeasurement[]**](ProcessedDailyMeasurement.md) |  | 
 **effect_variable** | [**\QuantiModo\Client\Model\UserVariable**](UserVariable.md) |  | 
 **pairs** | [**\QuantiModo\Client\Model\Pair[]**](Pair.md) |  | 
-**statistics** | [**\QuantiModo\Client\Model\Correlation**](Correlation.md) |  | 
+**statistics** | [**\QuantiModo\Client\Model\Correlation**](Correlation.md) |  | [optional] 
 **text** | **string** | Example: | 
 **user** | **string** | Example: | 
 **user_id** | **int** | Example: 230 | 

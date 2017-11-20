@@ -118,4 +118,11 @@ class MeasurementSetTest extends \PHPUnit_Framework_TestCase
     public function testPropertyVariableName()
     {
     }
+
+    /**
+     * Test attribute "upc"
+     */
+    public function testPropertyUpc()
+    {
+    }
 }

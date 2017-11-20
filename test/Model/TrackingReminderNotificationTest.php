@@ -113,6 +113,13 @@ class TrackingReminderNotificationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "modified_value"
+     */
+    public function testPropertyModifiedValue()
+    {
+    }
+
+    /**
      * Test attribute "unit_abbreviated_name"
      */
     public function testPropertyUnitAbbreviatedName()
@@ -263,6 +270,13 @@ class TrackingReminderNotificationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "number_of_unique_values"
      */
     public function testPropertyNumberOfUniqueValues()
+    {
+    }
+
+    /**
+     * Test attribute "outcome"
+     */
+    public function testPropertyOutcome()
     {
     }
 

@@ -120,7 +120,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCommonVariables**
-> \QuantiModo\Client\Model\CommonVariableArray getCommonVariables($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms)
+> \QuantiModo\Client\Model\CommonVariableArray getCommonVariables($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms, $upc)
 
 Get common variables with aggregated instead of user-specific data
 
@@ -161,9 +161,10 @@ $include_private = true; // bool | Example:
 $client_id = "client_id_example"; // string | Example: oauth_test_client
 $search_phrase = "search_phrase_example"; // string | Example: %Body Fat%
 $synonyms = "synonyms_example"; // string | Example: %McDonalds hotcake%
+$upc = "upc_example"; // string | UPC or other barcode scan result
 
 try {
-    $result = $api_instance->getCommonVariables($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms);
+    $result = $api_instance->getCommonVariables($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms, $upc);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariablesApi->getCommonVariables: ', $e->getMessage(), PHP_EOL;
@@ -197,6 +198,7 @@ Name | Type | Description  | Notes
  **client_id** | **string**| Example: oauth_test_client | [optional]
  **search_phrase** | **string**| Example: %Body Fat% | [optional]
  **synonyms** | **string**| Example: %McDonalds hotcake% | [optional]
+ **upc** | **string**| UPC or other barcode scan result | [optional]
 
 ### Return type
 
@@ -214,7 +216,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getUserVariables**
-> \QuantiModo\Client\Model\UserVariable[] getUserVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id)
+> \QuantiModo\Client\Model\UserVariable[] getUserVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id, $upc)
 
 Get variables along with related user-specific analysis settings and statistics
 
@@ -233,7 +235,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_to
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\VariablesApi();
-$include_charts = true; // bool | Return highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
+$include_charts = true; // bool | Return Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
 $number_of_raw_measurements = "number_of_raw_measurements_example"; // string | Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.
 $user_id = 3.4; // float | User's id
 $variable_category_name = "variable_category_name_example"; // string | Limit results to a specific variable category
@@ -251,9 +253,10 @@ $include_public = true; // bool | Example: true
 $manual_tracking = true; // bool | Example:
 $app_name = "app_name_example"; // string | Example: MoodiModo
 $client_id = "client_id_example"; // string | Example: oauth_test_client
+$upc = "upc_example"; // string | UPC or other barcode scan result
 
 try {
-    $result = $api_instance->getUserVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id);
+    $result = $api_instance->getUserVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id, $upc);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariablesApi->getUserVariables: ', $e->getMessage(), PHP_EOL;
@@ -265,7 +268,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **include_charts** | **bool**| Return highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
+ **include_charts** | **bool**| Return Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
  **number_of_raw_measurements** | **string**| Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **variable_category_name** | **string**| Limit results to a specific variable category | [optional]
@@ -283,6 +286,7 @@ Name | Type | Description  | Notes
  **manual_tracking** | **bool**| Example: | [optional]
  **app_name** | **string**| Example: MoodiModo | [optional]
  **client_id** | **string**| Example: oauth_test_client | [optional]
+ **upc** | **string**| UPC or other barcode scan result | [optional]
 
 ### Return type
 

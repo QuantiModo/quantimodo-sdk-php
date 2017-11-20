@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **unit_abbreviated_name** | **string** | Unit of measurement | 
 **variable_category_name** | **string** | Variable category name | [optional] 
 **variable_name** | **string** | ORIGINAL name of the variable for which we are creating the measurement records | 
+**upc** | **string** | UPC or other barcode scan result | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

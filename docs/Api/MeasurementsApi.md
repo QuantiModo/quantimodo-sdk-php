@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getMeasurements**
-> \QuantiModo\Client\Model\MeasurementArray getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter)
+> \QuantiModo\Client\Model\MeasurementArray getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $connector_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter)
 
 Get measurements for this user
 
@@ -92,6 +92,7 @@ $variable_category_name = "variable_category_name_example"; // string | Limit re
 $updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss` datetime format. Time zone should be UTC and not local.
 $user_id = 3.4; // float | User's id
 $source_name = "source_name_example"; // string | ID of the source you want measurements for (supports exact name match only)
+$connector_name = "connector_name_example"; // string | Example: facebook
 $value = "value_example"; // string | Value of measurement
 $unit_name = "unit_name_example"; // string | Example: 86400
 $earliest_measurement_time = "earliest_measurement_time_example"; // string | Excluded records with measurement times earlier than this value. Use UTC ISO 8601 `YYYY-MM-DDThh:mm:ss`  datetime format. Time zone should be UTC and not local.
@@ -107,7 +108,7 @@ $do_not_convert = true; // bool | Example: 1
 $min_max_filter = true; // bool | Example: 1
 
 try {
-    $result = $api_instance->getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter);
+    $result = $api_instance->getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $connector_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->getMeasurements: ', $e->getMessage(), PHP_EOL;
@@ -127,6 +128,7 @@ Name | Type | Description  | Notes
  **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **source_name** | **string**| ID of the source you want measurements for (supports exact name match only) | [optional]
+ **connector_name** | **string**| Example: facebook | [optional]
  **value** | **string**| Value of measurement | [optional]
  **unit_name** | **string**| Example: 86400 | [optional]
  **earliest_measurement_time** | **string**| Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional]

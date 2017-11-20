@@ -78,16 +78,9 @@ class ChartTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "animation"
+     * Test attribute "highchart_config"
      */
-    public function testPropertyAnimation()
-    {
-    }
-
-    /**
-     * Test attribute "chart_config"
-     */
-    public function testPropertyChartConfig()
+    public function testPropertyHighchartConfig()
     {
     }
 
@@ -113,30 +106,16 @@ class ChartTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "height"
+     * Test attribute "svg_url"
      */
-    public function testPropertyHeight()
+    public function testPropertySvgUrl()
     {
     }
 
     /**
-     * Test attribute "render_to"
+     * Test attribute "svg"
      */
-    public function testPropertyRenderTo()
-    {
-    }
-
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
-    {
-    }
-
-    /**
-     * Test attribute "zoom_type"
-     */
-    public function testPropertyZoomType()
+    public function testPropertySvg()
     {
     }
 }

@@ -65,7 +65,7 @@ class User implements ArrayAccess
         'client_user_id' => 'string',
         'combine_notifications' => 'bool',
         'display_name' => 'string',
-        'earliest_reminder_time' => '\DateTime',
+        'earliest_reminder_time' => 'string',
         'email' => 'string',
         'first_name' => 'string',
         'get_preview_builds' => 'bool',
@@ -115,7 +115,7 @@ class User implements ArrayAccess
         'client_user_id' => null,
         'combine_notifications' => null,
         'display_name' => null,
-        'earliest_reminder_time' => 'date-time',
+        'earliest_reminder_time' => null,
         'email' => null,
         'first_name' => null,
         'get_preview_builds' => null,
@@ -681,7 +681,7 @@ class User implements ArrayAccess
 
     /**
      * Gets earliest_reminder_time
-     * @return \DateTime
+     * @return string
      */
     public function getEarliestReminderTime()
     {
@@ -690,7 +690,7 @@ class User implements ArrayAccess
 
     /**
      * Sets earliest_reminder_time
-     * @param \DateTime $earliest_reminder_time Earliest time user should get notifications. Example: 05:00:00
+     * @param string $earliest_reminder_time Earliest time user should get notifications. Example: 05:00:00
      * @return $this
      */
     public function setEarliestReminderTime($earliest_reminder_time)

@@ -302,6 +302,13 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "outcome"
+     */
+    public function testPropertyOutcome()
+    {
+    }
+
+    /**
      * Test attribute "png_path"
      */
     public function testPropertyPngPath()
@@ -445,6 +452,13 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
      * Test attribute "tracking_reminder_image_url"
      */
     public function testPropertyTrackingReminderImageUrl()
+    {
+    }
+
+    /**
+     * Test attribute "upc"
+     */
+    public function testPropertyUpc()
     {
     }
 

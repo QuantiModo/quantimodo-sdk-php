@@ -59,7 +59,8 @@ class MeasurementSet implements ArrayAccess
         'source_name' => 'string',
         'unit_abbreviated_name' => 'string',
         'variable_category_name' => 'string',
-        'variable_name' => 'string'
+        'variable_name' => 'string',
+        'upc' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class MeasurementSet implements ArrayAccess
         'source_name' => null,
         'unit_abbreviated_name' => null,
         'variable_category_name' => null,
-        'variable_name' => null
+        'variable_name' => null,
+        'upc' => null
     ];
 
     public static function swaggerTypes()
@@ -95,7 +97,8 @@ class MeasurementSet implements ArrayAccess
         'source_name' => 'sourceName',
         'unit_abbreviated_name' => 'unitAbbreviatedName',
         'variable_category_name' => 'variableCategoryName',
-        'variable_name' => 'variableName'
+        'variable_name' => 'variableName',
+        'upc' => 'upc'
     ];
 
 
@@ -109,7 +112,8 @@ class MeasurementSet implements ArrayAccess
         'source_name' => 'setSourceName',
         'unit_abbreviated_name' => 'setUnitAbbreviatedName',
         'variable_category_name' => 'setVariableCategoryName',
-        'variable_name' => 'setVariableName'
+        'variable_name' => 'setVariableName',
+        'upc' => 'setUpc'
     ];
 
 
@@ -123,7 +127,8 @@ class MeasurementSet implements ArrayAccess
         'source_name' => 'getSourceName',
         'unit_abbreviated_name' => 'getUnitAbbreviatedName',
         'variable_category_name' => 'getVariableCategoryName',
-        'variable_name' => 'getVariableName'
+        'variable_name' => 'getVariableName',
+        'upc' => 'getUpc'
     ];
 
     public static function attributeMap()
@@ -177,6 +182,7 @@ class MeasurementSet implements ArrayAccess
         $this->container['unit_abbreviated_name'] = isset($data['unit_abbreviated_name']) ? $data['unit_abbreviated_name'] : null;
         $this->container['variable_category_name'] = isset($data['variable_category_name']) ? $data['variable_category_name'] : null;
         $this->container['variable_name'] = isset($data['variable_name']) ? $data['variable_name'] : null;
+        $this->container['upc'] = isset($data['upc']) ? $data['upc'] : null;
     }
 
     /**
@@ -371,6 +377,27 @@ class MeasurementSet implements ArrayAccess
     public function setVariableName($variable_name)
     {
         $this->container['variable_name'] = $variable_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets upc
+     * @return string
+     */
+    public function getUpc()
+    {
+        return $this->container['upc'];
+    }
+
+    /**
+     * Sets upc
+     * @param string $upc UPC or other barcode scan result
+     * @return $this
+     */
+    public function setUpc($upc)
+    {
+        $this->container['upc'] = $upc;
 
         return $this;
     }

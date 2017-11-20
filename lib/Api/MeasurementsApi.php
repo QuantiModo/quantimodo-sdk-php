@@ -188,6 +188,7 @@ class MeasurementsApi
      * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
      * @param float $user_id User&#39;s id (optional)
      * @param string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
+     * @param string $connector_name Example: facebook (optional)
      * @param string $value Value of measurement (optional)
      * @param string $unit_name Example: 86400 (optional)
      * @param string $earliest_measurement_time Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. (optional)
@@ -204,9 +205,9 @@ class MeasurementsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\MeasurementArray
      */
-    public function getMeasurements($variable_name = null, $sort = null, $limit = '100', $offset = null, $variable_category_name = null, $updated_at = null, $user_id = null, $source_name = null, $value = null, $unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $id = null, $grouping_width = null, $grouping_timezone = null, $do_not_process = null, $app_name = null, $client_id = null, $do_not_convert = null, $min_max_filter = null)
+    public function getMeasurements($variable_name = null, $sort = null, $limit = '100', $offset = null, $variable_category_name = null, $updated_at = null, $user_id = null, $source_name = null, $connector_name = null, $value = null, $unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $id = null, $grouping_width = null, $grouping_timezone = null, $do_not_process = null, $app_name = null, $client_id = null, $do_not_convert = null, $min_max_filter = null)
     {
-        list($response) = $this->getMeasurementsWithHttpInfo($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter);
+        list($response) = $this->getMeasurementsWithHttpInfo($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $connector_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter);
         return $response;
     }
 
@@ -223,6 +224,7 @@ class MeasurementsApi
      * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
      * @param float $user_id User&#39;s id (optional)
      * @param string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
+     * @param string $connector_name Example: facebook (optional)
      * @param string $value Value of measurement (optional)
      * @param string $unit_name Example: 86400 (optional)
      * @param string $earliest_measurement_time Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. (optional)
@@ -239,7 +241,7 @@ class MeasurementsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\MeasurementArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMeasurementsWithHttpInfo($variable_name = null, $sort = null, $limit = '100', $offset = null, $variable_category_name = null, $updated_at = null, $user_id = null, $source_name = null, $value = null, $unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $id = null, $grouping_width = null, $grouping_timezone = null, $do_not_process = null, $app_name = null, $client_id = null, $do_not_convert = null, $min_max_filter = null)
+    public function getMeasurementsWithHttpInfo($variable_name = null, $sort = null, $limit = '100', $offset = null, $variable_category_name = null, $updated_at = null, $user_id = null, $source_name = null, $connector_name = null, $value = null, $unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $id = null, $grouping_width = null, $grouping_timezone = null, $do_not_process = null, $app_name = null, $client_id = null, $do_not_convert = null, $min_max_filter = null)
     {
         if (!is_null($offset) && ($offset < 0)) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling MeasurementsApi.getMeasurements, must be bigger than or equal to 0.');
@@ -288,6 +290,10 @@ class MeasurementsApi
         // query params
         if ($source_name !== null) {
             $queryParams['sourceName'] = $this->apiClient->getSerializer()->toQueryValue($source_name);
+        }
+        // query params
+        if ($connector_name !== null) {
+            $queryParams['connectorName'] = $this->apiClient->getSerializer()->toQueryValue($connector_name);
         }
         // query params
         if ($value !== null) {

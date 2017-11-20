@@ -59,6 +59,7 @@ class TrackingReminderNotification implements ArrayAccess
         'client_id' => 'string',
         'combination_operation' => 'string',
         'created_at' => '\DateTime',
+        'modified_value' => 'double',
         'unit_abbreviated_name' => 'string',
         'unit_category_id' => 'int',
         'unit_category_name' => 'string',
@@ -81,6 +82,7 @@ class TrackingReminderNotification implements ArrayAccess
         'notification_bar' => 'bool',
         'notified_at' => '\DateTime',
         'number_of_unique_values' => 'int',
+        'outcome' => 'bool',
         'png_path' => 'string',
         'png_url' => 'string',
         'pop_up' => 'bool',
@@ -132,6 +134,7 @@ class TrackingReminderNotification implements ArrayAccess
         'client_id' => null,
         'combination_operation' => null,
         'created_at' => 'date-time',
+        'modified_value' => 'double',
         'unit_abbreviated_name' => null,
         'unit_category_id' => null,
         'unit_category_name' => null,
@@ -154,6 +157,7 @@ class TrackingReminderNotification implements ArrayAccess
         'notification_bar' => null,
         'notified_at' => 'date-time',
         'number_of_unique_values' => null,
+        'outcome' => null,
         'png_path' => null,
         'png_url' => null,
         'pop_up' => null,
@@ -215,6 +219,7 @@ class TrackingReminderNotification implements ArrayAccess
         'client_id' => 'clientId',
         'combination_operation' => 'combinationOperation',
         'created_at' => 'createdAt',
+        'modified_value' => 'modifiedValue',
         'unit_abbreviated_name' => 'unitAbbreviatedName',
         'unit_category_id' => 'unitCategoryId',
         'unit_category_name' => 'unitCategoryName',
@@ -237,6 +242,7 @@ class TrackingReminderNotification implements ArrayAccess
         'notification_bar' => 'notificationBar',
         'notified_at' => 'notifiedAt',
         'number_of_unique_values' => 'numberOfUniqueValues',
+        'outcome' => 'outcome',
         'png_path' => 'pngPath',
         'png_url' => 'pngUrl',
         'pop_up' => 'popUp',
@@ -289,6 +295,7 @@ class TrackingReminderNotification implements ArrayAccess
         'client_id' => 'setClientId',
         'combination_operation' => 'setCombinationOperation',
         'created_at' => 'setCreatedAt',
+        'modified_value' => 'setModifiedValue',
         'unit_abbreviated_name' => 'setUnitAbbreviatedName',
         'unit_category_id' => 'setUnitCategoryId',
         'unit_category_name' => 'setUnitCategoryName',
@@ -311,6 +318,7 @@ class TrackingReminderNotification implements ArrayAccess
         'notification_bar' => 'setNotificationBar',
         'notified_at' => 'setNotifiedAt',
         'number_of_unique_values' => 'setNumberOfUniqueValues',
+        'outcome' => 'setOutcome',
         'png_path' => 'setPngPath',
         'png_url' => 'setPngUrl',
         'pop_up' => 'setPopUp',
@@ -363,6 +371,7 @@ class TrackingReminderNotification implements ArrayAccess
         'client_id' => 'getClientId',
         'combination_operation' => 'getCombinationOperation',
         'created_at' => 'getCreatedAt',
+        'modified_value' => 'getModifiedValue',
         'unit_abbreviated_name' => 'getUnitAbbreviatedName',
         'unit_category_id' => 'getUnitCategoryId',
         'unit_category_name' => 'getUnitCategoryName',
@@ -385,6 +394,7 @@ class TrackingReminderNotification implements ArrayAccess
         'notification_bar' => 'getNotificationBar',
         'notified_at' => 'getNotifiedAt',
         'number_of_unique_values' => 'getNumberOfUniqueValues',
+        'outcome' => 'getOutcome',
         'png_path' => 'getPngPath',
         'png_url' => 'getPngUrl',
         'pop_up' => 'getPopUp',
@@ -476,6 +486,7 @@ class TrackingReminderNotification implements ArrayAccess
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
         $this->container['combination_operation'] = isset($data['combination_operation']) ? $data['combination_operation'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['modified_value'] = isset($data['modified_value']) ? $data['modified_value'] : null;
         $this->container['unit_abbreviated_name'] = isset($data['unit_abbreviated_name']) ? $data['unit_abbreviated_name'] : null;
         $this->container['unit_category_id'] = isset($data['unit_category_id']) ? $data['unit_category_id'] : null;
         $this->container['unit_category_name'] = isset($data['unit_category_name']) ? $data['unit_category_name'] : null;
@@ -498,6 +509,7 @@ class TrackingReminderNotification implements ArrayAccess
         $this->container['notification_bar'] = isset($data['notification_bar']) ? $data['notification_bar'] : null;
         $this->container['notified_at'] = isset($data['notified_at']) ? $data['notified_at'] : null;
         $this->container['number_of_unique_values'] = isset($data['number_of_unique_values']) ? $data['number_of_unique_values'] : null;
+        $this->container['outcome'] = isset($data['outcome']) ? $data['outcome'] : null;
         $this->container['png_path'] = isset($data['png_path']) ? $data['png_path'] : null;
         $this->container['png_url'] = isset($data['png_url']) ? $data['png_url'] : null;
         $this->container['pop_up'] = isset($data['pop_up']) ? $data['pop_up'] : null;
@@ -716,6 +728,27 @@ class TrackingReminderNotification implements ArrayAccess
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets modified_value
+     * @return double
+     */
+    public function getModifiedValue()
+    {
+        return $this->container['modified_value'];
+    }
+
+    /**
+     * Sets modified_value
+     * @param double $modified_value Is the user specified default value or falls back to the last value in user unit. Good for initializing input fields
+     * @return $this
+     */
+    public function setModifiedValue($modified_value)
+    {
+        $this->container['modified_value'] = $modified_value;
 
         return $this;
     }
@@ -1178,6 +1211,27 @@ class TrackingReminderNotification implements ArrayAccess
     public function setNumberOfUniqueValues($number_of_unique_values)
     {
         $this->container['number_of_unique_values'] = $number_of_unique_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets outcome
+     * @return bool
+     */
+    public function getOutcome()
+    {
+        return $this->container['outcome'];
+    }
+
+    /**
+     * Sets outcome
+     * @param bool $outcome Indicates whether or not the variable is usually an outcome of interest such as a symptom or emotion
+     * @return $this
+     */
+    public function setOutcome($outcome)
+    {
+        $this->container['outcome'] = $outcome;
 
         return $this;
     }

@@ -197,20 +197,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "cause_variable_unit_id"
-     */
-    public function testPropertyCauseVariableUnitId()
-    {
-    }
-
-    /**
-     * Test attribute "cause_variable_unit_name"
-     */
-    public function testPropertyCauseVariableUnitName()
-    {
-    }
-
-    /**
      * Test attribute "cause_variable_id"
      */
     public function testPropertyCauseVariableId()
@@ -298,20 +284,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "data_sources"
      */
     public function testPropertyDataSources()
-    {
-    }
-
-    /**
-     * Test attribute "data_sources_paragraph_for_cause"
-     */
-    public function testPropertyDataSourcesParagraphForCause()
-    {
-    }
-
-    /**
-     * Test attribute "data_sources_paragraph_for_effect"
-     */
-    public function testPropertyDataSourcesParagraphForEffect()
     {
     }
 
@@ -491,23 +463,16 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "gauge_sharing_image_url"
+     */
+    public function testPropertyGaugeSharingImageUrl()
+    {
+    }
+
+    /**
      * Test attribute "image_url"
      */
     public function testPropertyImageUrl()
-    {
-    }
-
-    /**
-     * Test attribute "instructions_for_cause"
-     */
-    public function testPropertyInstructionsForCause()
-    {
-    }
-
-    /**
-     * Test attribute "instructions_for_effect"
-     */
-    public function testPropertyInstructionsForEffect()
     {
     }
 
@@ -680,9 +645,30 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "robot_sharing_image_url"
+     */
+    public function testPropertyRobotSharingImageUrl()
+    {
+    }
+
+    /**
      * Test attribute "share_user_measurements"
      */
     public function testPropertyShareUserMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "sharing_description"
+     */
+    public function testPropertySharingDescription()
+    {
+    }
+
+    /**
+     * Test attribute "sharing_title"
+     */
+    public function testPropertySharingTitle()
     {
     }
 
@@ -806,13 +792,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "timestamp"
-     */
-    public function testPropertyTimestamp()
-    {
-    }
-
-    /**
      * Test attribute "t_value"
      */
     public function testPropertyTValue()
@@ -869,13 +848,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "causality_factor"
-     */
-    public function testPropertyCausalityFactor()
-    {
-    }
-
-    /**
      * Test attribute "outcome_data_sources"
      */
     public function testPropertyOutcomeDataSources()
@@ -918,9 +890,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "all_pairs_significance"
+     * Test attribute "study_html"
      */
-    public function testPropertyAllPairsSignificance()
+    public function testPropertyStudyHtml()
     {
     }
 
@@ -939,30 +911,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "cause_changes_statistical_significance"
-     */
-    public function testPropertyCauseChangesStatisticalSignificance()
-    {
-    }
-
-    /**
-     * Test attribute "cause_number_of_processed_daily_measurements"
-     */
-    public function testPropertyCauseNumberOfProcessedDailyMeasurements()
-    {
-    }
-
-    /**
      * Test attribute "cause_number_of_raw_measurements"
      */
     public function testPropertyCauseNumberOfRawMeasurements()
-    {
-    }
-
-    /**
-     * Test attribute "cause_value_spread"
-     */
-    public function testPropertyCauseValueSpread()
     {
     }
 
@@ -988,23 +939,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "data_points"
-     */
-    public function testPropertyDataPoints()
-    {
-    }
-
-    /**
      * Test attribute "degrees_of_freedom"
      */
     public function testPropertyDegreesOfFreedom()
-    {
-    }
-
-    /**
-     * Test attribute "distance_from_middle_to_be_hight_low_effect"
-     */
-    public function testPropertyDistanceFromMiddleToBeHightLowEffect()
     {
     }
 
@@ -1016,20 +953,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "effect_number_of_raw_measurements"
-     */
-    public function testPropertyEffectNumberOfRawMeasurements()
-    {
-    }
-
-    /**
-     * Test attribute "effect_value_spread"
-     */
-    public function testPropertyEffectValueSpread()
-    {
-    }
-
-    /**
      * Test attribute "error"
      */
     public function testPropertyError()
@@ -1037,149 +960,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "maximum_cause_value"
-     */
-    public function testPropertyMaximumCauseValue()
-    {
-    }
-
-    /**
-     * Test attribute "maximum_effect_value"
-     */
-    public function testPropertyMaximumEffectValue()
-    {
-    }
-
-    /**
-     * Test attribute "median_of_lower_half_of_effect_measurements"
-     */
-    public function testPropertyMedianOfLowerHalfOfEffectMeasurements()
-    {
-    }
-
-    /**
-     * Test attribute "median_of_upper_half_of_effect_measurements"
-     */
-    public function testPropertyMedianOfUpperHalfOfEffectMeasurements()
-    {
-    }
-
-    /**
-     * Test attribute "minimum_cause_value"
-     */
-    public function testPropertyMinimumCauseValue()
-    {
-    }
-
-    /**
-     * Test attribute "minimum_effect_value"
-     */
-    public function testPropertyMinimumEffectValue()
-    {
-    }
-
-    /**
-     * Test attribute "minimum_probability"
-     */
-    public function testPropertyMinimumProbability()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_cause_changes_for_optimal_values"
-     */
-    public function testPropertyNumberOfCauseChangesForOptimalValues()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_days"
-     */
-    public function testPropertyNumberOfDays()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_days_significance"
-     */
-    public function testPropertyNumberOfDaysSignificance()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_effect_changes_for_optimal_values"
-     */
-    public function testPropertyNumberOfEffectChangesForOptimalValues()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_high_effect_pairs"
-     */
-    public function testPropertyNumberOfHighEffectPairs()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_low_effect_pairs"
-     */
-    public function testPropertyNumberOfLowEffectPairs()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_samples"
-     */
-    public function testPropertyNumberOfSamples()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_unique_cause_values_for_optimal_values"
-     */
-    public function testPropertyNumberOfUniqueCauseValuesForOptimalValues()
-    {
-    }
-
-    /**
-     * Test attribute "number_of_unique_effect_values_for_optimal_values"
-     */
-    public function testPropertyNumberOfUniqueEffectValuesForOptimalValues()
-    {
-    }
-
-    /**
      * Test attribute "number_of_users"
      */
     public function testPropertyNumberOfUsers()
-    {
-    }
-
-    /**
-     * Test attribute "optimal_change_spread"
-     */
-    public function testPropertyOptimalChangeSpread()
-    {
-    }
-
-    /**
-     * Test attribute "optimal_change_spread_significance"
-     */
-    public function testPropertyOptimalChangeSpreadSignificance()
-    {
-    }
-
-    /**
-     * Test attribute "pairs_over_time_chart_config"
-     */
-    public function testPropertyPairsOverTimeChartConfig()
-    {
-    }
-
-    /**
-     * Test attribute "per_day_sentence_fragment"
-     */
-    public function testPropertyPerDaySentenceFragment()
     {
     }
 
@@ -1215,48 +998,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "aggregate_qm_score"
      */
     public function testPropertyAggregateQmScore()
-    {
-    }
-
-    /**
-     * Test attribute "cause_unit"
-     */
-    public function testPropertyCauseUnit()
-    {
-    }
-
-    /**
-     * Test attribute "cause_variable_common_alias"
-     */
-    public function testPropertyCauseVariableCommonAlias()
-    {
-    }
-
-    /**
-     * Test attribute "cause_variable_informational_url"
-     */
-    public function testPropertyCauseVariableInformationalUrl()
-    {
-    }
-
-    /**
-     * Test attribute "cause_variable_product_url"
-     */
-    public function testPropertyCauseVariableProductUrl()
-    {
-    }
-
-    /**
-     * Test attribute "effect_variable_informational_url"
-     */
-    public function testPropertyEffectVariableInformationalUrl()
-    {
-    }
-
-    /**
-     * Test attribute "effect_variable_product_url"
-     */
-    public function testPropertyEffectVariableProductUrl()
     {
     }
 

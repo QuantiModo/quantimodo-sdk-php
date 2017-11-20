@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **available_units** | [**\QuantiModo\Client\Model\Unit[]**](Unit.md) |  | 
 **category** | **string** | Example: Sleep | [optional] 
 **cause_only** | **int** | A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user. | 
+**charts** | [**\QuantiModo\Client\Model\Chart[]**](Chart.md) |  | [optional] 
 **charts_link_dynamic** | **string** | Example: https://local.quantimo.do/ionic/Modo/www/#/app/charts/Barometric%20Pressure?variableName&#x3D;Barometric%20Pressure&amp;userId&#x3D;230&amp;pngUrl&#x3D;https%3A%2F%2Fapp.quantimo.do%2Fionic%2FModo%2Fwww%2Fimg%2Fvariable_categories%2Fenvironment.png | 
 **charts_link_email** | **string** | Example: mailto:?subject&#x3D;Check%20out%20my%20Barometric%20Pressure%20data%21&amp;body&#x3D;See%20my%20Barometric%20Pressure%20history%20at%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DBarometric%2520Pressure%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Fenvironment.png%0A%0AHave%20a%20great%20day! | 
 **charts_link_facebook** | **string** | Example: https://www.facebook.com/sharer/sharer.php?u&#x3D;https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DBarometric%2520Pressure%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Fenvironment.png | 
@@ -23,7 +24,6 @@ Name | Type | Description | Notes
 **common_variable_updated_at** | [**\DateTime**](\DateTime.md) | Example: 2017-07-30 20:47:38 | 
 **created_at** | [**\DateTime**](\DateTime.md) | Example: 2014-10-23 03:41:06 | [optional] 
 **data_source** | [**\QuantiModo\Client\Model\DataSource**](DataSource.md) |  | 
-**highcharts** | [**\QuantiModo\Client\Model\HighchartArray**](HighchartArray.md) |  | [optional] 
 **unit_abbreviated_name** | **string** | Abbreviated name of the default unit for the variable | 
 **unit_category_id** | **int** | Example: 1 | [optional] 
 **unit_category_name** | **string** | Example: Duration | [optional] 

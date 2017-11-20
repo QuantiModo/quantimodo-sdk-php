@@ -120,13 +120,6 @@ class GetStudyResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "highcharts"
-     */
-    public function testPropertyHighcharts()
-    {
-    }
-
-    /**
      * Test attribute "message"
      */
     public function testPropertyMessage()

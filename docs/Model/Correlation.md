@@ -12,20 +12,18 @@ Name | Type | Description | Notes
 **average_effect_following_low_cause_explanation** | **string** | Example: Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality | 
 **average_forward_pearson_correlation_over_onset_delays** | **double** | Example: 0.396 | 
 **average_reverse_pearson_correlation_over_onset_delays** | **double** | Example: 0.453667 | 
-**average_vote** | **string** | Example: 0.9855 | 
+**average_vote** | **float** | Example: 0.9855 | 
 **cause_changes** | **int** | Example: 164 | 
 **cause_data_source** | [**\QuantiModo\Client\Model\DataSource**](DataSource.md) |  | [optional] 
 **cause_user_variable_share_user_measurements** | **int** | Example: 1 | 
-**cause_variable_category_id** | **int** | Example: 6 | 
-**cause_variable_category_name** | **string** | Example: Sleep | 
-**cause_variable_combination_operation** | **string** | Example: MEAN | 
-**cause_variable_unit_abbreviated_name** | **string** | Example: /5 | 
-**cause_variable_unit_id** | **int** | Example: 10 | 
-**cause_variable_unit_name** | **string** | Example: 1 to 5 Rating | 
-**cause_variable_id** | **int** | Example: 1448 | 
-**cause_variable_image_url** | **string** | Example: https://maxcdn.icons8.com/Color/PNG/96/Household/sleeping_in_bed-96.png | 
-**cause_variable_ion_icon** | **string** | Example: ion-ios-cloudy-night-outline | 
-**cause_variable_most_common_connector_id** | **int** | Example: 6 | 
+**cause_variable_category_id** | **int** | Example: 6 | [optional] 
+**cause_variable_category_name** | **string** | Example: Sleep | [optional] 
+**cause_variable_combination_operation** | **string** | Example: MEAN | [optional] 
+**cause_variable_unit_abbreviated_name** | **string** | Example: /5 | [optional] 
+**cause_variable_id** | **int** | Example: 1448 | [optional] 
+**cause_variable_image_url** | **string** | Example: https://maxcdn.icons8.com/Color/PNG/96/Household/sleeping_in_bed-96.png | [optional] 
+**cause_variable_ion_icon** | **string** | Example: ion-ios-cloudy-night-outline | [optional] 
+**cause_variable_most_common_connector_id** | **int** | Example: 6 | [optional] 
 **cause_variable_name** | **string** | Example: Sleep Quality | 
 **confidence_interval** | **double** | Example: 0.14344467795996 | 
 **confidence_level** | **string** | Example: high | 
@@ -35,8 +33,6 @@ Name | Type | Description | Notes
 **critical_t_value** | **double** | Example: 1.646 | 
 **data_analysis** | **string** | Example: It was assumed that 0 hours would pass before a change in Sleep Quality would produce an observable change in Overall Mood.  It was assumed that Sleep Quality could produce an observable change in Overall Mood for as much as 7 days after the stimulus event. | 
 **data_sources** | **string** | Example: Sleep Quality data was primarily collected using &lt;a href&#x3D;\&quot;http://www.amazon.com/gp/product/B00A17IAO0/ref&#x3D;as_li_qf_sp_asin_tl?ie&#x3D;UTF8&amp;camp&#x3D;1789&amp;creative&#x3D;9325&amp;creativeASIN&#x3D;B00A17IAO0&amp;linkCode&#x3D;as2&amp;tag&#x3D;quant08-20\&quot;&gt;Up by Jawbone&lt;/a&gt;.  UP by Jawbone is a wristband and app that tracks how you sleep, move and eat and then helps you use that information to feel your best.&lt;br&gt;Overall Mood data was primarily collected using &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt;.  &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; is a Chrome extension, Android app, iOS app, and web app that allows you to easily track mood, symptoms, or any outcome you want to optimize in a fraction of a second.  You can also import your data from over 30 other apps and devices like Fitbit, Rescuetime, Jawbone Up, Withings, Facebook, Github, Google Calendar, Runkeeper, MoodPanda, Slice, Google Fit, and more.  &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; then analyzes your data to identify which hidden factors are most likely to be influencing your mood or symptoms and their optimal daily values. | 
-**data_sources_paragraph_for_cause** | **string** | Example: Sleep Quality data was primarily collected using &lt;a href&#x3D;\&quot;http://www.amazon.com/gp/product/B00A17IAO0/ref&#x3D;as_li_qf_sp_asin_tl?ie&#x3D;UTF8&amp;camp&#x3D;1789&amp;creative&#x3D;9325&amp;creativeASIN&#x3D;B00A17IAO0&amp;linkCode&#x3D;as2&amp;tag&#x3D;quant08-20\&quot;&gt;Up by Jawbone&lt;/a&gt;.  UP by Jawbone is a wristband and app that tracks how you sleep, move and eat and then helps you use that information to feel your best. | 
-**data_sources_paragraph_for_effect** | **string** | Example: Overall Mood data was primarily collected using &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt;.  &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; is a Chrome extension, Android app, iOS app, and web app that allows you to easily track mood, symptoms, or any outcome you want to optimize in a fraction of a second.  You can also import your data from over 30 other apps and devices like Fitbit, Rescuetime, Jawbone Up, Withings, Facebook, Github, Google Calendar, Runkeeper, MoodPanda, Slice, Google Fit, and more.  &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; then analyzes your data to identify which hidden factors are most likely to be influencing your mood or symptoms and their optimal daily values. | 
 **direction** | **string** | Example: higher | 
 **duration_of_action** | **int** | Example: 604800 | 
 **duration_of_action_in_hours** | **int** | Example: 168 | 
@@ -44,27 +40,26 @@ Name | Type | Description | Notes
 **effect_data_source** | [**\QuantiModo\Client\Model\DataSource**](DataSource.md) |  | [optional] 
 **effect_size** | **string** | Example: moderately positive | 
 **effect_unit** | **string** | Example: /5 | 
-**effect_user_variable_share_user_measurements** | **int** | Example: 1 | 
-**effect_variable_category_id** | **int** | Example: 1 | 
-**effect_variable_category_name** | **string** | Example: Emotions | 
-**effect_variable_combination_operation** | **string** | Example: MEAN | 
-**effect_variable_common_alias** | **string** | Example: Mood_(psychology) | 
-**effect_variable_unit_abbreviated_name** | **string** | Example: /5 | 
-**effect_variable_unit_id** | **int** | Example: 10 | 
-**effect_variable_unit_name** | **string** | Example: 1 to 5 Rating | 
-**effect_variable_id** | **int** | Example: 1398 | 
-**effect_variable_image_url** | **string** | Example: https://maxcdn.icons8.com/Color/PNG/96/Cinema/theatre_mask-96.png | 
-**effect_variable_ion_icon** | **string** | Example: ion-happy-outline | 
-**effect_variable_most_common_connector_id** | **int** | Example: 10 | 
+**effect_user_variable_share_user_measurements** | **int** | Example: 1 | [optional] 
+**effect_variable_category_id** | **int** | Example: 1 | [optional] 
+**effect_variable_category_name** | **string** | Example: Emotions | [optional] 
+**effect_variable_combination_operation** | **string** | Example: MEAN | [optional] 
+**effect_variable_common_alias** | **string** | Example: Mood_(psychology) | [optional] 
+**effect_variable_unit_abbreviated_name** | **string** | Example: /5 | [optional] 
+**effect_variable_unit_id** | **int** | Example: 10 | [optional] 
+**effect_variable_unit_name** | **string** | Example: 1 to 5 Rating | [optional] 
+**effect_variable_id** | **int** | Example: 1398 | [optional] 
+**effect_variable_image_url** | **string** | Example: https://maxcdn.icons8.com/Color/PNG/96/Cinema/theatre_mask-96.png | [optional] 
+**effect_variable_ion_icon** | **string** | Example: ion-happy-outline | [optional] 
+**effect_variable_most_common_connector_id** | **int** | Example: 10 | [optional] 
 **effect_variable_name** | **string** | Example: Overall Mood | 
 **experiment_end_time** | [**\DateTime**](\DateTime.md) | Example: 2014-07-30 12:50:00 | 
 **experiment_start_time** | [**\DateTime**](\DateTime.md) | Example: 2012-05-06 21:15:00 | 
 **forward_spearman_correlation_coefficient** | **double** | Example: 0.528359 | 
 **gauge_image** | **string** | Example: https://s3.amazonaws.com/quantimodo-docs/images/gauge-moderately-positive-relationship.png | 
 **gauge_image_square** | **string** | Example: https://s3.amazonaws.com/quantimodo-docs/images/gauge-moderately-positive-relationship-200-200.png | 
+**gauge_sharing_image_url** | **string** | Image with gauge and category images | [optional] 
 **image_url** | **string** | Example: https://s3-us-west-1.amazonaws.com/qmimages/variable_categories_gauges_logo_background/gauge-moderately-positive-relationship_sleep_emotions_logo_background.png | 
-**instructions_for_cause** | **string** | Example: &lt;a href&#x3D;\&quot;http://www.amazon.com/gp/product/B00A17IAO0/ref&#x3D;as_li_qf_sp_asin_tl?ie&#x3D;UTF8&amp;camp&#x3D;1789&amp;creative&#x3D;9325&amp;creativeASIN&#x3D;B00A17IAO0&amp;linkCode&#x3D;as2&amp;tag&#x3D;quant08-20\&quot;&gt;Obtain Up by Jawbone&lt;/a&gt; and use it to record your Sleep Quality. Once you have a &lt;a href&#x3D;\&quot;http://www.amazon.com/gp/product/B00A17IAO0/ref&#x3D;as_li_qf_sp_asin_tl?ie&#x3D;UTF8&amp;camp&#x3D;1789&amp;creative&#x3D;9325&amp;creativeASIN&#x3D;B00A17IAO0&amp;linkCode&#x3D;as2&amp;tag&#x3D;quant08-20\&quot;&gt;Up by Jawbone&lt;/a&gt; account, &lt;a href&#x3D;\&quot;https://app.quantimo.do/ionic/Modo/www/#/app/import\&quot;&gt;connect your  Up by Jawbone account at QuantiModo&lt;/a&gt; to automatically import and analyze your data. | 
-**instructions_for_effect** | **string** | Example: &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;Obtain QuantiModo&lt;/a&gt; and use it to record your Overall Mood. Once you have a &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; account, &lt;a href&#x3D;\&quot;https://app.quantimo.do/ionic/Modo/www/#/app/import\&quot;&gt;connect your  QuantiModo account at QuantiModo&lt;/a&gt; to automatically import and analyze your data. | 
 **number_of_pairs** | **int** | Example: 298 | 
 **onset_delay** | **int** | Example: 0 | 
 **onset_delay_in_hours** | **int** | Example: 0 | 
@@ -89,7 +84,10 @@ Name | Type | Description | Notes
 **p_value** | **double** | Example: 0.39628900511586 | [optional] 
 **qm_score** | **double** | Example: 0.528 | 
 **reverse_pearson_correlation_coefficient** | **double** | Example: 0.01377184270977 | 
+**robot_sharing_image_url** | **string** | Image with robot and category images | [optional] 
 **share_user_measurements** | **bool** | Example: 1 | 
+**sharing_description** | **string** | Example: N1 Study: Sleep Quality Predicts Higher Overall Mood | [optional] 
+**sharing_title** | **string** | Example: N1 Study: Sleep Quality Predicts Higher Overall Mood | [optional] 
 **significance_explanation** | **string** | Example: Using a two-tailed t-test with alpha &#x3D; 0.05, it was determined that the change in Overall Mood is statistically significant at 95% confidence interval. | 
 **significant_difference** | **bool** | Example: 1 | 
 **statistical_significance** | **double** | Example: 0.9813 | 
@@ -107,7 +105,6 @@ Name | Type | Description | Notes
 **study_objective** | **string** | Example: The objective of this study is to determine the nature of the relationship (if any) between the Sleep Quality and the Overall Mood. Additionally, we attempt to determine the Sleep Quality values most likely to produce optimal Overall Mood values. | 
 **study_results** | **string** | Example: This analysis suggests that higher Sleep Quality (Sleep) generally predicts higher Overall Mood (p &#x3D; 0).  Overall Mood is, on average, 17%  higher after around 4.14 Sleep Quality.  After an onset delay of 168 hours, Overall Mood is, on average, 11%  lower than its average over the 168 hours following around 3.03 Sleep Quality.  298 data points were used in this analysis.  The value for Sleep Quality changed 164 times, effectively running 82 separate natural experiments.  The top quartile outcome values are preceded by an average 4.14 /5 of Sleep Quality.  The bottom quartile outcome values are preceded by an average 3.03 /5 of Sleep Quality.  Forward Pearson Correlation Coefficient was 0.538 (p&#x3D;0, 95% CI 0.395 to 0.681 onset delay &#x3D; 0 hours, duration of action &#x3D; 168 hours) .  The Reverse Pearson Correlation Coefficient was 0 (P&#x3D;0, 95% CI -0.143 to 0.143, onset delay &#x3D; -0 hours, duration of action &#x3D; -168 hours). When the Sleep Quality value is closer to 4.14 /5 than 3.03 /5, the Overall Mood value which follows is, on average, 17%  percent higher than its typical value.  When the Sleep Quality value is closer to 3.03 /5 than 4.14 /5, the Overall Mood value which follows is 0% lower than its typical value.  Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality  Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality | 
 **study_title** | **string** | Example: N1 Study: Sleep Quality Predicts Higher Overall Mood | 
-**timestamp** | **int** | Example: 1494085127 | 
 **t_value** | **double** | Example: 9.6986079652717 | 
 **updated_at** | [**\DateTime**](\DateTime.md) | Example: 2017-05-06 15:40:38 | 
 **user_id** | **int** | Example: 230 | 
@@ -116,65 +113,31 @@ Name | Type | Description | Notes
 **value_predicting_high_outcome_explanation** | **string** | Example: Overall Mood, on average, 17% higher after around 4.14/5 Sleep Quality | 
 **value_predicting_low_outcome** | **double** | Example: 3.03 | 
 **value_predicting_low_outcome_explanation** | **string** | Example: Overall Mood, on average, 11% lower after around 3.03/5 Sleep Quality | 
-**causality_factor** | **float** |  | [optional] 
 **outcome_data_sources** | **string** | original name of the cause. | [optional] 
 **principal_investigator** | **string** | Mike Sinn | [optional] 
 **reverse_correlation** | **float** | Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation. | [optional] 
 **study_background** | **string** | In order to reduce suffering through the advancement of human knowledge... | [optional] 
 **study_invitation** | **string** | Help us determine if Remeron affects Overall Mood! | [optional] 
 **study_question** | **string** | Does Remeron affect Overall Mood? | [optional] 
-**all_pairs_significance** | **double** | Example: 0.99994982531794 | [optional] 
+**study_html** | **string** | Embeddable study HTML including chart svg&#39;s | [optional] 
 **average_pearson_correlation_coefficient_over_onset_delays** | **string** | Example: | [optional] 
 **calculation_start_time** | [**\DateTime**](\DateTime.md) | Example: | [optional] 
-**cause_changes_statistical_significance** | **double** | Example: 0.9999299755903 | [optional] 
-**cause_number_of_processed_daily_measurements** | **int** | Example: 1364 | [optional] 
 **cause_number_of_raw_measurements** | **int** | Example: 14764 | [optional] 
-**cause_value_spread** | **double** | Example: 99032.44787234 | [optional] 
 **correlations_over_durations_of_action** | **string** | Example: | [optional] 
 **correlations_over_durations_of_action_chart_config** | **string** | Example: | [optional] 
 **correlations_over_onset_delays_chart_config** | **string** | Example: | [optional] 
-**data_points** | **string** | Example: | [optional] 
 **degrees_of_freedom** | **int** | Example: 200 | [optional] 
-**distance_from_middle_to_be_hight_low_effect** | **int** | Example: 25 | [optional] 
 **effect_number_of_processed_daily_measurements** | **int** | Example: 145 | [optional] 
-**effect_number_of_raw_measurements** | **int** | Example: 4045 | [optional] 
-**effect_value_spread** | **double** | Example: 20.2 | [optional] 
 **error** | **string** | Example: optimalPearsonProduct is not defined | [optional] 
-**maximum_cause_value** | **double** | Example: 104300 | [optional] 
-**maximum_effect_value** | **double** | Example: 20.38 | [optional] 
-**median_of_lower_half_of_effect_measurements** | **string** | Example: | [optional] 
-**median_of_upper_half_of_effect_measurements** | **string** | Example: | [optional] 
-**minimum_cause_value** | **double** | Example: 5267.5521276596 | [optional] 
-**minimum_effect_value** | **double** | Example: 0.18 | [optional] 
-**minimum_probability** | **double** | Example: 0.05 | [optional] 
-**number_of_cause_changes_for_optimal_values** | **int** | Example: 287 | [optional] 
-**number_of_days** | **int** | Example: 425 | [optional] 
-**number_of_days_significance** | **double** | Example: 0.99999929612614 | [optional] 
-**number_of_effect_changes_for_optimal_values** | **int** | Example: 295 | [optional] 
-**number_of_high_effect_pairs** | **int** | Example: 27 | [optional] 
-**number_of_low_effect_pairs** | **int** | Example: 57 | [optional] 
-**number_of_samples** | **int** | Example: 297 | [optional] 
-**number_of_unique_cause_values_for_optimal_values** | **int** | Example: 201 | [optional] 
-**number_of_unique_effect_values_for_optimal_values** | **int** | Example: 264 | [optional] 
-**number_of_users** | **string** | Example: | [optional] 
-**optimal_change_spread** | **double** | Example: 83.44 | [optional] 
-**optimal_change_spread_significance** | **double** | Example: 0.99999999999917 | [optional] 
-**pairs_over_time_chart_config** | [**\DateTime**](\DateTime.md) | Example: | [optional] 
-**per_day_sentence_fragment** | **string** | Example: | [optional] 
+**number_of_users** | **float** | Example: | [optional] 
 **raw_cause_measurement_significance** | **double** | Example: 1 | [optional] 
 **raw_effect_measurement_significance** | **double** | Example: 1 | [optional] 
 **reverse_pairs_count** | **string** | Example: | [optional] 
 **vote_statistical_significance** | **int** | Example: 1 | [optional] 
 **aggregate_qm_score** | **double** | Example: 0.011598441286655 | [optional] 
-**cause_unit** | **string** | Unit of the predictor variable | [optional] 
-**cause_variable_common_alias** | **string** | Example: | [optional] 
-**cause_variable_informational_url** | **string** | Example: | [optional] 
-**cause_variable_product_url** | **string** | Example: | [optional] 
-**effect_variable_informational_url** | **string** | Example: | [optional] 
-**effect_variable_product_url** | **string** | Example: | [optional] 
 **forward_pearson_correlation_coefficient** | **double** | Example: 0.0333 | [optional] 
 **number_of_correlations** | **int** | Example: 6 | [optional] 
-**vote** | **string** | Example: | [optional] 
+**vote** | **float** | Example: | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

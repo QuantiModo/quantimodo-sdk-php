@@ -60,7 +60,6 @@ class GetStudyResponse implements ArrayAccess
         'data' => '\QuantiModo\Client\Model\GetStudyDataResponse',
         'effect_processed_daily_measurements' => '\QuantiModo\Client\Model\ProcessedDailyMeasurement[]',
         'effect_variable' => '\QuantiModo\Client\Model\UserVariable',
-        'highcharts' => '\QuantiModo\Client\Model\HighchartArray',
         'message' => 'string',
         'pairs' => '\QuantiModo\Client\Model\Pair[]',
         'pairs_of_averages_for_all_users' => '\QuantiModo\Client\Model\PairsOfAveragesForAllUser[]',
@@ -86,7 +85,6 @@ class GetStudyResponse implements ArrayAccess
         'data' => null,
         'effect_processed_daily_measurements' => null,
         'effect_variable' => null,
-        'highcharts' => null,
         'message' => null,
         'pairs' => null,
         'pairs_of_averages_for_all_users' => null,
@@ -122,7 +120,6 @@ class GetStudyResponse implements ArrayAccess
         'data' => 'data',
         'effect_processed_daily_measurements' => 'effectProcessedDailyMeasurements',
         'effect_variable' => 'effectVariable',
-        'highcharts' => 'highcharts',
         'message' => 'message',
         'pairs' => 'pairs',
         'pairs_of_averages_for_all_users' => 'pairsOfAveragesForAllUsers',
@@ -149,7 +146,6 @@ class GetStudyResponse implements ArrayAccess
         'data' => 'setData',
         'effect_processed_daily_measurements' => 'setEffectProcessedDailyMeasurements',
         'effect_variable' => 'setEffectVariable',
-        'highcharts' => 'setHighcharts',
         'message' => 'setMessage',
         'pairs' => 'setPairs',
         'pairs_of_averages_for_all_users' => 'setPairsOfAveragesForAllUsers',
@@ -176,7 +172,6 @@ class GetStudyResponse implements ArrayAccess
         'data' => 'getData',
         'effect_processed_daily_measurements' => 'getEffectProcessedDailyMeasurements',
         'effect_variable' => 'getEffectVariable',
-        'highcharts' => 'getHighcharts',
         'message' => 'getMessage',
         'pairs' => 'getPairs',
         'pairs_of_averages_for_all_users' => 'getPairsOfAveragesForAllUsers',
@@ -228,7 +223,6 @@ class GetStudyResponse implements ArrayAccess
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
         $this->container['effect_processed_daily_measurements'] = isset($data['effect_processed_daily_measurements']) ? $data['effect_processed_daily_measurements'] : null;
         $this->container['effect_variable'] = isset($data['effect_variable']) ? $data['effect_variable'] : null;
-        $this->container['highcharts'] = isset($data['highcharts']) ? $data['highcharts'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['pairs'] = isset($data['pairs']) ? $data['pairs'] : null;
         $this->container['pairs_of_averages_for_all_users'] = isset($data['pairs_of_averages_for_all_users']) ? $data['pairs_of_averages_for_all_users'] : null;
@@ -402,27 +396,6 @@ class GetStudyResponse implements ArrayAccess
     public function setEffectVariable($effect_variable)
     {
         $this->container['effect_variable'] = $effect_variable;
-
-        return $this;
-    }
-
-    /**
-     * Gets highcharts
-     * @return \QuantiModo\Client\Model\HighchartArray
-     */
-    public function getHighcharts()
-    {
-        return $this->container['highcharts'];
-    }
-
-    /**
-     * Sets highcharts
-     * @param \QuantiModo\Client\Model\HighchartArray $highcharts
-     * @return $this
-     */
-    public function setHighcharts($highcharts)
-    {
-        $this->container['highcharts'] = $highcharts;
 
         return $this;
     }

@@ -216,9 +216,6 @@ class GetStudyDataResponse implements ArrayAccess
         if ($this->container['pairs'] === null) {
             $invalid_properties[] = "'pairs' can't be null";
         }
-        if ($this->container['statistics'] === null) {
-            $invalid_properties[] = "'statistics' can't be null";
-        }
         if ($this->container['text'] === null) {
             $invalid_properties[] = "'text' can't be null";
         }
@@ -256,9 +253,6 @@ class GetStudyDataResponse implements ArrayAccess
             return false;
         }
         if ($this->container['pairs'] === null) {
-            return false;
-        }
-        if ($this->container['statistics'] === null) {
             return false;
         }
         if ($this->container['text'] === null) {

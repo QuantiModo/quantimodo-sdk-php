@@ -63,7 +63,7 @@ class Correlation implements ArrayAccess
         'average_effect_following_low_cause_explanation' => 'string',
         'average_forward_pearson_correlation_over_onset_delays' => 'double',
         'average_reverse_pearson_correlation_over_onset_delays' => 'double',
-        'average_vote' => 'string',
+        'average_vote' => 'float',
         'cause_changes' => 'int',
         'cause_data_source' => '\QuantiModo\Client\Model\DataSource',
         'cause_user_variable_share_user_measurements' => 'int',
@@ -71,8 +71,6 @@ class Correlation implements ArrayAccess
         'cause_variable_category_name' => 'string',
         'cause_variable_combination_operation' => 'string',
         'cause_variable_unit_abbreviated_name' => 'string',
-        'cause_variable_unit_id' => 'int',
-        'cause_variable_unit_name' => 'string',
         'cause_variable_id' => 'int',
         'cause_variable_image_url' => 'string',
         'cause_variable_ion_icon' => 'string',
@@ -86,8 +84,6 @@ class Correlation implements ArrayAccess
         'critical_t_value' => 'double',
         'data_analysis' => 'string',
         'data_sources' => 'string',
-        'data_sources_paragraph_for_cause' => 'string',
-        'data_sources_paragraph_for_effect' => 'string',
         'direction' => 'string',
         'duration_of_action' => 'int',
         'duration_of_action_in_hours' => 'int',
@@ -113,9 +109,8 @@ class Correlation implements ArrayAccess
         'forward_spearman_correlation_coefficient' => 'double',
         'gauge_image' => 'string',
         'gauge_image_square' => 'string',
+        'gauge_sharing_image_url' => 'string',
         'image_url' => 'string',
-        'instructions_for_cause' => 'string',
-        'instructions_for_effect' => 'string',
         'number_of_pairs' => 'int',
         'onset_delay' => 'int',
         'onset_delay_in_hours' => 'int',
@@ -140,7 +135,10 @@ class Correlation implements ArrayAccess
         'p_value' => 'double',
         'qm_score' => 'double',
         'reverse_pearson_correlation_coefficient' => 'double',
+        'robot_sharing_image_url' => 'string',
         'share_user_measurements' => 'bool',
+        'sharing_description' => 'string',
+        'sharing_title' => 'string',
         'significance_explanation' => 'string',
         'significant_difference' => 'bool',
         'statistical_significance' => 'double',
@@ -158,7 +156,6 @@ class Correlation implements ArrayAccess
         'study_objective' => 'string',
         'study_results' => 'string',
         'study_title' => 'string',
-        'timestamp' => 'int',
         't_value' => 'double',
         'updated_at' => '\DateTime',
         'user_id' => 'int',
@@ -167,65 +164,31 @@ class Correlation implements ArrayAccess
         'value_predicting_high_outcome_explanation' => 'string',
         'value_predicting_low_outcome' => 'double',
         'value_predicting_low_outcome_explanation' => 'string',
-        'causality_factor' => 'float',
         'outcome_data_sources' => 'string',
         'principal_investigator' => 'string',
         'reverse_correlation' => 'float',
         'study_background' => 'string',
         'study_invitation' => 'string',
         'study_question' => 'string',
-        'all_pairs_significance' => 'double',
+        'study_html' => 'string',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'string',
         'calculation_start_time' => '\DateTime',
-        'cause_changes_statistical_significance' => 'double',
-        'cause_number_of_processed_daily_measurements' => 'int',
         'cause_number_of_raw_measurements' => 'int',
-        'cause_value_spread' => 'double',
         'correlations_over_durations_of_action' => 'string',
         'correlations_over_durations_of_action_chart_config' => 'string',
         'correlations_over_onset_delays_chart_config' => 'string',
-        'data_points' => 'string',
         'degrees_of_freedom' => 'int',
-        'distance_from_middle_to_be_hight_low_effect' => 'int',
         'effect_number_of_processed_daily_measurements' => 'int',
-        'effect_number_of_raw_measurements' => 'int',
-        'effect_value_spread' => 'double',
         'error' => 'string',
-        'maximum_cause_value' => 'double',
-        'maximum_effect_value' => 'double',
-        'median_of_lower_half_of_effect_measurements' => 'string',
-        'median_of_upper_half_of_effect_measurements' => 'string',
-        'minimum_cause_value' => 'double',
-        'minimum_effect_value' => 'double',
-        'minimum_probability' => 'double',
-        'number_of_cause_changes_for_optimal_values' => 'int',
-        'number_of_days' => 'int',
-        'number_of_days_significance' => 'double',
-        'number_of_effect_changes_for_optimal_values' => 'int',
-        'number_of_high_effect_pairs' => 'int',
-        'number_of_low_effect_pairs' => 'int',
-        'number_of_samples' => 'int',
-        'number_of_unique_cause_values_for_optimal_values' => 'int',
-        'number_of_unique_effect_values_for_optimal_values' => 'int',
-        'number_of_users' => 'string',
-        'optimal_change_spread' => 'double',
-        'optimal_change_spread_significance' => 'double',
-        'pairs_over_time_chart_config' => '\DateTime',
-        'per_day_sentence_fragment' => 'string',
+        'number_of_users' => 'float',
         'raw_cause_measurement_significance' => 'double',
         'raw_effect_measurement_significance' => 'double',
         'reverse_pairs_count' => 'string',
         'vote_statistical_significance' => 'int',
         'aggregate_qm_score' => 'double',
-        'cause_unit' => 'string',
-        'cause_variable_common_alias' => 'string',
-        'cause_variable_informational_url' => 'string',
-        'cause_variable_product_url' => 'string',
-        'effect_variable_informational_url' => 'string',
-        'effect_variable_product_url' => 'string',
         'forward_pearson_correlation_coefficient' => 'double',
         'number_of_correlations' => 'int',
-        'vote' => 'string'
+        'vote' => 'float'
     ];
 
     /**
@@ -250,8 +213,6 @@ class Correlation implements ArrayAccess
         'cause_variable_category_name' => null,
         'cause_variable_combination_operation' => null,
         'cause_variable_unit_abbreviated_name' => null,
-        'cause_variable_unit_id' => null,
-        'cause_variable_unit_name' => null,
         'cause_variable_id' => null,
         'cause_variable_image_url' => null,
         'cause_variable_ion_icon' => null,
@@ -265,8 +226,6 @@ class Correlation implements ArrayAccess
         'critical_t_value' => 'double',
         'data_analysis' => null,
         'data_sources' => null,
-        'data_sources_paragraph_for_cause' => null,
-        'data_sources_paragraph_for_effect' => null,
         'direction' => null,
         'duration_of_action' => null,
         'duration_of_action_in_hours' => null,
@@ -292,9 +251,8 @@ class Correlation implements ArrayAccess
         'forward_spearman_correlation_coefficient' => 'double',
         'gauge_image' => null,
         'gauge_image_square' => null,
+        'gauge_sharing_image_url' => null,
         'image_url' => null,
-        'instructions_for_cause' => null,
-        'instructions_for_effect' => null,
         'number_of_pairs' => null,
         'onset_delay' => null,
         'onset_delay_in_hours' => null,
@@ -319,7 +277,10 @@ class Correlation implements ArrayAccess
         'p_value' => 'double',
         'qm_score' => 'double',
         'reverse_pearson_correlation_coefficient' => 'double',
+        'robot_sharing_image_url' => null,
         'share_user_measurements' => null,
+        'sharing_description' => null,
+        'sharing_title' => null,
         'significance_explanation' => null,
         'significant_difference' => null,
         'statistical_significance' => 'double',
@@ -337,7 +298,6 @@ class Correlation implements ArrayAccess
         'study_objective' => null,
         'study_results' => null,
         'study_title' => null,
-        'timestamp' => null,
         't_value' => 'double',
         'updated_at' => 'date-time',
         'user_id' => null,
@@ -346,62 +306,28 @@ class Correlation implements ArrayAccess
         'value_predicting_high_outcome_explanation' => null,
         'value_predicting_low_outcome' => 'double',
         'value_predicting_low_outcome_explanation' => null,
-        'causality_factor' => null,
         'outcome_data_sources' => null,
         'principal_investigator' => null,
         'reverse_correlation' => null,
         'study_background' => null,
         'study_invitation' => null,
         'study_question' => null,
-        'all_pairs_significance' => 'double',
+        'study_html' => null,
         'average_pearson_correlation_coefficient_over_onset_delays' => null,
         'calculation_start_time' => 'date-time',
-        'cause_changes_statistical_significance' => 'double',
-        'cause_number_of_processed_daily_measurements' => null,
         'cause_number_of_raw_measurements' => null,
-        'cause_value_spread' => 'double',
         'correlations_over_durations_of_action' => null,
         'correlations_over_durations_of_action_chart_config' => null,
         'correlations_over_onset_delays_chart_config' => null,
-        'data_points' => null,
         'degrees_of_freedom' => null,
-        'distance_from_middle_to_be_hight_low_effect' => null,
         'effect_number_of_processed_daily_measurements' => null,
-        'effect_number_of_raw_measurements' => null,
-        'effect_value_spread' => 'double',
         'error' => null,
-        'maximum_cause_value' => 'double',
-        'maximum_effect_value' => 'double',
-        'median_of_lower_half_of_effect_measurements' => null,
-        'median_of_upper_half_of_effect_measurements' => null,
-        'minimum_cause_value' => 'double',
-        'minimum_effect_value' => 'double',
-        'minimum_probability' => 'double',
-        'number_of_cause_changes_for_optimal_values' => null,
-        'number_of_days' => null,
-        'number_of_days_significance' => 'double',
-        'number_of_effect_changes_for_optimal_values' => null,
-        'number_of_high_effect_pairs' => null,
-        'number_of_low_effect_pairs' => null,
-        'number_of_samples' => null,
-        'number_of_unique_cause_values_for_optimal_values' => null,
-        'number_of_unique_effect_values_for_optimal_values' => null,
         'number_of_users' => null,
-        'optimal_change_spread' => 'double',
-        'optimal_change_spread_significance' => 'double',
-        'pairs_over_time_chart_config' => 'date-time',
-        'per_day_sentence_fragment' => null,
         'raw_cause_measurement_significance' => 'double',
         'raw_effect_measurement_significance' => 'double',
         'reverse_pairs_count' => null,
         'vote_statistical_significance' => null,
         'aggregate_qm_score' => 'double',
-        'cause_unit' => null,
-        'cause_variable_common_alias' => null,
-        'cause_variable_informational_url' => null,
-        'cause_variable_product_url' => null,
-        'effect_variable_informational_url' => null,
-        'effect_variable_product_url' => null,
         'forward_pearson_correlation_coefficient' => 'double',
         'number_of_correlations' => null,
         'vote' => null
@@ -439,8 +365,6 @@ class Correlation implements ArrayAccess
         'cause_variable_category_name' => 'causeVariableCategoryName',
         'cause_variable_combination_operation' => 'causeVariableCombinationOperation',
         'cause_variable_unit_abbreviated_name' => 'causeVariableUnitAbbreviatedName',
-        'cause_variable_unit_id' => 'causeVariableUnitId',
-        'cause_variable_unit_name' => 'causeVariableUnitName',
         'cause_variable_id' => 'causeVariableId',
         'cause_variable_image_url' => 'causeVariableImageUrl',
         'cause_variable_ion_icon' => 'causeVariableIonIcon',
@@ -454,8 +378,6 @@ class Correlation implements ArrayAccess
         'critical_t_value' => 'criticalTValue',
         'data_analysis' => 'dataAnalysis',
         'data_sources' => 'dataSources',
-        'data_sources_paragraph_for_cause' => 'dataSourcesParagraphForCause',
-        'data_sources_paragraph_for_effect' => 'dataSourcesParagraphForEffect',
         'direction' => 'direction',
         'duration_of_action' => 'durationOfAction',
         'duration_of_action_in_hours' => 'durationOfActionInHours',
@@ -481,9 +403,8 @@ class Correlation implements ArrayAccess
         'forward_spearman_correlation_coefficient' => 'forwardSpearmanCorrelationCoefficient',
         'gauge_image' => 'gaugeImage',
         'gauge_image_square' => 'gaugeImageSquare',
+        'gauge_sharing_image_url' => 'gaugeSharingImageUrl',
         'image_url' => 'imageUrl',
-        'instructions_for_cause' => 'instructionsForCause',
-        'instructions_for_effect' => 'instructionsForEffect',
         'number_of_pairs' => 'numberOfPairs',
         'onset_delay' => 'onsetDelay',
         'onset_delay_in_hours' => 'onsetDelayInHours',
@@ -508,7 +429,10 @@ class Correlation implements ArrayAccess
         'p_value' => 'pValue',
         'qm_score' => 'qmScore',
         'reverse_pearson_correlation_coefficient' => 'reversePearsonCorrelationCoefficient',
+        'robot_sharing_image_url' => 'robotSharingImageUrl',
         'share_user_measurements' => 'shareUserMeasurements',
+        'sharing_description' => 'sharingDescription',
+        'sharing_title' => 'sharingTitle',
         'significance_explanation' => 'significanceExplanation',
         'significant_difference' => 'significantDifference',
         'statistical_significance' => 'statisticalSignificance',
@@ -526,7 +450,6 @@ class Correlation implements ArrayAccess
         'study_objective' => 'studyObjective',
         'study_results' => 'studyResults',
         'study_title' => 'studyTitle',
-        'timestamp' => 'timestamp',
         't_value' => 'tValue',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
@@ -535,62 +458,28 @@ class Correlation implements ArrayAccess
         'value_predicting_high_outcome_explanation' => 'valuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'valuePredictingLowOutcome',
         'value_predicting_low_outcome_explanation' => 'valuePredictingLowOutcomeExplanation',
-        'causality_factor' => 'causalityFactor',
         'outcome_data_sources' => 'outcomeDataSources',
         'principal_investigator' => 'principalInvestigator',
         'reverse_correlation' => 'reverseCorrelation',
         'study_background' => 'studyBackground',
         'study_invitation' => 'studyInvitation',
         'study_question' => 'studyQuestion',
-        'all_pairs_significance' => 'allPairsSignificance',
+        'study_html' => 'studyHtml',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'averagePearsonCorrelationCoefficientOverOnsetDelays',
         'calculation_start_time' => 'calculationStartTime',
-        'cause_changes_statistical_significance' => 'causeChangesStatisticalSignificance',
-        'cause_number_of_processed_daily_measurements' => 'causeNumberOfProcessedDailyMeasurements',
         'cause_number_of_raw_measurements' => 'causeNumberOfRawMeasurements',
-        'cause_value_spread' => 'causeValueSpread',
         'correlations_over_durations_of_action' => 'correlationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'correlationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'correlationsOverOnsetDelaysChartConfig',
-        'data_points' => 'dataPoints',
         'degrees_of_freedom' => 'degreesOfFreedom',
-        'distance_from_middle_to_be_hight_low_effect' => 'distanceFromMiddleToBeHightLowEffect',
         'effect_number_of_processed_daily_measurements' => 'effectNumberOfProcessedDailyMeasurements',
-        'effect_number_of_raw_measurements' => 'effectNumberOfRawMeasurements',
-        'effect_value_spread' => 'effectValueSpread',
         'error' => 'error',
-        'maximum_cause_value' => 'maximumCauseValue',
-        'maximum_effect_value' => 'maximumEffectValue',
-        'median_of_lower_half_of_effect_measurements' => 'medianOfLowerHalfOfEffectMeasurements',
-        'median_of_upper_half_of_effect_measurements' => 'medianOfUpperHalfOfEffectMeasurements',
-        'minimum_cause_value' => 'minimumCauseValue',
-        'minimum_effect_value' => 'minimumEffectValue',
-        'minimum_probability' => 'minimumProbability',
-        'number_of_cause_changes_for_optimal_values' => 'numberOfCauseChangesForOptimalValues',
-        'number_of_days' => 'numberOfDays',
-        'number_of_days_significance' => 'numberOfDaysSignificance',
-        'number_of_effect_changes_for_optimal_values' => 'numberOfEffectChangesForOptimalValues',
-        'number_of_high_effect_pairs' => 'numberOfHighEffectPairs',
-        'number_of_low_effect_pairs' => 'numberOfLowEffectPairs',
-        'number_of_samples' => 'numberOfSamples',
-        'number_of_unique_cause_values_for_optimal_values' => 'numberOfUniqueCauseValuesForOptimalValues',
-        'number_of_unique_effect_values_for_optimal_values' => 'numberOfUniqueEffectValuesForOptimalValues',
         'number_of_users' => 'numberOfUsers',
-        'optimal_change_spread' => 'optimalChangeSpread',
-        'optimal_change_spread_significance' => 'optimalChangeSpreadSignificance',
-        'pairs_over_time_chart_config' => 'pairsOverTimeChartConfig',
-        'per_day_sentence_fragment' => 'perDaySentenceFragment',
         'raw_cause_measurement_significance' => 'rawCauseMeasurementSignificance',
         'raw_effect_measurement_significance' => 'rawEffectMeasurementSignificance',
         'reverse_pairs_count' => 'reversePairsCount',
         'vote_statistical_significance' => 'voteStatisticalSignificance',
         'aggregate_qm_score' => 'aggregateQMScore',
-        'cause_unit' => 'causeUnit',
-        'cause_variable_common_alias' => 'causeVariableCommonAlias',
-        'cause_variable_informational_url' => 'causeVariableInformationalUrl',
-        'cause_variable_product_url' => 'causeVariableProductUrl',
-        'effect_variable_informational_url' => 'effectVariableInformationalUrl',
-        'effect_variable_product_url' => 'effectVariableProductUrl',
         'forward_pearson_correlation_coefficient' => 'forwardPearsonCorrelationCoefficient',
         'number_of_correlations' => 'numberOfCorrelations',
         'vote' => 'vote'
@@ -619,8 +508,6 @@ class Correlation implements ArrayAccess
         'cause_variable_category_name' => 'setCauseVariableCategoryName',
         'cause_variable_combination_operation' => 'setCauseVariableCombinationOperation',
         'cause_variable_unit_abbreviated_name' => 'setCauseVariableUnitAbbreviatedName',
-        'cause_variable_unit_id' => 'setCauseVariableUnitId',
-        'cause_variable_unit_name' => 'setCauseVariableUnitName',
         'cause_variable_id' => 'setCauseVariableId',
         'cause_variable_image_url' => 'setCauseVariableImageUrl',
         'cause_variable_ion_icon' => 'setCauseVariableIonIcon',
@@ -634,8 +521,6 @@ class Correlation implements ArrayAccess
         'critical_t_value' => 'setCriticalTValue',
         'data_analysis' => 'setDataAnalysis',
         'data_sources' => 'setDataSources',
-        'data_sources_paragraph_for_cause' => 'setDataSourcesParagraphForCause',
-        'data_sources_paragraph_for_effect' => 'setDataSourcesParagraphForEffect',
         'direction' => 'setDirection',
         'duration_of_action' => 'setDurationOfAction',
         'duration_of_action_in_hours' => 'setDurationOfActionInHours',
@@ -661,9 +546,8 @@ class Correlation implements ArrayAccess
         'forward_spearman_correlation_coefficient' => 'setForwardSpearmanCorrelationCoefficient',
         'gauge_image' => 'setGaugeImage',
         'gauge_image_square' => 'setGaugeImageSquare',
+        'gauge_sharing_image_url' => 'setGaugeSharingImageUrl',
         'image_url' => 'setImageUrl',
-        'instructions_for_cause' => 'setInstructionsForCause',
-        'instructions_for_effect' => 'setInstructionsForEffect',
         'number_of_pairs' => 'setNumberOfPairs',
         'onset_delay' => 'setOnsetDelay',
         'onset_delay_in_hours' => 'setOnsetDelayInHours',
@@ -688,7 +572,10 @@ class Correlation implements ArrayAccess
         'p_value' => 'setPValue',
         'qm_score' => 'setQmScore',
         'reverse_pearson_correlation_coefficient' => 'setReversePearsonCorrelationCoefficient',
+        'robot_sharing_image_url' => 'setRobotSharingImageUrl',
         'share_user_measurements' => 'setShareUserMeasurements',
+        'sharing_description' => 'setSharingDescription',
+        'sharing_title' => 'setSharingTitle',
         'significance_explanation' => 'setSignificanceExplanation',
         'significant_difference' => 'setSignificantDifference',
         'statistical_significance' => 'setStatisticalSignificance',
@@ -706,7 +593,6 @@ class Correlation implements ArrayAccess
         'study_objective' => 'setStudyObjective',
         'study_results' => 'setStudyResults',
         'study_title' => 'setStudyTitle',
-        'timestamp' => 'setTimestamp',
         't_value' => 'setTValue',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
@@ -715,62 +601,28 @@ class Correlation implements ArrayAccess
         'value_predicting_high_outcome_explanation' => 'setValuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'setValuePredictingLowOutcome',
         'value_predicting_low_outcome_explanation' => 'setValuePredictingLowOutcomeExplanation',
-        'causality_factor' => 'setCausalityFactor',
         'outcome_data_sources' => 'setOutcomeDataSources',
         'principal_investigator' => 'setPrincipalInvestigator',
         'reverse_correlation' => 'setReverseCorrelation',
         'study_background' => 'setStudyBackground',
         'study_invitation' => 'setStudyInvitation',
         'study_question' => 'setStudyQuestion',
-        'all_pairs_significance' => 'setAllPairsSignificance',
+        'study_html' => 'setStudyHtml',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'setAveragePearsonCorrelationCoefficientOverOnsetDelays',
         'calculation_start_time' => 'setCalculationStartTime',
-        'cause_changes_statistical_significance' => 'setCauseChangesStatisticalSignificance',
-        'cause_number_of_processed_daily_measurements' => 'setCauseNumberOfProcessedDailyMeasurements',
         'cause_number_of_raw_measurements' => 'setCauseNumberOfRawMeasurements',
-        'cause_value_spread' => 'setCauseValueSpread',
         'correlations_over_durations_of_action' => 'setCorrelationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'setCorrelationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'setCorrelationsOverOnsetDelaysChartConfig',
-        'data_points' => 'setDataPoints',
         'degrees_of_freedom' => 'setDegreesOfFreedom',
-        'distance_from_middle_to_be_hight_low_effect' => 'setDistanceFromMiddleToBeHightLowEffect',
         'effect_number_of_processed_daily_measurements' => 'setEffectNumberOfProcessedDailyMeasurements',
-        'effect_number_of_raw_measurements' => 'setEffectNumberOfRawMeasurements',
-        'effect_value_spread' => 'setEffectValueSpread',
         'error' => 'setError',
-        'maximum_cause_value' => 'setMaximumCauseValue',
-        'maximum_effect_value' => 'setMaximumEffectValue',
-        'median_of_lower_half_of_effect_measurements' => 'setMedianOfLowerHalfOfEffectMeasurements',
-        'median_of_upper_half_of_effect_measurements' => 'setMedianOfUpperHalfOfEffectMeasurements',
-        'minimum_cause_value' => 'setMinimumCauseValue',
-        'minimum_effect_value' => 'setMinimumEffectValue',
-        'minimum_probability' => 'setMinimumProbability',
-        'number_of_cause_changes_for_optimal_values' => 'setNumberOfCauseChangesForOptimalValues',
-        'number_of_days' => 'setNumberOfDays',
-        'number_of_days_significance' => 'setNumberOfDaysSignificance',
-        'number_of_effect_changes_for_optimal_values' => 'setNumberOfEffectChangesForOptimalValues',
-        'number_of_high_effect_pairs' => 'setNumberOfHighEffectPairs',
-        'number_of_low_effect_pairs' => 'setNumberOfLowEffectPairs',
-        'number_of_samples' => 'setNumberOfSamples',
-        'number_of_unique_cause_values_for_optimal_values' => 'setNumberOfUniqueCauseValuesForOptimalValues',
-        'number_of_unique_effect_values_for_optimal_values' => 'setNumberOfUniqueEffectValuesForOptimalValues',
         'number_of_users' => 'setNumberOfUsers',
-        'optimal_change_spread' => 'setOptimalChangeSpread',
-        'optimal_change_spread_significance' => 'setOptimalChangeSpreadSignificance',
-        'pairs_over_time_chart_config' => 'setPairsOverTimeChartConfig',
-        'per_day_sentence_fragment' => 'setPerDaySentenceFragment',
         'raw_cause_measurement_significance' => 'setRawCauseMeasurementSignificance',
         'raw_effect_measurement_significance' => 'setRawEffectMeasurementSignificance',
         'reverse_pairs_count' => 'setReversePairsCount',
         'vote_statistical_significance' => 'setVoteStatisticalSignificance',
         'aggregate_qm_score' => 'setAggregateQmScore',
-        'cause_unit' => 'setCauseUnit',
-        'cause_variable_common_alias' => 'setCauseVariableCommonAlias',
-        'cause_variable_informational_url' => 'setCauseVariableInformationalUrl',
-        'cause_variable_product_url' => 'setCauseVariableProductUrl',
-        'effect_variable_informational_url' => 'setEffectVariableInformationalUrl',
-        'effect_variable_product_url' => 'setEffectVariableProductUrl',
         'forward_pearson_correlation_coefficient' => 'setForwardPearsonCorrelationCoefficient',
         'number_of_correlations' => 'setNumberOfCorrelations',
         'vote' => 'setVote'
@@ -799,8 +651,6 @@ class Correlation implements ArrayAccess
         'cause_variable_category_name' => 'getCauseVariableCategoryName',
         'cause_variable_combination_operation' => 'getCauseVariableCombinationOperation',
         'cause_variable_unit_abbreviated_name' => 'getCauseVariableUnitAbbreviatedName',
-        'cause_variable_unit_id' => 'getCauseVariableUnitId',
-        'cause_variable_unit_name' => 'getCauseVariableUnitName',
         'cause_variable_id' => 'getCauseVariableId',
         'cause_variable_image_url' => 'getCauseVariableImageUrl',
         'cause_variable_ion_icon' => 'getCauseVariableIonIcon',
@@ -814,8 +664,6 @@ class Correlation implements ArrayAccess
         'critical_t_value' => 'getCriticalTValue',
         'data_analysis' => 'getDataAnalysis',
         'data_sources' => 'getDataSources',
-        'data_sources_paragraph_for_cause' => 'getDataSourcesParagraphForCause',
-        'data_sources_paragraph_for_effect' => 'getDataSourcesParagraphForEffect',
         'direction' => 'getDirection',
         'duration_of_action' => 'getDurationOfAction',
         'duration_of_action_in_hours' => 'getDurationOfActionInHours',
@@ -841,9 +689,8 @@ class Correlation implements ArrayAccess
         'forward_spearman_correlation_coefficient' => 'getForwardSpearmanCorrelationCoefficient',
         'gauge_image' => 'getGaugeImage',
         'gauge_image_square' => 'getGaugeImageSquare',
+        'gauge_sharing_image_url' => 'getGaugeSharingImageUrl',
         'image_url' => 'getImageUrl',
-        'instructions_for_cause' => 'getInstructionsForCause',
-        'instructions_for_effect' => 'getInstructionsForEffect',
         'number_of_pairs' => 'getNumberOfPairs',
         'onset_delay' => 'getOnsetDelay',
         'onset_delay_in_hours' => 'getOnsetDelayInHours',
@@ -868,7 +715,10 @@ class Correlation implements ArrayAccess
         'p_value' => 'getPValue',
         'qm_score' => 'getQmScore',
         'reverse_pearson_correlation_coefficient' => 'getReversePearsonCorrelationCoefficient',
+        'robot_sharing_image_url' => 'getRobotSharingImageUrl',
         'share_user_measurements' => 'getShareUserMeasurements',
+        'sharing_description' => 'getSharingDescription',
+        'sharing_title' => 'getSharingTitle',
         'significance_explanation' => 'getSignificanceExplanation',
         'significant_difference' => 'getSignificantDifference',
         'statistical_significance' => 'getStatisticalSignificance',
@@ -886,7 +736,6 @@ class Correlation implements ArrayAccess
         'study_objective' => 'getStudyObjective',
         'study_results' => 'getStudyResults',
         'study_title' => 'getStudyTitle',
-        'timestamp' => 'getTimestamp',
         't_value' => 'getTValue',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
@@ -895,62 +744,28 @@ class Correlation implements ArrayAccess
         'value_predicting_high_outcome_explanation' => 'getValuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'getValuePredictingLowOutcome',
         'value_predicting_low_outcome_explanation' => 'getValuePredictingLowOutcomeExplanation',
-        'causality_factor' => 'getCausalityFactor',
         'outcome_data_sources' => 'getOutcomeDataSources',
         'principal_investigator' => 'getPrincipalInvestigator',
         'reverse_correlation' => 'getReverseCorrelation',
         'study_background' => 'getStudyBackground',
         'study_invitation' => 'getStudyInvitation',
         'study_question' => 'getStudyQuestion',
-        'all_pairs_significance' => 'getAllPairsSignificance',
+        'study_html' => 'getStudyHtml',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'getAveragePearsonCorrelationCoefficientOverOnsetDelays',
         'calculation_start_time' => 'getCalculationStartTime',
-        'cause_changes_statistical_significance' => 'getCauseChangesStatisticalSignificance',
-        'cause_number_of_processed_daily_measurements' => 'getCauseNumberOfProcessedDailyMeasurements',
         'cause_number_of_raw_measurements' => 'getCauseNumberOfRawMeasurements',
-        'cause_value_spread' => 'getCauseValueSpread',
         'correlations_over_durations_of_action' => 'getCorrelationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'getCorrelationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'getCorrelationsOverOnsetDelaysChartConfig',
-        'data_points' => 'getDataPoints',
         'degrees_of_freedom' => 'getDegreesOfFreedom',
-        'distance_from_middle_to_be_hight_low_effect' => 'getDistanceFromMiddleToBeHightLowEffect',
         'effect_number_of_processed_daily_measurements' => 'getEffectNumberOfProcessedDailyMeasurements',
-        'effect_number_of_raw_measurements' => 'getEffectNumberOfRawMeasurements',
-        'effect_value_spread' => 'getEffectValueSpread',
         'error' => 'getError',
-        'maximum_cause_value' => 'getMaximumCauseValue',
-        'maximum_effect_value' => 'getMaximumEffectValue',
-        'median_of_lower_half_of_effect_measurements' => 'getMedianOfLowerHalfOfEffectMeasurements',
-        'median_of_upper_half_of_effect_measurements' => 'getMedianOfUpperHalfOfEffectMeasurements',
-        'minimum_cause_value' => 'getMinimumCauseValue',
-        'minimum_effect_value' => 'getMinimumEffectValue',
-        'minimum_probability' => 'getMinimumProbability',
-        'number_of_cause_changes_for_optimal_values' => 'getNumberOfCauseChangesForOptimalValues',
-        'number_of_days' => 'getNumberOfDays',
-        'number_of_days_significance' => 'getNumberOfDaysSignificance',
-        'number_of_effect_changes_for_optimal_values' => 'getNumberOfEffectChangesForOptimalValues',
-        'number_of_high_effect_pairs' => 'getNumberOfHighEffectPairs',
-        'number_of_low_effect_pairs' => 'getNumberOfLowEffectPairs',
-        'number_of_samples' => 'getNumberOfSamples',
-        'number_of_unique_cause_values_for_optimal_values' => 'getNumberOfUniqueCauseValuesForOptimalValues',
-        'number_of_unique_effect_values_for_optimal_values' => 'getNumberOfUniqueEffectValuesForOptimalValues',
         'number_of_users' => 'getNumberOfUsers',
-        'optimal_change_spread' => 'getOptimalChangeSpread',
-        'optimal_change_spread_significance' => 'getOptimalChangeSpreadSignificance',
-        'pairs_over_time_chart_config' => 'getPairsOverTimeChartConfig',
-        'per_day_sentence_fragment' => 'getPerDaySentenceFragment',
         'raw_cause_measurement_significance' => 'getRawCauseMeasurementSignificance',
         'raw_effect_measurement_significance' => 'getRawEffectMeasurementSignificance',
         'reverse_pairs_count' => 'getReversePairsCount',
         'vote_statistical_significance' => 'getVoteStatisticalSignificance',
         'aggregate_qm_score' => 'getAggregateQmScore',
-        'cause_unit' => 'getCauseUnit',
-        'cause_variable_common_alias' => 'getCauseVariableCommonAlias',
-        'cause_variable_informational_url' => 'getCauseVariableInformationalUrl',
-        'cause_variable_product_url' => 'getCauseVariableProductUrl',
-        'effect_variable_informational_url' => 'getEffectVariableInformationalUrl',
-        'effect_variable_product_url' => 'getEffectVariableProductUrl',
         'forward_pearson_correlation_coefficient' => 'getForwardPearsonCorrelationCoefficient',
         'number_of_correlations' => 'getNumberOfCorrelations',
         'vote' => 'getVote'
@@ -1004,8 +819,6 @@ class Correlation implements ArrayAccess
         $this->container['cause_variable_category_name'] = isset($data['cause_variable_category_name']) ? $data['cause_variable_category_name'] : null;
         $this->container['cause_variable_combination_operation'] = isset($data['cause_variable_combination_operation']) ? $data['cause_variable_combination_operation'] : null;
         $this->container['cause_variable_unit_abbreviated_name'] = isset($data['cause_variable_unit_abbreviated_name']) ? $data['cause_variable_unit_abbreviated_name'] : null;
-        $this->container['cause_variable_unit_id'] = isset($data['cause_variable_unit_id']) ? $data['cause_variable_unit_id'] : null;
-        $this->container['cause_variable_unit_name'] = isset($data['cause_variable_unit_name']) ? $data['cause_variable_unit_name'] : null;
         $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
         $this->container['cause_variable_image_url'] = isset($data['cause_variable_image_url']) ? $data['cause_variable_image_url'] : null;
         $this->container['cause_variable_ion_icon'] = isset($data['cause_variable_ion_icon']) ? $data['cause_variable_ion_icon'] : null;
@@ -1019,8 +832,6 @@ class Correlation implements ArrayAccess
         $this->container['critical_t_value'] = isset($data['critical_t_value']) ? $data['critical_t_value'] : null;
         $this->container['data_analysis'] = isset($data['data_analysis']) ? $data['data_analysis'] : null;
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
-        $this->container['data_sources_paragraph_for_cause'] = isset($data['data_sources_paragraph_for_cause']) ? $data['data_sources_paragraph_for_cause'] : null;
-        $this->container['data_sources_paragraph_for_effect'] = isset($data['data_sources_paragraph_for_effect']) ? $data['data_sources_paragraph_for_effect'] : null;
         $this->container['direction'] = isset($data['direction']) ? $data['direction'] : null;
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
         $this->container['duration_of_action_in_hours'] = isset($data['duration_of_action_in_hours']) ? $data['duration_of_action_in_hours'] : null;
@@ -1046,9 +857,8 @@ class Correlation implements ArrayAccess
         $this->container['forward_spearman_correlation_coefficient'] = isset($data['forward_spearman_correlation_coefficient']) ? $data['forward_spearman_correlation_coefficient'] : null;
         $this->container['gauge_image'] = isset($data['gauge_image']) ? $data['gauge_image'] : null;
         $this->container['gauge_image_square'] = isset($data['gauge_image_square']) ? $data['gauge_image_square'] : null;
+        $this->container['gauge_sharing_image_url'] = isset($data['gauge_sharing_image_url']) ? $data['gauge_sharing_image_url'] : null;
         $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
-        $this->container['instructions_for_cause'] = isset($data['instructions_for_cause']) ? $data['instructions_for_cause'] : null;
-        $this->container['instructions_for_effect'] = isset($data['instructions_for_effect']) ? $data['instructions_for_effect'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
         $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
         $this->container['onset_delay_in_hours'] = isset($data['onset_delay_in_hours']) ? $data['onset_delay_in_hours'] : null;
@@ -1073,7 +883,10 @@ class Correlation implements ArrayAccess
         $this->container['p_value'] = isset($data['p_value']) ? $data['p_value'] : null;
         $this->container['qm_score'] = isset($data['qm_score']) ? $data['qm_score'] : null;
         $this->container['reverse_pearson_correlation_coefficient'] = isset($data['reverse_pearson_correlation_coefficient']) ? $data['reverse_pearson_correlation_coefficient'] : null;
+        $this->container['robot_sharing_image_url'] = isset($data['robot_sharing_image_url']) ? $data['robot_sharing_image_url'] : null;
         $this->container['share_user_measurements'] = isset($data['share_user_measurements']) ? $data['share_user_measurements'] : null;
+        $this->container['sharing_description'] = isset($data['sharing_description']) ? $data['sharing_description'] : null;
+        $this->container['sharing_title'] = isset($data['sharing_title']) ? $data['sharing_title'] : null;
         $this->container['significance_explanation'] = isset($data['significance_explanation']) ? $data['significance_explanation'] : null;
         $this->container['significant_difference'] = isset($data['significant_difference']) ? $data['significant_difference'] : null;
         $this->container['statistical_significance'] = isset($data['statistical_significance']) ? $data['statistical_significance'] : null;
@@ -1091,7 +904,6 @@ class Correlation implements ArrayAccess
         $this->container['study_objective'] = isset($data['study_objective']) ? $data['study_objective'] : null;
         $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
         $this->container['t_value'] = isset($data['t_value']) ? $data['t_value'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
@@ -1100,62 +912,28 @@ class Correlation implements ArrayAccess
         $this->container['value_predicting_high_outcome_explanation'] = isset($data['value_predicting_high_outcome_explanation']) ? $data['value_predicting_high_outcome_explanation'] : null;
         $this->container['value_predicting_low_outcome'] = isset($data['value_predicting_low_outcome']) ? $data['value_predicting_low_outcome'] : null;
         $this->container['value_predicting_low_outcome_explanation'] = isset($data['value_predicting_low_outcome_explanation']) ? $data['value_predicting_low_outcome_explanation'] : null;
-        $this->container['causality_factor'] = isset($data['causality_factor']) ? $data['causality_factor'] : null;
         $this->container['outcome_data_sources'] = isset($data['outcome_data_sources']) ? $data['outcome_data_sources'] : null;
         $this->container['principal_investigator'] = isset($data['principal_investigator']) ? $data['principal_investigator'] : null;
         $this->container['reverse_correlation'] = isset($data['reverse_correlation']) ? $data['reverse_correlation'] : null;
         $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
         $this->container['study_invitation'] = isset($data['study_invitation']) ? $data['study_invitation'] : null;
         $this->container['study_question'] = isset($data['study_question']) ? $data['study_question'] : null;
-        $this->container['all_pairs_significance'] = isset($data['all_pairs_significance']) ? $data['all_pairs_significance'] : null;
+        $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['average_pearson_correlation_coefficient_over_onset_delays'] = isset($data['average_pearson_correlation_coefficient_over_onset_delays']) ? $data['average_pearson_correlation_coefficient_over_onset_delays'] : null;
         $this->container['calculation_start_time'] = isset($data['calculation_start_time']) ? $data['calculation_start_time'] : null;
-        $this->container['cause_changes_statistical_significance'] = isset($data['cause_changes_statistical_significance']) ? $data['cause_changes_statistical_significance'] : null;
-        $this->container['cause_number_of_processed_daily_measurements'] = isset($data['cause_number_of_processed_daily_measurements']) ? $data['cause_number_of_processed_daily_measurements'] : null;
         $this->container['cause_number_of_raw_measurements'] = isset($data['cause_number_of_raw_measurements']) ? $data['cause_number_of_raw_measurements'] : null;
-        $this->container['cause_value_spread'] = isset($data['cause_value_spread']) ? $data['cause_value_spread'] : null;
         $this->container['correlations_over_durations_of_action'] = isset($data['correlations_over_durations_of_action']) ? $data['correlations_over_durations_of_action'] : null;
         $this->container['correlations_over_durations_of_action_chart_config'] = isset($data['correlations_over_durations_of_action_chart_config']) ? $data['correlations_over_durations_of_action_chart_config'] : null;
         $this->container['correlations_over_onset_delays_chart_config'] = isset($data['correlations_over_onset_delays_chart_config']) ? $data['correlations_over_onset_delays_chart_config'] : null;
-        $this->container['data_points'] = isset($data['data_points']) ? $data['data_points'] : null;
         $this->container['degrees_of_freedom'] = isset($data['degrees_of_freedom']) ? $data['degrees_of_freedom'] : null;
-        $this->container['distance_from_middle_to_be_hight_low_effect'] = isset($data['distance_from_middle_to_be_hight_low_effect']) ? $data['distance_from_middle_to_be_hight_low_effect'] : null;
         $this->container['effect_number_of_processed_daily_measurements'] = isset($data['effect_number_of_processed_daily_measurements']) ? $data['effect_number_of_processed_daily_measurements'] : null;
-        $this->container['effect_number_of_raw_measurements'] = isset($data['effect_number_of_raw_measurements']) ? $data['effect_number_of_raw_measurements'] : null;
-        $this->container['effect_value_spread'] = isset($data['effect_value_spread']) ? $data['effect_value_spread'] : null;
         $this->container['error'] = isset($data['error']) ? $data['error'] : null;
-        $this->container['maximum_cause_value'] = isset($data['maximum_cause_value']) ? $data['maximum_cause_value'] : null;
-        $this->container['maximum_effect_value'] = isset($data['maximum_effect_value']) ? $data['maximum_effect_value'] : null;
-        $this->container['median_of_lower_half_of_effect_measurements'] = isset($data['median_of_lower_half_of_effect_measurements']) ? $data['median_of_lower_half_of_effect_measurements'] : null;
-        $this->container['median_of_upper_half_of_effect_measurements'] = isset($data['median_of_upper_half_of_effect_measurements']) ? $data['median_of_upper_half_of_effect_measurements'] : null;
-        $this->container['minimum_cause_value'] = isset($data['minimum_cause_value']) ? $data['minimum_cause_value'] : null;
-        $this->container['minimum_effect_value'] = isset($data['minimum_effect_value']) ? $data['minimum_effect_value'] : null;
-        $this->container['minimum_probability'] = isset($data['minimum_probability']) ? $data['minimum_probability'] : null;
-        $this->container['number_of_cause_changes_for_optimal_values'] = isset($data['number_of_cause_changes_for_optimal_values']) ? $data['number_of_cause_changes_for_optimal_values'] : null;
-        $this->container['number_of_days'] = isset($data['number_of_days']) ? $data['number_of_days'] : null;
-        $this->container['number_of_days_significance'] = isset($data['number_of_days_significance']) ? $data['number_of_days_significance'] : null;
-        $this->container['number_of_effect_changes_for_optimal_values'] = isset($data['number_of_effect_changes_for_optimal_values']) ? $data['number_of_effect_changes_for_optimal_values'] : null;
-        $this->container['number_of_high_effect_pairs'] = isset($data['number_of_high_effect_pairs']) ? $data['number_of_high_effect_pairs'] : null;
-        $this->container['number_of_low_effect_pairs'] = isset($data['number_of_low_effect_pairs']) ? $data['number_of_low_effect_pairs'] : null;
-        $this->container['number_of_samples'] = isset($data['number_of_samples']) ? $data['number_of_samples'] : null;
-        $this->container['number_of_unique_cause_values_for_optimal_values'] = isset($data['number_of_unique_cause_values_for_optimal_values']) ? $data['number_of_unique_cause_values_for_optimal_values'] : null;
-        $this->container['number_of_unique_effect_values_for_optimal_values'] = isset($data['number_of_unique_effect_values_for_optimal_values']) ? $data['number_of_unique_effect_values_for_optimal_values'] : null;
         $this->container['number_of_users'] = isset($data['number_of_users']) ? $data['number_of_users'] : null;
-        $this->container['optimal_change_spread'] = isset($data['optimal_change_spread']) ? $data['optimal_change_spread'] : null;
-        $this->container['optimal_change_spread_significance'] = isset($data['optimal_change_spread_significance']) ? $data['optimal_change_spread_significance'] : null;
-        $this->container['pairs_over_time_chart_config'] = isset($data['pairs_over_time_chart_config']) ? $data['pairs_over_time_chart_config'] : null;
-        $this->container['per_day_sentence_fragment'] = isset($data['per_day_sentence_fragment']) ? $data['per_day_sentence_fragment'] : null;
         $this->container['raw_cause_measurement_significance'] = isset($data['raw_cause_measurement_significance']) ? $data['raw_cause_measurement_significance'] : null;
         $this->container['raw_effect_measurement_significance'] = isset($data['raw_effect_measurement_significance']) ? $data['raw_effect_measurement_significance'] : null;
         $this->container['reverse_pairs_count'] = isset($data['reverse_pairs_count']) ? $data['reverse_pairs_count'] : null;
         $this->container['vote_statistical_significance'] = isset($data['vote_statistical_significance']) ? $data['vote_statistical_significance'] : null;
         $this->container['aggregate_qm_score'] = isset($data['aggregate_qm_score']) ? $data['aggregate_qm_score'] : null;
-        $this->container['cause_unit'] = isset($data['cause_unit']) ? $data['cause_unit'] : null;
-        $this->container['cause_variable_common_alias'] = isset($data['cause_variable_common_alias']) ? $data['cause_variable_common_alias'] : null;
-        $this->container['cause_variable_informational_url'] = isset($data['cause_variable_informational_url']) ? $data['cause_variable_informational_url'] : null;
-        $this->container['cause_variable_product_url'] = isset($data['cause_variable_product_url']) ? $data['cause_variable_product_url'] : null;
-        $this->container['effect_variable_informational_url'] = isset($data['effect_variable_informational_url']) ? $data['effect_variable_informational_url'] : null;
-        $this->container['effect_variable_product_url'] = isset($data['effect_variable_product_url']) ? $data['effect_variable_product_url'] : null;
         $this->container['forward_pearson_correlation_coefficient'] = isset($data['forward_pearson_correlation_coefficient']) ? $data['forward_pearson_correlation_coefficient'] : null;
         $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
         $this->container['vote'] = isset($data['vote']) ? $data['vote'] : null;
@@ -1206,36 +984,6 @@ class Correlation implements ArrayAccess
         if ($this->container['cause_user_variable_share_user_measurements'] === null) {
             $invalid_properties[] = "'cause_user_variable_share_user_measurements' can't be null";
         }
-        if ($this->container['cause_variable_category_id'] === null) {
-            $invalid_properties[] = "'cause_variable_category_id' can't be null";
-        }
-        if ($this->container['cause_variable_category_name'] === null) {
-            $invalid_properties[] = "'cause_variable_category_name' can't be null";
-        }
-        if ($this->container['cause_variable_combination_operation'] === null) {
-            $invalid_properties[] = "'cause_variable_combination_operation' can't be null";
-        }
-        if ($this->container['cause_variable_unit_abbreviated_name'] === null) {
-            $invalid_properties[] = "'cause_variable_unit_abbreviated_name' can't be null";
-        }
-        if ($this->container['cause_variable_unit_id'] === null) {
-            $invalid_properties[] = "'cause_variable_unit_id' can't be null";
-        }
-        if ($this->container['cause_variable_unit_name'] === null) {
-            $invalid_properties[] = "'cause_variable_unit_name' can't be null";
-        }
-        if ($this->container['cause_variable_id'] === null) {
-            $invalid_properties[] = "'cause_variable_id' can't be null";
-        }
-        if ($this->container['cause_variable_image_url'] === null) {
-            $invalid_properties[] = "'cause_variable_image_url' can't be null";
-        }
-        if ($this->container['cause_variable_ion_icon'] === null) {
-            $invalid_properties[] = "'cause_variable_ion_icon' can't be null";
-        }
-        if ($this->container['cause_variable_most_common_connector_id'] === null) {
-            $invalid_properties[] = "'cause_variable_most_common_connector_id' can't be null";
-        }
         if ($this->container['cause_variable_name'] === null) {
             $invalid_properties[] = "'cause_variable_name' can't be null";
         }
@@ -1260,12 +1008,6 @@ class Correlation implements ArrayAccess
         if ($this->container['data_sources'] === null) {
             $invalid_properties[] = "'data_sources' can't be null";
         }
-        if ($this->container['data_sources_paragraph_for_cause'] === null) {
-            $invalid_properties[] = "'data_sources_paragraph_for_cause' can't be null";
-        }
-        if ($this->container['data_sources_paragraph_for_effect'] === null) {
-            $invalid_properties[] = "'data_sources_paragraph_for_effect' can't be null";
-        }
         if ($this->container['direction'] === null) {
             $invalid_properties[] = "'direction' can't be null";
         }
@@ -1283,42 +1025,6 @@ class Correlation implements ArrayAccess
         }
         if ($this->container['effect_unit'] === null) {
             $invalid_properties[] = "'effect_unit' can't be null";
-        }
-        if ($this->container['effect_user_variable_share_user_measurements'] === null) {
-            $invalid_properties[] = "'effect_user_variable_share_user_measurements' can't be null";
-        }
-        if ($this->container['effect_variable_category_id'] === null) {
-            $invalid_properties[] = "'effect_variable_category_id' can't be null";
-        }
-        if ($this->container['effect_variable_category_name'] === null) {
-            $invalid_properties[] = "'effect_variable_category_name' can't be null";
-        }
-        if ($this->container['effect_variable_combination_operation'] === null) {
-            $invalid_properties[] = "'effect_variable_combination_operation' can't be null";
-        }
-        if ($this->container['effect_variable_common_alias'] === null) {
-            $invalid_properties[] = "'effect_variable_common_alias' can't be null";
-        }
-        if ($this->container['effect_variable_unit_abbreviated_name'] === null) {
-            $invalid_properties[] = "'effect_variable_unit_abbreviated_name' can't be null";
-        }
-        if ($this->container['effect_variable_unit_id'] === null) {
-            $invalid_properties[] = "'effect_variable_unit_id' can't be null";
-        }
-        if ($this->container['effect_variable_unit_name'] === null) {
-            $invalid_properties[] = "'effect_variable_unit_name' can't be null";
-        }
-        if ($this->container['effect_variable_id'] === null) {
-            $invalid_properties[] = "'effect_variable_id' can't be null";
-        }
-        if ($this->container['effect_variable_image_url'] === null) {
-            $invalid_properties[] = "'effect_variable_image_url' can't be null";
-        }
-        if ($this->container['effect_variable_ion_icon'] === null) {
-            $invalid_properties[] = "'effect_variable_ion_icon' can't be null";
-        }
-        if ($this->container['effect_variable_most_common_connector_id'] === null) {
-            $invalid_properties[] = "'effect_variable_most_common_connector_id' can't be null";
         }
         if ($this->container['effect_variable_name'] === null) {
             $invalid_properties[] = "'effect_variable_name' can't be null";
@@ -1340,12 +1046,6 @@ class Correlation implements ArrayAccess
         }
         if ($this->container['image_url'] === null) {
             $invalid_properties[] = "'image_url' can't be null";
-        }
-        if ($this->container['instructions_for_cause'] === null) {
-            $invalid_properties[] = "'instructions_for_cause' can't be null";
-        }
-        if ($this->container['instructions_for_effect'] === null) {
-            $invalid_properties[] = "'instructions_for_effect' can't be null";
         }
         if ($this->container['number_of_pairs'] === null) {
             $invalid_properties[] = "'number_of_pairs' can't be null";
@@ -1464,9 +1164,6 @@ class Correlation implements ArrayAccess
         if ($this->container['study_title'] === null) {
             $invalid_properties[] = "'study_title' can't be null";
         }
-        if ($this->container['timestamp'] === null) {
-            $invalid_properties[] = "'timestamp' can't be null";
-        }
         if ($this->container['t_value'] === null) {
             $invalid_properties[] = "'t_value' can't be null";
         }
@@ -1539,36 +1236,6 @@ class Correlation implements ArrayAccess
         if ($this->container['cause_user_variable_share_user_measurements'] === null) {
             return false;
         }
-        if ($this->container['cause_variable_category_id'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_category_name'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_combination_operation'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_unit_abbreviated_name'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_unit_id'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_unit_name'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_id'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_image_url'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_ion_icon'] === null) {
-            return false;
-        }
-        if ($this->container['cause_variable_most_common_connector_id'] === null) {
-            return false;
-        }
         if ($this->container['cause_variable_name'] === null) {
             return false;
         }
@@ -1593,12 +1260,6 @@ class Correlation implements ArrayAccess
         if ($this->container['data_sources'] === null) {
             return false;
         }
-        if ($this->container['data_sources_paragraph_for_cause'] === null) {
-            return false;
-        }
-        if ($this->container['data_sources_paragraph_for_effect'] === null) {
-            return false;
-        }
         if ($this->container['direction'] === null) {
             return false;
         }
@@ -1615,42 +1276,6 @@ class Correlation implements ArrayAccess
             return false;
         }
         if ($this->container['effect_unit'] === null) {
-            return false;
-        }
-        if ($this->container['effect_user_variable_share_user_measurements'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_category_id'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_category_name'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_combination_operation'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_common_alias'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_unit_abbreviated_name'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_unit_id'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_unit_name'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_id'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_image_url'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_ion_icon'] === null) {
-            return false;
-        }
-        if ($this->container['effect_variable_most_common_connector_id'] === null) {
             return false;
         }
         if ($this->container['effect_variable_name'] === null) {
@@ -1672,12 +1297,6 @@ class Correlation implements ArrayAccess
             return false;
         }
         if ($this->container['image_url'] === null) {
-            return false;
-        }
-        if ($this->container['instructions_for_cause'] === null) {
-            return false;
-        }
-        if ($this->container['instructions_for_effect'] === null) {
             return false;
         }
         if ($this->container['number_of_pairs'] === null) {
@@ -1795,9 +1414,6 @@ class Correlation implements ArrayAccess
             return false;
         }
         if ($this->container['study_title'] === null) {
-            return false;
-        }
-        if ($this->container['timestamp'] === null) {
             return false;
         }
         if ($this->container['t_value'] === null) {
@@ -2019,7 +1635,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Gets average_vote
-     * @return string
+     * @return float
      */
     public function getAverageVote()
     {
@@ -2028,7 +1644,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets average_vote
-     * @param string $average_vote Example: 0.9855
+     * @param float $average_vote Example: 0.9855
      * @return $this
      */
     public function setAverageVote($average_vote)
@@ -2181,48 +1797,6 @@ class Correlation implements ArrayAccess
     public function setCauseVariableUnitAbbreviatedName($cause_variable_unit_abbreviated_name)
     {
         $this->container['cause_variable_unit_abbreviated_name'] = $cause_variable_unit_abbreviated_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_unit_id
-     * @return int
-     */
-    public function getCauseVariableUnitId()
-    {
-        return $this->container['cause_variable_unit_id'];
-    }
-
-    /**
-     * Sets cause_variable_unit_id
-     * @param int $cause_variable_unit_id Example: 10
-     * @return $this
-     */
-    public function setCauseVariableUnitId($cause_variable_unit_id)
-    {
-        $this->container['cause_variable_unit_id'] = $cause_variable_unit_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_unit_name
-     * @return string
-     */
-    public function getCauseVariableUnitName()
-    {
-        return $this->container['cause_variable_unit_name'];
-    }
-
-    /**
-     * Sets cause_variable_unit_name
-     * @param string $cause_variable_unit_name Example: 1 to 5 Rating
-     * @return $this
-     */
-    public function setCauseVariableUnitName($cause_variable_unit_name)
-    {
-        $this->container['cause_variable_unit_name'] = $cause_variable_unit_name;
 
         return $this;
     }
@@ -2496,48 +2070,6 @@ class Correlation implements ArrayAccess
     public function setDataSources($data_sources)
     {
         $this->container['data_sources'] = $data_sources;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_sources_paragraph_for_cause
-     * @return string
-     */
-    public function getDataSourcesParagraphForCause()
-    {
-        return $this->container['data_sources_paragraph_for_cause'];
-    }
-
-    /**
-     * Sets data_sources_paragraph_for_cause
-     * @param string $data_sources_paragraph_for_cause Example: Sleep Quality data was primarily collected using <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Up by Jawbone</a>.  UP by Jawbone is a wristband and app that tracks how you sleep, move and eat and then helps you use that information to feel your best.
-     * @return $this
-     */
-    public function setDataSourcesParagraphForCause($data_sources_paragraph_for_cause)
-    {
-        $this->container['data_sources_paragraph_for_cause'] = $data_sources_paragraph_for_cause;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_sources_paragraph_for_effect
-     * @return string
-     */
-    public function getDataSourcesParagraphForEffect()
-    {
-        return $this->container['data_sources_paragraph_for_effect'];
-    }
-
-    /**
-     * Sets data_sources_paragraph_for_effect
-     * @param string $data_sources_paragraph_for_effect Example: Overall Mood data was primarily collected using <a href=\"https://quantimo.do\">QuantiModo</a>.  <a href=\"https://quantimo.do\">QuantiModo</a> is a Chrome extension, Android app, iOS app, and web app that allows you to easily track mood, symptoms, or any outcome you want to optimize in a fraction of a second.  You can also import your data from over 30 other apps and devices like Fitbit, Rescuetime, Jawbone Up, Withings, Facebook, Github, Google Calendar, Runkeeper, MoodPanda, Slice, Google Fit, and more.  <a href=\"https://quantimo.do\">QuantiModo</a> then analyzes your data to identify which hidden factors are most likely to be influencing your mood or symptoms and their optimal daily values.
-     * @return $this
-     */
-    public function setDataSourcesParagraphForEffect($data_sources_paragraph_for_effect)
-    {
-        $this->container['data_sources_paragraph_for_effect'] = $data_sources_paragraph_for_effect;
 
         return $this;
     }
@@ -3068,6 +2600,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets gauge_sharing_image_url
+     * @return string
+     */
+    public function getGaugeSharingImageUrl()
+    {
+        return $this->container['gauge_sharing_image_url'];
+    }
+
+    /**
+     * Sets gauge_sharing_image_url
+     * @param string $gauge_sharing_image_url Image with gauge and category images
+     * @return $this
+     */
+    public function setGaugeSharingImageUrl($gauge_sharing_image_url)
+    {
+        $this->container['gauge_sharing_image_url'] = $gauge_sharing_image_url;
+
+        return $this;
+    }
+
+    /**
      * Gets image_url
      * @return string
      */
@@ -3084,48 +2637,6 @@ class Correlation implements ArrayAccess
     public function setImageUrl($image_url)
     {
         $this->container['image_url'] = $image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets instructions_for_cause
-     * @return string
-     */
-    public function getInstructionsForCause()
-    {
-        return $this->container['instructions_for_cause'];
-    }
-
-    /**
-     * Sets instructions_for_cause
-     * @param string $instructions_for_cause Example: <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Obtain Up by Jawbone</a> and use it to record your Sleep Quality. Once you have a <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Up by Jawbone</a> account, <a href=\"https://app.quantimo.do/ionic/Modo/www/#/app/import\">connect your  Up by Jawbone account at QuantiModo</a> to automatically import and analyze your data.
-     * @return $this
-     */
-    public function setInstructionsForCause($instructions_for_cause)
-    {
-        $this->container['instructions_for_cause'] = $instructions_for_cause;
-
-        return $this;
-    }
-
-    /**
-     * Gets instructions_for_effect
-     * @return string
-     */
-    public function getInstructionsForEffect()
-    {
-        return $this->container['instructions_for_effect'];
-    }
-
-    /**
-     * Sets instructions_for_effect
-     * @param string $instructions_for_effect Example: <a href=\"https://quantimo.do\">Obtain QuantiModo</a> and use it to record your Overall Mood. Once you have a <a href=\"https://quantimo.do\">QuantiModo</a> account, <a href=\"https://app.quantimo.do/ionic/Modo/www/#/app/import\">connect your  QuantiModo account at QuantiModo</a> to automatically import and analyze your data.
-     * @return $this
-     */
-    public function setInstructionsForEffect($instructions_for_effect)
-    {
-        $this->container['instructions_for_effect'] = $instructions_for_effect;
 
         return $this;
     }
@@ -3635,6 +3146,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets robot_sharing_image_url
+     * @return string
+     */
+    public function getRobotSharingImageUrl()
+    {
+        return $this->container['robot_sharing_image_url'];
+    }
+
+    /**
+     * Sets robot_sharing_image_url
+     * @param string $robot_sharing_image_url Image with robot and category images
+     * @return $this
+     */
+    public function setRobotSharingImageUrl($robot_sharing_image_url)
+    {
+        $this->container['robot_sharing_image_url'] = $robot_sharing_image_url;
+
+        return $this;
+    }
+
+    /**
      * Gets share_user_measurements
      * @return bool
      */
@@ -3651,6 +3183,48 @@ class Correlation implements ArrayAccess
     public function setShareUserMeasurements($share_user_measurements)
     {
         $this->container['share_user_measurements'] = $share_user_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets sharing_description
+     * @return string
+     */
+    public function getSharingDescription()
+    {
+        return $this->container['sharing_description'];
+    }
+
+    /**
+     * Sets sharing_description
+     * @param string $sharing_description Example: N1 Study: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setSharingDescription($sharing_description)
+    {
+        $this->container['sharing_description'] = $sharing_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets sharing_title
+     * @return string
+     */
+    public function getSharingTitle()
+    {
+        return $this->container['sharing_title'];
+    }
+
+    /**
+     * Sets sharing_title
+     * @param string $sharing_title Example: N1 Study: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setSharingTitle($sharing_title)
+    {
+        $this->container['sharing_title'] = $sharing_title;
 
         return $this;
     }
@@ -4013,27 +3587,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets timestamp
-     * @return int
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     * @param int $timestamp Example: 1494085127
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
      * Gets t_value
      * @return double
      */
@@ -4202,27 +3755,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets causality_factor
-     * @return float
-     */
-    public function getCausalityFactor()
-    {
-        return $this->container['causality_factor'];
-    }
-
-    /**
-     * Sets causality_factor
-     * @param float $causality_factor 
-     * @return $this
-     */
-    public function setCausalityFactor($causality_factor)
-    {
-        $this->container['causality_factor'] = $causality_factor;
-
-        return $this;
-    }
-
-    /**
      * Gets outcome_data_sources
      * @return string
      */
@@ -4349,22 +3881,22 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets all_pairs_significance
-     * @return double
+     * Gets study_html
+     * @return string
      */
-    public function getAllPairsSignificance()
+    public function getStudyHtml()
     {
-        return $this->container['all_pairs_significance'];
+        return $this->container['study_html'];
     }
 
     /**
-     * Sets all_pairs_significance
-     * @param double $all_pairs_significance Example: 0.99994982531794
+     * Sets study_html
+     * @param string $study_html Embeddable study HTML including chart svg's
      * @return $this
      */
-    public function setAllPairsSignificance($all_pairs_significance)
+    public function setStudyHtml($study_html)
     {
-        $this->container['all_pairs_significance'] = $all_pairs_significance;
+        $this->container['study_html'] = $study_html;
 
         return $this;
     }
@@ -4412,48 +3944,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets cause_changes_statistical_significance
-     * @return double
-     */
-    public function getCauseChangesStatisticalSignificance()
-    {
-        return $this->container['cause_changes_statistical_significance'];
-    }
-
-    /**
-     * Sets cause_changes_statistical_significance
-     * @param double $cause_changes_statistical_significance Example: 0.9999299755903
-     * @return $this
-     */
-    public function setCauseChangesStatisticalSignificance($cause_changes_statistical_significance)
-    {
-        $this->container['cause_changes_statistical_significance'] = $cause_changes_statistical_significance;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_number_of_processed_daily_measurements
-     * @return int
-     */
-    public function getCauseNumberOfProcessedDailyMeasurements()
-    {
-        return $this->container['cause_number_of_processed_daily_measurements'];
-    }
-
-    /**
-     * Sets cause_number_of_processed_daily_measurements
-     * @param int $cause_number_of_processed_daily_measurements Example: 1364
-     * @return $this
-     */
-    public function setCauseNumberOfProcessedDailyMeasurements($cause_number_of_processed_daily_measurements)
-    {
-        $this->container['cause_number_of_processed_daily_measurements'] = $cause_number_of_processed_daily_measurements;
-
-        return $this;
-    }
-
-    /**
      * Gets cause_number_of_raw_measurements
      * @return int
      */
@@ -4470,27 +3960,6 @@ class Correlation implements ArrayAccess
     public function setCauseNumberOfRawMeasurements($cause_number_of_raw_measurements)
     {
         $this->container['cause_number_of_raw_measurements'] = $cause_number_of_raw_measurements;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_value_spread
-     * @return double
-     */
-    public function getCauseValueSpread()
-    {
-        return $this->container['cause_value_spread'];
-    }
-
-    /**
-     * Sets cause_value_spread
-     * @param double $cause_value_spread Example: 99032.44787234
-     * @return $this
-     */
-    public function setCauseValueSpread($cause_value_spread)
-    {
-        $this->container['cause_value_spread'] = $cause_value_spread;
 
         return $this;
     }
@@ -4559,27 +4028,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets data_points
-     * @return string
-     */
-    public function getDataPoints()
-    {
-        return $this->container['data_points'];
-    }
-
-    /**
-     * Sets data_points
-     * @param string $data_points Example:
-     * @return $this
-     */
-    public function setDataPoints($data_points)
-    {
-        $this->container['data_points'] = $data_points;
-
-        return $this;
-    }
-
-    /**
      * Gets degrees_of_freedom
      * @return int
      */
@@ -4596,27 +4044,6 @@ class Correlation implements ArrayAccess
     public function setDegreesOfFreedom($degrees_of_freedom)
     {
         $this->container['degrees_of_freedom'] = $degrees_of_freedom;
-
-        return $this;
-    }
-
-    /**
-     * Gets distance_from_middle_to_be_hight_low_effect
-     * @return int
-     */
-    public function getDistanceFromMiddleToBeHightLowEffect()
-    {
-        return $this->container['distance_from_middle_to_be_hight_low_effect'];
-    }
-
-    /**
-     * Sets distance_from_middle_to_be_hight_low_effect
-     * @param int $distance_from_middle_to_be_hight_low_effect Example: 25
-     * @return $this
-     */
-    public function setDistanceFromMiddleToBeHightLowEffect($distance_from_middle_to_be_hight_low_effect)
-    {
-        $this->container['distance_from_middle_to_be_hight_low_effect'] = $distance_from_middle_to_be_hight_low_effect;
 
         return $this;
     }
@@ -4643,48 +4070,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets effect_number_of_raw_measurements
-     * @return int
-     */
-    public function getEffectNumberOfRawMeasurements()
-    {
-        return $this->container['effect_number_of_raw_measurements'];
-    }
-
-    /**
-     * Sets effect_number_of_raw_measurements
-     * @param int $effect_number_of_raw_measurements Example: 4045
-     * @return $this
-     */
-    public function setEffectNumberOfRawMeasurements($effect_number_of_raw_measurements)
-    {
-        $this->container['effect_number_of_raw_measurements'] = $effect_number_of_raw_measurements;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_value_spread
-     * @return double
-     */
-    public function getEffectValueSpread()
-    {
-        return $this->container['effect_value_spread'];
-    }
-
-    /**
-     * Sets effect_value_spread
-     * @param double $effect_value_spread Example: 20.2
-     * @return $this
-     */
-    public function setEffectValueSpread($effect_value_spread)
-    {
-        $this->container['effect_value_spread'] = $effect_value_spread;
-
-        return $this;
-    }
-
-    /**
      * Gets error
      * @return string
      */
@@ -4706,344 +4091,8 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets maximum_cause_value
-     * @return double
-     */
-    public function getMaximumCauseValue()
-    {
-        return $this->container['maximum_cause_value'];
-    }
-
-    /**
-     * Sets maximum_cause_value
-     * @param double $maximum_cause_value Example: 104300
-     * @return $this
-     */
-    public function setMaximumCauseValue($maximum_cause_value)
-    {
-        $this->container['maximum_cause_value'] = $maximum_cause_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets maximum_effect_value
-     * @return double
-     */
-    public function getMaximumEffectValue()
-    {
-        return $this->container['maximum_effect_value'];
-    }
-
-    /**
-     * Sets maximum_effect_value
-     * @param double $maximum_effect_value Example: 20.38
-     * @return $this
-     */
-    public function setMaximumEffectValue($maximum_effect_value)
-    {
-        $this->container['maximum_effect_value'] = $maximum_effect_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets median_of_lower_half_of_effect_measurements
-     * @return string
-     */
-    public function getMedianOfLowerHalfOfEffectMeasurements()
-    {
-        return $this->container['median_of_lower_half_of_effect_measurements'];
-    }
-
-    /**
-     * Sets median_of_lower_half_of_effect_measurements
-     * @param string $median_of_lower_half_of_effect_measurements Example:
-     * @return $this
-     */
-    public function setMedianOfLowerHalfOfEffectMeasurements($median_of_lower_half_of_effect_measurements)
-    {
-        $this->container['median_of_lower_half_of_effect_measurements'] = $median_of_lower_half_of_effect_measurements;
-
-        return $this;
-    }
-
-    /**
-     * Gets median_of_upper_half_of_effect_measurements
-     * @return string
-     */
-    public function getMedianOfUpperHalfOfEffectMeasurements()
-    {
-        return $this->container['median_of_upper_half_of_effect_measurements'];
-    }
-
-    /**
-     * Sets median_of_upper_half_of_effect_measurements
-     * @param string $median_of_upper_half_of_effect_measurements Example:
-     * @return $this
-     */
-    public function setMedianOfUpperHalfOfEffectMeasurements($median_of_upper_half_of_effect_measurements)
-    {
-        $this->container['median_of_upper_half_of_effect_measurements'] = $median_of_upper_half_of_effect_measurements;
-
-        return $this;
-    }
-
-    /**
-     * Gets minimum_cause_value
-     * @return double
-     */
-    public function getMinimumCauseValue()
-    {
-        return $this->container['minimum_cause_value'];
-    }
-
-    /**
-     * Sets minimum_cause_value
-     * @param double $minimum_cause_value Example: 5267.5521276596
-     * @return $this
-     */
-    public function setMinimumCauseValue($minimum_cause_value)
-    {
-        $this->container['minimum_cause_value'] = $minimum_cause_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets minimum_effect_value
-     * @return double
-     */
-    public function getMinimumEffectValue()
-    {
-        return $this->container['minimum_effect_value'];
-    }
-
-    /**
-     * Sets minimum_effect_value
-     * @param double $minimum_effect_value Example: 0.18
-     * @return $this
-     */
-    public function setMinimumEffectValue($minimum_effect_value)
-    {
-        $this->container['minimum_effect_value'] = $minimum_effect_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets minimum_probability
-     * @return double
-     */
-    public function getMinimumProbability()
-    {
-        return $this->container['minimum_probability'];
-    }
-
-    /**
-     * Sets minimum_probability
-     * @param double $minimum_probability Example: 0.05
-     * @return $this
-     */
-    public function setMinimumProbability($minimum_probability)
-    {
-        $this->container['minimum_probability'] = $minimum_probability;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_cause_changes_for_optimal_values
-     * @return int
-     */
-    public function getNumberOfCauseChangesForOptimalValues()
-    {
-        return $this->container['number_of_cause_changes_for_optimal_values'];
-    }
-
-    /**
-     * Sets number_of_cause_changes_for_optimal_values
-     * @param int $number_of_cause_changes_for_optimal_values Example: 287
-     * @return $this
-     */
-    public function setNumberOfCauseChangesForOptimalValues($number_of_cause_changes_for_optimal_values)
-    {
-        $this->container['number_of_cause_changes_for_optimal_values'] = $number_of_cause_changes_for_optimal_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_days
-     * @return int
-     */
-    public function getNumberOfDays()
-    {
-        return $this->container['number_of_days'];
-    }
-
-    /**
-     * Sets number_of_days
-     * @param int $number_of_days Example: 425
-     * @return $this
-     */
-    public function setNumberOfDays($number_of_days)
-    {
-        $this->container['number_of_days'] = $number_of_days;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_days_significance
-     * @return double
-     */
-    public function getNumberOfDaysSignificance()
-    {
-        return $this->container['number_of_days_significance'];
-    }
-
-    /**
-     * Sets number_of_days_significance
-     * @param double $number_of_days_significance Example: 0.99999929612614
-     * @return $this
-     */
-    public function setNumberOfDaysSignificance($number_of_days_significance)
-    {
-        $this->container['number_of_days_significance'] = $number_of_days_significance;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_effect_changes_for_optimal_values
-     * @return int
-     */
-    public function getNumberOfEffectChangesForOptimalValues()
-    {
-        return $this->container['number_of_effect_changes_for_optimal_values'];
-    }
-
-    /**
-     * Sets number_of_effect_changes_for_optimal_values
-     * @param int $number_of_effect_changes_for_optimal_values Example: 295
-     * @return $this
-     */
-    public function setNumberOfEffectChangesForOptimalValues($number_of_effect_changes_for_optimal_values)
-    {
-        $this->container['number_of_effect_changes_for_optimal_values'] = $number_of_effect_changes_for_optimal_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_high_effect_pairs
-     * @return int
-     */
-    public function getNumberOfHighEffectPairs()
-    {
-        return $this->container['number_of_high_effect_pairs'];
-    }
-
-    /**
-     * Sets number_of_high_effect_pairs
-     * @param int $number_of_high_effect_pairs Example: 27
-     * @return $this
-     */
-    public function setNumberOfHighEffectPairs($number_of_high_effect_pairs)
-    {
-        $this->container['number_of_high_effect_pairs'] = $number_of_high_effect_pairs;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_low_effect_pairs
-     * @return int
-     */
-    public function getNumberOfLowEffectPairs()
-    {
-        return $this->container['number_of_low_effect_pairs'];
-    }
-
-    /**
-     * Sets number_of_low_effect_pairs
-     * @param int $number_of_low_effect_pairs Example: 57
-     * @return $this
-     */
-    public function setNumberOfLowEffectPairs($number_of_low_effect_pairs)
-    {
-        $this->container['number_of_low_effect_pairs'] = $number_of_low_effect_pairs;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_samples
-     * @return int
-     */
-    public function getNumberOfSamples()
-    {
-        return $this->container['number_of_samples'];
-    }
-
-    /**
-     * Sets number_of_samples
-     * @param int $number_of_samples Example: 297
-     * @return $this
-     */
-    public function setNumberOfSamples($number_of_samples)
-    {
-        $this->container['number_of_samples'] = $number_of_samples;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_unique_cause_values_for_optimal_values
-     * @return int
-     */
-    public function getNumberOfUniqueCauseValuesForOptimalValues()
-    {
-        return $this->container['number_of_unique_cause_values_for_optimal_values'];
-    }
-
-    /**
-     * Sets number_of_unique_cause_values_for_optimal_values
-     * @param int $number_of_unique_cause_values_for_optimal_values Example: 201
-     * @return $this
-     */
-    public function setNumberOfUniqueCauseValuesForOptimalValues($number_of_unique_cause_values_for_optimal_values)
-    {
-        $this->container['number_of_unique_cause_values_for_optimal_values'] = $number_of_unique_cause_values_for_optimal_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_unique_effect_values_for_optimal_values
-     * @return int
-     */
-    public function getNumberOfUniqueEffectValuesForOptimalValues()
-    {
-        return $this->container['number_of_unique_effect_values_for_optimal_values'];
-    }
-
-    /**
-     * Sets number_of_unique_effect_values_for_optimal_values
-     * @param int $number_of_unique_effect_values_for_optimal_values Example: 264
-     * @return $this
-     */
-    public function setNumberOfUniqueEffectValuesForOptimalValues($number_of_unique_effect_values_for_optimal_values)
-    {
-        $this->container['number_of_unique_effect_values_for_optimal_values'] = $number_of_unique_effect_values_for_optimal_values;
-
-        return $this;
-    }
-
-    /**
      * Gets number_of_users
-     * @return string
+     * @return float
      */
     public function getNumberOfUsers()
     {
@@ -5052,96 +4101,12 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets number_of_users
-     * @param string $number_of_users Example:
+     * @param float $number_of_users Example:
      * @return $this
      */
     public function setNumberOfUsers($number_of_users)
     {
         $this->container['number_of_users'] = $number_of_users;
-
-        return $this;
-    }
-
-    /**
-     * Gets optimal_change_spread
-     * @return double
-     */
-    public function getOptimalChangeSpread()
-    {
-        return $this->container['optimal_change_spread'];
-    }
-
-    /**
-     * Sets optimal_change_spread
-     * @param double $optimal_change_spread Example: 83.44
-     * @return $this
-     */
-    public function setOptimalChangeSpread($optimal_change_spread)
-    {
-        $this->container['optimal_change_spread'] = $optimal_change_spread;
-
-        return $this;
-    }
-
-    /**
-     * Gets optimal_change_spread_significance
-     * @return double
-     */
-    public function getOptimalChangeSpreadSignificance()
-    {
-        return $this->container['optimal_change_spread_significance'];
-    }
-
-    /**
-     * Sets optimal_change_spread_significance
-     * @param double $optimal_change_spread_significance Example: 0.99999999999917
-     * @return $this
-     */
-    public function setOptimalChangeSpreadSignificance($optimal_change_spread_significance)
-    {
-        $this->container['optimal_change_spread_significance'] = $optimal_change_spread_significance;
-
-        return $this;
-    }
-
-    /**
-     * Gets pairs_over_time_chart_config
-     * @return \DateTime
-     */
-    public function getPairsOverTimeChartConfig()
-    {
-        return $this->container['pairs_over_time_chart_config'];
-    }
-
-    /**
-     * Sets pairs_over_time_chart_config
-     * @param \DateTime $pairs_over_time_chart_config Example:
-     * @return $this
-     */
-    public function setPairsOverTimeChartConfig($pairs_over_time_chart_config)
-    {
-        $this->container['pairs_over_time_chart_config'] = $pairs_over_time_chart_config;
-
-        return $this;
-    }
-
-    /**
-     * Gets per_day_sentence_fragment
-     * @return string
-     */
-    public function getPerDaySentenceFragment()
-    {
-        return $this->container['per_day_sentence_fragment'];
-    }
-
-    /**
-     * Sets per_day_sentence_fragment
-     * @param string $per_day_sentence_fragment Example:
-     * @return $this
-     */
-    public function setPerDaySentenceFragment($per_day_sentence_fragment)
-    {
-        $this->container['per_day_sentence_fragment'] = $per_day_sentence_fragment;
 
         return $this;
     }
@@ -5252,132 +4217,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets cause_unit
-     * @return string
-     */
-    public function getCauseUnit()
-    {
-        return $this->container['cause_unit'];
-    }
-
-    /**
-     * Sets cause_unit
-     * @param string $cause_unit Unit of the predictor variable
-     * @return $this
-     */
-    public function setCauseUnit($cause_unit)
-    {
-        $this->container['cause_unit'] = $cause_unit;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_common_alias
-     * @return string
-     */
-    public function getCauseVariableCommonAlias()
-    {
-        return $this->container['cause_variable_common_alias'];
-    }
-
-    /**
-     * Sets cause_variable_common_alias
-     * @param string $cause_variable_common_alias Example:
-     * @return $this
-     */
-    public function setCauseVariableCommonAlias($cause_variable_common_alias)
-    {
-        $this->container['cause_variable_common_alias'] = $cause_variable_common_alias;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_informational_url
-     * @return string
-     */
-    public function getCauseVariableInformationalUrl()
-    {
-        return $this->container['cause_variable_informational_url'];
-    }
-
-    /**
-     * Sets cause_variable_informational_url
-     * @param string $cause_variable_informational_url Example:
-     * @return $this
-     */
-    public function setCauseVariableInformationalUrl($cause_variable_informational_url)
-    {
-        $this->container['cause_variable_informational_url'] = $cause_variable_informational_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_product_url
-     * @return string
-     */
-    public function getCauseVariableProductUrl()
-    {
-        return $this->container['cause_variable_product_url'];
-    }
-
-    /**
-     * Sets cause_variable_product_url
-     * @param string $cause_variable_product_url Example:
-     * @return $this
-     */
-    public function setCauseVariableProductUrl($cause_variable_product_url)
-    {
-        $this->container['cause_variable_product_url'] = $cause_variable_product_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_informational_url
-     * @return string
-     */
-    public function getEffectVariableInformationalUrl()
-    {
-        return $this->container['effect_variable_informational_url'];
-    }
-
-    /**
-     * Sets effect_variable_informational_url
-     * @param string $effect_variable_informational_url Example:
-     * @return $this
-     */
-    public function setEffectVariableInformationalUrl($effect_variable_informational_url)
-    {
-        $this->container['effect_variable_informational_url'] = $effect_variable_informational_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_product_url
-     * @return string
-     */
-    public function getEffectVariableProductUrl()
-    {
-        return $this->container['effect_variable_product_url'];
-    }
-
-    /**
-     * Sets effect_variable_product_url
-     * @param string $effect_variable_product_url Example:
-     * @return $this
-     */
-    public function setEffectVariableProductUrl($effect_variable_product_url)
-    {
-        $this->container['effect_variable_product_url'] = $effect_variable_product_url;
-
-        return $this;
-    }
-
-    /**
      * Gets forward_pearson_correlation_coefficient
      * @return double
      */
@@ -5421,7 +4260,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Gets vote
-     * @return string
+     * @return float
      */
     public function getVote()
     {
@@ -5430,7 +4269,7 @@ class Correlation implements ArrayAccess
 
     /**
      * Sets vote
-     * @param string $vote Example:
+     * @param float $vote Example:
      * @return $this
      */
     public function setVote($vote)

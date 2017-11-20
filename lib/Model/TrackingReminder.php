@@ -86,6 +86,7 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'bool',
         'number_of_raw_measurements' => 'int',
         'number_of_unique_values' => 'int',
+        'outcome' => 'bool',
         'png_path' => 'string',
         'png_url' => 'string',
         'pop_up' => 'bool',
@@ -107,6 +108,7 @@ class TrackingReminder implements ArrayAccess
         'third_to_last_value' => 'double',
         'tracking_reminder_id' => 'int',
         'tracking_reminder_image_url' => 'string',
+        'upc' => 'string',
         'updated_at' => '\DateTime',
         'user_id' => 'int',
         'user_variable_unit_abbreviated_name' => 'string',
@@ -164,6 +166,7 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => null,
         'number_of_raw_measurements' => null,
         'number_of_unique_values' => null,
+        'outcome' => null,
         'png_path' => null,
         'png_url' => null,
         'pop_up' => null,
@@ -185,6 +188,7 @@ class TrackingReminder implements ArrayAccess
         'third_to_last_value' => 'double',
         'tracking_reminder_id' => null,
         'tracking_reminder_image_url' => null,
+        'upc' => null,
         'updated_at' => 'date-time',
         'user_id' => 'int32',
         'user_variable_unit_abbreviated_name' => null,
@@ -252,6 +256,7 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'notificationBar',
         'number_of_raw_measurements' => 'numberOfRawMeasurements',
         'number_of_unique_values' => 'numberOfUniqueValues',
+        'outcome' => 'outcome',
         'png_path' => 'pngPath',
         'png_url' => 'pngUrl',
         'pop_up' => 'popUp',
@@ -273,6 +278,7 @@ class TrackingReminder implements ArrayAccess
         'third_to_last_value' => 'thirdToLastValue',
         'tracking_reminder_id' => 'trackingReminderId',
         'tracking_reminder_image_url' => 'trackingReminderImageUrl',
+        'upc' => 'upc',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
         'user_variable_unit_abbreviated_name' => 'userVariableUnitAbbreviatedName',
@@ -331,6 +337,7 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'setNotificationBar',
         'number_of_raw_measurements' => 'setNumberOfRawMeasurements',
         'number_of_unique_values' => 'setNumberOfUniqueValues',
+        'outcome' => 'setOutcome',
         'png_path' => 'setPngPath',
         'png_url' => 'setPngUrl',
         'pop_up' => 'setPopUp',
@@ -352,6 +359,7 @@ class TrackingReminder implements ArrayAccess
         'third_to_last_value' => 'setThirdToLastValue',
         'tracking_reminder_id' => 'setTrackingReminderId',
         'tracking_reminder_image_url' => 'setTrackingReminderImageUrl',
+        'upc' => 'setUpc',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
         'user_variable_unit_abbreviated_name' => 'setUserVariableUnitAbbreviatedName',
@@ -410,6 +418,7 @@ class TrackingReminder implements ArrayAccess
         'notification_bar' => 'getNotificationBar',
         'number_of_raw_measurements' => 'getNumberOfRawMeasurements',
         'number_of_unique_values' => 'getNumberOfUniqueValues',
+        'outcome' => 'getOutcome',
         'png_path' => 'getPngPath',
         'png_url' => 'getPngUrl',
         'pop_up' => 'getPopUp',
@@ -431,6 +440,7 @@ class TrackingReminder implements ArrayAccess
         'third_to_last_value' => 'getThirdToLastValue',
         'tracking_reminder_id' => 'getTrackingReminderId',
         'tracking_reminder_image_url' => 'getTrackingReminderImageUrl',
+        'upc' => 'getUpc',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
         'user_variable_unit_abbreviated_name' => 'getUserVariableUnitAbbreviatedName',
@@ -528,6 +538,7 @@ class TrackingReminder implements ArrayAccess
         $this->container['notification_bar'] = isset($data['notification_bar']) ? $data['notification_bar'] : null;
         $this->container['number_of_raw_measurements'] = isset($data['number_of_raw_measurements']) ? $data['number_of_raw_measurements'] : null;
         $this->container['number_of_unique_values'] = isset($data['number_of_unique_values']) ? $data['number_of_unique_values'] : null;
+        $this->container['outcome'] = isset($data['outcome']) ? $data['outcome'] : null;
         $this->container['png_path'] = isset($data['png_path']) ? $data['png_path'] : null;
         $this->container['png_url'] = isset($data['png_url']) ? $data['png_url'] : null;
         $this->container['pop_up'] = isset($data['pop_up']) ? $data['pop_up'] : null;
@@ -549,6 +560,7 @@ class TrackingReminder implements ArrayAccess
         $this->container['third_to_last_value'] = isset($data['third_to_last_value']) ? $data['third_to_last_value'] : null;
         $this->container['tracking_reminder_id'] = isset($data['tracking_reminder_id']) ? $data['tracking_reminder_id'] : null;
         $this->container['tracking_reminder_image_url'] = isset($data['tracking_reminder_image_url']) ? $data['tracking_reminder_image_url'] : null;
+        $this->container['upc'] = isset($data['upc']) ? $data['upc'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['user_variable_unit_abbreviated_name'] = isset($data['user_variable_unit_abbreviated_name']) ? $data['user_variable_unit_abbreviated_name'] : null;
@@ -1312,6 +1324,27 @@ class TrackingReminder implements ArrayAccess
     }
 
     /**
+     * Gets outcome
+     * @return bool
+     */
+    public function getOutcome()
+    {
+        return $this->container['outcome'];
+    }
+
+    /**
+     * Sets outcome
+     * @param bool $outcome Indicates whether or not the variable is usually an outcome of interest such as a symptom or emotion
+     * @return $this
+     */
+    public function setOutcome($outcome)
+    {
+        $this->container['outcome'] = $outcome;
+
+        return $this;
+    }
+
+    /**
      * Gets png_path
      * @return string
      */
@@ -1748,6 +1781,27 @@ class TrackingReminder implements ArrayAccess
     public function setTrackingReminderImageUrl($tracking_reminder_image_url)
     {
         $this->container['tracking_reminder_image_url'] = $tracking_reminder_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets upc
+     * @return string
+     */
+    public function getUpc()
+    {
+        return $this->container['upc'];
+    }
+
+    /**
+     * Sets upc
+     * @param string $upc UPC or other barcode scan result
+     * @return $this
+     */
+    public function setUpc($upc)
+    {
+        $this->container['upc'] = $upc;
 
         return $this;
     }

@@ -156,6 +156,7 @@ class UserStudy implements ArrayAccess
         'study_abstract' => 'string',
         'study_background' => 'string',
         'study_design' => 'string',
+        'study_html' => 'string',
         'study_limitations' => 'string',
         'study_link_dynamic' => 'string',
         'study_link_email' => 'string',
@@ -283,6 +284,7 @@ class UserStudy implements ArrayAccess
         'study_abstract' => null,
         'study_background' => null,
         'study_design' => null,
+        'study_html' => null,
         'study_limitations' => null,
         'study_link_dynamic' => null,
         'study_link_email' => null,
@@ -420,6 +422,7 @@ class UserStudy implements ArrayAccess
         'study_abstract' => 'studyAbstract',
         'study_background' => 'studyBackground',
         'study_design' => 'studyDesign',
+        'study_html' => 'studyHtml',
         'study_limitations' => 'studyLimitations',
         'study_link_dynamic' => 'studyLinkDynamic',
         'study_link_email' => 'studyLinkEmail',
@@ -548,6 +551,7 @@ class UserStudy implements ArrayAccess
         'study_abstract' => 'setStudyAbstract',
         'study_background' => 'setStudyBackground',
         'study_design' => 'setStudyDesign',
+        'study_html' => 'setStudyHtml',
         'study_limitations' => 'setStudyLimitations',
         'study_link_dynamic' => 'setStudyLinkDynamic',
         'study_link_email' => 'setStudyLinkEmail',
@@ -676,6 +680,7 @@ class UserStudy implements ArrayAccess
         'study_abstract' => 'getStudyAbstract',
         'study_background' => 'getStudyBackground',
         'study_design' => 'getStudyDesign',
+        'study_html' => 'getStudyHtml',
         'study_limitations' => 'getStudyLimitations',
         'study_link_dynamic' => 'getStudyLinkDynamic',
         'study_link_email' => 'getStudyLinkEmail',
@@ -829,6 +834,7 @@ class UserStudy implements ArrayAccess
         $this->container['study_abstract'] = isset($data['study_abstract']) ? $data['study_abstract'] : null;
         $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
         $this->container['study_design'] = isset($data['study_design']) ? $data['study_design'] : null;
+        $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['study_limitations'] = isset($data['study_limitations']) ? $data['study_limitations'] : null;
         $this->container['study_link_dynamic'] = isset($data['study_link_dynamic']) ? $data['study_link_dynamic'] : null;
         $this->container['study_link_email'] = isset($data['study_link_email']) ? $data['study_link_email'] : null;
@@ -3012,6 +3018,27 @@ class UserStudy implements ArrayAccess
     public function setStudyDesign($study_design)
     {
         $this->container['study_design'] = $study_design;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_html
+     * @return string
+     */
+    public function getStudyHtml()
+    {
+        return $this->container['study_html'];
+    }
+
+    /**
+     * Sets study_html
+     * @param string $study_html Embeddable study HTML including chart svg's
+     * @return $this
+     */
+    public function setStudyHtml($study_html)
+    {
+        $this->container['study_html'] = $study_html;
 
         return $this;
     }

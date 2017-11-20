@@ -58,6 +58,7 @@ class CommonVariable implements ArrayAccess
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'category' => 'string',
         'cause_only' => 'int',
+        'charts' => '\QuantiModo\Client\Model\Chart[]',
         'charts_link_dynamic' => 'string',
         'charts_link_email' => 'string',
         'charts_link_facebook' => 'string',
@@ -74,7 +75,6 @@ class CommonVariable implements ArrayAccess
         'common_variable_updated_at' => '\DateTime',
         'created_at' => '\DateTime',
         'data_source' => '\QuantiModo\Client\Model\DataSource',
-        'highcharts' => '\QuantiModo\Client\Model\HighchartArray',
         'unit_abbreviated_name' => 'string',
         'unit_category_id' => 'int',
         'unit_category_name' => 'string',
@@ -192,6 +192,7 @@ class CommonVariable implements ArrayAccess
         'available_units' => null,
         'category' => null,
         'cause_only' => null,
+        'charts' => null,
         'charts_link_dynamic' => null,
         'charts_link_email' => null,
         'charts_link_facebook' => null,
@@ -208,7 +209,6 @@ class CommonVariable implements ArrayAccess
         'common_variable_updated_at' => 'date-time',
         'created_at' => 'date-time',
         'data_source' => null,
-        'highcharts' => null,
         'unit_abbreviated_name' => null,
         'unit_category_id' => null,
         'unit_category_name' => null,
@@ -336,6 +336,7 @@ class CommonVariable implements ArrayAccess
         'available_units' => 'availableUnits',
         'category' => 'category',
         'cause_only' => 'causeOnly',
+        'charts' => 'charts',
         'charts_link_dynamic' => 'chartsLinkDynamic',
         'charts_link_email' => 'chartsLinkEmail',
         'charts_link_facebook' => 'chartsLinkFacebook',
@@ -352,7 +353,6 @@ class CommonVariable implements ArrayAccess
         'common_variable_updated_at' => 'commonVariableUpdatedAt',
         'created_at' => 'createdAt',
         'data_source' => 'dataSource',
-        'highcharts' => 'highcharts',
         'unit_abbreviated_name' => 'unitAbbreviatedName',
         'unit_category_id' => 'unitCategoryId',
         'unit_category_name' => 'unitCategoryName',
@@ -471,6 +471,7 @@ class CommonVariable implements ArrayAccess
         'available_units' => 'setAvailableUnits',
         'category' => 'setCategory',
         'cause_only' => 'setCauseOnly',
+        'charts' => 'setCharts',
         'charts_link_dynamic' => 'setChartsLinkDynamic',
         'charts_link_email' => 'setChartsLinkEmail',
         'charts_link_facebook' => 'setChartsLinkFacebook',
@@ -487,7 +488,6 @@ class CommonVariable implements ArrayAccess
         'common_variable_updated_at' => 'setCommonVariableUpdatedAt',
         'created_at' => 'setCreatedAt',
         'data_source' => 'setDataSource',
-        'highcharts' => 'setHighcharts',
         'unit_abbreviated_name' => 'setUnitAbbreviatedName',
         'unit_category_id' => 'setUnitCategoryId',
         'unit_category_name' => 'setUnitCategoryName',
@@ -606,6 +606,7 @@ class CommonVariable implements ArrayAccess
         'available_units' => 'getAvailableUnits',
         'category' => 'getCategory',
         'cause_only' => 'getCauseOnly',
+        'charts' => 'getCharts',
         'charts_link_dynamic' => 'getChartsLinkDynamic',
         'charts_link_email' => 'getChartsLinkEmail',
         'charts_link_facebook' => 'getChartsLinkFacebook',
@@ -622,7 +623,6 @@ class CommonVariable implements ArrayAccess
         'common_variable_updated_at' => 'getCommonVariableUpdatedAt',
         'created_at' => 'getCreatedAt',
         'data_source' => 'getDataSource',
-        'highcharts' => 'getHighcharts',
         'unit_abbreviated_name' => 'getUnitAbbreviatedName',
         'unit_category_id' => 'getUnitCategoryId',
         'unit_category_name' => 'getUnitCategoryName',
@@ -780,6 +780,7 @@ class CommonVariable implements ArrayAccess
         $this->container['available_units'] = isset($data['available_units']) ? $data['available_units'] : null;
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
         $this->container['cause_only'] = isset($data['cause_only']) ? $data['cause_only'] : null;
+        $this->container['charts'] = isset($data['charts']) ? $data['charts'] : null;
         $this->container['charts_link_dynamic'] = isset($data['charts_link_dynamic']) ? $data['charts_link_dynamic'] : null;
         $this->container['charts_link_email'] = isset($data['charts_link_email']) ? $data['charts_link_email'] : null;
         $this->container['charts_link_facebook'] = isset($data['charts_link_facebook']) ? $data['charts_link_facebook'] : null;
@@ -796,7 +797,6 @@ class CommonVariable implements ArrayAccess
         $this->container['common_variable_updated_at'] = isset($data['common_variable_updated_at']) ? $data['common_variable_updated_at'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['data_source'] = isset($data['data_source']) ? $data['data_source'] : null;
-        $this->container['highcharts'] = isset($data['highcharts']) ? $data['highcharts'] : null;
         $this->container['unit_abbreviated_name'] = isset($data['unit_abbreviated_name']) ? $data['unit_abbreviated_name'] : null;
         $this->container['unit_category_id'] = isset($data['unit_category_id']) ? $data['unit_category_id'] : null;
         $this->container['unit_category_name'] = isset($data['unit_category_name']) ? $data['unit_category_name'] : null;
@@ -1549,6 +1549,27 @@ class CommonVariable implements ArrayAccess
     }
 
     /**
+     * Gets charts
+     * @return \QuantiModo\Client\Model\Chart[]
+     */
+    public function getCharts()
+    {
+        return $this->container['charts'];
+    }
+
+    /**
+     * Sets charts
+     * @param \QuantiModo\Client\Model\Chart[] $charts
+     * @return $this
+     */
+    public function setCharts($charts)
+    {
+        $this->container['charts'] = $charts;
+
+        return $this;
+    }
+
+    /**
      * Gets charts_link_dynamic
      * @return string
      */
@@ -1889,27 +1910,6 @@ class CommonVariable implements ArrayAccess
     public function setDataSource($data_source)
     {
         $this->container['data_source'] = $data_source;
-
-        return $this;
-    }
-
-    /**
-     * Gets highcharts
-     * @return \QuantiModo\Client\Model\HighchartArray
-     */
-    public function getHighcharts()
-    {
-        return $this->container['highcharts'];
-    }
-
-    /**
-     * Sets highcharts
-     * @param \QuantiModo\Client\Model\HighchartArray $highcharts
-     * @return $this
-     */
-    public function setHighcharts($highcharts)
-    {
-        $this->container['highcharts'] = $highcharts;
 
         return $this;
     }

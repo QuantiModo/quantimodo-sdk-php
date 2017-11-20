@@ -78,13 +78,6 @@ class CommonResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "data"
-     */
-    public function testPropertyData()
-    {
-    }
-
-    /**
      * Test attribute "message"
      */
     public function testPropertyMessage()

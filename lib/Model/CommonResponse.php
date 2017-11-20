@@ -54,7 +54,6 @@ class CommonResponse implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\QuantiModo\Client\Model\GetStudyDataResponse',
         'message' => 'string',
         'status' => 'int',
         'success' => 'bool'
@@ -65,7 +64,6 @@ class CommonResponse implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
         'message' => null,
         'status' => null,
         'success' => null
@@ -86,7 +84,6 @@ class CommonResponse implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
         'message' => 'message',
         'status' => 'status',
         'success' => 'success'
@@ -98,7 +95,6 @@ class CommonResponse implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
         'message' => 'setMessage',
         'status' => 'setStatus',
         'success' => 'setSuccess'
@@ -110,7 +106,6 @@ class CommonResponse implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
         'message' => 'getMessage',
         'status' => 'getStatus',
         'success' => 'getSuccess'
@@ -147,7 +142,6 @@ class CommonResponse implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['success'] = isset($data['success']) ? $data['success'] : null;
@@ -189,27 +183,6 @@ class CommonResponse implements ArrayAccess
         return true;
     }
 
-
-    /**
-     * Gets data
-     * @return \QuantiModo\Client\Model\GetStudyDataResponse
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     * @param \QuantiModo\Client\Model\GetStudyDataResponse $data
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
 
     /**
      * Gets message
