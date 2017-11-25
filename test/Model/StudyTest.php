@@ -1,6 +1,6 @@
 <?php
 /**
- * HoverTest
+ * StudyTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace QuantiModo\Client;
 
 /**
- * HoverTest Class Doc Comment
+ * StudyTest Class Doc Comment
  *
  * @category    Class */
-// * @description Hover
+// * @description Study
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class HoverTest extends \PHPUnit_Framework_TestCase
+class StudyTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,30 +71,79 @@ class HoverTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Hover"
+     * Test "Study"
      */
-    public function testHover()
+    public function testStudy()
     {
     }
 
     /**
-     * Test attribute "enabled"
+     * Test attribute "cause_variable"
      */
-    public function testPropertyEnabled()
+    public function testPropertyCauseVariable()
     {
     }
 
     /**
-     * Test attribute "line_color"
+     * Test attribute "charts"
      */
-    public function testPropertyLineColor()
+    public function testPropertyCharts()
     {
     }
 
     /**
-     * Test attribute "marker"
+     * Test attribute "chart_html"
      */
-    public function testPropertyMarker()
+    public function testPropertyChartHtml()
+    {
+    }
+
+    /**
+     * Test attribute "effect_variable"
+     */
+    public function testPropertyEffectVariable()
+    {
+    }
+
+    /**
+     * Test attribute "html"
+     */
+    public function testPropertyHtml()
+    {
+    }
+
+    /**
+     * Test attribute "participant_instructions"
+     */
+    public function testPropertyParticipantInstructions()
+    {
+    }
+
+    /**
+     * Test attribute "statistics"
+     */
+    public function testPropertyStatistics()
+    {
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+    }
+
+    /**
+     * Test attribute "text"
+     */
+    public function testPropertyText()
+    {
+    }
+
+    /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
     {
     }
 }

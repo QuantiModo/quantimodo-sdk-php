@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**getPairs**](MeasurementsApi.md#getPairs) | **GET** /v3/pairs | Get pairs of measurements for correlational analysis
 [**measurementExportRequest**](MeasurementsApi.md#measurementExportRequest) | **POST** /v2/measurements/exportRequest | Post Request for Measurements CSV
 [**postMeasurements**](MeasurementsApi.md#postMeasurements) | **POST** /v3/measurements/post | Post a new set or update existing measurements to the database
-[**v3MeasurementsUpdatePost**](MeasurementsApi.md#v3MeasurementsUpdatePost) | **POST** /v3/measurements/update | Update a measurement
+[**updateMeasurement**](MeasurementsApi.md#updateMeasurement) | **POST** /v3/measurements/update | Update a measurement
 
 
 # **deleteMeasurement**
@@ -338,12 +338,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **v3MeasurementsUpdatePost**
-> \QuantiModo\Client\Model\CommonResponse v3MeasurementsUpdatePost($body)
+# **updateMeasurement**
+> \QuantiModo\Client\Model\CommonResponse updateMeasurement($body)
 
 Update a measurement
 
-Delete a previously submitted measurement
+Update a previously submitted measurement
 
 ### Example
 ```php
@@ -361,10 +361,10 @@ $api_instance = new QuantiModo\Client\Api\MeasurementsApi();
 $body = new \QuantiModo\Client\Model\MeasurementUpdate(); // \QuantiModo\Client\Model\MeasurementUpdate | The id as well as the new startTime, note, and/or value of the measurement to be updated
 
 try {
-    $result = $api_instance->v3MeasurementsUpdatePost($body);
+    $result = $api_instance->updateMeasurement($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MeasurementsApi->v3MeasurementsUpdatePost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MeasurementsApi->updateMeasurement: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

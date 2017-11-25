@@ -1,6 +1,6 @@
 <?php
 /**
- * GetStudyResponse
+ * Study
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace QuantiModo\Client\Model;
 use \ArrayAccess;
 
 /**
- * GetStudyResponse Class Doc Comment
+ * Study Class Doc Comment
  *
  * @category    Class
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetStudyResponse implements ArrayAccess
+class Study implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,31 +47,23 @@ class GetStudyResponse implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GetStudyResponse';
+    protected static $swaggerModelName = 'Study';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'cause_processed_daily_measurements' => '\QuantiModo\Client\Model\ProcessedDailyMeasurement[]',
         'cause_variable' => '\QuantiModo\Client\Model\UserVariable',
         'charts' => '\QuantiModo\Client\Model\Chart[]',
-        'data' => '\QuantiModo\Client\Model\GetStudyDataResponse',
-        'effect_processed_daily_measurements' => '\QuantiModo\Client\Model\ProcessedDailyMeasurement[]',
+        'chart_html' => 'string',
         'effect_variable' => '\QuantiModo\Client\Model\UserVariable',
-        'message' => 'string',
-        'pairs' => '\QuantiModo\Client\Model\Pair[]',
-        'pairs_of_averages_for_all_users' => '\QuantiModo\Client\Model\PairsOfAveragesForAllUser[]',
+        'html' => 'string',
         'participant_instructions' => '\QuantiModo\Client\Model\ParticipantInstruction',
         'statistics' => '\QuantiModo\Client\Model\Correlation',
         'status' => 'int',
-        'success' => 'bool',
         'text' => '\QuantiModo\Client\Model\Text',
-        'type' => 'string',
-        'user_correlations' => '\QuantiModo\Client\Model\Correlation[]',
-        'user_id' => 'int',
-        'user_study' => '\QuantiModo\Client\Model\UserStudy'
+        'type' => 'string'
     ];
 
     /**
@@ -79,24 +71,16 @@ class GetStudyResponse implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'cause_processed_daily_measurements' => null,
         'cause_variable' => null,
         'charts' => null,
-        'data' => null,
-        'effect_processed_daily_measurements' => null,
+        'chart_html' => null,
         'effect_variable' => null,
-        'message' => null,
-        'pairs' => null,
-        'pairs_of_averages_for_all_users' => null,
+        'html' => null,
         'participant_instructions' => null,
         'statistics' => null,
         'status' => null,
-        'success' => null,
         'text' => null,
-        'type' => null,
-        'user_correlations' => null,
-        'user_id' => null,
-        'user_study' => null
+        'type' => null
     ];
 
     public static function swaggerTypes()
@@ -114,24 +98,16 @@ class GetStudyResponse implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'cause_processed_daily_measurements' => 'causeProcessedDailyMeasurements',
         'cause_variable' => 'causeVariable',
         'charts' => 'charts',
-        'data' => 'data',
-        'effect_processed_daily_measurements' => 'effectProcessedDailyMeasurements',
+        'chart_html' => 'chartHtml',
         'effect_variable' => 'effectVariable',
-        'message' => 'message',
-        'pairs' => 'pairs',
-        'pairs_of_averages_for_all_users' => 'pairsOfAveragesForAllUsers',
+        'html' => 'html',
         'participant_instructions' => 'participantInstructions',
         'statistics' => 'statistics',
         'status' => 'status',
-        'success' => 'success',
         'text' => 'text',
-        'type' => 'type',
-        'user_correlations' => 'userCorrelations',
-        'user_id' => 'userId',
-        'user_study' => 'userStudy'
+        'type' => 'type'
     ];
 
 
@@ -140,24 +116,16 @@ class GetStudyResponse implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'cause_processed_daily_measurements' => 'setCauseProcessedDailyMeasurements',
         'cause_variable' => 'setCauseVariable',
         'charts' => 'setCharts',
-        'data' => 'setData',
-        'effect_processed_daily_measurements' => 'setEffectProcessedDailyMeasurements',
+        'chart_html' => 'setChartHtml',
         'effect_variable' => 'setEffectVariable',
-        'message' => 'setMessage',
-        'pairs' => 'setPairs',
-        'pairs_of_averages_for_all_users' => 'setPairsOfAveragesForAllUsers',
+        'html' => 'setHtml',
         'participant_instructions' => 'setParticipantInstructions',
         'statistics' => 'setStatistics',
         'status' => 'setStatus',
-        'success' => 'setSuccess',
         'text' => 'setText',
-        'type' => 'setType',
-        'user_correlations' => 'setUserCorrelations',
-        'user_id' => 'setUserId',
-        'user_study' => 'setUserStudy'
+        'type' => 'setType'
     ];
 
 
@@ -166,24 +134,16 @@ class GetStudyResponse implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'cause_processed_daily_measurements' => 'getCauseProcessedDailyMeasurements',
         'cause_variable' => 'getCauseVariable',
         'charts' => 'getCharts',
-        'data' => 'getData',
-        'effect_processed_daily_measurements' => 'getEffectProcessedDailyMeasurements',
+        'chart_html' => 'getChartHtml',
         'effect_variable' => 'getEffectVariable',
-        'message' => 'getMessage',
-        'pairs' => 'getPairs',
-        'pairs_of_averages_for_all_users' => 'getPairsOfAveragesForAllUsers',
+        'html' => 'getHtml',
         'participant_instructions' => 'getParticipantInstructions',
         'statistics' => 'getStatistics',
         'status' => 'getStatus',
-        'success' => 'getSuccess',
         'text' => 'getText',
-        'type' => 'getType',
-        'user_correlations' => 'getUserCorrelations',
-        'user_id' => 'getUserId',
-        'user_study' => 'getUserStudy'
+        'type' => 'getType'
     ];
 
     public static function attributeMap()
@@ -217,24 +177,16 @@ class GetStudyResponse implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['cause_processed_daily_measurements'] = isset($data['cause_processed_daily_measurements']) ? $data['cause_processed_daily_measurements'] : null;
         $this->container['cause_variable'] = isset($data['cause_variable']) ? $data['cause_variable'] : null;
         $this->container['charts'] = isset($data['charts']) ? $data['charts'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['effect_processed_daily_measurements'] = isset($data['effect_processed_daily_measurements']) ? $data['effect_processed_daily_measurements'] : null;
+        $this->container['chart_html'] = isset($data['chart_html']) ? $data['chart_html'] : null;
         $this->container['effect_variable'] = isset($data['effect_variable']) ? $data['effect_variable'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['pairs'] = isset($data['pairs']) ? $data['pairs'] : null;
-        $this->container['pairs_of_averages_for_all_users'] = isset($data['pairs_of_averages_for_all_users']) ? $data['pairs_of_averages_for_all_users'] : null;
+        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
         $this->container['participant_instructions'] = isset($data['participant_instructions']) ? $data['participant_instructions'] : null;
         $this->container['statistics'] = isset($data['statistics']) ? $data['statistics'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['user_correlations'] = isset($data['user_correlations']) ? $data['user_correlations'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['user_study'] = isset($data['user_study']) ? $data['user_study'] : null;
     }
 
     /**
@@ -246,11 +198,8 @@ class GetStudyResponse implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['status'] === null) {
-            $invalid_properties[] = "'status' can't be null";
-        }
-        if ($this->container['success'] === null) {
-            $invalid_properties[] = "'success' can't be null";
+        if ($this->container['type'] === null) {
+            $invalid_properties[] = "'type' can't be null";
         }
         return $invalid_properties;
     }
@@ -264,36 +213,12 @@ class GetStudyResponse implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['status'] === null) {
-            return false;
-        }
-        if ($this->container['success'] === null) {
+        if ($this->container['type'] === null) {
             return false;
         }
         return true;
     }
 
-
-    /**
-     * Gets cause_processed_daily_measurements
-     * @return \QuantiModo\Client\Model\ProcessedDailyMeasurement[]
-     */
-    public function getCauseProcessedDailyMeasurements()
-    {
-        return $this->container['cause_processed_daily_measurements'];
-    }
-
-    /**
-     * Sets cause_processed_daily_measurements
-     * @param \QuantiModo\Client\Model\ProcessedDailyMeasurement[] $cause_processed_daily_measurements
-     * @return $this
-     */
-    public function setCauseProcessedDailyMeasurements($cause_processed_daily_measurements)
-    {
-        $this->container['cause_processed_daily_measurements'] = $cause_processed_daily_measurements;
-
-        return $this;
-    }
 
     /**
      * Gets cause_variable
@@ -338,43 +263,22 @@ class GetStudyResponse implements ArrayAccess
     }
 
     /**
-     * Gets data
-     * @return \QuantiModo\Client\Model\GetStudyDataResponse
+     * Gets chart_html
+     * @return string
      */
-    public function getData()
+    public function getChartHtml()
     {
-        return $this->container['data'];
+        return $this->container['chart_html'];
     }
 
     /**
-     * Sets data
-     * @param \QuantiModo\Client\Model\GetStudyDataResponse $data
+     * Sets chart_html
+     * @param string $chart_html Embeddable chart html
      * @return $this
      */
-    public function setData($data)
+    public function setChartHtml($chart_html)
     {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_processed_daily_measurements
-     * @return \QuantiModo\Client\Model\ProcessedDailyMeasurement[]
-     */
-    public function getEffectProcessedDailyMeasurements()
-    {
-        return $this->container['effect_processed_daily_measurements'];
-    }
-
-    /**
-     * Sets effect_processed_daily_measurements
-     * @param \QuantiModo\Client\Model\ProcessedDailyMeasurement[] $effect_processed_daily_measurements
-     * @return $this
-     */
-    public function setEffectProcessedDailyMeasurements($effect_processed_daily_measurements)
-    {
-        $this->container['effect_processed_daily_measurements'] = $effect_processed_daily_measurements;
+        $this->container['chart_html'] = $chart_html;
 
         return $this;
     }
@@ -401,64 +305,22 @@ class GetStudyResponse implements ArrayAccess
     }
 
     /**
-     * Gets message
+     * Gets html
      * @return string
      */
-    public function getMessage()
+    public function getHtml()
     {
-        return $this->container['message'];
+        return $this->container['html'];
     }
 
     /**
-     * Sets message
-     * @param string $message Message
+     * Sets html
+     * @param string $html Embeddable study text html including charts
      * @return $this
      */
-    public function setMessage($message)
+    public function setHtml($html)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets pairs
-     * @return \QuantiModo\Client\Model\Pair[]
-     */
-    public function getPairs()
-    {
-        return $this->container['pairs'];
-    }
-
-    /**
-     * Sets pairs
-     * @param \QuantiModo\Client\Model\Pair[] $pairs
-     * @return $this
-     */
-    public function setPairs($pairs)
-    {
-        $this->container['pairs'] = $pairs;
-
-        return $this;
-    }
-
-    /**
-     * Gets pairs_of_averages_for_all_users
-     * @return \QuantiModo\Client\Model\PairsOfAveragesForAllUser[]
-     */
-    public function getPairsOfAveragesForAllUsers()
-    {
-        return $this->container['pairs_of_averages_for_all_users'];
-    }
-
-    /**
-     * Sets pairs_of_averages_for_all_users
-     * @param \QuantiModo\Client\Model\PairsOfAveragesForAllUser[] $pairs_of_averages_for_all_users
-     * @return $this
-     */
-    public function setPairsOfAveragesForAllUsers($pairs_of_averages_for_all_users)
-    {
-        $this->container['pairs_of_averages_for_all_users'] = $pairs_of_averages_for_all_users;
+        $this->container['html'] = $html;
 
         return $this;
     }
@@ -527,27 +389,6 @@ class GetStudyResponse implements ArrayAccess
     }
 
     /**
-     * Gets success
-     * @return bool
-     */
-    public function getSuccess()
-    {
-        return $this->container['success'];
-    }
-
-    /**
-     * Sets success
-     * @param bool $success
-     * @return $this
-     */
-    public function setSuccess($success)
-    {
-        $this->container['success'] = $success;
-
-        return $this;
-    }
-
-    /**
      * Gets text
      * @return \QuantiModo\Client\Model\Text
      */
@@ -585,69 +426,6 @@ class GetStudyResponse implements ArrayAccess
     public function setType($type)
     {
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_correlations
-     * @return \QuantiModo\Client\Model\Correlation[]
-     */
-    public function getUserCorrelations()
-    {
-        return $this->container['user_correlations'];
-    }
-
-    /**
-     * Sets user_correlations
-     * @param \QuantiModo\Client\Model\Correlation[] $user_correlations
-     * @return $this
-     */
-    public function setUserCorrelations($user_correlations)
-    {
-        $this->container['user_correlations'] = $user_correlations;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     * @param int $user_id Example: 230
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_study
-     * @return \QuantiModo\Client\Model\UserStudy
-     */
-    public function getUserStudy()
-    {
-        return $this->container['user_study'];
-    }
-
-    /**
-     * Sets user_study
-     * @param \QuantiModo\Client\Model\UserStudy $user_study
-     * @return $this
-     */
-    public function setUserStudy($user_study)
-    {
-        $this->container['user_study'] = $user_study;
 
         return $this;
     }

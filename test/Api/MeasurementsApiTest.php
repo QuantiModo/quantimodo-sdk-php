@@ -123,12 +123,12 @@ class MeasurementsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for v3MeasurementsUpdatePost
+     * Test case for updateMeasurement
      *
      * Update a measurement.
      *
      */
-    public function testV3MeasurementsUpdatePost()
+    public function testUpdateMeasurement()
     {
     }
 }

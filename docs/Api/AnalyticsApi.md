@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudy**
-> \QuantiModo\Client\Model\GetStudyResponse getStudy($cause_variable_name, $effect_variable_name, $user_id, $app_name, $client_id, $include_charts)
+> \QuantiModo\Client\Model\Study getStudy($cause_variable_name, $effect_variable_name, $user_id, $app_name, $client_id, $include_charts)
 
 Get Study
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\GetStudyResponse**](../Model/GetStudyResponse.md)
+[**\QuantiModo\Client\Model\Study**](../Model/Study.md)
 
 ### Authorization
 

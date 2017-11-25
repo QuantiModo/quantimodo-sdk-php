@@ -340,7 +340,7 @@ class AnalyticsApi
      * @param string $client_id Example: oauth_test_client (optional)
      * @param bool $include_charts Example: true (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\GetStudyResponse
+     * @return \QuantiModo\Client\Model\Study
      */
     public function getStudy($cause_variable_name = null, $effect_variable_name = null, $user_id = null, $app_name = null, $client_id = null, $include_charts = null)
     {
@@ -360,7 +360,7 @@ class AnalyticsApi
      * @param string $client_id Example: oauth_test_client (optional)
      * @param bool $include_charts Example: true (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\GetStudyResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Study, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStudyWithHttpInfo($cause_variable_name = null, $effect_variable_name = null, $user_id = null, $app_name = null, $client_id = null, $include_charts = null)
     {
@@ -424,19 +424,19 @@ class AnalyticsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\GetStudyResponse',
+                '\QuantiModo\Client\Model\Study',
                 '/v4/study'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\GetStudyResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Study', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\GetStudyResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Study', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\GetStudyResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\JsonErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

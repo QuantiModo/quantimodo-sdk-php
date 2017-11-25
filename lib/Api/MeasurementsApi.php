@@ -719,7 +719,7 @@ class MeasurementsApi
     }
 
     /**
-     * Operation v3MeasurementsUpdatePost
+     * Operation updateMeasurement
      *
      * Update a measurement
      *
@@ -727,14 +727,14 @@ class MeasurementsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\CommonResponse
      */
-    public function v3MeasurementsUpdatePost($body)
+    public function updateMeasurement($body)
     {
-        list($response) = $this->v3MeasurementsUpdatePostWithHttpInfo($body);
+        list($response) = $this->updateMeasurementWithHttpInfo($body);
         return $response;
     }
 
     /**
-     * Operation v3MeasurementsUpdatePostWithHttpInfo
+     * Operation updateMeasurementWithHttpInfo
      *
      * Update a measurement
      *
@@ -742,11 +742,11 @@ class MeasurementsApi
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\CommonResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v3MeasurementsUpdatePostWithHttpInfo($body)
+    public function updateMeasurementWithHttpInfo($body)
     {
         // verify the required parameter 'body' is set
         if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling v3MeasurementsUpdatePost');
+            throw new \InvalidArgumentException('Missing the required parameter $body when calling updateMeasurement');
         }
         // parse inputs
         $resourcePath = "/v3/measurements/update";
