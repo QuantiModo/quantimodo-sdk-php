@@ -1,6 +1,6 @@
 {
     "name": "quantimodo/quantimodo-sdk-php",
-    "version": "5.8.1119",
+    "version": "5.8.112510",
     "description": "",
     "keywords": [
         "swagger",
@@ -29,9 +29,13 @@
         "friendsofphp/php-cs-fixer": "~1.12"
     },
     "autoload": {
-        "psr-4": { "QuantiModo\\Client\\" : "lib/" }
+        "psr-4": {
+            "QuantiModo\\Client\\": "lib/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "QuantiModo\\Client\\" : "test/" }
+        "psr-4": {
+            "QuantiModo\\Client\\": "test/"
+        }
     }
 }
