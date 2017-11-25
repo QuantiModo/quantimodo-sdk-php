@@ -138,7 +138,6 @@ Name | Type | Description | Notes
 **forward_pearson_correlation_coefficient** | **double** | Example: 0.0333 | [optional] 
 **number_of_correlations** | **int** | Example: 6 | [optional] 
 **vote** | **float** | Example: | [optional] 
-**charts** | [**null[]**](.md) | Array of chart svg&#39;s, links, and interactive configurations | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
