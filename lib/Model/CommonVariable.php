@@ -169,6 +169,7 @@ class CommonVariable implements ArrayAccess
         'svg_url' => 'string',
         'third_most_common_value' => 'double',
         'third_to_last_value' => 'double',
+        'upc' => 'string',
         'updated' => 'int',
         'updated_at' => '\DateTime',
         'user_id' => 'int',
@@ -303,6 +304,7 @@ class CommonVariable implements ArrayAccess
         'svg_url' => null,
         'third_most_common_value' => 'double',
         'third_to_last_value' => 'double',
+        'upc' => null,
         'updated' => null,
         'updated_at' => 'date-time',
         'user_id' => null,
@@ -447,6 +449,7 @@ class CommonVariable implements ArrayAccess
         'svg_url' => 'svgUrl',
         'third_most_common_value' => 'thirdMostCommonValue',
         'third_to_last_value' => 'thirdToLastValue',
+        'upc' => 'upc',
         'updated' => 'updated',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
@@ -582,6 +585,7 @@ class CommonVariable implements ArrayAccess
         'svg_url' => 'setSvgUrl',
         'third_most_common_value' => 'setThirdMostCommonValue',
         'third_to_last_value' => 'setThirdToLastValue',
+        'upc' => 'setUpc',
         'updated' => 'setUpdated',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
@@ -717,6 +721,7 @@ class CommonVariable implements ArrayAccess
         'svg_url' => 'getSvgUrl',
         'third_most_common_value' => 'getThirdMostCommonValue',
         'third_to_last_value' => 'getThirdToLastValue',
+        'upc' => 'getUpc',
         'updated' => 'getUpdated',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
@@ -891,6 +896,7 @@ class CommonVariable implements ArrayAccess
         $this->container['svg_url'] = isset($data['svg_url']) ? $data['svg_url'] : null;
         $this->container['third_most_common_value'] = isset($data['third_most_common_value']) ? $data['third_most_common_value'] : null;
         $this->container['third_to_last_value'] = isset($data['third_to_last_value']) ? $data['third_to_last_value'] : null;
+        $this->container['upc'] = isset($data['upc']) ? $data['upc'] : null;
         $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
@@ -3884,6 +3890,27 @@ class CommonVariable implements ArrayAccess
     public function setThirdToLastValue($third_to_last_value)
     {
         $this->container['third_to_last_value'] = $third_to_last_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets upc
+     * @return string
+     */
+    public function getUpc()
+    {
+        return $this->container['upc'];
+    }
+
+    /**
+     * Sets upc
+     * @param string $upc Universal product code or similar
+     * @return $this
+     */
+    public function setUpc($upc)
+    {
+        $this->container['upc'] = $upc;
 
         return $this;
     }

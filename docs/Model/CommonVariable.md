@@ -118,6 +118,7 @@ Name | Type | Description | Notes
 **svg_url** | **string** | Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/sleep.svg | [optional] 
 **third_most_common_value** | **double** | Example: 7 | [optional] 
 **third_to_last_value** | **double** | Example: 102000 | 
+**upc** | **string** | Universal product code or similar | [optional] 
 **updated** | **int** | When this variable or its settings were last updated | 
 **updated_at** | [**\DateTime**](\DateTime.md) | Example: 2017-07-31 03:57:06 | [optional] 
 **user_id** | **int** | Example: 230 | 

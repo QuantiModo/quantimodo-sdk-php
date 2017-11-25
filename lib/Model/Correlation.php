@@ -188,7 +188,8 @@ class Correlation implements ArrayAccess
         'aggregate_qm_score' => 'double',
         'forward_pearson_correlation_coefficient' => 'double',
         'number_of_correlations' => 'int',
-        'vote' => 'float'
+        'vote' => 'float',
+        'charts' => 'null[]'
     ];
 
     /**
@@ -330,7 +331,8 @@ class Correlation implements ArrayAccess
         'aggregate_qm_score' => 'double',
         'forward_pearson_correlation_coefficient' => 'double',
         'number_of_correlations' => null,
-        'vote' => null
+        'vote' => null,
+        'charts' => null
     ];
 
     public static function swaggerTypes()
@@ -482,7 +484,8 @@ class Correlation implements ArrayAccess
         'aggregate_qm_score' => 'aggregateQMScore',
         'forward_pearson_correlation_coefficient' => 'forwardPearsonCorrelationCoefficient',
         'number_of_correlations' => 'numberOfCorrelations',
-        'vote' => 'vote'
+        'vote' => 'vote',
+        'charts' => 'charts'
     ];
 
 
@@ -625,7 +628,8 @@ class Correlation implements ArrayAccess
         'aggregate_qm_score' => 'setAggregateQmScore',
         'forward_pearson_correlation_coefficient' => 'setForwardPearsonCorrelationCoefficient',
         'number_of_correlations' => 'setNumberOfCorrelations',
-        'vote' => 'setVote'
+        'vote' => 'setVote',
+        'charts' => 'setCharts'
     ];
 
 
@@ -768,7 +772,8 @@ class Correlation implements ArrayAccess
         'aggregate_qm_score' => 'getAggregateQmScore',
         'forward_pearson_correlation_coefficient' => 'getForwardPearsonCorrelationCoefficient',
         'number_of_correlations' => 'getNumberOfCorrelations',
-        'vote' => 'getVote'
+        'vote' => 'getVote',
+        'charts' => 'getCharts'
     ];
 
     public static function attributeMap()
@@ -937,6 +942,7 @@ class Correlation implements ArrayAccess
         $this->container['forward_pearson_correlation_coefficient'] = isset($data['forward_pearson_correlation_coefficient']) ? $data['forward_pearson_correlation_coefficient'] : null;
         $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
         $this->container['vote'] = isset($data['vote']) ? $data['vote'] : null;
+        $this->container['charts'] = isset($data['charts']) ? $data['charts'] : null;
     }
 
     /**
@@ -4275,6 +4281,27 @@ class Correlation implements ArrayAccess
     public function setVote($vote)
     {
         $this->container['vote'] = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Gets charts
+     * @return null[]
+     */
+    public function getCharts()
+    {
+        return $this->container['charts'];
+    }
+
+    /**
+     * Sets charts
+     * @param null[] $charts Array of chart svg's, links, and interactive configurations
+     * @return $this
+     */
+    public function setCharts($charts)
+    {
+        $this->container['charts'] = $charts;
 
         return $this;
     }

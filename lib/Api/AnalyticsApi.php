@@ -335,15 +335,16 @@ class AnalyticsApi
      *
      * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
      * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
+     * @param float $user_id User&#39;s id (optional)
      * @param string $app_name Example: MoodiModo (optional)
      * @param string $client_id Example: oauth_test_client (optional)
      * @param bool $include_charts Example: true (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\GetStudyResponse
      */
-    public function getStudy($cause_variable_name = null, $effect_variable_name = null, $app_name = null, $client_id = null, $include_charts = null)
+    public function getStudy($cause_variable_name = null, $effect_variable_name = null, $user_id = null, $app_name = null, $client_id = null, $include_charts = null)
     {
-        list($response) = $this->getStudyWithHttpInfo($cause_variable_name, $effect_variable_name, $app_name, $client_id, $include_charts);
+        list($response) = $this->getStudyWithHttpInfo($cause_variable_name, $effect_variable_name, $user_id, $app_name, $client_id, $include_charts);
         return $response;
     }
 
@@ -354,13 +355,14 @@ class AnalyticsApi
      *
      * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
      * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
+     * @param float $user_id User&#39;s id (optional)
      * @param string $app_name Example: MoodiModo (optional)
      * @param string $client_id Example: oauth_test_client (optional)
      * @param bool $include_charts Example: true (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\GetStudyResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStudyWithHttpInfo($cause_variable_name = null, $effect_variable_name = null, $app_name = null, $client_id = null, $include_charts = null)
+    public function getStudyWithHttpInfo($cause_variable_name = null, $effect_variable_name = null, $user_id = null, $app_name = null, $client_id = null, $include_charts = null)
     {
         // parse inputs
         $resourcePath = "/v4/study";
@@ -381,6 +383,10 @@ class AnalyticsApi
         // query params
         if ($effect_variable_name !== null) {
             $queryParams['effectVariableName'] = $this->apiClient->getSerializer()->toQueryValue($effect_variable_name);
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
         }
         // query params
         if ($app_name !== null) {

@@ -163,7 +163,6 @@ class UserVariable implements ArrayAccess
         'share_user_measurements' => 'bool',
         'skewness' => 'float',
         'sources' => 'string',
-        'standard_deviation' => 'float',
         'standard_deviation' => 'double',
         'status' => 'string',
         'subtitle' => 'string',
@@ -171,6 +170,7 @@ class UserVariable implements ArrayAccess
         'third_most_common_value' => 'double',
         'third_to_last_value' => 'double',
         'unit' => '\QuantiModo\Client\Model\Unit',
+        'upc' => 'string',
         'updated' => 'int',
         'updated_at' => '\DateTime',
         'updated_time' => '\DateTime',
@@ -315,7 +315,6 @@ class UserVariable implements ArrayAccess
         'share_user_measurements' => null,
         'skewness' => 'float',
         'sources' => null,
-        'standard_deviation' => 'float',
         'standard_deviation' => 'double',
         'status' => null,
         'subtitle' => null,
@@ -323,6 +322,7 @@ class UserVariable implements ArrayAccess
         'third_most_common_value' => 'double',
         'third_to_last_value' => 'double',
         'unit' => null,
+        'upc' => null,
         'updated' => 'int32',
         'updated_at' => 'date-time',
         'updated_time' => 'date-time',
@@ -477,7 +477,6 @@ class UserVariable implements ArrayAccess
         'share_user_measurements' => 'shareUserMeasurements',
         'skewness' => 'skewness',
         'sources' => 'sources',
-        'standard_deviation' => 'standard_deviation',
         'standard_deviation' => 'standardDeviation',
         'status' => 'status',
         'subtitle' => 'subtitle',
@@ -485,6 +484,7 @@ class UserVariable implements ArrayAccess
         'third_most_common_value' => 'thirdMostCommonValue',
         'third_to_last_value' => 'thirdToLastValue',
         'unit' => 'unit',
+        'upc' => 'upc',
         'updated' => 'updated',
         'updated_at' => 'updatedAt',
         'updated_time' => 'updatedTime',
@@ -631,13 +631,13 @@ class UserVariable implements ArrayAccess
         'skewness' => 'setSkewness',
         'sources' => 'setSources',
         'standard_deviation' => 'setStandardDeviation',
-        'standard_deviation' => 'setStandardDeviation',
         'status' => 'setStatus',
         'subtitle' => 'setSubtitle',
         'svg_url' => 'setSvgUrl',
         'third_most_common_value' => 'setThirdMostCommonValue',
         'third_to_last_value' => 'setThirdToLastValue',
         'unit' => 'setUnit',
+        'upc' => 'setUpc',
         'updated' => 'setUpdated',
         'updated_at' => 'setUpdatedAt',
         'updated_time' => 'setUpdatedTime',
@@ -784,13 +784,13 @@ class UserVariable implements ArrayAccess
         'skewness' => 'getSkewness',
         'sources' => 'getSources',
         'standard_deviation' => 'getStandardDeviation',
-        'standard_deviation' => 'getStandardDeviation',
         'status' => 'getStatus',
         'subtitle' => 'getSubtitle',
         'svg_url' => 'getSvgUrl',
         'third_most_common_value' => 'getThirdMostCommonValue',
         'third_to_last_value' => 'getThirdToLastValue',
         'unit' => 'getUnit',
+        'upc' => 'getUpc',
         'updated' => 'getUpdated',
         'updated_at' => 'getUpdatedAt',
         'updated_time' => 'getUpdatedTime',
@@ -962,13 +962,13 @@ class UserVariable implements ArrayAccess
         $this->container['skewness'] = isset($data['skewness']) ? $data['skewness'] : null;
         $this->container['sources'] = isset($data['sources']) ? $data['sources'] : null;
         $this->container['standard_deviation'] = isset($data['standard_deviation']) ? $data['standard_deviation'] : null;
-        $this->container['standard_deviation'] = isset($data['standard_deviation']) ? $data['standard_deviation'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['subtitle'] = isset($data['subtitle']) ? $data['subtitle'] : null;
         $this->container['svg_url'] = isset($data['svg_url']) ? $data['svg_url'] : null;
         $this->container['third_most_common_value'] = isset($data['third_most_common_value']) ? $data['third_most_common_value'] : null;
         $this->container['third_to_last_value'] = isset($data['third_to_last_value']) ? $data['third_to_last_value'] : null;
         $this->container['unit'] = isset($data['unit']) ? $data['unit'] : null;
+        $this->container['upc'] = isset($data['upc']) ? $data['upc'] : null;
         $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['updated_time'] = isset($data['updated_time']) ? $data['updated_time'] : null;
@@ -3429,27 +3429,6 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets standard_deviation
-     * @return float
-     */
-    public function getStandardDeviation()
-    {
-        return $this->container['standard_deviation'];
-    }
-
-    /**
-     * Sets standard_deviation
-     * @param float $standard_deviation Standard deviation
-     * @return $this
-     */
-    public function setStandardDeviation($standard_deviation)
-    {
-        $this->container['standard_deviation'] = $standard_deviation;
-
-        return $this;
-    }
-
-    /**
-     * Gets standard_deviation
      * @return double
      */
     public function getStandardDeviation()
@@ -3459,7 +3438,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets standard_deviation
-     * @param double $standard_deviation Example: 0.46483219855434
+     * @param double $standard_deviation Standard deviation Example: 0.46483219855434
      * @return $this
      */
     public function setStandardDeviation($standard_deviation)
@@ -3591,6 +3570,27 @@ class UserVariable implements ArrayAccess
     public function setUnit($unit)
     {
         $this->container['unit'] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets upc
+     * @return string
+     */
+    public function getUpc()
+    {
+        return $this->container['upc'];
+    }
+
+    /**
+     * Sets upc
+     * @param string $upc Universal product code or similar
+     * @return $this
+     */
+    public function setUpc($upc)
+    {
+        $this->container['upc'] = $upc;
 
         return $this;
     }

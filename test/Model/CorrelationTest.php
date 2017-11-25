@@ -1021,4 +1021,11 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     public function testPropertyVote()
     {
     }
+
+    /**
+     * Test attribute "charts"
+     */
+    public function testPropertyCharts()
+    {
+    }
 }

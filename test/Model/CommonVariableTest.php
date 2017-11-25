@@ -883,6 +883,13 @@ class CommonVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "upc"
+     */
+    public function testPropertyUpc()
+    {
+    }
+
+    /**
      * Test attribute "updated"
      */
     public function testPropertyUpdated()

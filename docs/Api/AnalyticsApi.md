@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudy**
-> \QuantiModo\Client\Model\GetStudyResponse getStudy($cause_variable_name, $effect_variable_name, $app_name, $client_id, $include_charts)
+> \QuantiModo\Client\Model\GetStudyResponse getStudy($cause_variable_name, $effect_variable_name, $user_id, $app_name, $client_id, $include_charts)
 
 Get Study
 
@@ -161,12 +161,13 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR
 $api_instance = new QuantiModo\Client\Api\AnalyticsApi();
 $cause_variable_name = "cause_variable_name_example"; // string | Variable name of the hypothetical cause variable.  Example: Sleep Duration
 $effect_variable_name = "effect_variable_name_example"; // string | Variable name of the hypothetical effect variable.  Example: Overall Mood
+$user_id = 3.4; // float | User's id
 $app_name = "app_name_example"; // string | Example: MoodiModo
 $client_id = "client_id_example"; // string | Example: oauth_test_client
 $include_charts = true; // bool | Example: true
 
 try {
-    $result = $api_instance->getStudy($cause_variable_name, $effect_variable_name, $app_name, $client_id, $include_charts);
+    $result = $api_instance->getStudy($cause_variable_name, $effect_variable_name, $user_id, $app_name, $client_id, $include_charts);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getStudy: ', $e->getMessage(), PHP_EOL;
@@ -180,6 +181,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cause_variable_name** | **string**| Variable name of the hypothetical cause variable.  Example: Sleep Duration | [optional]
  **effect_variable_name** | **string**| Variable name of the hypothetical effect variable.  Example: Overall Mood | [optional]
+ **user_id** | **float**| User&#39;s id | [optional]
  **app_name** | **string**| Example: MoodiModo | [optional]
  **client_id** | **string**| Example: oauth_test_client | [optional]
  **include_charts** | **bool**| Example: true | [optional]

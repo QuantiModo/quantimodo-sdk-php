@@ -848,13 +848,6 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "standard_deviation"
-     */
-    public function testPropertyStandardDeviation()
-    {
-    }
-
-    /**
      * Test attribute "status"
      */
     public function testPropertyStatus()
@@ -893,6 +886,13 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "unit"
      */
     public function testPropertyUnit()
+    {
+    }
+
+    /**
+     * Test attribute "upc"
+     */
+    public function testPropertyUpc()
     {
     }
 
