@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**highchart_config** | **string** | Highcharts config that can be used if you have highcharts.js included on the page | [optional] 
+**highchart_config** | **object** | Highcharts config that can be used if you have highcharts.js included on the page | [optional] 
 **chart_id** | **string** | Example: correlationScatterPlot | [optional] 
 **chart_title** | **string** | Example: Overall Mood following Sleep Duration (R &#x3D; -0.173) | [optional] 
 **explanation** | **string** | Example: The chart above indicates that an increase in Sleep Duration is usually followed by an decrease in Overall Mood. | [optional] 

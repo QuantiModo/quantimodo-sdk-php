@@ -1,6 +1,6 @@
 <?php
 /**
- * StudyTest
+ * StudyTextTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace QuantiModo\Client;
 
 /**
- * StudyTest Class Doc Comment
+ * StudyTextTest Class Doc Comment
  *
  * @category    Class */
-// * @description Study
+// * @description StudyText
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class StudyTest extends \PHPUnit_Framework_TestCase
+class StudyTextTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,86 +71,93 @@ class StudyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Study"
+     * Test "StudyText"
      */
-    public function testStudy()
+    public function testStudyText()
     {
     }
 
     /**
-     * Test attribute "cause_variable"
+     * Test attribute "data_analysis"
      */
-    public function testPropertyCauseVariable()
+    public function testPropertyDataAnalysis()
     {
     }
 
     /**
-     * Test attribute "charts"
+     * Test attribute "data_sources"
      */
-    public function testPropertyCharts()
+    public function testPropertyDataSources()
     {
     }
 
     /**
-     * Test attribute "chart_html"
+     * Test attribute "significance_explanation"
      */
-    public function testPropertyChartHtml()
+    public function testPropertySignificanceExplanation()
     {
     }
 
     /**
-     * Test attribute "effect_variable"
+     * Test attribute "study_abstract"
      */
-    public function testPropertyEffectVariable()
+    public function testPropertyStudyAbstract()
     {
     }
 
     /**
-     * Test attribute "html"
+     * Test attribute "study_design"
      */
-    public function testPropertyHtml()
+    public function testPropertyStudyDesign()
     {
     }
 
     /**
-     * Test attribute "participant_instructions"
+     * Test attribute "study_limitations"
      */
-    public function testPropertyParticipantInstructions()
+    public function testPropertyStudyLimitations()
     {
     }
 
     /**
-     * Test attribute "statistics"
+     * Test attribute "study_objective"
      */
-    public function testPropertyStatistics()
+    public function testPropertyStudyObjective()
     {
     }
 
     /**
-     * Test attribute "study_links"
+     * Test attribute "study_results"
      */
-    public function testPropertyStudyLinks()
+    public function testPropertyStudyResults()
     {
     }
 
     /**
-     * Test attribute "study_images"
+     * Test attribute "study_title"
      */
-    public function testPropertyStudyImages()
+    public function testPropertyStudyTitle()
     {
     }
 
     /**
-     * Test attribute "text"
+     * Test attribute "study_invitation"
      */
-    public function testPropertyText()
+    public function testPropertyStudyInvitation()
     {
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "study_question"
      */
-    public function testPropertyType()
+    public function testPropertyStudyQuestion()
+    {
+    }
+
+    /**
+     * Test attribute "study_background"
+     */
+    public function testPropertyStudyBackground()
     {
     }
 }

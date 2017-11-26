@@ -1,6 +1,6 @@
 <?php
 /**
- * TextTest
+ * StudyImagesTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace QuantiModo\Client;
 
 /**
- * TextTest Class Doc Comment
+ * StudyImagesTest Class Doc Comment
  *
  * @category    Class */
-// * @description Text
+// * @description StudyImages
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class TextTest extends \PHPUnit_Framework_TestCase
+class StudyImagesTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,72 +71,72 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Text"
+     * Test "StudyImages"
      */
-    public function testText()
+    public function testStudyImages()
     {
     }
 
     /**
-     * Test attribute "data_analysis"
+     * Test attribute "cause_variable_image_url"
      */
-    public function testPropertyDataAnalysis()
+    public function testPropertyCauseVariableImageUrl()
     {
     }
 
     /**
-     * Test attribute "data_sources"
+     * Test attribute "cause_variable_ion_icon"
      */
-    public function testPropertyDataSources()
+    public function testPropertyCauseVariableIonIcon()
     {
     }
 
     /**
-     * Test attribute "significance_explanation"
+     * Test attribute "effect_variable_image_url"
      */
-    public function testPropertySignificanceExplanation()
+    public function testPropertyEffectVariableImageUrl()
     {
     }
 
     /**
-     * Test attribute "study_abstract"
+     * Test attribute "effect_variable_ion_icon"
      */
-    public function testPropertyStudyAbstract()
+    public function testPropertyEffectVariableIonIcon()
     {
     }
 
     /**
-     * Test attribute "study_design"
+     * Test attribute "gauge_image"
      */
-    public function testPropertyStudyDesign()
+    public function testPropertyGaugeImage()
     {
     }
 
     /**
-     * Test attribute "study_limitations"
+     * Test attribute "gauge_image_square"
      */
-    public function testPropertyStudyLimitations()
+    public function testPropertyGaugeImageSquare()
     {
     }
 
     /**
-     * Test attribute "study_objective"
+     * Test attribute "gauge_sharing_image_url"
      */
-    public function testPropertyStudyObjective()
+    public function testPropertyGaugeSharingImageUrl()
     {
     }
 
     /**
-     * Test attribute "study_results"
+     * Test attribute "image_url"
      */
-    public function testPropertyStudyResults()
+    public function testPropertyImageUrl()
     {
     }
 
     /**
-     * Test attribute "study_title"
+     * Test attribute "robot_sharing_image_url"
      */
-    public function testPropertyStudyTitle()
+    public function testPropertyRobotSharingImageUrl()
     {
     }
 }

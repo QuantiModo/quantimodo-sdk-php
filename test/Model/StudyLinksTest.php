@@ -1,6 +1,6 @@
 <?php
 /**
- * StudyTest
+ * StudyLinksTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace QuantiModo\Client;
 
 /**
- * StudyTest Class Doc Comment
+ * StudyLinksTest Class Doc Comment
  *
  * @category    Class */
-// * @description Study
+// * @description StudyLinks
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class StudyTest extends \PHPUnit_Framework_TestCase
+class StudyLinksTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,86 +71,51 @@ class StudyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Study"
+     * Test "StudyLinks"
      */
-    public function testStudy()
+    public function testStudyLinks()
     {
     }
 
     /**
-     * Test attribute "cause_variable"
+     * Test attribute "study_link_email"
      */
-    public function testPropertyCauseVariable()
+    public function testPropertyStudyLinkEmail()
     {
     }
 
     /**
-     * Test attribute "charts"
+     * Test attribute "study_link_facebook"
      */
-    public function testPropertyCharts()
+    public function testPropertyStudyLinkFacebook()
     {
     }
 
     /**
-     * Test attribute "chart_html"
+     * Test attribute "study_link_google"
      */
-    public function testPropertyChartHtml()
+    public function testPropertyStudyLinkGoogle()
     {
     }
 
     /**
-     * Test attribute "effect_variable"
+     * Test attribute "study_link_static"
      */
-    public function testPropertyEffectVariable()
+    public function testPropertyStudyLinkStatic()
     {
     }
 
     /**
-     * Test attribute "html"
+     * Test attribute "study_link_dynamic"
      */
-    public function testPropertyHtml()
+    public function testPropertyStudyLinkDynamic()
     {
     }
 
     /**
-     * Test attribute "participant_instructions"
+     * Test attribute "study_link_twitter"
      */
-    public function testPropertyParticipantInstructions()
-    {
-    }
-
-    /**
-     * Test attribute "statistics"
-     */
-    public function testPropertyStatistics()
-    {
-    }
-
-    /**
-     * Test attribute "study_links"
-     */
-    public function testPropertyStudyLinks()
-    {
-    }
-
-    /**
-     * Test attribute "study_images"
-     */
-    public function testPropertyStudyImages()
-    {
-    }
-
-    /**
-     * Test attribute "text"
-     */
-    public function testPropertyText()
-    {
-    }
-
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
+    public function testPropertyStudyLinkTwitter()
     {
     }
 }

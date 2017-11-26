@@ -61,8 +61,9 @@ class Study implements ArrayAccess
         'html' => 'string',
         'participant_instructions' => '\QuantiModo\Client\Model\ParticipantInstruction',
         'statistics' => '\QuantiModo\Client\Model\Correlation',
-        'status' => 'int',
-        'text' => '\QuantiModo\Client\Model\Text',
+        'study_links' => '\QuantiModo\Client\Model\StudyLinks',
+        'study_images' => '\QuantiModo\Client\Model\StudyImages',
+        'text' => '\QuantiModo\Client\Model\StudyText',
         'type' => 'string'
     ];
 
@@ -78,7 +79,8 @@ class Study implements ArrayAccess
         'html' => null,
         'participant_instructions' => null,
         'statistics' => null,
-        'status' => null,
+        'study_links' => null,
+        'study_images' => null,
         'text' => null,
         'type' => null
     ];
@@ -105,7 +107,8 @@ class Study implements ArrayAccess
         'html' => 'html',
         'participant_instructions' => 'participantInstructions',
         'statistics' => 'statistics',
-        'status' => 'status',
+        'study_links' => 'studyLinks',
+        'study_images' => 'studyImages',
         'text' => 'text',
         'type' => 'type'
     ];
@@ -123,7 +126,8 @@ class Study implements ArrayAccess
         'html' => 'setHtml',
         'participant_instructions' => 'setParticipantInstructions',
         'statistics' => 'setStatistics',
-        'status' => 'setStatus',
+        'study_links' => 'setStudyLinks',
+        'study_images' => 'setStudyImages',
         'text' => 'setText',
         'type' => 'setType'
     ];
@@ -141,7 +145,8 @@ class Study implements ArrayAccess
         'html' => 'getHtml',
         'participant_instructions' => 'getParticipantInstructions',
         'statistics' => 'getStatistics',
-        'status' => 'getStatus',
+        'study_links' => 'getStudyLinks',
+        'study_images' => 'getStudyImages',
         'text' => 'getText',
         'type' => 'getType'
     ];
@@ -184,7 +189,8 @@ class Study implements ArrayAccess
         $this->container['html'] = isset($data['html']) ? $data['html'] : null;
         $this->container['participant_instructions'] = isset($data['participant_instructions']) ? $data['participant_instructions'] : null;
         $this->container['statistics'] = isset($data['statistics']) ? $data['statistics'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['study_links'] = isset($data['study_links']) ? $data['study_links'] : null;
+        $this->container['study_images'] = isset($data['study_images']) ? $data['study_images'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
@@ -368,29 +374,50 @@ class Study implements ArrayAccess
     }
 
     /**
-     * Gets status
-     * @return int
+     * Gets study_links
+     * @return \QuantiModo\Client\Model\StudyLinks
      */
-    public function getStatus()
+    public function getStudyLinks()
     {
-        return $this->container['status'];
+        return $this->container['study_links'];
     }
 
     /**
-     * Sets status
-     * @param int $status Status code
+     * Sets study_links
+     * @param \QuantiModo\Client\Model\StudyLinks $study_links
      * @return $this
      */
-    public function setStatus($status)
+    public function setStudyLinks($study_links)
     {
-        $this->container['status'] = $status;
+        $this->container['study_links'] = $study_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_images
+     * @return \QuantiModo\Client\Model\StudyImages
+     */
+    public function getStudyImages()
+    {
+        return $this->container['study_images'];
+    }
+
+    /**
+     * Sets study_images
+     * @param \QuantiModo\Client\Model\StudyImages $study_images
+     * @return $this
+     */
+    public function setStudyImages($study_images)
+    {
+        $this->container['study_images'] = $study_images;
 
         return $this;
     }
 
     /**
      * Gets text
-     * @return \QuantiModo\Client\Model\Text
+     * @return \QuantiModo\Client\Model\StudyText
      */
     public function getText()
     {
@@ -399,7 +426,7 @@ class Study implements ArrayAccess
 
     /**
      * Sets text
-     * @param \QuantiModo\Client\Model\Text $text
+     * @param \QuantiModo\Client\Model\StudyText $text
      * @return $this
      */
     public function setText($text)

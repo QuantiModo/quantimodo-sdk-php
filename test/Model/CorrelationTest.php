@@ -204,20 +204,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "cause_variable_image_url"
-     */
-    public function testPropertyCauseVariableImageUrl()
-    {
-    }
-
-    /**
-     * Test attribute "cause_variable_ion_icon"
-     */
-    public function testPropertyCauseVariableIonIcon()
-    {
-    }
-
-    /**
      * Test attribute "cause_variable_most_common_connector_id"
      */
     public function testPropertyCauseVariableMostCommonConnectorId()
@@ -400,20 +386,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "effect_variable_image_url"
-     */
-    public function testPropertyEffectVariableImageUrl()
-    {
-    }
-
-    /**
-     * Test attribute "effect_variable_ion_icon"
-     */
-    public function testPropertyEffectVariableIonIcon()
-    {
-    }
-
-    /**
      * Test attribute "effect_variable_most_common_connector_id"
      */
     public function testPropertyEffectVariableMostCommonConnectorId()
@@ -445,34 +417,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "forward_spearman_correlation_coefficient"
      */
     public function testPropertyForwardSpearmanCorrelationCoefficient()
-    {
-    }
-
-    /**
-     * Test attribute "gauge_image"
-     */
-    public function testPropertyGaugeImage()
-    {
-    }
-
-    /**
-     * Test attribute "gauge_image_square"
-     */
-    public function testPropertyGaugeImageSquare()
-    {
-    }
-
-    /**
-     * Test attribute "gauge_sharing_image_url"
-     */
-    public function testPropertyGaugeSharingImageUrl()
-    {
-    }
-
-    /**
-     * Test attribute "image_url"
-     */
-    public function testPropertyImageUrl()
     {
     }
 
@@ -603,23 +547,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "predicts_high_effect_change_sentence_fragment"
-     */
-    public function testPropertyPredictsHighEffectChangeSentenceFragment()
-    {
-    }
-
-    /**
      * Test attribute "predicts_low_effect_change"
      */
     public function testPropertyPredictsLowEffectChange()
-    {
-    }
-
-    /**
-     * Test attribute "predicts_low_effect_change_sentence_fragment"
-     */
-    public function testPropertyPredictsLowEffectChangeSentenceFragment()
     {
     }
 
@@ -641,13 +571,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "reverse_pearson_correlation_coefficient"
      */
     public function testPropertyReversePearsonCorrelationCoefficient()
-    {
-    }
-
-    /**
-     * Test attribute "robot_sharing_image_url"
-     */
-    public function testPropertyRobotSharingImageUrl()
     {
     }
 
@@ -708,86 +631,30 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "study_abstract"
+     * Test attribute "study_images"
      */
-    public function testPropertyStudyAbstract()
+    public function testPropertyStudyImages()
     {
     }
 
     /**
-     * Test attribute "study_design"
+     * Test attribute "study_links"
      */
-    public function testPropertyStudyDesign()
+    public function testPropertyStudyLinks()
     {
     }
 
     /**
-     * Test attribute "study_limitations"
+     * Test attribute "study_text"
      */
-    public function testPropertyStudyLimitations()
+    public function testPropertyStudyText()
     {
     }
 
     /**
-     * Test attribute "study_link_dynamic"
+     * Test attribute "study_html"
      */
-    public function testPropertyStudyLinkDynamic()
-    {
-    }
-
-    /**
-     * Test attribute "study_link_email"
-     */
-    public function testPropertyStudyLinkEmail()
-    {
-    }
-
-    /**
-     * Test attribute "study_link_facebook"
-     */
-    public function testPropertyStudyLinkFacebook()
-    {
-    }
-
-    /**
-     * Test attribute "study_link_google"
-     */
-    public function testPropertyStudyLinkGoogle()
-    {
-    }
-
-    /**
-     * Test attribute "study_link_static"
-     */
-    public function testPropertyStudyLinkStatic()
-    {
-    }
-
-    /**
-     * Test attribute "study_link_twitter"
-     */
-    public function testPropertyStudyLinkTwitter()
-    {
-    }
-
-    /**
-     * Test attribute "study_objective"
-     */
-    public function testPropertyStudyObjective()
-    {
-    }
-
-    /**
-     * Test attribute "study_results"
-     */
-    public function testPropertyStudyResults()
-    {
-    }
-
-    /**
-     * Test attribute "study_title"
-     */
-    public function testPropertyStudyTitle()
+    public function testPropertyStudyHtml()
     {
     }
 
@@ -869,44 +736,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "study_background"
-     */
-    public function testPropertyStudyBackground()
-    {
-    }
-
-    /**
-     * Test attribute "study_invitation"
-     */
-    public function testPropertyStudyInvitation()
-    {
-    }
-
-    /**
-     * Test attribute "study_question"
-     */
-    public function testPropertyStudyQuestion()
-    {
-    }
-
-    /**
-     * Test attribute "study_html"
-     */
-    public function testPropertyStudyHtml()
-    {
-    }
-
-    /**
      * Test attribute "average_pearson_correlation_coefficient_over_onset_delays"
      */
     public function testPropertyAveragePearsonCorrelationCoefficientOverOnsetDelays()
-    {
-    }
-
-    /**
-     * Test attribute "calculation_start_time"
-     */
-    public function testPropertyCalculationStartTime()
     {
     }
 

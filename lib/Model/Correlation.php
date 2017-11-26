@@ -72,8 +72,6 @@ class Correlation implements ArrayAccess
         'cause_variable_combination_operation' => 'string',
         'cause_variable_unit_abbreviated_name' => 'string',
         'cause_variable_id' => 'int',
-        'cause_variable_image_url' => 'string',
-        'cause_variable_ion_icon' => 'string',
         'cause_variable_most_common_connector_id' => 'int',
         'cause_variable_name' => 'string',
         'confidence_interval' => 'double',
@@ -100,17 +98,11 @@ class Correlation implements ArrayAccess
         'effect_variable_unit_id' => 'int',
         'effect_variable_unit_name' => 'string',
         'effect_variable_id' => 'int',
-        'effect_variable_image_url' => 'string',
-        'effect_variable_ion_icon' => 'string',
         'effect_variable_most_common_connector_id' => 'int',
         'effect_variable_name' => 'string',
         'experiment_end_time' => '\DateTime',
         'experiment_start_time' => '\DateTime',
         'forward_spearman_correlation_coefficient' => 'double',
-        'gauge_image' => 'string',
-        'gauge_image_square' => 'string',
-        'gauge_sharing_image_url' => 'string',
-        'image_url' => 'string',
         'number_of_pairs' => 'int',
         'onset_delay' => 'int',
         'onset_delay_in_hours' => 'int',
@@ -129,13 +121,10 @@ class Correlation implements ArrayAccess
         'predictor_maximum_allowed_value' => 'double',
         'predictor_minimum_allowed_value' => 'double',
         'predicts_high_effect_change' => 'int',
-        'predicts_high_effect_change_sentence_fragment' => 'string',
         'predicts_low_effect_change' => 'int',
-        'predicts_low_effect_change_sentence_fragment' => 'string',
         'p_value' => 'double',
         'qm_score' => 'double',
         'reverse_pearson_correlation_coefficient' => 'double',
-        'robot_sharing_image_url' => 'string',
         'share_user_measurements' => 'bool',
         'sharing_description' => 'string',
         'sharing_title' => 'string',
@@ -144,18 +133,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'double',
         'strength_level' => 'string',
         'strongest_pearson_correlation_coefficient' => 'double',
-        'study_abstract' => 'string',
-        'study_design' => 'string',
-        'study_limitations' => 'string',
-        'study_link_dynamic' => 'string',
-        'study_link_email' => 'string',
-        'study_link_facebook' => 'string',
-        'study_link_google' => 'string',
-        'study_link_static' => 'string',
-        'study_link_twitter' => 'string',
-        'study_objective' => 'string',
-        'study_results' => 'string',
-        'study_title' => 'string',
+        'study_images' => '\QuantiModo\Client\Model\StudyImages',
+        'study_links' => '\QuantiModo\Client\Model\StudyLinks',
+        'study_text' => '\QuantiModo\Client\Model\StudyText',
+        'study_html' => 'string',
         't_value' => 'double',
         'updated_at' => '\DateTime',
         'user_id' => 'int',
@@ -167,12 +148,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'string',
         'principal_investigator' => 'string',
         'reverse_correlation' => 'float',
-        'study_background' => 'string',
-        'study_invitation' => 'string',
-        'study_question' => 'string',
-        'study_html' => 'string',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'string',
-        'calculation_start_time' => '\DateTime',
         'cause_number_of_raw_measurements' => 'int',
         'correlations_over_durations_of_action' => 'string',
         'correlations_over_durations_of_action_chart_config' => 'string',
@@ -214,8 +190,6 @@ class Correlation implements ArrayAccess
         'cause_variable_combination_operation' => null,
         'cause_variable_unit_abbreviated_name' => null,
         'cause_variable_id' => null,
-        'cause_variable_image_url' => null,
-        'cause_variable_ion_icon' => null,
         'cause_variable_most_common_connector_id' => null,
         'cause_variable_name' => null,
         'confidence_interval' => 'double',
@@ -242,17 +216,11 @@ class Correlation implements ArrayAccess
         'effect_variable_unit_id' => null,
         'effect_variable_unit_name' => null,
         'effect_variable_id' => null,
-        'effect_variable_image_url' => null,
-        'effect_variable_ion_icon' => null,
         'effect_variable_most_common_connector_id' => null,
         'effect_variable_name' => null,
         'experiment_end_time' => 'date-time',
         'experiment_start_time' => 'date-time',
         'forward_spearman_correlation_coefficient' => 'double',
-        'gauge_image' => null,
-        'gauge_image_square' => null,
-        'gauge_sharing_image_url' => null,
-        'image_url' => null,
         'number_of_pairs' => null,
         'onset_delay' => null,
         'onset_delay_in_hours' => null,
@@ -271,13 +239,10 @@ class Correlation implements ArrayAccess
         'predictor_maximum_allowed_value' => 'double',
         'predictor_minimum_allowed_value' => 'double',
         'predicts_high_effect_change' => null,
-        'predicts_high_effect_change_sentence_fragment' => null,
         'predicts_low_effect_change' => null,
-        'predicts_low_effect_change_sentence_fragment' => null,
         'p_value' => 'double',
         'qm_score' => 'double',
         'reverse_pearson_correlation_coefficient' => 'double',
-        'robot_sharing_image_url' => null,
         'share_user_measurements' => null,
         'sharing_description' => null,
         'sharing_title' => null,
@@ -286,18 +251,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'double',
         'strength_level' => null,
         'strongest_pearson_correlation_coefficient' => 'double',
-        'study_abstract' => null,
-        'study_design' => null,
-        'study_limitations' => null,
-        'study_link_dynamic' => null,
-        'study_link_email' => null,
-        'study_link_facebook' => null,
-        'study_link_google' => null,
-        'study_link_static' => null,
-        'study_link_twitter' => null,
-        'study_objective' => null,
-        'study_results' => null,
-        'study_title' => null,
+        'study_images' => null,
+        'study_links' => null,
+        'study_text' => null,
+        'study_html' => null,
         't_value' => 'double',
         'updated_at' => 'date-time',
         'user_id' => null,
@@ -309,12 +266,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => null,
         'principal_investigator' => null,
         'reverse_correlation' => null,
-        'study_background' => null,
-        'study_invitation' => null,
-        'study_question' => null,
-        'study_html' => null,
         'average_pearson_correlation_coefficient_over_onset_delays' => null,
-        'calculation_start_time' => 'date-time',
         'cause_number_of_raw_measurements' => null,
         'correlations_over_durations_of_action' => null,
         'correlations_over_durations_of_action_chart_config' => null,
@@ -366,8 +318,6 @@ class Correlation implements ArrayAccess
         'cause_variable_combination_operation' => 'causeVariableCombinationOperation',
         'cause_variable_unit_abbreviated_name' => 'causeVariableUnitAbbreviatedName',
         'cause_variable_id' => 'causeVariableId',
-        'cause_variable_image_url' => 'causeVariableImageUrl',
-        'cause_variable_ion_icon' => 'causeVariableIonIcon',
         'cause_variable_most_common_connector_id' => 'causeVariableMostCommonConnectorId',
         'cause_variable_name' => 'causeVariableName',
         'confidence_interval' => 'confidenceInterval',
@@ -394,17 +344,11 @@ class Correlation implements ArrayAccess
         'effect_variable_unit_id' => 'effectVariableUnitId',
         'effect_variable_unit_name' => 'effectVariableUnitName',
         'effect_variable_id' => 'effectVariableId',
-        'effect_variable_image_url' => 'effectVariableImageUrl',
-        'effect_variable_ion_icon' => 'effectVariableIonIcon',
         'effect_variable_most_common_connector_id' => 'effectVariableMostCommonConnectorId',
         'effect_variable_name' => 'effectVariableName',
         'experiment_end_time' => 'experimentEndTime',
         'experiment_start_time' => 'experimentStartTime',
         'forward_spearman_correlation_coefficient' => 'forwardSpearmanCorrelationCoefficient',
-        'gauge_image' => 'gaugeImage',
-        'gauge_image_square' => 'gaugeImageSquare',
-        'gauge_sharing_image_url' => 'gaugeSharingImageUrl',
-        'image_url' => 'imageUrl',
         'number_of_pairs' => 'numberOfPairs',
         'onset_delay' => 'onsetDelay',
         'onset_delay_in_hours' => 'onsetDelayInHours',
@@ -423,13 +367,10 @@ class Correlation implements ArrayAccess
         'predictor_maximum_allowed_value' => 'predictorMaximumAllowedValue',
         'predictor_minimum_allowed_value' => 'predictorMinimumAllowedValue',
         'predicts_high_effect_change' => 'predictsHighEffectChange',
-        'predicts_high_effect_change_sentence_fragment' => 'predictsHighEffectChangeSentenceFragment',
         'predicts_low_effect_change' => 'predictsLowEffectChange',
-        'predicts_low_effect_change_sentence_fragment' => 'predictsLowEffectChangeSentenceFragment',
         'p_value' => 'pValue',
         'qm_score' => 'qmScore',
         'reverse_pearson_correlation_coefficient' => 'reversePearsonCorrelationCoefficient',
-        'robot_sharing_image_url' => 'robotSharingImageUrl',
         'share_user_measurements' => 'shareUserMeasurements',
         'sharing_description' => 'sharingDescription',
         'sharing_title' => 'sharingTitle',
@@ -438,18 +379,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'statisticalSignificance',
         'strength_level' => 'strengthLevel',
         'strongest_pearson_correlation_coefficient' => 'strongestPearsonCorrelationCoefficient',
-        'study_abstract' => 'studyAbstract',
-        'study_design' => 'studyDesign',
-        'study_limitations' => 'studyLimitations',
-        'study_link_dynamic' => 'studyLinkDynamic',
-        'study_link_email' => 'studyLinkEmail',
-        'study_link_facebook' => 'studyLinkFacebook',
-        'study_link_google' => 'studyLinkGoogle',
-        'study_link_static' => 'studyLinkStatic',
-        'study_link_twitter' => 'studyLinkTwitter',
-        'study_objective' => 'studyObjective',
-        'study_results' => 'studyResults',
-        'study_title' => 'studyTitle',
+        'study_images' => 'studyImages',
+        'study_links' => 'studyLinks',
+        'study_text' => 'studyText',
+        'study_html' => 'studyHtml',
         't_value' => 'tValue',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
@@ -461,12 +394,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'outcomeDataSources',
         'principal_investigator' => 'principalInvestigator',
         'reverse_correlation' => 'reverseCorrelation',
-        'study_background' => 'studyBackground',
-        'study_invitation' => 'studyInvitation',
-        'study_question' => 'studyQuestion',
-        'study_html' => 'studyHtml',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'averagePearsonCorrelationCoefficientOverOnsetDelays',
-        'calculation_start_time' => 'calculationStartTime',
         'cause_number_of_raw_measurements' => 'causeNumberOfRawMeasurements',
         'correlations_over_durations_of_action' => 'correlationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'correlationsOverDurationsOfActionChartConfig',
@@ -509,8 +437,6 @@ class Correlation implements ArrayAccess
         'cause_variable_combination_operation' => 'setCauseVariableCombinationOperation',
         'cause_variable_unit_abbreviated_name' => 'setCauseVariableUnitAbbreviatedName',
         'cause_variable_id' => 'setCauseVariableId',
-        'cause_variable_image_url' => 'setCauseVariableImageUrl',
-        'cause_variable_ion_icon' => 'setCauseVariableIonIcon',
         'cause_variable_most_common_connector_id' => 'setCauseVariableMostCommonConnectorId',
         'cause_variable_name' => 'setCauseVariableName',
         'confidence_interval' => 'setConfidenceInterval',
@@ -537,17 +463,11 @@ class Correlation implements ArrayAccess
         'effect_variable_unit_id' => 'setEffectVariableUnitId',
         'effect_variable_unit_name' => 'setEffectVariableUnitName',
         'effect_variable_id' => 'setEffectVariableId',
-        'effect_variable_image_url' => 'setEffectVariableImageUrl',
-        'effect_variable_ion_icon' => 'setEffectVariableIonIcon',
         'effect_variable_most_common_connector_id' => 'setEffectVariableMostCommonConnectorId',
         'effect_variable_name' => 'setEffectVariableName',
         'experiment_end_time' => 'setExperimentEndTime',
         'experiment_start_time' => 'setExperimentStartTime',
         'forward_spearman_correlation_coefficient' => 'setForwardSpearmanCorrelationCoefficient',
-        'gauge_image' => 'setGaugeImage',
-        'gauge_image_square' => 'setGaugeImageSquare',
-        'gauge_sharing_image_url' => 'setGaugeSharingImageUrl',
-        'image_url' => 'setImageUrl',
         'number_of_pairs' => 'setNumberOfPairs',
         'onset_delay' => 'setOnsetDelay',
         'onset_delay_in_hours' => 'setOnsetDelayInHours',
@@ -566,13 +486,10 @@ class Correlation implements ArrayAccess
         'predictor_maximum_allowed_value' => 'setPredictorMaximumAllowedValue',
         'predictor_minimum_allowed_value' => 'setPredictorMinimumAllowedValue',
         'predicts_high_effect_change' => 'setPredictsHighEffectChange',
-        'predicts_high_effect_change_sentence_fragment' => 'setPredictsHighEffectChangeSentenceFragment',
         'predicts_low_effect_change' => 'setPredictsLowEffectChange',
-        'predicts_low_effect_change_sentence_fragment' => 'setPredictsLowEffectChangeSentenceFragment',
         'p_value' => 'setPValue',
         'qm_score' => 'setQmScore',
         'reverse_pearson_correlation_coefficient' => 'setReversePearsonCorrelationCoefficient',
-        'robot_sharing_image_url' => 'setRobotSharingImageUrl',
         'share_user_measurements' => 'setShareUserMeasurements',
         'sharing_description' => 'setSharingDescription',
         'sharing_title' => 'setSharingTitle',
@@ -581,18 +498,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'setStatisticalSignificance',
         'strength_level' => 'setStrengthLevel',
         'strongest_pearson_correlation_coefficient' => 'setStrongestPearsonCorrelationCoefficient',
-        'study_abstract' => 'setStudyAbstract',
-        'study_design' => 'setStudyDesign',
-        'study_limitations' => 'setStudyLimitations',
-        'study_link_dynamic' => 'setStudyLinkDynamic',
-        'study_link_email' => 'setStudyLinkEmail',
-        'study_link_facebook' => 'setStudyLinkFacebook',
-        'study_link_google' => 'setStudyLinkGoogle',
-        'study_link_static' => 'setStudyLinkStatic',
-        'study_link_twitter' => 'setStudyLinkTwitter',
-        'study_objective' => 'setStudyObjective',
-        'study_results' => 'setStudyResults',
-        'study_title' => 'setStudyTitle',
+        'study_images' => 'setStudyImages',
+        'study_links' => 'setStudyLinks',
+        'study_text' => 'setStudyText',
+        'study_html' => 'setStudyHtml',
         't_value' => 'setTValue',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
@@ -604,12 +513,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'setOutcomeDataSources',
         'principal_investigator' => 'setPrincipalInvestigator',
         'reverse_correlation' => 'setReverseCorrelation',
-        'study_background' => 'setStudyBackground',
-        'study_invitation' => 'setStudyInvitation',
-        'study_question' => 'setStudyQuestion',
-        'study_html' => 'setStudyHtml',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'setAveragePearsonCorrelationCoefficientOverOnsetDelays',
-        'calculation_start_time' => 'setCalculationStartTime',
         'cause_number_of_raw_measurements' => 'setCauseNumberOfRawMeasurements',
         'correlations_over_durations_of_action' => 'setCorrelationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'setCorrelationsOverDurationsOfActionChartConfig',
@@ -652,8 +556,6 @@ class Correlation implements ArrayAccess
         'cause_variable_combination_operation' => 'getCauseVariableCombinationOperation',
         'cause_variable_unit_abbreviated_name' => 'getCauseVariableUnitAbbreviatedName',
         'cause_variable_id' => 'getCauseVariableId',
-        'cause_variable_image_url' => 'getCauseVariableImageUrl',
-        'cause_variable_ion_icon' => 'getCauseVariableIonIcon',
         'cause_variable_most_common_connector_id' => 'getCauseVariableMostCommonConnectorId',
         'cause_variable_name' => 'getCauseVariableName',
         'confidence_interval' => 'getConfidenceInterval',
@@ -680,17 +582,11 @@ class Correlation implements ArrayAccess
         'effect_variable_unit_id' => 'getEffectVariableUnitId',
         'effect_variable_unit_name' => 'getEffectVariableUnitName',
         'effect_variable_id' => 'getEffectVariableId',
-        'effect_variable_image_url' => 'getEffectVariableImageUrl',
-        'effect_variable_ion_icon' => 'getEffectVariableIonIcon',
         'effect_variable_most_common_connector_id' => 'getEffectVariableMostCommonConnectorId',
         'effect_variable_name' => 'getEffectVariableName',
         'experiment_end_time' => 'getExperimentEndTime',
         'experiment_start_time' => 'getExperimentStartTime',
         'forward_spearman_correlation_coefficient' => 'getForwardSpearmanCorrelationCoefficient',
-        'gauge_image' => 'getGaugeImage',
-        'gauge_image_square' => 'getGaugeImageSquare',
-        'gauge_sharing_image_url' => 'getGaugeSharingImageUrl',
-        'image_url' => 'getImageUrl',
         'number_of_pairs' => 'getNumberOfPairs',
         'onset_delay' => 'getOnsetDelay',
         'onset_delay_in_hours' => 'getOnsetDelayInHours',
@@ -709,13 +605,10 @@ class Correlation implements ArrayAccess
         'predictor_maximum_allowed_value' => 'getPredictorMaximumAllowedValue',
         'predictor_minimum_allowed_value' => 'getPredictorMinimumAllowedValue',
         'predicts_high_effect_change' => 'getPredictsHighEffectChange',
-        'predicts_high_effect_change_sentence_fragment' => 'getPredictsHighEffectChangeSentenceFragment',
         'predicts_low_effect_change' => 'getPredictsLowEffectChange',
-        'predicts_low_effect_change_sentence_fragment' => 'getPredictsLowEffectChangeSentenceFragment',
         'p_value' => 'getPValue',
         'qm_score' => 'getQmScore',
         'reverse_pearson_correlation_coefficient' => 'getReversePearsonCorrelationCoefficient',
-        'robot_sharing_image_url' => 'getRobotSharingImageUrl',
         'share_user_measurements' => 'getShareUserMeasurements',
         'sharing_description' => 'getSharingDescription',
         'sharing_title' => 'getSharingTitle',
@@ -724,18 +617,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'getStatisticalSignificance',
         'strength_level' => 'getStrengthLevel',
         'strongest_pearson_correlation_coefficient' => 'getStrongestPearsonCorrelationCoefficient',
-        'study_abstract' => 'getStudyAbstract',
-        'study_design' => 'getStudyDesign',
-        'study_limitations' => 'getStudyLimitations',
-        'study_link_dynamic' => 'getStudyLinkDynamic',
-        'study_link_email' => 'getStudyLinkEmail',
-        'study_link_facebook' => 'getStudyLinkFacebook',
-        'study_link_google' => 'getStudyLinkGoogle',
-        'study_link_static' => 'getStudyLinkStatic',
-        'study_link_twitter' => 'getStudyLinkTwitter',
-        'study_objective' => 'getStudyObjective',
-        'study_results' => 'getStudyResults',
-        'study_title' => 'getStudyTitle',
+        'study_images' => 'getStudyImages',
+        'study_links' => 'getStudyLinks',
+        'study_text' => 'getStudyText',
+        'study_html' => 'getStudyHtml',
         't_value' => 'getTValue',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
@@ -747,12 +632,7 @@ class Correlation implements ArrayAccess
         'outcome_data_sources' => 'getOutcomeDataSources',
         'principal_investigator' => 'getPrincipalInvestigator',
         'reverse_correlation' => 'getReverseCorrelation',
-        'study_background' => 'getStudyBackground',
-        'study_invitation' => 'getStudyInvitation',
-        'study_question' => 'getStudyQuestion',
-        'study_html' => 'getStudyHtml',
         'average_pearson_correlation_coefficient_over_onset_delays' => 'getAveragePearsonCorrelationCoefficientOverOnsetDelays',
-        'calculation_start_time' => 'getCalculationStartTime',
         'cause_number_of_raw_measurements' => 'getCauseNumberOfRawMeasurements',
         'correlations_over_durations_of_action' => 'getCorrelationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'getCorrelationsOverDurationsOfActionChartConfig',
@@ -820,8 +700,6 @@ class Correlation implements ArrayAccess
         $this->container['cause_variable_combination_operation'] = isset($data['cause_variable_combination_operation']) ? $data['cause_variable_combination_operation'] : null;
         $this->container['cause_variable_unit_abbreviated_name'] = isset($data['cause_variable_unit_abbreviated_name']) ? $data['cause_variable_unit_abbreviated_name'] : null;
         $this->container['cause_variable_id'] = isset($data['cause_variable_id']) ? $data['cause_variable_id'] : null;
-        $this->container['cause_variable_image_url'] = isset($data['cause_variable_image_url']) ? $data['cause_variable_image_url'] : null;
-        $this->container['cause_variable_ion_icon'] = isset($data['cause_variable_ion_icon']) ? $data['cause_variable_ion_icon'] : null;
         $this->container['cause_variable_most_common_connector_id'] = isset($data['cause_variable_most_common_connector_id']) ? $data['cause_variable_most_common_connector_id'] : null;
         $this->container['cause_variable_name'] = isset($data['cause_variable_name']) ? $data['cause_variable_name'] : null;
         $this->container['confidence_interval'] = isset($data['confidence_interval']) ? $data['confidence_interval'] : null;
@@ -848,17 +726,11 @@ class Correlation implements ArrayAccess
         $this->container['effect_variable_unit_id'] = isset($data['effect_variable_unit_id']) ? $data['effect_variable_unit_id'] : null;
         $this->container['effect_variable_unit_name'] = isset($data['effect_variable_unit_name']) ? $data['effect_variable_unit_name'] : null;
         $this->container['effect_variable_id'] = isset($data['effect_variable_id']) ? $data['effect_variable_id'] : null;
-        $this->container['effect_variable_image_url'] = isset($data['effect_variable_image_url']) ? $data['effect_variable_image_url'] : null;
-        $this->container['effect_variable_ion_icon'] = isset($data['effect_variable_ion_icon']) ? $data['effect_variable_ion_icon'] : null;
         $this->container['effect_variable_most_common_connector_id'] = isset($data['effect_variable_most_common_connector_id']) ? $data['effect_variable_most_common_connector_id'] : null;
         $this->container['effect_variable_name'] = isset($data['effect_variable_name']) ? $data['effect_variable_name'] : null;
         $this->container['experiment_end_time'] = isset($data['experiment_end_time']) ? $data['experiment_end_time'] : null;
         $this->container['experiment_start_time'] = isset($data['experiment_start_time']) ? $data['experiment_start_time'] : null;
         $this->container['forward_spearman_correlation_coefficient'] = isset($data['forward_spearman_correlation_coefficient']) ? $data['forward_spearman_correlation_coefficient'] : null;
-        $this->container['gauge_image'] = isset($data['gauge_image']) ? $data['gauge_image'] : null;
-        $this->container['gauge_image_square'] = isset($data['gauge_image_square']) ? $data['gauge_image_square'] : null;
-        $this->container['gauge_sharing_image_url'] = isset($data['gauge_sharing_image_url']) ? $data['gauge_sharing_image_url'] : null;
-        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
         $this->container['number_of_pairs'] = isset($data['number_of_pairs']) ? $data['number_of_pairs'] : null;
         $this->container['onset_delay'] = isset($data['onset_delay']) ? $data['onset_delay'] : null;
         $this->container['onset_delay_in_hours'] = isset($data['onset_delay_in_hours']) ? $data['onset_delay_in_hours'] : null;
@@ -877,13 +749,10 @@ class Correlation implements ArrayAccess
         $this->container['predictor_maximum_allowed_value'] = isset($data['predictor_maximum_allowed_value']) ? $data['predictor_maximum_allowed_value'] : null;
         $this->container['predictor_minimum_allowed_value'] = isset($data['predictor_minimum_allowed_value']) ? $data['predictor_minimum_allowed_value'] : null;
         $this->container['predicts_high_effect_change'] = isset($data['predicts_high_effect_change']) ? $data['predicts_high_effect_change'] : null;
-        $this->container['predicts_high_effect_change_sentence_fragment'] = isset($data['predicts_high_effect_change_sentence_fragment']) ? $data['predicts_high_effect_change_sentence_fragment'] : null;
         $this->container['predicts_low_effect_change'] = isset($data['predicts_low_effect_change']) ? $data['predicts_low_effect_change'] : null;
-        $this->container['predicts_low_effect_change_sentence_fragment'] = isset($data['predicts_low_effect_change_sentence_fragment']) ? $data['predicts_low_effect_change_sentence_fragment'] : null;
         $this->container['p_value'] = isset($data['p_value']) ? $data['p_value'] : null;
         $this->container['qm_score'] = isset($data['qm_score']) ? $data['qm_score'] : null;
         $this->container['reverse_pearson_correlation_coefficient'] = isset($data['reverse_pearson_correlation_coefficient']) ? $data['reverse_pearson_correlation_coefficient'] : null;
-        $this->container['robot_sharing_image_url'] = isset($data['robot_sharing_image_url']) ? $data['robot_sharing_image_url'] : null;
         $this->container['share_user_measurements'] = isset($data['share_user_measurements']) ? $data['share_user_measurements'] : null;
         $this->container['sharing_description'] = isset($data['sharing_description']) ? $data['sharing_description'] : null;
         $this->container['sharing_title'] = isset($data['sharing_title']) ? $data['sharing_title'] : null;
@@ -892,18 +761,10 @@ class Correlation implements ArrayAccess
         $this->container['statistical_significance'] = isset($data['statistical_significance']) ? $data['statistical_significance'] : null;
         $this->container['strength_level'] = isset($data['strength_level']) ? $data['strength_level'] : null;
         $this->container['strongest_pearson_correlation_coefficient'] = isset($data['strongest_pearson_correlation_coefficient']) ? $data['strongest_pearson_correlation_coefficient'] : null;
-        $this->container['study_abstract'] = isset($data['study_abstract']) ? $data['study_abstract'] : null;
-        $this->container['study_design'] = isset($data['study_design']) ? $data['study_design'] : null;
-        $this->container['study_limitations'] = isset($data['study_limitations']) ? $data['study_limitations'] : null;
-        $this->container['study_link_dynamic'] = isset($data['study_link_dynamic']) ? $data['study_link_dynamic'] : null;
-        $this->container['study_link_email'] = isset($data['study_link_email']) ? $data['study_link_email'] : null;
-        $this->container['study_link_facebook'] = isset($data['study_link_facebook']) ? $data['study_link_facebook'] : null;
-        $this->container['study_link_google'] = isset($data['study_link_google']) ? $data['study_link_google'] : null;
-        $this->container['study_link_static'] = isset($data['study_link_static']) ? $data['study_link_static'] : null;
-        $this->container['study_link_twitter'] = isset($data['study_link_twitter']) ? $data['study_link_twitter'] : null;
-        $this->container['study_objective'] = isset($data['study_objective']) ? $data['study_objective'] : null;
-        $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
-        $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
+        $this->container['study_images'] = isset($data['study_images']) ? $data['study_images'] : null;
+        $this->container['study_links'] = isset($data['study_links']) ? $data['study_links'] : null;
+        $this->container['study_text'] = isset($data['study_text']) ? $data['study_text'] : null;
+        $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['t_value'] = isset($data['t_value']) ? $data['t_value'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
@@ -915,12 +776,7 @@ class Correlation implements ArrayAccess
         $this->container['outcome_data_sources'] = isset($data['outcome_data_sources']) ? $data['outcome_data_sources'] : null;
         $this->container['principal_investigator'] = isset($data['principal_investigator']) ? $data['principal_investigator'] : null;
         $this->container['reverse_correlation'] = isset($data['reverse_correlation']) ? $data['reverse_correlation'] : null;
-        $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
-        $this->container['study_invitation'] = isset($data['study_invitation']) ? $data['study_invitation'] : null;
-        $this->container['study_question'] = isset($data['study_question']) ? $data['study_question'] : null;
-        $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['average_pearson_correlation_coefficient_over_onset_delays'] = isset($data['average_pearson_correlation_coefficient_over_onset_delays']) ? $data['average_pearson_correlation_coefficient_over_onset_delays'] : null;
-        $this->container['calculation_start_time'] = isset($data['calculation_start_time']) ? $data['calculation_start_time'] : null;
         $this->container['cause_number_of_raw_measurements'] = isset($data['cause_number_of_raw_measurements']) ? $data['cause_number_of_raw_measurements'] : null;
         $this->container['correlations_over_durations_of_action'] = isset($data['correlations_over_durations_of_action']) ? $data['correlations_over_durations_of_action'] : null;
         $this->container['correlations_over_durations_of_action_chart_config'] = isset($data['correlations_over_durations_of_action_chart_config']) ? $data['correlations_over_durations_of_action_chart_config'] : null;
@@ -1038,15 +894,6 @@ class Correlation implements ArrayAccess
         if ($this->container['forward_spearman_correlation_coefficient'] === null) {
             $invalid_properties[] = "'forward_spearman_correlation_coefficient' can't be null";
         }
-        if ($this->container['gauge_image'] === null) {
-            $invalid_properties[] = "'gauge_image' can't be null";
-        }
-        if ($this->container['gauge_image_square'] === null) {
-            $invalid_properties[] = "'gauge_image_square' can't be null";
-        }
-        if ($this->container['image_url'] === null) {
-            $invalid_properties[] = "'image_url' can't be null";
-        }
         if ($this->container['number_of_pairs'] === null) {
             $invalid_properties[] = "'number_of_pairs' can't be null";
         }
@@ -1095,14 +942,8 @@ class Correlation implements ArrayAccess
         if ($this->container['predicts_high_effect_change'] === null) {
             $invalid_properties[] = "'predicts_high_effect_change' can't be null";
         }
-        if ($this->container['predicts_high_effect_change_sentence_fragment'] === null) {
-            $invalid_properties[] = "'predicts_high_effect_change_sentence_fragment' can't be null";
-        }
         if ($this->container['predicts_low_effect_change'] === null) {
             $invalid_properties[] = "'predicts_low_effect_change' can't be null";
-        }
-        if ($this->container['predicts_low_effect_change_sentence_fragment'] === null) {
-            $invalid_properties[] = "'predicts_low_effect_change_sentence_fragment' can't be null";
         }
         if ($this->container['qm_score'] === null) {
             $invalid_properties[] = "'qm_score' can't be null";
@@ -1127,42 +968,6 @@ class Correlation implements ArrayAccess
         }
         if ($this->container['strongest_pearson_correlation_coefficient'] === null) {
             $invalid_properties[] = "'strongest_pearson_correlation_coefficient' can't be null";
-        }
-        if ($this->container['study_abstract'] === null) {
-            $invalid_properties[] = "'study_abstract' can't be null";
-        }
-        if ($this->container['study_design'] === null) {
-            $invalid_properties[] = "'study_design' can't be null";
-        }
-        if ($this->container['study_limitations'] === null) {
-            $invalid_properties[] = "'study_limitations' can't be null";
-        }
-        if ($this->container['study_link_dynamic'] === null) {
-            $invalid_properties[] = "'study_link_dynamic' can't be null";
-        }
-        if ($this->container['study_link_email'] === null) {
-            $invalid_properties[] = "'study_link_email' can't be null";
-        }
-        if ($this->container['study_link_facebook'] === null) {
-            $invalid_properties[] = "'study_link_facebook' can't be null";
-        }
-        if ($this->container['study_link_google'] === null) {
-            $invalid_properties[] = "'study_link_google' can't be null";
-        }
-        if ($this->container['study_link_static'] === null) {
-            $invalid_properties[] = "'study_link_static' can't be null";
-        }
-        if ($this->container['study_link_twitter'] === null) {
-            $invalid_properties[] = "'study_link_twitter' can't be null";
-        }
-        if ($this->container['study_objective'] === null) {
-            $invalid_properties[] = "'study_objective' can't be null";
-        }
-        if ($this->container['study_results'] === null) {
-            $invalid_properties[] = "'study_results' can't be null";
-        }
-        if ($this->container['study_title'] === null) {
-            $invalid_properties[] = "'study_title' can't be null";
         }
         if ($this->container['t_value'] === null) {
             $invalid_properties[] = "'t_value' can't be null";
@@ -1290,15 +1095,6 @@ class Correlation implements ArrayAccess
         if ($this->container['forward_spearman_correlation_coefficient'] === null) {
             return false;
         }
-        if ($this->container['gauge_image'] === null) {
-            return false;
-        }
-        if ($this->container['gauge_image_square'] === null) {
-            return false;
-        }
-        if ($this->container['image_url'] === null) {
-            return false;
-        }
         if ($this->container['number_of_pairs'] === null) {
             return false;
         }
@@ -1347,13 +1143,7 @@ class Correlation implements ArrayAccess
         if ($this->container['predicts_high_effect_change'] === null) {
             return false;
         }
-        if ($this->container['predicts_high_effect_change_sentence_fragment'] === null) {
-            return false;
-        }
         if ($this->container['predicts_low_effect_change'] === null) {
-            return false;
-        }
-        if ($this->container['predicts_low_effect_change_sentence_fragment'] === null) {
             return false;
         }
         if ($this->container['qm_score'] === null) {
@@ -1378,42 +1168,6 @@ class Correlation implements ArrayAccess
             return false;
         }
         if ($this->container['strongest_pearson_correlation_coefficient'] === null) {
-            return false;
-        }
-        if ($this->container['study_abstract'] === null) {
-            return false;
-        }
-        if ($this->container['study_design'] === null) {
-            return false;
-        }
-        if ($this->container['study_limitations'] === null) {
-            return false;
-        }
-        if ($this->container['study_link_dynamic'] === null) {
-            return false;
-        }
-        if ($this->container['study_link_email'] === null) {
-            return false;
-        }
-        if ($this->container['study_link_facebook'] === null) {
-            return false;
-        }
-        if ($this->container['study_link_google'] === null) {
-            return false;
-        }
-        if ($this->container['study_link_static'] === null) {
-            return false;
-        }
-        if ($this->container['study_link_twitter'] === null) {
-            return false;
-        }
-        if ($this->container['study_objective'] === null) {
-            return false;
-        }
-        if ($this->container['study_results'] === null) {
-            return false;
-        }
-        if ($this->container['study_title'] === null) {
             return false;
         }
         if ($this->container['t_value'] === null) {
@@ -1818,48 +1572,6 @@ class Correlation implements ArrayAccess
     public function setCauseVariableId($cause_variable_id)
     {
         $this->container['cause_variable_id'] = $cause_variable_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_image_url
-     * @return string
-     */
-    public function getCauseVariableImageUrl()
-    {
-        return $this->container['cause_variable_image_url'];
-    }
-
-    /**
-     * Sets cause_variable_image_url
-     * @param string $cause_variable_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Household/sleeping_in_bed-96.png
-     * @return $this
-     */
-    public function setCauseVariableImageUrl($cause_variable_image_url)
-    {
-        $this->container['cause_variable_image_url'] = $cause_variable_image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets cause_variable_ion_icon
-     * @return string
-     */
-    public function getCauseVariableIonIcon()
-    {
-        return $this->container['cause_variable_ion_icon'];
-    }
-
-    /**
-     * Sets cause_variable_ion_icon
-     * @param string $cause_variable_ion_icon Example: ion-ios-cloudy-night-outline
-     * @return $this
-     */
-    public function setCauseVariableIonIcon($cause_variable_ion_icon)
-    {
-        $this->container['cause_variable_ion_icon'] = $cause_variable_ion_icon;
 
         return $this;
     }
@@ -2411,48 +2123,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets effect_variable_image_url
-     * @return string
-     */
-    public function getEffectVariableImageUrl()
-    {
-        return $this->container['effect_variable_image_url'];
-    }
-
-    /**
-     * Sets effect_variable_image_url
-     * @param string $effect_variable_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Cinema/theatre_mask-96.png
-     * @return $this
-     */
-    public function setEffectVariableImageUrl($effect_variable_image_url)
-    {
-        $this->container['effect_variable_image_url'] = $effect_variable_image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_variable_ion_icon
-     * @return string
-     */
-    public function getEffectVariableIonIcon()
-    {
-        return $this->container['effect_variable_ion_icon'];
-    }
-
-    /**
-     * Sets effect_variable_ion_icon
-     * @param string $effect_variable_ion_icon Example: ion-happy-outline
-     * @return $this
-     */
-    public function setEffectVariableIonIcon($effect_variable_ion_icon)
-    {
-        $this->container['effect_variable_ion_icon'] = $effect_variable_ion_icon;
-
-        return $this;
-    }
-
-    /**
      * Gets effect_variable_most_common_connector_id
      * @return int
      */
@@ -2553,90 +2223,6 @@ class Correlation implements ArrayAccess
     public function setForwardSpearmanCorrelationCoefficient($forward_spearman_correlation_coefficient)
     {
         $this->container['forward_spearman_correlation_coefficient'] = $forward_spearman_correlation_coefficient;
-
-        return $this;
-    }
-
-    /**
-     * Gets gauge_image
-     * @return string
-     */
-    public function getGaugeImage()
-    {
-        return $this->container['gauge_image'];
-    }
-
-    /**
-     * Sets gauge_image
-     * @param string $gauge_image Example: https://s3.amazonaws.com/quantimodo-docs/images/gauge-moderately-positive-relationship.png
-     * @return $this
-     */
-    public function setGaugeImage($gauge_image)
-    {
-        $this->container['gauge_image'] = $gauge_image;
-
-        return $this;
-    }
-
-    /**
-     * Gets gauge_image_square
-     * @return string
-     */
-    public function getGaugeImageSquare()
-    {
-        return $this->container['gauge_image_square'];
-    }
-
-    /**
-     * Sets gauge_image_square
-     * @param string $gauge_image_square Example: https://s3.amazonaws.com/quantimodo-docs/images/gauge-moderately-positive-relationship-200-200.png
-     * @return $this
-     */
-    public function setGaugeImageSquare($gauge_image_square)
-    {
-        $this->container['gauge_image_square'] = $gauge_image_square;
-
-        return $this;
-    }
-
-    /**
-     * Gets gauge_sharing_image_url
-     * @return string
-     */
-    public function getGaugeSharingImageUrl()
-    {
-        return $this->container['gauge_sharing_image_url'];
-    }
-
-    /**
-     * Sets gauge_sharing_image_url
-     * @param string $gauge_sharing_image_url Image with gauge and category images
-     * @return $this
-     */
-    public function setGaugeSharingImageUrl($gauge_sharing_image_url)
-    {
-        $this->container['gauge_sharing_image_url'] = $gauge_sharing_image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->container['image_url'];
-    }
-
-    /**
-     * Sets image_url
-     * @param string $image_url Example: https://s3-us-west-1.amazonaws.com/qmimages/variable_categories_gauges_logo_background/gauge-moderately-positive-relationship_sleep_emotions_logo_background.png
-     * @return $this
-     */
-    public function setImageUrl($image_url)
-    {
-        $this->container['image_url'] = $image_url;
 
         return $this;
     }
@@ -3020,27 +2606,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets predicts_high_effect_change_sentence_fragment
-     * @return string
-     */
-    public function getPredictsHighEffectChangeSentenceFragment()
-    {
-        return $this->container['predicts_high_effect_change_sentence_fragment'];
-    }
-
-    /**
-     * Sets predicts_high_effect_change_sentence_fragment
-     * @param string $predicts_high_effect_change_sentence_fragment Example: , on average, 17%
-     * @return $this
-     */
-    public function setPredictsHighEffectChangeSentenceFragment($predicts_high_effect_change_sentence_fragment)
-    {
-        $this->container['predicts_high_effect_change_sentence_fragment'] = $predicts_high_effect_change_sentence_fragment;
-
-        return $this;
-    }
-
-    /**
      * Gets predicts_low_effect_change
      * @return int
      */
@@ -3057,27 +2622,6 @@ class Correlation implements ArrayAccess
     public function setPredictsLowEffectChange($predicts_low_effect_change)
     {
         $this->container['predicts_low_effect_change'] = $predicts_low_effect_change;
-
-        return $this;
-    }
-
-    /**
-     * Gets predicts_low_effect_change_sentence_fragment
-     * @return string
-     */
-    public function getPredictsLowEffectChangeSentenceFragment()
-    {
-        return $this->container['predicts_low_effect_change_sentence_fragment'];
-    }
-
-    /**
-     * Sets predicts_low_effect_change_sentence_fragment
-     * @param string $predicts_low_effect_change_sentence_fragment Example: , on average, 11%
-     * @return $this
-     */
-    public function setPredictsLowEffectChangeSentenceFragment($predicts_low_effect_change_sentence_fragment)
-    {
-        $this->container['predicts_low_effect_change_sentence_fragment'] = $predicts_low_effect_change_sentence_fragment;
 
         return $this;
     }
@@ -3141,27 +2685,6 @@ class Correlation implements ArrayAccess
     public function setReversePearsonCorrelationCoefficient($reverse_pearson_correlation_coefficient)
     {
         $this->container['reverse_pearson_correlation_coefficient'] = $reverse_pearson_correlation_coefficient;
-
-        return $this;
-    }
-
-    /**
-     * Gets robot_sharing_image_url
-     * @return string
-     */
-    public function getRobotSharingImageUrl()
-    {
-        return $this->container['robot_sharing_image_url'];
-    }
-
-    /**
-     * Sets robot_sharing_image_url
-     * @param string $robot_sharing_image_url Image with robot and category images
-     * @return $this
-     */
-    public function setRobotSharingImageUrl($robot_sharing_image_url)
-    {
-        $this->container['robot_sharing_image_url'] = $robot_sharing_image_url;
 
         return $this;
     }
@@ -3335,253 +2858,85 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets study_abstract
-     * @return string
+     * Gets study_images
+     * @return \QuantiModo\Client\Model\StudyImages
      */
-    public function getStudyAbstract()
+    public function getStudyImages()
     {
-        return $this->container['study_abstract'];
+        return $this->container['study_images'];
     }
 
     /**
-     * Sets study_abstract
-     * @param string $study_abstract Example: Your data suggests with a high degree of confidence (p=0) that Sleep Quality (Sleep) has a moderately positive predictive relationship (R=0.538) with Overall Mood  (Emotions).  The highest quartile of Overall Mood  measurements were observed following an average 4.14/5 Sleep Quality.  The lowest quartile of Overall Mood measurements were observed following an average 3.03/5 Sleep Quality.
+     * Sets study_images
+     * @param \QuantiModo\Client\Model\StudyImages $study_images
      * @return $this
      */
-    public function setStudyAbstract($study_abstract)
+    public function setStudyImages($study_images)
     {
-        $this->container['study_abstract'] = $study_abstract;
+        $this->container['study_images'] = $study_images;
 
         return $this;
     }
 
     /**
-     * Gets study_design
-     * @return string
+     * Gets study_links
+     * @return \QuantiModo\Client\Model\StudyLinks
      */
-    public function getStudyDesign()
+    public function getStudyLinks()
     {
-        return $this->container['study_design'];
+        return $this->container['study_links'];
     }
 
     /**
-     * Sets study_design
-     * @param string $study_design Example: This study is based on data donated by one QuantiModo user. Thus, the study design is consistent with an n=1 observational natural experiment.
+     * Sets study_links
+     * @param \QuantiModo\Client\Model\StudyLinks $study_links
      * @return $this
      */
-    public function setStudyDesign($study_design)
+    public function setStudyLinks($study_links)
     {
-        $this->container['study_design'] = $study_design;
+        $this->container['study_links'] = $study_links;
 
         return $this;
     }
 
     /**
-     * Gets study_limitations
-     * @return string
+     * Gets study_text
+     * @return \QuantiModo\Client\Model\StudyText
      */
-    public function getStudyLimitations()
+    public function getStudyText()
     {
-        return $this->container['study_limitations'];
+        return $this->container['study_text'];
     }
 
     /**
-     * Sets study_limitations
-     * @param string $study_limitations Example: As with any human experiment, it was impossible to control for all potentially confounding variables.              Correlation does not necessarily imply correlation.  We can never know for sure if one factor is definitely the cause of an outcome.             However, lack of correlation definitely implies the lack of a causal relationship.  Hence, we can with great             confidence rule out non-existent relationships. For instance, if we discover no relationship between mood             and an antidepressant this information is just as or even more valuable than the discovery that there is a relationship.             <br>             <br>              We can also take advantage of several characteristics of time series data from many subjects  to infer the likelihood of a causal relationship if we do find a correlational relationship.             The criteria for causation are a group of minimal conditions necessary to provide adequate evidence of a causal relationship between an incidence and a possible consequence.             The list of the criteria is as follows:             <br>             1. Strength (effect size): A small association does not mean that there is not a causal effect, though the larger the association, the more likely that it is causal.             <br>             2. Consistency (reproducibility): Consistent findings observed by different persons in different places with different samples strengthens the likelihood of an effect.             <br>             3. Specificity: Causation is likely if a very specific population at a specific site and disease with no other likely explanation. The more specific an association between a factor and an effect is, the bigger the probability of a causal relationship.             <br>             4. Temporality: The effect has to occur after the cause (and if there is an expected delay between the cause and expected effect, then the effect must occur after that delay).             <br>             5. Biological gradient: Greater exposure should generally lead to greater incidence of the effect. However, in some cases, the mere presence of the factor can trigger the effect. In other cases, an inverse proportion is observed: greater exposure leads to lower incidence.             <br>             6. Plausibility: A plausible mechanism between cause and effect is helpful.             <br>             7. Coherence: Coherence between epidemiological and laboratory findings increases the likelihood of an effect.             <br>             8. Experiment: \"Occasionally it is possible to appeal to experimental evidence\".             <br>             9. Analogy: The effect of similar factors may be considered.             <br>             <br>               The confidence in a causal relationship is bolstered by the fact that time-precedence was taken into account in all calculations. Furthermore, in accordance with the law of large numbers (LLN), the predictive power and accuracy of these results will continually grow over time.  298 paired data points were used in this analysis.   Assuming that the relationship is merely coincidental, as the participant independently modifies their Sleep Quality values, the observed strength of the relationship will decline until it is below the threshold of significance.  To it another way, in the case that we do find a spurious correlation, suggesting that banana intake improves mood for instance,             one will likely increase their banana intake.  Due to the fact that this correlation is spurious, it is unlikely             that you will see a continued and persistent corresponding increase in mood.  So over time, the spurious correlation will             naturally dissipate.Furthermore, it will be very enlightening to aggregate this data with the data from other participants  with similar genetic, diseasomic, environmentomic, and demographic profiles.
+     * Sets study_text
+     * @param \QuantiModo\Client\Model\StudyText $study_text
      * @return $this
      */
-    public function setStudyLimitations($study_limitations)
+    public function setStudyText($study_text)
     {
-        $this->container['study_limitations'] = $study_limitations;
+        $this->container['study_text'] = $study_text;
 
         return $this;
     }
 
     /**
-     * Gets study_link_dynamic
+     * Gets study_html
      * @return string
      */
-    public function getStudyLinkDynamic()
+    public function getStudyHtml()
     {
-        return $this->container['study_link_dynamic'];
+        return $this->container['study_html'];
     }
 
     /**
-     * Sets study_link_dynamic
-     * @param string $study_link_dynamic Example: https://local.quantimo.do/ionic/Modo/www/index.html#/app/study?causeVariableName=Sleep%20Quality&effectVariableName=Overall%20Mood&userId=230
+     * Sets study_html
+     * @param string $study_html Embeddable study HTML including chart svg's
      * @return $this
      */
-    public function setStudyLinkDynamic($study_link_dynamic)
+    public function setStudyHtml($study_html)
     {
-        $this->container['study_link_dynamic'] = $study_link_dynamic;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_email
-     * @return string
-     */
-    public function getStudyLinkEmail()
-    {
-        return $this->container['study_link_email'];
-    }
-
-    /**
-     * Sets study_link_email
-     * @param string $study_link_email Example: mailto:?subject=N1%20Study%3A%20Sleep%20Quality%20Predicts%20Higher%20Overall%20Mood&body=Check%20out%20my%20study%20at%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230%0A%0AHave%20a%20great%20day!
-     * @return $this
-     */
-    public function setStudyLinkEmail($study_link_email)
-    {
-        $this->container['study_link_email'] = $study_link_email;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_facebook
-     * @return string
-     */
-    public function getStudyLinkFacebook()
-    {
-        return $this->container['study_link_facebook'];
-    }
-
-    /**
-     * Sets study_link_facebook
-     * @param string $study_link_facebook Example: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230
-     * @return $this
-     */
-    public function setStudyLinkFacebook($study_link_facebook)
-    {
-        $this->container['study_link_facebook'] = $study_link_facebook;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_google
-     * @return string
-     */
-    public function getStudyLinkGoogle()
-    {
-        return $this->container['study_link_google'];
-    }
-
-    /**
-     * Sets study_link_google
-     * @param string $study_link_google Example: https://plus.google.com/share?url=https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230
-     * @return $this
-     */
-    public function setStudyLinkGoogle($study_link_google)
-    {
-        $this->container['study_link_google'] = $study_link_google;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_static
-     * @return string
-     */
-    public function getStudyLinkStatic()
-    {
-        return $this->container['study_link_static'];
-    }
-
-    /**
-     * Sets study_link_static
-     * @param string $study_link_static Example: https://local.quantimo.do/api/v2/study?causeVariableName=Sleep%20Quality&effectVariableName=Overall%20Mood&userId=230
-     * @return $this
-     */
-    public function setStudyLinkStatic($study_link_static)
-    {
-        $this->container['study_link_static'] = $study_link_static;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_link_twitter
-     * @return string
-     */
-    public function getStudyLinkTwitter()
-    {
-        return $this->container['study_link_twitter'];
-    }
-
-    /**
-     * Sets study_link_twitter
-     * @param string $study_link_twitter Example: https://twitter.com/home?status=Sleep%20Quality%20Predicts%20Higher%20Overall%20Mood%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fstudy%3FcauseVariableName%3DSleep%2520Quality%26effectVariableName%3DOverall%2520Mood%26userId%3D230%20%40quantimodo
-     * @return $this
-     */
-    public function setStudyLinkTwitter($study_link_twitter)
-    {
-        $this->container['study_link_twitter'] = $study_link_twitter;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_objective
-     * @return string
-     */
-    public function getStudyObjective()
-    {
-        return $this->container['study_objective'];
-    }
-
-    /**
-     * Sets study_objective
-     * @param string $study_objective Example: The objective of this study is to determine the nature of the relationship (if any) between the Sleep Quality and the Overall Mood. Additionally, we attempt to determine the Sleep Quality values most likely to produce optimal Overall Mood values.
-     * @return $this
-     */
-    public function setStudyObjective($study_objective)
-    {
-        $this->container['study_objective'] = $study_objective;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_results
-     * @return string
-     */
-    public function getStudyResults()
-    {
-        return $this->container['study_results'];
-    }
-
-    /**
-     * Sets study_results
-     * @param string $study_results Example: This analysis suggests that higher Sleep Quality (Sleep) generally predicts higher Overall Mood (p = 0).  Overall Mood is, on average, 17%  higher after around 4.14 Sleep Quality.  After an onset delay of 168 hours, Overall Mood is, on average, 11%  lower than its average over the 168 hours following around 3.03 Sleep Quality.  298 data points were used in this analysis.  The value for Sleep Quality changed 164 times, effectively running 82 separate natural experiments.  The top quartile outcome values are preceded by an average 4.14 /5 of Sleep Quality.  The bottom quartile outcome values are preceded by an average 3.03 /5 of Sleep Quality.  Forward Pearson Correlation Coefficient was 0.538 (p=0, 95% CI 0.395 to 0.681 onset delay = 0 hours, duration of action = 168 hours) .  The Reverse Pearson Correlation Coefficient was 0 (P=0, 95% CI -0.143 to 0.143, onset delay = -0 hours, duration of action = -168 hours). When the Sleep Quality value is closer to 4.14 /5 than 3.03 /5, the Overall Mood value which follows is, on average, 17%  percent higher than its typical value.  When the Sleep Quality value is closer to 3.03 /5 than 4.14 /5, the Overall Mood value which follows is 0% lower than its typical value.  Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality  Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality
-     * @return $this
-     */
-    public function setStudyResults($study_results)
-    {
-        $this->container['study_results'] = $study_results;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_title
-     * @return string
-     */
-    public function getStudyTitle()
-    {
-        return $this->container['study_title'];
-    }
-
-    /**
-     * Sets study_title
-     * @param string $study_title Example: N1 Study: Sleep Quality Predicts Higher Overall Mood
-     * @return $this
-     */
-    public function setStudyTitle($study_title)
-    {
-        $this->container['study_title'] = $study_title;
+        $this->container['study_html'] = $study_html;
 
         return $this;
     }
@@ -3818,90 +3173,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets study_background
-     * @return string
-     */
-    public function getStudyBackground()
-    {
-        return $this->container['study_background'];
-    }
-
-    /**
-     * Sets study_background
-     * @param string $study_background In order to reduce suffering through the advancement of human knowledge...
-     * @return $this
-     */
-    public function setStudyBackground($study_background)
-    {
-        $this->container['study_background'] = $study_background;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_invitation
-     * @return string
-     */
-    public function getStudyInvitation()
-    {
-        return $this->container['study_invitation'];
-    }
-
-    /**
-     * Sets study_invitation
-     * @param string $study_invitation Help us determine if Remeron affects Overall Mood!
-     * @return $this
-     */
-    public function setStudyInvitation($study_invitation)
-    {
-        $this->container['study_invitation'] = $study_invitation;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_question
-     * @return string
-     */
-    public function getStudyQuestion()
-    {
-        return $this->container['study_question'];
-    }
-
-    /**
-     * Sets study_question
-     * @param string $study_question Does Remeron affect Overall Mood?
-     * @return $this
-     */
-    public function setStudyQuestion($study_question)
-    {
-        $this->container['study_question'] = $study_question;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_html
-     * @return string
-     */
-    public function getStudyHtml()
-    {
-        return $this->container['study_html'];
-    }
-
-    /**
-     * Sets study_html
-     * @param string $study_html Embeddable study HTML including chart svg's
-     * @return $this
-     */
-    public function setStudyHtml($study_html)
-    {
-        $this->container['study_html'] = $study_html;
-
-        return $this;
-    }
-
-    /**
      * Gets average_pearson_correlation_coefficient_over_onset_delays
      * @return string
      */
@@ -3918,27 +3189,6 @@ class Correlation implements ArrayAccess
     public function setAveragePearsonCorrelationCoefficientOverOnsetDelays($average_pearson_correlation_coefficient_over_onset_delays)
     {
         $this->container['average_pearson_correlation_coefficient_over_onset_delays'] = $average_pearson_correlation_coefficient_over_onset_delays;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculation_start_time
-     * @return \DateTime
-     */
-    public function getCalculationStartTime()
-    {
-        return $this->container['calculation_start_time'];
-    }
-
-    /**
-     * Sets calculation_start_time
-     * @param \DateTime $calculation_start_time Example:
-     * @return $this
-     */
-    public function setCalculationStartTime($calculation_start_time)
-    {
-        $this->container['calculation_start_time'] = $calculation_start_time;
 
         return $this;
     }

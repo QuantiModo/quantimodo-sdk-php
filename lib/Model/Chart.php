@@ -54,7 +54,7 @@ class Chart implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'highchart_config' => 'string',
+        'highchart_config' => 'object',
         'chart_id' => 'string',
         'chart_title' => 'string',
         'explanation' => 'string',
@@ -192,7 +192,7 @@ class Chart implements ArrayAccess
 
     /**
      * Gets highchart_config
-     * @return string
+     * @return object
      */
     public function getHighchartConfig()
     {
@@ -201,7 +201,7 @@ class Chart implements ArrayAccess
 
     /**
      * Sets highchart_config
-     * @param string $highchart_config Highcharts config that can be used if you have highcharts.js included on the page
+     * @param object $highchart_config Highcharts config that can be used if you have highcharts.js included on the page
      * @return $this
      */
     public function setHighchartConfig($highchart_config)

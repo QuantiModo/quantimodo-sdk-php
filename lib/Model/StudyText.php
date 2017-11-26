@@ -1,6 +1,6 @@
 <?php
 /**
- * Text
+ * StudyText
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace QuantiModo\Client\Model;
 use \ArrayAccess;
 
 /**
- * Text Class Doc Comment
+ * StudyText Class Doc Comment
  *
  * @category    Class
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Text implements ArrayAccess
+class StudyText implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class Text implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Text';
+    protected static $swaggerModelName = 'StudyText';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,7 +62,10 @@ class Text implements ArrayAccess
         'study_limitations' => 'string',
         'study_objective' => 'string',
         'study_results' => 'string',
-        'study_title' => 'string'
+        'study_title' => 'string',
+        'study_invitation' => 'string',
+        'study_question' => 'string',
+        'study_background' => 'string'
     ];
 
     /**
@@ -78,7 +81,10 @@ class Text implements ArrayAccess
         'study_limitations' => null,
         'study_objective' => null,
         'study_results' => null,
-        'study_title' => null
+        'study_title' => null,
+        'study_invitation' => null,
+        'study_question' => null,
+        'study_background' => null
     ];
 
     public static function swaggerTypes()
@@ -104,7 +110,10 @@ class Text implements ArrayAccess
         'study_limitations' => 'studyLimitations',
         'study_objective' => 'studyObjective',
         'study_results' => 'studyResults',
-        'study_title' => 'studyTitle'
+        'study_title' => 'studyTitle',
+        'study_invitation' => 'studyInvitation',
+        'study_question' => 'studyQuestion',
+        'study_background' => 'studyBackground'
     ];
 
 
@@ -121,7 +130,10 @@ class Text implements ArrayAccess
         'study_limitations' => 'setStudyLimitations',
         'study_objective' => 'setStudyObjective',
         'study_results' => 'setStudyResults',
-        'study_title' => 'setStudyTitle'
+        'study_title' => 'setStudyTitle',
+        'study_invitation' => 'setStudyInvitation',
+        'study_question' => 'setStudyQuestion',
+        'study_background' => 'setStudyBackground'
     ];
 
 
@@ -138,7 +150,10 @@ class Text implements ArrayAccess
         'study_limitations' => 'getStudyLimitations',
         'study_objective' => 'getStudyObjective',
         'study_results' => 'getStudyResults',
-        'study_title' => 'getStudyTitle'
+        'study_title' => 'getStudyTitle',
+        'study_invitation' => 'getStudyInvitation',
+        'study_question' => 'getStudyQuestion',
+        'study_background' => 'getStudyBackground'
     ];
 
     public static function attributeMap()
@@ -181,6 +196,9 @@ class Text implements ArrayAccess
         $this->container['study_objective'] = isset($data['study_objective']) ? $data['study_objective'] : null;
         $this->container['study_results'] = isset($data['study_results']) ? $data['study_results'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
+        $this->container['study_invitation'] = isset($data['study_invitation']) ? $data['study_invitation'] : null;
+        $this->container['study_question'] = isset($data['study_question']) ? $data['study_question'] : null;
+        $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
     }
 
     /**
@@ -192,6 +210,24 @@ class Text implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['study_abstract'] === null) {
+            $invalid_properties[] = "'study_abstract' can't be null";
+        }
+        if ($this->container['study_design'] === null) {
+            $invalid_properties[] = "'study_design' can't be null";
+        }
+        if ($this->container['study_limitations'] === null) {
+            $invalid_properties[] = "'study_limitations' can't be null";
+        }
+        if ($this->container['study_objective'] === null) {
+            $invalid_properties[] = "'study_objective' can't be null";
+        }
+        if ($this->container['study_results'] === null) {
+            $invalid_properties[] = "'study_results' can't be null";
+        }
+        if ($this->container['study_title'] === null) {
+            $invalid_properties[] = "'study_title' can't be null";
+        }
         return $invalid_properties;
     }
 
@@ -204,6 +240,24 @@ class Text implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['study_abstract'] === null) {
+            return false;
+        }
+        if ($this->container['study_design'] === null) {
+            return false;
+        }
+        if ($this->container['study_limitations'] === null) {
+            return false;
+        }
+        if ($this->container['study_objective'] === null) {
+            return false;
+        }
+        if ($this->container['study_results'] === null) {
+            return false;
+        }
+        if ($this->container['study_title'] === null) {
+            return false;
+        }
         return true;
     }
 
@@ -393,6 +447,69 @@ class Text implements ArrayAccess
     public function setStudyTitle($study_title)
     {
         $this->container['study_title'] = $study_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_invitation
+     * @return string
+     */
+    public function getStudyInvitation()
+    {
+        return $this->container['study_invitation'];
+    }
+
+    /**
+     * Sets study_invitation
+     * @param string $study_invitation Help us determine if Remeron affects Overall Mood!
+     * @return $this
+     */
+    public function setStudyInvitation($study_invitation)
+    {
+        $this->container['study_invitation'] = $study_invitation;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_question
+     * @return string
+     */
+    public function getStudyQuestion()
+    {
+        return $this->container['study_question'];
+    }
+
+    /**
+     * Sets study_question
+     * @param string $study_question Does Remeron affect Overall Mood?
+     * @return $this
+     */
+    public function setStudyQuestion($study_question)
+    {
+        $this->container['study_question'] = $study_question;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_background
+     * @return string
+     */
+    public function getStudyBackground()
+    {
+        return $this->container['study_background'];
+    }
+
+    /**
+     * Sets study_background
+     * @param string $study_background In order to reduce suffering through the advancement of human knowledge...
+     * @return $this
+     */
+    public function setStudyBackground($study_background)
+    {
+        $this->container['study_background'] = $study_background;
 
         return $this;
     }
