@@ -55,6 +55,8 @@ class StudyHtml implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'full_study_html' => 'string',
+        'full_study_html_with_css_styles' => 'string',
+        'statistics_table_html' => 'string',
         'chart_html' => 'string',
         'download_buttons_html' => 'string',
         'study_meta_html' => 'string',
@@ -68,6 +70,8 @@ class StudyHtml implements ArrayAccess
       */
     protected static $swaggerFormats = [
         'full_study_html' => null,
+        'full_study_html_with_css_styles' => null,
+        'statistics_table_html' => null,
         'chart_html' => null,
         'download_buttons_html' => null,
         'study_meta_html' => null,
@@ -91,6 +95,8 @@ class StudyHtml implements ArrayAccess
      */
     protected static $attributeMap = [
         'full_study_html' => 'fullStudyHtml',
+        'full_study_html_with_css_styles' => 'fullStudyHtmlWithCssStyles',
+        'statistics_table_html' => 'statisticsTableHtml',
         'chart_html' => 'chartHtml',
         'download_buttons_html' => 'downloadButtonsHtml',
         'study_meta_html' => 'studyMetaHtml',
@@ -105,6 +111,8 @@ class StudyHtml implements ArrayAccess
      */
     protected static $setters = [
         'full_study_html' => 'setFullStudyHtml',
+        'full_study_html_with_css_styles' => 'setFullStudyHtmlWithCssStyles',
+        'statistics_table_html' => 'setStatisticsTableHtml',
         'chart_html' => 'setChartHtml',
         'download_buttons_html' => 'setDownloadButtonsHtml',
         'study_meta_html' => 'setStudyMetaHtml',
@@ -119,6 +127,8 @@ class StudyHtml implements ArrayAccess
      */
     protected static $getters = [
         'full_study_html' => 'getFullStudyHtml',
+        'full_study_html_with_css_styles' => 'getFullStudyHtmlWithCssStyles',
+        'statistics_table_html' => 'getStatisticsTableHtml',
         'chart_html' => 'getChartHtml',
         'download_buttons_html' => 'getDownloadButtonsHtml',
         'study_meta_html' => 'getStudyMetaHtml',
@@ -158,6 +168,8 @@ class StudyHtml implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['full_study_html'] = isset($data['full_study_html']) ? $data['full_study_html'] : null;
+        $this->container['full_study_html_with_css_styles'] = isset($data['full_study_html_with_css_styles']) ? $data['full_study_html_with_css_styles'] : null;
+        $this->container['statistics_table_html'] = isset($data['statistics_table_html']) ? $data['statistics_table_html'] : null;
         $this->container['chart_html'] = isset($data['chart_html']) ? $data['chart_html'] : null;
         $this->container['download_buttons_html'] = isset($data['download_buttons_html']) ? $data['download_buttons_html'] : null;
         $this->container['study_meta_html'] = isset($data['study_meta_html']) ? $data['study_meta_html'] : null;
@@ -213,12 +225,54 @@ class StudyHtml implements ArrayAccess
 
     /**
      * Sets full_study_html
-     * @param string $full_study_html Embeddable study text html including charts
+     * @param string $full_study_html Embeddable study text html including charts.  Modifiable css classes are study-title, study-section-header, study-section-body
      * @return $this
      */
     public function setFullStudyHtml($full_study_html)
     {
         $this->container['full_study_html'] = $full_study_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets full_study_html_with_css_styles
+     * @return string
+     */
+    public function getFullStudyHtmlWithCssStyles()
+    {
+        return $this->container['full_study_html_with_css_styles'];
+    }
+
+    /**
+     * Sets full_study_html_with_css_styles
+     * @param string $full_study_html_with_css_styles Embeddable study text html including charts and css styling
+     * @return $this
+     */
+    public function setFullStudyHtmlWithCssStyles($full_study_html_with_css_styles)
+    {
+        $this->container['full_study_html_with_css_styles'] = $full_study_html_with_css_styles;
+
+        return $this;
+    }
+
+    /**
+     * Gets statistics_table_html
+     * @return string
+     */
+    public function getStatisticsTableHtml()
+    {
+        return $this->container['statistics_table_html'];
+    }
+
+    /**
+     * Sets statistics_table_html
+     * @param string $statistics_table_html Embeddable table with statistics
+     * @return $this
+     */
+    public function setStatisticsTableHtml($statistics_table_html)
+    {
+        $this->container['statistics_table_html'] = $statistics_table_html;
 
         return $this;
     }

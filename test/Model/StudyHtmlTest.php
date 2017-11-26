@@ -85,6 +85,20 @@ class StudyHtmlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "full_study_html_with_css_styles"
+     */
+    public function testPropertyFullStudyHtmlWithCssStyles()
+    {
+    }
+
+    /**
+     * Test attribute "statistics_table_html"
+     */
+    public function testPropertyStatisticsTableHtml()
+    {
+    }
+
+    /**
      * Test attribute "chart_html"
      */
     public function testPropertyChartHtml()
