@@ -3,6 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**average_effect_following_high_cause_explanation** | **string** | Example: Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality | [optional] 
+**average_effect_following_low_cause_explanation** | **string** | Example: Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality | [optional] 
+**value_predicting_high_outcome_explanation** | **string** | Example: Overall Mood, on average, 17% higher after around 4.14/5 Sleep Quality | [optional] 
+**value_predicting_low_outcome_explanation** | **string** | Example: Overall Mood, on average, 11% lower after around 3.03/5 Sleep Quality | [optional] 
 **data_analysis** | **string** | Example: It was assumed that 0 hours would pass before a change in Very Distracting Time would produce an observable change in Video Activities.  It was assumed that Very Distracting Time could produce an observable change in Video Activities for as much as 7 days after the stimulus event. | [optional] 
 **data_sources** | **string** | Example: Very Distracting Time data was primarily collected using &lt;a href&#x3D;\&quot;https://www.rescuetime.com/rp/quantimodo/plans\&quot;&gt;RescueTime&lt;/a&gt;. Detailed reports show which applications and websites you spent time on. Activities are automatically grouped into pre-defined categories with built-in productivity scores covering thousands of websites and applications. You can customize categories and productivity scores to meet your needs.&lt;br&gt;Video Activities data was primarily collected using &lt;a href&#x3D;\&quot;https://www.rescuetime.com/rp/quantimodo/plans\&quot;&gt;RescueTime&lt;/a&gt;. Detailed reports show which applications and websites you spent time on. Activities are automatically grouped into pre-defined categories with built-in productivity scores covering thousands of websites and applications. You can customize categories and productivity scores to meet your needs. | [optional] 
 **significance_explanation** | **string** | Example: Using a two-tailed t-test with alpha &#x3D; 0.05, it was determined that the change in Video Activities is statistically significant at 95% confidence interval. | [optional] 
@@ -15,6 +19,7 @@ Name | Type | Description | Notes
 **study_invitation** | **string** | Help us determine if Remeron affects Overall Mood! | [optional] 
 **study_question** | **string** | Does Remeron affect Overall Mood? | [optional] 
 **study_background** | **string** | In order to reduce suffering through the advancement of human knowledge... | [optional] 
+**predictor_explanation** | **string** | Example: Sleep Quality Predicts Higher Overall Mood | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

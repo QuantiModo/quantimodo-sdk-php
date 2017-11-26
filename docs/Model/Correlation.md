@@ -7,9 +7,7 @@ Name | Type | Description | Notes
 **average_daily_low_cause** | **double** | Example: 1.97 | 
 **average_effect** | **double** | Example: 3.0791054117396 | 
 **average_effect_following_high_cause** | **double** | Example: 3.55 | 
-**average_effect_following_high_cause_explanation** | **string** | Example: Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality | 
 **average_effect_following_low_cause** | **double** | Example: 2.65 | 
-**average_effect_following_low_cause_explanation** | **string** | Example: Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality | 
 **average_forward_pearson_correlation_over_onset_delays** | **double** | Example: 0.396 | 
 **average_reverse_pearson_correlation_over_onset_delays** | **double** | Example: 0.453667 | 
 **average_vote** | **float** | Example: 0.9855 | 
@@ -65,7 +63,6 @@ Name | Type | Description | Notes
 **predictive_pearson_correlation** | **double** | Example: 0.538 | 
 **predictive_pearson_correlation_coefficient** | **double** | Example: 0.538 | 
 **predictor_data_sources** | **string** | Example: RescueTime | 
-**predictor_explanation** | **string** | Example: Sleep Quality Predicts Higher Overall Mood | 
 **predictor_filling_value** | **int** | Example: -1 | 
 **predictor_maximum_allowed_value** | **double** | Example: 200 | 
 **predictor_minimum_allowed_value** | **double** | Example: 30 | 
@@ -77,7 +74,6 @@ Name | Type | Description | Notes
 **share_user_measurements** | **bool** | Example: 1 | 
 **sharing_description** | **string** | Example: N1 Study: Sleep Quality Predicts Higher Overall Mood | [optional] 
 **sharing_title** | **string** | Example: N1 Study: Sleep Quality Predicts Higher Overall Mood | [optional] 
-**significance_explanation** | **string** | Example: Using a two-tailed t-test with alpha &#x3D; 0.05, it was determined that the change in Overall Mood is statistically significant at 95% confidence interval. | 
 **significant_difference** | **bool** | Example: 1 | 
 **statistical_significance** | **double** | Example: 0.9813 | 
 **strength_level** | **string** | Example: moderate | 
@@ -91,9 +87,7 @@ Name | Type | Description | Notes
 **user_id** | **int** | Example: 230 | 
 **user_vote** | **int** | Example: 1 | 
 **value_predicting_high_outcome** | **double** | Example: 4.14 | 
-**value_predicting_high_outcome_explanation** | **string** | Example: Overall Mood, on average, 17% higher after around 4.14/5 Sleep Quality | 
 **value_predicting_low_outcome** | **double** | Example: 3.03 | 
-**value_predicting_low_outcome_explanation** | **string** | Example: Overall Mood, on average, 11% lower after around 3.03/5 Sleep Quality | 
 **outcome_data_sources** | **string** | original name of the cause. | [optional] 
 **principal_investigator** | **string** | Mike Sinn | [optional] 
 **reverse_correlation** | **float** | Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation. | [optional] 

@@ -54,6 +54,10 @@ class StudyText implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'average_effect_following_high_cause_explanation' => 'string',
+        'average_effect_following_low_cause_explanation' => 'string',
+        'value_predicting_high_outcome_explanation' => 'string',
+        'value_predicting_low_outcome_explanation' => 'string',
         'data_analysis' => 'string',
         'data_sources' => 'string',
         'significance_explanation' => 'string',
@@ -65,7 +69,8 @@ class StudyText implements ArrayAccess
         'study_title' => 'string',
         'study_invitation' => 'string',
         'study_question' => 'string',
-        'study_background' => 'string'
+        'study_background' => 'string',
+        'predictor_explanation' => 'string'
     ];
 
     /**
@@ -73,6 +78,10 @@ class StudyText implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'average_effect_following_high_cause_explanation' => null,
+        'average_effect_following_low_cause_explanation' => null,
+        'value_predicting_high_outcome_explanation' => null,
+        'value_predicting_low_outcome_explanation' => null,
         'data_analysis' => null,
         'data_sources' => null,
         'significance_explanation' => null,
@@ -84,7 +93,8 @@ class StudyText implements ArrayAccess
         'study_title' => null,
         'study_invitation' => null,
         'study_question' => null,
-        'study_background' => null
+        'study_background' => null,
+        'predictor_explanation' => null
     ];
 
     public static function swaggerTypes()
@@ -102,6 +112,10 @@ class StudyText implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'average_effect_following_high_cause_explanation' => 'averageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause_explanation' => 'averageEffectFollowingLowCauseExplanation',
+        'value_predicting_high_outcome_explanation' => 'valuePredictingHighOutcomeExplanation',
+        'value_predicting_low_outcome_explanation' => 'valuePredictingLowOutcomeExplanation',
         'data_analysis' => 'dataAnalysis',
         'data_sources' => 'dataSources',
         'significance_explanation' => 'significanceExplanation',
@@ -113,7 +127,8 @@ class StudyText implements ArrayAccess
         'study_title' => 'studyTitle',
         'study_invitation' => 'studyInvitation',
         'study_question' => 'studyQuestion',
-        'study_background' => 'studyBackground'
+        'study_background' => 'studyBackground',
+        'predictor_explanation' => 'predictorExplanation'
     ];
 
 
@@ -122,6 +137,10 @@ class StudyText implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'average_effect_following_high_cause_explanation' => 'setAverageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause_explanation' => 'setAverageEffectFollowingLowCauseExplanation',
+        'value_predicting_high_outcome_explanation' => 'setValuePredictingHighOutcomeExplanation',
+        'value_predicting_low_outcome_explanation' => 'setValuePredictingLowOutcomeExplanation',
         'data_analysis' => 'setDataAnalysis',
         'data_sources' => 'setDataSources',
         'significance_explanation' => 'setSignificanceExplanation',
@@ -133,7 +152,8 @@ class StudyText implements ArrayAccess
         'study_title' => 'setStudyTitle',
         'study_invitation' => 'setStudyInvitation',
         'study_question' => 'setStudyQuestion',
-        'study_background' => 'setStudyBackground'
+        'study_background' => 'setStudyBackground',
+        'predictor_explanation' => 'setPredictorExplanation'
     ];
 
 
@@ -142,6 +162,10 @@ class StudyText implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'average_effect_following_high_cause_explanation' => 'getAverageEffectFollowingHighCauseExplanation',
+        'average_effect_following_low_cause_explanation' => 'getAverageEffectFollowingLowCauseExplanation',
+        'value_predicting_high_outcome_explanation' => 'getValuePredictingHighOutcomeExplanation',
+        'value_predicting_low_outcome_explanation' => 'getValuePredictingLowOutcomeExplanation',
         'data_analysis' => 'getDataAnalysis',
         'data_sources' => 'getDataSources',
         'significance_explanation' => 'getSignificanceExplanation',
@@ -153,7 +177,8 @@ class StudyText implements ArrayAccess
         'study_title' => 'getStudyTitle',
         'study_invitation' => 'getStudyInvitation',
         'study_question' => 'getStudyQuestion',
-        'study_background' => 'getStudyBackground'
+        'study_background' => 'getStudyBackground',
+        'predictor_explanation' => 'getPredictorExplanation'
     ];
 
     public static function attributeMap()
@@ -187,6 +212,10 @@ class StudyText implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['average_effect_following_high_cause_explanation'] = isset($data['average_effect_following_high_cause_explanation']) ? $data['average_effect_following_high_cause_explanation'] : null;
+        $this->container['average_effect_following_low_cause_explanation'] = isset($data['average_effect_following_low_cause_explanation']) ? $data['average_effect_following_low_cause_explanation'] : null;
+        $this->container['value_predicting_high_outcome_explanation'] = isset($data['value_predicting_high_outcome_explanation']) ? $data['value_predicting_high_outcome_explanation'] : null;
+        $this->container['value_predicting_low_outcome_explanation'] = isset($data['value_predicting_low_outcome_explanation']) ? $data['value_predicting_low_outcome_explanation'] : null;
         $this->container['data_analysis'] = isset($data['data_analysis']) ? $data['data_analysis'] : null;
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
         $this->container['significance_explanation'] = isset($data['significance_explanation']) ? $data['significance_explanation'] : null;
@@ -199,6 +228,7 @@ class StudyText implements ArrayAccess
         $this->container['study_invitation'] = isset($data['study_invitation']) ? $data['study_invitation'] : null;
         $this->container['study_question'] = isset($data['study_question']) ? $data['study_question'] : null;
         $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
+        $this->container['predictor_explanation'] = isset($data['predictor_explanation']) ? $data['predictor_explanation'] : null;
     }
 
     /**
@@ -261,6 +291,90 @@ class StudyText implements ArrayAccess
         return true;
     }
 
+
+    /**
+     * Gets average_effect_following_high_cause_explanation
+     * @return string
+     */
+    public function getAverageEffectFollowingHighCauseExplanation()
+    {
+        return $this->container['average_effect_following_high_cause_explanation'];
+    }
+
+    /**
+     * Sets average_effect_following_high_cause_explanation
+     * @param string $average_effect_following_high_cause_explanation Example: Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality
+     * @return $this
+     */
+    public function setAverageEffectFollowingHighCauseExplanation($average_effect_following_high_cause_explanation)
+    {
+        $this->container['average_effect_following_high_cause_explanation'] = $average_effect_following_high_cause_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_effect_following_low_cause_explanation
+     * @return string
+     */
+    public function getAverageEffectFollowingLowCauseExplanation()
+    {
+        return $this->container['average_effect_following_low_cause_explanation'];
+    }
+
+    /**
+     * Sets average_effect_following_low_cause_explanation
+     * @param string $average_effect_following_low_cause_explanation Example: Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality
+     * @return $this
+     */
+    public function setAverageEffectFollowingLowCauseExplanation($average_effect_following_low_cause_explanation)
+    {
+        $this->container['average_effect_following_low_cause_explanation'] = $average_effect_following_low_cause_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_predicting_high_outcome_explanation
+     * @return string
+     */
+    public function getValuePredictingHighOutcomeExplanation()
+    {
+        return $this->container['value_predicting_high_outcome_explanation'];
+    }
+
+    /**
+     * Sets value_predicting_high_outcome_explanation
+     * @param string $value_predicting_high_outcome_explanation Example: Overall Mood, on average, 17% higher after around 4.14/5 Sleep Quality
+     * @return $this
+     */
+    public function setValuePredictingHighOutcomeExplanation($value_predicting_high_outcome_explanation)
+    {
+        $this->container['value_predicting_high_outcome_explanation'] = $value_predicting_high_outcome_explanation;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_predicting_low_outcome_explanation
+     * @return string
+     */
+    public function getValuePredictingLowOutcomeExplanation()
+    {
+        return $this->container['value_predicting_low_outcome_explanation'];
+    }
+
+    /**
+     * Sets value_predicting_low_outcome_explanation
+     * @param string $value_predicting_low_outcome_explanation Example: Overall Mood, on average, 11% lower after around 3.03/5 Sleep Quality
+     * @return $this
+     */
+    public function setValuePredictingLowOutcomeExplanation($value_predicting_low_outcome_explanation)
+    {
+        $this->container['value_predicting_low_outcome_explanation'] = $value_predicting_low_outcome_explanation;
+
+        return $this;
+    }
 
     /**
      * Gets data_analysis
@@ -510,6 +624,27 @@ class StudyText implements ArrayAccess
     public function setStudyBackground($study_background)
     {
         $this->container['study_background'] = $study_background;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_explanation
+     * @return string
+     */
+    public function getPredictorExplanation()
+    {
+        return $this->container['predictor_explanation'];
+    }
+
+    /**
+     * Sets predictor_explanation
+     * @param string $predictor_explanation Example: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setPredictorExplanation($predictor_explanation)
+    {
+        $this->container['predictor_explanation'] = $predictor_explanation;
 
         return $this;
     }

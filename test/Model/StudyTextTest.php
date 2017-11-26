@@ -78,6 +78,34 @@ class StudyTextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "average_effect_following_high_cause_explanation"
+     */
+    public function testPropertyAverageEffectFollowingHighCauseExplanation()
+    {
+    }
+
+    /**
+     * Test attribute "average_effect_following_low_cause_explanation"
+     */
+    public function testPropertyAverageEffectFollowingLowCauseExplanation()
+    {
+    }
+
+    /**
+     * Test attribute "value_predicting_high_outcome_explanation"
+     */
+    public function testPropertyValuePredictingHighOutcomeExplanation()
+    {
+    }
+
+    /**
+     * Test attribute "value_predicting_low_outcome_explanation"
+     */
+    public function testPropertyValuePredictingLowOutcomeExplanation()
+    {
+    }
+
+    /**
      * Test attribute "data_analysis"
      */
     public function testPropertyDataAnalysis()
@@ -158,6 +186,13 @@ class StudyTextTest extends \PHPUnit_Framework_TestCase
      * Test attribute "study_background"
      */
     public function testPropertyStudyBackground()
+    {
+    }
+
+    /**
+     * Test attribute "predictor_explanation"
+     */
+    public function testPropertyPredictorExplanation()
     {
     }
 }

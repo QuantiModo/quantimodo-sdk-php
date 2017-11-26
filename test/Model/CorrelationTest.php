@@ -106,23 +106,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "average_effect_following_high_cause_explanation"
-     */
-    public function testPropertyAverageEffectFollowingHighCauseExplanation()
-    {
-    }
-
-    /**
      * Test attribute "average_effect_following_low_cause"
      */
     public function testPropertyAverageEffectFollowingLowCause()
-    {
-    }
-
-    /**
-     * Test attribute "average_effect_following_low_cause_explanation"
-     */
-    public function testPropertyAverageEffectFollowingLowCauseExplanation()
     {
     }
 
@@ -512,13 +498,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "predictor_explanation"
-     */
-    public function testPropertyPredictorExplanation()
-    {
-    }
-
-    /**
      * Test attribute "predictor_filling_value"
      */
     public function testPropertyPredictorFillingValue()
@@ -592,13 +571,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "sharing_title"
      */
     public function testPropertySharingTitle()
-    {
-    }
-
-    /**
-     * Test attribute "significance_explanation"
-     */
-    public function testPropertySignificanceExplanation()
     {
     }
 
@@ -694,23 +666,9 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "value_predicting_high_outcome_explanation"
-     */
-    public function testPropertyValuePredictingHighOutcomeExplanation()
-    {
-    }
-
-    /**
      * Test attribute "value_predicting_low_outcome"
      */
     public function testPropertyValuePredictingLowOutcome()
-    {
-    }
-
-    /**
-     * Test attribute "value_predicting_low_outcome_explanation"
-     */
-    public function testPropertyValuePredictingLowOutcomeExplanation()
     {
     }
 

@@ -58,9 +58,7 @@ class Correlation implements ArrayAccess
         'average_daily_low_cause' => 'double',
         'average_effect' => 'double',
         'average_effect_following_high_cause' => 'double',
-        'average_effect_following_high_cause_explanation' => 'string',
         'average_effect_following_low_cause' => 'double',
-        'average_effect_following_low_cause_explanation' => 'string',
         'average_forward_pearson_correlation_over_onset_delays' => 'double',
         'average_reverse_pearson_correlation_over_onset_delays' => 'double',
         'average_vote' => 'float',
@@ -116,7 +114,6 @@ class Correlation implements ArrayAccess
         'predictive_pearson_correlation' => 'double',
         'predictive_pearson_correlation_coefficient' => 'double',
         'predictor_data_sources' => 'string',
-        'predictor_explanation' => 'string',
         'predictor_filling_value' => 'int',
         'predictor_maximum_allowed_value' => 'double',
         'predictor_minimum_allowed_value' => 'double',
@@ -128,7 +125,6 @@ class Correlation implements ArrayAccess
         'share_user_measurements' => 'bool',
         'sharing_description' => 'string',
         'sharing_title' => 'string',
-        'significance_explanation' => 'string',
         'significant_difference' => 'bool',
         'statistical_significance' => 'double',
         'strength_level' => 'string',
@@ -142,9 +138,7 @@ class Correlation implements ArrayAccess
         'user_id' => 'int',
         'user_vote' => 'int',
         'value_predicting_high_outcome' => 'double',
-        'value_predicting_high_outcome_explanation' => 'string',
         'value_predicting_low_outcome' => 'double',
-        'value_predicting_low_outcome_explanation' => 'string',
         'outcome_data_sources' => 'string',
         'principal_investigator' => 'string',
         'reverse_correlation' => 'float',
@@ -176,9 +170,7 @@ class Correlation implements ArrayAccess
         'average_daily_low_cause' => 'double',
         'average_effect' => 'double',
         'average_effect_following_high_cause' => 'double',
-        'average_effect_following_high_cause_explanation' => null,
         'average_effect_following_low_cause' => 'double',
-        'average_effect_following_low_cause_explanation' => null,
         'average_forward_pearson_correlation_over_onset_delays' => 'double',
         'average_reverse_pearson_correlation_over_onset_delays' => 'double',
         'average_vote' => null,
@@ -234,7 +226,6 @@ class Correlation implements ArrayAccess
         'predictive_pearson_correlation' => 'double',
         'predictive_pearson_correlation_coefficient' => 'double',
         'predictor_data_sources' => null,
-        'predictor_explanation' => null,
         'predictor_filling_value' => null,
         'predictor_maximum_allowed_value' => 'double',
         'predictor_minimum_allowed_value' => 'double',
@@ -246,7 +237,6 @@ class Correlation implements ArrayAccess
         'share_user_measurements' => null,
         'sharing_description' => null,
         'sharing_title' => null,
-        'significance_explanation' => null,
         'significant_difference' => null,
         'statistical_significance' => 'double',
         'strength_level' => null,
@@ -260,9 +250,7 @@ class Correlation implements ArrayAccess
         'user_id' => null,
         'user_vote' => null,
         'value_predicting_high_outcome' => 'double',
-        'value_predicting_high_outcome_explanation' => null,
         'value_predicting_low_outcome' => 'double',
-        'value_predicting_low_outcome_explanation' => null,
         'outcome_data_sources' => null,
         'principal_investigator' => null,
         'reverse_correlation' => null,
@@ -304,9 +292,7 @@ class Correlation implements ArrayAccess
         'average_daily_low_cause' => 'averageDailyLowCause',
         'average_effect' => 'averageEffect',
         'average_effect_following_high_cause' => 'averageEffectFollowingHighCause',
-        'average_effect_following_high_cause_explanation' => 'averageEffectFollowingHighCauseExplanation',
         'average_effect_following_low_cause' => 'averageEffectFollowingLowCause',
-        'average_effect_following_low_cause_explanation' => 'averageEffectFollowingLowCauseExplanation',
         'average_forward_pearson_correlation_over_onset_delays' => 'averageForwardPearsonCorrelationOverOnsetDelays',
         'average_reverse_pearson_correlation_over_onset_delays' => 'averageReversePearsonCorrelationOverOnsetDelays',
         'average_vote' => 'averageVote',
@@ -362,7 +348,6 @@ class Correlation implements ArrayAccess
         'predictive_pearson_correlation' => 'predictivePearsonCorrelation',
         'predictive_pearson_correlation_coefficient' => 'predictivePearsonCorrelationCoefficient',
         'predictor_data_sources' => 'predictorDataSources',
-        'predictor_explanation' => 'predictorExplanation',
         'predictor_filling_value' => 'predictorFillingValue',
         'predictor_maximum_allowed_value' => 'predictorMaximumAllowedValue',
         'predictor_minimum_allowed_value' => 'predictorMinimumAllowedValue',
@@ -374,7 +359,6 @@ class Correlation implements ArrayAccess
         'share_user_measurements' => 'shareUserMeasurements',
         'sharing_description' => 'sharingDescription',
         'sharing_title' => 'sharingTitle',
-        'significance_explanation' => 'significanceExplanation',
         'significant_difference' => 'significantDifference',
         'statistical_significance' => 'statisticalSignificance',
         'strength_level' => 'strengthLevel',
@@ -388,9 +372,7 @@ class Correlation implements ArrayAccess
         'user_id' => 'userId',
         'user_vote' => 'userVote',
         'value_predicting_high_outcome' => 'valuePredictingHighOutcome',
-        'value_predicting_high_outcome_explanation' => 'valuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'valuePredictingLowOutcome',
-        'value_predicting_low_outcome_explanation' => 'valuePredictingLowOutcomeExplanation',
         'outcome_data_sources' => 'outcomeDataSources',
         'principal_investigator' => 'principalInvestigator',
         'reverse_correlation' => 'reverseCorrelation',
@@ -423,9 +405,7 @@ class Correlation implements ArrayAccess
         'average_daily_low_cause' => 'setAverageDailyLowCause',
         'average_effect' => 'setAverageEffect',
         'average_effect_following_high_cause' => 'setAverageEffectFollowingHighCause',
-        'average_effect_following_high_cause_explanation' => 'setAverageEffectFollowingHighCauseExplanation',
         'average_effect_following_low_cause' => 'setAverageEffectFollowingLowCause',
-        'average_effect_following_low_cause_explanation' => 'setAverageEffectFollowingLowCauseExplanation',
         'average_forward_pearson_correlation_over_onset_delays' => 'setAverageForwardPearsonCorrelationOverOnsetDelays',
         'average_reverse_pearson_correlation_over_onset_delays' => 'setAverageReversePearsonCorrelationOverOnsetDelays',
         'average_vote' => 'setAverageVote',
@@ -481,7 +461,6 @@ class Correlation implements ArrayAccess
         'predictive_pearson_correlation' => 'setPredictivePearsonCorrelation',
         'predictive_pearson_correlation_coefficient' => 'setPredictivePearsonCorrelationCoefficient',
         'predictor_data_sources' => 'setPredictorDataSources',
-        'predictor_explanation' => 'setPredictorExplanation',
         'predictor_filling_value' => 'setPredictorFillingValue',
         'predictor_maximum_allowed_value' => 'setPredictorMaximumAllowedValue',
         'predictor_minimum_allowed_value' => 'setPredictorMinimumAllowedValue',
@@ -493,7 +472,6 @@ class Correlation implements ArrayAccess
         'share_user_measurements' => 'setShareUserMeasurements',
         'sharing_description' => 'setSharingDescription',
         'sharing_title' => 'setSharingTitle',
-        'significance_explanation' => 'setSignificanceExplanation',
         'significant_difference' => 'setSignificantDifference',
         'statistical_significance' => 'setStatisticalSignificance',
         'strength_level' => 'setStrengthLevel',
@@ -507,9 +485,7 @@ class Correlation implements ArrayAccess
         'user_id' => 'setUserId',
         'user_vote' => 'setUserVote',
         'value_predicting_high_outcome' => 'setValuePredictingHighOutcome',
-        'value_predicting_high_outcome_explanation' => 'setValuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'setValuePredictingLowOutcome',
-        'value_predicting_low_outcome_explanation' => 'setValuePredictingLowOutcomeExplanation',
         'outcome_data_sources' => 'setOutcomeDataSources',
         'principal_investigator' => 'setPrincipalInvestigator',
         'reverse_correlation' => 'setReverseCorrelation',
@@ -542,9 +518,7 @@ class Correlation implements ArrayAccess
         'average_daily_low_cause' => 'getAverageDailyLowCause',
         'average_effect' => 'getAverageEffect',
         'average_effect_following_high_cause' => 'getAverageEffectFollowingHighCause',
-        'average_effect_following_high_cause_explanation' => 'getAverageEffectFollowingHighCauseExplanation',
         'average_effect_following_low_cause' => 'getAverageEffectFollowingLowCause',
-        'average_effect_following_low_cause_explanation' => 'getAverageEffectFollowingLowCauseExplanation',
         'average_forward_pearson_correlation_over_onset_delays' => 'getAverageForwardPearsonCorrelationOverOnsetDelays',
         'average_reverse_pearson_correlation_over_onset_delays' => 'getAverageReversePearsonCorrelationOverOnsetDelays',
         'average_vote' => 'getAverageVote',
@@ -600,7 +574,6 @@ class Correlation implements ArrayAccess
         'predictive_pearson_correlation' => 'getPredictivePearsonCorrelation',
         'predictive_pearson_correlation_coefficient' => 'getPredictivePearsonCorrelationCoefficient',
         'predictor_data_sources' => 'getPredictorDataSources',
-        'predictor_explanation' => 'getPredictorExplanation',
         'predictor_filling_value' => 'getPredictorFillingValue',
         'predictor_maximum_allowed_value' => 'getPredictorMaximumAllowedValue',
         'predictor_minimum_allowed_value' => 'getPredictorMinimumAllowedValue',
@@ -612,7 +585,6 @@ class Correlation implements ArrayAccess
         'share_user_measurements' => 'getShareUserMeasurements',
         'sharing_description' => 'getSharingDescription',
         'sharing_title' => 'getSharingTitle',
-        'significance_explanation' => 'getSignificanceExplanation',
         'significant_difference' => 'getSignificantDifference',
         'statistical_significance' => 'getStatisticalSignificance',
         'strength_level' => 'getStrengthLevel',
@@ -626,9 +598,7 @@ class Correlation implements ArrayAccess
         'user_id' => 'getUserId',
         'user_vote' => 'getUserVote',
         'value_predicting_high_outcome' => 'getValuePredictingHighOutcome',
-        'value_predicting_high_outcome_explanation' => 'getValuePredictingHighOutcomeExplanation',
         'value_predicting_low_outcome' => 'getValuePredictingLowOutcome',
-        'value_predicting_low_outcome_explanation' => 'getValuePredictingLowOutcomeExplanation',
         'outcome_data_sources' => 'getOutcomeDataSources',
         'principal_investigator' => 'getPrincipalInvestigator',
         'reverse_correlation' => 'getReverseCorrelation',
@@ -686,9 +656,7 @@ class Correlation implements ArrayAccess
         $this->container['average_daily_low_cause'] = isset($data['average_daily_low_cause']) ? $data['average_daily_low_cause'] : null;
         $this->container['average_effect'] = isset($data['average_effect']) ? $data['average_effect'] : null;
         $this->container['average_effect_following_high_cause'] = isset($data['average_effect_following_high_cause']) ? $data['average_effect_following_high_cause'] : null;
-        $this->container['average_effect_following_high_cause_explanation'] = isset($data['average_effect_following_high_cause_explanation']) ? $data['average_effect_following_high_cause_explanation'] : null;
         $this->container['average_effect_following_low_cause'] = isset($data['average_effect_following_low_cause']) ? $data['average_effect_following_low_cause'] : null;
-        $this->container['average_effect_following_low_cause_explanation'] = isset($data['average_effect_following_low_cause_explanation']) ? $data['average_effect_following_low_cause_explanation'] : null;
         $this->container['average_forward_pearson_correlation_over_onset_delays'] = isset($data['average_forward_pearson_correlation_over_onset_delays']) ? $data['average_forward_pearson_correlation_over_onset_delays'] : null;
         $this->container['average_reverse_pearson_correlation_over_onset_delays'] = isset($data['average_reverse_pearson_correlation_over_onset_delays']) ? $data['average_reverse_pearson_correlation_over_onset_delays'] : null;
         $this->container['average_vote'] = isset($data['average_vote']) ? $data['average_vote'] : null;
@@ -744,7 +712,6 @@ class Correlation implements ArrayAccess
         $this->container['predictive_pearson_correlation'] = isset($data['predictive_pearson_correlation']) ? $data['predictive_pearson_correlation'] : null;
         $this->container['predictive_pearson_correlation_coefficient'] = isset($data['predictive_pearson_correlation_coefficient']) ? $data['predictive_pearson_correlation_coefficient'] : null;
         $this->container['predictor_data_sources'] = isset($data['predictor_data_sources']) ? $data['predictor_data_sources'] : null;
-        $this->container['predictor_explanation'] = isset($data['predictor_explanation']) ? $data['predictor_explanation'] : null;
         $this->container['predictor_filling_value'] = isset($data['predictor_filling_value']) ? $data['predictor_filling_value'] : null;
         $this->container['predictor_maximum_allowed_value'] = isset($data['predictor_maximum_allowed_value']) ? $data['predictor_maximum_allowed_value'] : null;
         $this->container['predictor_minimum_allowed_value'] = isset($data['predictor_minimum_allowed_value']) ? $data['predictor_minimum_allowed_value'] : null;
@@ -756,7 +723,6 @@ class Correlation implements ArrayAccess
         $this->container['share_user_measurements'] = isset($data['share_user_measurements']) ? $data['share_user_measurements'] : null;
         $this->container['sharing_description'] = isset($data['sharing_description']) ? $data['sharing_description'] : null;
         $this->container['sharing_title'] = isset($data['sharing_title']) ? $data['sharing_title'] : null;
-        $this->container['significance_explanation'] = isset($data['significance_explanation']) ? $data['significance_explanation'] : null;
         $this->container['significant_difference'] = isset($data['significant_difference']) ? $data['significant_difference'] : null;
         $this->container['statistical_significance'] = isset($data['statistical_significance']) ? $data['statistical_significance'] : null;
         $this->container['strength_level'] = isset($data['strength_level']) ? $data['strength_level'] : null;
@@ -770,9 +736,7 @@ class Correlation implements ArrayAccess
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['user_vote'] = isset($data['user_vote']) ? $data['user_vote'] : null;
         $this->container['value_predicting_high_outcome'] = isset($data['value_predicting_high_outcome']) ? $data['value_predicting_high_outcome'] : null;
-        $this->container['value_predicting_high_outcome_explanation'] = isset($data['value_predicting_high_outcome_explanation']) ? $data['value_predicting_high_outcome_explanation'] : null;
         $this->container['value_predicting_low_outcome'] = isset($data['value_predicting_low_outcome']) ? $data['value_predicting_low_outcome'] : null;
-        $this->container['value_predicting_low_outcome_explanation'] = isset($data['value_predicting_low_outcome_explanation']) ? $data['value_predicting_low_outcome_explanation'] : null;
         $this->container['outcome_data_sources'] = isset($data['outcome_data_sources']) ? $data['outcome_data_sources'] : null;
         $this->container['principal_investigator'] = isset($data['principal_investigator']) ? $data['principal_investigator'] : null;
         $this->container['reverse_correlation'] = isset($data['reverse_correlation']) ? $data['reverse_correlation'] : null;
@@ -816,14 +780,8 @@ class Correlation implements ArrayAccess
         if ($this->container['average_effect_following_high_cause'] === null) {
             $invalid_properties[] = "'average_effect_following_high_cause' can't be null";
         }
-        if ($this->container['average_effect_following_high_cause_explanation'] === null) {
-            $invalid_properties[] = "'average_effect_following_high_cause_explanation' can't be null";
-        }
         if ($this->container['average_effect_following_low_cause'] === null) {
             $invalid_properties[] = "'average_effect_following_low_cause' can't be null";
-        }
-        if ($this->container['average_effect_following_low_cause_explanation'] === null) {
-            $invalid_properties[] = "'average_effect_following_low_cause_explanation' can't be null";
         }
         if ($this->container['average_forward_pearson_correlation_over_onset_delays'] === null) {
             $invalid_properties[] = "'average_forward_pearson_correlation_over_onset_delays' can't be null";
@@ -927,9 +885,6 @@ class Correlation implements ArrayAccess
         if ($this->container['predictor_data_sources'] === null) {
             $invalid_properties[] = "'predictor_data_sources' can't be null";
         }
-        if ($this->container['predictor_explanation'] === null) {
-            $invalid_properties[] = "'predictor_explanation' can't be null";
-        }
         if ($this->container['predictor_filling_value'] === null) {
             $invalid_properties[] = "'predictor_filling_value' can't be null";
         }
@@ -953,9 +908,6 @@ class Correlation implements ArrayAccess
         }
         if ($this->container['share_user_measurements'] === null) {
             $invalid_properties[] = "'share_user_measurements' can't be null";
-        }
-        if ($this->container['significance_explanation'] === null) {
-            $invalid_properties[] = "'significance_explanation' can't be null";
         }
         if ($this->container['significant_difference'] === null) {
             $invalid_properties[] = "'significant_difference' can't be null";
@@ -984,14 +936,8 @@ class Correlation implements ArrayAccess
         if ($this->container['value_predicting_high_outcome'] === null) {
             $invalid_properties[] = "'value_predicting_high_outcome' can't be null";
         }
-        if ($this->container['value_predicting_high_outcome_explanation'] === null) {
-            $invalid_properties[] = "'value_predicting_high_outcome_explanation' can't be null";
-        }
         if ($this->container['value_predicting_low_outcome'] === null) {
             $invalid_properties[] = "'value_predicting_low_outcome' can't be null";
-        }
-        if ($this->container['value_predicting_low_outcome_explanation'] === null) {
-            $invalid_properties[] = "'value_predicting_low_outcome_explanation' can't be null";
         }
         return $invalid_properties;
     }
@@ -1017,13 +963,7 @@ class Correlation implements ArrayAccess
         if ($this->container['average_effect_following_high_cause'] === null) {
             return false;
         }
-        if ($this->container['average_effect_following_high_cause_explanation'] === null) {
-            return false;
-        }
         if ($this->container['average_effect_following_low_cause'] === null) {
-            return false;
-        }
-        if ($this->container['average_effect_following_low_cause_explanation'] === null) {
             return false;
         }
         if ($this->container['average_forward_pearson_correlation_over_onset_delays'] === null) {
@@ -1128,9 +1068,6 @@ class Correlation implements ArrayAccess
         if ($this->container['predictor_data_sources'] === null) {
             return false;
         }
-        if ($this->container['predictor_explanation'] === null) {
-            return false;
-        }
         if ($this->container['predictor_filling_value'] === null) {
             return false;
         }
@@ -1153,9 +1090,6 @@ class Correlation implements ArrayAccess
             return false;
         }
         if ($this->container['share_user_measurements'] === null) {
-            return false;
-        }
-        if ($this->container['significance_explanation'] === null) {
             return false;
         }
         if ($this->container['significant_difference'] === null) {
@@ -1185,13 +1119,7 @@ class Correlation implements ArrayAccess
         if ($this->container['value_predicting_high_outcome'] === null) {
             return false;
         }
-        if ($this->container['value_predicting_high_outcome_explanation'] === null) {
-            return false;
-        }
         if ($this->container['value_predicting_low_outcome'] === null) {
-            return false;
-        }
-        if ($this->container['value_predicting_low_outcome_explanation'] === null) {
             return false;
         }
         return true;
@@ -1283,27 +1211,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets average_effect_following_high_cause_explanation
-     * @return string
-     */
-    public function getAverageEffectFollowingHighCauseExplanation()
-    {
-        return $this->container['average_effect_following_high_cause_explanation'];
-    }
-
-    /**
-     * Sets average_effect_following_high_cause_explanation
-     * @param string $average_effect_following_high_cause_explanation Example: Overall Mood is 3.55/5 (15% higher) on average after days with around 4.19/5 Sleep Quality
-     * @return $this
-     */
-    public function setAverageEffectFollowingHighCauseExplanation($average_effect_following_high_cause_explanation)
-    {
-        $this->container['average_effect_following_high_cause_explanation'] = $average_effect_following_high_cause_explanation;
-
-        return $this;
-    }
-
-    /**
      * Gets average_effect_following_low_cause
      * @return double
      */
@@ -1320,27 +1227,6 @@ class Correlation implements ArrayAccess
     public function setAverageEffectFollowingLowCause($average_effect_following_low_cause)
     {
         $this->container['average_effect_following_low_cause'] = $average_effect_following_low_cause;
-
-        return $this;
-    }
-
-    /**
-     * Gets average_effect_following_low_cause_explanation
-     * @return string
-     */
-    public function getAverageEffectFollowingLowCauseExplanation()
-    {
-        return $this->container['average_effect_following_low_cause_explanation'];
-    }
-
-    /**
-     * Sets average_effect_following_low_cause_explanation
-     * @param string $average_effect_following_low_cause_explanation Example: Overall Mood is 2.65/5 (14% lower) on average after days with around 1.97/5 Sleep Quality
-     * @return $this
-     */
-    public function setAverageEffectFollowingLowCauseExplanation($average_effect_following_low_cause_explanation)
-    {
-        $this->container['average_effect_following_low_cause_explanation'] = $average_effect_following_low_cause_explanation;
 
         return $this;
     }
@@ -2501,27 +2387,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets predictor_explanation
-     * @return string
-     */
-    public function getPredictorExplanation()
-    {
-        return $this->container['predictor_explanation'];
-    }
-
-    /**
-     * Sets predictor_explanation
-     * @param string $predictor_explanation Example: Sleep Quality Predicts Higher Overall Mood
-     * @return $this
-     */
-    public function setPredictorExplanation($predictor_explanation)
-    {
-        $this->container['predictor_explanation'] = $predictor_explanation;
-
-        return $this;
-    }
-
-    /**
      * Gets predictor_filling_value
      * @return int
      */
@@ -2748,27 +2613,6 @@ class Correlation implements ArrayAccess
     public function setSharingTitle($sharing_title)
     {
         $this->container['sharing_title'] = $sharing_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets significance_explanation
-     * @return string
-     */
-    public function getSignificanceExplanation()
-    {
-        return $this->container['significance_explanation'];
-    }
-
-    /**
-     * Sets significance_explanation
-     * @param string $significance_explanation Example: Using a two-tailed t-test with alpha = 0.05, it was determined that the change in Overall Mood is statistically significant at 95% confidence interval.
-     * @return $this
-     */
-    public function setSignificanceExplanation($significance_explanation)
-    {
-        $this->container['significance_explanation'] = $significance_explanation;
 
         return $this;
     }
@@ -3047,27 +2891,6 @@ class Correlation implements ArrayAccess
     }
 
     /**
-     * Gets value_predicting_high_outcome_explanation
-     * @return string
-     */
-    public function getValuePredictingHighOutcomeExplanation()
-    {
-        return $this->container['value_predicting_high_outcome_explanation'];
-    }
-
-    /**
-     * Sets value_predicting_high_outcome_explanation
-     * @param string $value_predicting_high_outcome_explanation Example: Overall Mood, on average, 17% higher after around 4.14/5 Sleep Quality
-     * @return $this
-     */
-    public function setValuePredictingHighOutcomeExplanation($value_predicting_high_outcome_explanation)
-    {
-        $this->container['value_predicting_high_outcome_explanation'] = $value_predicting_high_outcome_explanation;
-
-        return $this;
-    }
-
-    /**
      * Gets value_predicting_low_outcome
      * @return double
      */
@@ -3084,27 +2907,6 @@ class Correlation implements ArrayAccess
     public function setValuePredictingLowOutcome($value_predicting_low_outcome)
     {
         $this->container['value_predicting_low_outcome'] = $value_predicting_low_outcome;
-
-        return $this;
-    }
-
-    /**
-     * Gets value_predicting_low_outcome_explanation
-     * @return string
-     */
-    public function getValuePredictingLowOutcomeExplanation()
-    {
-        return $this->container['value_predicting_low_outcome_explanation'];
-    }
-
-    /**
-     * Sets value_predicting_low_outcome_explanation
-     * @param string $value_predicting_low_outcome_explanation Example: Overall Mood, on average, 11% lower after around 3.03/5 Sleep Quality
-     * @return $this
-     */
-    public function setValuePredictingLowOutcomeExplanation($value_predicting_low_outcome_explanation)
-    {
-        $this->container['value_predicting_low_outcome_explanation'] = $value_predicting_low_outcome_explanation;
 
         return $this;
     }
