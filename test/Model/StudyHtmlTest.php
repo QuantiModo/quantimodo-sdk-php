@@ -1,6 +1,6 @@
 <?php
 /**
- * StudyTest
+ * StudyHtmlTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace QuantiModo\Client;
 
 /**
- * StudyTest Class Doc Comment
+ * StudyHtmlTest Class Doc Comment
  *
  * @category    Class */
-// * @description Study
+// * @description StudyHtml
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class StudyTest extends \PHPUnit_Framework_TestCase
+class StudyHtmlTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,79 +71,51 @@ class StudyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Study"
+     * Test "StudyHtml"
      */
-    public function testStudy()
+    public function testStudyHtml()
     {
     }
 
     /**
-     * Test attribute "cause_variable"
+     * Test attribute "full_study_html"
      */
-    public function testPropertyCauseVariable()
+    public function testPropertyFullStudyHtml()
     {
     }
 
     /**
-     * Test attribute "charts"
+     * Test attribute "chart_html"
      */
-    public function testPropertyCharts()
+    public function testPropertyChartHtml()
     {
     }
 
     /**
-     * Test attribute "effect_variable"
+     * Test attribute "download_buttons_html"
      */
-    public function testPropertyEffectVariable()
+    public function testPropertyDownloadButtonsHtml()
     {
     }
 
     /**
-     * Test attribute "participant_instructions"
+     * Test attribute "study_meta_html"
      */
-    public function testPropertyParticipantInstructions()
+    public function testPropertyStudyMetaHtml()
     {
     }
 
     /**
-     * Test attribute "statistics"
+     * Test attribute "study_image_html"
      */
-    public function testPropertyStatistics()
+    public function testPropertyStudyImageHtml()
     {
     }
 
     /**
-     * Test attribute "study_html"
+     * Test attribute "study_text_html"
      */
-    public function testPropertyStudyHtml()
-    {
-    }
-
-    /**
-     * Test attribute "study_images"
-     */
-    public function testPropertyStudyImages()
-    {
-    }
-
-    /**
-     * Test attribute "study_links"
-     */
-    public function testPropertyStudyLinks()
-    {
-    }
-
-    /**
-     * Test attribute "text"
-     */
-    public function testPropertyText()
-    {
-    }
-
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
+    public function testPropertyStudyTextHtml()
     {
     }
 }

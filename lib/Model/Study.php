@@ -56,13 +56,12 @@ class Study implements ArrayAccess
     protected static $swaggerTypes = [
         'cause_variable' => '\QuantiModo\Client\Model\UserVariable',
         'charts' => '\QuantiModo\Client\Model\Chart[]',
-        'chart_html' => 'string',
         'effect_variable' => '\QuantiModo\Client\Model\UserVariable',
-        'html' => 'string',
         'participant_instructions' => '\QuantiModo\Client\Model\ParticipantInstruction',
         'statistics' => '\QuantiModo\Client\Model\Correlation',
-        'study_links' => '\QuantiModo\Client\Model\StudyLinks',
+        'study_html' => '\QuantiModo\Client\Model\StudyHtml',
         'study_images' => '\QuantiModo\Client\Model\StudyImages',
+        'study_links' => '\QuantiModo\Client\Model\StudyLinks',
         'text' => '\QuantiModo\Client\Model\StudyText',
         'type' => 'string'
     ];
@@ -74,13 +73,12 @@ class Study implements ArrayAccess
     protected static $swaggerFormats = [
         'cause_variable' => null,
         'charts' => null,
-        'chart_html' => null,
         'effect_variable' => null,
-        'html' => null,
         'participant_instructions' => null,
         'statistics' => null,
-        'study_links' => null,
+        'study_html' => null,
         'study_images' => null,
+        'study_links' => null,
         'text' => null,
         'type' => null
     ];
@@ -102,13 +100,12 @@ class Study implements ArrayAccess
     protected static $attributeMap = [
         'cause_variable' => 'causeVariable',
         'charts' => 'charts',
-        'chart_html' => 'chartHtml',
         'effect_variable' => 'effectVariable',
-        'html' => 'html',
         'participant_instructions' => 'participantInstructions',
         'statistics' => 'statistics',
-        'study_links' => 'studyLinks',
+        'study_html' => 'studyHtml',
         'study_images' => 'studyImages',
+        'study_links' => 'studyLinks',
         'text' => 'text',
         'type' => 'type'
     ];
@@ -121,13 +118,12 @@ class Study implements ArrayAccess
     protected static $setters = [
         'cause_variable' => 'setCauseVariable',
         'charts' => 'setCharts',
-        'chart_html' => 'setChartHtml',
         'effect_variable' => 'setEffectVariable',
-        'html' => 'setHtml',
         'participant_instructions' => 'setParticipantInstructions',
         'statistics' => 'setStatistics',
-        'study_links' => 'setStudyLinks',
+        'study_html' => 'setStudyHtml',
         'study_images' => 'setStudyImages',
+        'study_links' => 'setStudyLinks',
         'text' => 'setText',
         'type' => 'setType'
     ];
@@ -140,13 +136,12 @@ class Study implements ArrayAccess
     protected static $getters = [
         'cause_variable' => 'getCauseVariable',
         'charts' => 'getCharts',
-        'chart_html' => 'getChartHtml',
         'effect_variable' => 'getEffectVariable',
-        'html' => 'getHtml',
         'participant_instructions' => 'getParticipantInstructions',
         'statistics' => 'getStatistics',
-        'study_links' => 'getStudyLinks',
+        'study_html' => 'getStudyHtml',
         'study_images' => 'getStudyImages',
+        'study_links' => 'getStudyLinks',
         'text' => 'getText',
         'type' => 'getType'
     ];
@@ -184,13 +179,12 @@ class Study implements ArrayAccess
     {
         $this->container['cause_variable'] = isset($data['cause_variable']) ? $data['cause_variable'] : null;
         $this->container['charts'] = isset($data['charts']) ? $data['charts'] : null;
-        $this->container['chart_html'] = isset($data['chart_html']) ? $data['chart_html'] : null;
         $this->container['effect_variable'] = isset($data['effect_variable']) ? $data['effect_variable'] : null;
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
         $this->container['participant_instructions'] = isset($data['participant_instructions']) ? $data['participant_instructions'] : null;
         $this->container['statistics'] = isset($data['statistics']) ? $data['statistics'] : null;
-        $this->container['study_links'] = isset($data['study_links']) ? $data['study_links'] : null;
+        $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['study_images'] = isset($data['study_images']) ? $data['study_images'] : null;
+        $this->container['study_links'] = isset($data['study_links']) ? $data['study_links'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
@@ -269,27 +263,6 @@ class Study implements ArrayAccess
     }
 
     /**
-     * Gets chart_html
-     * @return string
-     */
-    public function getChartHtml()
-    {
-        return $this->container['chart_html'];
-    }
-
-    /**
-     * Sets chart_html
-     * @param string $chart_html Embeddable chart html
-     * @return $this
-     */
-    public function setChartHtml($chart_html)
-    {
-        $this->container['chart_html'] = $chart_html;
-
-        return $this;
-    }
-
-    /**
      * Gets effect_variable
      * @return \QuantiModo\Client\Model\UserVariable
      */
@@ -306,27 +279,6 @@ class Study implements ArrayAccess
     public function setEffectVariable($effect_variable)
     {
         $this->container['effect_variable'] = $effect_variable;
-
-        return $this;
-    }
-
-    /**
-     * Gets html
-     * @return string
-     */
-    public function getHtml()
-    {
-        return $this->container['html'];
-    }
-
-    /**
-     * Sets html
-     * @param string $html Embeddable study text html including charts
-     * @return $this
-     */
-    public function setHtml($html)
-    {
-        $this->container['html'] = $html;
 
         return $this;
     }
@@ -374,22 +326,22 @@ class Study implements ArrayAccess
     }
 
     /**
-     * Gets study_links
-     * @return \QuantiModo\Client\Model\StudyLinks
+     * Gets study_html
+     * @return \QuantiModo\Client\Model\StudyHtml
      */
-    public function getStudyLinks()
+    public function getStudyHtml()
     {
-        return $this->container['study_links'];
+        return $this->container['study_html'];
     }
 
     /**
-     * Sets study_links
-     * @param \QuantiModo\Client\Model\StudyLinks $study_links
+     * Sets study_html
+     * @param \QuantiModo\Client\Model\StudyHtml $study_html
      * @return $this
      */
-    public function setStudyLinks($study_links)
+    public function setStudyHtml($study_html)
     {
-        $this->container['study_links'] = $study_links;
+        $this->container['study_html'] = $study_html;
 
         return $this;
     }
@@ -411,6 +363,27 @@ class Study implements ArrayAccess
     public function setStudyImages($study_images)
     {
         $this->container['study_images'] = $study_images;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_links
+     * @return \QuantiModo\Client\Model\StudyLinks
+     */
+    public function getStudyLinks()
+    {
+        return $this->container['study_links'];
+    }
+
+    /**
+     * Sets study_links
+     * @param \QuantiModo\Client\Model\StudyLinks $study_links
+     * @return $this
+     */
+    public function setStudyLinks($study_links)
+    {
+        $this->container['study_links'] = $study_links;
 
         return $this;
     }

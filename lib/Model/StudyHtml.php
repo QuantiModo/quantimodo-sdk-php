@@ -1,6 +1,6 @@
 <?php
 /**
- * Chart
+ * StudyHtml
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace QuantiModo\Client\Model;
 use \ArrayAccess;
 
 /**
- * Chart Class Doc Comment
+ * StudyHtml Class Doc Comment
  *
  * @category    Class
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Chart implements ArrayAccess
+class StudyHtml implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,19 +47,19 @@ class Chart implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Chart';
+    protected static $swaggerModelName = 'StudyHtml';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'highchart_config' => 'object',
-        'chart_id' => 'string',
-        'chart_title' => 'string',
-        'explanation' => 'string',
-        'svg_url' => 'string',
-        'svg' => 'string'
+        'full_study_html' => 'string',
+        'chart_html' => 'string',
+        'download_buttons_html' => 'string',
+        'study_meta_html' => 'string',
+        'study_image_html' => 'string',
+        'study_text_html' => 'string'
     ];
 
     /**
@@ -67,12 +67,12 @@ class Chart implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'highchart_config' => null,
-        'chart_id' => null,
-        'chart_title' => null,
-        'explanation' => null,
-        'svg_url' => null,
-        'svg' => null
+        'full_study_html' => null,
+        'chart_html' => null,
+        'download_buttons_html' => null,
+        'study_meta_html' => null,
+        'study_image_html' => null,
+        'study_text_html' => null
     ];
 
     public static function swaggerTypes()
@@ -90,12 +90,12 @@ class Chart implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'highchart_config' => 'highchartConfig',
-        'chart_id' => 'chartId',
-        'chart_title' => 'chartTitle',
-        'explanation' => 'explanation',
-        'svg_url' => 'svgUrl',
-        'svg' => 'svg'
+        'full_study_html' => 'fullStudyHtml',
+        'chart_html' => 'chartHtml',
+        'download_buttons_html' => 'downloadButtonsHtml',
+        'study_meta_html' => 'studyMetaHtml',
+        'study_image_html' => 'studyImageHtml',
+        'study_text_html' => 'studyTextHtml'
     ];
 
 
@@ -104,12 +104,12 @@ class Chart implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'highchart_config' => 'setHighchartConfig',
-        'chart_id' => 'setChartId',
-        'chart_title' => 'setChartTitle',
-        'explanation' => 'setExplanation',
-        'svg_url' => 'setSvgUrl',
-        'svg' => 'setSvg'
+        'full_study_html' => 'setFullStudyHtml',
+        'chart_html' => 'setChartHtml',
+        'download_buttons_html' => 'setDownloadButtonsHtml',
+        'study_meta_html' => 'setStudyMetaHtml',
+        'study_image_html' => 'setStudyImageHtml',
+        'study_text_html' => 'setStudyTextHtml'
     ];
 
 
@@ -118,12 +118,12 @@ class Chart implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'highchart_config' => 'getHighchartConfig',
-        'chart_id' => 'getChartId',
-        'chart_title' => 'getChartTitle',
-        'explanation' => 'getExplanation',
-        'svg_url' => 'getSvgUrl',
-        'svg' => 'getSvg'
+        'full_study_html' => 'getFullStudyHtml',
+        'chart_html' => 'getChartHtml',
+        'download_buttons_html' => 'getDownloadButtonsHtml',
+        'study_meta_html' => 'getStudyMetaHtml',
+        'study_image_html' => 'getStudyImageHtml',
+        'study_text_html' => 'getStudyTextHtml'
     ];
 
     public static function attributeMap()
@@ -157,12 +157,12 @@ class Chart implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['highchart_config'] = isset($data['highchart_config']) ? $data['highchart_config'] : null;
-        $this->container['chart_id'] = isset($data['chart_id']) ? $data['chart_id'] : null;
-        $this->container['chart_title'] = isset($data['chart_title']) ? $data['chart_title'] : null;
-        $this->container['explanation'] = isset($data['explanation']) ? $data['explanation'] : null;
-        $this->container['svg_url'] = isset($data['svg_url']) ? $data['svg_url'] : null;
-        $this->container['svg'] = isset($data['svg']) ? $data['svg'] : null;
+        $this->container['full_study_html'] = isset($data['full_study_html']) ? $data['full_study_html'] : null;
+        $this->container['chart_html'] = isset($data['chart_html']) ? $data['chart_html'] : null;
+        $this->container['download_buttons_html'] = isset($data['download_buttons_html']) ? $data['download_buttons_html'] : null;
+        $this->container['study_meta_html'] = isset($data['study_meta_html']) ? $data['study_meta_html'] : null;
+        $this->container['study_image_html'] = isset($data['study_image_html']) ? $data['study_image_html'] : null;
+        $this->container['study_text_html'] = isset($data['study_text_html']) ? $data['study_text_html'] : null;
     }
 
     /**
@@ -174,6 +174,12 @@ class Chart implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['full_study_html'] === null) {
+            $invalid_properties[] = "'full_study_html' can't be null";
+        }
+        if ($this->container['chart_html'] === null) {
+            $invalid_properties[] = "'chart_html' can't be null";
+        }
         return $invalid_properties;
     }
 
@@ -186,132 +192,138 @@ class Chart implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['full_study_html'] === null) {
+            return false;
+        }
+        if ($this->container['chart_html'] === null) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets highchart_config
-     * @return object
+     * Gets full_study_html
+     * @return string
      */
-    public function getHighchartConfig()
+    public function getFullStudyHtml()
     {
-        return $this->container['highchart_config'];
+        return $this->container['full_study_html'];
     }
 
     /**
-     * Sets highchart_config
-     * @param object $highchart_config Highcharts config that can be used if you have highcharts.js included on the page
+     * Sets full_study_html
+     * @param string $full_study_html Embeddable study text html including charts
      * @return $this
      */
-    public function setHighchartConfig($highchart_config)
+    public function setFullStudyHtml($full_study_html)
     {
-        $this->container['highchart_config'] = $highchart_config;
+        $this->container['full_study_html'] = $full_study_html;
 
         return $this;
     }
 
     /**
-     * Gets chart_id
+     * Gets chart_html
      * @return string
      */
-    public function getChartId()
+    public function getChartHtml()
     {
-        return $this->container['chart_id'];
+        return $this->container['chart_html'];
     }
 
     /**
-     * Sets chart_id
-     * @param string $chart_id Example: correlationScatterPlot
+     * Sets chart_html
+     * @param string $chart_html Embeddable chart html
      * @return $this
      */
-    public function setChartId($chart_id)
+    public function setChartHtml($chart_html)
     {
-        $this->container['chart_id'] = $chart_id;
+        $this->container['chart_html'] = $chart_html;
 
         return $this;
     }
 
     /**
-     * Gets chart_title
+     * Gets download_buttons_html
      * @return string
      */
-    public function getChartTitle()
+    public function getDownloadButtonsHtml()
     {
-        return $this->container['chart_title'];
+        return $this->container['download_buttons_html'];
     }
 
     /**
-     * Sets chart_title
-     * @param string $chart_title Example: Overall Mood following Sleep Duration (R = -0.173)
+     * Sets download_buttons_html
+     * @param string $download_buttons_html Play Store, App Store, Chrome Web Store
      * @return $this
      */
-    public function setChartTitle($chart_title)
+    public function setDownloadButtonsHtml($download_buttons_html)
     {
-        $this->container['chart_title'] = $chart_title;
+        $this->container['download_buttons_html'] = $download_buttons_html;
 
         return $this;
     }
 
     /**
-     * Gets explanation
+     * Gets study_meta_html
      * @return string
      */
-    public function getExplanation()
+    public function getStudyMetaHtml()
     {
-        return $this->container['explanation'];
+        return $this->container['study_meta_html'];
     }
 
     /**
-     * Sets explanation
-     * @param string $explanation Example: The chart above indicates that an increase in Sleep Duration is usually followed by an decrease in Overall Mood.
+     * Sets study_meta_html
+     * @param string $study_meta_html Facebook, Twitter, Google+
      * @return $this
      */
-    public function setExplanation($explanation)
+    public function setStudyMetaHtml($study_meta_html)
     {
-        $this->container['explanation'] = $explanation;
+        $this->container['study_meta_html'] = $study_meta_html;
 
         return $this;
     }
 
     /**
-     * Gets svg_url
+     * Gets study_image_html
      * @return string
      */
-    public function getSvgUrl()
+    public function getStudyImageHtml()
     {
-        return $this->container['svg_url'];
+        return $this->container['study_image_html'];
     }
 
     /**
-     * Sets svg_url
-     * @param string $svg_url Url to a static svg of the chart
+     * Sets study_image_html
+     * @param string $study_image_html PNG image
      * @return $this
      */
-    public function setSvgUrl($svg_url)
+    public function setStudyImageHtml($study_image_html)
     {
-        $this->container['svg_url'] = $svg_url;
+        $this->container['study_image_html'] = $study_image_html;
 
         return $this;
     }
 
     /**
-     * Gets svg
+     * Gets study_text_html
      * @return string
      */
-    public function getSvg()
+    public function getStudyTextHtml()
     {
-        return $this->container['svg'];
+        return $this->container['study_text_html'];
     }
 
     /**
-     * Sets svg
-     * @param string $svg SVG string than can be embedded directly in HTML
+     * Sets study_text_html
+     * @param string $study_text_html Formatting study text
      * @return $this
      */
-    public function setSvg($svg)
+    public function setStudyTextHtml($study_text_html)
     {
-        $this->container['svg'] = $svg;
+        $this->container['study_text_html'] = $study_text_html;
 
         return $this;
     }
