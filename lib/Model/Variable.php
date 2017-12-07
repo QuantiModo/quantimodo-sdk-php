@@ -1,6 +1,6 @@
 <?php
 /**
- * UserVariable
+ * Variable
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace QuantiModo\Client\Model;
 use \ArrayAccess;
 
 /**
- * UserVariable Class Doc Comment
+ * Variable Class Doc Comment
  *
  * @category    Class
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UserVariable implements ArrayAccess
+class Variable implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,29 +47,30 @@ class UserVariable implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'UserVariable';
+    protected static $swaggerModelName = 'Variable';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]',
         'alias' => 'string',
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'cause_only' => 'bool',
-        'charts' => '\QuantiModo\Client\Model\Chart[]',
+        'charts' => 'object',
         'charts_link_dynamic' => 'string',
         'charts_link_email' => 'string',
         'charts_link_facebook' => 'string',
         'charts_link_google' => 'string',
         'charts_link_static' => 'string',
         'charts_link_twitter' => 'string',
-        'child_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'child_user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'client_id' => 'string',
         'combination_operation' => 'string',
         'common_alias' => 'string',
-        'common_tagged_variables' => '\QuantiModo\Client\Model\CommonVariableArray',
-        'common_tag_variables' => '\QuantiModo\Client\Model\CommonVariableArray',
+        'common_tagged_variables' => '\QuantiModo\Client\Model\Variable[]',
+        'common_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'common_variable_most_common_connector_id' => 'int',
         'common_variable_updated_at' => '\DateTime',
         'created_at' => '\DateTime',
@@ -97,11 +98,11 @@ class UserVariable implements ArrayAccess
         'id' => 'int',
         'image_url' => 'string',
         'informational_url' => 'string',
-        'ingredient_of_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
-        'ingredient_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'ingredient_of_user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
+        'ingredient_user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'input_type' => 'string',
         'ion_icon' => 'string',
-        'joined_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'joined_user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'join_with' => 'int',
         'kurtosis' => 'float',
         'last_original_unit_id' => 'int',
@@ -135,7 +136,6 @@ class UserVariable implements ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'int',
         'number_of_changes' => 'int',
         'number_of_correlations' => 'int',
-        'number_of_measurements' => 'int',
         'number_of_processed_daily_measurements' => 'int',
         'number_of_raw_measurements' => 'int',
         'number_of_tracking_reminders' => 'int',
@@ -150,7 +150,7 @@ class UserVariable implements ArrayAccess
         'outcome_of_interest' => 'int',
         'parent' => 'string',
         'parent_id' => 'int',
-        'parent_user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'parent_user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'png_path' => 'string',
         'png_url' => 'string',
         'predictor_of_interest' => 'int',
@@ -175,8 +175,8 @@ class UserVariable implements ArrayAccess
         'updated_at' => '\DateTime',
         'updated_time' => '\DateTime',
         'user_id' => 'int',
-        'user_tagged_variables' => '\QuantiModo\Client\Model\UserVariableArray',
-        'user_tag_variables' => '\QuantiModo\Client\Model\UserVariableArray',
+        'user_tagged_variables' => '\QuantiModo\Client\Model\Variable[]',
+        'user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'user_variable_unit_abbreviated_name' => 'string',
         'user_variable_unit_category_id' => 'int',
         'user_variable_unit_category_name' => 'string',
@@ -189,15 +189,20 @@ class UserVariable implements ArrayAccess
         'user_variable_variable_category_id' => 'int',
         'user_variable_variable_category_name' => 'string',
         'user_variable_wikipedia_title' => 'string',
-        'valence' => 'string',
         'variable_category' => '\QuantiModo\Client\Model\VariableCategory',
+        'data_source' => '\QuantiModo\Client\Model\DataSource',
+        'joined_variables' => '\QuantiModo\Client\Model\Variable[]',
+        'last_source' => 'int',
+        'last_unit' => 'string',
+        'most_common_unit' => 'string',
+        'valence' => 'string',
         'variable_category_id' => 'int',
         'variable_category_image_url' => 'string',
         'variable_category_name' => 'string',
         'variable_filling_value' => 'double',
         'variable_id' => 'int',
         'variable_name' => 'string',
-        'variance' => 'float',
+        'variance' => 'double',
         'wikipedia_title' => 'string'
     ];
 
@@ -206,6 +211,7 @@ class UserVariable implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'action_array' => null,
         'alias' => null,
         'available_units' => null,
         'cause_only' => null,
@@ -287,7 +293,6 @@ class UserVariable implements ArrayAccess
         'number_of_aggregate_correlations_as_effect' => null,
         'number_of_changes' => 'int32',
         'number_of_correlations' => 'int32',
-        'number_of_measurements' => 'int32',
         'number_of_processed_daily_measurements' => 'int32',
         'number_of_raw_measurements' => null,
         'number_of_tracking_reminders' => null,
@@ -341,15 +346,20 @@ class UserVariable implements ArrayAccess
         'user_variable_variable_category_id' => null,
         'user_variable_variable_category_name' => null,
         'user_variable_wikipedia_title' => null,
-        'valence' => null,
         'variable_category' => null,
-        'variable_category_id' => 'int32',
+        'data_source' => null,
+        'joined_variables' => null,
+        'last_source' => null,
+        'last_unit' => null,
+        'most_common_unit' => null,
+        'valence' => null,
+        'variable_category_id' => null,
         'variable_category_image_url' => null,
         'variable_category_name' => null,
         'variable_filling_value' => 'double',
-        'variable_id' => 'int32',
+        'variable_id' => null,
         'variable_name' => null,
-        'variance' => 'float',
+        'variance' => 'double',
         'wikipedia_title' => null
     ];
 
@@ -368,6 +378,7 @@ class UserVariable implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'action_array' => 'actionArray',
         'alias' => 'alias',
         'available_units' => 'availableUnits',
         'cause_only' => 'causeOnly',
@@ -449,7 +460,6 @@ class UserVariable implements ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'numberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'numberOfChanges',
         'number_of_correlations' => 'numberOfCorrelations',
-        'number_of_measurements' => 'numberOfMeasurements',
         'number_of_processed_daily_measurements' => 'numberOfProcessedDailyMeasurements',
         'number_of_raw_measurements' => 'numberOfRawMeasurements',
         'number_of_tracking_reminders' => 'numberOfTrackingReminders',
@@ -503,8 +513,13 @@ class UserVariable implements ArrayAccess
         'user_variable_variable_category_id' => 'userVariableVariableCategoryId',
         'user_variable_variable_category_name' => 'userVariableVariableCategoryName',
         'user_variable_wikipedia_title' => 'userVariableWikipediaTitle',
-        'valence' => 'valence',
         'variable_category' => 'variableCategory',
+        'data_source' => 'dataSource',
+        'joined_variables' => 'joinedVariables',
+        'last_source' => 'lastSource',
+        'last_unit' => 'lastUnit',
+        'most_common_unit' => 'mostCommonUnit',
+        'valence' => 'valence',
         'variable_category_id' => 'variableCategoryId',
         'variable_category_image_url' => 'variableCategoryImageUrl',
         'variable_category_name' => 'variableCategoryName',
@@ -521,6 +536,7 @@ class UserVariable implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'action_array' => 'setActionArray',
         'alias' => 'setAlias',
         'available_units' => 'setAvailableUnits',
         'cause_only' => 'setCauseOnly',
@@ -602,7 +618,6 @@ class UserVariable implements ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'setNumberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'setNumberOfChanges',
         'number_of_correlations' => 'setNumberOfCorrelations',
-        'number_of_measurements' => 'setNumberOfMeasurements',
         'number_of_processed_daily_measurements' => 'setNumberOfProcessedDailyMeasurements',
         'number_of_raw_measurements' => 'setNumberOfRawMeasurements',
         'number_of_tracking_reminders' => 'setNumberOfTrackingReminders',
@@ -656,8 +671,13 @@ class UserVariable implements ArrayAccess
         'user_variable_variable_category_id' => 'setUserVariableVariableCategoryId',
         'user_variable_variable_category_name' => 'setUserVariableVariableCategoryName',
         'user_variable_wikipedia_title' => 'setUserVariableWikipediaTitle',
-        'valence' => 'setValence',
         'variable_category' => 'setVariableCategory',
+        'data_source' => 'setDataSource',
+        'joined_variables' => 'setJoinedVariables',
+        'last_source' => 'setLastSource',
+        'last_unit' => 'setLastUnit',
+        'most_common_unit' => 'setMostCommonUnit',
+        'valence' => 'setValence',
         'variable_category_id' => 'setVariableCategoryId',
         'variable_category_image_url' => 'setVariableCategoryImageUrl',
         'variable_category_name' => 'setVariableCategoryName',
@@ -674,6 +694,7 @@ class UserVariable implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'action_array' => 'getActionArray',
         'alias' => 'getAlias',
         'available_units' => 'getAvailableUnits',
         'cause_only' => 'getCauseOnly',
@@ -755,7 +776,6 @@ class UserVariable implements ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'getNumberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'getNumberOfChanges',
         'number_of_correlations' => 'getNumberOfCorrelations',
-        'number_of_measurements' => 'getNumberOfMeasurements',
         'number_of_processed_daily_measurements' => 'getNumberOfProcessedDailyMeasurements',
         'number_of_raw_measurements' => 'getNumberOfRawMeasurements',
         'number_of_tracking_reminders' => 'getNumberOfTrackingReminders',
@@ -809,8 +829,13 @@ class UserVariable implements ArrayAccess
         'user_variable_variable_category_id' => 'getUserVariableVariableCategoryId',
         'user_variable_variable_category_name' => 'getUserVariableVariableCategoryName',
         'user_variable_wikipedia_title' => 'getUserVariableWikipediaTitle',
-        'valence' => 'getValence',
         'variable_category' => 'getVariableCategory',
+        'data_source' => 'getDataSource',
+        'joined_variables' => 'getJoinedVariables',
+        'last_source' => 'getLastSource',
+        'last_unit' => 'getLastUnit',
+        'most_common_unit' => 'getMostCommonUnit',
+        'valence' => 'getValence',
         'variable_category_id' => 'getVariableCategoryId',
         'variable_category_image_url' => 'getVariableCategoryImageUrl',
         'variable_category_name' => 'getVariableCategoryName',
@@ -852,6 +877,7 @@ class UserVariable implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['action_array'] = isset($data['action_array']) ? $data['action_array'] : null;
         $this->container['alias'] = isset($data['alias']) ? $data['alias'] : null;
         $this->container['available_units'] = isset($data['available_units']) ? $data['available_units'] : null;
         $this->container['cause_only'] = isset($data['cause_only']) ? $data['cause_only'] : null;
@@ -933,7 +959,6 @@ class UserVariable implements ArrayAccess
         $this->container['number_of_aggregate_correlations_as_effect'] = isset($data['number_of_aggregate_correlations_as_effect']) ? $data['number_of_aggregate_correlations_as_effect'] : null;
         $this->container['number_of_changes'] = isset($data['number_of_changes']) ? $data['number_of_changes'] : null;
         $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
-        $this->container['number_of_measurements'] = isset($data['number_of_measurements']) ? $data['number_of_measurements'] : null;
         $this->container['number_of_processed_daily_measurements'] = isset($data['number_of_processed_daily_measurements']) ? $data['number_of_processed_daily_measurements'] : null;
         $this->container['number_of_raw_measurements'] = isset($data['number_of_raw_measurements']) ? $data['number_of_raw_measurements'] : null;
         $this->container['number_of_tracking_reminders'] = isset($data['number_of_tracking_reminders']) ? $data['number_of_tracking_reminders'] : null;
@@ -987,8 +1012,13 @@ class UserVariable implements ArrayAccess
         $this->container['user_variable_variable_category_id'] = isset($data['user_variable_variable_category_id']) ? $data['user_variable_variable_category_id'] : null;
         $this->container['user_variable_variable_category_name'] = isset($data['user_variable_variable_category_name']) ? $data['user_variable_variable_category_name'] : null;
         $this->container['user_variable_wikipedia_title'] = isset($data['user_variable_wikipedia_title']) ? $data['user_variable_wikipedia_title'] : null;
-        $this->container['valence'] = isset($data['valence']) ? $data['valence'] : null;
         $this->container['variable_category'] = isset($data['variable_category']) ? $data['variable_category'] : null;
+        $this->container['data_source'] = isset($data['data_source']) ? $data['data_source'] : null;
+        $this->container['joined_variables'] = isset($data['joined_variables']) ? $data['joined_variables'] : null;
+        $this->container['last_source'] = isset($data['last_source']) ? $data['last_source'] : null;
+        $this->container['last_unit'] = isset($data['last_unit']) ? $data['last_unit'] : null;
+        $this->container['most_common_unit'] = isset($data['most_common_unit']) ? $data['most_common_unit'] : null;
+        $this->container['valence'] = isset($data['valence']) ? $data['valence'] : null;
         $this->container['variable_category_id'] = isset($data['variable_category_id']) ? $data['variable_category_id'] : null;
         $this->container['variable_category_image_url'] = isset($data['variable_category_image_url']) ? $data['variable_category_image_url'] : null;
         $this->container['variable_category_name'] = isset($data['variable_category_name']) ? $data['variable_category_name'] : null;
@@ -1008,62 +1038,17 @@ class UserVariable implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['alias'] === null) {
-            $invalid_properties[] = "'alias' can't be null";
+        if ($this->container['id'] === null) {
+            $invalid_properties[] = "'id' can't be null";
         }
-        if ($this->container['available_units'] === null) {
-            $invalid_properties[] = "'available_units' can't be null";
+        if ($this->container['name'] === null) {
+            $invalid_properties[] = "'name' can't be null";
         }
-        if ($this->container['child_user_tag_variables'] === null) {
-            $invalid_properties[] = "'child_user_tag_variables' can't be null";
-        }
-        if ($this->container['common_tagged_variables'] === null) {
-            $invalid_properties[] = "'common_tagged_variables' can't be null";
-        }
-        if ($this->container['common_tag_variables'] === null) {
-            $invalid_properties[] = "'common_tag_variables' can't be null";
-        }
-        if ($this->container['informational_url'] === null) {
-            $invalid_properties[] = "'informational_url' can't be null";
-        }
-        if ($this->container['ingredient_of_user_tag_variables'] === null) {
-            $invalid_properties[] = "'ingredient_of_user_tag_variables' can't be null";
-        }
-        if ($this->container['ingredient_user_tag_variables'] === null) {
-            $invalid_properties[] = "'ingredient_user_tag_variables' can't be null";
-        }
-        if ($this->container['joined_user_tag_variables'] === null) {
-            $invalid_properties[] = "'joined_user_tag_variables' can't be null";
-        }
-        if ($this->container['parent'] === null) {
-            $invalid_properties[] = "'parent' can't be null";
-        }
-        if ($this->container['parent_user_tag_variables'] === null) {
-            $invalid_properties[] = "'parent_user_tag_variables' can't be null";
-        }
-        if ($this->container['price'] === null) {
-            $invalid_properties[] = "'price' can't be null";
-        }
-        if ($this->container['product_url'] === null) {
-            $invalid_properties[] = "'product_url' can't be null";
-        }
-        if ($this->container['user_tagged_variables'] === null) {
-            $invalid_properties[] = "'user_tagged_variables' can't be null";
-        }
-        if ($this->container['user_tag_variables'] === null) {
-            $invalid_properties[] = "'user_tag_variables' can't be null";
-        }
-        if ($this->container['user_variable_valence'] === null) {
-            $invalid_properties[] = "'user_variable_valence' can't be null";
-        }
-        if ($this->container['user_variable_wikipedia_title'] === null) {
-            $invalid_properties[] = "'user_variable_wikipedia_title' can't be null";
+        if ($this->container['user_id'] === null) {
+            $invalid_properties[] = "'user_id' can't be null";
         }
         if ($this->container['variable_id'] === null) {
             $invalid_properties[] = "'variable_id' can't be null";
-        }
-        if ($this->container['wikipedia_title'] === null) {
-            $invalid_properties[] = "'wikipedia_title' can't be null";
         }
         return $invalid_properties;
     }
@@ -1077,66 +1062,42 @@ class UserVariable implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['alias'] === null) {
+        if ($this->container['id'] === null) {
             return false;
         }
-        if ($this->container['available_units'] === null) {
+        if ($this->container['name'] === null) {
             return false;
         }
-        if ($this->container['child_user_tag_variables'] === null) {
-            return false;
-        }
-        if ($this->container['common_tagged_variables'] === null) {
-            return false;
-        }
-        if ($this->container['common_tag_variables'] === null) {
-            return false;
-        }
-        if ($this->container['informational_url'] === null) {
-            return false;
-        }
-        if ($this->container['ingredient_of_user_tag_variables'] === null) {
-            return false;
-        }
-        if ($this->container['ingredient_user_tag_variables'] === null) {
-            return false;
-        }
-        if ($this->container['joined_user_tag_variables'] === null) {
-            return false;
-        }
-        if ($this->container['parent'] === null) {
-            return false;
-        }
-        if ($this->container['parent_user_tag_variables'] === null) {
-            return false;
-        }
-        if ($this->container['price'] === null) {
-            return false;
-        }
-        if ($this->container['product_url'] === null) {
-            return false;
-        }
-        if ($this->container['user_tagged_variables'] === null) {
-            return false;
-        }
-        if ($this->container['user_tag_variables'] === null) {
-            return false;
-        }
-        if ($this->container['user_variable_valence'] === null) {
-            return false;
-        }
-        if ($this->container['user_variable_wikipedia_title'] === null) {
+        if ($this->container['user_id'] === null) {
             return false;
         }
         if ($this->container['variable_id'] === null) {
             return false;
         }
-        if ($this->container['wikipedia_title'] === null) {
-            return false;
-        }
         return true;
     }
 
+
+    /**
+     * Gets action_array
+     * @return \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]
+     */
+    public function getActionArray()
+    {
+        return $this->container['action_array'];
+    }
+
+    /**
+     * Sets action_array
+     * @param \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[] $action_array
+     * @return $this
+     */
+    public function setActionArray($action_array)
+    {
+        $this->container['action_array'] = $action_array;
+
+        return $this;
+    }
 
     /**
      * Gets alias
@@ -1203,7 +1164,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets charts
-     * @return \QuantiModo\Client\Model\Chart[]
+     * @return object
      */
     public function getCharts()
     {
@@ -1212,7 +1173,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets charts
-     * @param \QuantiModo\Client\Model\Chart[] $charts
+     * @param object $charts An object with various chart properties each property contain and svg and Highcharts configuration
      * @return $this
      */
     public function setCharts($charts)
@@ -1350,7 +1311,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets child_user_tag_variables
-     * @return \QuantiModo\Client\Model\UserVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getChildUserTagVariables()
     {
@@ -1359,7 +1320,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets child_user_tag_variables
-     * @param \QuantiModo\Client\Model\UserVariableArray $child_user_tag_variables
+     * @param \QuantiModo\Client\Model\Variable[] $child_user_tag_variables
      * @return $this
      */
     public function setChildUserTagVariables($child_user_tag_variables)
@@ -1434,7 +1395,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets common_tagged_variables
-     * @return \QuantiModo\Client\Model\CommonVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getCommonTaggedVariables()
     {
@@ -1443,7 +1404,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets common_tagged_variables
-     * @param \QuantiModo\Client\Model\CommonVariableArray $common_tagged_variables
+     * @param \QuantiModo\Client\Model\Variable[] $common_tagged_variables
      * @return $this
      */
     public function setCommonTaggedVariables($common_tagged_variables)
@@ -1455,7 +1416,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets common_tag_variables
-     * @return \QuantiModo\Client\Model\CommonVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getCommonTagVariables()
     {
@@ -1464,7 +1425,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets common_tag_variables
-     * @param \QuantiModo\Client\Model\CommonVariableArray $common_tag_variables
+     * @param \QuantiModo\Client\Model\Variable[] $common_tag_variables
      * @return $this
      */
     public function setCommonTagVariables($common_tag_variables)
@@ -2043,7 +2004,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets ingredient_of_user_tag_variables
-     * @return \QuantiModo\Client\Model\UserVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getIngredientOfUserTagVariables()
     {
@@ -2052,7 +2013,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets ingredient_of_user_tag_variables
-     * @param \QuantiModo\Client\Model\UserVariableArray $ingredient_of_user_tag_variables
+     * @param \QuantiModo\Client\Model\Variable[] $ingredient_of_user_tag_variables
      * @return $this
      */
     public function setIngredientOfUserTagVariables($ingredient_of_user_tag_variables)
@@ -2064,7 +2025,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets ingredient_user_tag_variables
-     * @return \QuantiModo\Client\Model\UserVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getIngredientUserTagVariables()
     {
@@ -2073,7 +2034,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets ingredient_user_tag_variables
-     * @param \QuantiModo\Client\Model\UserVariableArray $ingredient_user_tag_variables
+     * @param \QuantiModo\Client\Model\Variable[] $ingredient_user_tag_variables
      * @return $this
      */
     public function setIngredientUserTagVariables($ingredient_user_tag_variables)
@@ -2127,7 +2088,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets joined_user_tag_variables
-     * @return \QuantiModo\Client\Model\UserVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getJoinedUserTagVariables()
     {
@@ -2136,7 +2097,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets joined_user_tag_variables
-     * @param \QuantiModo\Client\Model\UserVariableArray $joined_user_tag_variables
+     * @param \QuantiModo\Client\Model\Variable[] $joined_user_tag_variables
      * @return $this
      */
     public function setJoinedUserTagVariables($joined_user_tag_variables)
@@ -2840,27 +2801,6 @@ class UserVariable implements ArrayAccess
     }
 
     /**
-     * Gets number_of_measurements
-     * @return int
-     */
-    public function getNumberOfMeasurements()
-    {
-        return $this->container['number_of_measurements'];
-    }
-
-    /**
-     * Sets number_of_measurements
-     * @param int $number_of_measurements Number of measurements
-     * @return $this
-     */
-    public function setNumberOfMeasurements($number_of_measurements)
-    {
-        $this->container['number_of_measurements'] = $number_of_measurements;
-
-        return $this;
-    }
-
-    /**
      * Gets number_of_processed_daily_measurements
      * @return int
      */
@@ -3156,7 +3096,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets parent_user_tag_variables
-     * @return \QuantiModo\Client\Model\UserVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getParentUserTagVariables()
     {
@@ -3165,7 +3105,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets parent_user_tag_variables
-     * @param \QuantiModo\Client\Model\UserVariableArray $parent_user_tag_variables
+     * @param \QuantiModo\Client\Model\Variable[] $parent_user_tag_variables
      * @return $this
      */
     public function setParentUserTagVariables($parent_user_tag_variables)
@@ -3681,7 +3621,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets user_tagged_variables
-     * @return \QuantiModo\Client\Model\UserVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getUserTaggedVariables()
     {
@@ -3690,7 +3630,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets user_tagged_variables
-     * @param \QuantiModo\Client\Model\UserVariableArray $user_tagged_variables
+     * @param \QuantiModo\Client\Model\Variable[] $user_tagged_variables
      * @return $this
      */
     public function setUserTaggedVariables($user_tagged_variables)
@@ -3702,7 +3642,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets user_tag_variables
-     * @return \QuantiModo\Client\Model\UserVariableArray
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getUserTagVariables()
     {
@@ -3711,7 +3651,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets user_tag_variables
-     * @param \QuantiModo\Client\Model\UserVariableArray $user_tag_variables
+     * @param \QuantiModo\Client\Model\Variable[] $user_tag_variables
      * @return $this
      */
     public function setUserTagVariables($user_tag_variables)
@@ -3974,27 +3914,6 @@ class UserVariable implements ArrayAccess
     }
 
     /**
-     * Gets valence
-     * @return string
-     */
-    public function getValence()
-    {
-        return $this->container['valence'];
-    }
-
-    /**
-     * Sets valence
-     * @param string $valence Example: negative
-     * @return $this
-     */
-    public function setValence($valence)
-    {
-        $this->container['valence'] = $valence;
-
-        return $this;
-    }
-
-    /**
      * Gets variable_category
      * @return \QuantiModo\Client\Model\VariableCategory
      */
@@ -4016,6 +3935,132 @@ class UserVariable implements ArrayAccess
     }
 
     /**
+     * Gets data_source
+     * @return \QuantiModo\Client\Model\DataSource
+     */
+    public function getDataSource()
+    {
+        return $this->container['data_source'];
+    }
+
+    /**
+     * Sets data_source
+     * @param \QuantiModo\Client\Model\DataSource $data_source
+     * @return $this
+     */
+    public function setDataSource($data_source)
+    {
+        $this->container['data_source'] = $data_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets joined_variables
+     * @return \QuantiModo\Client\Model\Variable[]
+     */
+    public function getJoinedVariables()
+    {
+        return $this->container['joined_variables'];
+    }
+
+    /**
+     * Sets joined_variables
+     * @param \QuantiModo\Client\Model\Variable[] $joined_variables Array of Variables that are joined with this Variable
+     * @return $this
+     */
+    public function setJoinedVariables($joined_variables)
+    {
+        $this->container['joined_variables'] = $joined_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_source
+     * @return int
+     */
+    public function getLastSource()
+    {
+        return $this->container['last_source'];
+    }
+
+    /**
+     * Sets last_source
+     * @param int $last_source Last source
+     * @return $this
+     */
+    public function setLastSource($last_source)
+    {
+        $this->container['last_source'] = $last_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_unit
+     * @return string
+     */
+    public function getLastUnit()
+    {
+        return $this->container['last_unit'];
+    }
+
+    /**
+     * Sets last_unit
+     * @param string $last_unit Last unit
+     * @return $this
+     */
+    public function setLastUnit($last_unit)
+    {
+        $this->container['last_unit'] = $last_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets most_common_unit
+     * @return string
+     */
+    public function getMostCommonUnit()
+    {
+        return $this->container['most_common_unit'];
+    }
+
+    /**
+     * Sets most_common_unit
+     * @param string $most_common_unit Most common unit
+     * @return $this
+     */
+    public function setMostCommonUnit($most_common_unit)
+    {
+        $this->container['most_common_unit'] = $most_common_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets valence
+     * @return string
+     */
+    public function getValence()
+    {
+        return $this->container['valence'];
+    }
+
+    /**
+     * Sets valence
+     * @param string $valence Example: positive
+     * @return $this
+     */
+    public function setValence($valence)
+    {
+        $this->container['valence'] = $valence;
+
+        return $this;
+    }
+
+    /**
      * Gets variable_category_id
      * @return int
      */
@@ -4026,7 +4071,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets variable_category_id
-     * @param int $variable_category_id ID of variable category
+     * @param int $variable_category_id Example: 6
      * @return $this
      */
     public function setVariableCategoryId($variable_category_id)
@@ -4047,7 +4092,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets variable_category_image_url
-     * @param string $variable_category_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Healthcare/pill-96.png
+     * @param string $variable_category_image_url Example: https://maxcdn.icons8.com/Color/PNG/96/Household/sleeping_in_bed-96.png
      * @return $this
      */
     public function setVariableCategoryImageUrl($variable_category_image_url)
@@ -4068,7 +4113,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets variable_category_name
-     * @param string $variable_category_name Example: Treatments
+     * @param string $variable_category_name Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc.
      * @return $this
      */
     public function setVariableCategoryName($variable_category_name)
@@ -4110,7 +4155,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets variable_id
-     * @param int $variable_id ID of variable
+     * @param int $variable_id Example: 96380
      * @return $this
      */
     public function setVariableId($variable_id)
@@ -4131,7 +4176,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets variable_name
-     * @param string $variable_name Example: Trader Joes Bedtime Tea / Sleepytime Tea (any Brand)
+     * @param string $variable_name Example: Sleep Duration
      * @return $this
      */
     public function setVariableName($variable_name)
@@ -4143,7 +4188,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Gets variance
-     * @return float
+     * @return double
      */
     public function getVariance()
     {
@@ -4152,7 +4197,7 @@ class UserVariable implements ArrayAccess
 
     /**
      * Sets variance
-     * @param float $variance Variance
+     * @param double $variance Example: 115947037.40816
      * @return $this
      */
     public function setVariance($variance)

@@ -182,34 +182,98 @@ class AnalyticsApi
     }
 
     /**
-     * Operation getAggregatedCorrelations
+     * Operation getCorrelationExplanations
      *
-     * Get aggregated correlations
+     * Get correlation explanations
      *
      * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
      * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
-     * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
-     * @param int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
-     * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param float $user_id User&#39;s id (optional)
-     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
-     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
-     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
-     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
-     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\Correlation[]
      */
-    public function getAggregatedCorrelations($cause_variable_name = null, $effect_variable_name = null, $sort = null, $limit = '100', $offset = null, $user_id = null, $correlation_coefficient = null, $updated_at = null, $outcomes_of_interest = null, $onset_delay = null, $duration_of_action = null)
+    public function getCorrelationExplanations($cause_variable_name = null, $effect_variable_name = null)
     {
-        list($response) = $this->getAggregatedCorrelationsWithHttpInfo($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $correlation_coefficient, $updated_at, $outcomes_of_interest, $onset_delay, $duration_of_action);
+        list($response) = $this->getCorrelationExplanationsWithHttpInfo($cause_variable_name, $effect_variable_name);
         return $response;
     }
 
     /**
-     * Operation getAggregatedCorrelationsWithHttpInfo
+     * Operation getCorrelationExplanationsWithHttpInfo
      *
-     * Get aggregated correlations
+     * Get correlation explanations
+     *
+     * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
+     * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCorrelationExplanationsWithHttpInfo($cause_variable_name = null, $effect_variable_name = null)
+    {
+        // parse inputs
+        $resourcePath = "/v3/correlations/explanations";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // query params
+        if ($cause_variable_name !== null) {
+            $queryParams['causeVariableName'] = $this->apiClient->getSerializer()->toQueryValue($cause_variable_name);
+        }
+        // query params
+        if ($effect_variable_name !== null) {
+            $queryParams['effectVariableName'] = $this->apiClient->getSerializer()->toQueryValue($effect_variable_name);
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('access_token');
+        if (strlen($apiKey) !== 0) {
+            $queryParams['access_token'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
+            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\QuantiModo\Client\Model\Correlation[]',
+                '/v3/correlations/explanations'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCorrelations
+     *
+     * Get correlations
      *
      * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
      * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
@@ -220,19 +284,44 @@ class AnalyticsApi
      * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
      * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
      * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
-     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
-     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
+     * @param string $client_id Example: oauth_test_client (optional)
+     * @param bool $common_only Return only public, anonymized and aggregated population data instead of user-specific variables (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
+     * @return \QuantiModo\Client\Model\GetCorrelationsResponse
      */
-    public function getAggregatedCorrelationsWithHttpInfo($cause_variable_name = null, $effect_variable_name = null, $sort = null, $limit = '100', $offset = null, $user_id = null, $correlation_coefficient = null, $updated_at = null, $outcomes_of_interest = null, $onset_delay = null, $duration_of_action = null)
+    public function getCorrelations($cause_variable_name = null, $effect_variable_name = null, $sort = null, $limit = '100', $offset = null, $user_id = null, $correlation_coefficient = null, $updated_at = null, $outcomes_of_interest = null, $client_id = null, $common_only = null)
+    {
+        list($response) = $this->getCorrelationsWithHttpInfo($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $correlation_coefficient, $updated_at, $outcomes_of_interest, $client_id, $common_only);
+        return $response;
+    }
+
+    /**
+     * Operation getCorrelationsWithHttpInfo
+     *
+     * Get correlations
+     *
+     * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
+     * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
+     * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
+     * @param int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
+     * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
+     * @param float $user_id User&#39;s id (optional)
+     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
+     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
+     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
+     * @param string $client_id Example: oauth_test_client (optional)
+     * @param bool $common_only Return only public, anonymized and aggregated population data instead of user-specific variables (optional)
+     * @throws \QuantiModo\Client\ApiException on non-2xx response
+     * @return array of \QuantiModo\Client\Model\GetCorrelationsResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCorrelationsWithHttpInfo($cause_variable_name = null, $effect_variable_name = null, $sort = null, $limit = '100', $offset = null, $user_id = null, $correlation_coefficient = null, $updated_at = null, $outcomes_of_interest = null, $client_id = null, $common_only = null)
     {
         if (!is_null($offset) && ($offset < 0)) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling AnalyticsApi.getAggregatedCorrelations, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling AnalyticsApi.getCorrelations, must be bigger than or equal to 0.');
         }
 
         // parse inputs
-        $resourcePath = "/v3/aggregatedCorrelations";
+        $resourcePath = "/v3/correlations";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -280,12 +369,12 @@ class AnalyticsApi
             $queryParams['outcomesOfInterest'] = $this->apiClient->getSerializer()->toQueryValue($outcomes_of_interest);
         }
         // query params
-        if ($onset_delay !== null) {
-            $queryParams['onsetDelay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
+        if ($client_id !== null) {
+            $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
         }
         // query params
-        if ($duration_of_action !== null) {
-            $queryParams['durationOfAction'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
+        if ($common_only !== null) {
+            $queryParams['commonOnly'] = $this->apiClient->getSerializer()->toQueryValue($common_only);
         }
 
         // for model (json/xml)
@@ -311,15 +400,15 @@ class AnalyticsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]',
-                '/v3/aggregatedCorrelations'
+                '\QuantiModo\Client\Model\GetCorrelationsResponse',
+                '/v3/correlations'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\GetCorrelationsResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\GetCorrelationsResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -436,360 +525,6 @@ class AnalyticsApi
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\JsonErrorResponse', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getUserCorrelationExplanations
-     *
-     * Get correlation explanations
-     *
-     * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
-     * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\Correlation[]
-     */
-    public function getUserCorrelationExplanations($cause_variable_name = null, $effect_variable_name = null)
-    {
-        list($response) = $this->getUserCorrelationExplanationsWithHttpInfo($cause_variable_name, $effect_variable_name);
-        return $response;
-    }
-
-    /**
-     * Operation getUserCorrelationExplanationsWithHttpInfo
-     *
-     * Get correlation explanations
-     *
-     * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
-     * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\Correlation[], HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getUserCorrelationExplanationsWithHttpInfo($cause_variable_name = null, $effect_variable_name = null)
-    {
-        // parse inputs
-        $resourcePath = "/v3/correlations/explanations";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // query params
-        if ($cause_variable_name !== null) {
-            $queryParams['causeVariableName'] = $this->apiClient->getSerializer()->toQueryValue($cause_variable_name);
-        }
-        // query params
-        if ($effect_variable_name !== null) {
-            $queryParams['effectVariableName'] = $this->apiClient->getSerializer()->toQueryValue($effect_variable_name);
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->apiClient->getApiKeyWithPrefix('access_token');
-        if (strlen($apiKey) !== 0) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\QuantiModo\Client\Model\Correlation[]',
-                '/v3/correlations/explanations'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Correlation[]', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Correlation[]', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getUserCorrelations
-     *
-     * Get correlations
-     *
-     * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
-     * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
-     * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
-     * @param int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
-     * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param float $user_id User&#39;s id (optional)
-     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
-     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
-     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
-     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
-     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
-     * @param string $app_name Example: MoodiModo (optional)
-     * @param string $client_id Example: oauth_test_client (optional)
-     * @param bool $fallback_to_study_for_cause_and_effect Example: 1 (optional)
-     * @param bool $fallback_to_aggregate_correlations Example: true (optional)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\GetCorrelationsResponse
-     */
-    public function getUserCorrelations($cause_variable_name = null, $effect_variable_name = null, $sort = null, $limit = '100', $offset = null, $user_id = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $updated_at = null, $outcomes_of_interest = null, $app_name = null, $client_id = null, $fallback_to_study_for_cause_and_effect = null, $fallback_to_aggregate_correlations = null)
-    {
-        list($response) = $this->getUserCorrelationsWithHttpInfo($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $correlation_coefficient, $onset_delay, $duration_of_action, $updated_at, $outcomes_of_interest, $app_name, $client_id, $fallback_to_study_for_cause_and_effect, $fallback_to_aggregate_correlations);
-        return $response;
-    }
-
-    /**
-     * Operation getUserCorrelationsWithHttpInfo
-     *
-     * Get correlations
-     *
-     * @param string $cause_variable_name Variable name of the hypothetical cause variable.  Example: Sleep Duration (optional)
-     * @param string $effect_variable_name Variable name of the hypothetical effect variable.  Example: Overall Mood (optional)
-     * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
-     * @param int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
-     * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param float $user_id User&#39;s id (optional)
-     * @param string $correlation_coefficient Pearson correlation coefficient between cause and effect after lagging by onset delay and grouping by duration of action (optional)
-     * @param string $onset_delay The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes. (optional)
-     * @param string $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. (optional)
-     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
-     * @param bool $outcomes_of_interest Only include correlations for which the effect is an outcome of interest for the user (optional)
-     * @param string $app_name Example: MoodiModo (optional)
-     * @param string $client_id Example: oauth_test_client (optional)
-     * @param bool $fallback_to_study_for_cause_and_effect Example: 1 (optional)
-     * @param bool $fallback_to_aggregate_correlations Example: true (optional)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\GetCorrelationsResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getUserCorrelationsWithHttpInfo($cause_variable_name = null, $effect_variable_name = null, $sort = null, $limit = '100', $offset = null, $user_id = null, $correlation_coefficient = null, $onset_delay = null, $duration_of_action = null, $updated_at = null, $outcomes_of_interest = null, $app_name = null, $client_id = null, $fallback_to_study_for_cause_and_effect = null, $fallback_to_aggregate_correlations = null)
-    {
-        if (!is_null($offset) && ($offset < 0)) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling AnalyticsApi.getUserCorrelations, must be bigger than or equal to 0.');
-        }
-
-        // parse inputs
-        $resourcePath = "/v3/correlations";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // query params
-        if ($cause_variable_name !== null) {
-            $queryParams['causeVariableName'] = $this->apiClient->getSerializer()->toQueryValue($cause_variable_name);
-        }
-        // query params
-        if ($effect_variable_name !== null) {
-            $queryParams['effectVariableName'] = $this->apiClient->getSerializer()->toQueryValue($effect_variable_name);
-        }
-        // query params
-        if ($sort !== null) {
-            $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }
-        // query params
-        if ($offset !== null) {
-            $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }
-        // query params
-        if ($user_id !== null) {
-            $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
-        }
-        // query params
-        if ($correlation_coefficient !== null) {
-            $queryParams['correlationCoefficient'] = $this->apiClient->getSerializer()->toQueryValue($correlation_coefficient);
-        }
-        // query params
-        if ($onset_delay !== null) {
-            $queryParams['onsetDelay'] = $this->apiClient->getSerializer()->toQueryValue($onset_delay);
-        }
-        // query params
-        if ($duration_of_action !== null) {
-            $queryParams['durationOfAction'] = $this->apiClient->getSerializer()->toQueryValue($duration_of_action);
-        }
-        // query params
-        if ($updated_at !== null) {
-            $queryParams['updatedAt'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }
-        // query params
-        if ($outcomes_of_interest !== null) {
-            $queryParams['outcomesOfInterest'] = $this->apiClient->getSerializer()->toQueryValue($outcomes_of_interest);
-        }
-        // query params
-        if ($app_name !== null) {
-            $queryParams['appName'] = $this->apiClient->getSerializer()->toQueryValue($app_name);
-        }
-        // query params
-        if ($client_id !== null) {
-            $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }
-        // query params
-        if ($fallback_to_study_for_cause_and_effect !== null) {
-            $queryParams['fallbackToStudyForCauseAndEffect'] = $this->apiClient->getSerializer()->toQueryValue($fallback_to_study_for_cause_and_effect);
-        }
-        // query params
-        if ($fallback_to_aggregate_correlations !== null) {
-            $queryParams['fallbackToAggregateCorrelations'] = $this->apiClient->getSerializer()->toQueryValue($fallback_to_aggregate_correlations);
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->apiClient->getApiKeyWithPrefix('access_token');
-        if (strlen($apiKey) !== 0) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\QuantiModo\Client\Model\GetCorrelationsResponse',
-                '/v3/correlations'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\GetCorrelationsResponse', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\GetCorrelationsResponse', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postAggregatedCorrelations
-     *
-     * Store or Update a Correlation
-     *
-     * @param \QuantiModo\Client\Model\PostCorrelation $body Provides correlation data (required)
-     * @param float $user_id User&#39;s id (optional)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return void
-     */
-    public function postAggregatedCorrelations($body, $user_id = null)
-    {
-        list($response) = $this->postAggregatedCorrelationsWithHttpInfo($body, $user_id);
-        return $response;
-    }
-
-    /**
-     * Operation postAggregatedCorrelationsWithHttpInfo
-     *
-     * Store or Update a Correlation
-     *
-     * @param \QuantiModo\Client\Model\PostCorrelation $body Provides correlation data (required)
-     * @param float $user_id User&#39;s id (optional)
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postAggregatedCorrelationsWithHttpInfo($body, $user_id = null)
-    {
-        // verify the required parameter 'body' is set
-        if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling postAggregatedCorrelations');
-        }
-        // parse inputs
-        $resourcePath = "/v3/aggregatedCorrelations";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-        // query params
-        if ($user_id !== null) {
-            $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->apiClient->getApiKeyWithPrefix('access_token');
-        if (strlen($apiKey) !== 0) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'POST',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                null,
-                '/v3/aggregatedCorrelations'
-            );
-
-            return [null, $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 400:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\JsonErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;

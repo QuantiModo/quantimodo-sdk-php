@@ -90,4 +90,18 @@ class MeasurementDeleteTest extends \PHPUnit_Framework_TestCase
     public function testPropertyVariableId()
     {
     }
+
+    /**
+     * Test attribute "connector_name"
+     */
+    public function testPropertyConnectorName()
+    {
+    }
+
+    /**
+     * Test attribute "client_id"
+     */
+    public function testPropertyClientId()
+    {
+    }
 }

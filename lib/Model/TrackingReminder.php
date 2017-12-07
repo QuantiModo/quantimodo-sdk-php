@@ -54,6 +54,7 @@ class TrackingReminder implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]',
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'client_id' => 'string',
         'combination_operation' => 'string',
@@ -134,6 +135,7 @@ class TrackingReminder implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'action_array' => null,
         'available_units' => null,
         'client_id' => null,
         'combination_operation' => null,
@@ -224,6 +226,7 @@ class TrackingReminder implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'action_array' => 'actionArray',
         'available_units' => 'availableUnits',
         'client_id' => 'clientId',
         'combination_operation' => 'combinationOperation',
@@ -305,6 +308,7 @@ class TrackingReminder implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'action_array' => 'setActionArray',
         'available_units' => 'setAvailableUnits',
         'client_id' => 'setClientId',
         'combination_operation' => 'setCombinationOperation',
@@ -386,6 +390,7 @@ class TrackingReminder implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'action_array' => 'getActionArray',
         'available_units' => 'getAvailableUnits',
         'client_id' => 'getClientId',
         'combination_operation' => 'getCombinationOperation',
@@ -506,6 +511,7 @@ class TrackingReminder implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['action_array'] = isset($data['action_array']) ? $data['action_array'] : null;
         $this->container['available_units'] = isset($data['available_units']) ? $data['available_units'] : null;
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
         $this->container['combination_operation'] = isset($data['combination_operation']) ? $data['combination_operation'] : null;
@@ -641,6 +647,27 @@ class TrackingReminder implements ArrayAccess
         return true;
     }
 
+
+    /**
+     * Gets action_array
+     * @return \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]
+     */
+    public function getActionArray()
+    {
+        return $this->container['action_array'];
+    }
+
+    /**
+     * Sets action_array
+     * @param \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[] $action_array
+     * @return $this
+     */
+    public function setActionArray($action_array)
+    {
+        $this->container['action_array'] = $action_array;
+
+        return $this;
+    }
 
     /**
      * Gets available_units

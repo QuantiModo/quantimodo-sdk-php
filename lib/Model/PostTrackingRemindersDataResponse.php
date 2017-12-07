@@ -56,7 +56,7 @@ class PostTrackingRemindersDataResponse implements ArrayAccess
     protected static $swaggerTypes = [
         'tracking_reminder_notifications' => '\QuantiModo\Client\Model\TrackingReminderNotification[]',
         'tracking_reminders' => '\QuantiModo\Client\Model\TrackingReminder[]',
-        'user_variables' => '\QuantiModo\Client\Model\UserVariable[]'
+        'user_variables' => '\QuantiModo\Client\Model\Variable[]'
     ];
 
     /**
@@ -216,7 +216,7 @@ class PostTrackingRemindersDataResponse implements ArrayAccess
 
     /**
      * Gets user_variables
-     * @return \QuantiModo\Client\Model\UserVariable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getUserVariables()
     {
@@ -225,7 +225,7 @@ class PostTrackingRemindersDataResponse implements ArrayAccess
 
     /**
      * Sets user_variables
-     * @param \QuantiModo\Client\Model\UserVariable[] $user_variables
+     * @param \QuantiModo\Client\Model\Variable[] $user_variables
      * @return $this
      */
     public function setUserVariables($user_variables)

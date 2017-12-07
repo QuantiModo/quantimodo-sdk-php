@@ -269,81 +269,31 @@ class VariablesApi
     }
 
     /**
-     * Operation getCommonVariables
+     * Operation getVariableCategories
      *
-     * Get common variables with aggregated instead of user-specific data
+     * Variable categories
      *
-     * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param float $user_id User&#39;s id (optional)
-     * @param string $variable_category_name Limit results to a specific variable category (optional)
-     * @param string $name Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% (optional)
-     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
-     * @param string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
-     * @param string $earliest_measurement_time Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. (optional)
-     * @param string $latest_measurement_time Excluded records with measurement times later than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. (optional)
-     * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
-     * @param string $last_source_name Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
-     * @param int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
-     * @param int $id Common variable id (optional)
-     * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
-     * @param string $effect_or_cause Example: (optional)
-     * @param string $public_effect_or_cause Example: (optional)
-     * @param bool $exact_match Example: (optional)
-     * @param bool $manual_tracking Example: (optional)
-     * @param int $variable_category_id Example: 13 (optional)
-     * @param bool $include_private Example: (optional)
-     * @param string $client_id Example: oauth_test_client (optional)
-     * @param string $search_phrase Example: %Body Fat% (optional)
-     * @param string $synonyms Example: %McDonalds hotcake% (optional)
-     * @param string $upc UPC or other barcode scan result (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\CommonVariableArray
+     * @return \QuantiModo\Client\Model\VariableCategory[]
      */
-    public function getCommonVariables($offset = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source_name = null, $limit = '100', $id = null, $sort = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $manual_tracking = null, $variable_category_id = null, $include_private = null, $client_id = null, $search_phrase = null, $synonyms = null, $upc = null)
+    public function getVariableCategories()
     {
-        list($response) = $this->getCommonVariablesWithHttpInfo($offset, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $number_of_raw_measurements, $last_source_name, $limit, $id, $sort, $effect_or_cause, $public_effect_or_cause, $exact_match, $manual_tracking, $variable_category_id, $include_private, $client_id, $search_phrase, $synonyms, $upc);
+        list($response) = $this->getVariableCategoriesWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation getCommonVariablesWithHttpInfo
+     * Operation getVariableCategoriesWithHttpInfo
      *
-     * Get common variables with aggregated instead of user-specific data
+     * Variable categories
      *
-     * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param float $user_id User&#39;s id (optional)
-     * @param string $variable_category_name Limit results to a specific variable category (optional)
-     * @param string $name Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% (optional)
-     * @param string $updated_at When the record was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; datetime format. Time zone should be UTC and not local. (optional)
-     * @param string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
-     * @param string $earliest_measurement_time Excluded records with measurement times earlier than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. (optional)
-     * @param string $latest_measurement_time Excluded records with measurement times later than this value. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. (optional)
-     * @param string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
-     * @param string $last_source_name Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here (optional)
-     * @param int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
-     * @param int $id Common variable id (optional)
-     * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
-     * @param string $effect_or_cause Example: (optional)
-     * @param string $public_effect_or_cause Example: (optional)
-     * @param bool $exact_match Example: (optional)
-     * @param bool $manual_tracking Example: (optional)
-     * @param int $variable_category_id Example: 13 (optional)
-     * @param bool $include_private Example: (optional)
-     * @param string $client_id Example: oauth_test_client (optional)
-     * @param string $search_phrase Example: %Body Fat% (optional)
-     * @param string $synonyms Example: %McDonalds hotcake% (optional)
-     * @param string $upc UPC or other barcode scan result (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\CommonVariableArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommonVariablesWithHttpInfo($offset = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $number_of_raw_measurements = null, $last_source_name = null, $limit = '100', $id = null, $sort = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $manual_tracking = null, $variable_category_id = null, $include_private = null, $client_id = null, $search_phrase = null, $synonyms = null, $upc = null)
+    public function getVariableCategoriesWithHttpInfo()
     {
-        if (!is_null($offset) && ($offset < 0)) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling VariablesApi.getCommonVariables, must be bigger than or equal to 0.');
-        }
-
         // parse inputs
-        $resourcePath = "/v3/public/variables";
+        $resourcePath = "/v3/variableCategories";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -354,98 +304,6 @@ class VariablesApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        // query params
-        if ($offset !== null) {
-            $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }
-        // query params
-        if ($user_id !== null) {
-            $queryParams['userId'] = $this->apiClient->getSerializer()->toQueryValue($user_id);
-        }
-        // query params
-        if ($variable_category_name !== null) {
-            $queryParams['variableCategoryName'] = $this->apiClient->getSerializer()->toQueryValue($variable_category_name);
-        }
-        // query params
-        if ($name !== null) {
-            $queryParams['name'] = $this->apiClient->getSerializer()->toQueryValue($name);
-        }
-        // query params
-        if ($updated_at !== null) {
-            $queryParams['updatedAt'] = $this->apiClient->getSerializer()->toQueryValue($updated_at);
-        }
-        // query params
-        if ($source_name !== null) {
-            $queryParams['sourceName'] = $this->apiClient->getSerializer()->toQueryValue($source_name);
-        }
-        // query params
-        if ($earliest_measurement_time !== null) {
-            $queryParams['earliestMeasurementTime'] = $this->apiClient->getSerializer()->toQueryValue($earliest_measurement_time);
-        }
-        // query params
-        if ($latest_measurement_time !== null) {
-            $queryParams['latestMeasurementTime'] = $this->apiClient->getSerializer()->toQueryValue($latest_measurement_time);
-        }
-        // query params
-        if ($number_of_raw_measurements !== null) {
-            $queryParams['numberOfRawMeasurements'] = $this->apiClient->getSerializer()->toQueryValue($number_of_raw_measurements);
-        }
-        // query params
-        if ($last_source_name !== null) {
-            $queryParams['lastSourceName'] = $this->apiClient->getSerializer()->toQueryValue($last_source_name);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }
-        // query params
-        if ($id !== null) {
-            $queryParams['id'] = $this->apiClient->getSerializer()->toQueryValue($id);
-        }
-        // query params
-        if ($sort !== null) {
-            $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
-        }
-        // query params
-        if ($effect_or_cause !== null) {
-            $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
-        }
-        // query params
-        if ($public_effect_or_cause !== null) {
-            $queryParams['publicEffectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($public_effect_or_cause);
-        }
-        // query params
-        if ($exact_match !== null) {
-            $queryParams['exactMatch'] = $this->apiClient->getSerializer()->toQueryValue($exact_match);
-        }
-        // query params
-        if ($manual_tracking !== null) {
-            $queryParams['manualTracking'] = $this->apiClient->getSerializer()->toQueryValue($manual_tracking);
-        }
-        // query params
-        if ($variable_category_id !== null) {
-            $queryParams['variableCategoryId'] = $this->apiClient->getSerializer()->toQueryValue($variable_category_id);
-        }
-        // query params
-        if ($include_private !== null) {
-            $queryParams['includePrivate'] = $this->apiClient->getSerializer()->toQueryValue($include_private);
-        }
-        // query params
-        if ($client_id !== null) {
-            $queryParams['clientId'] = $this->apiClient->getSerializer()->toQueryValue($client_id);
-        }
-        // query params
-        if ($search_phrase !== null) {
-            $queryParams['searchPhrase'] = $this->apiClient->getSerializer()->toQueryValue($search_phrase);
-        }
-        // query params
-        if ($synonyms !== null) {
-            $queryParams['synonyms'] = $this->apiClient->getSerializer()->toQueryValue($synonyms);
-        }
-        // query params
-        if ($upc !== null) {
-            $queryParams['upc'] = $this->apiClient->getSerializer()->toQueryValue($upc);
-        }
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -470,15 +328,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\CommonVariableArray',
-                '/v3/public/variables'
+                '\QuantiModo\Client\Model\VariableCategory[]',
+                '/v3/variableCategories'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonVariableArray', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\CommonVariableArray', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\VariableCategory[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -488,7 +346,7 @@ class VariablesApi
     }
 
     /**
-     * Operation getUserVariables
+     * Operation getVariables
      *
      * Get variables along with related user-specific analysis settings and statistics
      *
@@ -511,17 +369,31 @@ class VariablesApi
      * @param string $app_name Example: MoodiModo (optional)
      * @param string $client_id Example: oauth_test_client (optional)
      * @param string $upc UPC or other barcode scan result (optional)
+     * @param string $effect_or_cause Example: (optional)
+     * @param string $public_effect_or_cause Example: (optional)
+     * @param bool $exact_match Example: (optional)
+     * @param int $variable_category_id Example: 13 (optional)
+     * @param bool $include_private Example: (optional)
+     * @param string $search_phrase Example: %Body Fat% (optional)
+     * @param string $synonyms Example: %McDonalds hotcake% (optional)
+     * @param int $tagged_variable_id Id of the tagged variable (i.e. Lollipop) you would like to get variables it can be tagged with (i.e. Sugar) .  Converted measurements of the tagged variable are included in analysis of the tag variable (i.e. ingredient). (optional)
+     * @param int $tag_variable_id Id of the tag variable (i.e. Sugar) you would like to get variables it can be tagged to (i.e. Lollipop) .  Converted measurements of the tagged variable are included in analysis of the tag variable (i.e. ingredient). (optional)
+     * @param int $join_variable_id Id of the variable you would like to get variables that can be joined to.  This is used to merge duplicate variables.   If joinVariableId is specified, this returns only variables eligible to be joined to the variable specified by the joinVariableId (optional)
+     * @param int $parent_user_tag_variable_id Id of the parent variable (i.e. Fruit)  you would like to get eligible child variables (i.e. Apple) for.  Child variable measurements will be included in analysis of the parent variable.  For instance, a child of variable Fruit could be Apple (optional)
+     * @param int $child_user_tag_variable_id Id of the child variable (i.e. Apple) you would like to get eligible parent variables (i.e. Fruit) for.  Child variable measurements will be included in analysis of the parent variable.  For instance, a child of variable Fruit could be Apple (optional)
+     * @param bool $common_only Return only public and aggregated common variable data instead of user-specific variables (optional)
+     * @param bool $user_only Return only user-specific variables and data, excluding common aggregated variable data (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\UserVariable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
-    public function getUserVariables($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null, $upc = null)
+    public function getVariables($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $common_only = null, $user_only = null)
     {
-        list($response) = $this->getUserVariablesWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id, $upc);
+        list($response) = $this->getVariablesWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $app_name, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $common_only, $user_only);
         return $response;
     }
 
     /**
-     * Operation getUserVariablesWithHttpInfo
+     * Operation getVariablesWithHttpInfo
      *
      * Get variables along with related user-specific analysis settings and statistics
      *
@@ -544,17 +416,31 @@ class VariablesApi
      * @param string $app_name Example: MoodiModo (optional)
      * @param string $client_id Example: oauth_test_client (optional)
      * @param string $upc UPC or other barcode scan result (optional)
+     * @param string $effect_or_cause Example: (optional)
+     * @param string $public_effect_or_cause Example: (optional)
+     * @param bool $exact_match Example: (optional)
+     * @param int $variable_category_id Example: 13 (optional)
+     * @param bool $include_private Example: (optional)
+     * @param string $search_phrase Example: %Body Fat% (optional)
+     * @param string $synonyms Example: %McDonalds hotcake% (optional)
+     * @param int $tagged_variable_id Id of the tagged variable (i.e. Lollipop) you would like to get variables it can be tagged with (i.e. Sugar) .  Converted measurements of the tagged variable are included in analysis of the tag variable (i.e. ingredient). (optional)
+     * @param int $tag_variable_id Id of the tag variable (i.e. Sugar) you would like to get variables it can be tagged to (i.e. Lollipop) .  Converted measurements of the tagged variable are included in analysis of the tag variable (i.e. ingredient). (optional)
+     * @param int $join_variable_id Id of the variable you would like to get variables that can be joined to.  This is used to merge duplicate variables.   If joinVariableId is specified, this returns only variables eligible to be joined to the variable specified by the joinVariableId (optional)
+     * @param int $parent_user_tag_variable_id Id of the parent variable (i.e. Fruit)  you would like to get eligible child variables (i.e. Apple) for.  Child variable measurements will be included in analysis of the parent variable.  For instance, a child of variable Fruit could be Apple (optional)
+     * @param int $child_user_tag_variable_id Id of the child variable (i.e. Apple) you would like to get eligible parent variables (i.e. Fruit) for.  Child variable measurements will be included in analysis of the parent variable.  For instance, a child of variable Fruit could be Apple (optional)
+     * @param bool $common_only Return only public and aggregated common variable data instead of user-specific variables (optional)
+     * @param bool $user_only Return only user-specific variables and data, excluding common aggregated variable data (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\UserVariable[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserVariablesWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null, $upc = null)
+    public function getVariablesWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $app_name = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $common_only = null, $user_only = null)
     {
         if (!is_null($offset) && ($offset < 0)) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling VariablesApi.getUserVariables, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling VariablesApi.getVariables, must be bigger than or equal to 0.');
         }
 
         // parse inputs
-        $resourcePath = "/v3/userVariables";
+        $resourcePath = "/v3/variables";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -641,6 +527,62 @@ class VariablesApi
         if ($upc !== null) {
             $queryParams['upc'] = $this->apiClient->getSerializer()->toQueryValue($upc);
         }
+        // query params
+        if ($effect_or_cause !== null) {
+            $queryParams['effectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($effect_or_cause);
+        }
+        // query params
+        if ($public_effect_or_cause !== null) {
+            $queryParams['publicEffectOrCause'] = $this->apiClient->getSerializer()->toQueryValue($public_effect_or_cause);
+        }
+        // query params
+        if ($exact_match !== null) {
+            $queryParams['exactMatch'] = $this->apiClient->getSerializer()->toQueryValue($exact_match);
+        }
+        // query params
+        if ($variable_category_id !== null) {
+            $queryParams['variableCategoryId'] = $this->apiClient->getSerializer()->toQueryValue($variable_category_id);
+        }
+        // query params
+        if ($include_private !== null) {
+            $queryParams['includePrivate'] = $this->apiClient->getSerializer()->toQueryValue($include_private);
+        }
+        // query params
+        if ($search_phrase !== null) {
+            $queryParams['searchPhrase'] = $this->apiClient->getSerializer()->toQueryValue($search_phrase);
+        }
+        // query params
+        if ($synonyms !== null) {
+            $queryParams['synonyms'] = $this->apiClient->getSerializer()->toQueryValue($synonyms);
+        }
+        // query params
+        if ($tagged_variable_id !== null) {
+            $queryParams['taggedVariableId'] = $this->apiClient->getSerializer()->toQueryValue($tagged_variable_id);
+        }
+        // query params
+        if ($tag_variable_id !== null) {
+            $queryParams['tagVariableId'] = $this->apiClient->getSerializer()->toQueryValue($tag_variable_id);
+        }
+        // query params
+        if ($join_variable_id !== null) {
+            $queryParams['joinVariableId'] = $this->apiClient->getSerializer()->toQueryValue($join_variable_id);
+        }
+        // query params
+        if ($parent_user_tag_variable_id !== null) {
+            $queryParams['parentUserTagVariableId'] = $this->apiClient->getSerializer()->toQueryValue($parent_user_tag_variable_id);
+        }
+        // query params
+        if ($child_user_tag_variable_id !== null) {
+            $queryParams['childUserTagVariableId'] = $this->apiClient->getSerializer()->toQueryValue($child_user_tag_variable_id);
+        }
+        // query params
+        if ($common_only !== null) {
+            $queryParams['commonOnly'] = $this->apiClient->getSerializer()->toQueryValue($common_only);
+        }
+        // query params
+        if ($user_only !== null) {
+            $queryParams['userOnly'] = $this->apiClient->getSerializer()->toQueryValue($user_only);
+        }
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -665,92 +607,15 @@ class VariablesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\UserVariable[]',
-                '/v3/userVariables'
+                '\QuantiModo\Client\Model\Variable[]',
+                '/v3/variables'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\UserVariable[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Variable[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\UserVariable[]', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getVariableCategories
-     *
-     * Variable categories
-     *
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\VariableCategory[]
-     */
-    public function getVariableCategories()
-    {
-        list($response) = $this->getVariableCategoriesWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation getVariableCategoriesWithHttpInfo
-     *
-     * Variable categories
-     *
-     * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\VariableCategory[], HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getVariableCategoriesWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/v3/variableCategories";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->apiClient->getApiKeyWithPrefix('access_token');
-        if (strlen($apiKey) !== 0) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-            $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\QuantiModo\Client\Model\VariableCategory[]',
-                '/v3/variableCategories'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\VariableCategory[]', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\VariableCategory[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Variable[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -858,7 +723,7 @@ class VariablesApi
      *
      * Update User Settings for a Variable
      *
-     * @param \QuantiModo\Client\Model\UserVariable[] $user_variables Variable user settings data (required)
+     * @param \QuantiModo\Client\Model\Variable[] $user_variables Variable user settings data (required)
      * @param bool $include_private Example: (optional)
      * @param string $client_id Example: oauth_test_client (optional)
      * @param bool $include_public Example: true (optional)
@@ -883,7 +748,7 @@ class VariablesApi
      *
      * Update User Settings for a Variable
      *
-     * @param \QuantiModo\Client\Model\UserVariable[] $user_variables Variable user settings data (required)
+     * @param \QuantiModo\Client\Model\Variable[] $user_variables Variable user settings data (required)
      * @param bool $include_private Example: (optional)
      * @param string $client_id Example: oauth_test_client (optional)
      * @param bool $include_public Example: true (optional)
@@ -904,7 +769,7 @@ class VariablesApi
             throw new \InvalidArgumentException('Missing the required parameter $user_variables when calling postUserVariables');
         }
         // parse inputs
-        $resourcePath = "/v3/userVariables";
+        $resourcePath = "/v3/variables";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -985,7 +850,7 @@ class VariablesApi
                 $httpBody,
                 $headerParams,
                 '\QuantiModo\Client\Model\CommonResponse',
-                '/v3/userVariables'
+                '/v3/variables'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\CommonResponse', $httpHeader), $statusCode, $httpHeader];

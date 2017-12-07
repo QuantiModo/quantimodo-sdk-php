@@ -55,6 +55,7 @@ Name | Type | Description | Notes
 **tracking_reminder_notification_time** | [**\DateTime**](\DateTime.md) | UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60; timestamp for the specific time the variable should be tracked in UTC.  This will be used for the measurement startTime if the track endpoint is used. | [optional] 
 **tracking_reminder_notification_time_epoch** | **int** | Example: 1501534124 | [optional] 
 **tracking_reminder_notification_time_local** | **string** | Example: 15:48:44 | [optional] 
+**tracking_reminder_notification_time_local_human_string** | **string** | Example: 8PM Sun, May 1 | [optional] 
 **updated_at** | [**\DateTime**](\DateTime.md) | When the record in the database was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format. Time zone should be UTC and not local. | [optional] 
 **user_id** | **int** | ID of User | [optional] 
 **user_variable_unit_abbreviated_name** | **string** | Example: /5 | [optional] 

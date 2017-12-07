@@ -54,14 +54,19 @@ class StudyHtml implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'chart_html' => 'string',
+        'download_buttons_html' => 'string',
+        'full_page_with_head' => 'string',
         'full_study_html' => 'string',
         'full_study_html_with_css_styles' => 'string',
         'statistics_table_html' => 'string',
-        'chart_html' => 'string',
-        'download_buttons_html' => 'string',
-        'study_meta_html' => 'string',
+        'study_abstract_html' => 'string',
+        'study_header_html' => 'string',
         'study_image_html' => 'string',
-        'study_text_html' => 'string'
+        'study_meta_html' => 'string',
+        'study_text_html' => 'string',
+        'social_sharing_button_html' => 'string',
+        'study_summary_box_html' => 'string'
     ];
 
     /**
@@ -69,14 +74,19 @@ class StudyHtml implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'chart_html' => null,
+        'download_buttons_html' => null,
+        'full_page_with_head' => null,
         'full_study_html' => null,
         'full_study_html_with_css_styles' => null,
         'statistics_table_html' => null,
-        'chart_html' => null,
-        'download_buttons_html' => null,
-        'study_meta_html' => null,
+        'study_abstract_html' => null,
+        'study_header_html' => null,
         'study_image_html' => null,
-        'study_text_html' => null
+        'study_meta_html' => null,
+        'study_text_html' => null,
+        'social_sharing_button_html' => null,
+        'study_summary_box_html' => null
     ];
 
     public static function swaggerTypes()
@@ -94,14 +104,19 @@ class StudyHtml implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'chart_html' => 'chartHtml',
+        'download_buttons_html' => 'downloadButtonsHtml',
+        'full_page_with_head' => 'fullPageWithHead',
         'full_study_html' => 'fullStudyHtml',
         'full_study_html_with_css_styles' => 'fullStudyHtmlWithCssStyles',
         'statistics_table_html' => 'statisticsTableHtml',
-        'chart_html' => 'chartHtml',
-        'download_buttons_html' => 'downloadButtonsHtml',
-        'study_meta_html' => 'studyMetaHtml',
+        'study_abstract_html' => 'studyAbstractHtml',
+        'study_header_html' => 'studyHeaderHtml',
         'study_image_html' => 'studyImageHtml',
-        'study_text_html' => 'studyTextHtml'
+        'study_meta_html' => 'studyMetaHtml',
+        'study_text_html' => 'studyTextHtml',
+        'social_sharing_button_html' => 'socialSharingButtonHtml',
+        'study_summary_box_html' => 'studySummaryBoxHtml'
     ];
 
 
@@ -110,14 +125,19 @@ class StudyHtml implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'chart_html' => 'setChartHtml',
+        'download_buttons_html' => 'setDownloadButtonsHtml',
+        'full_page_with_head' => 'setFullPageWithHead',
         'full_study_html' => 'setFullStudyHtml',
         'full_study_html_with_css_styles' => 'setFullStudyHtmlWithCssStyles',
         'statistics_table_html' => 'setStatisticsTableHtml',
-        'chart_html' => 'setChartHtml',
-        'download_buttons_html' => 'setDownloadButtonsHtml',
-        'study_meta_html' => 'setStudyMetaHtml',
+        'study_abstract_html' => 'setStudyAbstractHtml',
+        'study_header_html' => 'setStudyHeaderHtml',
         'study_image_html' => 'setStudyImageHtml',
-        'study_text_html' => 'setStudyTextHtml'
+        'study_meta_html' => 'setStudyMetaHtml',
+        'study_text_html' => 'setStudyTextHtml',
+        'social_sharing_button_html' => 'setSocialSharingButtonHtml',
+        'study_summary_box_html' => 'setStudySummaryBoxHtml'
     ];
 
 
@@ -126,14 +146,19 @@ class StudyHtml implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'chart_html' => 'getChartHtml',
+        'download_buttons_html' => 'getDownloadButtonsHtml',
+        'full_page_with_head' => 'getFullPageWithHead',
         'full_study_html' => 'getFullStudyHtml',
         'full_study_html_with_css_styles' => 'getFullStudyHtmlWithCssStyles',
         'statistics_table_html' => 'getStatisticsTableHtml',
-        'chart_html' => 'getChartHtml',
-        'download_buttons_html' => 'getDownloadButtonsHtml',
-        'study_meta_html' => 'getStudyMetaHtml',
+        'study_abstract_html' => 'getStudyAbstractHtml',
+        'study_header_html' => 'getStudyHeaderHtml',
         'study_image_html' => 'getStudyImageHtml',
-        'study_text_html' => 'getStudyTextHtml'
+        'study_meta_html' => 'getStudyMetaHtml',
+        'study_text_html' => 'getStudyTextHtml',
+        'social_sharing_button_html' => 'getSocialSharingButtonHtml',
+        'study_summary_box_html' => 'getStudySummaryBoxHtml'
     ];
 
     public static function attributeMap()
@@ -167,14 +192,19 @@ class StudyHtml implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['chart_html'] = isset($data['chart_html']) ? $data['chart_html'] : null;
+        $this->container['download_buttons_html'] = isset($data['download_buttons_html']) ? $data['download_buttons_html'] : null;
+        $this->container['full_page_with_head'] = isset($data['full_page_with_head']) ? $data['full_page_with_head'] : null;
         $this->container['full_study_html'] = isset($data['full_study_html']) ? $data['full_study_html'] : null;
         $this->container['full_study_html_with_css_styles'] = isset($data['full_study_html_with_css_styles']) ? $data['full_study_html_with_css_styles'] : null;
         $this->container['statistics_table_html'] = isset($data['statistics_table_html']) ? $data['statistics_table_html'] : null;
-        $this->container['chart_html'] = isset($data['chart_html']) ? $data['chart_html'] : null;
-        $this->container['download_buttons_html'] = isset($data['download_buttons_html']) ? $data['download_buttons_html'] : null;
-        $this->container['study_meta_html'] = isset($data['study_meta_html']) ? $data['study_meta_html'] : null;
+        $this->container['study_abstract_html'] = isset($data['study_abstract_html']) ? $data['study_abstract_html'] : null;
+        $this->container['study_header_html'] = isset($data['study_header_html']) ? $data['study_header_html'] : null;
         $this->container['study_image_html'] = isset($data['study_image_html']) ? $data['study_image_html'] : null;
+        $this->container['study_meta_html'] = isset($data['study_meta_html']) ? $data['study_meta_html'] : null;
         $this->container['study_text_html'] = isset($data['study_text_html']) ? $data['study_text_html'] : null;
+        $this->container['social_sharing_button_html'] = isset($data['social_sharing_button_html']) ? $data['social_sharing_button_html'] : null;
+        $this->container['study_summary_box_html'] = isset($data['study_summary_box_html']) ? $data['study_summary_box_html'] : null;
     }
 
     /**
@@ -186,11 +216,11 @@ class StudyHtml implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['full_study_html'] === null) {
-            $invalid_properties[] = "'full_study_html' can't be null";
-        }
         if ($this->container['chart_html'] === null) {
             $invalid_properties[] = "'chart_html' can't be null";
+        }
+        if ($this->container['full_study_html'] === null) {
+            $invalid_properties[] = "'full_study_html' can't be null";
         }
         return $invalid_properties;
     }
@@ -204,78 +234,15 @@ class StudyHtml implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['full_study_html'] === null) {
+        if ($this->container['chart_html'] === null) {
             return false;
         }
-        if ($this->container['chart_html'] === null) {
+        if ($this->container['full_study_html'] === null) {
             return false;
         }
         return true;
     }
 
-
-    /**
-     * Gets full_study_html
-     * @return string
-     */
-    public function getFullStudyHtml()
-    {
-        return $this->container['full_study_html'];
-    }
-
-    /**
-     * Sets full_study_html
-     * @param string $full_study_html Embeddable study text html including charts.  Modifiable css classes are study-title, study-section-header, study-section-body
-     * @return $this
-     */
-    public function setFullStudyHtml($full_study_html)
-    {
-        $this->container['full_study_html'] = $full_study_html;
-
-        return $this;
-    }
-
-    /**
-     * Gets full_study_html_with_css_styles
-     * @return string
-     */
-    public function getFullStudyHtmlWithCssStyles()
-    {
-        return $this->container['full_study_html_with_css_styles'];
-    }
-
-    /**
-     * Sets full_study_html_with_css_styles
-     * @param string $full_study_html_with_css_styles Embeddable study text html including charts and css styling
-     * @return $this
-     */
-    public function setFullStudyHtmlWithCssStyles($full_study_html_with_css_styles)
-    {
-        $this->container['full_study_html_with_css_styles'] = $full_study_html_with_css_styles;
-
-        return $this;
-    }
-
-    /**
-     * Gets statistics_table_html
-     * @return string
-     */
-    public function getStatisticsTableHtml()
-    {
-        return $this->container['statistics_table_html'];
-    }
-
-    /**
-     * Sets statistics_table_html
-     * @param string $statistics_table_html Embeddable table with statistics
-     * @return $this
-     */
-    public function setStatisticsTableHtml($statistics_table_html)
-    {
-        $this->container['statistics_table_html'] = $statistics_table_html;
-
-        return $this;
-    }
 
     /**
      * Gets chart_html
@@ -320,22 +287,127 @@ class StudyHtml implements ArrayAccess
     }
 
     /**
-     * Gets study_meta_html
+     * Gets full_page_with_head
      * @return string
      */
-    public function getStudyMetaHtml()
+    public function getFullPageWithHead()
     {
-        return $this->container['study_meta_html'];
+        return $this->container['full_page_with_head'];
     }
 
     /**
-     * Sets study_meta_html
-     * @param string $study_meta_html Facebook, Twitter, Google+
+     * Sets full_page_with_head
+     * @param string $full_page_with_head Embeddable study including HTML head section charts.  Modifiable css classes are study-title, study-section-header, study-section-body
      * @return $this
      */
-    public function setStudyMetaHtml($study_meta_html)
+    public function setFullPageWithHead($full_page_with_head)
     {
-        $this->container['study_meta_html'] = $study_meta_html;
+        $this->container['full_page_with_head'] = $full_page_with_head;
+
+        return $this;
+    }
+
+    /**
+     * Gets full_study_html
+     * @return string
+     */
+    public function getFullStudyHtml()
+    {
+        return $this->container['full_study_html'];
+    }
+
+    /**
+     * Sets full_study_html
+     * @param string $full_study_html Embeddable study text html including charts.  Modifiable css classes are study-title, study-section-header, study-section-body
+     * @return $this
+     */
+    public function setFullStudyHtml($full_study_html)
+    {
+        $this->container['full_study_html'] = $full_study_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets full_study_html_with_css_styles
+     * @return string
+     */
+    public function getFullStudyHtmlWithCssStyles()
+    {
+        return $this->container['full_study_html_with_css_styles'];
+    }
+
+    /**
+     * Sets full_study_html_with_css_styles
+     * @param string $full_study_html_with_css_styles Embeddable study html including charts and css styling
+     * @return $this
+     */
+    public function setFullStudyHtmlWithCssStyles($full_study_html_with_css_styles)
+    {
+        $this->container['full_study_html_with_css_styles'] = $full_study_html_with_css_styles;
+
+        return $this;
+    }
+
+    /**
+     * Gets statistics_table_html
+     * @return string
+     */
+    public function getStatisticsTableHtml()
+    {
+        return $this->container['statistics_table_html'];
+    }
+
+    /**
+     * Sets statistics_table_html
+     * @param string $statistics_table_html Embeddable table with statistics
+     * @return $this
+     */
+    public function setStatisticsTableHtml($statistics_table_html)
+    {
+        $this->container['statistics_table_html'] = $statistics_table_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_abstract_html
+     * @return string
+     */
+    public function getStudyAbstractHtml()
+    {
+        return $this->container['study_abstract_html'];
+    }
+
+    /**
+     * Sets study_abstract_html
+     * @param string $study_abstract_html Text summary
+     * @return $this
+     */
+    public function setStudyAbstractHtml($study_abstract_html)
+    {
+        $this->container['study_abstract_html'] = $study_abstract_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_header_html
+     * @return string
+     */
+    public function getStudyHeaderHtml()
+    {
+        return $this->container['study_header_html'];
+    }
+
+    /**
+     * Sets study_header_html
+     * @param string $study_header_html Title, study image, abstract with CSS styling
+     * @return $this
+     */
+    public function setStudyHeaderHtml($study_header_html)
+    {
+        $this->container['study_header_html'] = $study_header_html;
 
         return $this;
     }
@@ -362,6 +434,27 @@ class StudyHtml implements ArrayAccess
     }
 
     /**
+     * Gets study_meta_html
+     * @return string
+     */
+    public function getStudyMetaHtml()
+    {
+        return $this->container['study_meta_html'];
+    }
+
+    /**
+     * Sets study_meta_html
+     * @param string $study_meta_html Facebook, Twitter, Google+
+     * @return $this
+     */
+    public function setStudyMetaHtml($study_meta_html)
+    {
+        $this->container['study_meta_html'] = $study_meta_html;
+
+        return $this;
+    }
+
+    /**
      * Gets study_text_html
      * @return string
      */
@@ -372,12 +465,54 @@ class StudyHtml implements ArrayAccess
 
     /**
      * Sets study_text_html
-     * @param string $study_text_html Formatting study text
+     * @param string $study_text_html Formatted study text sections
      * @return $this
      */
     public function setStudyTextHtml($study_text_html)
     {
         $this->container['study_text_html'] = $study_text_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets social_sharing_button_html
+     * @return string
+     */
+    public function getSocialSharingButtonHtml()
+    {
+        return $this->container['social_sharing_button_html'];
+    }
+
+    /**
+     * Sets social_sharing_button_html
+     * @param string $social_sharing_button_html 
+     * @return $this
+     */
+    public function setSocialSharingButtonHtml($social_sharing_button_html)
+    {
+        $this->container['social_sharing_button_html'] = $social_sharing_button_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_summary_box_html
+     * @return string
+     */
+    public function getStudySummaryBoxHtml()
+    {
+        return $this->container['study_summary_box_html'];
+    }
+
+    /**
+     * Sets study_summary_box_html
+     * @param string $study_summary_box_html 
+     * @return $this
+     */
+    public function setStudySummaryBoxHtml($study_summary_box_html)
+    {
+        $this->container['study_summary_box_html'] = $study_summary_box_html;
 
         return $this;
     }

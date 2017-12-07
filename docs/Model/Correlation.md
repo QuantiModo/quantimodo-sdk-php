@@ -27,8 +27,6 @@ Name | Type | Description | Notes
 **correlation_is_contradictory_to_optimal_values** | **bool** | Example: false | [optional] 
 **created_at** | [**\DateTime**](\DateTime.md) | Example: 2016-12-28 20:47:30 | 
 **critical_t_value** | **double** | Example: 1.646 | 
-**data_analysis** | **string** | Example: It was assumed that 0 hours would pass before a change in Sleep Quality would produce an observable change in Overall Mood.  It was assumed that Sleep Quality could produce an observable change in Overall Mood for as much as 7 days after the stimulus event. | 
-**data_sources** | **string** | Example: Sleep Quality data was primarily collected using &lt;a href&#x3D;\&quot;http://www.amazon.com/gp/product/B00A17IAO0/ref&#x3D;as_li_qf_sp_asin_tl?ie&#x3D;UTF8&amp;camp&#x3D;1789&amp;creative&#x3D;9325&amp;creativeASIN&#x3D;B00A17IAO0&amp;linkCode&#x3D;as2&amp;tag&#x3D;quant08-20\&quot;&gt;Up by Jawbone&lt;/a&gt;.  UP by Jawbone is a wristband and app that tracks how you sleep, move and eat and then helps you use that information to feel your best.&lt;br&gt;Overall Mood data was primarily collected using &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt;.  &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; is a Chrome extension, Android app, iOS app, and web app that allows you to easily track mood, symptoms, or any outcome you want to optimize in a fraction of a second.  You can also import your data from over 30 other apps and devices like Fitbit, Rescuetime, Jawbone Up, Withings, Facebook, Github, Google Calendar, Runkeeper, MoodPanda, Slice, Google Fit, and more.  &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; then analyzes your data to identify which hidden factors are most likely to be influencing your mood or symptoms and their optimal daily values. | 
 **direction** | **string** | Example: higher | 
 **duration_of_action** | **int** | Example: 604800 | 
 **duration_of_action_in_hours** | **int** | Example: 168 | 
@@ -78,10 +76,10 @@ Name | Type | Description | Notes
 **statistical_significance** | **double** | Example: 0.9813 | 
 **strength_level** | **string** | Example: moderate | 
 **strongest_pearson_correlation_coefficient** | **double** | Example: 0.613 | 
+**study_html** | [**\QuantiModo\Client\Model\StudyHtml**](StudyHtml.md) |  | [optional] 
 **study_images** | [**\QuantiModo\Client\Model\StudyImages**](StudyImages.md) |  | [optional] 
 **study_links** | [**\QuantiModo\Client\Model\StudyLinks**](StudyLinks.md) |  | [optional] 
 **study_text** | [**\QuantiModo\Client\Model\StudyText**](StudyText.md) |  | [optional] 
-**study_html** | **string** | Embeddable study HTML including chart svg&#39;s | [optional] 
 **t_value** | **double** | Example: 9.6986079652717 | 
 **updated_at** | [**\DateTime**](\DateTime.md) | Example: 2017-05-06 15:40:38 | 
 **user_id** | **int** | Example: 230 | 

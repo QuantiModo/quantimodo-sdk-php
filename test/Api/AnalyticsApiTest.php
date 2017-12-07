@@ -83,12 +83,22 @@ class AnalyticsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for getAggregatedCorrelations
+     * Test case for getCorrelationExplanations
      *
-     * Get aggregated correlations.
+     * Get correlation explanations.
      *
      */
-    public function testGetAggregatedCorrelations()
+    public function testGetCorrelationExplanations()
+    {
+    }
+
+    /**
+     * Test case for getCorrelations
+     *
+     * Get correlations.
+     *
+     */
+    public function testGetCorrelations()
     {
     }
 
@@ -99,36 +109,6 @@ class AnalyticsApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testGetStudy()
-    {
-    }
-
-    /**
-     * Test case for getUserCorrelationExplanations
-     *
-     * Get correlation explanations.
-     *
-     */
-    public function testGetUserCorrelationExplanations()
-    {
-    }
-
-    /**
-     * Test case for getUserCorrelations
-     *
-     * Get correlations.
-     *
-     */
-    public function testGetUserCorrelations()
-    {
-    }
-
-    /**
-     * Test case for postAggregatedCorrelations
-     *
-     * Store or Update a Correlation.
-     *
-     */
-    public function testPostAggregatedCorrelations()
     {
     }
 

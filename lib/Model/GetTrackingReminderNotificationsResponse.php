@@ -54,7 +54,7 @@ class GetTrackingReminderNotificationsResponse implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\QuantiModo\Client\Model\TrackingReminderNotificationsArray',
+        'data' => '\QuantiModo\Client\Model\TrackingReminderNotification[]',
         'message' => 'string',
         'status' => 'int',
         'success' => 'bool'
@@ -192,7 +192,7 @@ class GetTrackingReminderNotificationsResponse implements ArrayAccess
 
     /**
      * Gets data
-     * @return \QuantiModo\Client\Model\TrackingReminderNotificationsArray
+     * @return \QuantiModo\Client\Model\TrackingReminderNotification[]
      */
     public function getData()
     {
@@ -201,7 +201,7 @@ class GetTrackingReminderNotificationsResponse implements ArrayAccess
 
     /**
      * Sets data
-     * @param \QuantiModo\Client\Model\TrackingReminderNotificationsArray $data
+     * @param \QuantiModo\Client\Model\TrackingReminderNotification[] $data
      * @return $this
      */
     public function setData($data)

@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getMeasurements**
-> \QuantiModo\Client\Model\MeasurementArray getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $connector_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter)
+> \QuantiModo\Client\Model\Measurement[] getMeasurements($variable_name, $sort, $limit, $offset, $variable_category_name, $updated_at, $user_id, $source_name, $connector_name, $value, $unit_name, $earliest_measurement_time, $latest_measurement_time, $created_at, $id, $grouping_width, $grouping_timezone, $do_not_process, $app_name, $client_id, $do_not_convert, $min_max_filter)
 
 Get measurements for this user
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\MeasurementArray**](../Model/MeasurementArray.md)
+[**\QuantiModo\Client\Model\Measurement[]**](../Model/Measurement.md)
 
 ### Authorization
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPairs**
-> \QuantiModo\Client\Model\PairArray getPairs($cause_variable_name, $effect_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Pair[] getPairs($cause_variable_name, $effect_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort)
 
 Get pairs of measurements for correlational analysis
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\PairArray**](../Model/PairArray.md)
+[**\QuantiModo\Client\Model\Pair[]**](../Model/Pair.md)
 
 ### Authorization
 

@@ -106,6 +106,7 @@ class TrackingReminderNotification implements ArrayAccess
         'tracking_reminder_notification_time' => '\DateTime',
         'tracking_reminder_notification_time_epoch' => 'int',
         'tracking_reminder_notification_time_local' => 'string',
+        'tracking_reminder_notification_time_local_human_string' => 'string',
         'updated_at' => '\DateTime',
         'user_id' => 'int',
         'user_variable_unit_abbreviated_name' => 'string',
@@ -181,6 +182,7 @@ class TrackingReminderNotification implements ArrayAccess
         'tracking_reminder_notification_time' => 'date-time',
         'tracking_reminder_notification_time_epoch' => null,
         'tracking_reminder_notification_time_local' => null,
+        'tracking_reminder_notification_time_local_human_string' => null,
         'updated_at' => 'date-time',
         'user_id' => 'int32',
         'user_variable_unit_abbreviated_name' => null,
@@ -266,6 +268,7 @@ class TrackingReminderNotification implements ArrayAccess
         'tracking_reminder_notification_time' => 'trackingReminderNotificationTime',
         'tracking_reminder_notification_time_epoch' => 'trackingReminderNotificationTimeEpoch',
         'tracking_reminder_notification_time_local' => 'trackingReminderNotificationTimeLocal',
+        'tracking_reminder_notification_time_local_human_string' => 'trackingReminderNotificationTimeLocalHumanString',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
         'user_variable_unit_abbreviated_name' => 'userVariableUnitAbbreviatedName',
@@ -342,6 +345,7 @@ class TrackingReminderNotification implements ArrayAccess
         'tracking_reminder_notification_time' => 'setTrackingReminderNotificationTime',
         'tracking_reminder_notification_time_epoch' => 'setTrackingReminderNotificationTimeEpoch',
         'tracking_reminder_notification_time_local' => 'setTrackingReminderNotificationTimeLocal',
+        'tracking_reminder_notification_time_local_human_string' => 'setTrackingReminderNotificationTimeLocalHumanString',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
         'user_variable_unit_abbreviated_name' => 'setUserVariableUnitAbbreviatedName',
@@ -418,6 +422,7 @@ class TrackingReminderNotification implements ArrayAccess
         'tracking_reminder_notification_time' => 'getTrackingReminderNotificationTime',
         'tracking_reminder_notification_time_epoch' => 'getTrackingReminderNotificationTimeEpoch',
         'tracking_reminder_notification_time_local' => 'getTrackingReminderNotificationTimeLocal',
+        'tracking_reminder_notification_time_local_human_string' => 'getTrackingReminderNotificationTimeLocalHumanString',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
         'user_variable_unit_abbreviated_name' => 'getUserVariableUnitAbbreviatedName',
@@ -533,6 +538,7 @@ class TrackingReminderNotification implements ArrayAccess
         $this->container['tracking_reminder_notification_time'] = isset($data['tracking_reminder_notification_time']) ? $data['tracking_reminder_notification_time'] : null;
         $this->container['tracking_reminder_notification_time_epoch'] = isset($data['tracking_reminder_notification_time_epoch']) ? $data['tracking_reminder_notification_time_epoch'] : null;
         $this->container['tracking_reminder_notification_time_local'] = isset($data['tracking_reminder_notification_time_local']) ? $data['tracking_reminder_notification_time_local'] : null;
+        $this->container['tracking_reminder_notification_time_local_human_string'] = isset($data['tracking_reminder_notification_time_local_human_string']) ? $data['tracking_reminder_notification_time_local_human_string'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['user_variable_unit_abbreviated_name'] = isset($data['user_variable_unit_abbreviated_name']) ? $data['user_variable_unit_abbreviated_name'] : null;
@@ -1715,6 +1721,27 @@ class TrackingReminderNotification implements ArrayAccess
     public function setTrackingReminderNotificationTimeLocal($tracking_reminder_notification_time_local)
     {
         $this->container['tracking_reminder_notification_time_local'] = $tracking_reminder_notification_time_local;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_reminder_notification_time_local_human_string
+     * @return string
+     */
+    public function getTrackingReminderNotificationTimeLocalHumanString()
+    {
+        return $this->container['tracking_reminder_notification_time_local_human_string'];
+    }
+
+    /**
+     * Sets tracking_reminder_notification_time_local_human_string
+     * @param string $tracking_reminder_notification_time_local_human_string Example: 8PM Sun, May 1
+     * @return $this
+     */
+    public function setTrackingReminderNotificationTimeLocalHumanString($tracking_reminder_notification_time_local_human_string)
+    {
+        $this->container['tracking_reminder_notification_time_local_human_string'] = $tracking_reminder_notification_time_local_human_string;
 
         return $this;
     }

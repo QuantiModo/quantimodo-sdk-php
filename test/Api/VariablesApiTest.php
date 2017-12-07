@@ -93,32 +93,22 @@ class VariablesApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for getCommonVariables
-     *
-     * Get common variables with aggregated instead of user-specific data.
-     *
-     */
-    public function testGetCommonVariables()
-    {
-    }
-
-    /**
-     * Test case for getUserVariables
-     *
-     * Get variables along with related user-specific analysis settings and statistics.
-     *
-     */
-    public function testGetUserVariables()
-    {
-    }
-
-    /**
      * Test case for getVariableCategories
      *
      * Variable categories.
      *
      */
     public function testGetVariableCategories()
+    {
+    }
+
+    /**
+     * Test case for getVariables
+     *
+     * Get variables along with related user-specific analysis settings and statistics.
+     *
+     */
+    public function testGetVariables()
     {
     }
 

@@ -78,6 +78,27 @@ class StudyHtmlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "chart_html"
+     */
+    public function testPropertyChartHtml()
+    {
+    }
+
+    /**
+     * Test attribute "download_buttons_html"
+     */
+    public function testPropertyDownloadButtonsHtml()
+    {
+    }
+
+    /**
+     * Test attribute "full_page_with_head"
+     */
+    public function testPropertyFullPageWithHead()
+    {
+    }
+
+    /**
      * Test attribute "full_study_html"
      */
     public function testPropertyFullStudyHtml()
@@ -99,23 +120,16 @@ class StudyHtmlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "chart_html"
+     * Test attribute "study_abstract_html"
      */
-    public function testPropertyChartHtml()
+    public function testPropertyStudyAbstractHtml()
     {
     }
 
     /**
-     * Test attribute "download_buttons_html"
+     * Test attribute "study_header_html"
      */
-    public function testPropertyDownloadButtonsHtml()
-    {
-    }
-
-    /**
-     * Test attribute "study_meta_html"
-     */
-    public function testPropertyStudyMetaHtml()
+    public function testPropertyStudyHeaderHtml()
     {
     }
 
@@ -127,9 +141,30 @@ class StudyHtmlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "study_meta_html"
+     */
+    public function testPropertyStudyMetaHtml()
+    {
+    }
+
+    /**
      * Test attribute "study_text_html"
      */
     public function testPropertyStudyTextHtml()
+    {
+    }
+
+    /**
+     * Test attribute "social_sharing_button_html"
+     */
+    public function testPropertySocialSharingButtonHtml()
+    {
+    }
+
+    /**
+     * Test attribute "study_summary_box_html"
+     */
+    public function testPropertyStudySummaryBoxHtml()
     {
     }
 }

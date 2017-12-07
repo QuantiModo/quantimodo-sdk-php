@@ -246,20 +246,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "data_analysis"
-     */
-    public function testPropertyDataAnalysis()
-    {
-    }
-
-    /**
-     * Test attribute "data_sources"
-     */
-    public function testPropertyDataSources()
-    {
-    }
-
-    /**
      * Test attribute "direction"
      */
     public function testPropertyDirection()
@@ -603,6 +589,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "study_html"
+     */
+    public function testPropertyStudyHtml()
+    {
+    }
+
+    /**
      * Test attribute "study_images"
      */
     public function testPropertyStudyImages()
@@ -620,13 +613,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "study_text"
      */
     public function testPropertyStudyText()
-    {
-    }
-
-    /**
-     * Test attribute "study_html"
-     */
-    public function testPropertyStudyHtml()
     {
     }
 

@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTrackingReminders**
-> \QuantiModo\Client\Model\TrackingReminderArray getTrackingReminders($user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort, $app_name, $client_id, $app_version)
+> \QuantiModo\Client\Model\TrackingReminder[] getTrackingReminders($user_id, $variable_category_name, $created_at, $updated_at, $limit, $offset, $sort, $app_name, $client_id, $app_version)
 
 Get repeating tracking reminder settings
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\QuantiModo\Client\Model\TrackingReminderArray**](../Model/TrackingReminderArray.md)
+[**\QuantiModo\Client\Model\TrackingReminder[]**](../Model/TrackingReminder.md)
 
 ### Authorization
 
@@ -287,7 +287,7 @@ QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_to
 QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new QuantiModo\Client\Api\RemindersApi();
-$body = new \QuantiModo\Client\Model\TrackingReminderArray(); // \QuantiModo\Client\Model\TrackingReminderArray | TrackingReminder that should be stored
+$body = array(new \QuantiModo\Client\Model\TrackingReminder()); // \QuantiModo\Client\Model\TrackingReminder[] | TrackingReminder that should be stored
 
 try {
     $result = $api_instance->postTrackingReminders($body);
@@ -302,7 +302,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\QuantiModo\Client\Model\TrackingReminderArray**](../Model/TrackingReminderArray.md)| TrackingReminder that should be stored |
+ **body** | [**\QuantiModo\Client\Model\TrackingReminder[]**](../Model/TrackingReminder.md)| TrackingReminder that should be stored |
 
 ### Return type
 

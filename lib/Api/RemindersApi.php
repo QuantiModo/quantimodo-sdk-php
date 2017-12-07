@@ -350,7 +350,7 @@ class RemindersApi
      * @param string $client_id Example: oauth_test_client (optional)
      * @param string $app_version Example: 2.1.1.0 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\TrackingReminderArray
+     * @return \QuantiModo\Client\Model\TrackingReminder[]
      */
     public function getTrackingReminders($user_id = null, $variable_category_name = null, $created_at = null, $updated_at = null, $limit = '100', $offset = null, $sort = null, $app_name = null, $client_id = null, $app_version = null)
     {
@@ -374,7 +374,7 @@ class RemindersApi
      * @param string $client_id Example: oauth_test_client (optional)
      * @param string $app_version Example: 2.1.1.0 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\TrackingReminderArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\TrackingReminder[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrackingRemindersWithHttpInfo($user_id = null, $variable_category_name = null, $created_at = null, $updated_at = null, $limit = '100', $offset = null, $sort = null, $app_name = null, $client_id = null, $app_version = null)
     {
@@ -458,15 +458,15 @@ class RemindersApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\TrackingReminderArray',
+                '\QuantiModo\Client\Model\TrackingReminder[]',
                 '/v3/trackingReminders'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\TrackingReminderArray', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\TrackingReminder[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\TrackingReminderArray', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\TrackingReminder[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -586,7 +586,7 @@ class RemindersApi
      *
      * Store a Tracking Reminder
      *
-     * @param \QuantiModo\Client\Model\TrackingReminderArray $body TrackingReminder that should be stored (required)
+     * @param \QuantiModo\Client\Model\TrackingReminder[] $body TrackingReminder that should be stored (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return \QuantiModo\Client\Model\PostTrackingRemindersResponse
      */
@@ -601,7 +601,7 @@ class RemindersApi
      *
      * Store a Tracking Reminder
      *
-     * @param \QuantiModo\Client\Model\TrackingReminderArray $body TrackingReminder that should be stored (required)
+     * @param \QuantiModo\Client\Model\TrackingReminder[] $body TrackingReminder that should be stored (required)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @return array of \QuantiModo\Client\Model\PostTrackingRemindersResponse, HTTP status code, HTTP response headers (array of strings)
      */

@@ -203,7 +203,7 @@ class MeasurementsApi
      * @param bool $do_not_convert Example: 1 (optional)
      * @param bool $min_max_filter Example: 1 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\MeasurementArray
+     * @return \QuantiModo\Client\Model\Measurement[]
      */
     public function getMeasurements($variable_name = null, $sort = null, $limit = '100', $offset = null, $variable_category_name = null, $updated_at = null, $user_id = null, $source_name = null, $connector_name = null, $value = null, $unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $id = null, $grouping_width = null, $grouping_timezone = null, $do_not_process = null, $app_name = null, $client_id = null, $do_not_convert = null, $min_max_filter = null)
     {
@@ -239,7 +239,7 @@ class MeasurementsApi
      * @param bool $do_not_convert Example: 1 (optional)
      * @param bool $min_max_filter Example: 1 (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\MeasurementArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Measurement[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getMeasurementsWithHttpInfo($variable_name = null, $sort = null, $limit = '100', $offset = null, $variable_category_name = null, $updated_at = null, $user_id = null, $source_name = null, $connector_name = null, $value = null, $unit_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $created_at = null, $id = null, $grouping_width = null, $grouping_timezone = null, $do_not_process = null, $app_name = null, $client_id = null, $do_not_convert = null, $min_max_filter = null)
     {
@@ -371,15 +371,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\MeasurementArray',
+                '\QuantiModo\Client\Model\Measurement[]',
                 '/v3/measurements'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\MeasurementArray', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Measurement[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\MeasurementArray', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Measurement[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -406,7 +406,7 @@ class MeasurementsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return \QuantiModo\Client\Model\PairArray
+     * @return \QuantiModo\Client\Model\Pair[]
      */
     public function getPairs($cause_variable_name = null, $effect_variable_name = null, $effect_unit_name = null, $user_id = null, $cause_unit_name = null, $onset_delay = null, $duration_of_action = null, $earliest_measurement_time = null, $latest_measurement_time = null, $limit = '100', $offset = null, $sort = null)
     {
@@ -432,7 +432,7 @@ class MeasurementsApi
      * @param int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
      * @param string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
      * @throws \QuantiModo\Client\ApiException on non-2xx response
-     * @return array of \QuantiModo\Client\Model\PairArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \QuantiModo\Client\Model\Pair[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getPairsWithHttpInfo($cause_variable_name = null, $effect_variable_name = null, $effect_unit_name = null, $user_id = null, $cause_unit_name = null, $onset_delay = null, $duration_of_action = null, $earliest_measurement_time = null, $latest_measurement_time = null, $limit = '100', $offset = null, $sort = null)
     {
@@ -524,15 +524,15 @@ class MeasurementsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\QuantiModo\Client\Model\PairArray',
+                '\QuantiModo\Client\Model\Pair[]',
                 '/v3/pairs'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\PairArray', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\QuantiModo\Client\Model\Pair[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\PairArray', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\QuantiModo\Client\Model\Pair[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

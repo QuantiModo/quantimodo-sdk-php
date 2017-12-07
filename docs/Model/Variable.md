@@ -1,24 +1,25 @@
-# UserVariable
+# Variable
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**alias** | **string** | Example: | 
-**available_units** | [**\QuantiModo\Client\Model\Unit[]**](Unit.md) |  | 
+**action_array** | [**\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]**](TrackingReminderNotificationActionArray.md) |  | [optional] 
+**alias** | **string** | Example: | [optional] 
+**available_units** | [**\QuantiModo\Client\Model\Unit[]**](Unit.md) |  | [optional] 
 **cause_only** | **bool** | A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user | [optional] 
-**charts** | [**\QuantiModo\Client\Model\Chart[]**](Chart.md) |  | [optional] 
+**charts** | **object** | An object with various chart properties each property contain and svg and Highcharts configuration | [optional] 
 **charts_link_dynamic** | **string** | Example: https://local.quantimo.do/ionic/Modo/www/#/app/charts/Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29?variableName&#x3D;Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29&amp;userId&#x3D;230&amp;pngUrl&#x3D;https%3A%2F%2Fapp.quantimo.do%2Fionic%2FModo%2Fwww%2Fimg%2Fvariable_categories%2Ftreatments.png | [optional] 
 **charts_link_email** | **string** | Example: mailto:?subject&#x3D;Check%20out%20my%20Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29%20data%21&amp;body&#x3D;See%20my%20Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29%20history%20at%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png%0A%0AHave%20a%20great%20day! | [optional] 
 **charts_link_facebook** | **string** | Example: https://www.facebook.com/sharer/sharer.php?u&#x3D;https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png | [optional] 
 **charts_link_google** | **string** | Example: https://plus.google.com/share?url&#x3D;https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png | [optional] 
 **charts_link_static** | **string** | Example: https://local.quantimo.do/api/v2/charts?variableName&#x3D;Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29&amp;userId&#x3D;230&amp;pngUrl&#x3D;https%3A%2F%2Fapp.quantimo.do%2Fionic%2FModo%2Fwww%2Fimg%2Fvariable_categories%2Ftreatments.png | [optional] 
 **charts_link_twitter** | **string** | Example: https://twitter.com/home?status&#x3D;Check%20out%20my%20Trader%20Joes%20Bedtime%20Tea%20%2F%20Sleepytime%20Tea%20%28any%20Brand%29%20data%21%20https%3A%2F%2Flocal.quantimo.do%2Fapi%2Fv2%2Fcharts%3FvariableName%3DTrader%2520Joes%2520Bedtime%2520Tea%2520%252F%2520Sleepytime%2520Tea%2520%2528any%2520Brand%2529%26userId%3D230%26pngUrl%3Dhttps%253A%252F%252Fapp.quantimo.do%252Fionic%252FModo%252Fwww%252Fimg%252Fvariable_categories%252Ftreatments.png%20%40quantimodo | [optional] 
-**child_user_tag_variables** | [**\QuantiModo\Client\Model\UserVariableArray**](UserVariableArray.md) |  | 
+**child_user_tag_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
 **client_id** | **string** | clientId | [optional] 
 **combination_operation** | **string** | Example: MEAN | [optional] 
 **common_alias** | **string** | Example: Anxiety / Nervousness | [optional] 
-**common_tagged_variables** | [**\QuantiModo\Client\Model\CommonVariableArray**](CommonVariableArray.md) |  | 
-**common_tag_variables** | [**\QuantiModo\Client\Model\CommonVariableArray**](CommonVariableArray.md) |  | 
+**common_tagged_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
+**common_tag_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
 **common_variable_most_common_connector_id** | **int** | Example: 51 | [optional] 
 **common_variable_updated_at** | [**\DateTime**](\DateTime.md) | Example: 2017-02-07 23:43:39 | [optional] 
 **created_at** | [**\DateTime**](\DateTime.md) | When the record was first created. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format | [optional] 
@@ -43,14 +44,14 @@ Name | Type | Description | Notes
 **filling_type** | **string** | 0 -&gt; No filling, 1 -&gt; Use filling-value | [optional] 
 **filling_value** | **float** | When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven&#39;t taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing. | [optional] 
 **icon_icon** | **string** | Example: ion-sad-outline | [optional] 
-**id** | **int** | Example: 95614 | [optional] 
+**id** | **int** | Example: 95614 | 
 **image_url** | **string** |  | [optional] 
-**informational_url** | **string** | Example: | 
-**ingredient_of_user_tag_variables** | [**\QuantiModo\Client\Model\UserVariableArray**](UserVariableArray.md) |  | 
-**ingredient_user_tag_variables** | [**\QuantiModo\Client\Model\UserVariableArray**](UserVariableArray.md) |  | 
+**informational_url** | **string** | Example: | [optional] 
+**ingredient_of_user_tag_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
+**ingredient_user_tag_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
 **input_type** | **string** | Example: value | [optional] 
 **ion_icon** | **string** |  | [optional] 
-**joined_user_tag_variables** | [**\QuantiModo\Client\Model\UserVariableArray**](UserVariableArray.md) |  | 
+**joined_user_tag_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
 **join_with** | **int** | The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables | [optional] 
 **kurtosis** | **float** | Kurtosis | [optional] 
 **last_original_unit_id** | **int** | ID of last original Unit | [optional] 
@@ -79,12 +80,11 @@ Name | Type | Description | Notes
 **most_common_original_unit_id** | **int** | Example: 23 | [optional] 
 **most_common_unit_id** | **int** | Most common Unit ID | [optional] 
 **most_common_value** | **float** | Most common value | [optional] 
-**name** | **string** | Example: Trader Joes Bedtime Tea / Sleepytime Tea (any Brand) | [optional] 
+**name** | **string** | Example: Trader Joes Bedtime Tea / Sleepytime Tea (any Brand) | 
 **number_of_aggregate_correlations_as_cause** | **int** | Example: 1 | [optional] 
 **number_of_aggregate_correlations_as_effect** | **int** | Example: 310 | [optional] 
 **number_of_changes** | **int** | Number of changes | [optional] 
 **number_of_correlations** | **int** | Number of correlations for this variable | [optional] 
-**number_of_measurements** | **int** | Number of measurements | [optional] 
 **number_of_processed_daily_measurements** | **int** | Number of processed measurements | [optional] 
 **number_of_raw_measurements** | **int** | Example: 295 | [optional] 
 **number_of_tracking_reminders** | **int** | Example: 1 | [optional] 
@@ -97,14 +97,14 @@ Name | Type | Description | Notes
 **onset_delay_in_hours** | **double** | Example: 0.5 | [optional] 
 **outcome** | **bool** | Outcome variables (those with &#x60;outcome&#x60; &#x3D;&#x3D; 1) are variables for which a human would generally want to identify the influencing factors. These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables | [optional] 
 **outcome_of_interest** | **int** | Example: 1 | [optional] 
-**parent** | **string** | Example: | 
+**parent** | **string** | Example: | [optional] 
 **parent_id** | **int** | ID of the parent variable if this variable has any parent | [optional] 
-**parent_user_tag_variables** | [**\QuantiModo\Client\Model\UserVariableArray**](UserVariableArray.md) |  | 
+**parent_user_tag_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
 **png_path** | **string** | Example: img/variable_categories/treatments.png | [optional] 
 **png_url** | **string** | Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/treatments.png | [optional] 
 **predictor_of_interest** | **int** | Example: 0 | [optional] 
-**price** | **double** | Example: 95.4 | 
-**product_url** | **string** | Example: | 
+**price** | **double** | Example: 95.4 | [optional] 
+**product_url** | **string** | Example: | [optional] 
 **public** | **int** | Is variable public | [optional] 
 **raw_measurements_at_last_analysis** | **int** | Example: 131 | [optional] 
 **second_most_common_value** | **double** | Example: 1 | [optional] 
@@ -123,9 +123,9 @@ Name | Type | Description | Notes
 **updated** | **int** | updated | [optional] 
 **updated_at** | [**\DateTime**](\DateTime.md) | When the record in the database was last updated. Use UTC ISO 8601 &#x60;YYYY-MM-DDThh:mm:ss&#x60;  datetime format | [optional] 
 **updated_time** | [**\DateTime**](\DateTime.md) | Example: 2017-07-30 14:58:26 | [optional] 
-**user_id** | **int** | User ID | [optional] 
-**user_tagged_variables** | [**\QuantiModo\Client\Model\UserVariableArray**](UserVariableArray.md) |  | 
-**user_tag_variables** | [**\QuantiModo\Client\Model\UserVariableArray**](UserVariableArray.md) |  | 
+**user_id** | **int** | User ID | 
+**user_tagged_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
+**user_tag_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) |  | [optional] 
 **user_variable_unit_abbreviated_name** | **string** | Example: count | [optional] 
 **user_variable_unit_category_id** | **int** | Example: 6 | [optional] 
 **user_variable_unit_category_name** | **string** | Example: Miscellany | [optional] 
@@ -134,20 +134,25 @@ Name | Type | Description | Notes
 **user_variable_filling_value** | **double** | Example: -1 | [optional] 
 **user_variable_most_common_connector_id** | **int** | Example: 51 | [optional] 
 **user_variable_updated_at** | [**\DateTime**](\DateTime.md) | Example: 2017-07-30 14:58:26 | [optional] 
-**user_variable_valence** | **string** | Example: | 
+**user_variable_valence** | **string** | Example: | [optional] 
 **user_variable_variable_category_id** | **int** | Example: 13 | [optional] 
 **user_variable_variable_category_name** | **string** | Example: Treatments | [optional] 
-**user_variable_wikipedia_title** | **string** | Example: | 
-**valence** | **string** | Example: negative | [optional] 
+**user_variable_wikipedia_title** | **string** | Example: | [optional] 
 **variable_category** | [**\QuantiModo\Client\Model\VariableCategory**](VariableCategory.md) |  | [optional] 
-**variable_category_id** | **int** | ID of variable category | [optional] 
-**variable_category_image_url** | **string** | Example: https://maxcdn.icons8.com/Color/PNG/96/Healthcare/pill-96.png | [optional] 
-**variable_category_name** | **string** | Example: Treatments | [optional] 
+**data_source** | [**\QuantiModo\Client\Model\DataSource**](DataSource.md) |  | [optional] 
+**joined_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are joined with this Variable | [optional] 
+**last_source** | **int** | Last source | [optional] 
+**last_unit** | **string** | Last unit | [optional] 
+**most_common_unit** | **string** | Most common unit | [optional] 
+**valence** | **string** | Example: positive | [optional] 
+**variable_category_id** | **int** | Example: 6 | [optional] 
+**variable_category_image_url** | **string** | Example: https://maxcdn.icons8.com/Color/PNG/96/Household/sleeping_in_bed-96.png | [optional] 
+**variable_category_name** | **string** | Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc. | [optional] 
 **variable_filling_value** | **double** | Example: -1 | [optional] 
-**variable_id** | **int** | ID of variable | 
-**variable_name** | **string** | Example: Trader Joes Bedtime Tea / Sleepytime Tea (any Brand) | [optional] 
-**variance** | **float** | Variance | [optional] 
-**wikipedia_title** | **string** | Example: | 
+**variable_id** | **int** | Example: 96380 | 
+**variable_name** | **string** | Example: Sleep Duration | [optional] 
+**variance** | **double** | Example: 115947037.40816 | [optional] 
+**wikipedia_title** | **string** | Example: | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

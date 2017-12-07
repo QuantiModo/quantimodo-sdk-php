@@ -55,7 +55,9 @@ class MeasurementDelete implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'start_time' => 'int',
-        'variable_id' => 'int'
+        'variable_id' => 'int',
+        'connector_name' => 'string',
+        'client_id' => 'string'
     ];
 
     /**
@@ -64,7 +66,9 @@ class MeasurementDelete implements ArrayAccess
       */
     protected static $swaggerFormats = [
         'start_time' => null,
-        'variable_id' => null
+        'variable_id' => null,
+        'connector_name' => null,
+        'client_id' => null
     ];
 
     public static function swaggerTypes()
@@ -83,7 +87,9 @@ class MeasurementDelete implements ArrayAccess
      */
     protected static $attributeMap = [
         'start_time' => 'startTime',
-        'variable_id' => 'variableId'
+        'variable_id' => 'variableId',
+        'connector_name' => 'connectorName',
+        'client_id' => 'clientId'
     ];
 
 
@@ -93,7 +99,9 @@ class MeasurementDelete implements ArrayAccess
      */
     protected static $setters = [
         'start_time' => 'setStartTime',
-        'variable_id' => 'setVariableId'
+        'variable_id' => 'setVariableId',
+        'connector_name' => 'setConnectorName',
+        'client_id' => 'setClientId'
     ];
 
 
@@ -103,7 +111,9 @@ class MeasurementDelete implements ArrayAccess
      */
     protected static $getters = [
         'start_time' => 'getStartTime',
-        'variable_id' => 'getVariableId'
+        'variable_id' => 'getVariableId',
+        'connector_name' => 'getConnectorName',
+        'client_id' => 'getClientId'
     ];
 
     public static function attributeMap()
@@ -139,6 +149,8 @@ class MeasurementDelete implements ArrayAccess
     {
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
         $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
+        $this->container['connector_name'] = isset($data['connector_name']) ? $data['connector_name'] : null;
+        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
     }
 
     /**
@@ -150,11 +162,8 @@ class MeasurementDelete implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['start_time'] === null) {
-            $invalid_properties[] = "'start_time' can't be null";
-        }
-        if ($this->container['variable_id'] === null) {
-            $invalid_properties[] = "'variable_id' can't be null";
+        if ($this->container['client_id'] === null) {
+            $invalid_properties[] = "'client_id' can't be null";
         }
         return $invalid_properties;
     }
@@ -168,10 +177,7 @@ class MeasurementDelete implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['start_time'] === null) {
-            return false;
-        }
-        if ($this->container['variable_id'] === null) {
+        if ($this->container['client_id'] === null) {
             return false;
         }
         return true;
@@ -216,6 +222,48 @@ class MeasurementDelete implements ArrayAccess
     public function setVariableId($variable_id)
     {
         $this->container['variable_id'] = $variable_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets connector_name
+     * @return string
+     */
+    public function getConnectorName()
+    {
+        return $this->container['connector_name'];
+    }
+
+    /**
+     * Sets connector_name
+     * @param string $connector_name Name of the connector for which measurements should be deleted
+     * @return $this
+     */
+    public function setConnectorName($connector_name)
+    {
+        $this->container['connector_name'] = $connector_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_id
+     * @return string
+     */
+    public function getClientId()
+    {
+        return $this->container['client_id'];
+    }
+
+    /**
+     * Sets client_id
+     * @param string $client_id Your app's client id
+     * @return $this
+     */
+    public function setClientId($client_id)
+    {
+        $this->container['client_id'] = $client_id;
 
         return $this;
     }

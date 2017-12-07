@@ -54,7 +54,7 @@ class PostMeasurementsDataResponse implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'user_variables' => '\QuantiModo\Client\Model\UserVariable[]'
+        'user_variables' => '\QuantiModo\Client\Model\Variable[]'
     ];
 
     /**
@@ -162,7 +162,7 @@ class PostMeasurementsDataResponse implements ArrayAccess
 
     /**
      * Gets user_variables
-     * @return \QuantiModo\Client\Model\UserVariable[]
+     * @return \QuantiModo\Client\Model\Variable[]
      */
     public function getUserVariables()
     {
@@ -171,7 +171,7 @@ class PostMeasurementsDataResponse implements ArrayAccess
 
     /**
      * Sets user_variables
-     * @param \QuantiModo\Client\Model\UserVariable[] $user_variables
+     * @param \QuantiModo\Client\Model\Variable[] $user_variables
      * @return $this
      */
     public function setUserVariables($user_variables)

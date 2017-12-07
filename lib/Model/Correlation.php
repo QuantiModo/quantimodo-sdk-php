@@ -78,8 +78,6 @@ class Correlation implements ArrayAccess
         'correlation_is_contradictory_to_optimal_values' => 'bool',
         'created_at' => '\DateTime',
         'critical_t_value' => 'double',
-        'data_analysis' => 'string',
-        'data_sources' => 'string',
         'direction' => 'string',
         'duration_of_action' => 'int',
         'duration_of_action_in_hours' => 'int',
@@ -129,10 +127,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'double',
         'strength_level' => 'string',
         'strongest_pearson_correlation_coefficient' => 'double',
+        'study_html' => '\QuantiModo\Client\Model\StudyHtml',
         'study_images' => '\QuantiModo\Client\Model\StudyImages',
         'study_links' => '\QuantiModo\Client\Model\StudyLinks',
         'study_text' => '\QuantiModo\Client\Model\StudyText',
-        'study_html' => 'string',
         't_value' => 'double',
         'updated_at' => '\DateTime',
         'user_id' => 'int',
@@ -190,8 +188,6 @@ class Correlation implements ArrayAccess
         'correlation_is_contradictory_to_optimal_values' => null,
         'created_at' => 'date-time',
         'critical_t_value' => 'double',
-        'data_analysis' => null,
-        'data_sources' => null,
         'direction' => null,
         'duration_of_action' => null,
         'duration_of_action_in_hours' => null,
@@ -241,10 +237,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'double',
         'strength_level' => null,
         'strongest_pearson_correlation_coefficient' => 'double',
+        'study_html' => null,
         'study_images' => null,
         'study_links' => null,
         'study_text' => null,
-        'study_html' => null,
         't_value' => 'double',
         'updated_at' => 'date-time',
         'user_id' => null,
@@ -312,8 +308,6 @@ class Correlation implements ArrayAccess
         'correlation_is_contradictory_to_optimal_values' => 'correlationIsContradictoryToOptimalValues',
         'created_at' => 'createdAt',
         'critical_t_value' => 'criticalTValue',
-        'data_analysis' => 'dataAnalysis',
-        'data_sources' => 'dataSources',
         'direction' => 'direction',
         'duration_of_action' => 'durationOfAction',
         'duration_of_action_in_hours' => 'durationOfActionInHours',
@@ -363,10 +357,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'statisticalSignificance',
         'strength_level' => 'strengthLevel',
         'strongest_pearson_correlation_coefficient' => 'strongestPearsonCorrelationCoefficient',
+        'study_html' => 'studyHtml',
         'study_images' => 'studyImages',
         'study_links' => 'studyLinks',
         'study_text' => 'studyText',
-        'study_html' => 'studyHtml',
         't_value' => 'tValue',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
@@ -425,8 +419,6 @@ class Correlation implements ArrayAccess
         'correlation_is_contradictory_to_optimal_values' => 'setCorrelationIsContradictoryToOptimalValues',
         'created_at' => 'setCreatedAt',
         'critical_t_value' => 'setCriticalTValue',
-        'data_analysis' => 'setDataAnalysis',
-        'data_sources' => 'setDataSources',
         'direction' => 'setDirection',
         'duration_of_action' => 'setDurationOfAction',
         'duration_of_action_in_hours' => 'setDurationOfActionInHours',
@@ -476,10 +468,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'setStatisticalSignificance',
         'strength_level' => 'setStrengthLevel',
         'strongest_pearson_correlation_coefficient' => 'setStrongestPearsonCorrelationCoefficient',
+        'study_html' => 'setStudyHtml',
         'study_images' => 'setStudyImages',
         'study_links' => 'setStudyLinks',
         'study_text' => 'setStudyText',
-        'study_html' => 'setStudyHtml',
         't_value' => 'setTValue',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
@@ -538,8 +530,6 @@ class Correlation implements ArrayAccess
         'correlation_is_contradictory_to_optimal_values' => 'getCorrelationIsContradictoryToOptimalValues',
         'created_at' => 'getCreatedAt',
         'critical_t_value' => 'getCriticalTValue',
-        'data_analysis' => 'getDataAnalysis',
-        'data_sources' => 'getDataSources',
         'direction' => 'getDirection',
         'duration_of_action' => 'getDurationOfAction',
         'duration_of_action_in_hours' => 'getDurationOfActionInHours',
@@ -589,10 +579,10 @@ class Correlation implements ArrayAccess
         'statistical_significance' => 'getStatisticalSignificance',
         'strength_level' => 'getStrengthLevel',
         'strongest_pearson_correlation_coefficient' => 'getStrongestPearsonCorrelationCoefficient',
+        'study_html' => 'getStudyHtml',
         'study_images' => 'getStudyImages',
         'study_links' => 'getStudyLinks',
         'study_text' => 'getStudyText',
-        'study_html' => 'getStudyHtml',
         't_value' => 'getTValue',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
@@ -676,8 +666,6 @@ class Correlation implements ArrayAccess
         $this->container['correlation_is_contradictory_to_optimal_values'] = isset($data['correlation_is_contradictory_to_optimal_values']) ? $data['correlation_is_contradictory_to_optimal_values'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['critical_t_value'] = isset($data['critical_t_value']) ? $data['critical_t_value'] : null;
-        $this->container['data_analysis'] = isset($data['data_analysis']) ? $data['data_analysis'] : null;
-        $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
         $this->container['direction'] = isset($data['direction']) ? $data['direction'] : null;
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
         $this->container['duration_of_action_in_hours'] = isset($data['duration_of_action_in_hours']) ? $data['duration_of_action_in_hours'] : null;
@@ -727,10 +715,10 @@ class Correlation implements ArrayAccess
         $this->container['statistical_significance'] = isset($data['statistical_significance']) ? $data['statistical_significance'] : null;
         $this->container['strength_level'] = isset($data['strength_level']) ? $data['strength_level'] : null;
         $this->container['strongest_pearson_correlation_coefficient'] = isset($data['strongest_pearson_correlation_coefficient']) ? $data['strongest_pearson_correlation_coefficient'] : null;
+        $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['study_images'] = isset($data['study_images']) ? $data['study_images'] : null;
         $this->container['study_links'] = isset($data['study_links']) ? $data['study_links'] : null;
         $this->container['study_text'] = isset($data['study_text']) ? $data['study_text'] : null;
-        $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['t_value'] = isset($data['t_value']) ? $data['t_value'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
@@ -815,12 +803,6 @@ class Correlation implements ArrayAccess
         }
         if ($this->container['critical_t_value'] === null) {
             $invalid_properties[] = "'critical_t_value' can't be null";
-        }
-        if ($this->container['data_analysis'] === null) {
-            $invalid_properties[] = "'data_analysis' can't be null";
-        }
-        if ($this->container['data_sources'] === null) {
-            $invalid_properties[] = "'data_sources' can't be null";
         }
         if ($this->container['direction'] === null) {
             $invalid_properties[] = "'direction' can't be null";
@@ -997,12 +979,6 @@ class Correlation implements ArrayAccess
             return false;
         }
         if ($this->container['critical_t_value'] === null) {
-            return false;
-        }
-        if ($this->container['data_analysis'] === null) {
-            return false;
-        }
-        if ($this->container['data_sources'] === null) {
             return false;
         }
         if ($this->container['direction'] === null) {
@@ -1626,48 +1602,6 @@ class Correlation implements ArrayAccess
     public function setCriticalTValue($critical_t_value)
     {
         $this->container['critical_t_value'] = $critical_t_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_analysis
-     * @return string
-     */
-    public function getDataAnalysis()
-    {
-        return $this->container['data_analysis'];
-    }
-
-    /**
-     * Sets data_analysis
-     * @param string $data_analysis Example: It was assumed that 0 hours would pass before a change in Sleep Quality would produce an observable change in Overall Mood.  It was assumed that Sleep Quality could produce an observable change in Overall Mood for as much as 7 days after the stimulus event.
-     * @return $this
-     */
-    public function setDataAnalysis($data_analysis)
-    {
-        $this->container['data_analysis'] = $data_analysis;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_sources
-     * @return string
-     */
-    public function getDataSources()
-    {
-        return $this->container['data_sources'];
-    }
-
-    /**
-     * Sets data_sources
-     * @param string $data_sources Example: Sleep Quality data was primarily collected using <a href=\"http://www.amazon.com/gp/product/B00A17IAO0/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00A17IAO0&linkCode=as2&tag=quant08-20\">Up by Jawbone</a>.  UP by Jawbone is a wristband and app that tracks how you sleep, move and eat and then helps you use that information to feel your best.<br>Overall Mood data was primarily collected using <a href=\"https://quantimo.do\">QuantiModo</a>.  <a href=\"https://quantimo.do\">QuantiModo</a> is a Chrome extension, Android app, iOS app, and web app that allows you to easily track mood, symptoms, or any outcome you want to optimize in a fraction of a second.  You can also import your data from over 30 other apps and devices like Fitbit, Rescuetime, Jawbone Up, Withings, Facebook, Github, Google Calendar, Runkeeper, MoodPanda, Slice, Google Fit, and more.  <a href=\"https://quantimo.do\">QuantiModo</a> then analyzes your data to identify which hidden factors are most likely to be influencing your mood or symptoms and their optimal daily values.
-     * @return $this
-     */
-    public function setDataSources($data_sources)
-    {
-        $this->container['data_sources'] = $data_sources;
 
         return $this;
     }
@@ -2702,6 +2636,27 @@ class Correlation implements ArrayAccess
     }
 
     /**
+     * Gets study_html
+     * @return \QuantiModo\Client\Model\StudyHtml
+     */
+    public function getStudyHtml()
+    {
+        return $this->container['study_html'];
+    }
+
+    /**
+     * Sets study_html
+     * @param \QuantiModo\Client\Model\StudyHtml $study_html
+     * @return $this
+     */
+    public function setStudyHtml($study_html)
+    {
+        $this->container['study_html'] = $study_html;
+
+        return $this;
+    }
+
+    /**
      * Gets study_images
      * @return \QuantiModo\Client\Model\StudyImages
      */
@@ -2760,27 +2715,6 @@ class Correlation implements ArrayAccess
     public function setStudyText($study_text)
     {
         $this->container['study_text'] = $study_text;
-
-        return $this;
-    }
-
-    /**
-     * Gets study_html
-     * @return string
-     */
-    public function getStudyHtml()
-    {
-        return $this->container['study_html'];
-    }
-
-    /**
-     * Sets study_html
-     * @param string $study_html Embeddable study HTML including chart svg's
-     * @return $this
-     */
-    public function setStudyHtml($study_html)
-    {
-        $this->container['study_html'] = $study_html;
 
         return $this;
     }

@@ -54,16 +54,17 @@ class Study implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'cause_variable' => '\QuantiModo\Client\Model\UserVariable',
+        'cause_variable' => '\QuantiModo\Client\Model\Variable',
         'charts' => '\QuantiModo\Client\Model\Chart[]',
-        'effect_variable' => '\QuantiModo\Client\Model\UserVariable',
+        'effect_variable' => '\QuantiModo\Client\Model\Variable',
         'participant_instructions' => '\QuantiModo\Client\Model\ParticipantInstruction',
         'statistics' => '\QuantiModo\Client\Model\Correlation',
         'study_html' => '\QuantiModo\Client\Model\StudyHtml',
         'study_images' => '\QuantiModo\Client\Model\StudyImages',
         'study_links' => '\QuantiModo\Client\Model\StudyLinks',
-        'text' => '\QuantiModo\Client\Model\StudyText',
-        'type' => 'string'
+        'study_text' => '\QuantiModo\Client\Model\StudyText',
+        'type' => 'string',
+        'user_id' => 'string'
     ];
 
     /**
@@ -79,8 +80,9 @@ class Study implements ArrayAccess
         'study_html' => null,
         'study_images' => null,
         'study_links' => null,
-        'text' => null,
-        'type' => null
+        'study_text' => null,
+        'type' => null,
+        'user_id' => null
     ];
 
     public static function swaggerTypes()
@@ -106,8 +108,9 @@ class Study implements ArrayAccess
         'study_html' => 'studyHtml',
         'study_images' => 'studyImages',
         'study_links' => 'studyLinks',
-        'text' => 'text',
-        'type' => 'type'
+        'study_text' => 'studyText',
+        'type' => 'type',
+        'user_id' => 'userId'
     ];
 
 
@@ -124,8 +127,9 @@ class Study implements ArrayAccess
         'study_html' => 'setStudyHtml',
         'study_images' => 'setStudyImages',
         'study_links' => 'setStudyLinks',
-        'text' => 'setText',
-        'type' => 'setType'
+        'study_text' => 'setStudyText',
+        'type' => 'setType',
+        'user_id' => 'setUserId'
     ];
 
 
@@ -142,8 +146,9 @@ class Study implements ArrayAccess
         'study_html' => 'getStudyHtml',
         'study_images' => 'getStudyImages',
         'study_links' => 'getStudyLinks',
-        'text' => 'getText',
-        'type' => 'getType'
+        'study_text' => 'getStudyText',
+        'type' => 'getType',
+        'user_id' => 'getUserId'
     ];
 
     public static function attributeMap()
@@ -185,8 +190,9 @@ class Study implements ArrayAccess
         $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['study_images'] = isset($data['study_images']) ? $data['study_images'] : null;
         $this->container['study_links'] = isset($data['study_links']) ? $data['study_links'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['study_text'] = isset($data['study_text']) ? $data['study_text'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
     }
 
     /**
@@ -222,7 +228,7 @@ class Study implements ArrayAccess
 
     /**
      * Gets cause_variable
-     * @return \QuantiModo\Client\Model\UserVariable
+     * @return \QuantiModo\Client\Model\Variable
      */
     public function getCauseVariable()
     {
@@ -231,7 +237,7 @@ class Study implements ArrayAccess
 
     /**
      * Sets cause_variable
-     * @param \QuantiModo\Client\Model\UserVariable $cause_variable
+     * @param \QuantiModo\Client\Model\Variable $cause_variable
      * @return $this
      */
     public function setCauseVariable($cause_variable)
@@ -264,7 +270,7 @@ class Study implements ArrayAccess
 
     /**
      * Gets effect_variable
-     * @return \QuantiModo\Client\Model\UserVariable
+     * @return \QuantiModo\Client\Model\Variable
      */
     public function getEffectVariable()
     {
@@ -273,7 +279,7 @@ class Study implements ArrayAccess
 
     /**
      * Sets effect_variable
-     * @param \QuantiModo\Client\Model\UserVariable $effect_variable
+     * @param \QuantiModo\Client\Model\Variable $effect_variable
      * @return $this
      */
     public function setEffectVariable($effect_variable)
@@ -389,22 +395,22 @@ class Study implements ArrayAccess
     }
 
     /**
-     * Gets text
+     * Gets study_text
      * @return \QuantiModo\Client\Model\StudyText
      */
-    public function getText()
+    public function getStudyText()
     {
-        return $this->container['text'];
+        return $this->container['study_text'];
     }
 
     /**
-     * Sets text
-     * @param \QuantiModo\Client\Model\StudyText $text
+     * Sets study_text
+     * @param \QuantiModo\Client\Model\StudyText $study_text
      * @return $this
      */
-    public function setText($text)
+    public function setStudyText($study_text)
     {
-        $this->container['text'] = $text;
+        $this->container['study_text'] = $study_text;
 
         return $this;
     }
@@ -426,6 +432,27 @@ class Study implements ArrayAccess
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     * @param string $user_id The user id if an individual study
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }

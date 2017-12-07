@@ -120,6 +120,55 @@ class StudyTextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "data_sources_paragraph_for_cause"
+     */
+    public function testPropertyDataSourcesParagraphForCause()
+    {
+    }
+
+    /**
+     * Test attribute "data_sources_paragraph_for_effect"
+     */
+    public function testPropertyDataSourcesParagraphForEffect()
+    {
+    }
+
+    /**
+     * Test attribute "last_cause_daily_value_sentence_extended"
+     */
+    public function testPropertyLastCauseDailyValueSentenceExtended()
+    {
+    }
+
+    /**
+     * Test attribute "last_cause_and_optimal_value_sentence"
+     */
+    public function testPropertyLastCauseAndOptimalValueSentence()
+    {
+    }
+
+    /**
+     * Test attribute "last_cause_daily_value_sentence"
+     */
+    public function testPropertyLastCauseDailyValueSentence()
+    {
+    }
+
+    /**
+     * Test attribute "optimal_daily_value_sentence"
+     */
+    public function testPropertyOptimalDailyValueSentence()
+    {
+    }
+
+    /**
+     * Test attribute "predictor_explanation"
+     */
+    public function testPropertyPredictorExplanation()
+    {
+    }
+
+    /**
      * Test attribute "significance_explanation"
      */
     public function testPropertySignificanceExplanation()
@@ -186,13 +235,6 @@ class StudyTextTest extends \PHPUnit_Framework_TestCase
      * Test attribute "study_background"
      */
     public function testPropertyStudyBackground()
-    {
-    }
-
-    /**
-     * Test attribute "predictor_explanation"
-     */
-    public function testPropertyPredictorExplanation()
     {
     }
 }

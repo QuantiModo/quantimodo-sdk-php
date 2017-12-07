@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\QuantiModo\Client\Model\TrackingReminderNotificationsArray**](TrackingReminderNotificationsArray.md) |  | [optional] 
+**data** | [**\QuantiModo\Client\Model\TrackingReminderNotification[]**](TrackingReminderNotification.md) |  | [optional] 
 **message** | **string** | Message | [optional] 
 **status** | **int** | Status code | 
 **success** | **bool** |  | 

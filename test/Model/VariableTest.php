@@ -1,6 +1,6 @@
 <?php
 /**
- * UserVariableTest
+ * VariableTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace QuantiModo\Client;
 
 /**
- * UserVariableTest Class Doc Comment
+ * VariableTest Class Doc Comment
  *
  * @category    Class */
-// * @description UserVariable
+// * @description Variable
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UserVariableTest extends \PHPUnit_Framework_TestCase
+class VariableTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,16 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "UserVariable"
+     * Test "Variable"
      */
-    public function testUserVariable()
+    public function testVariable()
+    {
+    }
+
+    /**
+     * Test attribute "action_array"
+     */
+    public function testPropertyActionArray()
     {
     }
 
@@ -645,13 +652,6 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "number_of_measurements"
-     */
-    public function testPropertyNumberOfMeasurements()
-    {
-    }
-
-    /**
      * Test attribute "number_of_processed_daily_measurements"
      */
     public function testPropertyNumberOfProcessedDailyMeasurements()
@@ -1023,16 +1023,51 @@ class UserVariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "valence"
+     * Test attribute "variable_category"
      */
-    public function testPropertyValence()
+    public function testPropertyVariableCategory()
     {
     }
 
     /**
-     * Test attribute "variable_category"
+     * Test attribute "data_source"
      */
-    public function testPropertyVariableCategory()
+    public function testPropertyDataSource()
+    {
+    }
+
+    /**
+     * Test attribute "joined_variables"
+     */
+    public function testPropertyJoinedVariables()
+    {
+    }
+
+    /**
+     * Test attribute "last_source"
+     */
+    public function testPropertyLastSource()
+    {
+    }
+
+    /**
+     * Test attribute "last_unit"
+     */
+    public function testPropertyLastUnit()
+    {
+    }
+
+    /**
+     * Test attribute "most_common_unit"
+     */
+    public function testPropertyMostCommonUnit()
+    {
+    }
+
+    /**
+     * Test attribute "valence"
+     */
+    public function testPropertyValence()
     {
     }
 

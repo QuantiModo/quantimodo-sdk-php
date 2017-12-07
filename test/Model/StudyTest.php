@@ -134,9 +134,9 @@ class StudyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "text"
+     * Test attribute "study_text"
      */
-    public function testPropertyText()
+    public function testPropertyStudyText()
     {
     }
 
@@ -144,6 +144,13 @@ class StudyTest extends \PHPUnit_Framework_TestCase
      * Test attribute "type"
      */
     public function testPropertyType()
+    {
+    }
+
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
     {
     }
 }

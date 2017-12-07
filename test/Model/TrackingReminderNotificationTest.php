@@ -442,6 +442,13 @@ class TrackingReminderNotificationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "tracking_reminder_notification_time_local_human_string"
+     */
+    public function testPropertyTrackingReminderNotificationTimeLocalHumanString()
+    {
+    }
+
+    /**
      * Test attribute "updated_at"
      */
     public function testPropertyUpdatedAt()

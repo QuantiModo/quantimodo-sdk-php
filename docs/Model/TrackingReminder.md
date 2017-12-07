@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**action_array** | [**\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]**](TrackingReminderNotificationActionArray.md) |  | [optional] 
 **available_units** | [**\QuantiModo\Client\Model\Unit[]**](Unit.md) |  | [optional] 
 **client_id** | **string** | clientId | [optional] 
 **combination_operation** | **string** | The way multiple measurements are aggregated over time | [optional] 

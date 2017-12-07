@@ -78,6 +78,13 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "action_array"
+     */
+    public function testPropertyActionArray()
+    {
+    }
+
+    /**
      * Test attribute "available_units"
      */
     public function testPropertyAvailableUnits()

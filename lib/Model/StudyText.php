@@ -60,6 +60,13 @@ class StudyText implements ArrayAccess
         'value_predicting_low_outcome_explanation' => 'string',
         'data_analysis' => 'string',
         'data_sources' => 'string',
+        'data_sources_paragraph_for_cause' => 'string',
+        'data_sources_paragraph_for_effect' => 'string',
+        'last_cause_daily_value_sentence_extended' => 'string',
+        'last_cause_and_optimal_value_sentence' => 'string',
+        'last_cause_daily_value_sentence' => 'string',
+        'optimal_daily_value_sentence' => 'string',
+        'predictor_explanation' => 'string',
         'significance_explanation' => 'string',
         'study_abstract' => 'string',
         'study_design' => 'string',
@@ -69,8 +76,7 @@ class StudyText implements ArrayAccess
         'study_title' => 'string',
         'study_invitation' => 'string',
         'study_question' => 'string',
-        'study_background' => 'string',
-        'predictor_explanation' => 'string'
+        'study_background' => 'string'
     ];
 
     /**
@@ -84,6 +90,13 @@ class StudyText implements ArrayAccess
         'value_predicting_low_outcome_explanation' => null,
         'data_analysis' => null,
         'data_sources' => null,
+        'data_sources_paragraph_for_cause' => null,
+        'data_sources_paragraph_for_effect' => null,
+        'last_cause_daily_value_sentence_extended' => null,
+        'last_cause_and_optimal_value_sentence' => null,
+        'last_cause_daily_value_sentence' => null,
+        'optimal_daily_value_sentence' => null,
+        'predictor_explanation' => null,
         'significance_explanation' => null,
         'study_abstract' => null,
         'study_design' => null,
@@ -93,8 +106,7 @@ class StudyText implements ArrayAccess
         'study_title' => null,
         'study_invitation' => null,
         'study_question' => null,
-        'study_background' => null,
-        'predictor_explanation' => null
+        'study_background' => null
     ];
 
     public static function swaggerTypes()
@@ -118,6 +130,13 @@ class StudyText implements ArrayAccess
         'value_predicting_low_outcome_explanation' => 'valuePredictingLowOutcomeExplanation',
         'data_analysis' => 'dataAnalysis',
         'data_sources' => 'dataSources',
+        'data_sources_paragraph_for_cause' => 'dataSourcesParagraphForCause',
+        'data_sources_paragraph_for_effect' => 'dataSourcesParagraphForEffect',
+        'last_cause_daily_value_sentence_extended' => 'lastCauseDailyValueSentenceExtended',
+        'last_cause_and_optimal_value_sentence' => 'lastCauseAndOptimalValueSentence',
+        'last_cause_daily_value_sentence' => 'lastCauseDailyValueSentence',
+        'optimal_daily_value_sentence' => 'optimalDailyValueSentence',
+        'predictor_explanation' => 'predictorExplanation',
         'significance_explanation' => 'significanceExplanation',
         'study_abstract' => 'studyAbstract',
         'study_design' => 'studyDesign',
@@ -127,8 +146,7 @@ class StudyText implements ArrayAccess
         'study_title' => 'studyTitle',
         'study_invitation' => 'studyInvitation',
         'study_question' => 'studyQuestion',
-        'study_background' => 'studyBackground',
-        'predictor_explanation' => 'predictorExplanation'
+        'study_background' => 'studyBackground'
     ];
 
 
@@ -143,6 +161,13 @@ class StudyText implements ArrayAccess
         'value_predicting_low_outcome_explanation' => 'setValuePredictingLowOutcomeExplanation',
         'data_analysis' => 'setDataAnalysis',
         'data_sources' => 'setDataSources',
+        'data_sources_paragraph_for_cause' => 'setDataSourcesParagraphForCause',
+        'data_sources_paragraph_for_effect' => 'setDataSourcesParagraphForEffect',
+        'last_cause_daily_value_sentence_extended' => 'setLastCauseDailyValueSentenceExtended',
+        'last_cause_and_optimal_value_sentence' => 'setLastCauseAndOptimalValueSentence',
+        'last_cause_daily_value_sentence' => 'setLastCauseDailyValueSentence',
+        'optimal_daily_value_sentence' => 'setOptimalDailyValueSentence',
+        'predictor_explanation' => 'setPredictorExplanation',
         'significance_explanation' => 'setSignificanceExplanation',
         'study_abstract' => 'setStudyAbstract',
         'study_design' => 'setStudyDesign',
@@ -152,8 +177,7 @@ class StudyText implements ArrayAccess
         'study_title' => 'setStudyTitle',
         'study_invitation' => 'setStudyInvitation',
         'study_question' => 'setStudyQuestion',
-        'study_background' => 'setStudyBackground',
-        'predictor_explanation' => 'setPredictorExplanation'
+        'study_background' => 'setStudyBackground'
     ];
 
 
@@ -168,6 +192,13 @@ class StudyText implements ArrayAccess
         'value_predicting_low_outcome_explanation' => 'getValuePredictingLowOutcomeExplanation',
         'data_analysis' => 'getDataAnalysis',
         'data_sources' => 'getDataSources',
+        'data_sources_paragraph_for_cause' => 'getDataSourcesParagraphForCause',
+        'data_sources_paragraph_for_effect' => 'getDataSourcesParagraphForEffect',
+        'last_cause_daily_value_sentence_extended' => 'getLastCauseDailyValueSentenceExtended',
+        'last_cause_and_optimal_value_sentence' => 'getLastCauseAndOptimalValueSentence',
+        'last_cause_daily_value_sentence' => 'getLastCauseDailyValueSentence',
+        'optimal_daily_value_sentence' => 'getOptimalDailyValueSentence',
+        'predictor_explanation' => 'getPredictorExplanation',
         'significance_explanation' => 'getSignificanceExplanation',
         'study_abstract' => 'getStudyAbstract',
         'study_design' => 'getStudyDesign',
@@ -177,8 +208,7 @@ class StudyText implements ArrayAccess
         'study_title' => 'getStudyTitle',
         'study_invitation' => 'getStudyInvitation',
         'study_question' => 'getStudyQuestion',
-        'study_background' => 'getStudyBackground',
-        'predictor_explanation' => 'getPredictorExplanation'
+        'study_background' => 'getStudyBackground'
     ];
 
     public static function attributeMap()
@@ -218,6 +248,13 @@ class StudyText implements ArrayAccess
         $this->container['value_predicting_low_outcome_explanation'] = isset($data['value_predicting_low_outcome_explanation']) ? $data['value_predicting_low_outcome_explanation'] : null;
         $this->container['data_analysis'] = isset($data['data_analysis']) ? $data['data_analysis'] : null;
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
+        $this->container['data_sources_paragraph_for_cause'] = isset($data['data_sources_paragraph_for_cause']) ? $data['data_sources_paragraph_for_cause'] : null;
+        $this->container['data_sources_paragraph_for_effect'] = isset($data['data_sources_paragraph_for_effect']) ? $data['data_sources_paragraph_for_effect'] : null;
+        $this->container['last_cause_daily_value_sentence_extended'] = isset($data['last_cause_daily_value_sentence_extended']) ? $data['last_cause_daily_value_sentence_extended'] : null;
+        $this->container['last_cause_and_optimal_value_sentence'] = isset($data['last_cause_and_optimal_value_sentence']) ? $data['last_cause_and_optimal_value_sentence'] : null;
+        $this->container['last_cause_daily_value_sentence'] = isset($data['last_cause_daily_value_sentence']) ? $data['last_cause_daily_value_sentence'] : null;
+        $this->container['optimal_daily_value_sentence'] = isset($data['optimal_daily_value_sentence']) ? $data['optimal_daily_value_sentence'] : null;
+        $this->container['predictor_explanation'] = isset($data['predictor_explanation']) ? $data['predictor_explanation'] : null;
         $this->container['significance_explanation'] = isset($data['significance_explanation']) ? $data['significance_explanation'] : null;
         $this->container['study_abstract'] = isset($data['study_abstract']) ? $data['study_abstract'] : null;
         $this->container['study_design'] = isset($data['study_design']) ? $data['study_design'] : null;
@@ -228,7 +265,6 @@ class StudyText implements ArrayAccess
         $this->container['study_invitation'] = isset($data['study_invitation']) ? $data['study_invitation'] : null;
         $this->container['study_question'] = isset($data['study_question']) ? $data['study_question'] : null;
         $this->container['study_background'] = isset($data['study_background']) ? $data['study_background'] : null;
-        $this->container['predictor_explanation'] = isset($data['predictor_explanation']) ? $data['predictor_explanation'] : null;
     }
 
     /**
@@ -414,6 +450,153 @@ class StudyText implements ArrayAccess
     public function setDataSources($data_sources)
     {
         $this->container['data_sources'] = $data_sources;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_sources_paragraph_for_cause
+     * @return string
+     */
+    public function getDataSourcesParagraphForCause()
+    {
+        return $this->container['data_sources_paragraph_for_cause'];
+    }
+
+    /**
+     * Sets data_sources_paragraph_for_cause
+     * @param string $data_sources_paragraph_for_cause Example: Very Distracting Time data was primarily collected using <a href=\"https://www.rescuetime.com/rp/quantimodo/plans\">RescueTime</a>. Detailed reports show which applications and websites you spent time on. Activities are automatically grouped into pre-defined categories with built-in productivity scores covering thousands of websites and applications. You can customize categories and productivity scores to meet your needs.<br>Video Activities data was primarily collected using <a href=\"https://www.rescuetime.com/rp/quantimodo/plans\">RescueTime</a>. Detailed reports show which applications and websites you spent time on. Activities are automatically grouped into pre-defined categories with built-in productivity scores covering thousands of websites and applications. You can customize categories and productivity scores to meet your needs.
+     * @return $this
+     */
+    public function setDataSourcesParagraphForCause($data_sources_paragraph_for_cause)
+    {
+        $this->container['data_sources_paragraph_for_cause'] = $data_sources_paragraph_for_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_sources_paragraph_for_effect
+     * @return string
+     */
+    public function getDataSourcesParagraphForEffect()
+    {
+        return $this->container['data_sources_paragraph_for_effect'];
+    }
+
+    /**
+     * Sets data_sources_paragraph_for_effect
+     * @param string $data_sources_paragraph_for_effect Example: Very Distracting Time data was primarily collected using <a href=\"https://www.rescuetime.com/rp/quantimodo/plans\">RescueTime</a>. Detailed reports show which applications and websites you spent time on. Activities are automatically grouped into pre-defined categories with built-in productivity scores covering thousands of websites and applications. You can customize categories and productivity scores to meet your needs.<br>Video Activities data was primarily collected using <a href=\"https://www.rescuetime.com/rp/quantimodo/plans\">RescueTime</a>. Detailed reports show which applications and websites you spent time on. Activities are automatically grouped into pre-defined categories with built-in productivity scores covering thousands of websites and applications. You can customize categories and productivity scores to meet your needs.
+     * @return $this
+     */
+    public function setDataSourcesParagraphForEffect($data_sources_paragraph_for_effect)
+    {
+        $this->container['data_sources_paragraph_for_effect'] = $data_sources_paragraph_for_effect;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_cause_daily_value_sentence_extended
+     * @return string
+     */
+    public function getLastCauseDailyValueSentenceExtended()
+    {
+        return $this->container['last_cause_daily_value_sentence_extended'];
+    }
+
+    /**
+     * Sets last_cause_daily_value_sentence_extended
+     * @param string $last_cause_daily_value_sentence_extended Example: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setLastCauseDailyValueSentenceExtended($last_cause_daily_value_sentence_extended)
+    {
+        $this->container['last_cause_daily_value_sentence_extended'] = $last_cause_daily_value_sentence_extended;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_cause_and_optimal_value_sentence
+     * @return string
+     */
+    public function getLastCauseAndOptimalValueSentence()
+    {
+        return $this->container['last_cause_and_optimal_value_sentence'];
+    }
+
+    /**
+     * Sets last_cause_and_optimal_value_sentence
+     * @param string $last_cause_and_optimal_value_sentence Example: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setLastCauseAndOptimalValueSentence($last_cause_and_optimal_value_sentence)
+    {
+        $this->container['last_cause_and_optimal_value_sentence'] = $last_cause_and_optimal_value_sentence;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_cause_daily_value_sentence
+     * @return string
+     */
+    public function getLastCauseDailyValueSentence()
+    {
+        return $this->container['last_cause_daily_value_sentence'];
+    }
+
+    /**
+     * Sets last_cause_daily_value_sentence
+     * @param string $last_cause_daily_value_sentence Example: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setLastCauseDailyValueSentence($last_cause_daily_value_sentence)
+    {
+        $this->container['last_cause_daily_value_sentence'] = $last_cause_daily_value_sentence;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimal_daily_value_sentence
+     * @return string
+     */
+    public function getOptimalDailyValueSentence()
+    {
+        return $this->container['optimal_daily_value_sentence'];
+    }
+
+    /**
+     * Sets optimal_daily_value_sentence
+     * @param string $optimal_daily_value_sentence Example: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setOptimalDailyValueSentence($optimal_daily_value_sentence)
+    {
+        $this->container['optimal_daily_value_sentence'] = $optimal_daily_value_sentence;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictor_explanation
+     * @return string
+     */
+    public function getPredictorExplanation()
+    {
+        return $this->container['predictor_explanation'];
+    }
+
+    /**
+     * Sets predictor_explanation
+     * @param string $predictor_explanation Example: Sleep Quality Predicts Higher Overall Mood
+     * @return $this
+     */
+    public function setPredictorExplanation($predictor_explanation)
+    {
+        $this->container['predictor_explanation'] = $predictor_explanation;
 
         return $this;
     }
@@ -624,27 +807,6 @@ class StudyText implements ArrayAccess
     public function setStudyBackground($study_background)
     {
         $this->container['study_background'] = $study_background;
-
-        return $this;
-    }
-
-    /**
-     * Gets predictor_explanation
-     * @return string
-     */
-    public function getPredictorExplanation()
-    {
-        return $this->container['predictor_explanation'];
-    }
-
-    /**
-     * Sets predictor_explanation
-     * @param string $predictor_explanation Example: Sleep Quality Predicts Higher Overall Mood
-     * @return $this
-     */
-    public function setPredictorExplanation($predictor_explanation)
-    {
-        $this->container['predictor_explanation'] = $predictor_explanation;
 
         return $this;
     }
