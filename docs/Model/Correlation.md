@@ -30,6 +30,9 @@ Name | Type | Description | Notes
 **direction** | **string** | Example: higher | 
 **duration_of_action** | **int** | Example: 604800 | 
 **duration_of_action_in_hours** | **int** | Example: 168 | 
+**degrees_of_freedom** | **int** | Example: 200 | [optional] 
+**effect_number_of_processed_daily_measurements** | **int** | Example: 145 | [optional] 
+**error** | **string** | Example: optimalPearsonProduct is not defined | [optional] 
 **effect_changes** | **int** | Example: 193 | 
 **effect_data_source** | [**\QuantiModo\Client\Model\DataSource**](DataSource.md) |  | [optional] 
 **effect_size** | **string** | Example: moderately positive | 
@@ -94,9 +97,6 @@ Name | Type | Description | Notes
 **correlations_over_durations_of_action** | **string** | Example: | [optional] 
 **correlations_over_durations_of_action_chart_config** | **string** | Example: | [optional] 
 **correlations_over_onset_delays_chart_config** | **string** | Example: | [optional] 
-**degrees_of_freedom** | **int** | Example: 200 | [optional] 
-**effect_number_of_processed_daily_measurements** | **int** | Example: 145 | [optional] 
-**error** | **string** | Example: optimalPearsonProduct is not defined | [optional] 
 **number_of_users** | **float** | Example: | [optional] 
 **raw_cause_measurement_significance** | **double** | Example: 1 | [optional] 
 **raw_effect_measurement_significance** | **double** | Example: 1 | [optional] 

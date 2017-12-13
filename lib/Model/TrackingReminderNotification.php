@@ -54,7 +54,7 @@ class TrackingReminderNotification implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]',
+        'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationAction[]',
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'client_id' => 'string',
         'combination_operation' => 'string',
@@ -86,6 +86,7 @@ class TrackingReminderNotification implements ArrayAccess
         'png_path' => 'string',
         'png_url' => 'string',
         'pop_up' => 'bool',
+        'question' => 'string',
         'reminder_end_time' => '\DateTime',
         'reminder_frequency' => 'int',
         'reminder_sound' => 'string',
@@ -162,6 +163,7 @@ class TrackingReminderNotification implements ArrayAccess
         'png_path' => null,
         'png_url' => null,
         'pop_up' => null,
+        'question' => null,
         'reminder_end_time' => 'date-time',
         'reminder_frequency' => null,
         'reminder_sound' => null,
@@ -248,6 +250,7 @@ class TrackingReminderNotification implements ArrayAccess
         'png_path' => 'pngPath',
         'png_url' => 'pngUrl',
         'pop_up' => 'popUp',
+        'question' => 'question',
         'reminder_end_time' => 'reminderEndTime',
         'reminder_frequency' => 'reminderFrequency',
         'reminder_sound' => 'reminderSound',
@@ -325,6 +328,7 @@ class TrackingReminderNotification implements ArrayAccess
         'png_path' => 'setPngPath',
         'png_url' => 'setPngUrl',
         'pop_up' => 'setPopUp',
+        'question' => 'setQuestion',
         'reminder_end_time' => 'setReminderEndTime',
         'reminder_frequency' => 'setReminderFrequency',
         'reminder_sound' => 'setReminderSound',
@@ -402,6 +406,7 @@ class TrackingReminderNotification implements ArrayAccess
         'png_path' => 'getPngPath',
         'png_url' => 'getPngUrl',
         'pop_up' => 'getPopUp',
+        'question' => 'getQuestion',
         'reminder_end_time' => 'getReminderEndTime',
         'reminder_frequency' => 'getReminderFrequency',
         'reminder_sound' => 'getReminderSound',
@@ -518,6 +523,7 @@ class TrackingReminderNotification implements ArrayAccess
         $this->container['png_path'] = isset($data['png_path']) ? $data['png_path'] : null;
         $this->container['png_url'] = isset($data['png_url']) ? $data['png_url'] : null;
         $this->container['pop_up'] = isset($data['pop_up']) ? $data['pop_up'] : null;
+        $this->container['question'] = isset($data['question']) ? $data['question'] : null;
         $this->container['reminder_end_time'] = isset($data['reminder_end_time']) ? $data['reminder_end_time'] : null;
         $this->container['reminder_frequency'] = isset($data['reminder_frequency']) ? $data['reminder_frequency'] : null;
         $this->container['reminder_sound'] = isset($data['reminder_sound']) ? $data['reminder_sound'] : null;
@@ -626,7 +632,7 @@ class TrackingReminderNotification implements ArrayAccess
 
     /**
      * Gets action_array
-     * @return \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]
+     * @return \QuantiModo\Client\Model\TrackingReminderNotificationAction[]
      */
     public function getActionArray()
     {
@@ -635,7 +641,7 @@ class TrackingReminderNotification implements ArrayAccess
 
     /**
      * Sets action_array
-     * @param \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[] $action_array
+     * @param \QuantiModo\Client\Model\TrackingReminderNotificationAction[] $action_array
      * @return $this
      */
     public function setActionArray($action_array)
@@ -1301,6 +1307,27 @@ class TrackingReminderNotification implements ArrayAccess
     public function setPopUp($pop_up)
     {
         $this->container['pop_up'] = $pop_up;
+
+        return $this;
+    }
+
+    /**
+     * Gets question
+     * @return string
+     */
+    public function getQuestion()
+    {
+        return $this->container['question'];
+    }
+
+    /**
+     * Sets question
+     * @param string $question Example: How is your overall mood?
+     * @return $this
+     */
+    public function setQuestion($question)
+    {
+        $this->container['question'] = $question;
 
         return $this;
     }

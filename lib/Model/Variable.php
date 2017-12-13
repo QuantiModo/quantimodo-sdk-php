@@ -54,7 +54,7 @@ class Variable implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]',
+        'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationAction[]',
         'alias' => 'string',
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
         'cause_only' => 'bool',
@@ -1080,7 +1080,7 @@ class Variable implements ArrayAccess
 
     /**
      * Gets action_array
-     * @return \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]
+     * @return \QuantiModo\Client\Model\TrackingReminderNotificationAction[]
      */
     public function getActionArray()
     {
@@ -1089,7 +1089,7 @@ class Variable implements ArrayAccess
 
     /**
      * Sets action_array
-     * @param \QuantiModo\Client\Model\TrackingReminderNotificationActionArray[] $action_array
+     * @param \QuantiModo\Client\Model\TrackingReminderNotificationAction[] $action_array
      * @return $this
      */
     public function setActionArray($action_array)

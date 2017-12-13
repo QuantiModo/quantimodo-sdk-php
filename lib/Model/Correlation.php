@@ -81,6 +81,9 @@ class Correlation implements ArrayAccess
         'direction' => 'string',
         'duration_of_action' => 'int',
         'duration_of_action_in_hours' => 'int',
+        'degrees_of_freedom' => 'int',
+        'effect_number_of_processed_daily_measurements' => 'int',
+        'error' => 'string',
         'effect_changes' => 'int',
         'effect_data_source' => '\QuantiModo\Client\Model\DataSource',
         'effect_size' => 'string',
@@ -145,9 +148,6 @@ class Correlation implements ArrayAccess
         'correlations_over_durations_of_action' => 'string',
         'correlations_over_durations_of_action_chart_config' => 'string',
         'correlations_over_onset_delays_chart_config' => 'string',
-        'degrees_of_freedom' => 'int',
-        'effect_number_of_processed_daily_measurements' => 'int',
-        'error' => 'string',
         'number_of_users' => 'float',
         'raw_cause_measurement_significance' => 'double',
         'raw_effect_measurement_significance' => 'double',
@@ -191,6 +191,9 @@ class Correlation implements ArrayAccess
         'direction' => null,
         'duration_of_action' => null,
         'duration_of_action_in_hours' => null,
+        'degrees_of_freedom' => null,
+        'effect_number_of_processed_daily_measurements' => null,
+        'error' => null,
         'effect_changes' => null,
         'effect_data_source' => null,
         'effect_size' => null,
@@ -255,9 +258,6 @@ class Correlation implements ArrayAccess
         'correlations_over_durations_of_action' => null,
         'correlations_over_durations_of_action_chart_config' => null,
         'correlations_over_onset_delays_chart_config' => null,
-        'degrees_of_freedom' => null,
-        'effect_number_of_processed_daily_measurements' => null,
-        'error' => null,
         'number_of_users' => null,
         'raw_cause_measurement_significance' => 'double',
         'raw_effect_measurement_significance' => 'double',
@@ -311,6 +311,9 @@ class Correlation implements ArrayAccess
         'direction' => 'direction',
         'duration_of_action' => 'durationOfAction',
         'duration_of_action_in_hours' => 'durationOfActionInHours',
+        'degrees_of_freedom' => 'degreesOfFreedom',
+        'effect_number_of_processed_daily_measurements' => 'effectNumberOfProcessedDailyMeasurements',
+        'error' => 'error',
         'effect_changes' => 'effectChanges',
         'effect_data_source' => 'effectDataSource',
         'effect_size' => 'effectSize',
@@ -375,9 +378,6 @@ class Correlation implements ArrayAccess
         'correlations_over_durations_of_action' => 'correlationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'correlationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'correlationsOverOnsetDelaysChartConfig',
-        'degrees_of_freedom' => 'degreesOfFreedom',
-        'effect_number_of_processed_daily_measurements' => 'effectNumberOfProcessedDailyMeasurements',
-        'error' => 'error',
         'number_of_users' => 'numberOfUsers',
         'raw_cause_measurement_significance' => 'rawCauseMeasurementSignificance',
         'raw_effect_measurement_significance' => 'rawEffectMeasurementSignificance',
@@ -422,6 +422,9 @@ class Correlation implements ArrayAccess
         'direction' => 'setDirection',
         'duration_of_action' => 'setDurationOfAction',
         'duration_of_action_in_hours' => 'setDurationOfActionInHours',
+        'degrees_of_freedom' => 'setDegreesOfFreedom',
+        'effect_number_of_processed_daily_measurements' => 'setEffectNumberOfProcessedDailyMeasurements',
+        'error' => 'setError',
         'effect_changes' => 'setEffectChanges',
         'effect_data_source' => 'setEffectDataSource',
         'effect_size' => 'setEffectSize',
@@ -486,9 +489,6 @@ class Correlation implements ArrayAccess
         'correlations_over_durations_of_action' => 'setCorrelationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'setCorrelationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'setCorrelationsOverOnsetDelaysChartConfig',
-        'degrees_of_freedom' => 'setDegreesOfFreedom',
-        'effect_number_of_processed_daily_measurements' => 'setEffectNumberOfProcessedDailyMeasurements',
-        'error' => 'setError',
         'number_of_users' => 'setNumberOfUsers',
         'raw_cause_measurement_significance' => 'setRawCauseMeasurementSignificance',
         'raw_effect_measurement_significance' => 'setRawEffectMeasurementSignificance',
@@ -533,6 +533,9 @@ class Correlation implements ArrayAccess
         'direction' => 'getDirection',
         'duration_of_action' => 'getDurationOfAction',
         'duration_of_action_in_hours' => 'getDurationOfActionInHours',
+        'degrees_of_freedom' => 'getDegreesOfFreedom',
+        'effect_number_of_processed_daily_measurements' => 'getEffectNumberOfProcessedDailyMeasurements',
+        'error' => 'getError',
         'effect_changes' => 'getEffectChanges',
         'effect_data_source' => 'getEffectDataSource',
         'effect_size' => 'getEffectSize',
@@ -597,9 +600,6 @@ class Correlation implements ArrayAccess
         'correlations_over_durations_of_action' => 'getCorrelationsOverDurationsOfAction',
         'correlations_over_durations_of_action_chart_config' => 'getCorrelationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'getCorrelationsOverOnsetDelaysChartConfig',
-        'degrees_of_freedom' => 'getDegreesOfFreedom',
-        'effect_number_of_processed_daily_measurements' => 'getEffectNumberOfProcessedDailyMeasurements',
-        'error' => 'getError',
         'number_of_users' => 'getNumberOfUsers',
         'raw_cause_measurement_significance' => 'getRawCauseMeasurementSignificance',
         'raw_effect_measurement_significance' => 'getRawEffectMeasurementSignificance',
@@ -669,6 +669,9 @@ class Correlation implements ArrayAccess
         $this->container['direction'] = isset($data['direction']) ? $data['direction'] : null;
         $this->container['duration_of_action'] = isset($data['duration_of_action']) ? $data['duration_of_action'] : null;
         $this->container['duration_of_action_in_hours'] = isset($data['duration_of_action_in_hours']) ? $data['duration_of_action_in_hours'] : null;
+        $this->container['degrees_of_freedom'] = isset($data['degrees_of_freedom']) ? $data['degrees_of_freedom'] : null;
+        $this->container['effect_number_of_processed_daily_measurements'] = isset($data['effect_number_of_processed_daily_measurements']) ? $data['effect_number_of_processed_daily_measurements'] : null;
+        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
         $this->container['effect_changes'] = isset($data['effect_changes']) ? $data['effect_changes'] : null;
         $this->container['effect_data_source'] = isset($data['effect_data_source']) ? $data['effect_data_source'] : null;
         $this->container['effect_size'] = isset($data['effect_size']) ? $data['effect_size'] : null;
@@ -733,9 +736,6 @@ class Correlation implements ArrayAccess
         $this->container['correlations_over_durations_of_action'] = isset($data['correlations_over_durations_of_action']) ? $data['correlations_over_durations_of_action'] : null;
         $this->container['correlations_over_durations_of_action_chart_config'] = isset($data['correlations_over_durations_of_action_chart_config']) ? $data['correlations_over_durations_of_action_chart_config'] : null;
         $this->container['correlations_over_onset_delays_chart_config'] = isset($data['correlations_over_onset_delays_chart_config']) ? $data['correlations_over_onset_delays_chart_config'] : null;
-        $this->container['degrees_of_freedom'] = isset($data['degrees_of_freedom']) ? $data['degrees_of_freedom'] : null;
-        $this->container['effect_number_of_processed_daily_measurements'] = isset($data['effect_number_of_processed_daily_measurements']) ? $data['effect_number_of_processed_daily_measurements'] : null;
-        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
         $this->container['number_of_users'] = isset($data['number_of_users']) ? $data['number_of_users'] : null;
         $this->container['raw_cause_measurement_significance'] = isset($data['raw_cause_measurement_significance']) ? $data['raw_cause_measurement_significance'] : null;
         $this->container['raw_effect_measurement_significance'] = isset($data['raw_effect_measurement_significance']) ? $data['raw_effect_measurement_significance'] : null;
@@ -1665,6 +1665,69 @@ class Correlation implements ArrayAccess
     public function setDurationOfActionInHours($duration_of_action_in_hours)
     {
         $this->container['duration_of_action_in_hours'] = $duration_of_action_in_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets degrees_of_freedom
+     * @return int
+     */
+    public function getDegreesOfFreedom()
+    {
+        return $this->container['degrees_of_freedom'];
+    }
+
+    /**
+     * Sets degrees_of_freedom
+     * @param int $degrees_of_freedom Example: 200
+     * @return $this
+     */
+    public function setDegreesOfFreedom($degrees_of_freedom)
+    {
+        $this->container['degrees_of_freedom'] = $degrees_of_freedom;
+
+        return $this;
+    }
+
+    /**
+     * Gets effect_number_of_processed_daily_measurements
+     * @return int
+     */
+    public function getEffectNumberOfProcessedDailyMeasurements()
+    {
+        return $this->container['effect_number_of_processed_daily_measurements'];
+    }
+
+    /**
+     * Sets effect_number_of_processed_daily_measurements
+     * @param int $effect_number_of_processed_daily_measurements Example: 145
+     * @return $this
+     */
+    public function setEffectNumberOfProcessedDailyMeasurements($effect_number_of_processed_daily_measurements)
+    {
+        $this->container['effect_number_of_processed_daily_measurements'] = $effect_number_of_processed_daily_measurements;
+
+        return $this;
+    }
+
+    /**
+     * Gets error
+     * @return string
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /**
+     * Sets error
+     * @param string $error Example: optimalPearsonProduct is not defined
+     * @return $this
+     */
+    public function setError($error)
+    {
+        $this->container['error'] = $error;
 
         return $this;
     }
@@ -3009,69 +3072,6 @@ class Correlation implements ArrayAccess
     public function setCorrelationsOverOnsetDelaysChartConfig($correlations_over_onset_delays_chart_config)
     {
         $this->container['correlations_over_onset_delays_chart_config'] = $correlations_over_onset_delays_chart_config;
-
-        return $this;
-    }
-
-    /**
-     * Gets degrees_of_freedom
-     * @return int
-     */
-    public function getDegreesOfFreedom()
-    {
-        return $this->container['degrees_of_freedom'];
-    }
-
-    /**
-     * Sets degrees_of_freedom
-     * @param int $degrees_of_freedom Example: 200
-     * @return $this
-     */
-    public function setDegreesOfFreedom($degrees_of_freedom)
-    {
-        $this->container['degrees_of_freedom'] = $degrees_of_freedom;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect_number_of_processed_daily_measurements
-     * @return int
-     */
-    public function getEffectNumberOfProcessedDailyMeasurements()
-    {
-        return $this->container['effect_number_of_processed_daily_measurements'];
-    }
-
-    /**
-     * Sets effect_number_of_processed_daily_measurements
-     * @param int $effect_number_of_processed_daily_measurements Example: 145
-     * @return $this
-     */
-    public function setEffectNumberOfProcessedDailyMeasurements($effect_number_of_processed_daily_measurements)
-    {
-        $this->container['effect_number_of_processed_daily_measurements'] = $effect_number_of_processed_daily_measurements;
-
-        return $this;
-    }
-
-    /**
-     * Gets error
-     * @return string
-     */
-    public function getError()
-    {
-        return $this->container['error'];
-    }
-
-    /**
-     * Sets error
-     * @param string $error Example: optimalPearsonProduct is not defined
-     * @return $this
-     */
-    public function setError($error)
-    {
-        $this->container['error'] = $error;
 
         return $this;
     }

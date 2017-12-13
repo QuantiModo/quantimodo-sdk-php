@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action_array** | [**\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]**](TrackingReminderNotificationActionArray.md) |  | 
+**action_array** | [**\QuantiModo\Client\Model\TrackingReminderNotificationAction[]**](TrackingReminderNotificationAction.md) |  | 
 **available_units** | [**\QuantiModo\Client\Model\Unit[]**](Unit.md) |  | 
 **client_id** | **string** | clientId | [optional] 
 **combination_operation** | **string** | The way multiple measurements are aggregated over time | [optional] 
@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **png_path** | **string** | Example: img/variable_categories/emotions.png | [optional] 
 **png_url** | **string** | Example: https://app.quantimo.do/ionic/Modo/www/img/variable_categories/emotions.png | [optional] 
 **pop_up** | **bool** | True if the reminders should appear as a popup notification | [optional] 
+**question** | **string** | Example: How is your overall mood? | [optional] 
 **reminder_end_time** | [**\DateTime**](\DateTime.md) | Example: | [optional] 
 **reminder_frequency** | **int** | How often user should be reminded in seconds. Example: 86400 | [optional] 
 **reminder_sound** | **string** | String identifier for the sound to accompany the reminder | [optional] 

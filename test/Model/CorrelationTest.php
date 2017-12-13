@@ -267,6 +267,27 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "degrees_of_freedom"
+     */
+    public function testPropertyDegreesOfFreedom()
+    {
+    }
+
+    /**
+     * Test attribute "effect_number_of_processed_daily_measurements"
+     */
+    public function testPropertyEffectNumberOfProcessedDailyMeasurements()
+    {
+    }
+
+    /**
+     * Test attribute "error"
+     */
+    public function testPropertyError()
+    {
+    }
+
+    /**
      * Test attribute "effect_changes"
      */
     public function testPropertyEffectChanges()
@@ -711,27 +732,6 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
      * Test attribute "correlations_over_onset_delays_chart_config"
      */
     public function testPropertyCorrelationsOverOnsetDelaysChartConfig()
-    {
-    }
-
-    /**
-     * Test attribute "degrees_of_freedom"
-     */
-    public function testPropertyDegreesOfFreedom()
-    {
-    }
-
-    /**
-     * Test attribute "effect_number_of_processed_daily_measurements"
-     */
-    public function testPropertyEffectNumberOfProcessedDailyMeasurements()
-    {
-    }
-
-    /**
-     * Test attribute "error"
-     */
-    public function testPropertyError()
     {
     }
 

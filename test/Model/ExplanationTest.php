@@ -111,4 +111,11 @@ class ExplanationTest extends \PHPUnit_Framework_TestCase
     public function testPropertyTitle()
     {
     }
+
+    /**
+     * Test attribute "html"
+     */
+    public function testPropertyHtml()
+    {
+    }
 }

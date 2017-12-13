@@ -337,6 +337,13 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "question"
+     */
+    public function testPropertyQuestion()
+    {
+    }
+
+    /**
      * Test attribute "reminder_end_time"
      */
     public function testPropertyReminderEndTime()

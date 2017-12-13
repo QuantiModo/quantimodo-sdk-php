@@ -1,6 +1,6 @@
 <?php
 /**
- * TrackingReminderNotificationActionArray
+ * TrackingReminderNotificationAction
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace QuantiModo\Client\Model;
 use \ArrayAccess;
 
 /**
- * TrackingReminderNotificationActionArray Class Doc Comment
+ * TrackingReminderNotificationAction Class Doc Comment
  *
  * @category    Class
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class TrackingReminderNotificationActionArray implements ArrayAccess
+class TrackingReminderNotificationAction implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'TrackingReminderNotificationActionArray';
+    protected static $swaggerModelName = 'TrackingReminderNotificationAction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,9 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
         'action' => 'string',
         'callback' => 'string',
         'modified_value' => 'int',
-        'title' => 'string'
+        'title' => 'string',
+        'long_title' => 'string',
+        'short_title' => 'string'
     ];
 
     /**
@@ -68,7 +70,9 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
         'action' => null,
         'callback' => null,
         'modified_value' => null,
-        'title' => null
+        'title' => null,
+        'long_title' => null,
+        'short_title' => null
     ];
 
     public static function swaggerTypes()
@@ -89,7 +93,9 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
         'action' => 'action',
         'callback' => 'callback',
         'modified_value' => 'modifiedValue',
-        'title' => 'title'
+        'title' => 'title',
+        'long_title' => 'longTitle',
+        'short_title' => 'shortTitle'
     ];
 
 
@@ -101,7 +107,9 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
         'action' => 'setAction',
         'callback' => 'setCallback',
         'modified_value' => 'setModifiedValue',
-        'title' => 'setTitle'
+        'title' => 'setTitle',
+        'long_title' => 'setLongTitle',
+        'short_title' => 'setShortTitle'
     ];
 
 
@@ -113,7 +121,9 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
         'action' => 'getAction',
         'callback' => 'getCallback',
         'modified_value' => 'getModifiedValue',
-        'title' => 'getTitle'
+        'title' => 'getTitle',
+        'long_title' => 'getLongTitle',
+        'short_title' => 'getShortTitle'
     ];
 
     public static function attributeMap()
@@ -151,6 +161,8 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
         $this->container['callback'] = isset($data['callback']) ? $data['callback'] : null;
         $this->container['modified_value'] = isset($data['modified_value']) ? $data['modified_value'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['long_title'] = isset($data['long_title']) ? $data['long_title'] : null;
+        $this->container['short_title'] = isset($data['short_title']) ? $data['short_title'] : null;
     }
 
     /**
@@ -276,12 +288,54 @@ class TrackingReminderNotificationActionArray implements ArrayAccess
 
     /**
      * Sets title
-     * @param string $title Example: Rate 3/5
+     * @param string $title Example: 3/5
      * @return $this
      */
     public function setTitle($title)
     {
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_title
+     * @return string
+     */
+    public function getLongTitle()
+    {
+        return $this->container['long_title'];
+    }
+
+    /**
+     * Sets long_title
+     * @param string $long_title Example: Rate 3/5
+     * @return $this
+     */
+    public function setLongTitle($long_title)
+    {
+        $this->container['long_title'] = $long_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets short_title
+     * @return string
+     */
+    public function getShortTitle()
+    {
+        return $this->container['short_title'];
+    }
+
+    /**
+     * Sets short_title
+     * @param string $short_title Example: 3
+     * @return $this
+     */
+    public function setShortTitle($short_title)
+    {
+        $this->container['short_title'] = $short_title;
 
         return $this;
     }

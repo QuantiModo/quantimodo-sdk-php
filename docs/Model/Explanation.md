@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ion_icon** | **string** | Example: ion-ios-person | 
 **start_tracking** | [**\QuantiModo\Client\Model\ExplanationStartTracking**](ExplanationStartTracking.md) |  | 
 **title** | **string** | Example: Top Predictors of Overall Mood | 
+**html** | **string** | Embeddable list of study summaries with explanation at the top | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

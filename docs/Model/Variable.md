@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action_array** | [**\QuantiModo\Client\Model\TrackingReminderNotificationActionArray[]**](TrackingReminderNotificationActionArray.md) |  | [optional] 
+**action_array** | [**\QuantiModo\Client\Model\TrackingReminderNotificationAction[]**](TrackingReminderNotificationAction.md) |  | [optional] 
 **alias** | **string** | Example: | [optional] 
 **available_units** | [**\QuantiModo\Client\Model\Unit[]**](Unit.md) |  | [optional] 
 **cause_only** | **bool** | A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user | [optional] 

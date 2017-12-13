@@ -1,6 +1,6 @@
 <?php
 /**
- * TrackingReminderNotificationActionArrayTest
+ * TrackingReminderNotificationActionTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace QuantiModo\Client;
 
 /**
- * TrackingReminderNotificationActionArrayTest Class Doc Comment
+ * TrackingReminderNotificationActionTest Class Doc Comment
  *
  * @category    Class */
-// * @description TrackingReminderNotificationActionArray
+// * @description TrackingReminderNotificationAction
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class TrackingReminderNotificationActionArrayTest extends \PHPUnit_Framework_TestCase
+class TrackingReminderNotificationActionTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class TrackingReminderNotificationActionArrayTest extends \PHPUnit_Framework_Tes
     }
 
     /**
-     * Test "TrackingReminderNotificationActionArray"
+     * Test "TrackingReminderNotificationAction"
      */
-    public function testTrackingReminderNotificationActionArray()
+    public function testTrackingReminderNotificationAction()
     {
     }
 
@@ -102,6 +102,20 @@ class TrackingReminderNotificationActionArrayTest extends \PHPUnit_Framework_Tes
      * Test attribute "title"
      */
     public function testPropertyTitle()
+    {
+    }
+
+    /**
+     * Test attribute "long_title"
+     */
+    public function testPropertyLongTitle()
+    {
+    }
+
+    /**
+     * Test attribute "short_title"
+     */
+    public function testPropertyShortTitle()
     {
     }
 }

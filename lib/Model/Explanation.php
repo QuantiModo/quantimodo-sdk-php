@@ -58,7 +58,8 @@ class Explanation implements ArrayAccess
         'image' => '\QuantiModo\Client\Model\Image',
         'ion_icon' => 'string',
         'start_tracking' => '\QuantiModo\Client\Model\ExplanationStartTracking',
-        'title' => 'string'
+        'title' => 'string',
+        'html' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class Explanation implements ArrayAccess
         'image' => null,
         'ion_icon' => null,
         'start_tracking' => null,
-        'title' => null
+        'title' => null,
+        'html' => null
     ];
 
     public static function swaggerTypes()
@@ -92,7 +94,8 @@ class Explanation implements ArrayAccess
         'image' => 'image',
         'ion_icon' => 'ionIcon',
         'start_tracking' => 'startTracking',
-        'title' => 'title'
+        'title' => 'title',
+        'html' => 'html'
     ];
 
 
@@ -105,7 +108,8 @@ class Explanation implements ArrayAccess
         'image' => 'setImage',
         'ion_icon' => 'setIonIcon',
         'start_tracking' => 'setStartTracking',
-        'title' => 'setTitle'
+        'title' => 'setTitle',
+        'html' => 'setHtml'
     ];
 
 
@@ -118,7 +122,8 @@ class Explanation implements ArrayAccess
         'image' => 'getImage',
         'ion_icon' => 'getIonIcon',
         'start_tracking' => 'getStartTracking',
-        'title' => 'getTitle'
+        'title' => 'getTitle',
+        'html' => 'getHtml'
     ];
 
     public static function attributeMap()
@@ -157,6 +162,7 @@ class Explanation implements ArrayAccess
         $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
         $this->container['start_tracking'] = isset($data['start_tracking']) ? $data['start_tracking'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
     }
 
     /**
@@ -315,6 +321,27 @@ class Explanation implements ArrayAccess
     public function setTitle($title)
     {
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets html
+     * @return string
+     */
+    public function getHtml()
+    {
+        return $this->container['html'];
+    }
+
+    /**
+     * Sets html
+     * @param string $html Embeddable list of study summaries with explanation at the top
+     * @return $this
+     */
+    public function setHtml($html)
+    {
+        $this->container['html'] = $html;
 
         return $this;
     }
