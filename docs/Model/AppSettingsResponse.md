@@ -1,12 +1,11 @@
-# PostCorrelation
+# AppSettingsResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cause_variable_name** | **string** | Cause variable name | 
-**correlation** | **double** | Correlation value | 
-**effect_variable_name** | **string** | Effect variable name | 
-**vote** | **int** | Vote: 0 or 1 | [optional] 
+**app_settings** | [**\QuantiModo\Client\Model\AppSettings**](AppSettings.md) |  | [optional] 
+**description** | **string** | Can be used as body of help info popup | 
+**summary** | **string** | Can be used as title in help info popup | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

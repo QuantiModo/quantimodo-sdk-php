@@ -25,18 +25,23 @@ Attempt to obtain a token from the data provider, store it in the database. With
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: access_token
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// $config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
+$apiInstance = new QuantiModo\Client\Api\ConnectorsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $connector_name = "connector_name_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v3/connectors/list endpoint.
-$user_id = 3.4; // float | User's id
+$user_id = 8.14; // float | User's id
 
 try {
-    $api_instance->connectConnector($connector_name, $user_id);
+    $apiInstance->connectConnector($connector_name, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->connectConnector: ', $e->getMessage(), PHP_EOL;
 }
@@ -78,17 +83,22 @@ The disconnect method deletes any stored tokens or connection information from t
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: access_token
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// $config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
+$apiInstance = new QuantiModo\Client\Api\ConnectorsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $connector_name = "connector_name_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v3/connectors/list endpoint.
 
 try {
-    $api_instance->disconnectConnector($connector_name);
+    $apiInstance->disconnectConnector($connector_name);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->disconnectConnector: ', $e->getMessage(), PHP_EOL;
 }
@@ -117,7 +127,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getConnectors**
-> \QuantiModo\Client\Model\GetConnectorsResponse getConnectors($app_name, $client_id)
+> \QuantiModo\Client\Model\GetConnectorsResponse getConnectors($client_id, $platform)
 
 List of Connectors
 
@@ -129,18 +139,23 @@ A connector pulls data from other data providers using their API or a screenscra
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: access_token
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// $config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$app_name = "app_name_example"; // string | Example: MoodiModo
-$client_id = "client_id_example"; // string | Example: oauth_test_client
+$apiInstance = new QuantiModo\Client\Api\ConnectorsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
+$platform = "platform_example"; // string | Ex: chrome, android, ios, web
 
 try {
-    $result = $api_instance->getConnectors($app_name, $client_id);
+    $result = $apiInstance->getConnectors($client_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->getConnectors: ', $e->getMessage(), PHP_EOL;
@@ -152,8 +167,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **app_name** | **string**| Example: MoodiModo | [optional]
- **client_id** | **string**| Example: oauth_test_client | [optional]
+ **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
+ **platform** | **string**| Ex: chrome, android, ios, web | [optional]
 
 ### Return type
 
@@ -171,7 +186,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getIntegrationJs**
-> getIntegrationJs($client_id)
+> getIntegrationJs($client_id, $platform)
 
 Get embeddable connect javascript
 
@@ -182,11 +197,16 @@ Get embeddable connect javascript. Usage:   - Embedding in applications with pop
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$client_id = "client_id_example"; // string | Example: oauth_test_client
+$apiInstance = new QuantiModo\Client\Api\ConnectorsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
+$platform = "platform_example"; // string | Ex: chrome, android, ios, web
 
 try {
-    $api_instance->getIntegrationJs($client_id);
+    $apiInstance->getIntegrationJs($client_id, $platform);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->getIntegrationJs: ', $e->getMessage(), PHP_EOL;
 }
@@ -197,7 +217,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_id** | **string**| Example: oauth_test_client | [optional]
+ **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
+ **platform** | **string**| Ex: chrome, android, ios, web | [optional]
 
 ### Return type
 
@@ -226,11 +247,15 @@ This page is designed to be opened in a webview.  Instead of using popup authent
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
-$user_id = 3.4; // float | User's id
+$apiInstance = new QuantiModo\Client\Api\ConnectorsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$user_id = 8.14; // float | User's id
 
 try {
-    $api_instance->getMobileConnectPage($user_id);
+    $apiInstance->getMobileConnectPage($user_id);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->getMobileConnectPage: ', $e->getMessage(), PHP_EOL;
 }
@@ -271,18 +296,23 @@ The update method tells the QM Connector Framework to check with the data provid
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: access_token
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// $config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new QuantiModo\Client\Api\ConnectorsApi();
+$apiInstance = new QuantiModo\Client\Api\ConnectorsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $connector_name = "connector_name_example"; // string | Lowercase system name of the source application or device. Get a list of available connectors from the /v3/connectors/list endpoint.
-$user_id = 3.4; // float | User's id
+$user_id = 8.14; // float | User's id
 
 try {
-    $api_instance->updateConnector($connector_name, $user_id);
+    $apiInstance->updateConnector($connector_name, $user_id);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectorsApi->updateConnector: ', $e->getMessage(), PHP_EOL;
 }

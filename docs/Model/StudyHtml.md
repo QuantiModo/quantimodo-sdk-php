@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **full_page_with_head** | **string** | Embeddable study including HTML head section charts.  Modifiable css classes are study-title, study-section-header, study-section-body | [optional] 
 **full_study_html** | **string** | Embeddable study text html including charts.  Modifiable css classes are study-title, study-section-header, study-section-body | 
 **full_study_html_with_css_styles** | **string** | Embeddable study html including charts and css styling | [optional] 
+**participant_instructions_html** | **string** | Instructions for study participation | [optional] 
 **statistics_table_html** | **string** | Embeddable table with statistics | [optional] 
 **study_abstract_html** | **string** | Text summary | [optional] 
 **study_header_html** | **string** | Title, study image, abstract with CSS styling | [optional] 

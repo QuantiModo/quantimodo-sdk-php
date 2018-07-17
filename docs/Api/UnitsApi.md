@@ -21,16 +21,21 @@ Get a list of the categories of measurement units such as 'Distance', 'Duration'
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: access_token
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// $config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new QuantiModo\Client\Api\UnitsApi();
+$apiInstance = new QuantiModo\Client\Api\UnitsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 
 try {
-    $result = $api_instance->getUnitCategories();
+    $result = $apiInstance->getUnitCategories();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UnitsApi->getUnitCategories: ', $e->getMessage(), PHP_EOL;
@@ -69,16 +74,21 @@ Get a list of the available measurement units
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: access_token
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// $config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
 // Configure OAuth2 access token for authorization: quantimodo_oauth2
-QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = QuantiModo\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new QuantiModo\Client\Api\UnitsApi();
+$apiInstance = new QuantiModo\Client\Api\UnitsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 
 try {
-    $result = $api_instance->getUnits();
+    $result = $apiInstance->getUnits();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UnitsApi->getUnits: ', $e->getMessage(), PHP_EOL;
