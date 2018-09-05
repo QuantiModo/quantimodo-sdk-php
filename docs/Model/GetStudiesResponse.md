@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **description** | **string** | Ex: These factors are most predictive of Overall Mood based on your own data. | 
 **summary** | **string** | Can be used as title in help info popup | 
 **image** | [**\QuantiModo\Client\Model\Image**](Image.md) |  | [optional] 
+**avatar** | **string** | Square icon png url | [optional] 
 **ion_icon** | **string** | Ex: ion-ios-person | [optional] 
 **start_tracking** | [**\QuantiModo\Client\Model\ExplanationStartTracking**](ExplanationStartTracking.md) |  | [optional] 
 **title** | **string** | Ex: Top Predictors of Overall Mood | [optional] 

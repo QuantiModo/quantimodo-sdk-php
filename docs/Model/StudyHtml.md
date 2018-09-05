@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **study_image_html** | **string** | PNG image | [optional] 
 **study_meta_html** | **string** | Facebook, Twitter, Google+ | [optional] 
 **study_text_html** | **string** | Formatted study text sections | [optional] 
-**social_sharing_button_html** | **string** |  | [optional] 
-**study_summary_box_html** | **string** |  | [optional] 
+**social_sharing_button_html** | **string** | What do you expect? | [optional] 
+**study_summary_box_html** | **string** | What do you expect? | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

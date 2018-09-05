@@ -338,7 +338,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets additional_settings
      *
-     * @param object $additional_settings 
+     * @param object $additional_settings What do you expect?
      *
      * @return $this
      */
@@ -362,7 +362,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets app_description
      *
-     * @param string $app_description 
+     * @param string $app_description What do you expect?
      *
      * @return $this
      */
@@ -386,7 +386,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets app_design
      *
-     * @param object $app_design 
+     * @param object $app_design What do you expect?
      *
      * @return $this
      */
@@ -410,7 +410,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets app_display_name
      *
-     * @param string $app_display_name 
+     * @param string $app_display_name What do you expect?
      *
      * @return $this
      */
@@ -434,7 +434,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets app_status
      *
-     * @param object $app_status 
+     * @param object $app_status What do you expect?
      *
      * @return $this
      */
@@ -458,7 +458,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets app_type
      *
-     * @param string $app_type 
+     * @param string $app_type What do you expect?
      *
      * @return $this
      */
@@ -482,7 +482,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets build_enabled
      *
-     * @param string $build_enabled 
+     * @param string $build_enabled What do you expect?
      *
      * @return $this
      */
@@ -506,7 +506,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets client_id
      *
-     * @param string $client_id 
+     * @param string $client_id What do you expect?
      *
      * @return $this
      */
@@ -530,7 +530,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets client_secret
      *
-     * @param string $client_secret 
+     * @param string $client_secret What do you expect?
      *
      * @return $this
      */
@@ -554,7 +554,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets collaborators
      *
-     * @param \QuantiModo\Client\Model\User[] $collaborators 
+     * @param \QuantiModo\Client\Model\User[] $collaborators What do you expect?
      *
      * @return $this
      */
@@ -578,7 +578,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param string $created_at 
+     * @param string $created_at What do you expect?
      *
      * @return $this
      */
@@ -602,7 +602,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param string $user_id 
+     * @param string $user_id What do you expect?
      *
      * @return $this
      */
@@ -626,7 +626,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets users
      *
-     * @param \QuantiModo\Client\Model\User[] $users 
+     * @param \QuantiModo\Client\Model\User[] $users What do you expect?
      *
      * @return $this
      */
@@ -650,7 +650,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets redirect_uri
      *
-     * @param string $redirect_uri 
+     * @param string $redirect_uri What do you expect?
      *
      * @return $this
      */
@@ -674,7 +674,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets company_name
      *
-     * @param string $company_name 
+     * @param string $company_name What do you expect?
      *
      * @return $this
      */
@@ -698,7 +698,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets homepage_url
      *
-     * @param string $homepage_url 
+     * @param string $homepage_url What do you expect?
      *
      * @return $this
      */
@@ -722,7 +722,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets icon_url
      *
-     * @param string $icon_url 
+     * @param string $icon_url What do you expect?
      *
      * @return $this
      */
@@ -746,7 +746,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets long_description
      *
-     * @param string $long_description 
+     * @param string $long_description What do you expect?
      *
      * @return $this
      */
@@ -770,7 +770,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets splash_screen
      *
-     * @param string $splash_screen 
+     * @param string $splash_screen What do you expect?
      *
      * @return $this
      */
@@ -794,7 +794,7 @@ class AppSettings implements ModelInterface, ArrayAccess
     /**
      * Sets text_logo
      *
-     * @param string $text_logo 
+     * @param string $text_logo What do you expect?
      *
      * @return $this
      */

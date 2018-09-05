@@ -368,7 +368,7 @@ class RemindersApi
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $reminder_time Ex: (lt)2017-07-31 21:43:26 (optional)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
      * @param  bool $only_past Ex: 1 (optional)
@@ -396,7 +396,7 @@ class RemindersApi
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $reminder_time Ex: (lt)2017-07-31 21:43:26 (optional)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
      * @param  bool $only_past Ex: 1 (optional)
@@ -482,7 +482,7 @@ class RemindersApi
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $reminder_time Ex: (lt)2017-07-31 21:43:26 (optional)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
      * @param  bool $only_past Ex: 1 (optional)
@@ -513,7 +513,7 @@ class RemindersApi
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $reminder_time Ex: (lt)2017-07-31 21:43:26 (optional)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
      * @param  bool $only_past Ex: 1 (optional)
@@ -574,7 +574,7 @@ class RemindersApi
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $reminder_time Ex: (lt)2017-07-31 21:43:26 (optional)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
      * @param  bool $only_past Ex: 1 (optional)
@@ -727,7 +727,7 @@ class RemindersApi
      * Get repeating tracking reminder settings
      *
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $created_at When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
@@ -753,7 +753,7 @@ class RemindersApi
      * Get repeating tracking reminder settings
      *
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $created_at When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
@@ -837,7 +837,7 @@ class RemindersApi
      * Get repeating tracking reminder settings
      *
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $created_at When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
@@ -866,7 +866,7 @@ class RemindersApi
      * Get repeating tracking reminder settings
      *
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $created_at When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
@@ -925,7 +925,7 @@ class RemindersApi
      * Create request for operation 'getTrackingReminders'
      *
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $created_at When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)

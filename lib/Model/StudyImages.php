@@ -65,7 +65,8 @@ class StudyImages implements ModelInterface, ArrayAccess
         'gauge_image_square' => 'string',
         'gauge_sharing_image_url' => 'string',
         'image_url' => 'string',
-        'robot_sharing_image_url' => 'string'
+        'robot_sharing_image_url' => 'string',
+        'avatar' => 'string'
     ];
 
     /**
@@ -82,7 +83,8 @@ class StudyImages implements ModelInterface, ArrayAccess
         'gauge_image_square' => null,
         'gauge_sharing_image_url' => null,
         'image_url' => null,
-        'robot_sharing_image_url' => null
+        'robot_sharing_image_url' => null,
+        'avatar' => null
     ];
 
     /**
@@ -120,7 +122,8 @@ class StudyImages implements ModelInterface, ArrayAccess
         'gauge_image_square' => 'gaugeImageSquare',
         'gauge_sharing_image_url' => 'gaugeSharingImageUrl',
         'image_url' => 'imageUrl',
-        'robot_sharing_image_url' => 'robotSharingImageUrl'
+        'robot_sharing_image_url' => 'robotSharingImageUrl',
+        'avatar' => 'avatar'
     ];
 
     /**
@@ -137,7 +140,8 @@ class StudyImages implements ModelInterface, ArrayAccess
         'gauge_image_square' => 'setGaugeImageSquare',
         'gauge_sharing_image_url' => 'setGaugeSharingImageUrl',
         'image_url' => 'setImageUrl',
-        'robot_sharing_image_url' => 'setRobotSharingImageUrl'
+        'robot_sharing_image_url' => 'setRobotSharingImageUrl',
+        'avatar' => 'setAvatar'
     ];
 
     /**
@@ -154,7 +158,8 @@ class StudyImages implements ModelInterface, ArrayAccess
         'gauge_image_square' => 'getGaugeImageSquare',
         'gauge_sharing_image_url' => 'getGaugeSharingImageUrl',
         'image_url' => 'getImageUrl',
-        'robot_sharing_image_url' => 'getRobotSharingImageUrl'
+        'robot_sharing_image_url' => 'getRobotSharingImageUrl',
+        'avatar' => 'getAvatar'
     ];
 
     /**
@@ -226,6 +231,7 @@ class StudyImages implements ModelInterface, ArrayAccess
         $this->container['gauge_sharing_image_url'] = isset($data['gauge_sharing_image_url']) ? $data['gauge_sharing_image_url'] : null;
         $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
         $this->container['robot_sharing_image_url'] = isset($data['robot_sharing_image_url']) ? $data['robot_sharing_image_url'] : null;
+        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
     }
 
     /**
@@ -483,6 +489,30 @@ class StudyImages implements ModelInterface, ArrayAccess
     public function setRobotSharingImageUrl($robot_sharing_image_url)
     {
         $this->container['robot_sharing_image_url'] = $robot_sharing_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->container['avatar'];
+    }
+
+    /**
+     * Sets avatar
+     *
+     * @param string $avatar Avatar of the principal investigator
+     *
+     * @return $this
+     */
+    public function setAvatar($avatar)
+    {
+        $this->container['avatar'] = $avatar;
 
         return $this;
     }

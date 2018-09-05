@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **id** | **int** | id | [optional] 
 **updated_at** | **string** | When the record in the database was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format | [optional] 
 **user_id** | **int** | ID of User | 
-**value** | **bool** | Vote: 0 (for implausible) or 1 (for plausible) | 
+**value** | **string** | Vote down for implausible/not-useful or up for plausible/useful. Vote none to delete a previous vote. | 
+**type** | **string** | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

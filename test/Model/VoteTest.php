@@ -132,4 +132,11 @@ class VoteTest extends \PHPUnit_Framework_TestCase
     public function testPropertyValue()
     {
     }
+
+    /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+    }
 }

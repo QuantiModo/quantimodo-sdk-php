@@ -83,7 +83,7 @@ class Correlation implements ModelInterface, ArrayAccess
         'critical_t_value' => 'double',
         'direction' => 'string',
         'duration_of_action' => 'int',
-        'duration_of_action_in_hours' => 'int',
+        'duration_of_action_in_hours' => 'float',
         'degrees_of_freedom' => 'int',
         'effect_number_of_processed_daily_measurements' => 'int',
         'error' => 'string',
@@ -107,9 +107,9 @@ class Correlation implements ModelInterface, ArrayAccess
         'forward_spearman_correlation_coefficient' => 'double',
         'number_of_pairs' => 'int',
         'onset_delay' => 'int',
-        'onset_delay_in_hours' => 'int',
+        'onset_delay_in_hours' => 'float',
         'onset_delay_with_strongest_pearson_correlation' => 'int',
-        'onset_delay_with_strongest_pearson_correlation_in_hours' => 'int',
+        'onset_delay_with_strongest_pearson_correlation_in_hours' => 'float',
         'optimal_pearson_product' => 'double',
         'outcome_filling_value' => 'int',
         'outcome_maximum_allowed_value' => 'double',
@@ -194,7 +194,7 @@ class Correlation implements ModelInterface, ArrayAccess
         'critical_t_value' => 'double',
         'direction' => null,
         'duration_of_action' => null,
-        'duration_of_action_in_hours' => null,
+        'duration_of_action_in_hours' => 'float',
         'degrees_of_freedom' => null,
         'effect_number_of_processed_daily_measurements' => null,
         'error' => null,
@@ -218,9 +218,9 @@ class Correlation implements ModelInterface, ArrayAccess
         'forward_spearman_correlation_coefficient' => 'double',
         'number_of_pairs' => null,
         'onset_delay' => null,
-        'onset_delay_in_hours' => null,
+        'onset_delay_in_hours' => 'float',
         'onset_delay_with_strongest_pearson_correlation' => null,
-        'onset_delay_with_strongest_pearson_correlation_in_hours' => null,
+        'onset_delay_with_strongest_pearson_correlation_in_hours' => 'float',
         'optimal_pearson_product' => 'double',
         'outcome_filling_value' => null,
         'outcome_maximum_allowed_value' => 'double',
@@ -1712,7 +1712,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets critical_t_value
      *
-     * @param double $critical_t_value Ex: 1.646
+     * @param double $critical_t_value Calculated Statistic: Ex: 1.646
      *
      * @return $this
      */
@@ -1760,7 +1760,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets duration_of_action
      *
-     * @param int $duration_of_action Ex: 604800
+     * @param int $duration_of_action User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Seconds
      *
      * @return $this
      */
@@ -1774,7 +1774,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Gets duration_of_action_in_hours
      *
-     * @return int
+     * @return float
      */
     public function getDurationOfActionInHours()
     {
@@ -1784,7 +1784,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets duration_of_action_in_hours
      *
-     * @param int $duration_of_action_in_hours Ex: 168
+     * @param float $duration_of_action_in_hours User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Hours
      *
      * @return $this
      */
@@ -2350,7 +2350,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Gets onset_delay_in_hours
      *
-     * @return int
+     * @return float
      */
     public function getOnsetDelayInHours()
     {
@@ -2360,7 +2360,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets onset_delay_in_hours
      *
-     * @param int $onset_delay_in_hours Ex: 0
+     * @param float $onset_delay_in_hours Ex: 0
      *
      * @return $this
      */
@@ -2398,7 +2398,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Gets onset_delay_with_strongest_pearson_correlation_in_hours
      *
-     * @return int
+     * @return float
      */
     public function getOnsetDelayWithStrongestPearsonCorrelationInHours()
     {
@@ -2408,7 +2408,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets onset_delay_with_strongest_pearson_correlation_in_hours
      *
-     * @param int $onset_delay_with_strongest_pearson_correlation_in_hours Ex: -24
+     * @param float $onset_delay_with_strongest_pearson_correlation_in_hours Ex: -24
      *
      * @return $this
      */
@@ -2456,7 +2456,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets outcome_filling_value
      *
-     * @param int $outcome_filling_value Ex: -1
+     * @param int $outcome_filling_value User-Defined Variable Setting: Ex: -1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2480,7 +2480,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets outcome_maximum_allowed_value
      *
-     * @param double $outcome_maximum_allowed_value Ex: 23
+     * @param double $outcome_maximum_allowed_value User-Defined Variable Setting: Ex: 23. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2504,7 +2504,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets outcome_minimum_allowed_value
      *
-     * @param double $outcome_minimum_allowed_value Ex: 0.1
+     * @param double $outcome_minimum_allowed_value User-Defined Variable Setting: Ex: 0.1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2624,7 +2624,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets predictor_filling_value
      *
-     * @param int $predictor_filling_value Ex: -1
+     * @param int $predictor_filling_value Ex: -1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2648,7 +2648,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets predictor_maximum_allowed_value
      *
-     * @param double $predictor_maximum_allowed_value Ex: 200
+     * @param double $predictor_maximum_allowed_value Ex: 200. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2672,7 +2672,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets predictor_minimum_allowed_value
      *
-     * @param double $predictor_minimum_allowed_value Ex: 30
+     * @param double $predictor_minimum_allowed_value Ex: 30. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2696,7 +2696,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets predicts_high_effect_change
      *
-     * @param int $predicts_high_effect_change Ex: 17
+     * @param int $predicts_high_effect_change Ex: 17. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2720,7 +2720,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets predicts_low_effect_change
      *
-     * @param int $predicts_low_effect_change Ex: -11
+     * @param int $predicts_low_effect_change Ex: -11. Unit: User-specified or common.
      *
      * @return $this
      */

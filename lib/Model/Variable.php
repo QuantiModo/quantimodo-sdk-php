@@ -60,6 +60,16 @@ class Variable implements ModelInterface, ArrayAccess
         'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationAction[]',
         'alias' => 'string',
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
+        'best_study_link' => 'string',
+        'best_study_card' => '\QuantiModo\Client\Model\Card',
+        'best_user_study_link' => 'string',
+        'best_user_study_card' => '\QuantiModo\Client\Model\Card',
+        'best_population_study_link' => 'string',
+        'best_population_study_card' => '\QuantiModo\Client\Model\Card',
+        'optimal_value_message' => 'string',
+        'common_optimal_value_message' => 'string',
+        'user_optimal_value_message' => 'string',
+        'card' => '\QuantiModo\Client\Model\Card',
         'cause_only' => 'bool',
         'charts' => '\QuantiModo\Client\Model\VariableCharts',
         'charts_link_dynamic' => 'string',
@@ -75,25 +85,19 @@ class Variable implements ModelInterface, ArrayAccess
         'common_alias' => 'string',
         'common_tagged_variables' => '\QuantiModo\Client\Model\Variable[]',
         'common_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
-        'common_variable_most_common_connector_id' => 'int',
-        'common_variable_updated_at' => 'string',
         'created_at' => 'string',
         'data_source_names' => 'string',
         'data_sources' => '\QuantiModo\Client\Model\DataSource[]',
         'description' => 'string',
         'display_name' => 'string',
         'duration_of_action' => 'int',
-        'duration_of_action_in_hours' => 'int',
+        'duration_of_action_in_hours' => 'float',
         'earliest_filling_time' => 'int',
         'earliest_measurement_time' => 'int',
         'earliest_source_time' => 'int',
         'error_message' => 'string',
         'experiment_end_time' => 'string',
-        'experiment_end_time_seconds' => 'int',
-        'experiment_end_time_string' => 'string',
         'experiment_start_time' => 'string',
-        'experiment_start_time_seconds' => 'int',
-        'experiment_start_time_string' => 'string',
         'filling_type' => 'string',
         'filling_value' => 'float',
         'icon_icon' => 'string',
@@ -110,11 +114,8 @@ class Variable implements ModelInterface, ArrayAccess
         'joined_user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'join_with' => 'int',
         'kurtosis' => 'float',
-        'last_original_unit_id' => 'int',
-        'last_original_value' => 'int',
         'last_processed_daily_value' => 'double',
         'last_successful_update_time' => 'string',
-        'last_unit_id' => 'int',
         'last_value' => 'float',
         'latest_filling_time' => 'int',
         'latest_measurement_time' => 'int',
@@ -124,6 +125,7 @@ class Variable implements ModelInterface, ArrayAccess
         'location' => 'string',
         'longitude' => 'float',
         'manual_tracking' => 'bool',
+        'maximum_allowed_daily_value' => 'float',
         'maximum_allowed_value' => 'float',
         'maximum_recorded_daily_value' => 'float',
         'maximum_recorded_value' => 'double',
@@ -131,6 +133,8 @@ class Variable implements ModelInterface, ArrayAccess
         'measurements_at_last_analysis' => 'int',
         'median' => 'float',
         'minimum_allowed_value' => 'float',
+        'minimum_allowed_daily_value' => 'float',
+        'minimum_non_zero_value' => 'float',
         'minimum_recorded_value' => 'float',
         'most_common_connector_id' => 'int',
         'most_common_original_unit_id' => 'int',
@@ -141,6 +145,8 @@ class Variable implements ModelInterface, ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'int',
         'number_of_changes' => 'int',
         'number_of_correlations' => 'int',
+        'number_of_correlations_as_cause' => 'int',
+        'number_of_correlations_as_effect' => 'int',
         'number_of_processed_daily_measurements' => 'int',
         'number_of_raw_measurements' => 'int',
         'number_of_tracking_reminders' => 'int',
@@ -152,7 +158,7 @@ class Variable implements ModelInterface, ArrayAccess
         'onset_delay' => 'int',
         'onset_delay_in_hours' => 'double',
         'outcome' => 'bool',
-        'outcome_of_interest' => 'int',
+        'outcome_of_interest' => 'bool',
         'parent_common_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'parent_user_tag_variables' => '\QuantiModo\Client\Model\Variable[]',
         'png_path' => 'string',
@@ -160,7 +166,9 @@ class Variable implements ModelInterface, ArrayAccess
         'predictor_of_interest' => 'int',
         'price' => 'double',
         'product_url' => 'string',
-        'public' => 'int',
+        'public' => 'bool',
+        'question' => 'string',
+        'long_question' => 'string',
         'raw_measurements_at_last_analysis' => 'int',
         'second_most_common_value' => 'double',
         'second_to_last_value' => 'double',
@@ -192,23 +200,11 @@ class Variable implements ModelInterface, ArrayAccess
         'user_variable_unit_category_name' => 'string',
         'user_variable_unit_id' => 'int',
         'user_variable_unit_name' => 'string',
-        'user_variable_filling_value' => 'double',
-        'user_variable_most_common_connector_id' => 'int',
-        'user_variable_updated_at' => 'string',
-        'user_variable_valence' => 'string',
-        'user_variable_variable_category_id' => 'int',
-        'user_variable_variable_category_name' => 'string',
-        'user_variable_wikipedia_title' => 'string',
         'variable_category' => '\QuantiModo\Client\Model\VariableCategory',
         'joined_variables' => '\QuantiModo\Client\Model\Variable[]',
-        'last_source' => 'int',
-        'last_unit' => 'string',
-        'most_common_unit' => 'string',
         'valence' => 'string',
         'variable_category_id' => 'int',
-        'variable_category_image_url' => 'string',
         'variable_category_name' => 'string',
-        'variable_filling_value' => 'double',
         'variable_id' => 'int',
         'variable_name' => 'string',
         'variance' => 'double',
@@ -224,6 +220,16 @@ class Variable implements ModelInterface, ArrayAccess
         'action_array' => null,
         'alias' => null,
         'available_units' => null,
+        'best_study_link' => null,
+        'best_study_card' => null,
+        'best_user_study_link' => null,
+        'best_user_study_card' => null,
+        'best_population_study_link' => null,
+        'best_population_study_card' => null,
+        'optimal_value_message' => null,
+        'common_optimal_value_message' => null,
+        'user_optimal_value_message' => null,
+        'card' => null,
         'cause_only' => null,
         'charts' => null,
         'charts_link_dynamic' => null,
@@ -239,25 +245,19 @@ class Variable implements ModelInterface, ArrayAccess
         'common_alias' => null,
         'common_tagged_variables' => null,
         'common_tag_variables' => null,
-        'common_variable_most_common_connector_id' => null,
-        'common_variable_updated_at' => null,
         'created_at' => null,
         'data_source_names' => null,
         'data_sources' => null,
         'description' => null,
         'display_name' => null,
         'duration_of_action' => 'int32',
-        'duration_of_action_in_hours' => null,
+        'duration_of_action_in_hours' => 'float',
         'earliest_filling_time' => 'int32',
         'earliest_measurement_time' => 'int32',
         'earliest_source_time' => 'int32',
         'error_message' => null,
         'experiment_end_time' => null,
-        'experiment_end_time_seconds' => null,
-        'experiment_end_time_string' => null,
         'experiment_start_time' => null,
-        'experiment_start_time_seconds' => null,
-        'experiment_start_time_string' => null,
         'filling_type' => null,
         'filling_value' => 'float',
         'icon_icon' => null,
@@ -274,11 +274,8 @@ class Variable implements ModelInterface, ArrayAccess
         'joined_user_tag_variables' => null,
         'join_with' => 'int32',
         'kurtosis' => 'float',
-        'last_original_unit_id' => 'int32',
-        'last_original_value' => 'int32',
         'last_processed_daily_value' => 'double',
         'last_successful_update_time' => null,
-        'last_unit_id' => 'int32',
         'last_value' => 'float',
         'latest_filling_time' => 'int32',
         'latest_measurement_time' => 'int32',
@@ -288,6 +285,7 @@ class Variable implements ModelInterface, ArrayAccess
         'location' => null,
         'longitude' => 'float',
         'manual_tracking' => null,
+        'maximum_allowed_daily_value' => 'float',
         'maximum_allowed_value' => 'float',
         'maximum_recorded_daily_value' => 'float',
         'maximum_recorded_value' => 'double',
@@ -295,6 +293,8 @@ class Variable implements ModelInterface, ArrayAccess
         'measurements_at_last_analysis' => 'int32',
         'median' => 'float',
         'minimum_allowed_value' => 'float',
+        'minimum_allowed_daily_value' => 'float',
+        'minimum_non_zero_value' => 'float',
         'minimum_recorded_value' => 'float',
         'most_common_connector_id' => null,
         'most_common_original_unit_id' => null,
@@ -305,6 +305,8 @@ class Variable implements ModelInterface, ArrayAccess
         'number_of_aggregate_correlations_as_effect' => null,
         'number_of_changes' => 'int32',
         'number_of_correlations' => 'int32',
+        'number_of_correlations_as_cause' => null,
+        'number_of_correlations_as_effect' => null,
         'number_of_processed_daily_measurements' => 'int32',
         'number_of_raw_measurements' => null,
         'number_of_tracking_reminders' => null,
@@ -324,7 +326,9 @@ class Variable implements ModelInterface, ArrayAccess
         'predictor_of_interest' => null,
         'price' => 'double',
         'product_url' => null,
-        'public' => 'int32',
+        'public' => null,
+        'question' => null,
+        'long_question' => null,
         'raw_measurements_at_last_analysis' => null,
         'second_most_common_value' => 'double',
         'second_to_last_value' => 'double',
@@ -356,23 +360,11 @@ class Variable implements ModelInterface, ArrayAccess
         'user_variable_unit_category_name' => null,
         'user_variable_unit_id' => null,
         'user_variable_unit_name' => null,
-        'user_variable_filling_value' => 'double',
-        'user_variable_most_common_connector_id' => null,
-        'user_variable_updated_at' => null,
-        'user_variable_valence' => null,
-        'user_variable_variable_category_id' => null,
-        'user_variable_variable_category_name' => null,
-        'user_variable_wikipedia_title' => null,
         'variable_category' => null,
         'joined_variables' => null,
-        'last_source' => null,
-        'last_unit' => null,
-        'most_common_unit' => null,
         'valence' => null,
         'variable_category_id' => null,
-        'variable_category_image_url' => null,
         'variable_category_name' => null,
-        'variable_filling_value' => 'double',
         'variable_id' => null,
         'variable_name' => null,
         'variance' => 'double',
@@ -409,6 +401,16 @@ class Variable implements ModelInterface, ArrayAccess
         'action_array' => 'actionArray',
         'alias' => 'alias',
         'available_units' => 'availableUnits',
+        'best_study_link' => 'bestStudyLink',
+        'best_study_card' => 'bestStudyCard',
+        'best_user_study_link' => 'bestUserStudyLink',
+        'best_user_study_card' => 'bestUserStudyCard',
+        'best_population_study_link' => 'bestPopulationStudyLink',
+        'best_population_study_card' => 'bestPopulationStudyCard',
+        'optimal_value_message' => 'optimalValueMessage',
+        'common_optimal_value_message' => 'commonOptimalValueMessage',
+        'user_optimal_value_message' => 'userOptimalValueMessage',
+        'card' => 'card',
         'cause_only' => 'causeOnly',
         'charts' => 'charts',
         'charts_link_dynamic' => 'chartsLinkDynamic',
@@ -424,8 +426,6 @@ class Variable implements ModelInterface, ArrayAccess
         'common_alias' => 'commonAlias',
         'common_tagged_variables' => 'commonTaggedVariables',
         'common_tag_variables' => 'commonTagVariables',
-        'common_variable_most_common_connector_id' => 'commonVariableMostCommonConnectorId',
-        'common_variable_updated_at' => 'commonVariableUpdatedAt',
         'created_at' => 'createdAt',
         'data_source_names' => 'dataSourceNames',
         'data_sources' => 'dataSources',
@@ -438,11 +438,7 @@ class Variable implements ModelInterface, ArrayAccess
         'earliest_source_time' => 'earliestSourceTime',
         'error_message' => 'errorMessage',
         'experiment_end_time' => 'experimentEndTime',
-        'experiment_end_time_seconds' => 'experimentEndTimeSeconds',
-        'experiment_end_time_string' => 'experimentEndTimeString',
         'experiment_start_time' => 'experimentStartTime',
-        'experiment_start_time_seconds' => 'experimentStartTimeSeconds',
-        'experiment_start_time_string' => 'experimentStartTimeString',
         'filling_type' => 'fillingType',
         'filling_value' => 'fillingValue',
         'icon_icon' => 'iconIcon',
@@ -459,11 +455,8 @@ class Variable implements ModelInterface, ArrayAccess
         'joined_user_tag_variables' => 'joinedUserTagVariables',
         'join_with' => 'joinWith',
         'kurtosis' => 'kurtosis',
-        'last_original_unit_id' => 'lastOriginalUnitId',
-        'last_original_value' => 'lastOriginalValue',
         'last_processed_daily_value' => 'lastProcessedDailyValue',
         'last_successful_update_time' => 'lastSuccessfulUpdateTime',
-        'last_unit_id' => 'lastUnitId',
         'last_value' => 'lastValue',
         'latest_filling_time' => 'latestFillingTime',
         'latest_measurement_time' => 'latestMeasurementTime',
@@ -473,6 +466,7 @@ class Variable implements ModelInterface, ArrayAccess
         'location' => 'location',
         'longitude' => 'longitude',
         'manual_tracking' => 'manualTracking',
+        'maximum_allowed_daily_value' => 'maximumAllowedDailyValue',
         'maximum_allowed_value' => 'maximumAllowedValue',
         'maximum_recorded_daily_value' => 'maximumRecordedDailyValue',
         'maximum_recorded_value' => 'maximumRecordedValue',
@@ -480,6 +474,8 @@ class Variable implements ModelInterface, ArrayAccess
         'measurements_at_last_analysis' => 'measurementsAtLastAnalysis',
         'median' => 'median',
         'minimum_allowed_value' => 'minimumAllowedValue',
+        'minimum_allowed_daily_value' => 'minimumAllowedDailyValue',
+        'minimum_non_zero_value' => 'minimumNonZeroValue',
         'minimum_recorded_value' => 'minimumRecordedValue',
         'most_common_connector_id' => 'mostCommonConnectorId',
         'most_common_original_unit_id' => 'mostCommonOriginalUnitId',
@@ -490,6 +486,8 @@ class Variable implements ModelInterface, ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'numberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'numberOfChanges',
         'number_of_correlations' => 'numberOfCorrelations',
+        'number_of_correlations_as_cause' => 'numberOfCorrelationsAsCause',
+        'number_of_correlations_as_effect' => 'numberOfCorrelationsAsEffect',
         'number_of_processed_daily_measurements' => 'numberOfProcessedDailyMeasurements',
         'number_of_raw_measurements' => 'numberOfRawMeasurements',
         'number_of_tracking_reminders' => 'numberOfTrackingReminders',
@@ -510,6 +508,8 @@ class Variable implements ModelInterface, ArrayAccess
         'price' => 'price',
         'product_url' => 'productUrl',
         'public' => 'public',
+        'question' => 'question',
+        'long_question' => 'longQuestion',
         'raw_measurements_at_last_analysis' => 'rawMeasurementsAtLastAnalysis',
         'second_most_common_value' => 'secondMostCommonValue',
         'second_to_last_value' => 'secondToLastValue',
@@ -541,23 +541,11 @@ class Variable implements ModelInterface, ArrayAccess
         'user_variable_unit_category_name' => 'userVariableUnitCategoryName',
         'user_variable_unit_id' => 'userVariableUnitId',
         'user_variable_unit_name' => 'userVariableUnitName',
-        'user_variable_filling_value' => 'userVariableFillingValue',
-        'user_variable_most_common_connector_id' => 'userVariableMostCommonConnectorId',
-        'user_variable_updated_at' => 'userVariableUpdatedAt',
-        'user_variable_valence' => 'userVariableValence',
-        'user_variable_variable_category_id' => 'userVariableVariableCategoryId',
-        'user_variable_variable_category_name' => 'userVariableVariableCategoryName',
-        'user_variable_wikipedia_title' => 'userVariableWikipediaTitle',
         'variable_category' => 'variableCategory',
         'joined_variables' => 'joinedVariables',
-        'last_source' => 'lastSource',
-        'last_unit' => 'lastUnit',
-        'most_common_unit' => 'mostCommonUnit',
         'valence' => 'valence',
         'variable_category_id' => 'variableCategoryId',
-        'variable_category_image_url' => 'variableCategoryImageUrl',
         'variable_category_name' => 'variableCategoryName',
-        'variable_filling_value' => 'variableFillingValue',
         'variable_id' => 'variableId',
         'variable_name' => 'variableName',
         'variance' => 'variance',
@@ -573,6 +561,16 @@ class Variable implements ModelInterface, ArrayAccess
         'action_array' => 'setActionArray',
         'alias' => 'setAlias',
         'available_units' => 'setAvailableUnits',
+        'best_study_link' => 'setBestStudyLink',
+        'best_study_card' => 'setBestStudyCard',
+        'best_user_study_link' => 'setBestUserStudyLink',
+        'best_user_study_card' => 'setBestUserStudyCard',
+        'best_population_study_link' => 'setBestPopulationStudyLink',
+        'best_population_study_card' => 'setBestPopulationStudyCard',
+        'optimal_value_message' => 'setOptimalValueMessage',
+        'common_optimal_value_message' => 'setCommonOptimalValueMessage',
+        'user_optimal_value_message' => 'setUserOptimalValueMessage',
+        'card' => 'setCard',
         'cause_only' => 'setCauseOnly',
         'charts' => 'setCharts',
         'charts_link_dynamic' => 'setChartsLinkDynamic',
@@ -588,8 +586,6 @@ class Variable implements ModelInterface, ArrayAccess
         'common_alias' => 'setCommonAlias',
         'common_tagged_variables' => 'setCommonTaggedVariables',
         'common_tag_variables' => 'setCommonTagVariables',
-        'common_variable_most_common_connector_id' => 'setCommonVariableMostCommonConnectorId',
-        'common_variable_updated_at' => 'setCommonVariableUpdatedAt',
         'created_at' => 'setCreatedAt',
         'data_source_names' => 'setDataSourceNames',
         'data_sources' => 'setDataSources',
@@ -602,11 +598,7 @@ class Variable implements ModelInterface, ArrayAccess
         'earliest_source_time' => 'setEarliestSourceTime',
         'error_message' => 'setErrorMessage',
         'experiment_end_time' => 'setExperimentEndTime',
-        'experiment_end_time_seconds' => 'setExperimentEndTimeSeconds',
-        'experiment_end_time_string' => 'setExperimentEndTimeString',
         'experiment_start_time' => 'setExperimentStartTime',
-        'experiment_start_time_seconds' => 'setExperimentStartTimeSeconds',
-        'experiment_start_time_string' => 'setExperimentStartTimeString',
         'filling_type' => 'setFillingType',
         'filling_value' => 'setFillingValue',
         'icon_icon' => 'setIconIcon',
@@ -623,11 +615,8 @@ class Variable implements ModelInterface, ArrayAccess
         'joined_user_tag_variables' => 'setJoinedUserTagVariables',
         'join_with' => 'setJoinWith',
         'kurtosis' => 'setKurtosis',
-        'last_original_unit_id' => 'setLastOriginalUnitId',
-        'last_original_value' => 'setLastOriginalValue',
         'last_processed_daily_value' => 'setLastProcessedDailyValue',
         'last_successful_update_time' => 'setLastSuccessfulUpdateTime',
-        'last_unit_id' => 'setLastUnitId',
         'last_value' => 'setLastValue',
         'latest_filling_time' => 'setLatestFillingTime',
         'latest_measurement_time' => 'setLatestMeasurementTime',
@@ -637,6 +626,7 @@ class Variable implements ModelInterface, ArrayAccess
         'location' => 'setLocation',
         'longitude' => 'setLongitude',
         'manual_tracking' => 'setManualTracking',
+        'maximum_allowed_daily_value' => 'setMaximumAllowedDailyValue',
         'maximum_allowed_value' => 'setMaximumAllowedValue',
         'maximum_recorded_daily_value' => 'setMaximumRecordedDailyValue',
         'maximum_recorded_value' => 'setMaximumRecordedValue',
@@ -644,6 +634,8 @@ class Variable implements ModelInterface, ArrayAccess
         'measurements_at_last_analysis' => 'setMeasurementsAtLastAnalysis',
         'median' => 'setMedian',
         'minimum_allowed_value' => 'setMinimumAllowedValue',
+        'minimum_allowed_daily_value' => 'setMinimumAllowedDailyValue',
+        'minimum_non_zero_value' => 'setMinimumNonZeroValue',
         'minimum_recorded_value' => 'setMinimumRecordedValue',
         'most_common_connector_id' => 'setMostCommonConnectorId',
         'most_common_original_unit_id' => 'setMostCommonOriginalUnitId',
@@ -654,6 +646,8 @@ class Variable implements ModelInterface, ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'setNumberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'setNumberOfChanges',
         'number_of_correlations' => 'setNumberOfCorrelations',
+        'number_of_correlations_as_cause' => 'setNumberOfCorrelationsAsCause',
+        'number_of_correlations_as_effect' => 'setNumberOfCorrelationsAsEffect',
         'number_of_processed_daily_measurements' => 'setNumberOfProcessedDailyMeasurements',
         'number_of_raw_measurements' => 'setNumberOfRawMeasurements',
         'number_of_tracking_reminders' => 'setNumberOfTrackingReminders',
@@ -674,6 +668,8 @@ class Variable implements ModelInterface, ArrayAccess
         'price' => 'setPrice',
         'product_url' => 'setProductUrl',
         'public' => 'setPublic',
+        'question' => 'setQuestion',
+        'long_question' => 'setLongQuestion',
         'raw_measurements_at_last_analysis' => 'setRawMeasurementsAtLastAnalysis',
         'second_most_common_value' => 'setSecondMostCommonValue',
         'second_to_last_value' => 'setSecondToLastValue',
@@ -705,23 +701,11 @@ class Variable implements ModelInterface, ArrayAccess
         'user_variable_unit_category_name' => 'setUserVariableUnitCategoryName',
         'user_variable_unit_id' => 'setUserVariableUnitId',
         'user_variable_unit_name' => 'setUserVariableUnitName',
-        'user_variable_filling_value' => 'setUserVariableFillingValue',
-        'user_variable_most_common_connector_id' => 'setUserVariableMostCommonConnectorId',
-        'user_variable_updated_at' => 'setUserVariableUpdatedAt',
-        'user_variable_valence' => 'setUserVariableValence',
-        'user_variable_variable_category_id' => 'setUserVariableVariableCategoryId',
-        'user_variable_variable_category_name' => 'setUserVariableVariableCategoryName',
-        'user_variable_wikipedia_title' => 'setUserVariableWikipediaTitle',
         'variable_category' => 'setVariableCategory',
         'joined_variables' => 'setJoinedVariables',
-        'last_source' => 'setLastSource',
-        'last_unit' => 'setLastUnit',
-        'most_common_unit' => 'setMostCommonUnit',
         'valence' => 'setValence',
         'variable_category_id' => 'setVariableCategoryId',
-        'variable_category_image_url' => 'setVariableCategoryImageUrl',
         'variable_category_name' => 'setVariableCategoryName',
-        'variable_filling_value' => 'setVariableFillingValue',
         'variable_id' => 'setVariableId',
         'variable_name' => 'setVariableName',
         'variance' => 'setVariance',
@@ -737,6 +721,16 @@ class Variable implements ModelInterface, ArrayAccess
         'action_array' => 'getActionArray',
         'alias' => 'getAlias',
         'available_units' => 'getAvailableUnits',
+        'best_study_link' => 'getBestStudyLink',
+        'best_study_card' => 'getBestStudyCard',
+        'best_user_study_link' => 'getBestUserStudyLink',
+        'best_user_study_card' => 'getBestUserStudyCard',
+        'best_population_study_link' => 'getBestPopulationStudyLink',
+        'best_population_study_card' => 'getBestPopulationStudyCard',
+        'optimal_value_message' => 'getOptimalValueMessage',
+        'common_optimal_value_message' => 'getCommonOptimalValueMessage',
+        'user_optimal_value_message' => 'getUserOptimalValueMessage',
+        'card' => 'getCard',
         'cause_only' => 'getCauseOnly',
         'charts' => 'getCharts',
         'charts_link_dynamic' => 'getChartsLinkDynamic',
@@ -752,8 +746,6 @@ class Variable implements ModelInterface, ArrayAccess
         'common_alias' => 'getCommonAlias',
         'common_tagged_variables' => 'getCommonTaggedVariables',
         'common_tag_variables' => 'getCommonTagVariables',
-        'common_variable_most_common_connector_id' => 'getCommonVariableMostCommonConnectorId',
-        'common_variable_updated_at' => 'getCommonVariableUpdatedAt',
         'created_at' => 'getCreatedAt',
         'data_source_names' => 'getDataSourceNames',
         'data_sources' => 'getDataSources',
@@ -766,11 +758,7 @@ class Variable implements ModelInterface, ArrayAccess
         'earliest_source_time' => 'getEarliestSourceTime',
         'error_message' => 'getErrorMessage',
         'experiment_end_time' => 'getExperimentEndTime',
-        'experiment_end_time_seconds' => 'getExperimentEndTimeSeconds',
-        'experiment_end_time_string' => 'getExperimentEndTimeString',
         'experiment_start_time' => 'getExperimentStartTime',
-        'experiment_start_time_seconds' => 'getExperimentStartTimeSeconds',
-        'experiment_start_time_string' => 'getExperimentStartTimeString',
         'filling_type' => 'getFillingType',
         'filling_value' => 'getFillingValue',
         'icon_icon' => 'getIconIcon',
@@ -787,11 +775,8 @@ class Variable implements ModelInterface, ArrayAccess
         'joined_user_tag_variables' => 'getJoinedUserTagVariables',
         'join_with' => 'getJoinWith',
         'kurtosis' => 'getKurtosis',
-        'last_original_unit_id' => 'getLastOriginalUnitId',
-        'last_original_value' => 'getLastOriginalValue',
         'last_processed_daily_value' => 'getLastProcessedDailyValue',
         'last_successful_update_time' => 'getLastSuccessfulUpdateTime',
-        'last_unit_id' => 'getLastUnitId',
         'last_value' => 'getLastValue',
         'latest_filling_time' => 'getLatestFillingTime',
         'latest_measurement_time' => 'getLatestMeasurementTime',
@@ -801,6 +786,7 @@ class Variable implements ModelInterface, ArrayAccess
         'location' => 'getLocation',
         'longitude' => 'getLongitude',
         'manual_tracking' => 'getManualTracking',
+        'maximum_allowed_daily_value' => 'getMaximumAllowedDailyValue',
         'maximum_allowed_value' => 'getMaximumAllowedValue',
         'maximum_recorded_daily_value' => 'getMaximumRecordedDailyValue',
         'maximum_recorded_value' => 'getMaximumRecordedValue',
@@ -808,6 +794,8 @@ class Variable implements ModelInterface, ArrayAccess
         'measurements_at_last_analysis' => 'getMeasurementsAtLastAnalysis',
         'median' => 'getMedian',
         'minimum_allowed_value' => 'getMinimumAllowedValue',
+        'minimum_allowed_daily_value' => 'getMinimumAllowedDailyValue',
+        'minimum_non_zero_value' => 'getMinimumNonZeroValue',
         'minimum_recorded_value' => 'getMinimumRecordedValue',
         'most_common_connector_id' => 'getMostCommonConnectorId',
         'most_common_original_unit_id' => 'getMostCommonOriginalUnitId',
@@ -818,6 +806,8 @@ class Variable implements ModelInterface, ArrayAccess
         'number_of_aggregate_correlations_as_effect' => 'getNumberOfAggregateCorrelationsAsEffect',
         'number_of_changes' => 'getNumberOfChanges',
         'number_of_correlations' => 'getNumberOfCorrelations',
+        'number_of_correlations_as_cause' => 'getNumberOfCorrelationsAsCause',
+        'number_of_correlations_as_effect' => 'getNumberOfCorrelationsAsEffect',
         'number_of_processed_daily_measurements' => 'getNumberOfProcessedDailyMeasurements',
         'number_of_raw_measurements' => 'getNumberOfRawMeasurements',
         'number_of_tracking_reminders' => 'getNumberOfTrackingReminders',
@@ -838,6 +828,8 @@ class Variable implements ModelInterface, ArrayAccess
         'price' => 'getPrice',
         'product_url' => 'getProductUrl',
         'public' => 'getPublic',
+        'question' => 'getQuestion',
+        'long_question' => 'getLongQuestion',
         'raw_measurements_at_last_analysis' => 'getRawMeasurementsAtLastAnalysis',
         'second_most_common_value' => 'getSecondMostCommonValue',
         'second_to_last_value' => 'getSecondToLastValue',
@@ -869,23 +861,11 @@ class Variable implements ModelInterface, ArrayAccess
         'user_variable_unit_category_name' => 'getUserVariableUnitCategoryName',
         'user_variable_unit_id' => 'getUserVariableUnitId',
         'user_variable_unit_name' => 'getUserVariableUnitName',
-        'user_variable_filling_value' => 'getUserVariableFillingValue',
-        'user_variable_most_common_connector_id' => 'getUserVariableMostCommonConnectorId',
-        'user_variable_updated_at' => 'getUserVariableUpdatedAt',
-        'user_variable_valence' => 'getUserVariableValence',
-        'user_variable_variable_category_id' => 'getUserVariableVariableCategoryId',
-        'user_variable_variable_category_name' => 'getUserVariableVariableCategoryName',
-        'user_variable_wikipedia_title' => 'getUserVariableWikipediaTitle',
         'variable_category' => 'getVariableCategory',
         'joined_variables' => 'getJoinedVariables',
-        'last_source' => 'getLastSource',
-        'last_unit' => 'getLastUnit',
-        'most_common_unit' => 'getMostCommonUnit',
         'valence' => 'getValence',
         'variable_category_id' => 'getVariableCategoryId',
-        'variable_category_image_url' => 'getVariableCategoryImageUrl',
         'variable_category_name' => 'getVariableCategoryName',
-        'variable_filling_value' => 'getVariableFillingValue',
         'variable_id' => 'getVariableId',
         'variable_name' => 'getVariableName',
         'variance' => 'getVariance',
@@ -933,8 +913,97 @@ class Variable implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const COMBINATION_OPERATION_MEAN = 'MEAN';
+    const COMBINATION_OPERATION_SUM = 'SUM';
+    const FILLING_TYPE_NONE = 'none';
+    const FILLING_TYPE_ZERO_FILLING = 'zero-filling';
+    const FILLING_TYPE_VALUE_FILLING = 'value-filling';
+    const VARIABLE_CATEGORY_NAME_ACTIVITY = 'Activity';
+    const VARIABLE_CATEGORY_NAME_BOOKS = 'Books';
+    const VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS = 'Causes of Illness';
+    const VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE = 'Cognitive Performance';
+    const VARIABLE_CATEGORY_NAME_CONDITIONS = 'Conditions';
+    const VARIABLE_CATEGORY_NAME_EMOTIONS = 'Emotions';
+    const VARIABLE_CATEGORY_NAME_ENVIRONMENT = 'Environment';
+    const VARIABLE_CATEGORY_NAME_FOODS = 'Foods';
+    const VARIABLE_CATEGORY_NAME_GOALS = 'Goals';
+    const VARIABLE_CATEGORY_NAME_LOCATIONS = 'Locations';
+    const VARIABLE_CATEGORY_NAME_MISCELLANEOUS = 'Miscellaneous';
+    const VARIABLE_CATEGORY_NAME_MOVIES_AND_TV = 'Movies and TV';
+    const VARIABLE_CATEGORY_NAME_MUSIC = 'Music';
+    const VARIABLE_CATEGORY_NAME_NUTRIENTS = 'Nutrients';
+    const VARIABLE_CATEGORY_NAME_PAYMENTS = 'Payments';
+    const VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES = 'Physical Activities';
+    const VARIABLE_CATEGORY_NAME_PHYSIQUE = 'Physique';
+    const VARIABLE_CATEGORY_NAME_SLEEP = 'Sleep';
+    const VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS = 'Social Interactions';
+    const VARIABLE_CATEGORY_NAME_SOFTWARE = 'Software';
+    const VARIABLE_CATEGORY_NAME_SYMPTOMS = 'Symptoms';
+    const VARIABLE_CATEGORY_NAME_TREATMENTS = 'Treatments';
+    const VARIABLE_CATEGORY_NAME_VITAL_SIGNS = 'Vital Signs';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCombinationOperationAllowableValues()
+    {
+        return [
+            self::COMBINATION_OPERATION_MEAN,
+            self::COMBINATION_OPERATION_SUM,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFillingTypeAllowableValues()
+    {
+        return [
+            self::FILLING_TYPE_NONE,
+            self::FILLING_TYPE_ZERO_FILLING,
+            self::FILLING_TYPE_VALUE_FILLING,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVariableCategoryNameAllowableValues()
+    {
+        return [
+            self::VARIABLE_CATEGORY_NAME_ACTIVITY,
+            self::VARIABLE_CATEGORY_NAME_BOOKS,
+            self::VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS,
+            self::VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE,
+            self::VARIABLE_CATEGORY_NAME_CONDITIONS,
+            self::VARIABLE_CATEGORY_NAME_EMOTIONS,
+            self::VARIABLE_CATEGORY_NAME_ENVIRONMENT,
+            self::VARIABLE_CATEGORY_NAME_FOODS,
+            self::VARIABLE_CATEGORY_NAME_GOALS,
+            self::VARIABLE_CATEGORY_NAME_LOCATIONS,
+            self::VARIABLE_CATEGORY_NAME_MISCELLANEOUS,
+            self::VARIABLE_CATEGORY_NAME_MOVIES_AND_TV,
+            self::VARIABLE_CATEGORY_NAME_MUSIC,
+            self::VARIABLE_CATEGORY_NAME_NUTRIENTS,
+            self::VARIABLE_CATEGORY_NAME_PAYMENTS,
+            self::VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES,
+            self::VARIABLE_CATEGORY_NAME_PHYSIQUE,
+            self::VARIABLE_CATEGORY_NAME_SLEEP,
+            self::VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS,
+            self::VARIABLE_CATEGORY_NAME_SOFTWARE,
+            self::VARIABLE_CATEGORY_NAME_SYMPTOMS,
+            self::VARIABLE_CATEGORY_NAME_TREATMENTS,
+            self::VARIABLE_CATEGORY_NAME_VITAL_SIGNS,
+        ];
+    }
     
 
     /**
@@ -955,6 +1024,16 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['action_array'] = isset($data['action_array']) ? $data['action_array'] : null;
         $this->container['alias'] = isset($data['alias']) ? $data['alias'] : null;
         $this->container['available_units'] = isset($data['available_units']) ? $data['available_units'] : null;
+        $this->container['best_study_link'] = isset($data['best_study_link']) ? $data['best_study_link'] : null;
+        $this->container['best_study_card'] = isset($data['best_study_card']) ? $data['best_study_card'] : null;
+        $this->container['best_user_study_link'] = isset($data['best_user_study_link']) ? $data['best_user_study_link'] : null;
+        $this->container['best_user_study_card'] = isset($data['best_user_study_card']) ? $data['best_user_study_card'] : null;
+        $this->container['best_population_study_link'] = isset($data['best_population_study_link']) ? $data['best_population_study_link'] : null;
+        $this->container['best_population_study_card'] = isset($data['best_population_study_card']) ? $data['best_population_study_card'] : null;
+        $this->container['optimal_value_message'] = isset($data['optimal_value_message']) ? $data['optimal_value_message'] : null;
+        $this->container['common_optimal_value_message'] = isset($data['common_optimal_value_message']) ? $data['common_optimal_value_message'] : null;
+        $this->container['user_optimal_value_message'] = isset($data['user_optimal_value_message']) ? $data['user_optimal_value_message'] : null;
+        $this->container['card'] = isset($data['card']) ? $data['card'] : null;
         $this->container['cause_only'] = isset($data['cause_only']) ? $data['cause_only'] : null;
         $this->container['charts'] = isset($data['charts']) ? $data['charts'] : null;
         $this->container['charts_link_dynamic'] = isset($data['charts_link_dynamic']) ? $data['charts_link_dynamic'] : null;
@@ -970,8 +1049,6 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['common_alias'] = isset($data['common_alias']) ? $data['common_alias'] : null;
         $this->container['common_tagged_variables'] = isset($data['common_tagged_variables']) ? $data['common_tagged_variables'] : null;
         $this->container['common_tag_variables'] = isset($data['common_tag_variables']) ? $data['common_tag_variables'] : null;
-        $this->container['common_variable_most_common_connector_id'] = isset($data['common_variable_most_common_connector_id']) ? $data['common_variable_most_common_connector_id'] : null;
-        $this->container['common_variable_updated_at'] = isset($data['common_variable_updated_at']) ? $data['common_variable_updated_at'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['data_source_names'] = isset($data['data_source_names']) ? $data['data_source_names'] : null;
         $this->container['data_sources'] = isset($data['data_sources']) ? $data['data_sources'] : null;
@@ -984,11 +1061,7 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['earliest_source_time'] = isset($data['earliest_source_time']) ? $data['earliest_source_time'] : null;
         $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
         $this->container['experiment_end_time'] = isset($data['experiment_end_time']) ? $data['experiment_end_time'] : null;
-        $this->container['experiment_end_time_seconds'] = isset($data['experiment_end_time_seconds']) ? $data['experiment_end_time_seconds'] : null;
-        $this->container['experiment_end_time_string'] = isset($data['experiment_end_time_string']) ? $data['experiment_end_time_string'] : null;
         $this->container['experiment_start_time'] = isset($data['experiment_start_time']) ? $data['experiment_start_time'] : null;
-        $this->container['experiment_start_time_seconds'] = isset($data['experiment_start_time_seconds']) ? $data['experiment_start_time_seconds'] : null;
-        $this->container['experiment_start_time_string'] = isset($data['experiment_start_time_string']) ? $data['experiment_start_time_string'] : null;
         $this->container['filling_type'] = isset($data['filling_type']) ? $data['filling_type'] : null;
         $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
         $this->container['icon_icon'] = isset($data['icon_icon']) ? $data['icon_icon'] : null;
@@ -1005,11 +1078,8 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['joined_user_tag_variables'] = isset($data['joined_user_tag_variables']) ? $data['joined_user_tag_variables'] : null;
         $this->container['join_with'] = isset($data['join_with']) ? $data['join_with'] : null;
         $this->container['kurtosis'] = isset($data['kurtosis']) ? $data['kurtosis'] : null;
-        $this->container['last_original_unit_id'] = isset($data['last_original_unit_id']) ? $data['last_original_unit_id'] : null;
-        $this->container['last_original_value'] = isset($data['last_original_value']) ? $data['last_original_value'] : null;
         $this->container['last_processed_daily_value'] = isset($data['last_processed_daily_value']) ? $data['last_processed_daily_value'] : null;
         $this->container['last_successful_update_time'] = isset($data['last_successful_update_time']) ? $data['last_successful_update_time'] : null;
-        $this->container['last_unit_id'] = isset($data['last_unit_id']) ? $data['last_unit_id'] : null;
         $this->container['last_value'] = isset($data['last_value']) ? $data['last_value'] : null;
         $this->container['latest_filling_time'] = isset($data['latest_filling_time']) ? $data['latest_filling_time'] : null;
         $this->container['latest_measurement_time'] = isset($data['latest_measurement_time']) ? $data['latest_measurement_time'] : null;
@@ -1019,6 +1089,7 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['location'] = isset($data['location']) ? $data['location'] : null;
         $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
         $this->container['manual_tracking'] = isset($data['manual_tracking']) ? $data['manual_tracking'] : null;
+        $this->container['maximum_allowed_daily_value'] = isset($data['maximum_allowed_daily_value']) ? $data['maximum_allowed_daily_value'] : null;
         $this->container['maximum_allowed_value'] = isset($data['maximum_allowed_value']) ? $data['maximum_allowed_value'] : null;
         $this->container['maximum_recorded_daily_value'] = isset($data['maximum_recorded_daily_value']) ? $data['maximum_recorded_daily_value'] : null;
         $this->container['maximum_recorded_value'] = isset($data['maximum_recorded_value']) ? $data['maximum_recorded_value'] : null;
@@ -1026,6 +1097,8 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['measurements_at_last_analysis'] = isset($data['measurements_at_last_analysis']) ? $data['measurements_at_last_analysis'] : null;
         $this->container['median'] = isset($data['median']) ? $data['median'] : null;
         $this->container['minimum_allowed_value'] = isset($data['minimum_allowed_value']) ? $data['minimum_allowed_value'] : null;
+        $this->container['minimum_allowed_daily_value'] = isset($data['minimum_allowed_daily_value']) ? $data['minimum_allowed_daily_value'] : null;
+        $this->container['minimum_non_zero_value'] = isset($data['minimum_non_zero_value']) ? $data['minimum_non_zero_value'] : null;
         $this->container['minimum_recorded_value'] = isset($data['minimum_recorded_value']) ? $data['minimum_recorded_value'] : null;
         $this->container['most_common_connector_id'] = isset($data['most_common_connector_id']) ? $data['most_common_connector_id'] : null;
         $this->container['most_common_original_unit_id'] = isset($data['most_common_original_unit_id']) ? $data['most_common_original_unit_id'] : null;
@@ -1036,6 +1109,8 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['number_of_aggregate_correlations_as_effect'] = isset($data['number_of_aggregate_correlations_as_effect']) ? $data['number_of_aggregate_correlations_as_effect'] : null;
         $this->container['number_of_changes'] = isset($data['number_of_changes']) ? $data['number_of_changes'] : null;
         $this->container['number_of_correlations'] = isset($data['number_of_correlations']) ? $data['number_of_correlations'] : null;
+        $this->container['number_of_correlations_as_cause'] = isset($data['number_of_correlations_as_cause']) ? $data['number_of_correlations_as_cause'] : null;
+        $this->container['number_of_correlations_as_effect'] = isset($data['number_of_correlations_as_effect']) ? $data['number_of_correlations_as_effect'] : null;
         $this->container['number_of_processed_daily_measurements'] = isset($data['number_of_processed_daily_measurements']) ? $data['number_of_processed_daily_measurements'] : null;
         $this->container['number_of_raw_measurements'] = isset($data['number_of_raw_measurements']) ? $data['number_of_raw_measurements'] : null;
         $this->container['number_of_tracking_reminders'] = isset($data['number_of_tracking_reminders']) ? $data['number_of_tracking_reminders'] : null;
@@ -1056,6 +1131,8 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['product_url'] = isset($data['product_url']) ? $data['product_url'] : null;
         $this->container['public'] = isset($data['public']) ? $data['public'] : null;
+        $this->container['question'] = isset($data['question']) ? $data['question'] : null;
+        $this->container['long_question'] = isset($data['long_question']) ? $data['long_question'] : null;
         $this->container['raw_measurements_at_last_analysis'] = isset($data['raw_measurements_at_last_analysis']) ? $data['raw_measurements_at_last_analysis'] : null;
         $this->container['second_most_common_value'] = isset($data['second_most_common_value']) ? $data['second_most_common_value'] : null;
         $this->container['second_to_last_value'] = isset($data['second_to_last_value']) ? $data['second_to_last_value'] : null;
@@ -1087,23 +1164,11 @@ class Variable implements ModelInterface, ArrayAccess
         $this->container['user_variable_unit_category_name'] = isset($data['user_variable_unit_category_name']) ? $data['user_variable_unit_category_name'] : null;
         $this->container['user_variable_unit_id'] = isset($data['user_variable_unit_id']) ? $data['user_variable_unit_id'] : null;
         $this->container['user_variable_unit_name'] = isset($data['user_variable_unit_name']) ? $data['user_variable_unit_name'] : null;
-        $this->container['user_variable_filling_value'] = isset($data['user_variable_filling_value']) ? $data['user_variable_filling_value'] : null;
-        $this->container['user_variable_most_common_connector_id'] = isset($data['user_variable_most_common_connector_id']) ? $data['user_variable_most_common_connector_id'] : null;
-        $this->container['user_variable_updated_at'] = isset($data['user_variable_updated_at']) ? $data['user_variable_updated_at'] : null;
-        $this->container['user_variable_valence'] = isset($data['user_variable_valence']) ? $data['user_variable_valence'] : null;
-        $this->container['user_variable_variable_category_id'] = isset($data['user_variable_variable_category_id']) ? $data['user_variable_variable_category_id'] : null;
-        $this->container['user_variable_variable_category_name'] = isset($data['user_variable_variable_category_name']) ? $data['user_variable_variable_category_name'] : null;
-        $this->container['user_variable_wikipedia_title'] = isset($data['user_variable_wikipedia_title']) ? $data['user_variable_wikipedia_title'] : null;
         $this->container['variable_category'] = isset($data['variable_category']) ? $data['variable_category'] : null;
         $this->container['joined_variables'] = isset($data['joined_variables']) ? $data['joined_variables'] : null;
-        $this->container['last_source'] = isset($data['last_source']) ? $data['last_source'] : null;
-        $this->container['last_unit'] = isset($data['last_unit']) ? $data['last_unit'] : null;
-        $this->container['most_common_unit'] = isset($data['most_common_unit']) ? $data['most_common_unit'] : null;
         $this->container['valence'] = isset($data['valence']) ? $data['valence'] : null;
         $this->container['variable_category_id'] = isset($data['variable_category_id']) ? $data['variable_category_id'] : null;
-        $this->container['variable_category_image_url'] = isset($data['variable_category_image_url']) ? $data['variable_category_image_url'] : null;
         $this->container['variable_category_name'] = isset($data['variable_category_name']) ? $data['variable_category_name'] : null;
-        $this->container['variable_filling_value'] = isset($data['variable_filling_value']) ? $data['variable_filling_value'] : null;
         $this->container['variable_id'] = isset($data['variable_id']) ? $data['variable_id'] : null;
         $this->container['variable_name'] = isset($data['variable_name']) ? $data['variable_name'] : null;
         $this->container['variance'] = isset($data['variance']) ? $data['variance'] : null;
@@ -1119,6 +1184,22 @@ class Variable implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getCombinationOperationAllowableValues();
+        if (!in_array($this->container['combination_operation'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'combination_operation', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFillingTypeAllowableValues();
+        if (!in_array($this->container['filling_type'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'filling_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -1128,6 +1209,14 @@ class Variable implements ModelInterface, ArrayAccess
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'variable_category_name', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['variable_id'] === null) {
             $invalidProperties[] = "'variable_id' can't be null";
         }
@@ -1143,6 +1232,14 @@ class Variable implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        $allowedValues = $this->getCombinationOperationAllowableValues();
+        if (!in_array($this->container['combination_operation'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getFillingTypeAllowableValues();
+        if (!in_array($this->container['filling_type'], $allowedValues)) {
+            return false;
+        }
         if ($this->container['id'] === null) {
             return false;
         }
@@ -1150,6 +1247,10 @@ class Variable implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['user_id'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
             return false;
         }
         if ($this->container['variable_id'] === null) {
@@ -1196,7 +1297,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets alias
      *
-     * @param string $alias Alternative name
+     * @param string $alias User-Defined Variable Setting:  Alternative display name
      *
      * @return $this
      */
@@ -1232,6 +1333,246 @@ class Variable implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets best_study_link
+     *
+     * @return string
+     */
+    public function getBestStudyLink()
+    {
+        return $this->container['best_study_link'];
+    }
+
+    /**
+     * Sets best_study_link
+     *
+     * @param string $best_study_link Link to study comparing variable with strongest relationship for user or population
+     *
+     * @return $this
+     */
+    public function setBestStudyLink($best_study_link)
+    {
+        $this->container['best_study_link'] = $best_study_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_study_card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getBestStudyCard()
+    {
+        return $this->container['best_study_card'];
+    }
+
+    /**
+     * Sets best_study_card
+     *
+     * @param \QuantiModo\Client\Model\Card $best_study_card Description of relationship with variable with strongest relationship for user or population
+     *
+     * @return $this
+     */
+    public function setBestStudyCard($best_study_card)
+    {
+        $this->container['best_study_card'] = $best_study_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_user_study_link
+     *
+     * @return string
+     */
+    public function getBestUserStudyLink()
+    {
+        return $this->container['best_user_study_link'];
+    }
+
+    /**
+     * Sets best_user_study_link
+     *
+     * @param string $best_user_study_link Link to study comparing variable with strongest relationship for user
+     *
+     * @return $this
+     */
+    public function setBestUserStudyLink($best_user_study_link)
+    {
+        $this->container['best_user_study_link'] = $best_user_study_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_user_study_card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getBestUserStudyCard()
+    {
+        return $this->container['best_user_study_card'];
+    }
+
+    /**
+     * Sets best_user_study_card
+     *
+     * @param \QuantiModo\Client\Model\Card $best_user_study_card Description of relationship with variable with strongest relationship for user
+     *
+     * @return $this
+     */
+    public function setBestUserStudyCard($best_user_study_card)
+    {
+        $this->container['best_user_study_card'] = $best_user_study_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_population_study_link
+     *
+     * @return string
+     */
+    public function getBestPopulationStudyLink()
+    {
+        return $this->container['best_population_study_link'];
+    }
+
+    /**
+     * Sets best_population_study_link
+     *
+     * @param string $best_population_study_link Link to study comparing variable with strongest relationship for population
+     *
+     * @return $this
+     */
+    public function setBestPopulationStudyLink($best_population_study_link)
+    {
+        $this->container['best_population_study_link'] = $best_population_study_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_population_study_card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getBestPopulationStudyCard()
+    {
+        return $this->container['best_population_study_card'];
+    }
+
+    /**
+     * Sets best_population_study_card
+     *
+     * @param \QuantiModo\Client\Model\Card $best_population_study_card Description of relationship with variable with strongest relationship for population
+     *
+     * @return $this
+     */
+    public function setBestPopulationStudyCard($best_population_study_card)
+    {
+        $this->container['best_population_study_card'] = $best_population_study_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimal_value_message
+     *
+     * @return string
+     */
+    public function getOptimalValueMessage()
+    {
+        return $this->container['optimal_value_message'];
+    }
+
+    /**
+     * Sets optimal_value_message
+     *
+     * @param string $optimal_value_message Description of relationship with variable with strongest relationship for user or population
+     *
+     * @return $this
+     */
+    public function setOptimalValueMessage($optimal_value_message)
+    {
+        $this->container['optimal_value_message'] = $optimal_value_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_optimal_value_message
+     *
+     * @return string
+     */
+    public function getCommonOptimalValueMessage()
+    {
+        return $this->container['common_optimal_value_message'];
+    }
+
+    /**
+     * Sets common_optimal_value_message
+     *
+     * @param string $common_optimal_value_message Description of relationship with variable with strongest relationship for population
+     *
+     * @return $this
+     */
+    public function setCommonOptimalValueMessage($common_optimal_value_message)
+    {
+        $this->container['common_optimal_value_message'] = $common_optimal_value_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_optimal_value_message
+     *
+     * @return string
+     */
+    public function getUserOptimalValueMessage()
+    {
+        return $this->container['user_optimal_value_message'];
+    }
+
+    /**
+     * Sets user_optimal_value_message
+     *
+     * @param string $user_optimal_value_message Description of relationship with variable with strongest relationship for user
+     *
+     * @return $this
+     */
+    public function setUserOptimalValueMessage($user_optimal_value_message)
+    {
+        $this->container['user_optimal_value_message'] = $user_optimal_value_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getCard()
+    {
+        return $this->container['card'];
+    }
+
+    /**
+     * Sets card
+     *
+     * @param \QuantiModo\Client\Model\Card $card Card containing instructions, image, text, link and relevant import buttons
+     *
+     * @return $this
+     */
+    public function setCard($card)
+    {
+        $this->container['card'] = $card;
+
+        return $this;
+    }
+
+    /**
      * Gets cause_only
      *
      * @return bool
@@ -1244,7 +1585,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets cause_only
      *
-     * @param bool $cause_only A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
+     * @param bool $cause_only User-Defined Variable Setting: True indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
      *
      * @return $this
      */
@@ -1460,7 +1801,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets child_user_tag_variables
      *
-     * @param \QuantiModo\Client\Model\Variable[] $child_user_tag_variables User-defined. An example of a parent category variable would be Fruit when tagged with the child sub-type variables Apple.  Child variable (Apple) measurements will be included when the parent category (Fruit) is analyzed.  This allows us to see how Fruit consumption might be affecting without having to record both Fruit and Apple intake.
+     * @param \QuantiModo\Client\Model\Variable[] $child_user_tag_variables User-Defined Variable Setting: An example of a parent category variable would be Fruit when tagged with the child sub-type variables Apple.  Child variable (Apple) measurements will be included when the parent category (Fruit) is analyzed.  This allows us to see how Fruit consumption might be affecting without having to record both Fruit and Apple intake.
      *
      * @return $this
      */
@@ -1508,12 +1849,21 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets combination_operation
      *
-     * @param string $combination_operation Ex: MEAN
+     * @param string $combination_operation User-Defined Variable Setting: How to aggregate measurements over time. SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED.
      *
      * @return $this
      */
     public function setCombinationOperation($combination_operation)
     {
+        $allowedValues = $this->getCombinationOperationAllowableValues();
+        if (!is_null($combination_operation) && !in_array($combination_operation, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'combination_operation', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['combination_operation'] = $combination_operation;
 
         return $this;
@@ -1587,54 +1937,6 @@ class Variable implements ModelInterface, ArrayAccess
     public function setCommonTagVariables($common_tag_variables)
     {
         $this->container['common_tag_variables'] = $common_tag_variables;
-
-        return $this;
-    }
-
-    /**
-     * Gets common_variable_most_common_connector_id
-     *
-     * @return int
-     */
-    public function getCommonVariableMostCommonConnectorId()
-    {
-        return $this->container['common_variable_most_common_connector_id'];
-    }
-
-    /**
-     * Sets common_variable_most_common_connector_id
-     *
-     * @param int $common_variable_most_common_connector_id Ex: 51
-     *
-     * @return $this
-     */
-    public function setCommonVariableMostCommonConnectorId($common_variable_most_common_connector_id)
-    {
-        $this->container['common_variable_most_common_connector_id'] = $common_variable_most_common_connector_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets common_variable_updated_at
-     *
-     * @return string
-     */
-    public function getCommonVariableUpdatedAt()
-    {
-        return $this->container['common_variable_updated_at'];
-    }
-
-    /**
-     * Sets common_variable_updated_at
-     *
-     * @param string $common_variable_updated_at Ex: 2017-02-07 23:43:39 UTC ISO 8601 YYYY-MM-DDThh:mm:ss
-     *
-     * @return $this
-     */
-    public function setCommonVariableUpdatedAt($common_variable_updated_at)
-    {
-        $this->container['common_variable_updated_at'] = $common_variable_updated_at;
 
         return $this;
     }
@@ -1724,7 +2026,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param string $description Ex: negative
+     * @param string $description User-Defined Variable Setting: Ex: Summary to be used in studies.
      *
      * @return $this
      */
@@ -1772,7 +2074,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets duration_of_action
      *
-     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.
+     * @param int $duration_of_action The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay. Unit: Seconds
      *
      * @return $this
      */
@@ -1786,7 +2088,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Gets duration_of_action_in_hours
      *
-     * @return int
+     * @return float
      */
     public function getDurationOfActionInHours()
     {
@@ -1796,7 +2098,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets duration_of_action_in_hours
      *
-     * @param int $duration_of_action_in_hours Ex: 168
+     * @param float $duration_of_action_in_hours User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Hours
      *
      * @return $this
      */
@@ -1892,7 +2194,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets error_message
      *
-     * @param string $error_message error_message
+     * @param string $error_message Error message from last analysis
      *
      * @return $this
      */
@@ -1916,61 +2218,13 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets experiment_end_time
      *
-     * @param string $experiment_end_time Latest measurement start_time to be used in analysis. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss  datetime format
+     * @param string $experiment_end_time User-Defined Variable Setting: Latest measurement time to be used in analysis. Format: UTC ISO 8601 YYYY-MM-DDThh:mm:ss.
      *
      * @return $this
      */
     public function setExperimentEndTime($experiment_end_time)
     {
         $this->container['experiment_end_time'] = $experiment_end_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets experiment_end_time_seconds
-     *
-     * @return int
-     */
-    public function getExperimentEndTimeSeconds()
-    {
-        return $this->container['experiment_end_time_seconds'];
-    }
-
-    /**
-     * Sets experiment_end_time_seconds
-     *
-     * @param int $experiment_end_time_seconds Ex: 1893477600
-     *
-     * @return $this
-     */
-    public function setExperimentEndTimeSeconds($experiment_end_time_seconds)
-    {
-        $this->container['experiment_end_time_seconds'] = $experiment_end_time_seconds;
-
-        return $this;
-    }
-
-    /**
-     * Gets experiment_end_time_string
-     *
-     * @return string
-     */
-    public function getExperimentEndTimeString()
-    {
-        return $this->container['experiment_end_time_string'];
-    }
-
-    /**
-     * Sets experiment_end_time_string
-     *
-     * @param string $experiment_end_time_string Ex: 2030-01-01 06:00:00 UTC ISO 8601 YYYY-MM-DDThh:mm:ss
-     *
-     * @return $this
-     */
-    public function setExperimentEndTimeString($experiment_end_time_string)
-    {
-        $this->container['experiment_end_time_string'] = $experiment_end_time_string;
 
         return $this;
     }
@@ -1988,61 +2242,13 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets experiment_start_time
      *
-     * @param string $experiment_start_time Earliest measurement start_time to be used in analysis. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss  datetime format
+     * @param string $experiment_start_time User-Defined Variable Setting: Earliest measurement time to be used in analysis. Format: UTC ISO 8601 YYYY-MM-DDThh:mm:ss.
      *
      * @return $this
      */
     public function setExperimentStartTime($experiment_start_time)
     {
         $this->container['experiment_start_time'] = $experiment_start_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets experiment_start_time_seconds
-     *
-     * @return int
-     */
-    public function getExperimentStartTimeSeconds()
-    {
-        return $this->container['experiment_start_time_seconds'];
-    }
-
-    /**
-     * Sets experiment_start_time_seconds
-     *
-     * @param int $experiment_start_time_seconds Ex: 1269307902
-     *
-     * @return $this
-     */
-    public function setExperimentStartTimeSeconds($experiment_start_time_seconds)
-    {
-        $this->container['experiment_start_time_seconds'] = $experiment_start_time_seconds;
-
-        return $this;
-    }
-
-    /**
-     * Gets experiment_start_time_string
-     *
-     * @return string
-     */
-    public function getExperimentStartTimeString()
-    {
-        return $this->container['experiment_start_time_string'];
-    }
-
-    /**
-     * Sets experiment_start_time_string
-     *
-     * @param string $experiment_start_time_string Ex: 2010-03-23 01:31:42 UTC ISO 8601 YYYY-MM-DDThh:mm:ss
-     *
-     * @return $this
-     */
-    public function setExperimentStartTimeString($experiment_start_time_string)
-    {
-        $this->container['experiment_start_time_string'] = $experiment_start_time_string;
 
         return $this;
     }
@@ -2060,12 +2266,21 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets filling_type
      *
-     * @param string $filling_type 0 -> No filling, 1 -> Use filling-value
+     * @param string $filling_type User-Defined Variable Setting: When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
      *
      * @return $this
      */
     public function setFillingType($filling_type)
     {
+        $allowedValues = $this->getFillingTypeAllowableValues();
+        if (!is_null($filling_type) && !in_array($filling_type, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'filling_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['filling_type'] = $filling_type;
 
         return $this;
@@ -2084,7 +2299,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets filling_value
      *
-     * @param float $filling_value When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.
+     * @param float $filling_value User-Defined Variable Setting: When it comes to analysis to determine the effects of this variable, knowing when it did not occur is as important as knowing when it did occur. For example, if you are tracking a medication, it is important to know when you did not take it, but you do not have to log zero values for all the days when you haven't taken it. Hence, you can specify a filling value (typically 0) to insert whenever data is missing.  Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2156,7 +2371,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets image_url
      *
-     * @param string $image_url 
+     * @param string $image_url What do you expect?
      *
      * @return $this
      */
@@ -2252,7 +2467,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets ingredient_of_user_tag_variables
      *
-     * @param \QuantiModo\Client\Model\Variable[] $ingredient_of_user_tag_variables User-specific IngredientOf variable measurements will be included in analysis of the ingredient variable.  For instance, a ingredient of the variable Lollypop could be Sugar.  This way you only have to record Lollypop consumption and we can use this data to see how sugar might be affecting you.
+     * @param \QuantiModo\Client\Model\Variable[] $ingredient_of_user_tag_variables User-Defined Variable Setting: IngredientOf variable measurements will be included in analysis of the ingredient variable.  For instance, a ingredient of the variable Lollypop could be Sugar.  This way you only have to record Lollypop consumption and we can use this data to see how sugar might be affecting you.
      *
      * @return $this
      */
@@ -2276,7 +2491,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets ingredient_user_tag_variables
      *
-     * @param \QuantiModo\Client\Model\Variable[] $ingredient_user_tag_variables User-specific IngredientOf variable measurements will be included in analysis of the ingredient variable.  For instance, a ingredient of the variable Lollypop could be Sugar.  This way you only have to record Lollypop consumption and we can use this data to see how sugar might be affecting you.
+     * @param \QuantiModo\Client\Model\Variable[] $ingredient_user_tag_variables User-Defined Variable Setting: IngredientOf variable measurements will be included in analysis of the ingredient variable.  For instance, a ingredient of the variable Lollypop could be Sugar.  This way you only have to record Lollypop consumption and we can use this data to see how sugar might be affecting you.
      *
      * @return $this
      */
@@ -2300,7 +2515,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets input_type
      *
-     * @param string $input_type Ex: value
+     * @param string $input_type Type of input field to show for recording measurements
      *
      * @return $this
      */
@@ -2324,7 +2539,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets ion_icon
      *
-     * @param string $ion_icon 
+     * @param string $ion_icon What do you expect?
      *
      * @return $this
      */
@@ -2372,7 +2587,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets joined_user_tag_variables
      *
-     * @param \QuantiModo\Client\Model\Variable[] $joined_user_tag_variables User-defined. Joining can be used used to merge duplicate variables. For instance, if two variables called Apples (Red Delicious) and Red Delicious Apples are joined, when one of them is analyzed, the measurements for the other will be included as well.
+     * @param \QuantiModo\Client\Model\Variable[] $joined_user_tag_variables User-Defined Variable Setting: Joining can be used used to merge duplicate variables. For instance, if two variables called Apples (Red Delicious) and Red Delicious Apples are joined, when one of them is analyzed, the measurements for the other will be included as well.
      *
      * @return $this
      */
@@ -2396,7 +2611,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets join_with
      *
-     * @param int $join_with The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
+     * @param int $join_with Duplicate variables. If the variable is joined with some other variable then it is not shown to user in the list of variables
      *
      * @return $this
      */
@@ -2432,54 +2647,6 @@ class Variable implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets last_original_unit_id
-     *
-     * @return int
-     */
-    public function getLastOriginalUnitId()
-    {
-        return $this->container['last_original_unit_id'];
-    }
-
-    /**
-     * Sets last_original_unit_id
-     *
-     * @param int $last_original_unit_id ID of last original Unit
-     *
-     * @return $this
-     */
-    public function setLastOriginalUnitId($last_original_unit_id)
-    {
-        $this->container['last_original_unit_id'] = $last_original_unit_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_original_value
-     *
-     * @return int
-     */
-    public function getLastOriginalValue()
-    {
-        return $this->container['last_original_value'];
-    }
-
-    /**
-     * Sets last_original_value
-     *
-     * @param int $last_original_value Last original value which is stored
-     *
-     * @return $this
-     */
-    public function setLastOriginalValue($last_original_value)
-    {
-        $this->container['last_original_value'] = $last_original_value;
-
-        return $this;
-    }
-
-    /**
      * Gets last_processed_daily_value
      *
      * @return double
@@ -2492,7 +2659,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets last_processed_daily_value
      *
-     * @param double $last_processed_daily_value Ex: 500
+     * @param double $last_processed_daily_value Calculated Statistic: Ex: 500. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2528,30 +2695,6 @@ class Variable implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets last_unit_id
-     *
-     * @return int
-     */
-    public function getLastUnitId()
-    {
-        return $this->container['last_unit_id'];
-    }
-
-    /**
-     * Sets last_unit_id
-     *
-     * @param int $last_unit_id ID of last Unit
-     *
-     * @return $this
-     */
-    public function setLastUnitId($last_unit_id)
-    {
-        $this->container['last_unit_id'] = $last_unit_id;
-
-        return $this;
-    }
-
-    /**
      * Gets last_value
      *
      * @return float
@@ -2564,7 +2707,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets last_value
      *
-     * @param float $last_value Last Value
+     * @param float $last_value Calculated Statistic: Last measurement value in the common unit or user unit if different. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2612,7 +2755,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets latest_measurement_time
      *
-     * @param int $latest_measurement_time Latest measurement time
+     * @param int $latest_measurement_time Latest measurement time. Format: Unix-time epoch seconds.
      *
      * @return $this
      */
@@ -2636,7 +2779,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets latest_source_time
      *
-     * @param int $latest_source_time Latest source time
+     * @param int $latest_source_time Latest source time. Format: Unix-time epoch seconds.
      *
      * @return $this
      */
@@ -2660,7 +2803,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets latest_user_measurement_time
      *
-     * @param int $latest_user_measurement_time Ex: 1501383600
+     * @param int $latest_user_measurement_time Ex: 1501383600. Format: Unix-time epoch seconds.
      *
      * @return $this
      */
@@ -2684,7 +2827,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets latitude
      *
-     * @param float $latitude Latitude
+     * @param float $latitude Latitude. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2756,13 +2899,37 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets manual_tracking
      *
-     * @param bool $manual_tracking Ex: 1
+     * @param bool $manual_tracking True if the variable is an emotion or symptom rating that is not typically automatically collected by a device or app.
      *
      * @return $this
      */
     public function setManualTracking($manual_tracking)
     {
         $this->container['manual_tracking'] = $manual_tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_allowed_daily_value
+     *
+     * @return float
+     */
+    public function getMaximumAllowedDailyValue()
+    {
+        return $this->container['maximum_allowed_daily_value'];
+    }
+
+    /**
+     * Sets maximum_allowed_daily_value
+     *
+     * @param float $maximum_allowed_daily_value User-Defined Variable Setting: The maximum allowed value a daily aggregated measurement. Unit: User-specified or common.
+     *
+     * @return $this
+     */
+    public function setMaximumAllowedDailyValue($maximum_allowed_daily_value)
+    {
+        $this->container['maximum_allowed_daily_value'] = $maximum_allowed_daily_value;
 
         return $this;
     }
@@ -2780,7 +2947,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets maximum_allowed_value
      *
-     * @param float $maximum_allowed_value The maximum allowed value for measurements. While you can record a value above this maximum, it will be excluded from the correlation analysis.
+     * @param float $maximum_allowed_value User-Defined Variable Setting: The maximum allowed value a single measurement. While you can record a value above this maximum, it will be excluded from the correlation analysis.  Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2804,7 +2971,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets maximum_recorded_daily_value
      *
-     * @param float $maximum_recorded_daily_value Maximum recorded daily value of this variable
+     * @param float $maximum_recorded_daily_value Calculated Statistic: Maximum recorded daily value of this variable. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2828,7 +2995,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets maximum_recorded_value
      *
-     * @param double $maximum_recorded_value Ex: 1
+     * @param double $maximum_recorded_value Calculated Statistic: Ex: 1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2852,7 +3019,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets mean
      *
-     * @param float $mean Mean
+     * @param float $mean Mean. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2924,13 +3091,61 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets minimum_allowed_value
      *
-     * @param float $minimum_allowed_value The minimum allowed value for measurements. While you can record a value below this minimum, it will be excluded from the correlation analysis.
+     * @param float $minimum_allowed_value User-Defined Variable Setting: The minimum allowed value a single measurement. While you can record a value below this minimum, it will be excluded from the correlation analysis. Unit: User-specified or common
      *
      * @return $this
      */
     public function setMinimumAllowedValue($minimum_allowed_value)
     {
         $this->container['minimum_allowed_value'] = $minimum_allowed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_allowed_daily_value
+     *
+     * @return float
+     */
+    public function getMinimumAllowedDailyValue()
+    {
+        return $this->container['minimum_allowed_daily_value'];
+    }
+
+    /**
+     * Sets minimum_allowed_daily_value
+     *
+     * @param float $minimum_allowed_daily_value User-Defined Variable Setting: The minimum allowed value a daily aggregated measurement.  For instance, you might set to 100 for steps to keep erroneous 0 daily steps out of the analysis. Unit: User-specified or common.
+     *
+     * @return $this
+     */
+    public function setMinimumAllowedDailyValue($minimum_allowed_daily_value)
+    {
+        $this->container['minimum_allowed_daily_value'] = $minimum_allowed_daily_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_non_zero_value
+     *
+     * @return float
+     */
+    public function getMinimumNonZeroValue()
+    {
+        return $this->container['minimum_non_zero_value'];
+    }
+
+    /**
+     * Sets minimum_non_zero_value
+     *
+     * @param float $minimum_non_zero_value User-Defined Variable Setting: The minimum allowed non-zero value a single measurement.  For instance, you might set to 100 mL for steps to keep erroneous 0 daily steps out of the analysis. Unit: User-specified or common.
+     *
+     * @return $this
+     */
+    public function setMinimumNonZeroValue($minimum_non_zero_value)
+    {
+        $this->container['minimum_non_zero_value'] = $minimum_non_zero_value;
 
         return $this;
     }
@@ -2948,7 +3163,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets minimum_recorded_value
      *
-     * @param float $minimum_recorded_value Minimum recorded value of this variable
+     * @param float $minimum_recorded_value Minimum recorded value of this variable. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -3044,7 +3259,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets most_common_value
      *
-     * @param float $most_common_value Most common value
+     * @param float $most_common_value Calculated Statistic: Most common value. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -3171,6 +3386,54 @@ class Variable implements ModelInterface, ArrayAccess
     public function setNumberOfCorrelations($number_of_correlations)
     {
         $this->container['number_of_correlations'] = $number_of_correlations;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_correlations_as_cause
+     *
+     * @return int
+     */
+    public function getNumberOfCorrelationsAsCause()
+    {
+        return $this->container['number_of_correlations_as_cause'];
+    }
+
+    /**
+     * Sets number_of_correlations_as_cause
+     *
+     * @param int $number_of_correlations_as_cause numberOfAggregateCorrelationsAsCause plus numberOfUserCorrelationsAsCause
+     *
+     * @return $this
+     */
+    public function setNumberOfCorrelationsAsCause($number_of_correlations_as_cause)
+    {
+        $this->container['number_of_correlations_as_cause'] = $number_of_correlations_as_cause;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_correlations_as_effect
+     *
+     * @return int
+     */
+    public function getNumberOfCorrelationsAsEffect()
+    {
+        return $this->container['number_of_correlations_as_effect'];
+    }
+
+    /**
+     * Sets number_of_correlations_as_effect
+     *
+     * @param int $number_of_correlations_as_effect numberOfAggregateCorrelationsAsEffect plus numberOfUserCorrelationsAsEffect
+     *
+     * @return $this
+     */
+    public function setNumberOfCorrelationsAsEffect($number_of_correlations_as_effect)
+    {
+        $this->container['number_of_correlations_as_effect'] = $number_of_correlations_as_effect;
 
         return $this;
     }
@@ -3404,7 +3667,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets onset_delay_in_hours
      *
-     * @param double $onset_delay_in_hours Ex: 0.5
+     * @param double $onset_delay_in_hours User-Defined Variable Setting: The amount of time in seconds that elapses after the predictor/stimulus event before the outcome as perceived by a self-tracker is known as the onset delay. For example, the onset delay between the time a person takes an aspirin (predictor/stimulus event) and the time a person perceives a change in their headache severity (outcome) is approximately 30 minutes.
      *
      * @return $this
      */
@@ -3428,7 +3691,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets outcome
      *
-     * @param bool $outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors. These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
+     * @param bool $outcome User-Defined Variable Setting: True for variables for which a human would generally want to identify the influencing factors. These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
      *
      * @return $this
      */
@@ -3442,7 +3705,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Gets outcome_of_interest
      *
-     * @return int
+     * @return bool
      */
     public function getOutcomeOfInterest()
     {
@@ -3452,7 +3715,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets outcome_of_interest
      *
-     * @param int $outcome_of_interest Ex: 1
+     * @param bool $outcome_of_interest Do you want to receive updates on newly discovered factors influencing this variable?
      *
      * @return $this
      */
@@ -3634,7 +3897,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Gets public
      *
-     * @return int
+     * @return bool
      */
     public function getPublic()
     {
@@ -3644,13 +3907,61 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets public
      *
-     * @param int $public Is variable public
+     * @param bool $public Should this variable show up in automcomplete searches for users who do not already have measurements for it?
      *
      * @return $this
      */
     public function setPublic($public)
     {
         $this->container['public'] = $public;
+
+        return $this;
+    }
+
+    /**
+     * Gets question
+     *
+     * @return string
+     */
+    public function getQuestion()
+    {
+        return $this->container['question'];
+    }
+
+    /**
+     * Sets question
+     *
+     * @param string $question Ex: How is your overall mood?
+     *
+     * @return $this
+     */
+    public function setQuestion($question)
+    {
+        $this->container['question'] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_question
+     *
+     * @return string
+     */
+    public function getLongQuestion()
+    {
+        return $this->container['long_question'];
+    }
+
+    /**
+     * Sets long_question
+     *
+     * @param string $long_question Ex: How is your overall mood on a scale of 1 to 5??
+     *
+     * @return $this
+     */
+    public function setLongQuestion($long_question)
+    {
+        $this->container['long_question'] = $long_question;
 
         return $this;
     }
@@ -3692,7 +4003,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets second_most_common_value
      *
-     * @param double $second_most_common_value Ex: 1
+     * @param double $second_most_common_value Calculated Statistic: Ex: 1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -3716,7 +4027,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets second_to_last_value
      *
-     * @param double $second_to_last_value Ex: 250
+     * @param double $second_to_last_value Calculated Statistic: Ex: 250. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -3884,7 +4195,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets third_most_common_value
      *
-     * @param double $third_most_common_value Ex: 6
+     * @param double $third_most_common_value Calculated Statistic: Ex: 6. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -3908,7 +4219,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets third_to_last_value
      *
-     * @param double $third_to_last_value Ex: 250
+     * @param double $third_to_last_value Calculated Statistic: Ex: 250. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -4100,7 +4411,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets unit_name
      *
-     * @param string $unit_name Ex: Count
+     * @param string $unit_name User-Defined Variable Setting: Count
      *
      * @return $this
      */
@@ -4400,174 +4711,6 @@ class Variable implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets user_variable_filling_value
-     *
-     * @return double
-     */
-    public function getUserVariableFillingValue()
-    {
-        return $this->container['user_variable_filling_value'];
-    }
-
-    /**
-     * Sets user_variable_filling_value
-     *
-     * @param double $user_variable_filling_value Ex: -1
-     *
-     * @return $this
-     */
-    public function setUserVariableFillingValue($user_variable_filling_value)
-    {
-        $this->container['user_variable_filling_value'] = $user_variable_filling_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_variable_most_common_connector_id
-     *
-     * @return int
-     */
-    public function getUserVariableMostCommonConnectorId()
-    {
-        return $this->container['user_variable_most_common_connector_id'];
-    }
-
-    /**
-     * Sets user_variable_most_common_connector_id
-     *
-     * @param int $user_variable_most_common_connector_id Ex: 51
-     *
-     * @return $this
-     */
-    public function setUserVariableMostCommonConnectorId($user_variable_most_common_connector_id)
-    {
-        $this->container['user_variable_most_common_connector_id'] = $user_variable_most_common_connector_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_variable_updated_at
-     *
-     * @return string
-     */
-    public function getUserVariableUpdatedAt()
-    {
-        return $this->container['user_variable_updated_at'];
-    }
-
-    /**
-     * Sets user_variable_updated_at
-     *
-     * @param string $user_variable_updated_at Ex: 2017-07-30 14:58:26
-     *
-     * @return $this
-     */
-    public function setUserVariableUpdatedAt($user_variable_updated_at)
-    {
-        $this->container['user_variable_updated_at'] = $user_variable_updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_variable_valence
-     *
-     * @return string
-     */
-    public function getUserVariableValence()
-    {
-        return $this->container['user_variable_valence'];
-    }
-
-    /**
-     * Sets user_variable_valence
-     *
-     * @param string $user_variable_valence Ex: positive or negative
-     *
-     * @return $this
-     */
-    public function setUserVariableValence($user_variable_valence)
-    {
-        $this->container['user_variable_valence'] = $user_variable_valence;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_variable_variable_category_id
-     *
-     * @return int
-     */
-    public function getUserVariableVariableCategoryId()
-    {
-        return $this->container['user_variable_variable_category_id'];
-    }
-
-    /**
-     * Sets user_variable_variable_category_id
-     *
-     * @param int $user_variable_variable_category_id Ex: 13
-     *
-     * @return $this
-     */
-    public function setUserVariableVariableCategoryId($user_variable_variable_category_id)
-    {
-        $this->container['user_variable_variable_category_id'] = $user_variable_variable_category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_variable_variable_category_name
-     *
-     * @return string
-     */
-    public function getUserVariableVariableCategoryName()
-    {
-        return $this->container['user_variable_variable_category_name'];
-    }
-
-    /**
-     * Sets user_variable_variable_category_name
-     *
-     * @param string $user_variable_variable_category_name Ex: Treatments
-     *
-     * @return $this
-     */
-    public function setUserVariableVariableCategoryName($user_variable_variable_category_name)
-    {
-        $this->container['user_variable_variable_category_name'] = $user_variable_variable_category_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_variable_wikipedia_title
-     *
-     * @return string
-     */
-    public function getUserVariableWikipediaTitle()
-    {
-        return $this->container['user_variable_wikipedia_title'];
-    }
-
-    /**
-     * Sets user_variable_wikipedia_title
-     *
-     * @param string $user_variable_wikipedia_title Ex:
-     *
-     * @return $this
-     */
-    public function setUserVariableWikipediaTitle($user_variable_wikipedia_title)
-    {
-        $this->container['user_variable_wikipedia_title'] = $user_variable_wikipedia_title;
-
-        return $this;
-    }
-
-    /**
      * Gets variable_category
      *
      * @return \QuantiModo\Client\Model\VariableCategory
@@ -4611,78 +4754,6 @@ class Variable implements ModelInterface, ArrayAccess
     public function setJoinedVariables($joined_variables)
     {
         $this->container['joined_variables'] = $joined_variables;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_source
-     *
-     * @return int
-     */
-    public function getLastSource()
-    {
-        return $this->container['last_source'];
-    }
-
-    /**
-     * Sets last_source
-     *
-     * @param int $last_source Last source
-     *
-     * @return $this
-     */
-    public function setLastSource($last_source)
-    {
-        $this->container['last_source'] = $last_source;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_unit
-     *
-     * @return string
-     */
-    public function getLastUnit()
-    {
-        return $this->container['last_unit'];
-    }
-
-    /**
-     * Sets last_unit
-     *
-     * @param string $last_unit Last unit
-     *
-     * @return $this
-     */
-    public function setLastUnit($last_unit)
-    {
-        $this->container['last_unit'] = $last_unit;
-
-        return $this;
-    }
-
-    /**
-     * Gets most_common_unit
-     *
-     * @return string
-     */
-    public function getMostCommonUnit()
-    {
-        return $this->container['most_common_unit'];
-    }
-
-    /**
-     * Sets most_common_unit
-     *
-     * @param string $most_common_unit Most common unit
-     *
-     * @return $this
-     */
-    public function setMostCommonUnit($most_common_unit)
-    {
-        $this->container['most_common_unit'] = $most_common_unit;
 
         return $this;
     }
@@ -4736,30 +4807,6 @@ class Variable implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets variable_category_image_url
-     *
-     * @return string
-     */
-    public function getVariableCategoryImageUrl()
-    {
-        return $this->container['variable_category_image_url'];
-    }
-
-    /**
-     * Sets variable_category_image_url
-     *
-     * @param string $variable_category_image_url Ex: https://maxcdn.icons8.com/Color/PNG/96/Household/sleeping_in_bed-96.png
-     *
-     * @return $this
-     */
-    public function setVariableCategoryImageUrl($variable_category_image_url)
-    {
-        $this->container['variable_category_image_url'] = $variable_category_image_url;
-
-        return $this;
-    }
-
-    /**
      * Gets variable_category_name
      *
      * @return string
@@ -4772,37 +4819,22 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets variable_category_name
      *
-     * @param string $variable_category_name Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc.
+     * @param string $variable_category_name User-Defined Variable Setting: Variable category like Emotions, Sleep, Physical Activities, Treatments, Symptoms, etc.
      *
      * @return $this
      */
     public function setVariableCategoryName($variable_category_name)
     {
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!is_null($variable_category_name) && !in_array($variable_category_name, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'variable_category_name', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['variable_category_name'] = $variable_category_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets variable_filling_value
-     *
-     * @return double
-     */
-    public function getVariableFillingValue()
-    {
-        return $this->container['variable_filling_value'];
-    }
-
-    /**
-     * Sets variable_filling_value
-     *
-     * @param double $variable_filling_value Ex: -1
-     *
-     * @return $this
-     */
-    public function setVariableFillingValue($variable_filling_value)
-    {
-        $this->container['variable_filling_value'] = $variable_filling_value;
 
         return $this;
     }
@@ -4868,7 +4900,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets variance
      *
-     * @param double $variance Ex: 115947037.40816
+     * @param double $variance Statistic: Ex: 115947037.40816
      *
      * @return $this
      */
@@ -4892,7 +4924,7 @@ class Variable implements ModelInterface, ArrayAccess
     /**
      * Sets wikipedia_title
      *
-     * @param string $wikipedia_title Ex:
+     * @param string $wikipedia_title User-Defined Variable Setting: You can help to improve the studies by pasting the title of the most appropriate Wikipedia article for this variable
      *
      * @return $this
      */

@@ -33,7 +33,7 @@ namespace QuantiModo\Client;
  * StudyTest Class Doc Comment
  *
  * @category    Class */
-// * @description Study
+// * @description A study analyzes the relationship between a predictor variable like gluten-intake and an outcome of interest such as overall mood.
 /**
  * @package     QuantiModo\Client
  * @author      Swagger Codegen team
@@ -144,6 +144,13 @@ class StudyTest extends \PHPUnit_Framework_TestCase
      * Test attribute "statistics"
      */
     public function testPropertyStatistics()
+    {
+    }
+
+    /**
+     * Test attribute "study_card"
+     */
+    public function testPropertyStudyCard()
     {
     }
 

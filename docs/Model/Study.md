@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **effect_variable_name** | **string** | Ex: Overall Mood | [optional] 
 **participant_instructions** | [**\QuantiModo\Client\Model\ParticipantInstruction**](ParticipantInstruction.md) |  | [optional] 
 **statistics** | [**\QuantiModo\Client\Model\Correlation**](Correlation.md) |  | [optional] 
+**study_card** | [**\QuantiModo\Client\Model\Card**](Card.md) | Contains a summary, images, sharing buttons, and links | [optional] 
 **study_html** | [**\QuantiModo\Client\Model\StudyHtml**](StudyHtml.md) |  | [optional] 
 **study_images** | [**\QuantiModo\Client\Model\StudyImages**](StudyImages.md) |  | [optional] 
 **study_links** | [**\QuantiModo\Client\Model\StudyLinks**](StudyLinks.md) |  | [optional] 

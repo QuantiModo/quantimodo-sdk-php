@@ -106,6 +106,13 @@ class GetStudiesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "avatar"
+     */
+    public function testPropertyAvatar()
+    {
+    }
+
+    /**
      * Test attribute "ion_icon"
      */
     public function testPropertyIonIcon()

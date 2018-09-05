@@ -99,6 +99,76 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "best_study_link"
+     */
+    public function testPropertyBestStudyLink()
+    {
+    }
+
+    /**
+     * Test attribute "best_study_card"
+     */
+    public function testPropertyBestStudyCard()
+    {
+    }
+
+    /**
+     * Test attribute "best_user_study_link"
+     */
+    public function testPropertyBestUserStudyLink()
+    {
+    }
+
+    /**
+     * Test attribute "best_user_study_card"
+     */
+    public function testPropertyBestUserStudyCard()
+    {
+    }
+
+    /**
+     * Test attribute "best_population_study_link"
+     */
+    public function testPropertyBestPopulationStudyLink()
+    {
+    }
+
+    /**
+     * Test attribute "best_population_study_card"
+     */
+    public function testPropertyBestPopulationStudyCard()
+    {
+    }
+
+    /**
+     * Test attribute "optimal_value_message"
+     */
+    public function testPropertyOptimalValueMessage()
+    {
+    }
+
+    /**
+     * Test attribute "common_optimal_value_message"
+     */
+    public function testPropertyCommonOptimalValueMessage()
+    {
+    }
+
+    /**
+     * Test attribute "user_optimal_value_message"
+     */
+    public function testPropertyUserOptimalValueMessage()
+    {
+    }
+
+    /**
+     * Test attribute "card"
+     */
+    public function testPropertyCard()
+    {
+    }
+
+    /**
      * Test attribute "cause_only"
      */
     public function testPropertyCauseOnly()
@@ -204,20 +274,6 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "common_variable_most_common_connector_id"
-     */
-    public function testPropertyCommonVariableMostCommonConnectorId()
-    {
-    }
-
-    /**
-     * Test attribute "common_variable_updated_at"
-     */
-    public function testPropertyCommonVariableUpdatedAt()
-    {
-    }
-
-    /**
      * Test attribute "created_at"
      */
     public function testPropertyCreatedAt()
@@ -302,37 +358,9 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "experiment_end_time_seconds"
-     */
-    public function testPropertyExperimentEndTimeSeconds()
-    {
-    }
-
-    /**
-     * Test attribute "experiment_end_time_string"
-     */
-    public function testPropertyExperimentEndTimeString()
-    {
-    }
-
-    /**
      * Test attribute "experiment_start_time"
      */
     public function testPropertyExperimentStartTime()
-    {
-    }
-
-    /**
-     * Test attribute "experiment_start_time_seconds"
-     */
-    public function testPropertyExperimentStartTimeSeconds()
-    {
-    }
-
-    /**
-     * Test attribute "experiment_start_time_string"
-     */
-    public function testPropertyExperimentStartTimeString()
     {
     }
 
@@ -449,20 +477,6 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "last_original_unit_id"
-     */
-    public function testPropertyLastOriginalUnitId()
-    {
-    }
-
-    /**
-     * Test attribute "last_original_value"
-     */
-    public function testPropertyLastOriginalValue()
-    {
-    }
-
-    /**
      * Test attribute "last_processed_daily_value"
      */
     public function testPropertyLastProcessedDailyValue()
@@ -473,13 +487,6 @@ class VariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "last_successful_update_time"
      */
     public function testPropertyLastSuccessfulUpdateTime()
-    {
-    }
-
-    /**
-     * Test attribute "last_unit_id"
-     */
-    public function testPropertyLastUnitId()
     {
     }
 
@@ -547,6 +554,13 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "maximum_allowed_daily_value"
+     */
+    public function testPropertyMaximumAllowedDailyValue()
+    {
+    }
+
+    /**
      * Test attribute "maximum_allowed_value"
      */
     public function testPropertyMaximumAllowedValue()
@@ -592,6 +606,20 @@ class VariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "minimum_allowed_value"
      */
     public function testPropertyMinimumAllowedValue()
+    {
+    }
+
+    /**
+     * Test attribute "minimum_allowed_daily_value"
+     */
+    public function testPropertyMinimumAllowedDailyValue()
+    {
+    }
+
+    /**
+     * Test attribute "minimum_non_zero_value"
+     */
+    public function testPropertyMinimumNonZeroValue()
     {
     }
 
@@ -662,6 +690,20 @@ class VariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "number_of_correlations"
      */
     public function testPropertyNumberOfCorrelations()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_correlations_as_cause"
+     */
+    public function testPropertyNumberOfCorrelationsAsCause()
+    {
+    }
+
+    /**
+     * Test attribute "number_of_correlations_as_effect"
+     */
+    public function testPropertyNumberOfCorrelationsAsEffect()
     {
     }
 
@@ -802,6 +844,20 @@ class VariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "public"
      */
     public function testPropertyPublic()
+    {
+    }
+
+    /**
+     * Test attribute "question"
+     */
+    public function testPropertyQuestion()
+    {
+    }
+
+    /**
+     * Test attribute "long_question"
+     */
+    public function testPropertyLongQuestion()
     {
     }
 
@@ -1023,55 +1079,6 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "user_variable_filling_value"
-     */
-    public function testPropertyUserVariableFillingValue()
-    {
-    }
-
-    /**
-     * Test attribute "user_variable_most_common_connector_id"
-     */
-    public function testPropertyUserVariableMostCommonConnectorId()
-    {
-    }
-
-    /**
-     * Test attribute "user_variable_updated_at"
-     */
-    public function testPropertyUserVariableUpdatedAt()
-    {
-    }
-
-    /**
-     * Test attribute "user_variable_valence"
-     */
-    public function testPropertyUserVariableValence()
-    {
-    }
-
-    /**
-     * Test attribute "user_variable_variable_category_id"
-     */
-    public function testPropertyUserVariableVariableCategoryId()
-    {
-    }
-
-    /**
-     * Test attribute "user_variable_variable_category_name"
-     */
-    public function testPropertyUserVariableVariableCategoryName()
-    {
-    }
-
-    /**
-     * Test attribute "user_variable_wikipedia_title"
-     */
-    public function testPropertyUserVariableWikipediaTitle()
-    {
-    }
-
-    /**
      * Test attribute "variable_category"
      */
     public function testPropertyVariableCategory()
@@ -1082,27 +1089,6 @@ class VariableTest extends \PHPUnit_Framework_TestCase
      * Test attribute "joined_variables"
      */
     public function testPropertyJoinedVariables()
-    {
-    }
-
-    /**
-     * Test attribute "last_source"
-     */
-    public function testPropertyLastSource()
-    {
-    }
-
-    /**
-     * Test attribute "last_unit"
-     */
-    public function testPropertyLastUnit()
-    {
-    }
-
-    /**
-     * Test attribute "most_common_unit"
-     */
-    public function testPropertyMostCommonUnit()
     {
     }
 
@@ -1121,23 +1107,9 @@ class VariableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "variable_category_image_url"
-     */
-    public function testPropertyVariableCategoryImageUrl()
-    {
-    }
-
-    /**
      * Test attribute "variable_category_name"
      */
     public function testPropertyVariableCategoryName()
-    {
-    }
-
-    /**
-     * Test attribute "variable_filling_value"
-     */
-    public function testPropertyVariableFillingValue()
     {
     }
 

@@ -841,7 +841,7 @@ class VariablesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $name Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
@@ -876,14 +876,15 @@ class VariablesApi
      * @param  bool $include_tags Return parent, child, duplicate, and ingredient variables (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
      * @param  int $variable_id Ex: 13 (optional)
+     * @param  bool $concise Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests. (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \QuantiModo\Client\Model\Variable[]
      */
-    public function getVariables($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null)
+    public function getVariables($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null, $concise = null)
     {
-        list($response) = $this->getVariablesWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id);
+        list($response) = $this->getVariablesWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise);
         return $response;
     }
 
@@ -895,7 +896,7 @@ class VariablesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $name Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
@@ -930,15 +931,16 @@ class VariablesApi
      * @param  bool $include_tags Return parent, child, duplicate, and ingredient variables (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
      * @param  int $variable_id Ex: 13 (optional)
+     * @param  bool $concise Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests. (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \QuantiModo\Client\Model\Variable[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getVariablesWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null)
+    public function getVariablesWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null, $concise = null)
     {
         $returnType = '\QuantiModo\Client\Model\Variable[]';
-        $request = $this->getVariablesRequest($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id);
+        $request = $this->getVariablesRequest($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1007,7 +1009,7 @@ class VariablesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $name Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
@@ -1042,13 +1044,14 @@ class VariablesApi
      * @param  bool $include_tags Return parent, child, duplicate, and ingredient variables (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
      * @param  int $variable_id Ex: 13 (optional)
+     * @param  bool $concise Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVariablesAsync($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null)
+    public function getVariablesAsync($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null, $concise = null)
     {
-        return $this->getVariablesAsyncWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id)
+        return $this->getVariablesAsyncWithHttpInfo($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1064,7 +1067,7 @@ class VariablesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $name Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
@@ -1099,14 +1102,15 @@ class VariablesApi
      * @param  bool $include_tags Return parent, child, duplicate, and ingredient variables (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
      * @param  int $variable_id Ex: 13 (optional)
+     * @param  bool $concise Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVariablesAsyncWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null)
+    public function getVariablesAsyncWithHttpInfo($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null, $concise = null)
     {
         $returnType = '\QuantiModo\Client\Model\Variable[]';
-        $request = $this->getVariablesRequest($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id);
+        $request = $this->getVariablesRequest($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1151,7 +1155,7 @@ class VariablesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $number_of_raw_measurements Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity. (optional)
      * @param  float $user_id User&#39;s id (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  string $name Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% (optional)
      * @param  string $updated_at When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. (optional)
      * @param  string $source_name ID of the source you want measurements for (supports exact name match only) (optional)
@@ -1186,11 +1190,12 @@ class VariablesApi
      * @param  bool $include_tags Return parent, child, duplicate, and ingredient variables (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
      * @param  int $variable_id Ex: 13 (optional)
+     * @param  bool $concise Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getVariablesRequest($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null)
+    protected function getVariablesRequest($include_charts = null, $number_of_raw_measurements = null, $user_id = null, $variable_category_name = null, $name = null, $updated_at = null, $source_name = null, $earliest_measurement_time = null, $latest_measurement_time = null, $id = null, $last_source_name = null, $limit = '100', $offset = null, $sort = null, $include_public = null, $manual_tracking = null, $client_id = null, $upc = null, $effect_or_cause = null, $public_effect_or_cause = null, $exact_match = null, $variable_category_id = null, $include_private = null, $search_phrase = null, $synonyms = null, $tagged_variable_id = null, $tag_variable_id = null, $join_variable_id = null, $parent_user_tag_variable_id = null, $child_user_tag_variable_id = null, $ingredient_user_tag_variable_id = null, $ingredient_of_user_tag_variable_id = null, $common_only = null, $user_only = null, $platform = null, $include_tags = null, $recalculate = null, $variable_id = null, $concise = null)
     {
         if ($offset !== null && $offset < 0) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling VariablesApi.getVariables, must be bigger than or equal to 0.');
@@ -1355,6 +1360,10 @@ class VariablesApi
         // query params
         if ($variable_id !== null) {
             $queryParams['variableId'] = ObjectSerializer::toQueryValue($variable_id);
+        }
+        // query params
+        if ($concise !== null) {
+            $queryParams['concise'] = ObjectSerializer::toQueryValue($concise);
         }
 
 
@@ -1718,7 +1727,7 @@ class VariablesApi
      * @param  string $search_phrase Ex: %Body Fat% (optional)
      * @param  bool $exact_match Require exact match (optional)
      * @param  bool $manual_tracking Only include variables tracked manually by the user (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  int $variable_category_id Ex: 13 (optional)
      * @param  string $synonyms Ex: McDonalds hotcake (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
@@ -1745,7 +1754,7 @@ class VariablesApi
      * @param  string $search_phrase Ex: %Body Fat% (optional)
      * @param  bool $exact_match Require exact match (optional)
      * @param  bool $manual_tracking Only include variables tracked manually by the user (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  int $variable_category_id Ex: 13 (optional)
      * @param  string $synonyms Ex: McDonalds hotcake (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
@@ -1830,7 +1839,7 @@ class VariablesApi
      * @param  string $search_phrase Ex: %Body Fat% (optional)
      * @param  bool $exact_match Require exact match (optional)
      * @param  bool $manual_tracking Only include variables tracked manually by the user (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  int $variable_category_id Ex: 13 (optional)
      * @param  string $synonyms Ex: McDonalds hotcake (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
@@ -1860,7 +1869,7 @@ class VariablesApi
      * @param  string $search_phrase Ex: %Body Fat% (optional)
      * @param  bool $exact_match Require exact match (optional)
      * @param  bool $manual_tracking Only include variables tracked manually by the user (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  int $variable_category_id Ex: 13 (optional)
      * @param  string $synonyms Ex: McDonalds hotcake (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
@@ -1920,7 +1929,7 @@ class VariablesApi
      * @param  string $search_phrase Ex: %Body Fat% (optional)
      * @param  bool $exact_match Require exact match (optional)
      * @param  bool $manual_tracking Only include variables tracked manually by the user (optional)
-     * @param  string $variable_category_name Limit results to a specific variable category (optional)
+     * @param  string $variable_category_name Ex: Emotions, Treatments, Symptoms... (optional)
      * @param  int $variable_category_id Ex: 13 (optional)
      * @param  string $synonyms Ex: McDonalds hotcake (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)

@@ -59,6 +59,16 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'action_array' => '\QuantiModo\Client\Model\TrackingReminderNotificationAction[]',
         'available_units' => '\QuantiModo\Client\Model\Unit[]',
+        'best_study_link' => 'string',
+        'best_study_card' => '\QuantiModo\Client\Model\Card',
+        'best_user_study_link' => 'string',
+        'best_user_study_card' => '\QuantiModo\Client\Model\Card',
+        'best_population_study_link' => 'string',
+        'best_population_study_card' => '\QuantiModo\Client\Model\Card',
+        'optimal_value_message' => 'string',
+        'common_optimal_value_message' => 'string',
+        'user_optimal_value_message' => 'string',
+        'card' => '\QuantiModo\Client\Model\Card',
         'client_id' => 'string',
         'combination_operation' => 'string',
         'created_at' => 'string',
@@ -69,6 +79,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'unit_id' => 'int',
         'unit_name' => 'string',
         'default_value' => 'float',
+        'enabled' => 'bool',
         'email' => 'bool',
         'error_message' => 'string',
         'filling_value' => 'int',
@@ -85,8 +96,8 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'local_daily_reminder_notification_times' => 'string[]',
         'local_daily_reminder_notification_times_for_all_reminders' => 'string[]',
         'manual_tracking' => 'bool',
-        'maximum_allowed_value' => 'int',
-        'minimum_allowed_value' => 'int',
+        'maximum_allowed_value' => 'double',
+        'minimum_allowed_value' => 'double',
         'next_reminder_time_epoch_seconds' => 'int',
         'notification_bar' => 'bool',
         'number_of_raw_measurements' => 'int',
@@ -97,6 +108,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'product_url' => 'string',
         'pop_up' => 'bool',
         'question' => 'string',
+        'long_question' => 'string',
         'reminder_end_time' => 'string',
         'reminder_frequency' => 'int',
         'reminder_sound' => 'string',
@@ -144,6 +156,16 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'action_array' => null,
         'available_units' => null,
+        'best_study_link' => null,
+        'best_study_card' => null,
+        'best_user_study_link' => null,
+        'best_user_study_card' => null,
+        'best_population_study_link' => null,
+        'best_population_study_card' => null,
+        'optimal_value_message' => null,
+        'common_optimal_value_message' => null,
+        'user_optimal_value_message' => null,
+        'card' => null,
         'client_id' => null,
         'combination_operation' => null,
         'created_at' => null,
@@ -154,6 +176,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'unit_id' => null,
         'unit_name' => null,
         'default_value' => 'float',
+        'enabled' => null,
         'email' => null,
         'error_message' => null,
         'filling_value' => null,
@@ -170,8 +193,8 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'local_daily_reminder_notification_times' => null,
         'local_daily_reminder_notification_times_for_all_reminders' => null,
         'manual_tracking' => null,
-        'maximum_allowed_value' => null,
-        'minimum_allowed_value' => null,
+        'maximum_allowed_value' => 'double',
+        'minimum_allowed_value' => 'double',
         'next_reminder_time_epoch_seconds' => null,
         'notification_bar' => null,
         'number_of_raw_measurements' => null,
@@ -182,6 +205,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'product_url' => null,
         'pop_up' => null,
         'question' => null,
+        'long_question' => null,
         'reminder_end_time' => null,
         'reminder_frequency' => 'int32',
         'reminder_sound' => null,
@@ -250,6 +274,16 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'action_array' => 'actionArray',
         'available_units' => 'availableUnits',
+        'best_study_link' => 'bestStudyLink',
+        'best_study_card' => 'bestStudyCard',
+        'best_user_study_link' => 'bestUserStudyLink',
+        'best_user_study_card' => 'bestUserStudyCard',
+        'best_population_study_link' => 'bestPopulationStudyLink',
+        'best_population_study_card' => 'bestPopulationStudyCard',
+        'optimal_value_message' => 'optimalValueMessage',
+        'common_optimal_value_message' => 'commonOptimalValueMessage',
+        'user_optimal_value_message' => 'userOptimalValueMessage',
+        'card' => 'card',
         'client_id' => 'clientId',
         'combination_operation' => 'combinationOperation',
         'created_at' => 'createdAt',
@@ -260,6 +294,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'unit_id' => 'unitId',
         'unit_name' => 'unitName',
         'default_value' => 'defaultValue',
+        'enabled' => 'enabled',
         'email' => 'email',
         'error_message' => 'errorMessage',
         'filling_value' => 'fillingValue',
@@ -288,6 +323,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'product_url' => 'productUrl',
         'pop_up' => 'popUp',
         'question' => 'question',
+        'long_question' => 'longQuestion',
         'reminder_end_time' => 'reminderEndTime',
         'reminder_frequency' => 'reminderFrequency',
         'reminder_sound' => 'reminderSound',
@@ -335,6 +371,16 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     protected static $setters = [
         'action_array' => 'setActionArray',
         'available_units' => 'setAvailableUnits',
+        'best_study_link' => 'setBestStudyLink',
+        'best_study_card' => 'setBestStudyCard',
+        'best_user_study_link' => 'setBestUserStudyLink',
+        'best_user_study_card' => 'setBestUserStudyCard',
+        'best_population_study_link' => 'setBestPopulationStudyLink',
+        'best_population_study_card' => 'setBestPopulationStudyCard',
+        'optimal_value_message' => 'setOptimalValueMessage',
+        'common_optimal_value_message' => 'setCommonOptimalValueMessage',
+        'user_optimal_value_message' => 'setUserOptimalValueMessage',
+        'card' => 'setCard',
         'client_id' => 'setClientId',
         'combination_operation' => 'setCombinationOperation',
         'created_at' => 'setCreatedAt',
@@ -345,6 +391,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'unit_id' => 'setUnitId',
         'unit_name' => 'setUnitName',
         'default_value' => 'setDefaultValue',
+        'enabled' => 'setEnabled',
         'email' => 'setEmail',
         'error_message' => 'setErrorMessage',
         'filling_value' => 'setFillingValue',
@@ -373,6 +420,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'product_url' => 'setProductUrl',
         'pop_up' => 'setPopUp',
         'question' => 'setQuestion',
+        'long_question' => 'setLongQuestion',
         'reminder_end_time' => 'setReminderEndTime',
         'reminder_frequency' => 'setReminderFrequency',
         'reminder_sound' => 'setReminderSound',
@@ -420,6 +468,16 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     protected static $getters = [
         'action_array' => 'getActionArray',
         'available_units' => 'getAvailableUnits',
+        'best_study_link' => 'getBestStudyLink',
+        'best_study_card' => 'getBestStudyCard',
+        'best_user_study_link' => 'getBestUserStudyLink',
+        'best_user_study_card' => 'getBestUserStudyCard',
+        'best_population_study_link' => 'getBestPopulationStudyLink',
+        'best_population_study_card' => 'getBestPopulationStudyCard',
+        'optimal_value_message' => 'getOptimalValueMessage',
+        'common_optimal_value_message' => 'getCommonOptimalValueMessage',
+        'user_optimal_value_message' => 'getUserOptimalValueMessage',
+        'card' => 'getCard',
         'client_id' => 'getClientId',
         'combination_operation' => 'getCombinationOperation',
         'created_at' => 'getCreatedAt',
@@ -430,6 +488,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'unit_id' => 'getUnitId',
         'unit_name' => 'getUnitName',
         'default_value' => 'getDefaultValue',
+        'enabled' => 'getEnabled',
         'email' => 'getEmail',
         'error_message' => 'getErrorMessage',
         'filling_value' => 'getFillingValue',
@@ -458,6 +517,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         'product_url' => 'getProductUrl',
         'pop_up' => 'getPopUp',
         'question' => 'getQuestion',
+        'long_question' => 'getLongQuestion',
         'reminder_end_time' => 'getReminderEndTime',
         'reminder_frequency' => 'getReminderFrequency',
         'reminder_sound' => 'getReminderSound',
@@ -540,6 +600,29 @@ class TrackingReminder implements ModelInterface, ArrayAccess
 
     const COMBINATION_OPERATION_MEAN = 'MEAN';
     const COMBINATION_OPERATION_SUM = 'SUM';
+    const VARIABLE_CATEGORY_NAME_ACTIVITY = 'Activity';
+    const VARIABLE_CATEGORY_NAME_BOOKS = 'Books';
+    const VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS = 'Causes of Illness';
+    const VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE = 'Cognitive Performance';
+    const VARIABLE_CATEGORY_NAME_CONDITIONS = 'Conditions';
+    const VARIABLE_CATEGORY_NAME_EMOTIONS = 'Emotions';
+    const VARIABLE_CATEGORY_NAME_ENVIRONMENT = 'Environment';
+    const VARIABLE_CATEGORY_NAME_FOODS = 'Foods';
+    const VARIABLE_CATEGORY_NAME_GOALS = 'Goals';
+    const VARIABLE_CATEGORY_NAME_LOCATIONS = 'Locations';
+    const VARIABLE_CATEGORY_NAME_MISCELLANEOUS = 'Miscellaneous';
+    const VARIABLE_CATEGORY_NAME_MOVIES_AND_TV = 'Movies and TV';
+    const VARIABLE_CATEGORY_NAME_MUSIC = 'Music';
+    const VARIABLE_CATEGORY_NAME_NUTRIENTS = 'Nutrients';
+    const VARIABLE_CATEGORY_NAME_PAYMENTS = 'Payments';
+    const VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES = 'Physical Activities';
+    const VARIABLE_CATEGORY_NAME_PHYSIQUE = 'Physique';
+    const VARIABLE_CATEGORY_NAME_SLEEP = 'Sleep';
+    const VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS = 'Social Interactions';
+    const VARIABLE_CATEGORY_NAME_SOFTWARE = 'Software';
+    const VARIABLE_CATEGORY_NAME_SYMPTOMS = 'Symptoms';
+    const VARIABLE_CATEGORY_NAME_TREATMENTS = 'Treatments';
+    const VARIABLE_CATEGORY_NAME_VITAL_SIGNS = 'Vital Signs';
     
 
     
@@ -553,6 +636,40 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         return [
             self::COMBINATION_OPERATION_MEAN,
             self::COMBINATION_OPERATION_SUM,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVariableCategoryNameAllowableValues()
+    {
+        return [
+            self::VARIABLE_CATEGORY_NAME_ACTIVITY,
+            self::VARIABLE_CATEGORY_NAME_BOOKS,
+            self::VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS,
+            self::VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE,
+            self::VARIABLE_CATEGORY_NAME_CONDITIONS,
+            self::VARIABLE_CATEGORY_NAME_EMOTIONS,
+            self::VARIABLE_CATEGORY_NAME_ENVIRONMENT,
+            self::VARIABLE_CATEGORY_NAME_FOODS,
+            self::VARIABLE_CATEGORY_NAME_GOALS,
+            self::VARIABLE_CATEGORY_NAME_LOCATIONS,
+            self::VARIABLE_CATEGORY_NAME_MISCELLANEOUS,
+            self::VARIABLE_CATEGORY_NAME_MOVIES_AND_TV,
+            self::VARIABLE_CATEGORY_NAME_MUSIC,
+            self::VARIABLE_CATEGORY_NAME_NUTRIENTS,
+            self::VARIABLE_CATEGORY_NAME_PAYMENTS,
+            self::VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES,
+            self::VARIABLE_CATEGORY_NAME_PHYSIQUE,
+            self::VARIABLE_CATEGORY_NAME_SLEEP,
+            self::VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS,
+            self::VARIABLE_CATEGORY_NAME_SOFTWARE,
+            self::VARIABLE_CATEGORY_NAME_SYMPTOMS,
+            self::VARIABLE_CATEGORY_NAME_TREATMENTS,
+            self::VARIABLE_CATEGORY_NAME_VITAL_SIGNS,
         ];
     }
     
@@ -574,6 +691,16 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     {
         $this->container['action_array'] = isset($data['action_array']) ? $data['action_array'] : null;
         $this->container['available_units'] = isset($data['available_units']) ? $data['available_units'] : null;
+        $this->container['best_study_link'] = isset($data['best_study_link']) ? $data['best_study_link'] : null;
+        $this->container['best_study_card'] = isset($data['best_study_card']) ? $data['best_study_card'] : null;
+        $this->container['best_user_study_link'] = isset($data['best_user_study_link']) ? $data['best_user_study_link'] : null;
+        $this->container['best_user_study_card'] = isset($data['best_user_study_card']) ? $data['best_user_study_card'] : null;
+        $this->container['best_population_study_link'] = isset($data['best_population_study_link']) ? $data['best_population_study_link'] : null;
+        $this->container['best_population_study_card'] = isset($data['best_population_study_card']) ? $data['best_population_study_card'] : null;
+        $this->container['optimal_value_message'] = isset($data['optimal_value_message']) ? $data['optimal_value_message'] : null;
+        $this->container['common_optimal_value_message'] = isset($data['common_optimal_value_message']) ? $data['common_optimal_value_message'] : null;
+        $this->container['user_optimal_value_message'] = isset($data['user_optimal_value_message']) ? $data['user_optimal_value_message'] : null;
+        $this->container['card'] = isset($data['card']) ? $data['card'] : null;
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
         $this->container['combination_operation'] = isset($data['combination_operation']) ? $data['combination_operation'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
@@ -584,6 +711,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         $this->container['unit_id'] = isset($data['unit_id']) ? $data['unit_id'] : null;
         $this->container['unit_name'] = isset($data['unit_name']) ? $data['unit_name'] : null;
         $this->container['default_value'] = isset($data['default_value']) ? $data['default_value'] : null;
+        $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
         $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
         $this->container['filling_value'] = isset($data['filling_value']) ? $data['filling_value'] : null;
@@ -612,6 +740,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         $this->container['product_url'] = isset($data['product_url']) ? $data['product_url'] : null;
         $this->container['pop_up'] = isset($data['pop_up']) ? $data['pop_up'] : null;
         $this->container['question'] = isset($data['question']) ? $data['question'] : null;
+        $this->container['long_question'] = isset($data['long_question']) ? $data['long_question'] : null;
         $this->container['reminder_end_time'] = isset($data['reminder_end_time']) ? $data['reminder_end_time'] : null;
         $this->container['reminder_frequency'] = isset($data['reminder_frequency']) ? $data['reminder_frequency'] : null;
         $this->container['reminder_sound'] = isset($data['reminder_sound']) ? $data['reminder_sound'] : null;
@@ -677,6 +806,14 @@ class TrackingReminder implements ModelInterface, ArrayAccess
         if ($this->container['variable_category_name'] === null) {
             $invalidProperties[] = "'variable_category_name' can't be null";
         }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'variable_category_name', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['variable_name'] === null) {
             $invalidProperties[] = "'variable_name' can't be null";
         }
@@ -703,6 +840,10 @@ class TrackingReminder implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['variable_category_name'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
             return false;
         }
         if ($this->container['variable_name'] === null) {
@@ -756,6 +897,246 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     public function setAvailableUnits($available_units)
     {
         $this->container['available_units'] = $available_units;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_study_link
+     *
+     * @return string
+     */
+    public function getBestStudyLink()
+    {
+        return $this->container['best_study_link'];
+    }
+
+    /**
+     * Sets best_study_link
+     *
+     * @param string $best_study_link Link to study comparing variable with strongest relationship for user or population
+     *
+     * @return $this
+     */
+    public function setBestStudyLink($best_study_link)
+    {
+        $this->container['best_study_link'] = $best_study_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_study_card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getBestStudyCard()
+    {
+        return $this->container['best_study_card'];
+    }
+
+    /**
+     * Sets best_study_card
+     *
+     * @param \QuantiModo\Client\Model\Card $best_study_card Description of relationship with variable with strongest relationship for user or population
+     *
+     * @return $this
+     */
+    public function setBestStudyCard($best_study_card)
+    {
+        $this->container['best_study_card'] = $best_study_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_user_study_link
+     *
+     * @return string
+     */
+    public function getBestUserStudyLink()
+    {
+        return $this->container['best_user_study_link'];
+    }
+
+    /**
+     * Sets best_user_study_link
+     *
+     * @param string $best_user_study_link Link to study comparing variable with strongest relationship for user
+     *
+     * @return $this
+     */
+    public function setBestUserStudyLink($best_user_study_link)
+    {
+        $this->container['best_user_study_link'] = $best_user_study_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_user_study_card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getBestUserStudyCard()
+    {
+        return $this->container['best_user_study_card'];
+    }
+
+    /**
+     * Sets best_user_study_card
+     *
+     * @param \QuantiModo\Client\Model\Card $best_user_study_card Description of relationship with variable with strongest relationship for user
+     *
+     * @return $this
+     */
+    public function setBestUserStudyCard($best_user_study_card)
+    {
+        $this->container['best_user_study_card'] = $best_user_study_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_population_study_link
+     *
+     * @return string
+     */
+    public function getBestPopulationStudyLink()
+    {
+        return $this->container['best_population_study_link'];
+    }
+
+    /**
+     * Sets best_population_study_link
+     *
+     * @param string $best_population_study_link Link to study comparing variable with strongest relationship for population
+     *
+     * @return $this
+     */
+    public function setBestPopulationStudyLink($best_population_study_link)
+    {
+        $this->container['best_population_study_link'] = $best_population_study_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_population_study_card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getBestPopulationStudyCard()
+    {
+        return $this->container['best_population_study_card'];
+    }
+
+    /**
+     * Sets best_population_study_card
+     *
+     * @param \QuantiModo\Client\Model\Card $best_population_study_card Description of relationship with variable with strongest relationship for population
+     *
+     * @return $this
+     */
+    public function setBestPopulationStudyCard($best_population_study_card)
+    {
+        $this->container['best_population_study_card'] = $best_population_study_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimal_value_message
+     *
+     * @return string
+     */
+    public function getOptimalValueMessage()
+    {
+        return $this->container['optimal_value_message'];
+    }
+
+    /**
+     * Sets optimal_value_message
+     *
+     * @param string $optimal_value_message Description of relationship with variable with strongest relationship for user or population
+     *
+     * @return $this
+     */
+    public function setOptimalValueMessage($optimal_value_message)
+    {
+        $this->container['optimal_value_message'] = $optimal_value_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_optimal_value_message
+     *
+     * @return string
+     */
+    public function getCommonOptimalValueMessage()
+    {
+        return $this->container['common_optimal_value_message'];
+    }
+
+    /**
+     * Sets common_optimal_value_message
+     *
+     * @param string $common_optimal_value_message Description of relationship with variable with strongest relationship for population
+     *
+     * @return $this
+     */
+    public function setCommonOptimalValueMessage($common_optimal_value_message)
+    {
+        $this->container['common_optimal_value_message'] = $common_optimal_value_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_optimal_value_message
+     *
+     * @return string
+     */
+    public function getUserOptimalValueMessage()
+    {
+        return $this->container['user_optimal_value_message'];
+    }
+
+    /**
+     * Sets user_optimal_value_message
+     *
+     * @param string $user_optimal_value_message Description of relationship with variable with strongest relationship for user
+     *
+     * @return $this
+     */
+    public function setUserOptimalValueMessage($user_optimal_value_message)
+    {
+        $this->container['user_optimal_value_message'] = $user_optimal_value_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getCard()
+    {
+        return $this->container['card'];
+    }
+
+    /**
+     * Sets card
+     *
+     * @param \QuantiModo\Client\Model\Card $card Card containing instructions, image, text, link and relevant import buttons
+     *
+     * @return $this
+     */
+    public function setCard($card)
+    {
+        $this->container['card'] = $card;
 
         return $this;
     }
@@ -998,13 +1379,37 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Sets default_value
      *
-     * @param float $default_value Default value to use for the measurement when tracking
+     * @param float $default_value Default value to use for the measurement when tracking. Unit: User-specified or common.
      *
      * @return $this
      */
     public function setDefaultValue($default_value)
     {
         $this->container['default_value'] = $default_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets enabled
+     *
+     * @return bool
+     */
+    public function getEnabled()
+    {
+        return $this->container['enabled'];
+    }
+
+    /**
+     * Sets enabled
+     *
+     * @param bool $enabled If a tracking reminder is enabled, tracking reminder notifications will be generated for this variable.
+     *
+     * @return $this
+     */
+    public function setEnabled($enabled)
+    {
+        $this->container['enabled'] = $enabled;
 
         return $this;
     }
@@ -1070,7 +1475,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Sets filling_value
      *
-     * @param int $filling_value Ex: 0
+     * @param int $filling_value Ex: 0. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -1396,7 +1801,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Gets maximum_allowed_value
      *
-     * @return int
+     * @return double
      */
     public function getMaximumAllowedValue()
     {
@@ -1406,7 +1811,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Sets maximum_allowed_value
      *
-     * @param int $maximum_allowed_value Ex: 5
+     * @param double $maximum_allowed_value Ex: 5. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -1420,7 +1825,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Gets minimum_allowed_value
      *
-     * @return int
+     * @return double
      */
     public function getMinimumAllowedValue()
     {
@@ -1430,7 +1835,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Sets minimum_allowed_value
      *
-     * @param int $minimum_allowed_value Ex: 1
+     * @param double $minimum_allowed_value Ex: 1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -1682,6 +2087,30 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets long_question
+     *
+     * @return string
+     */
+    public function getLongQuestion()
+    {
+        return $this->container['long_question'];
+    }
+
+    /**
+     * Sets long_question
+     *
+     * @param string $long_question Ex: How is your overall mood on a scale of 1 to 5??
+     *
+     * @return $this
+     */
+    public function setLongQuestion($long_question)
+    {
+        $this->container['long_question'] = $long_question;
+
+        return $this;
+    }
+
+    /**
      * Gets reminder_end_time
      *
      * @return string
@@ -1910,7 +2339,7 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Sets second_to_last_value
      *
-     * @param double $second_to_last_value Ex: 1
+     * @param double $second_to_last_value Ex: 1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -2486,12 +2915,21 @@ class TrackingReminder implements ModelInterface, ArrayAccess
     /**
      * Sets variable_category_name
      *
-     * @param string $variable_category_name Name of the variable category to be used when sending measurements
+     * @param string $variable_category_name Ex: Emotions, Treatments, Symptoms...
      *
      * @return $this
      */
     public function setVariableCategoryName($variable_category_name)
     {
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($variable_category_name, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'variable_category_name', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['variable_category_name'] = $variable_category_name;
 
         return $this;

@@ -78,16 +78,16 @@ class StudyCreationBodyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "predictor_variable_name"
+     * Test attribute "cause_variable_name"
      */
-    public function testPropertyPredictorVariableName()
+    public function testPropertyCauseVariableName()
     {
     }
 
     /**
-     * Test attribute "outcome_variable_name"
+     * Test attribute "effect_variable_name"
      */
-    public function testPropertyOutcomeVariableName()
+    public function testPropertyEffectVariableName()
     {
     }
 

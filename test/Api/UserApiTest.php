@@ -92,6 +92,26 @@ class UserApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getUserBlogs
+     *
+     * Get UserBlogs.
+     *
+     */
+    public function testGetUserBlogs()
+    {
+    }
+
+    /**
+     * Test case for postUserBlogs
+     *
+     * Post UserBlogs.
+     *
+     */
+    public function testPostUserBlogs()
+    {
+    }
+
+    /**
      * Test case for postUserSettings
      *
      * Post UserSettings.

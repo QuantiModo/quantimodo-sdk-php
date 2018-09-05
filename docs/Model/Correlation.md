@@ -26,10 +26,10 @@ Name | Type | Description | Notes
 **correlation_coefficient** | **double** | Ex: 0.538 | 
 **correlation_is_contradictory_to_optimal_values** | **bool** | Ex: false | [optional] 
 **created_at** | **string** | Ex: 2016-12-28 20:47:30 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | 
-**critical_t_value** | **double** | Ex: 1.646 | 
+**critical_t_value** | **double** | Calculated Statistic: Ex: 1.646 | 
 **direction** | **string** | Ex: higher | 
-**duration_of_action** | **int** | Ex: 604800 | 
-**duration_of_action_in_hours** | **int** | Ex: 168 | 
+**duration_of_action** | **int** | User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Seconds | 
+**duration_of_action_in_hours** | **float** | User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Hours | 
 **degrees_of_freedom** | **int** | Ex: 200 | [optional] 
 **effect_number_of_processed_daily_measurements** | **int** | Ex: 145 | [optional] 
 **error** | **string** | Ex: optimalPearsonProduct is not defined | [optional] 
@@ -53,22 +53,22 @@ Name | Type | Description | Notes
 **forward_spearman_correlation_coefficient** | **double** | Ex: 0.528359 | 
 **number_of_pairs** | **int** | Ex: 298 | 
 **onset_delay** | **int** | Ex: 0 | 
-**onset_delay_in_hours** | **int** | Ex: 0 | 
+**onset_delay_in_hours** | **float** | Ex: 0 | 
 **onset_delay_with_strongest_pearson_correlation** | **int** | Ex: -86400 | 
-**onset_delay_with_strongest_pearson_correlation_in_hours** | **int** | Ex: -24 | 
+**onset_delay_with_strongest_pearson_correlation_in_hours** | **float** | Ex: -24 | 
 **optimal_pearson_product** | **double** | Ex: 0.68582816186982 | 
-**outcome_filling_value** | **int** | Ex: -1 | 
-**outcome_maximum_allowed_value** | **double** | Ex: 23 | [optional] 
-**outcome_minimum_allowed_value** | **double** | Ex: 0.1 | [optional] 
+**outcome_filling_value** | **int** | User-Defined Variable Setting: Ex: -1. Unit: User-specified or common. | 
+**outcome_maximum_allowed_value** | **double** | User-Defined Variable Setting: Ex: 23. Unit: User-specified or common. | [optional] 
+**outcome_minimum_allowed_value** | **double** | User-Defined Variable Setting: Ex: 0.1. Unit: User-specified or common. | [optional] 
 **pearson_correlation_with_no_onset_delay** | **double** | Ex: 0.477 | 
 **predictive_pearson_correlation** | **double** | Ex: 0.538 | 
 **predictive_pearson_correlation_coefficient** | **double** | Ex: 0.538 | 
 **predictor_data_sources** | **string** | Ex: RescueTime | 
-**predictor_filling_value** | **int** | Ex: -1 | 
-**predictor_maximum_allowed_value** | **double** | Ex: 200 | 
-**predictor_minimum_allowed_value** | **double** | Ex: 30 | 
-**predicts_high_effect_change** | **int** | Ex: 17 | 
-**predicts_low_effect_change** | **int** | Ex: -11 | 
+**predictor_filling_value** | **int** | Ex: -1. Unit: User-specified or common. | 
+**predictor_maximum_allowed_value** | **double** | Ex: 200. Unit: User-specified or common. | 
+**predictor_minimum_allowed_value** | **double** | Ex: 30. Unit: User-specified or common. | 
+**predicts_high_effect_change** | **int** | Ex: 17. Unit: User-specified or common. | 
+**predicts_low_effect_change** | **int** | Ex: -11. Unit: User-specified or common. | 
 **p_value** | **double** | Ex: 0.39628900511586 | [optional] 
 **qm_score** | **double** | Ex: 0.528 | 
 **reverse_pearson_correlation_coefficient** | **double** | Ex: 0.01377184270977 | 

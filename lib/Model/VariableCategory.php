@@ -298,8 +298,65 @@ class VariableCategory implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const VARIABLE_CATEGORY_NAME_ACTIVITY = 'Activity';
+    const VARIABLE_CATEGORY_NAME_BOOKS = 'Books';
+    const VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS = 'Causes of Illness';
+    const VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE = 'Cognitive Performance';
+    const VARIABLE_CATEGORY_NAME_CONDITIONS = 'Conditions';
+    const VARIABLE_CATEGORY_NAME_EMOTIONS = 'Emotions';
+    const VARIABLE_CATEGORY_NAME_ENVIRONMENT = 'Environment';
+    const VARIABLE_CATEGORY_NAME_FOODS = 'Foods';
+    const VARIABLE_CATEGORY_NAME_GOALS = 'Goals';
+    const VARIABLE_CATEGORY_NAME_LOCATIONS = 'Locations';
+    const VARIABLE_CATEGORY_NAME_MISCELLANEOUS = 'Miscellaneous';
+    const VARIABLE_CATEGORY_NAME_MOVIES_AND_TV = 'Movies and TV';
+    const VARIABLE_CATEGORY_NAME_MUSIC = 'Music';
+    const VARIABLE_CATEGORY_NAME_NUTRIENTS = 'Nutrients';
+    const VARIABLE_CATEGORY_NAME_PAYMENTS = 'Payments';
+    const VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES = 'Physical Activities';
+    const VARIABLE_CATEGORY_NAME_PHYSIQUE = 'Physique';
+    const VARIABLE_CATEGORY_NAME_SLEEP = 'Sleep';
+    const VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS = 'Social Interactions';
+    const VARIABLE_CATEGORY_NAME_SOFTWARE = 'Software';
+    const VARIABLE_CATEGORY_NAME_SYMPTOMS = 'Symptoms';
+    const VARIABLE_CATEGORY_NAME_TREATMENTS = 'Treatments';
+    const VARIABLE_CATEGORY_NAME_VITAL_SIGNS = 'Vital Signs';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVariableCategoryNameAllowableValues()
+    {
+        return [
+            self::VARIABLE_CATEGORY_NAME_ACTIVITY,
+            self::VARIABLE_CATEGORY_NAME_BOOKS,
+            self::VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS,
+            self::VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE,
+            self::VARIABLE_CATEGORY_NAME_CONDITIONS,
+            self::VARIABLE_CATEGORY_NAME_EMOTIONS,
+            self::VARIABLE_CATEGORY_NAME_ENVIRONMENT,
+            self::VARIABLE_CATEGORY_NAME_FOODS,
+            self::VARIABLE_CATEGORY_NAME_GOALS,
+            self::VARIABLE_CATEGORY_NAME_LOCATIONS,
+            self::VARIABLE_CATEGORY_NAME_MISCELLANEOUS,
+            self::VARIABLE_CATEGORY_NAME_MOVIES_AND_TV,
+            self::VARIABLE_CATEGORY_NAME_MUSIC,
+            self::VARIABLE_CATEGORY_NAME_NUTRIENTS,
+            self::VARIABLE_CATEGORY_NAME_PAYMENTS,
+            self::VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES,
+            self::VARIABLE_CATEGORY_NAME_PHYSIQUE,
+            self::VARIABLE_CATEGORY_NAME_SLEEP,
+            self::VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS,
+            self::VARIABLE_CATEGORY_NAME_SOFTWARE,
+            self::VARIABLE_CATEGORY_NAME_SYMPTOMS,
+            self::VARIABLE_CATEGORY_NAME_TREATMENTS,
+            self::VARIABLE_CATEGORY_NAME_VITAL_SIGNS,
+        ];
+    }
     
 
     /**
@@ -360,6 +417,14 @@ class VariableCategory implements ModelInterface, ArrayAccess
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'variable_category_name', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -373,6 +438,10 @@ class VariableCategory implements ModelInterface, ArrayAccess
     {
 
         if ($this->container['name'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
             return false;
         }
         return true;
@@ -536,7 +605,7 @@ class VariableCategory implements ModelInterface, ArrayAccess
     /**
      * Sets duration_of_action
      *
-     * @param int $duration_of_action Ex: 86400
+     * @param int $duration_of_action User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Seconds
      *
      * @return $this
      */
@@ -560,7 +629,7 @@ class VariableCategory implements ModelInterface, ArrayAccess
     /**
      * Sets filling_value
      *
-     * @param int $filling_value Ex: -1
+     * @param int $filling_value Ex: -1. Unit: Variable category default unit.
      *
      * @return $this
      */
@@ -704,7 +773,7 @@ class VariableCategory implements ModelInterface, ArrayAccess
     /**
      * Sets maximum_allowed_value
      *
-     * @param string $maximum_allowed_value Ex:
+     * @param string $maximum_allowed_value Unit: Variable category default unit.
      *
      * @return $this
      */
@@ -752,7 +821,7 @@ class VariableCategory implements ModelInterface, ArrayAccess
     /**
      * Sets minimum_allowed_value
      *
-     * @param string $minimum_allowed_value Ex:
+     * @param string $minimum_allowed_value Unit: Variable category default unit.
      *
      * @return $this
      */
@@ -1040,12 +1109,21 @@ class VariableCategory implements ModelInterface, ArrayAccess
     /**
      * Sets variable_category_name
      *
-     * @param string $variable_category_name Ex: Emotions
+     * @param string $variable_category_name Ex: Emotions, Treatments, Symptoms...
      *
      * @return $this
      */
     public function setVariableCategoryName($variable_category_name)
     {
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!is_null($variable_category_name) && !in_array($variable_category_name, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'variable_category_name', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['variable_category_name'] = $variable_category_name;
 
         return $this;

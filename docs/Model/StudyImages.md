@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **gauge_sharing_image_url** | **string** | Image with gauge and category images | [optional] 
 **image_url** | **string** | Ex: https://s3-us-west-1.amazonaws.com/qmimages/variable_categories_gauges_logo_background/gauge-moderately-positive-relationship_sleep_emotions_logo_background.png | 
 **robot_sharing_image_url** | **string** | Image with robot and category images | [optional] 
+**avatar** | **string** | Avatar of the principal investigator | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

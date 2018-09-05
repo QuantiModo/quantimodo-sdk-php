@@ -97,4 +97,11 @@ class GetCorrelationsResponseTest extends \PHPUnit_Framework_TestCase
     public function testPropertySummary()
     {
     }
+
+    /**
+     * Test attribute "avatar"
+     */
+    public function testPropertyAvatar()
+    {
+    }
 }

@@ -59,7 +59,8 @@ class GetCorrelationsResponse implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'data' => '\QuantiModo\Client\Model\GetCorrelationsDataResponse',
         'description' => 'string',
-        'summary' => 'string'
+        'summary' => 'string',
+        'avatar' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class GetCorrelationsResponse implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'data' => null,
         'description' => null,
-        'summary' => null
+        'summary' => null,
+        'avatar' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class GetCorrelationsResponse implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'data' => 'data',
         'description' => 'description',
-        'summary' => 'summary'
+        'summary' => 'summary',
+        'avatar' => 'avatar'
     ];
 
     /**
@@ -113,7 +116,8 @@ class GetCorrelationsResponse implements ModelInterface, ArrayAccess
     protected static $setters = [
         'data' => 'setData',
         'description' => 'setDescription',
-        'summary' => 'setSummary'
+        'summary' => 'setSummary',
+        'avatar' => 'setAvatar'
     ];
 
     /**
@@ -124,7 +128,8 @@ class GetCorrelationsResponse implements ModelInterface, ArrayAccess
     protected static $getters = [
         'data' => 'getData',
         'description' => 'getDescription',
-        'summary' => 'getSummary'
+        'summary' => 'getSummary',
+        'avatar' => 'getAvatar'
     ];
 
     /**
@@ -190,6 +195,7 @@ class GetCorrelationsResponse implements ModelInterface, ArrayAccess
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
         $this->container['summary'] = isset($data['summary']) ? $data['summary'] : null;
+        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
     }
 
     /**
@@ -297,6 +303,30 @@ class GetCorrelationsResponse implements ModelInterface, ArrayAccess
     public function setSummary($summary)
     {
         $this->container['summary'] = $summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->container['avatar'];
+    }
+
+    /**
+     * Sets avatar
+     *
+     * @param string $avatar Square icon png url
+     *
+     * @return $this
+     */
+    public function setAvatar($avatar)
+    {
+        $this->container['avatar'] = $avatar;
 
         return $this;
     }

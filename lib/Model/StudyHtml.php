@@ -596,7 +596,7 @@ class StudyHtml implements ModelInterface, ArrayAccess
     /**
      * Sets social_sharing_button_html
      *
-     * @param string $social_sharing_button_html 
+     * @param string $social_sharing_button_html What do you expect?
      *
      * @return $this
      */
@@ -620,7 +620,7 @@ class StudyHtml implements ModelInterface, ArrayAccess
     /**
      * Sets study_summary_box_html
      *
-     * @param string $study_summary_box_html 
+     * @param string $study_summary_box_html What do you expect?
      *
      * @return $this
      */

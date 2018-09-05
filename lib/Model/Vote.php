@@ -64,7 +64,8 @@ class Vote implements ModelInterface, ArrayAccess
         'id' => 'int',
         'updated_at' => 'string',
         'user_id' => 'int',
-        'value' => 'bool'
+        'value' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -80,7 +81,8 @@ class Vote implements ModelInterface, ArrayAccess
         'id' => 'int32',
         'updated_at' => null,
         'user_id' => 'int32',
-        'value' => null
+        'value' => null,
+        'type' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class Vote implements ModelInterface, ArrayAccess
         'id' => 'id',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
-        'value' => 'value'
+        'value' => 'value',
+        'type' => 'type'
     ];
 
     /**
@@ -133,7 +136,8 @@ class Vote implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
-        'value' => 'setValue'
+        'value' => 'setValue',
+        'type' => 'setType'
     ];
 
     /**
@@ -149,7 +153,8 @@ class Vote implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
-        'value' => 'getValue'
+        'value' => 'getValue',
+        'type' => 'getType'
     ];
 
     /**
@@ -193,8 +198,40 @@ class Vote implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const VALUE_UP = 'up';
+    const VALUE_DOWN = 'down';
+    const VALUE_NONE = 'none';
+    const TYPE_CAUSALITY = 'causality';
+    const TYPE_USEFULNESS = 'usefulness';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getValueAllowableValues()
+    {
+        return [
+            self::VALUE_UP,
+            self::VALUE_DOWN,
+            self::VALUE_NONE,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_CAUSALITY,
+            self::TYPE_USEFULNESS,
+        ];
+    }
     
 
     /**
@@ -220,6 +257,7 @@ class Vote implements ModelInterface, ArrayAccess
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -246,6 +284,22 @@ class Vote implements ModelInterface, ArrayAccess
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
+        $allowedValues = $this->getValueAllowableValues();
+        if (!in_array($this->container['value'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'value', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($this->container['type'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -271,6 +325,14 @@ class Vote implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['value'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getValueAllowableValues();
+        if (!in_array($this->container['value'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($this->container['type'], $allowedValues)) {
             return false;
         }
         return true;
@@ -448,7 +510,7 @@ class Vote implements ModelInterface, ArrayAccess
     /**
      * Gets value
      *
-     * @return bool
+     * @return string
      */
     public function getValue()
     {
@@ -458,13 +520,55 @@ class Vote implements ModelInterface, ArrayAccess
     /**
      * Sets value
      *
-     * @param bool $value Vote: 0 (for implausible) or 1 (for plausible)
+     * @param string $value Vote down for implausible/not-useful or up for plausible/useful. Vote none to delete a previous vote.
      *
      * @return $this
      */
     public function setValue($value)
     {
+        $allowedValues = $this->getValueAllowableValues();
+        if (!in_array($value, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'value', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

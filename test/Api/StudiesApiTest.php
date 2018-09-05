@@ -74,7 +74,7 @@ class StudiesApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for createStudy
      *
-     * Create a Cohort Study.
+     * Create a Study.
      *
      */
     public function testCreateStudy()
@@ -114,7 +114,7 @@ class StudiesApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getStudiesCreated
      *
-     * Get cohort studies you have created.
+     * Get studies you have created.
      *
      */
     public function testGetStudiesCreated()

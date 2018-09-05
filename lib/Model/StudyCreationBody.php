@@ -57,8 +57,8 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'predictor_variable_name' => 'string',
-        'outcome_variable_name' => 'string',
+        'cause_variable_name' => 'string',
+        'effect_variable_name' => 'string',
         'study_title' => 'string',
         'type' => 'string'
     ];
@@ -69,8 +69,8 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'predictor_variable_name' => null,
-        'outcome_variable_name' => null,
+        'cause_variable_name' => null,
+        'effect_variable_name' => null,
         'study_title' => null,
         'type' => null
     ];
@@ -102,8 +102,8 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'predictor_variable_name' => 'predictorVariableName',
-        'outcome_variable_name' => 'outcomeVariableName',
+        'cause_variable_name' => 'causeVariableName',
+        'effect_variable_name' => 'effectVariableName',
         'study_title' => 'studyTitle',
         'type' => 'type'
     ];
@@ -114,8 +114,8 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'predictor_variable_name' => 'setPredictorVariableName',
-        'outcome_variable_name' => 'setOutcomeVariableName',
+        'cause_variable_name' => 'setCauseVariableName',
+        'effect_variable_name' => 'setEffectVariableName',
         'study_title' => 'setStudyTitle',
         'type' => 'setType'
     ];
@@ -126,8 +126,8 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'predictor_variable_name' => 'getPredictorVariableName',
-        'outcome_variable_name' => 'getOutcomeVariableName',
+        'cause_variable_name' => 'getCauseVariableName',
+        'effect_variable_name' => 'getEffectVariableName',
         'study_title' => 'getStudyTitle',
         'type' => 'getType'
     ];
@@ -209,8 +209,8 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['predictor_variable_name'] = isset($data['predictor_variable_name']) ? $data['predictor_variable_name'] : null;
-        $this->container['outcome_variable_name'] = isset($data['outcome_variable_name']) ? $data['outcome_variable_name'] : null;
+        $this->container['cause_variable_name'] = isset($data['cause_variable_name']) ? $data['cause_variable_name'] : null;
+        $this->container['effect_variable_name'] = isset($data['effect_variable_name']) ? $data['effect_variable_name'] : null;
         $this->container['study_title'] = isset($data['study_title']) ? $data['study_title'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
@@ -224,11 +224,14 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['predictor_variable_name'] === null) {
-            $invalidProperties[] = "'predictor_variable_name' can't be null";
+        if ($this->container['cause_variable_name'] === null) {
+            $invalidProperties[] = "'cause_variable_name' can't be null";
         }
-        if ($this->container['outcome_variable_name'] === null) {
-            $invalidProperties[] = "'outcome_variable_name' can't be null";
+        if ($this->container['effect_variable_name'] === null) {
+            $invalidProperties[] = "'effect_variable_name' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowedValues)) {
@@ -250,10 +253,13 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if ($this->container['predictor_variable_name'] === null) {
+        if ($this->container['cause_variable_name'] === null) {
             return false;
         }
-        if ($this->container['outcome_variable_name'] === null) {
+        if ($this->container['effect_variable_name'] === null) {
+            return false;
+        }
+        if ($this->container['type'] === null) {
             return false;
         }
         $allowedValues = $this->getTypeAllowableValues();
@@ -265,49 +271,49 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets predictor_variable_name
+     * Gets cause_variable_name
      *
      * @return string
      */
-    public function getPredictorVariableName()
+    public function getCauseVariableName()
     {
-        return $this->container['predictor_variable_name'];
+        return $this->container['cause_variable_name'];
     }
 
     /**
-     * Sets predictor_variable_name
+     * Sets cause_variable_name
      *
-     * @param string $predictor_variable_name Name of predictor variable
+     * @param string $cause_variable_name Name of predictor variable
      *
      * @return $this
      */
-    public function setPredictorVariableName($predictor_variable_name)
+    public function setCauseVariableName($cause_variable_name)
     {
-        $this->container['predictor_variable_name'] = $predictor_variable_name;
+        $this->container['cause_variable_name'] = $cause_variable_name;
 
         return $this;
     }
 
     /**
-     * Gets outcome_variable_name
+     * Gets effect_variable_name
      *
      * @return string
      */
-    public function getOutcomeVariableName()
+    public function getEffectVariableName()
     {
-        return $this->container['outcome_variable_name'];
+        return $this->container['effect_variable_name'];
     }
 
     /**
-     * Sets outcome_variable_name
+     * Sets effect_variable_name
      *
-     * @param string $outcome_variable_name Name of the outcome variable
+     * @param string $effect_variable_name Name of the outcome variable
      *
      * @return $this
      */
-    public function setOutcomeVariableName($outcome_variable_name)
+    public function setEffectVariableName($effect_variable_name)
     {
-        $this->container['outcome_variable_name'] = $outcome_variable_name;
+        $this->container['effect_variable_name'] = $effect_variable_name;
 
         return $this;
     }
@@ -356,7 +362,7 @@ class StudyCreationBody implements ModelInterface, ArrayAccess
     public function setType($type)
     {
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues)) {
+        if (!in_array($type, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'type', must be one of '%s'",

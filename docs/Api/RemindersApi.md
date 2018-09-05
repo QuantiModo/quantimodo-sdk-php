@@ -101,7 +101,7 @@ $created_at = "created_at_example"; // string | When the record was first create
 $updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local.
 $limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
-$variable_category_name = "variable_category_name_example"; // string | Limit results to a specific variable category
+$variable_category_name = "variable_category_name_example"; // string | Ex: Emotions, Treatments, Symptoms...
 $reminder_time = "reminder_time_example"; // string | Ex: (lt)2017-07-31 21:43:26
 $client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
 $only_past = true; // bool | Ex: 1
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
  **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
- **variable_category_name** | **string**| Limit results to a specific variable category | [optional]
+ **variable_category_name** | **string**| Ex: Emotions, Treatments, Symptoms... | [optional]
  **reminder_time** | **string**| Ex: (lt)2017-07-31 21:43:26 | [optional]
  **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
  **only_past** | **bool**| Ex: 1 | [optional]
@@ -175,7 +175,7 @@ $apiInstance = new QuantiModo\Client\Api\RemindersApi(
     $config
 );
 $user_id = 8.14; // float | User's id
-$variable_category_name = "variable_category_name_example"; // string | Limit results to a specific variable category
+$variable_category_name = "variable_category_name_example"; // string | Ex: Emotions, Treatments, Symptoms...
 $created_at = "created_at_example"; // string | When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local.
 $updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local.
 $limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
@@ -199,7 +199,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **float**| User&#39;s id | [optional]
- **variable_category_name** | **string**| Limit results to a specific variable category | [optional]
+ **variable_category_name** | **string**| Ex: Emotions, Treatments, Symptoms... | [optional]
  **created_at** | **string**| When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. | [optional]
  **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]

@@ -65,6 +65,7 @@ class User implements ModelInterface, ArrayAccess
         'avatar' => 'string',
         'avatar_image' => 'string',
         'capabilities' => 'string',
+        'card' => '\QuantiModo\Client\Model\Card',
         'client_id' => 'string',
         'client_user_id' => 'string',
         'combine_notifications' => 'bool',
@@ -120,6 +121,7 @@ class User implements ModelInterface, ArrayAccess
         'avatar' => null,
         'avatar_image' => null,
         'capabilities' => null,
+        'card' => null,
         'client_id' => null,
         'client_user_id' => null,
         'combine_notifications' => null,
@@ -196,6 +198,7 @@ class User implements ModelInterface, ArrayAccess
         'avatar' => 'avatar',
         'avatar_image' => 'avatarImage',
         'capabilities' => 'capabilities',
+        'card' => 'card',
         'client_id' => 'clientId',
         'client_user_id' => 'clientUserId',
         'combine_notifications' => 'combineNotifications',
@@ -251,6 +254,7 @@ class User implements ModelInterface, ArrayAccess
         'avatar' => 'setAvatar',
         'avatar_image' => 'setAvatarImage',
         'capabilities' => 'setCapabilities',
+        'card' => 'setCard',
         'client_id' => 'setClientId',
         'client_user_id' => 'setClientUserId',
         'combine_notifications' => 'setCombineNotifications',
@@ -306,6 +310,7 @@ class User implements ModelInterface, ArrayAccess
         'avatar' => 'getAvatar',
         'avatar_image' => 'getAvatarImage',
         'capabilities' => 'getCapabilities',
+        'card' => 'getCard',
         'client_id' => 'getClientId',
         'client_user_id' => 'getClientUserId',
         'combine_notifications' => 'getCombineNotifications',
@@ -415,6 +420,7 @@ class User implements ModelInterface, ArrayAccess
         $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
         $this->container['avatar_image'] = isset($data['avatar_image']) ? $data['avatar_image'] : null;
         $this->container['capabilities'] = isset($data['capabilities']) ? $data['capabilities'] : null;
+        $this->container['card'] = isset($data['card']) ? $data['card'] : null;
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
         $this->container['client_user_id'] = isset($data['client_user_id']) ? $data['client_user_id'] : null;
         $this->container['combine_notifications'] = isset($data['combine_notifications']) ? $data['combine_notifications'] : null;
@@ -705,6 +711,30 @@ class User implements ModelInterface, ArrayAccess
     public function setCapabilities($capabilities)
     {
         $this->container['capabilities'] = $capabilities;
+
+        return $this;
+    }
+
+    /**
+     * Gets card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getCard()
+    {
+        return $this->container['card'];
+    }
+
+    /**
+     * Sets card
+     *
+     * @param \QuantiModo\Client\Model\Card $card Avatar and info
+     *
+     * @return $this
+     */
+    public function setCard($card)
+    {
+        $this->container['card'] = $card;
 
         return $this;
     }

@@ -82,12 +82,32 @@ class NotificationsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getNotifications
+     *
+     * Get Notifications.
+     *
+     */
+    public function testGetNotifications()
+    {
+    }
+
+    /**
      * Test case for postDeviceToken
      *
      * Post DeviceTokens.
      *
      */
     public function testPostDeviceToken()
+    {
+    }
+
+    /**
+     * Test case for postNotifications
+     *
+     * Post Notifications.
+     *
+     */
+    public function testPostNotifications()
     {
     }
 }

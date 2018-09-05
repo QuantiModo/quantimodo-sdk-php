@@ -85,7 +85,7 @@ class StudiesApi
     /**
      * Operation createStudy
      *
-     * Create a Cohort Study
+     * Create a Study
      *
      * @param  \QuantiModo\Client\Model\StudyCreationBody $body Details about the study you want to create (required)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
@@ -104,7 +104,7 @@ class StudiesApi
     /**
      * Operation createStudyWithHttpInfo
      *
-     * Create a Cohort Study
+     * Create a Study
      *
      * @param  \QuantiModo\Client\Model\StudyCreationBody $body Details about the study you want to create (required)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
@@ -181,7 +181,7 @@ class StudiesApi
     /**
      * Operation createStudyAsync
      *
-     * Create a Cohort Study
+     * Create a Study
      *
      * @param  \QuantiModo\Client\Model\StudyCreationBody $body Details about the study you want to create (required)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
@@ -203,7 +203,7 @@ class StudiesApi
     /**
      * Operation createStudyAsyncWithHttpInfo
      *
-     * Create a Cohort Study
+     * Create a Study
      *
      * @param  \QuantiModo\Client\Model\StudyCreationBody $body Details about the study you want to create (required)
      * @param  string $client_id Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do (optional)
@@ -653,7 +653,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -677,7 +677,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -767,7 +767,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -794,7 +794,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -851,7 +851,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -985,7 +985,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
@@ -1020,7 +1020,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
@@ -1121,7 +1121,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
@@ -1159,7 +1159,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
@@ -1227,7 +1227,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $sort Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. (optional)
      * @param  int $limit The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. (optional, default to 100)
      * @param  int $offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. (optional)
@@ -1411,7 +1411,7 @@ class StudiesApi
     /**
      * Operation getStudiesCreated
      *
-     * Get cohort studies you have created
+     * Get studies you have created
      *
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
@@ -1436,7 +1436,7 @@ class StudiesApi
     /**
      * Operation getStudiesCreatedWithHttpInfo
      *
-     * Get cohort studies you have created
+     * Get studies you have created
      *
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
@@ -1519,7 +1519,7 @@ class StudiesApi
     /**
      * Operation getStudiesCreatedAsync
      *
-     * Get cohort studies you have created
+     * Get studies you have created
      *
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
@@ -1547,7 +1547,7 @@ class StudiesApi
     /**
      * Operation getStudiesCreatedAsyncWithHttpInfo
      *
-     * Get cohort studies you have created
+     * Get studies you have created
      *
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
@@ -2112,7 +2112,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2136,7 +2136,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2226,7 +2226,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2253,7 +2253,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2310,7 +2310,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2437,7 +2437,7 @@ class StudiesApi
      *
      * Join a Study
      *
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
      * @param  float $user_id User&#39;s id (optional)
@@ -2459,7 +2459,7 @@ class StudiesApi
      *
      * Join a Study
      *
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
      * @param  float $user_id User&#39;s id (optional)
@@ -2539,7 +2539,7 @@ class StudiesApi
      *
      * Join a Study
      *
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
      * @param  float $user_id User&#39;s id (optional)
@@ -2564,7 +2564,7 @@ class StudiesApi
      *
      * Join a Study
      *
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
      * @param  float $user_id User&#39;s id (optional)
@@ -2619,7 +2619,7 @@ class StudiesApi
     /**
      * Create request for operation 'joinStudy'
      *
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      * @param  string $cause_variable_name Name of the hypothetical predictor variable.  Ex: Sleep Duration (optional)
      * @param  string $effect_variable_name Name of the hypothetical outcome variable.  Ex: Overall Mood (optional)
      * @param  float $user_id User&#39;s id (optional)
@@ -3025,7 +3025,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3049,7 +3049,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \QuantiModo\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3131,7 +3131,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3158,7 +3158,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3215,7 +3215,7 @@ class StudiesApi
      * @param  bool $include_charts Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. (optional)
      * @param  string $platform Ex: chrome, android, ios, web (optional)
      * @param  bool $recalculate Recalculate instead of using cached analysis (optional)
-     * @param  string $study_id Client id for the cohort study you want (optional)
+     * @param  string $study_id Client id for the study you want (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -190,6 +190,29 @@ class MeasurementSet implements ModelInterface, ArrayAccess
 
     const COMBINATION_OPERATION_MEAN = 'MEAN';
     const COMBINATION_OPERATION_SUM = 'SUM';
+    const VARIABLE_CATEGORY_NAME_ACTIVITY = 'Activity';
+    const VARIABLE_CATEGORY_NAME_BOOKS = 'Books';
+    const VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS = 'Causes of Illness';
+    const VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE = 'Cognitive Performance';
+    const VARIABLE_CATEGORY_NAME_CONDITIONS = 'Conditions';
+    const VARIABLE_CATEGORY_NAME_EMOTIONS = 'Emotions';
+    const VARIABLE_CATEGORY_NAME_ENVIRONMENT = 'Environment';
+    const VARIABLE_CATEGORY_NAME_FOODS = 'Foods';
+    const VARIABLE_CATEGORY_NAME_GOALS = 'Goals';
+    const VARIABLE_CATEGORY_NAME_LOCATIONS = 'Locations';
+    const VARIABLE_CATEGORY_NAME_MISCELLANEOUS = 'Miscellaneous';
+    const VARIABLE_CATEGORY_NAME_MOVIES_AND_TV = 'Movies and TV';
+    const VARIABLE_CATEGORY_NAME_MUSIC = 'Music';
+    const VARIABLE_CATEGORY_NAME_NUTRIENTS = 'Nutrients';
+    const VARIABLE_CATEGORY_NAME_PAYMENTS = 'Payments';
+    const VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES = 'Physical Activities';
+    const VARIABLE_CATEGORY_NAME_PHYSIQUE = 'Physique';
+    const VARIABLE_CATEGORY_NAME_SLEEP = 'Sleep';
+    const VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS = 'Social Interactions';
+    const VARIABLE_CATEGORY_NAME_SOFTWARE = 'Software';
+    const VARIABLE_CATEGORY_NAME_SYMPTOMS = 'Symptoms';
+    const VARIABLE_CATEGORY_NAME_TREATMENTS = 'Treatments';
+    const VARIABLE_CATEGORY_NAME_VITAL_SIGNS = 'Vital Signs';
     
 
     
@@ -203,6 +226,40 @@ class MeasurementSet implements ModelInterface, ArrayAccess
         return [
             self::COMBINATION_OPERATION_MEAN,
             self::COMBINATION_OPERATION_SUM,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVariableCategoryNameAllowableValues()
+    {
+        return [
+            self::VARIABLE_CATEGORY_NAME_ACTIVITY,
+            self::VARIABLE_CATEGORY_NAME_BOOKS,
+            self::VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS,
+            self::VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE,
+            self::VARIABLE_CATEGORY_NAME_CONDITIONS,
+            self::VARIABLE_CATEGORY_NAME_EMOTIONS,
+            self::VARIABLE_CATEGORY_NAME_ENVIRONMENT,
+            self::VARIABLE_CATEGORY_NAME_FOODS,
+            self::VARIABLE_CATEGORY_NAME_GOALS,
+            self::VARIABLE_CATEGORY_NAME_LOCATIONS,
+            self::VARIABLE_CATEGORY_NAME_MISCELLANEOUS,
+            self::VARIABLE_CATEGORY_NAME_MOVIES_AND_TV,
+            self::VARIABLE_CATEGORY_NAME_MUSIC,
+            self::VARIABLE_CATEGORY_NAME_NUTRIENTS,
+            self::VARIABLE_CATEGORY_NAME_PAYMENTS,
+            self::VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES,
+            self::VARIABLE_CATEGORY_NAME_PHYSIQUE,
+            self::VARIABLE_CATEGORY_NAME_SLEEP,
+            self::VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS,
+            self::VARIABLE_CATEGORY_NAME_SOFTWARE,
+            self::VARIABLE_CATEGORY_NAME_SYMPTOMS,
+            self::VARIABLE_CATEGORY_NAME_TREATMENTS,
+            self::VARIABLE_CATEGORY_NAME_VITAL_SIGNS,
         ];
     }
     
@@ -257,6 +314,14 @@ class MeasurementSet implements ModelInterface, ArrayAccess
         if ($this->container['unit_abbreviated_name'] === null) {
             $invalidProperties[] = "'unit_abbreviated_name' can't be null";
         }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'variable_category_name', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['variable_name'] === null) {
             $invalidProperties[] = "'variable_name' can't be null";
         }
@@ -285,6 +350,10 @@ class MeasurementSet implements ModelInterface, ArrayAccess
         if ($this->container['unit_abbreviated_name'] === null) {
             return false;
         }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
+            return false;
+        }
         if ($this->container['variable_name'] === null) {
             return false;
         }
@@ -305,7 +374,7 @@ class MeasurementSet implements ModelInterface, ArrayAccess
     /**
      * Sets combination_operation
      *
-     * @param string $combination_operation Way to aggregate measurements over time. Options are \"MEAN\" or \"SUM\". SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED.
+     * @param string $combination_operation Way to aggregate measurements over time. SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED.
      *
      * @return $this
      */
@@ -410,12 +479,21 @@ class MeasurementSet implements ModelInterface, ArrayAccess
     /**
      * Sets variable_category_name
      *
-     * @param string $variable_category_name Variable category name
+     * @param string $variable_category_name Ex: Emotions, Treatments, Symptoms...
      *
      * @return $this
      */
     public function setVariableCategoryName($variable_category_name)
     {
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!is_null($variable_category_name) && !in_array($variable_category_name, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'variable_category_name', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['variable_category_name'] = $variable_category_name;
 
         return $this;

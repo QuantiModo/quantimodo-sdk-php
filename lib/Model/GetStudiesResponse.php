@@ -61,6 +61,7 @@ class GetStudiesResponse implements ModelInterface, ArrayAccess
         'description' => 'string',
         'summary' => 'string',
         'image' => '\QuantiModo\Client\Model\Image',
+        'avatar' => 'string',
         'ion_icon' => 'string',
         'start_tracking' => '\QuantiModo\Client\Model\ExplanationStartTracking',
         'title' => 'string',
@@ -77,6 +78,7 @@ class GetStudiesResponse implements ModelInterface, ArrayAccess
         'description' => null,
         'summary' => null,
         'image' => null,
+        'avatar' => null,
         'ion_icon' => null,
         'start_tracking' => null,
         'title' => null,
@@ -114,6 +116,7 @@ class GetStudiesResponse implements ModelInterface, ArrayAccess
         'description' => 'description',
         'summary' => 'summary',
         'image' => 'image',
+        'avatar' => 'avatar',
         'ion_icon' => 'ionIcon',
         'start_tracking' => 'startTracking',
         'title' => 'title',
@@ -130,6 +133,7 @@ class GetStudiesResponse implements ModelInterface, ArrayAccess
         'description' => 'setDescription',
         'summary' => 'setSummary',
         'image' => 'setImage',
+        'avatar' => 'setAvatar',
         'ion_icon' => 'setIonIcon',
         'start_tracking' => 'setStartTracking',
         'title' => 'setTitle',
@@ -146,6 +150,7 @@ class GetStudiesResponse implements ModelInterface, ArrayAccess
         'description' => 'getDescription',
         'summary' => 'getSummary',
         'image' => 'getImage',
+        'avatar' => 'getAvatar',
         'ion_icon' => 'getIonIcon',
         'start_tracking' => 'getStartTracking',
         'title' => 'getTitle',
@@ -216,6 +221,7 @@ class GetStudiesResponse implements ModelInterface, ArrayAccess
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
         $this->container['summary'] = isset($data['summary']) ? $data['summary'] : null;
         $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
         $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
         $this->container['start_tracking'] = isset($data['start_tracking']) ? $data['start_tracking'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
@@ -351,6 +357,30 @@ class GetStudiesResponse implements ModelInterface, ArrayAccess
     public function setImage($image)
     {
         $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->container['avatar'];
+    }
+
+    /**
+     * Sets avatar
+     *
+     * @param string $avatar Square icon png url
+     *
+     * @return $this
+     */
+    public function setAvatar($avatar)
+    {
+        $this->container['avatar'] = $avatar;
 
         return $this;
     }

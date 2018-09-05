@@ -36,6 +36,7 @@ use \QuantiModo\Client\ObjectSerializer;
  * Study Class Doc Comment
  *
  * @category Class
+ * @description A study analyzes the relationship between a predictor variable like gluten-intake and an outcome of interest such as overall mood.
  * @package  QuantiModo\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -67,6 +68,7 @@ class Study implements ModelInterface, ArrayAccess
         'effect_variable_name' => 'string',
         'participant_instructions' => '\QuantiModo\Client\Model\ParticipantInstruction',
         'statistics' => '\QuantiModo\Client\Model\Correlation',
+        'study_card' => '\QuantiModo\Client\Model\Card',
         'study_html' => '\QuantiModo\Client\Model\StudyHtml',
         'study_images' => '\QuantiModo\Client\Model\StudyImages',
         'study_links' => '\QuantiModo\Client\Model\StudyLinks',
@@ -92,6 +94,7 @@ class Study implements ModelInterface, ArrayAccess
         'effect_variable_name' => null,
         'participant_instructions' => null,
         'statistics' => null,
+        'study_card' => null,
         'study_html' => null,
         'study_images' => null,
         'study_links' => null,
@@ -138,6 +141,7 @@ class Study implements ModelInterface, ArrayAccess
         'effect_variable_name' => 'effectVariableName',
         'participant_instructions' => 'participantInstructions',
         'statistics' => 'statistics',
+        'study_card' => 'studyCard',
         'study_html' => 'studyHtml',
         'study_images' => 'studyImages',
         'study_links' => 'studyLinks',
@@ -163,6 +167,7 @@ class Study implements ModelInterface, ArrayAccess
         'effect_variable_name' => 'setEffectVariableName',
         'participant_instructions' => 'setParticipantInstructions',
         'statistics' => 'setStatistics',
+        'study_card' => 'setStudyCard',
         'study_html' => 'setStudyHtml',
         'study_images' => 'setStudyImages',
         'study_links' => 'setStudyLinks',
@@ -188,6 +193,7 @@ class Study implements ModelInterface, ArrayAccess
         'effect_variable_name' => 'getEffectVariableName',
         'participant_instructions' => 'getParticipantInstructions',
         'statistics' => 'getStatistics',
+        'study_card' => 'getStudyCard',
         'study_html' => 'getStudyHtml',
         'study_images' => 'getStudyImages',
         'study_links' => 'getStudyLinks',
@@ -267,6 +273,7 @@ class Study implements ModelInterface, ArrayAccess
         $this->container['effect_variable_name'] = isset($data['effect_variable_name']) ? $data['effect_variable_name'] : null;
         $this->container['participant_instructions'] = isset($data['participant_instructions']) ? $data['participant_instructions'] : null;
         $this->container['statistics'] = isset($data['statistics']) ? $data['statistics'] : null;
+        $this->container['study_card'] = isset($data['study_card']) ? $data['study_card'] : null;
         $this->container['study_html'] = isset($data['study_html']) ? $data['study_html'] : null;
         $this->container['study_images'] = isset($data['study_images']) ? $data['study_images'] : null;
         $this->container['study_links'] = isset($data['study_links']) ? $data['study_links'] : null;
@@ -543,6 +550,30 @@ class Study implements ModelInterface, ArrayAccess
     public function setStatistics($statistics)
     {
         $this->container['statistics'] = $statistics;
+
+        return $this;
+    }
+
+    /**
+     * Gets study_card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getStudyCard()
+    {
+        return $this->container['study_card'];
+    }
+
+    /**
+     * Sets study_card
+     *
+     * @param \QuantiModo\Client\Model\Card $study_card Contains a summary, images, sharing buttons, and links
+     *
+     * @return $this
+     */
+    public function setStudyCard($study_card)
+    {
+        $this->container['study_card'] = $study_card;
 
         return $this;
     }

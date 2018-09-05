@@ -57,6 +57,7 @@ class Measurement implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'card' => '\QuantiModo\Client\Model\Card',
         'client_id' => 'string',
         'connector_id' => 'int',
         'created_at' => 'string',
@@ -66,13 +67,13 @@ class Measurement implements ModelInterface, ArrayAccess
         'input_type' => 'string',
         'ion_icon' => 'string',
         'manual_tracking' => 'bool',
-        'maximum_allowed_value' => 'int',
-        'minimum_allowed_value' => 'int',
+        'maximum_allowed_value' => 'double',
+        'minimum_allowed_value' => 'double',
         'note' => 'string',
         'note_object' => 'object',
         'note_html' => 'object',
         'original_unit_id' => 'int',
-        'original_value' => 'int',
+        'original_value' => 'double',
         'png_path' => 'string',
         'png_url' => 'string',
         'product_url' => 'string',
@@ -112,6 +113,7 @@ class Measurement implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'card' => null,
         'client_id' => null,
         'connector_id' => null,
         'created_at' => null,
@@ -121,13 +123,13 @@ class Measurement implements ModelInterface, ArrayAccess
         'input_type' => null,
         'ion_icon' => null,
         'manual_tracking' => null,
-        'maximum_allowed_value' => null,
-        'minimum_allowed_value' => null,
+        'maximum_allowed_value' => 'double',
+        'minimum_allowed_value' => 'double',
         'note' => null,
         'note_object' => null,
         'note_html' => null,
         'original_unit_id' => null,
-        'original_value' => null,
+        'original_value' => 'double',
         'png_path' => null,
         'png_url' => null,
         'product_url' => null,
@@ -188,6 +190,7 @@ class Measurement implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'card' => 'card',
         'client_id' => 'clientId',
         'connector_id' => 'connectorId',
         'created_at' => 'createdAt',
@@ -243,6 +246,7 @@ class Measurement implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'card' => 'setCard',
         'client_id' => 'setClientId',
         'connector_id' => 'setConnectorId',
         'created_at' => 'setCreatedAt',
@@ -298,6 +302,7 @@ class Measurement implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'card' => 'getCard',
         'client_id' => 'getClientId',
         'connector_id' => 'getConnectorId',
         'created_at' => 'getCreatedAt',
@@ -388,8 +393,65 @@ class Measurement implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const VARIABLE_CATEGORY_NAME_ACTIVITY = 'Activity';
+    const VARIABLE_CATEGORY_NAME_BOOKS = 'Books';
+    const VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS = 'Causes of Illness';
+    const VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE = 'Cognitive Performance';
+    const VARIABLE_CATEGORY_NAME_CONDITIONS = 'Conditions';
+    const VARIABLE_CATEGORY_NAME_EMOTIONS = 'Emotions';
+    const VARIABLE_CATEGORY_NAME_ENVIRONMENT = 'Environment';
+    const VARIABLE_CATEGORY_NAME_FOODS = 'Foods';
+    const VARIABLE_CATEGORY_NAME_GOALS = 'Goals';
+    const VARIABLE_CATEGORY_NAME_LOCATIONS = 'Locations';
+    const VARIABLE_CATEGORY_NAME_MISCELLANEOUS = 'Miscellaneous';
+    const VARIABLE_CATEGORY_NAME_MOVIES_AND_TV = 'Movies and TV';
+    const VARIABLE_CATEGORY_NAME_MUSIC = 'Music';
+    const VARIABLE_CATEGORY_NAME_NUTRIENTS = 'Nutrients';
+    const VARIABLE_CATEGORY_NAME_PAYMENTS = 'Payments';
+    const VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES = 'Physical Activities';
+    const VARIABLE_CATEGORY_NAME_PHYSIQUE = 'Physique';
+    const VARIABLE_CATEGORY_NAME_SLEEP = 'Sleep';
+    const VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS = 'Social Interactions';
+    const VARIABLE_CATEGORY_NAME_SOFTWARE = 'Software';
+    const VARIABLE_CATEGORY_NAME_SYMPTOMS = 'Symptoms';
+    const VARIABLE_CATEGORY_NAME_TREATMENTS = 'Treatments';
+    const VARIABLE_CATEGORY_NAME_VITAL_SIGNS = 'Vital Signs';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVariableCategoryNameAllowableValues()
+    {
+        return [
+            self::VARIABLE_CATEGORY_NAME_ACTIVITY,
+            self::VARIABLE_CATEGORY_NAME_BOOKS,
+            self::VARIABLE_CATEGORY_NAME_CAUSES_OF_ILLNESS,
+            self::VARIABLE_CATEGORY_NAME_COGNITIVE_PERFORMANCE,
+            self::VARIABLE_CATEGORY_NAME_CONDITIONS,
+            self::VARIABLE_CATEGORY_NAME_EMOTIONS,
+            self::VARIABLE_CATEGORY_NAME_ENVIRONMENT,
+            self::VARIABLE_CATEGORY_NAME_FOODS,
+            self::VARIABLE_CATEGORY_NAME_GOALS,
+            self::VARIABLE_CATEGORY_NAME_LOCATIONS,
+            self::VARIABLE_CATEGORY_NAME_MISCELLANEOUS,
+            self::VARIABLE_CATEGORY_NAME_MOVIES_AND_TV,
+            self::VARIABLE_CATEGORY_NAME_MUSIC,
+            self::VARIABLE_CATEGORY_NAME_NUTRIENTS,
+            self::VARIABLE_CATEGORY_NAME_PAYMENTS,
+            self::VARIABLE_CATEGORY_NAME_PHYSICAL_ACTIVITIES,
+            self::VARIABLE_CATEGORY_NAME_PHYSIQUE,
+            self::VARIABLE_CATEGORY_NAME_SLEEP,
+            self::VARIABLE_CATEGORY_NAME_SOCIAL_INTERACTIONS,
+            self::VARIABLE_CATEGORY_NAME_SOFTWARE,
+            self::VARIABLE_CATEGORY_NAME_SYMPTOMS,
+            self::VARIABLE_CATEGORY_NAME_TREATMENTS,
+            self::VARIABLE_CATEGORY_NAME_VITAL_SIGNS,
+        ];
+    }
     
 
     /**
@@ -407,6 +469,7 @@ class Measurement implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['card'] = isset($data['card']) ? $data['card'] : null;
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
         $this->container['connector_id'] = isset($data['connector_id']) ? $data['connector_id'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
@@ -477,6 +540,14 @@ class Measurement implements ModelInterface, ArrayAccess
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'variable_category_name', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['variable_name'] === null) {
             $invalidProperties[] = "'variable_name' can't be null";
         }
@@ -504,12 +575,40 @@ class Measurement implements ModelInterface, ArrayAccess
         if ($this->container['value'] === null) {
             return false;
         }
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!in_array($this->container['variable_category_name'], $allowedValues)) {
+            return false;
+        }
         if ($this->container['variable_name'] === null) {
             return false;
         }
         return true;
     }
 
+
+    /**
+     * Gets card
+     *
+     * @return \QuantiModo\Client\Model\Card
+     */
+    public function getCard()
+    {
+        return $this->container['card'];
+    }
+
+    /**
+     * Sets card
+     *
+     * @param \QuantiModo\Client\Model\Card $card Card containing image, text, link and relevant buttons
+     *
+     * @return $this
+     */
+    public function setCard($card)
+    {
+        $this->container['card'] = $card;
+
+        return $this;
+    }
 
     /**
      * Gets client_id
@@ -730,7 +829,7 @@ class Measurement implements ModelInterface, ArrayAccess
     /**
      * Gets maximum_allowed_value
      *
-     * @return int
+     * @return double
      */
     public function getMaximumAllowedValue()
     {
@@ -740,7 +839,7 @@ class Measurement implements ModelInterface, ArrayAccess
     /**
      * Sets maximum_allowed_value
      *
-     * @param int $maximum_allowed_value Ex: 5
+     * @param double $maximum_allowed_value Ex: 5. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -754,7 +853,7 @@ class Measurement implements ModelInterface, ArrayAccess
     /**
      * Gets minimum_allowed_value
      *
-     * @return int
+     * @return double
      */
     public function getMinimumAllowedValue()
     {
@@ -764,7 +863,7 @@ class Measurement implements ModelInterface, ArrayAccess
     /**
      * Sets minimum_allowed_value
      *
-     * @param int $minimum_allowed_value Ex: 1
+     * @param double $minimum_allowed_value Ex: 1. Unit: User-specified or common.
      *
      * @return $this
      */
@@ -874,7 +973,7 @@ class Measurement implements ModelInterface, ArrayAccess
     /**
      * Gets original_value
      *
-     * @return int
+     * @return double
      */
     public function getOriginalValue()
     {
@@ -884,7 +983,7 @@ class Measurement implements ModelInterface, ArrayAccess
     /**
      * Sets original_value
      *
-     * @param int $original_value Original value as originally submitted
+     * @param double $original_value Original value submitted. Unit: Originally submitted.
      *
      * @return $this
      */
@@ -1532,12 +1631,21 @@ class Measurement implements ModelInterface, ArrayAccess
     /**
      * Sets variable_category_name
      *
-     * @param string $variable_category_name Ex: Treatments
+     * @param string $variable_category_name Ex: Emotions, Treatments, Symptoms...
      *
      * @return $this
      */
     public function setVariableCategoryName($variable_category_name)
     {
+        $allowedValues = $this->getVariableCategoryNameAllowableValues();
+        if (!is_null($variable_category_name) && !in_array($variable_category_name, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'variable_category_name', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['variable_category_name'] = $variable_category_name;
 
         return $this;

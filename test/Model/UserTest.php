@@ -134,6 +134,13 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "card"
+     */
+    public function testPropertyCard()
+    {
+    }
+
+    /**
      * Test attribute "client_id"
      */
     public function testPropertyClientId()

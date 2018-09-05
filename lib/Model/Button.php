@@ -57,11 +57,26 @@ class Button implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'link' => 'string',
-        'text' => 'string',
-        'ion_icon' => 'string',
+        'accessibility_text' => 'string',
+        'action' => 'object',
+        'additional_information' => 'string',
         'color' => 'string',
-        'additional_information' => 'string'
+        'confirmation_text' => 'string',
+        'function_name' => 'string',
+        'parameters' => 'object',
+        'html' => 'string',
+        'id' => 'string',
+        'image' => 'string',
+        'ion_icon' => 'string',
+        'link' => 'string',
+        'state_name' => 'string',
+        'state_params' => 'object',
+        'success_toast_text' => 'string',
+        'success_alert_title' => 'string',
+        'success_alert_body' => 'string',
+        'text' => 'string',
+        'tooltip' => 'string',
+        'webhook_url' => 'string'
     ];
 
     /**
@@ -70,11 +85,26 @@ class Button implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'link' => null,
-        'text' => null,
-        'ion_icon' => null,
+        'accessibility_text' => null,
+        'action' => null,
+        'additional_information' => null,
         'color' => null,
-        'additional_information' => null
+        'confirmation_text' => null,
+        'function_name' => null,
+        'parameters' => null,
+        'html' => null,
+        'id' => null,
+        'image' => null,
+        'ion_icon' => null,
+        'link' => null,
+        'state_name' => null,
+        'state_params' => null,
+        'success_toast_text' => null,
+        'success_alert_title' => null,
+        'success_alert_body' => null,
+        'text' => null,
+        'tooltip' => null,
+        'webhook_url' => null
     ];
 
     /**
@@ -104,11 +134,26 @@ class Button implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'link' => 'link',
-        'text' => 'text',
-        'ion_icon' => 'ionIcon',
+        'accessibility_text' => 'accessibilityText',
+        'action' => 'action',
+        'additional_information' => 'additionalInformation',
         'color' => 'color',
-        'additional_information' => 'additionalInformation'
+        'confirmation_text' => 'confirmationText',
+        'function_name' => 'functionName',
+        'parameters' => 'parameters',
+        'html' => 'html',
+        'id' => 'id',
+        'image' => 'image',
+        'ion_icon' => 'ionIcon',
+        'link' => 'link',
+        'state_name' => 'stateName',
+        'state_params' => 'stateParams',
+        'success_toast_text' => 'successToastText',
+        'success_alert_title' => 'successAlertTitle',
+        'success_alert_body' => 'successAlertBody',
+        'text' => 'text',
+        'tooltip' => 'tooltip',
+        'webhook_url' => 'webhookUrl'
     ];
 
     /**
@@ -117,11 +162,26 @@ class Button implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'link' => 'setLink',
-        'text' => 'setText',
-        'ion_icon' => 'setIonIcon',
+        'accessibility_text' => 'setAccessibilityText',
+        'action' => 'setAction',
+        'additional_information' => 'setAdditionalInformation',
         'color' => 'setColor',
-        'additional_information' => 'setAdditionalInformation'
+        'confirmation_text' => 'setConfirmationText',
+        'function_name' => 'setFunctionName',
+        'parameters' => 'setParameters',
+        'html' => 'setHtml',
+        'id' => 'setId',
+        'image' => 'setImage',
+        'ion_icon' => 'setIonIcon',
+        'link' => 'setLink',
+        'state_name' => 'setStateName',
+        'state_params' => 'setStateParams',
+        'success_toast_text' => 'setSuccessToastText',
+        'success_alert_title' => 'setSuccessAlertTitle',
+        'success_alert_body' => 'setSuccessAlertBody',
+        'text' => 'setText',
+        'tooltip' => 'setTooltip',
+        'webhook_url' => 'setWebhookUrl'
     ];
 
     /**
@@ -130,11 +190,26 @@ class Button implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'link' => 'getLink',
-        'text' => 'getText',
-        'ion_icon' => 'getIonIcon',
+        'accessibility_text' => 'getAccessibilityText',
+        'action' => 'getAction',
+        'additional_information' => 'getAdditionalInformation',
         'color' => 'getColor',
-        'additional_information' => 'getAdditionalInformation'
+        'confirmation_text' => 'getConfirmationText',
+        'function_name' => 'getFunctionName',
+        'parameters' => 'getParameters',
+        'html' => 'getHtml',
+        'id' => 'getId',
+        'image' => 'getImage',
+        'ion_icon' => 'getIonIcon',
+        'link' => 'getLink',
+        'state_name' => 'getStateName',
+        'state_params' => 'getStateParams',
+        'success_toast_text' => 'getSuccessToastText',
+        'success_alert_title' => 'getSuccessAlertTitle',
+        'success_alert_body' => 'getSuccessAlertBody',
+        'text' => 'getText',
+        'tooltip' => 'getTooltip',
+        'webhook_url' => 'getWebhookUrl'
     ];
 
     /**
@@ -197,11 +272,26 @@ class Button implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
-        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
-        $this->container['color'] = isset($data['color']) ? $data['color'] : null;
+        $this->container['accessibility_text'] = isset($data['accessibility_text']) ? $data['accessibility_text'] : null;
+        $this->container['action'] = isset($data['action']) ? $data['action'] : null;
         $this->container['additional_information'] = isset($data['additional_information']) ? $data['additional_information'] : null;
+        $this->container['color'] = isset($data['color']) ? $data['color'] : null;
+        $this->container['confirmation_text'] = isset($data['confirmation_text']) ? $data['confirmation_text'] : null;
+        $this->container['function_name'] = isset($data['function_name']) ? $data['function_name'] : null;
+        $this->container['parameters'] = isset($data['parameters']) ? $data['parameters'] : null;
+        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['ion_icon'] = isset($data['ion_icon']) ? $data['ion_icon'] : null;
+        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['state_name'] = isset($data['state_name']) ? $data['state_name'] : null;
+        $this->container['state_params'] = isset($data['state_params']) ? $data['state_params'] : null;
+        $this->container['success_toast_text'] = isset($data['success_toast_text']) ? $data['success_toast_text'] : null;
+        $this->container['success_alert_title'] = isset($data['success_alert_title']) ? $data['success_alert_title'] : null;
+        $this->container['success_alert_body'] = isset($data['success_alert_body']) ? $data['success_alert_body'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['tooltip'] = isset($data['tooltip']) ? $data['tooltip'] : null;
+        $this->container['webhook_url'] = isset($data['webhook_url']) ? $data['webhook_url'] : null;
     }
 
     /**
@@ -242,73 +332,73 @@ class Button implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets link
+     * Gets accessibility_text
      *
      * @return string
      */
-    public function getLink()
+    public function getAccessibilityText()
     {
-        return $this->container['link'];
+        return $this->container['accessibility_text'];
     }
 
     /**
-     * Sets link
+     * Sets accessibility_text
      *
-     * @param string $link Ex: https://local.quantimo.do
+     * @param string $accessibility_text Ex: connect
      *
      * @return $this
      */
-    public function setLink($link)
+    public function setAccessibilityText($accessibility_text)
     {
-        $this->container['link'] = $link;
+        $this->container['accessibility_text'] = $accessibility_text;
 
         return $this;
     }
 
     /**
-     * Gets text
+     * Gets action
      *
-     * @return string
+     * @return object
      */
-    public function getText()
+    public function getAction()
     {
-        return $this->container['text'];
+        return $this->container['action'];
     }
 
     /**
-     * Sets text
+     * Sets action
      *
-     * @param string $text Ex: Connect
+     * @param object $action Action data
      *
      * @return $this
      */
-    public function setText($text)
+    public function setAction($action)
     {
-        $this->container['text'] = $text;
+        $this->container['action'] = $action;
 
         return $this;
     }
 
     /**
-     * Gets ion_icon
+     * Gets additional_information
      *
      * @return string
      */
-    public function getIonIcon()
+    public function getAdditionalInformation()
     {
-        return $this->container['ion_icon'];
+        return $this->container['additional_information'];
     }
 
     /**
-     * Sets ion_icon
+     * Sets additional_information
      *
-     * @param string $ion_icon Ex: ion-refresh
+     * @param string $additional_information Ex: connect
      *
      * @return $this
      */
-    public function setIonIcon($ion_icon)
+    public function setAdditionalInformation($additional_information)
     {
-        $this->container['ion_icon'] = $ion_icon;
+        $this->container['additional_information'] = $additional_information;
 
         return $this;
     }
@@ -338,25 +428,385 @@ class Button implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets additional_information
+     * Gets confirmation_text
      *
      * @return string
      */
-    public function getAdditionalInformation()
+    public function getConfirmationText()
     {
-        return $this->container['additional_information'];
+        return $this->container['confirmation_text'];
     }
 
     /**
-     * Sets additional_information
+     * Sets confirmation_text
      *
-     * @param string $additional_information Ex: connect
+     * @param string $confirmation_text Text to show user before executing functionName
      *
      * @return $this
      */
-    public function setAdditionalInformation($additional_information)
+    public function setConfirmationText($confirmation_text)
     {
-        $this->container['additional_information'] = $additional_information;
+        $this->container['confirmation_text'] = $confirmation_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets function_name
+     *
+     * @return string
+     */
+    public function getFunctionName()
+    {
+        return $this->container['function_name'];
+    }
+
+    /**
+     * Sets function_name
+     *
+     * @param string $function_name Name of function to call
+     *
+     * @return $this
+     */
+    public function setFunctionName($function_name)
+    {
+        $this->container['function_name'] = $function_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parameters
+     *
+     * @return object
+     */
+    public function getParameters()
+    {
+        return $this->container['parameters'];
+    }
+
+    /**
+     * Sets parameters
+     *
+     * @param object $parameters Data to provide to functionName or be copied to the card parameters when button is clicked and card is posted to the API
+     *
+     * @return $this
+     */
+    public function setParameters($parameters)
+    {
+        $this->container['parameters'] = $parameters;
+
+        return $this;
+    }
+
+    /**
+     * Gets html
+     *
+     * @return string
+     */
+    public function getHtml()
+    {
+        return $this->container['html'];
+    }
+
+    /**
+     * Sets html
+     *
+     * @param string $html Ex: connect
+     *
+     * @return $this
+     */
+    public function setHtml($html)
+    {
+        $this->container['html'] = $html;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id HTML element id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->container['image'];
+    }
+
+    /**
+     * Sets image
+     *
+     * @param string $image Ex: https://image.jpg
+     *
+     * @return $this
+     */
+    public function setImage($image)
+    {
+        $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets ion_icon
+     *
+     * @return string
+     */
+    public function getIonIcon()
+    {
+        return $this->container['ion_icon'];
+    }
+
+    /**
+     * Sets ion_icon
+     *
+     * @param string $ion_icon Ex: ion-refresh
+     *
+     * @return $this
+     */
+    public function setIonIcon($ion_icon)
+    {
+        $this->container['ion_icon'] = $ion_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->container['link'];
+    }
+
+    /**
+     * Sets link
+     *
+     * @param string $link Ex: https://local.quantimo.do
+     *
+     * @return $this
+     */
+    public function setLink($link)
+    {
+        $this->container['link'] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Gets state_name
+     *
+     * @return string
+     */
+    public function getStateName()
+    {
+        return $this->container['state_name'];
+    }
+
+    /**
+     * Sets state_name
+     *
+     * @param string $state_name State to go to
+     *
+     * @return $this
+     */
+    public function setStateName($state_name)
+    {
+        $this->container['state_name'] = $state_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets state_params
+     *
+     * @return object
+     */
+    public function getStateParams()
+    {
+        return $this->container['state_params'];
+    }
+
+    /**
+     * Sets state_params
+     *
+     * @param object $state_params Data to provide to the state
+     *
+     * @return $this
+     */
+    public function setStateParams($state_params)
+    {
+        $this->container['state_params'] = $state_params;
+
+        return $this;
+    }
+
+    /**
+     * Gets success_toast_text
+     *
+     * @return string
+     */
+    public function getSuccessToastText()
+    {
+        return $this->container['success_toast_text'];
+    }
+
+    /**
+     * Sets success_toast_text
+     *
+     * @param string $success_toast_text Text to show user after executing functionName
+     *
+     * @return $this
+     */
+    public function setSuccessToastText($success_toast_text)
+    {
+        $this->container['success_toast_text'] = $success_toast_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets success_alert_title
+     *
+     * @return string
+     */
+    public function getSuccessAlertTitle()
+    {
+        return $this->container['success_alert_title'];
+    }
+
+    /**
+     * Sets success_alert_title
+     *
+     * @param string $success_alert_title Text to show user after executing functionName
+     *
+     * @return $this
+     */
+    public function setSuccessAlertTitle($success_alert_title)
+    {
+        $this->container['success_alert_title'] = $success_alert_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets success_alert_body
+     *
+     * @return string
+     */
+    public function getSuccessAlertBody()
+    {
+        return $this->container['success_alert_body'];
+    }
+
+    /**
+     * Sets success_alert_body
+     *
+     * @param string $success_alert_body Text to show user after executing functionName
+     *
+     * @return $this
+     */
+    public function setSuccessAlertBody($success_alert_body)
+    {
+        $this->container['success_alert_body'] = $success_alert_body;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string $text Ex: Connect
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets tooltip
+     *
+     * @return string
+     */
+    public function getTooltip()
+    {
+        return $this->container['tooltip'];
+    }
+
+    /**
+     * Sets tooltip
+     *
+     * @param string $tooltip Ex: This is a tooltip
+     *
+     * @return $this
+     */
+    public function setTooltip($tooltip)
+    {
+        $this->container['tooltip'] = $tooltip;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_url
+     *
+     * @return string
+     */
+    public function getWebhookUrl()
+    {
+        return $this->container['webhook_url'];
+    }
+
+    /**
+     * Sets webhook_url
+     *
+     * @param string $webhook_url Post here on button click
+     *
+     * @return $this
+     */
+    public function setWebhookUrl($webhook_url)
+    {
+        $this->container['webhook_url'] = $webhook_url;
 
         return $this;
     }

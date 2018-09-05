@@ -78,23 +78,23 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "link"
+     * Test attribute "accessibility_text"
      */
-    public function testPropertyLink()
+    public function testPropertyAccessibilityText()
     {
     }
 
     /**
-     * Test attribute "text"
+     * Test attribute "action"
      */
-    public function testPropertyText()
+    public function testPropertyAction()
     {
     }
 
     /**
-     * Test attribute "ion_icon"
+     * Test attribute "additional_information"
      */
-    public function testPropertyIonIcon()
+    public function testPropertyAdditionalInformation()
     {
     }
 
@@ -106,9 +106,114 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "additional_information"
+     * Test attribute "confirmation_text"
      */
-    public function testPropertyAdditionalInformation()
+    public function testPropertyConfirmationText()
+    {
+    }
+
+    /**
+     * Test attribute "function_name"
+     */
+    public function testPropertyFunctionName()
+    {
+    }
+
+    /**
+     * Test attribute "parameters"
+     */
+    public function testPropertyParameters()
+    {
+    }
+
+    /**
+     * Test attribute "html"
+     */
+    public function testPropertyHtml()
+    {
+    }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+    }
+
+    /**
+     * Test attribute "image"
+     */
+    public function testPropertyImage()
+    {
+    }
+
+    /**
+     * Test attribute "ion_icon"
+     */
+    public function testPropertyIonIcon()
+    {
+    }
+
+    /**
+     * Test attribute "link"
+     */
+    public function testPropertyLink()
+    {
+    }
+
+    /**
+     * Test attribute "state_name"
+     */
+    public function testPropertyStateName()
+    {
+    }
+
+    /**
+     * Test attribute "state_params"
+     */
+    public function testPropertyStateParams()
+    {
+    }
+
+    /**
+     * Test attribute "success_toast_text"
+     */
+    public function testPropertySuccessToastText()
+    {
+    }
+
+    /**
+     * Test attribute "success_alert_title"
+     */
+    public function testPropertySuccessAlertTitle()
+    {
+    }
+
+    /**
+     * Test attribute "success_alert_body"
+     */
+    public function testPropertySuccessAlertBody()
+    {
+    }
+
+    /**
+     * Test attribute "text"
+     */
+    public function testPropertyText()
+    {
+    }
+
+    /**
+     * Test attribute "tooltip"
+     */
+    public function testPropertyTooltip()
+    {
+    }
+
+    /**
+     * Test attribute "webhook_url"
+     */
+    public function testPropertyWebhookUrl()
     {
     }
 }

@@ -92,6 +92,76 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "best_study_link"
+     */
+    public function testPropertyBestStudyLink()
+    {
+    }
+
+    /**
+     * Test attribute "best_study_card"
+     */
+    public function testPropertyBestStudyCard()
+    {
+    }
+
+    /**
+     * Test attribute "best_user_study_link"
+     */
+    public function testPropertyBestUserStudyLink()
+    {
+    }
+
+    /**
+     * Test attribute "best_user_study_card"
+     */
+    public function testPropertyBestUserStudyCard()
+    {
+    }
+
+    /**
+     * Test attribute "best_population_study_link"
+     */
+    public function testPropertyBestPopulationStudyLink()
+    {
+    }
+
+    /**
+     * Test attribute "best_population_study_card"
+     */
+    public function testPropertyBestPopulationStudyCard()
+    {
+    }
+
+    /**
+     * Test attribute "optimal_value_message"
+     */
+    public function testPropertyOptimalValueMessage()
+    {
+    }
+
+    /**
+     * Test attribute "common_optimal_value_message"
+     */
+    public function testPropertyCommonOptimalValueMessage()
+    {
+    }
+
+    /**
+     * Test attribute "user_optimal_value_message"
+     */
+    public function testPropertyUserOptimalValueMessage()
+    {
+    }
+
+    /**
+     * Test attribute "card"
+     */
+    public function testPropertyCard()
+    {
+    }
+
+    /**
      * Test attribute "client_id"
      */
     public function testPropertyClientId()
@@ -158,6 +228,13 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
      * Test attribute "default_value"
      */
     public function testPropertyDefaultValue()
+    {
+    }
+
+    /**
+     * Test attribute "enabled"
+     */
+    public function testPropertyEnabled()
     {
     }
 
@@ -354,6 +431,13 @@ class TrackingReminderTest extends \PHPUnit_Framework_TestCase
      * Test attribute "question"
      */
     public function testPropertyQuestion()
+    {
+    }
+
+    /**
+     * Test attribute "long_question"
+     */
+    public function testPropertyLongQuestion()
     {
     }
 

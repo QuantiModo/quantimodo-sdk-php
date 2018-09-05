@@ -4,11 +4,11 @@ All URIs are relative to *https://app.quantimo.do/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createStudy**](StudiesApi.md#createStudy) | **POST** /v3/study/create | Create a Cohort Study
+[**createStudy**](StudiesApi.md#createStudy) | **POST** /v3/study/create | Create a Study
 [**deleteVote**](StudiesApi.md#deleteVote) | **DELETE** /v3/votes/delete | Delete vote
 [**getOpenStudies**](StudiesApi.md#getOpenStudies) | **GET** /v3/studies/open | These are open studies that anyone can join
 [**getStudies**](StudiesApi.md#getStudies) | **GET** /v3/studies | Get Personal or Population Studies
-[**getStudiesCreated**](StudiesApi.md#getStudiesCreated) | **GET** /v3/studies/created | Get cohort studies you have created
+[**getStudiesCreated**](StudiesApi.md#getStudiesCreated) | **GET** /v3/studies/created | Get studies you have created
 [**getStudiesJoined**](StudiesApi.md#getStudiesJoined) | **GET** /v3/studies/joined | Studies You Have Joined
 [**getStudy**](StudiesApi.md#getStudy) | **GET** /v4/study | Get Study
 [**joinStudy**](StudiesApi.md#joinStudy) | **POST** /v3/study/join | Join a Study
@@ -19,9 +19,9 @@ Method | HTTP request | Description
 # **createStudy**
 > \QuantiModo\Client\Model\PostStudyCreateResponse createStudy($body, $client_id, $platform)
 
-Create a Cohort Study
+Create a Study
 
-Create a cohort study examining the relationship between a predictor and outcome variable. You will be given a study id which you can invite participants to join and share their measurements for the specified variables.
+Create an individual, group, or population study examining the relationship between a predictor and outcome variable. You will be given a study id which you can invite participants to join and share their measurements for the specified variables.
 
 ### Example
 ```php
@@ -168,7 +168,7 @@ $client_id = "client_id_example"; // string | Your QuantiModo client id can be o
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 $recalculate = true; // bool | Recalculate instead of using cached analysis
-$study_id = "study_id_example"; // string | Client id for the cohort study you want
+$study_id = "study_id_example"; // string | Client id for the study you want
 
 try {
     $result = $apiInstance->getOpenStudies($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
  **platform** | **string**| Ex: chrome, android, ios, web | [optional]
  **recalculate** | **bool**| Recalculate instead of using cached analysis | [optional]
- **study_id** | **string**| Client id for the cohort study you want | [optional]
+ **study_id** | **string**| Client id for the study you want | [optional]
 
 ### Return type
 
@@ -239,7 +239,7 @@ $client_id = "client_id_example"; // string | Your QuantiModo client id can be o
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 $recalculate = true; // bool | Recalculate instead of using cached analysis
-$study_id = "study_id_example"; // string | Client id for the cohort study you want
+$study_id = "study_id_example"; // string | Client id for the study you want
 $sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
 $limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
  **platform** | **string**| Ex: chrome, android, ios, web | [optional]
  **recalculate** | **bool**| Recalculate instead of using cached analysis | [optional]
- **study_id** | **string**| Client id for the cohort study you want | [optional]
+ **study_id** | **string**| Client id for the study you want | [optional]
  **sort** | **string**| Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
@@ -303,9 +303,9 @@ Name | Type | Description  | Notes
 # **getStudiesCreated**
 > \QuantiModo\Client\Model\GetStudiesResponse getStudiesCreated($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $updated_at, $client_id, $platform)
 
-Get cohort studies you have created
+Get studies you have created
 
-These are cohort studies that you have created.
+These are studies that you have created.
 
 ### Example
 ```php
@@ -482,7 +482,7 @@ $client_id = "client_id_example"; // string | Your QuantiModo client id can be o
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 $recalculate = true; // bool | Recalculate instead of using cached analysis
-$study_id = "study_id_example"; // string | Client id for the cohort study you want
+$study_id = "study_id_example"; // string | Client id for the study you want
 
 try {
     $result = $apiInstance->getStudy($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
@@ -504,7 +504,7 @@ Name | Type | Description  | Notes
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
  **platform** | **string**| Ex: chrome, android, ios, web | [optional]
  **recalculate** | **bool**| Recalculate instead of using cached analysis | [optional]
- **study_id** | **string**| Client id for the cohort study you want | [optional]
+ **study_id** | **string**| Client id for the study you want | [optional]
 
 ### Return type
 
@@ -546,7 +546,7 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$study_id = "study_id_example"; // string | Client id for the cohort study you want
+$study_id = "study_id_example"; // string | Client id for the study you want
 $cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
 $effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
 $user_id = 8.14; // float | User's id
@@ -566,7 +566,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **study_id** | **string**| Client id for the cohort study you want | [optional]
+ **study_id** | **string**| Client id for the study you want | [optional]
  **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
  **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
@@ -679,7 +679,7 @@ $client_id = "client_id_example"; // string | Your QuantiModo client id can be o
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 $recalculate = true; // bool | Recalculate instead of using cached analysis
-$study_id = "study_id_example"; // string | Client id for the cohort study you want
+$study_id = "study_id_example"; // string | Client id for the study you want
 
 try {
     $result = $apiInstance->publishStudy($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
@@ -701,7 +701,7 @@ Name | Type | Description  | Notes
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
  **platform** | **string**| Ex: chrome, android, ios, web | [optional]
  **recalculate** | **bool**| Recalculate instead of using cached analysis | [optional]
- **study_id** | **string**| Client id for the cohort study you want | [optional]
+ **study_id** | **string**| Client id for the study you want | [optional]
 
 ### Return type
 

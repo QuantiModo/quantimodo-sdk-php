@@ -139,4 +139,11 @@ class StudyImagesTest extends \PHPUnit_Framework_TestCase
     public function testPropertyRobotSharingImageUrl()
     {
     }
+
+    /**
+     * Test attribute "avatar"
+     */
+    public function testPropertyAvatar()
+    {
+    }
 }

@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**card** | [**\QuantiModo\Client\Model\Card**](Card.md) | Card containing image, text, link and relevant buttons | [optional] 
 **client_id** | **string** | Ex: quantimodo | [optional] 
 **connector_id** | **int** | Ex: 13 | [optional] 
 **created_at** | **string** | Ex: 2017-07-30 21:08:36 | [optional] 
@@ -12,13 +13,13 @@ Name | Type | Description | Notes
 **input_type** | **string** | Ex: value | [optional] 
 **ion_icon** | **string** | Ex: ion-ios-medkit-outline | [optional] 
 **manual_tracking** | **bool** | Ex: 1 | [optional] 
-**maximum_allowed_value** | **int** | Ex: 5 | [optional] 
-**minimum_allowed_value** | **int** | Ex: 1 | [optional] 
+**maximum_allowed_value** | **double** | Ex: 5. Unit: User-specified or common. | [optional] 
+**minimum_allowed_value** | **double** | Ex: 1. Unit: User-specified or common. | [optional] 
 **note** | **string** | Note of measurement | [optional] 
 **note_object** | **object** | Additional meta data for the measurement | [optional] 
 **note_html** | **object** | Embeddable HTML with message hyperlinked with associated url | [optional] 
 **original_unit_id** | **int** | Ex: 23 | [optional] 
-**original_value** | **int** | Original value as originally submitted | [optional] 
+**original_value** | **double** | Original value submitted. Unit: Originally submitted. | [optional] 
 **png_path** | **string** | Ex: img/variable_categories/treatments.png | [optional] 
 **png_url** | **string** | Ex: https://quantimodo.quantimo.do/ionic/Modo/www/img/variable_categories/treatments.png | [optional] 
 **product_url** | **string** | Link to associated product for purchase | [optional] 
@@ -45,7 +46,7 @@ Name | Type | Description | Notes
 **value** | **double** | Converted measurement value in requested unit | 
 **variable_category_id** | **int** | Ex: 13 | [optional] 
 **variable_category_image_url** | **string** | Ex: https://maxcdn.icons8.com/Color/PNG/96/Healthcare/pill-96.png | [optional] 
-**variable_category_name** | **string** | Ex: Treatments | [optional] 
+**variable_category_name** | **string** | Ex: Emotions, Treatments, Symptoms... | [optional] 
 **variable_description** | **string** | Ex: negative | [optional] 
 **variable_id** | **int** | Ex: 5956846 | [optional] 
 **variable_name** | **string** | Name of the variable for which we are creating the measurement records | 
