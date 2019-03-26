@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **avatar_circular** | **string** | Smaller circular image | [optional] 
 **background_color** | **string** | Ex: #f2f2f2 | [optional] 
 **buttons** | [**\QuantiModo\Client\Model\Button[]**](Button.md) |  | [optional] 
+**buttons_secondary** | [**\QuantiModo\Client\Model\Button[]**](Button.md) |  | [optional] 
 **content** | **string** | Ex: Content | [optional] 
 **header_title** | **string** | Ex: Title | [optional] 
 **html** | **string** | HTML for the entire card. | [optional] 

@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getOpenStudies**
-> \QuantiModo\Client\Model\GetStudiesResponse getOpenStudies($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id)
+> \QuantiModo\Client\Model\GetStudiesResponse getOpenStudies($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id)
 
 These are open studies that anyone can join
 
@@ -161,8 +161,12 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $user_id = 8.14; // float | User's id
 $client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
@@ -171,7 +175,7 @@ $recalculate = true; // bool | Recalculate instead of using cached analysis
 $study_id = "study_id_example"; // string | Client id for the study you want
 
 try {
-    $result = $apiInstance->getOpenStudies($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
+    $result = $apiInstance->getOpenStudies($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StudiesApi->getOpenStudies: ', $e->getMessage(), PHP_EOL;
@@ -183,8 +187,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
@@ -208,7 +216,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudies**
-> \QuantiModo\Client\Model\GetStudiesResponse getStudies($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id, $sort, $limit, $offset, $correlation_coefficient, $updated_at, $outcomes_of_interest, $principal_investigator_user_id, $open, $joined, $created, $population)
+> \QuantiModo\Client\Model\GetStudiesResponse getStudies($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id, $sort, $limit, $offset, $correlation_coefficient, $updated_at, $outcomes_of_interest, $principal_investigator_user_id, $open, $joined, $created, $population, $downvoted)
 
 Get Personal or Population Studies
 
@@ -232,8 +240,12 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $user_id = 8.14; // float | User's id
 $client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
@@ -251,9 +263,10 @@ $open = true; // bool | These are studies that anyone can join
 $joined = true; // bool | These are studies that you have joined
 $created = true; // bool | These are studies that you have created
 $population = true; // bool | These are studies based on the entire population of users that have shared their data
+$downvoted = true; // bool | These are studies that you have down-voted
 
 try {
-    $result = $apiInstance->getStudies($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id, $sort, $limit, $offset, $correlation_coefficient, $updated_at, $outcomes_of_interest, $principal_investigator_user_id, $open, $joined, $created, $population);
+    $result = $apiInstance->getStudies($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id, $sort, $limit, $offset, $correlation_coefficient, $updated_at, $outcomes_of_interest, $principal_investigator_user_id, $open, $joined, $created, $population, $downvoted);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StudiesApi->getStudies: ', $e->getMessage(), PHP_EOL;
@@ -265,8 +278,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
@@ -284,6 +301,7 @@ Name | Type | Description  | Notes
  **joined** | **bool**| These are studies that you have joined | [optional]
  **created** | **bool**| These are studies that you have created | [optional]
  **population** | **bool**| These are studies based on the entire population of users that have shared their data | [optional]
+ **downvoted** | **bool**| These are studies that you have down-voted | [optional]
 
 ### Return type
 
@@ -301,7 +319,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudiesCreated**
-> \QuantiModo\Client\Model\GetStudiesResponse getStudiesCreated($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $updated_at, $client_id, $platform)
+> \QuantiModo\Client\Model\GetStudiesResponse getStudiesCreated($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $sort, $limit, $offset, $user_id, $updated_at, $client_id, $platform)
 
 Get studies you have created
 
@@ -325,8 +343,12 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
 $limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
@@ -336,7 +358,7 @@ $client_id = "client_id_example"; // string | Your QuantiModo client id can be o
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 
 try {
-    $result = $apiInstance->getStudiesCreated($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $updated_at, $client_id, $platform);
+    $result = $apiInstance->getStudiesCreated($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $sort, $limit, $offset, $user_id, $updated_at, $client_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StudiesApi->getStudiesCreated: ', $e->getMessage(), PHP_EOL;
@@ -348,8 +370,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **sort** | **string**| Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
@@ -374,7 +400,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudiesJoined**
-> \QuantiModo\Client\Model\GetStudiesResponse getStudiesJoined($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $correlation_coefficient, $updated_at, $outcomes_of_interest, $client_id, $platform)
+> \QuantiModo\Client\Model\GetStudiesResponse getStudiesJoined($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $sort, $limit, $offset, $user_id, $correlation_coefficient, $updated_at, $outcomes_of_interest, $client_id, $platform)
 
 Studies You Have Joined
 
@@ -398,8 +424,12 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
 $limit = 100; // int | The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
 $offset = 56; // int | OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
@@ -411,7 +441,7 @@ $client_id = "client_id_example"; // string | Your QuantiModo client id can be o
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 
 try {
-    $result = $apiInstance->getStudiesJoined($cause_variable_name, $effect_variable_name, $sort, $limit, $offset, $user_id, $correlation_coefficient, $updated_at, $outcomes_of_interest, $client_id, $platform);
+    $result = $apiInstance->getStudiesJoined($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $sort, $limit, $offset, $user_id, $correlation_coefficient, $updated_at, $outcomes_of_interest, $client_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StudiesApi->getStudiesJoined: ', $e->getMessage(), PHP_EOL;
@@ -423,8 +453,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **sort** | **string**| Sort by one of the listed field names. If the field name is prefixed with &#x60;-&#x60;, it will sort in descending order. | [optional]
  **limit** | **int**| The LIMIT is used to limit the number of results returned. So if youhave 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records. | [optional] [default to 100]
  **offset** | **int**| OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause.If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned. | [optional]
@@ -451,7 +485,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudy**
-> \QuantiModo\Client\Model\Study getStudy($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id)
+> \QuantiModo\Client\Model\Study getStudy($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id)
 
 Get Study
 
@@ -475,8 +509,12 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $user_id = 8.14; // float | User's id
 $client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
@@ -485,7 +523,7 @@ $recalculate = true; // bool | Recalculate instead of using cached analysis
 $study_id = "study_id_example"; // string | Client id for the study you want
 
 try {
-    $result = $apiInstance->getStudy($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
+    $result = $apiInstance->getStudy($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StudiesApi->getStudy: ', $e->getMessage(), PHP_EOL;
@@ -497,8 +535,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]
@@ -522,7 +564,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **joinStudy**
-> \QuantiModo\Client\Model\StudyJoinResponse joinStudy($study_id, $cause_variable_name, $effect_variable_name, $user_id, $client_id, $platform)
+> \QuantiModo\Client\Model\StudyJoinResponse joinStudy($study_id, $cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $platform)
 
 Join a Study
 
@@ -547,14 +589,18 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     $config
 );
 $study_id = "study_id_example"; // string | Client id for the study you want
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $user_id = 8.14; // float | User's id
 $client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 
 try {
-    $result = $apiInstance->joinStudy($study_id, $cause_variable_name, $effect_variable_name, $user_id, $client_id, $platform);
+    $result = $apiInstance->joinStudy($study_id, $cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StudiesApi->joinStudy: ', $e->getMessage(), PHP_EOL;
@@ -567,8 +613,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **study_id** | **string**| Client id for the study you want | [optional]
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
  **platform** | **string**| Ex: chrome, android, ios, web | [optional]
@@ -648,7 +698,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publishStudy**
-> \QuantiModo\Client\Model\PostStudyPublishResponse publishStudy($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id)
+> \QuantiModo\Client\Model\PostStudyPublishResponse publishStudy($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id)
 
 Publish Your Study
 
@@ -672,8 +722,12 @@ $apiInstance = new QuantiModo\Client\Api\StudiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $user_id = 8.14; // float | User's id
 $client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
 $include_charts = true; // bool | Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided.
@@ -682,7 +736,7 @@ $recalculate = true; // bool | Recalculate instead of using cached analysis
 $study_id = "study_id_example"; // string | Client id for the study you want
 
 try {
-    $result = $apiInstance->publishStudy($cause_variable_name, $effect_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
+    $result = $apiInstance->publishStudy($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $user_id, $client_id, $include_charts, $platform, $recalculate, $study_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StudiesApi->publishStudy: ', $e->getMessage(), PHP_EOL;
@@ -694,8 +748,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
  **include_charts** | **bool**| Highcharts configs that can be used if you have highcharts.js included on the page.  This only works if the id or name query parameter is also provided. | [optional]

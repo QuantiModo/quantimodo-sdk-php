@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **enabled** | **int** | Ex: 0 | 
 **get_it_url** | **string** | Ex: https://quantimo.do | 
 **id** | **int** | Ex: 72 | 
-**image** | **string** | Ex: https://quantimodo.quantimo.do/ionic/Modo/www/img/logos/quantimodo-logo-qm-rainbow-200-200.png | 
-**image_html** | **string** | Ex: &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;&lt;img id&#x3D;\&quot;quantimodo_image\&quot; title&#x3D;\&quot;QuantiModo\&quot; src&#x3D;\&quot;https://quantimodo.quantimo.do/ionic/Modo/www/img/logos/quantimodo-logo-qm-rainbow-200-200.png\&quot; alt&#x3D;\&quot;QuantiModo\&quot;&gt;&lt;/a&gt; | 
+**image** | **string** | Ex: https://web.quantimo.do/img/logos/quantimodo-logo-qm-rainbow-200-200.png | 
+**image_html** | **string** | Ex: &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;&lt;img id&#x3D;\&quot;quantimodo_image\&quot; title&#x3D;\&quot;QuantiModo\&quot; src&#x3D;\&quot;https://web.quantimo.do/img/logos/quantimodo-logo-qm-rainbow-200-200.png\&quot; alt&#x3D;\&quot;QuantiModo\&quot;&gt;&lt;/a&gt; | 
 **last_successful_updated_at** | **string** | Ex: 2017-07-31 10:10:34 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | [optional] 
 **last_update** | **int** | Epoch timestamp of last sync | [optional] 
 **linked_display_name_html** | **string** | Ex: &lt;a href&#x3D;\&quot;https://quantimo.do\&quot;&gt;QuantiModo&lt;/a&gt; | 

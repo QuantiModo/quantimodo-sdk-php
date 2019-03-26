@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPairs**
-> \QuantiModo\Client\Model\Pair[] getPairs($cause_variable_name, $effect_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort)
+> \QuantiModo\Client\Model\Pair[] getPairs($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort)
 
 Get pairs of measurements for correlational analysis
 
@@ -193,8 +193,12 @@ $apiInstance = new QuantiModo\Client\Api\MeasurementsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cause_variable_name = "cause_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
-$effect_variable_name = "effect_variable_name_example"; // string | Name of the hypothetical outcome variable.  Ex: Overall Mood
+$cause_variable_name = "cause_variable_name_example"; // string | Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$effect_variable_name = "effect_variable_name_example"; // string | Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood
+$cause_variable_id = 56; // int | Variable id of the hypothetical predictor variable.  Ex: 1398
+$effect_variable_id = 56; // int | Variable id of the outcome variable of interest.  Ex: 1398
+$predictor_variable_name = "predictor_variable_name_example"; // string | Name of the hypothetical predictor variable.  Ex: Sleep Duration
+$outcome_variable_name = "outcome_variable_name_example"; // string | Name of the outcome variable of interest.  Ex: Overall Mood
 $effect_unit_name = "effect_unit_name_example"; // string | Name for the unit effect measurements to be returned in
 $user_id = 8.14; // float | User's id
 $cause_unit_name = "cause_unit_name_example"; // string | Name for the unit cause measurements to be returned in
@@ -207,7 +211,7 @@ $offset = 56; // int | OFFSET says to skip that many rows before beginning to re
 $sort = "sort_example"; // string | Sort by one of the listed field names. If the field name is prefixed with `-`, it will sort in descending order.
 
 try {
-    $result = $apiInstance->getPairs($cause_variable_name, $effect_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort);
+    $result = $apiInstance->getPairs($cause_variable_name, $effect_variable_name, $cause_variable_id, $effect_variable_id, $predictor_variable_name, $outcome_variable_name, $effect_unit_name, $user_id, $cause_unit_name, $onset_delay, $duration_of_action, $earliest_measurement_time, $latest_measurement_time, $limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MeasurementsApi->getPairs: ', $e->getMessage(), PHP_EOL;
@@ -219,8 +223,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cause_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
- **effect_variable_name** | **string**| Name of the hypothetical outcome variable.  Ex: Overall Mood | [optional]
+ **cause_variable_name** | **string**| Deprecated: Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **effect_variable_name** | **string**| Deprecated: Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
+ **cause_variable_id** | **int**| Variable id of the hypothetical predictor variable.  Ex: 1398 | [optional]
+ **effect_variable_id** | **int**| Variable id of the outcome variable of interest.  Ex: 1398 | [optional]
+ **predictor_variable_name** | **string**| Name of the hypothetical predictor variable.  Ex: Sleep Duration | [optional]
+ **outcome_variable_name** | **string**| Name of the outcome variable of interest.  Ex: Overall Mood | [optional]
  **effect_unit_name** | **string**| Name for the unit effect measurements to be returned in | [optional]
  **user_id** | **float**| User&#39;s id | [optional]
  **cause_unit_name** | **string**| Name for the unit cause measurements to be returned in | [optional]

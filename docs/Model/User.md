@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **client_id** | **string** | Ex: quantimodo | [optional] 
 **client_user_id** | **string** | Ex: 118444693184829555362 | [optional] 
 **combine_notifications** | **bool** | Ex: 1 | [optional] 
-**created_at** | **string** | When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss  datetime format | [optional] 
+**created_at** | **string** | When the record was first created. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format | [optional] 
+**description** | **string** | Your bio will be displayed on your published studies | [optional] 
 **display_name** | **string** | User display name | 
 **earliest_reminder_time** | **string** | Earliest time user should get notifications. Ex: 05:00:00 | [optional] 
 **email** | **string** | User email | 

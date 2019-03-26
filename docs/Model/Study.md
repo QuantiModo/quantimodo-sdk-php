@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** | Ex: population, cohort, or individual | 
 **user_id** | **string** | The user id of the principal investigator or subject if an individual studies | [optional] 
-**study_id** | **string** | ID of the cohort study which is necessary to allow participants to join | [optional] 
+**id** | **string** | ID of the cohort study which is necessary to allow participants to join | [optional] 
 **cause_variable** | [**\QuantiModo\Client\Model\Variable**](Variable.md) |  | [optional] 
 **cause_variable_name** | **string** | Ex: Sleep Quality | [optional] 
 **study_charts** | [**\QuantiModo\Client\Model\StudyCharts**](StudyCharts.md) |  | [optional] 

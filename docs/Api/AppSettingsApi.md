@@ -25,7 +25,7 @@ $apiInstance = new QuantiModo\Client\Api\AppSettingsApi(
     new GuzzleHttp\Client()
 );
 $client_id = "client_id_example"; // string | Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do
-$client_secret = "client_secret_example"; // string | This is the secret for your obtained clientId. We use this to ensure that only your application uses the clientId.  Obtain this by creating a free application at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps).
+$client_secret = "client_secret_example"; // string | This is the secret for your obtained clientId. We use this to ensure that only your application uses the clientId.  Obtain this by creating a free application at [https://builder.quantimo.do](https://builder.quantimo.do).
 $platform = "platform_example"; // string | Ex: chrome, android, ios, web
 
 try {
@@ -42,7 +42,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **client_id** | **string**| Your QuantiModo client id can be obtained by creating an app at https://builder.quantimo.do | [optional]
- **client_secret** | **string**| This is the secret for your obtained clientId. We use this to ensure that only your application uses the clientId.  Obtain this by creating a free application at [https://app.quantimo.do/api/v2/apps](https://app.quantimo.do/api/v2/apps). | [optional]
+ **client_secret** | **string**| This is the secret for your obtained clientId. We use this to ensure that only your application uses the clientId.  Obtain this by creating a free application at [https://builder.quantimo.do](https://builder.quantimo.do). | [optional]
  **platform** | **string**| Ex: chrome, android, ios, web | [optional]
 
 ### Return type

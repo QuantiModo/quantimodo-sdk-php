@@ -182,7 +182,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getVariables**
-> \QuantiModo\Client\Model\Variable[] getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise)
+> \QuantiModo\Client\Model\Variable[] getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $variable_name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise)
 
 Get variables along with related user-specific analysis settings and statistics
 
@@ -211,6 +211,7 @@ $number_of_raw_measurements = "number_of_raw_measurements_example"; // string | 
 $user_id = 8.14; // float | User's id
 $variable_category_name = "variable_category_name_example"; // string | Ex: Emotions, Treatments, Symptoms...
 $name = "name_example"; // string | Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain `Mood`, the following query should be used: ?variableName=%Mood%
+$variable_name = "variable_name_example"; // string | Name of the variable you want measurements for
 $updated_at = "updated_at_example"; // string | When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local.
 $source_name = "source_name_example"; // string | ID of the source you want measurements for (supports exact name match only)
 $earliest_measurement_time = "earliest_measurement_time_example"; // string | Excluded records with measurement times earlier than this value. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss  datetime format. Time zone should be UTC and not local.
@@ -247,7 +248,7 @@ $variable_id = 56; // int | Ex: 13
 $concise = true; // bool | Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests.
 
 try {
-    $result = $apiInstance->getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise);
+    $result = $apiInstance->getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $variable_name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariablesApi->getVariables: ', $e->getMessage(), PHP_EOL;
@@ -264,6 +265,7 @@ Name | Type | Description  | Notes
  **user_id** | **float**| User&#39;s id | [optional]
  **variable_category_name** | **string**| Ex: Emotions, Treatments, Symptoms... | [optional]
  **name** | **string**| Name of the variable. To get results matching a substring, add % as a wildcard as the first and/or last character of a query string parameter. In order to get variables that contain &#x60;Mood&#x60;, the following query should be used: ?variableName&#x3D;%Mood% | [optional]
+ **variable_name** | **string**| Name of the variable you want measurements for | [optional]
  **updated_at** | **string**| When the record was last updated. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss datetime format. Time zone should be UTC and not local. | [optional]
  **source_name** | **string**| ID of the source you want measurements for (supports exact name match only) | [optional]
  **earliest_measurement_time** | **string**| Excluded records with measurement times earlier than this value. Use UTC ISO 8601 YYYY-MM-DDThh:mm:ss  datetime format. Time zone should be UTC and not local. | [optional]
