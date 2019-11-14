@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **unit_id** | **int** | Ex: 10 | [optional] 
 **unit_name** | **string** | Ex: 1 to 5 Rating | [optional] 
 **default_value** | **float** | Default value to use for the measurement when tracking | [optional] 
-**description** | **string** | Ex: positive | [optional] 
+**description** | **string** | Valence indicates what type of buttons should be used when recording measurements for this variable. positive - Face buttons with the happiest face equating to a 5/5 rating where higher is better like Overall Mood. negative - Face buttons with happiest face equating to a 1/5 rating where lower is better like Headache Severity. numeric - Just 1 to 5 numeric buttons for neutral variables. | [optional] 
 **email** | **bool** | True if the reminders should be delivered via email | [optional] 
 **filling_value** | **int** | Ex: 0 | 
 **icon_icon** | **string** | Ex: ion-sad-outline | [optional] 
@@ -79,7 +79,7 @@ Name | Type | Description | Notes
 **user_variable_unit_name** | **string** | Ex: 1 to 5 Rating | [optional] 
 **user_variable_variable_category_id** | **int** | Ex: 1 | [optional] 
 **user_variable_variable_category_name** | **string** | Ex: Emotions | [optional] 
-**valence** | **string** | Ex: positive | [optional] 
+**valence** | **string** | Valence indicates what type of buttons should be used when recording measurements for this variable. positive - Face buttons with the happiest face equating to a 5/5 rating where higher is better like Overall Mood. negative - Face buttons with happiest face equating to a 1/5 rating where lower is better like Headache Severity. numeric - Just 1 to 5 numeric buttons for neutral variables. | [optional] 
 **variable_category_id** | **int** | Ex: 1 | [optional] 
 **variable_category_image_url** | **string** | Ex: https://maxcdn.icons8.com/Color/PNG/96/Cinema/theatre_mask-96.png | [optional] 
 **variable_category_name** | **string** | Ex: Emotions, Treatments, Symptoms... | [optional] 

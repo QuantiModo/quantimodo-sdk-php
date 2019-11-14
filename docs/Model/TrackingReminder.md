@@ -83,13 +83,13 @@ Name | Type | Description | Notes
 **user_variable_unit_name** | **string** | Ex: 1 to 5 Rating | [optional] 
 **user_variable_variable_category_id** | **int** | Ex: 10 | [optional] 
 **user_variable_variable_category_name** | **string** | Ex: Symptoms | [optional] 
-**valence** | **string** | Ex: negative | [optional] 
+**valence** | **string** | Valence indicates what type of buttons should be used when recording measurements for this variable. positive - Face buttons with the happiest face equating to a 5/5 rating where higher is better like Overall Mood. negative - Face buttons with happiest face equating to a 1/5 rating where lower is better like Headache Severity. numeric - Just 1 to 5 numeric buttons for neutral variables. | [optional] 
 **value_and_frequency_text_description** | **string** | Ex: Rate daily | [optional] 
 **value_and_frequency_text_description_with_time** | **string** | Ex: Rate daily at 09:45 PM | [optional] 
 **variable_category_id** | **int** | Ex: 10 | [optional] 
 **variable_category_image_url** | **string** | Ex: https://maxcdn.icons8.com/Color/PNG/96/Messaging/sad-96.png | [optional] 
 **variable_category_name** | **string** | Ex: Emotions, Treatments, Symptoms... | 
-**variable_description** | **string** | Ex: negative | [optional] 
+**variable_description** | **string** | Valence indicates what type of buttons should be used when recording measurements for this variable. positive - Face buttons with the happiest face equating to a 5/5 rating where higher is better like Overall Mood. negative - Face buttons with happiest face equating to a 1/5 rating where lower is better like Headache Severity. numeric - Just 1 to 5 numeric buttons for neutral variables. | [optional] 
 **variable_id** | **int** | Id for the variable to be tracked | [optional] 
 **variable_name** | **string** | Name of the variable to be used when sending measurements | 
 

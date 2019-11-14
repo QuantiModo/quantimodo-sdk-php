@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **app_status** | **object** | What do you expect? | [optional] 
 **app_type** | **string** | What do you expect? | [optional] 
 **build_enabled** | **string** | What do you expect? | [optional] 
-**client_id** | **string** | What do you expect? | 
-**client_secret** | **string** | What do you expect? | [optional] 
+**client_id** | **string** | Get yours at https:://builder.quantimo.do | 
+**client_secret** | **string** | Get yours at https:://builder.quantimo.do | [optional] 
 **collaborators** | [**\QuantiModo\Client\Model\User[]**](User.md) | What do you expect? | [optional] 
 **created_at** | **string** | What do you expect? | [optional] 
-**user_id** | **string** | What do you expect? | [optional] 
+**user_id** | **int** | User id of the owner of the application | [optional] 
 **users** | [**\QuantiModo\Client\Model\User[]**](User.md) | What do you expect? | [optional] 
 **redirect_uri** | **string** | What do you expect? | [optional] 
 **company_name** | **string** | What do you expect? | [optional] 

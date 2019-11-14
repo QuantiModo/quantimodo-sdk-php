@@ -182,7 +182,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getVariables**
-> \QuantiModo\Client\Model\Variable[] getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $variable_name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise)
+> \QuantiModo\Client\Model\Variable[] getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $variable_name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise, $refresh)
 
 Get variables along with related user-specific analysis settings and statistics
 
@@ -246,9 +246,10 @@ $include_tags = true; // bool | Return parent, child, duplicate, and ingredient 
 $recalculate = true; // bool | Recalculate instead of using cached analysis
 $variable_id = 56; // int | Ex: 13
 $concise = true; // bool | Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests.
+$refresh = true; // bool | Regenerate charts instead of getting from the cache
 
 try {
-    $result = $apiInstance->getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $variable_name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise);
+    $result = $apiInstance->getVariables($include_charts, $number_of_raw_measurements, $user_id, $variable_category_name, $name, $variable_name, $updated_at, $source_name, $earliest_measurement_time, $latest_measurement_time, $id, $last_source_name, $limit, $offset, $sort, $include_public, $manual_tracking, $client_id, $upc, $effect_or_cause, $public_effect_or_cause, $exact_match, $variable_category_id, $include_private, $search_phrase, $synonyms, $tagged_variable_id, $tag_variable_id, $join_variable_id, $parent_user_tag_variable_id, $child_user_tag_variable_id, $ingredient_user_tag_variable_id, $ingredient_of_user_tag_variable_id, $common_only, $user_only, $platform, $include_tags, $recalculate, $variable_id, $concise, $refresh);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariablesApi->getVariables: ', $e->getMessage(), PHP_EOL;
@@ -300,6 +301,7 @@ Name | Type | Description  | Notes
  **recalculate** | **bool**| Recalculate instead of using cached analysis | [optional]
  **variable_id** | **int**| Ex: 13 | [optional]
  **concise** | **bool**| Only return field required for variable auto-complete searches.  The smaller size allows for storing more variable results locally reducing API requests. | [optional]
+ **refresh** | **bool**| Regenerate charts instead of getting from the cache | [optional]
 
 ### Return type
 

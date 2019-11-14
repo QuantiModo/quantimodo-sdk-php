@@ -148,7 +148,7 @@ Name | Type | Description | Notes
 **user_variable_unit_name** | **string** | Ex: Count | [optional] 
 **variable_category** | [**\QuantiModo\Client\Model\VariableCategory**](VariableCategory.md) |  | [optional] 
 **joined_variables** | [**\QuantiModo\Client\Model\Variable[]**](Variable.md) | Array of Variables that are joined with this Variable | [optional] 
-**valence** | **string** | Ex: positive | [optional] 
+**valence** | **string** | Valence indicates what type of buttons should be used when recording measurements for this variable. positive - Face buttons with the happiest face equating to a 5/5 rating where higher is better like Overall Mood. negative - Face buttons with happiest face equating to a 1/5 rating where lower is better like Headache Severity. numeric - Just 1 to 5 numeric buttons for neutral variables. | [optional] 
 **variable_category_id** | **int** | Ex: 6 | [optional] 
 **variable_category_name** | **string** | User-Defined Variable Setting: Variable category like Emotions, Sleep, Physical Activities, Treatments, Symptoms, etc. | [optional] 
 **variable_id** | **int** | Ex: 96380 | 
