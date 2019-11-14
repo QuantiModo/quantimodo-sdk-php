@@ -3,17 +3,17 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**average_daily_high_cause** | **double** | Ex: 4.19 | 
-**average_daily_low_cause** | **double** | Ex: 1.97 | 
-**average_effect** | **double** | Ex: 3.0791054117396 | 
-**average_effect_following_high_cause** | **double** | Ex: 3.55 | 
-**average_effect_following_low_cause** | **double** | Ex: 2.65 | 
-**average_forward_pearson_correlation_over_onset_delays** | **double** | Ex: 0.396 | 
-**average_reverse_pearson_correlation_over_onset_delays** | **double** | Ex: 0.453667 | 
-**average_vote** | **float** | Ex: 0.9855 | 
-**cause_changes** | **int** | Ex: 164 | 
+**average_daily_high_cause** | **double** | Ex: 4.19 | [optional] 
+**average_daily_low_cause** | **double** | Ex: 1.97 | [optional] 
+**average_effect** | **double** | Ex: 3.0791054117396 | [optional] 
+**average_effect_following_high_cause** | **double** | Ex: 3.55 | [optional] 
+**average_effect_following_low_cause** | **double** | Ex: 2.65 | [optional] 
+**average_forward_pearson_correlation_over_onset_delays** | **double** | Ex: 0.396 | [optional] 
+**average_reverse_pearson_correlation_over_onset_delays** | **double** | Ex: 0.453667 | [optional] 
+**average_vote** | **float** | Ex: 0.9855 | [optional] 
+**cause_changes** | **int** | Ex: 164 | [optional] 
 **cause_data_source** | [**\QuantiModo\Client\Model\DataSource**](DataSource.md) |  | [optional] 
-**cause_user_variable_share_user_measurements** | **int** | Ex: 1 | 
+**cause_user_variable_share_user_measurements** | **int** | Ex: 1 | [optional] 
 **cause_variable_category_id** | **int** | Ex: 6 | [optional] 
 **cause_variable_category_name** | **string** | Ex: Sleep | [optional] 
 **cause_variable_combination_operation** | **string** | Ex: MEAN | [optional] 
@@ -21,22 +21,22 @@ Name | Type | Description | Notes
 **cause_variable_id** | **int** | Ex: 1448 | [optional] 
 **cause_variable_most_common_connector_id** | **int** | Ex: 6 | [optional] 
 **cause_variable_name** | **string** | Ex: Sleep Quality | 
-**confidence_interval** | **double** | Ex: 0.14344467795996 | 
-**confidence_level** | **string** | Ex: high | 
-**correlation_coefficient** | **double** | Ex: 0.538 | 
+**confidence_interval** | **double** | Ex: 0.14344467795996 | [optional] 
+**confidence_level** | **string** | Ex: high | [optional] 
+**correlation_coefficient** | **double** | Ex: 0.538 | [optional] 
 **correlation_is_contradictory_to_optimal_values** | **bool** | Ex: false | [optional] 
-**created_at** | **string** | Ex: 2016-12-28 20:47:30 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | 
-**critical_t_value** | **double** | Calculated Statistic: Ex: 1.646 | 
-**direction** | **string** | Ex: higher | 
-**duration_of_action** | **int** | User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Seconds | 
-**duration_of_action_in_hours** | **float** | User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Hours | 
+**created_at** | **string** | Ex: 2016-12-28 20:47:30 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | [optional] 
+**critical_t_value** | **double** | Calculated Statistic: Ex: 1.646 | [optional] 
+**direction** | **string** | Ex: higher | [optional] 
+**duration_of_action** | **int** | User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Seconds | [optional] 
+**duration_of_action_in_hours** | **float** | User-Defined Variable Setting: The amount of time over which a predictor/stimulus event can exert an observable influence on an outcome variable value. For instance, aspirin (stimulus/predictor) typically decreases headache severity for approximately four hours (duration of action) following the onset delay.  Unit: Hours | [optional] 
 **degrees_of_freedom** | **int** | Ex: 200 | [optional] 
 **effect_number_of_processed_daily_measurements** | **int** | Ex: 145 | [optional] 
 **error** | **string** | Ex: optimalPearsonProduct is not defined | [optional] 
-**effect_changes** | **int** | Ex: 193 | 
+**effect_changes** | **int** | Ex: 193 | [optional] 
 **effect_data_source** | [**\QuantiModo\Client\Model\DataSource**](DataSource.md) |  | [optional] 
-**effect_size** | **string** | Ex: moderately positive | 
-**effect_unit** | **string** | Ex: /5 | 
+**effect_size** | **string** | Ex: moderately positive | [optional] 
+**effect_unit** | **string** | Ex: /5 | [optional] 
 **effect_user_variable_share_user_measurements** | **int** | Ex: 1 | [optional] 
 **effect_variable_category_id** | **int** | Ex: 1 | [optional] 
 **effect_variable_category_name** | **string** | Ex: Emotions | [optional] 
@@ -48,55 +48,56 @@ Name | Type | Description | Notes
 **effect_variable_id** | **int** | Ex: 1398 | [optional] 
 **effect_variable_most_common_connector_id** | **int** | Ex: 10 | [optional] 
 **effect_variable_name** | **string** | Ex: Overall Mood | 
-**experiment_end_time** | **string** | Ex: 2014-07-30 12:50:00 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | 
-**experiment_start_time** | **string** | Ex: 2012-05-06 21:15:00 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | 
-**forward_spearman_correlation_coefficient** | **double** | Ex: 0.528359 | 
-**number_of_pairs** | **int** | Ex: 298 | 
-**onset_delay** | **int** | Ex: 0 | 
-**onset_delay_in_hours** | **float** | Ex: 0 | 
-**onset_delay_with_strongest_pearson_correlation** | **int** | Ex: -86400 | 
-**onset_delay_with_strongest_pearson_correlation_in_hours** | **float** | Ex: -24 | 
-**optimal_pearson_product** | **double** | Ex: 0.68582816186982 | 
-**outcome_filling_value** | **int** | User-Defined Variable Setting: Ex: -1. Unit: User-specified or common. | 
+**experiment_end_time** | **string** | Ex: 2014-07-30 12:50:00 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | [optional] 
+**experiment_start_time** | **string** | Ex: 2012-05-06 21:15:00 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | [optional] 
+**forward_spearman_correlation_coefficient** | **double** | Ex: 0.528359 | [optional] 
+**number_of_pairs** | **int** | Ex: 298 | [optional] 
+**onset_delay** | **int** | Ex: 0 | [optional] 
+**onset_delay_in_hours** | **float** | Ex: 0 | [optional] 
+**onset_delay_with_strongest_pearson_correlation** | **int** | Ex: -86400 | [optional] 
+**onset_delay_with_strongest_pearson_correlation_in_hours** | **float** | Ex: -24 | [optional] 
+**optimal_pearson_product** | **double** | Ex: 0.68582816186982 | [optional] 
+**outcome_filling_value** | **int** | User-Defined Variable Setting: Ex: -1. Unit: User-specified or common. | [optional] 
 **outcome_maximum_allowed_value** | **double** | User-Defined Variable Setting: Ex: 23. Unit: User-specified or common. | [optional] 
 **outcome_minimum_allowed_value** | **double** | User-Defined Variable Setting: Ex: 0.1. Unit: User-specified or common. | [optional] 
-**pearson_correlation_with_no_onset_delay** | **double** | Ex: 0.477 | 
-**predictive_pearson_correlation** | **double** | Ex: 0.538 | 
-**predictive_pearson_correlation_coefficient** | **double** | Ex: 0.538 | 
-**predictor_data_sources** | **string** | Ex: RescueTime | 
-**predictor_filling_value** | **int** | Ex: -1. Unit: User-specified or common. | 
-**predictor_maximum_allowed_value** | **double** | Ex: 200. Unit: User-specified or common. | 
-**predictor_minimum_allowed_value** | **double** | Ex: 30. Unit: User-specified or common. | 
-**predicts_high_effect_change** | **int** | Ex: 17. Unit: User-specified or common. | 
-**predicts_low_effect_change** | **int** | Ex: -11. Unit: User-specified or common. | 
+**pearson_correlation_with_no_onset_delay** | **double** | Ex: 0.477 | [optional] 
+**predictive_pearson_correlation** | **double** | Ex: 0.538 | [optional] 
+**predictive_pearson_correlation_coefficient** | **double** | Ex: 0.538 | [optional] 
+**predictor_data_sources** | **string** | Ex: RescueTime | [optional] 
+**predictor_filling_value** | **int** | Ex: -1. Unit: User-specified or common. | [optional] 
+**predictor_maximum_allowed_value** | **double** | Ex: 200. Unit: User-specified or common. | [optional] 
+**predictor_minimum_allowed_value** | **double** | Ex: 30. Unit: User-specified or common. | [optional] 
+**predicts_high_effect_change** | **int** | Ex: 17. Unit: User-specified or common. | [optional] 
+**predicts_low_effect_change** | **int** | Ex: -11. Unit: User-specified or common. | [optional] 
 **p_value** | **double** | Ex: 0.39628900511586 | [optional] 
-**qm_score** | **double** | Ex: 0.528 | 
-**reverse_pearson_correlation_coefficient** | **double** | Ex: 0.01377184270977 | 
-**share_user_measurements** | **bool** | Would you like to make this study publicly visible? | 
+**qm_score** | **double** | Ex: 0.528 | [optional] 
+**reverse_pearson_correlation_coefficient** | **double** | Ex: 0.01377184270977 | [optional] 
+**share_user_measurements** | **bool** | Would you like to make this study publicly visible? | [optional] 
 **sharing_description** | **string** | Ex: N1 Study: Sleep Quality Predicts Higher Overall Mood | [optional] 
 **sharing_title** | **string** | Ex: N1 Study: Sleep Quality Predicts Higher Overall Mood | [optional] 
-**significant_difference** | **bool** | Ex: 1 | 
-**statistical_significance** | **double** | Ex: 0.9813 | 
-**strength_level** | **string** | Ex: moderate | 
-**strongest_pearson_correlation_coefficient** | **double** | Ex: 0.613 | 
+**significant_difference** | **bool** | Ex: 1 | [optional] 
+**statistical_significance** | **double** | Ex: 0.9813 | [optional] 
+**strength_level** | **string** | Ex: moderate | [optional] 
+**strongest_pearson_correlation_coefficient** | **double** | Ex: 0.613 | [optional] 
 **study_html** | [**\QuantiModo\Client\Model\StudyHtml**](StudyHtml.md) |  | [optional] 
 **study_images** | [**\QuantiModo\Client\Model\StudyImages**](StudyImages.md) |  | [optional] 
 **study_links** | [**\QuantiModo\Client\Model\StudyLinks**](StudyLinks.md) |  | [optional] 
 **study_text** | [**\QuantiModo\Client\Model\StudyText**](StudyText.md) |  | [optional] 
-**t_value** | **double** | Ex: 9.6986079652717 | 
-**updated_at** | **string** | Ex: 2017-05-06 15:40:38 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | 
-**user_id** | **int** | Ex: 230 | 
-**user_vote** | **int** | Ex: 1 | 
-**value_predicting_high_outcome** | **double** | Ex: 4.14 | 
-**value_predicting_low_outcome** | **double** | Ex: 3.03 | 
-**outcome_data_sources** | **string** | original name of the cause. | [optional] 
+**t_value** | **double** | Ex: 9.6986079652717 | [optional] 
+**updated_at** | **string** | Ex: 2017-05-06 15:40:38 UTC ISO 8601 YYYY-MM-DDThh:mm:ss | [optional] 
+**user_id** | **int** | Ex: 230 | [optional] 
+**user_vote** | **int** | Ex: 1 | [optional] 
+**value_predicting_high_outcome** | **double** | Ex: 4.14 | [optional] 
+**value_predicting_low_outcome** | **double** | Ex: 3.03 | [optional] 
+**outcome_data_sources** | **string** | Sources used to collect data for the outcome variable | [optional] 
 **principal_investigator** | **string** | Mike Sinn | [optional] 
 **reverse_correlation** | **float** | Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation. | [optional] 
-**average_pearson_correlation_coefficient_over_onset_delays** | **string** | Ex: | [optional] 
+**average_pearson_correlation_coefficient_over_onset_delays** | **float** | Ex: | [optional] 
 **cause_number_of_raw_measurements** | **int** | Ex: 14764 | [optional] 
-**correlations_over_durations_of_action** | **string** | Ex: | [optional] 
-**correlations_over_durations_of_action_chart_config** | **string** | Ex: | [optional] 
-**correlations_over_onset_delays_chart_config** | **string** | Ex: | [optional] 
+**correlations_over_durations_of_action** | [**null[]**](.md) | Correlations calculated with various duration of action hyper-parameters | [optional] 
+**correlations_over_onset_delays** | [**null[]**](.md) | Correlations calculated with various onset delay hyper-parameters | [optional] 
+**correlations_over_durations_of_action_chart_config** | **object** | Highchart config illustrating correlations calculated with various duration of action hyper-parameters | [optional] 
+**correlations_over_onset_delays_chart_config** | **object** | Highchart config illustrating correlations calculated with various onset delay hyper-parameters | [optional] 
 **number_of_users** | **float** | Ex: 1 | [optional] 
 **raw_cause_measurement_significance** | **double** | Ex: 1 | [optional] 
 **raw_effect_measurement_significance** | **double** | Ex: 1 | [optional] 

@@ -146,11 +146,12 @@ class Correlation implements ModelInterface, ArrayAccess
         'outcome_data_sources' => 'string',
         'principal_investigator' => 'string',
         'reverse_correlation' => 'float',
-        'average_pearson_correlation_coefficient_over_onset_delays' => 'string',
+        'average_pearson_correlation_coefficient_over_onset_delays' => 'float',
         'cause_number_of_raw_measurements' => 'int',
-        'correlations_over_durations_of_action' => 'string',
-        'correlations_over_durations_of_action_chart_config' => 'string',
-        'correlations_over_onset_delays_chart_config' => 'string',
+        'correlations_over_durations_of_action' => 'null[]',
+        'correlations_over_onset_delays' => 'null[]',
+        'correlations_over_durations_of_action_chart_config' => 'object',
+        'correlations_over_onset_delays_chart_config' => 'object',
         'number_of_users' => 'float',
         'raw_cause_measurement_significance' => 'double',
         'raw_effect_measurement_significance' => 'double',
@@ -257,9 +258,10 @@ class Correlation implements ModelInterface, ArrayAccess
         'outcome_data_sources' => null,
         'principal_investigator' => null,
         'reverse_correlation' => null,
-        'average_pearson_correlation_coefficient_over_onset_delays' => null,
+        'average_pearson_correlation_coefficient_over_onset_delays' => 'float',
         'cause_number_of_raw_measurements' => null,
         'correlations_over_durations_of_action' => null,
+        'correlations_over_onset_delays' => null,
         'correlations_over_durations_of_action_chart_config' => null,
         'correlations_over_onset_delays_chart_config' => null,
         'number_of_users' => null,
@@ -392,6 +394,7 @@ class Correlation implements ModelInterface, ArrayAccess
         'average_pearson_correlation_coefficient_over_onset_delays' => 'averagePearsonCorrelationCoefficientOverOnsetDelays',
         'cause_number_of_raw_measurements' => 'causeNumberOfRawMeasurements',
         'correlations_over_durations_of_action' => 'correlationsOverDurationsOfAction',
+        'correlations_over_onset_delays' => 'correlationsOverOnsetDelays',
         'correlations_over_durations_of_action_chart_config' => 'correlationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'correlationsOverOnsetDelaysChartConfig',
         'number_of_users' => 'numberOfUsers',
@@ -503,6 +506,7 @@ class Correlation implements ModelInterface, ArrayAccess
         'average_pearson_correlation_coefficient_over_onset_delays' => 'setAveragePearsonCorrelationCoefficientOverOnsetDelays',
         'cause_number_of_raw_measurements' => 'setCauseNumberOfRawMeasurements',
         'correlations_over_durations_of_action' => 'setCorrelationsOverDurationsOfAction',
+        'correlations_over_onset_delays' => 'setCorrelationsOverOnsetDelays',
         'correlations_over_durations_of_action_chart_config' => 'setCorrelationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'setCorrelationsOverOnsetDelaysChartConfig',
         'number_of_users' => 'setNumberOfUsers',
@@ -614,6 +618,7 @@ class Correlation implements ModelInterface, ArrayAccess
         'average_pearson_correlation_coefficient_over_onset_delays' => 'getAveragePearsonCorrelationCoefficientOverOnsetDelays',
         'cause_number_of_raw_measurements' => 'getCauseNumberOfRawMeasurements',
         'correlations_over_durations_of_action' => 'getCorrelationsOverDurationsOfAction',
+        'correlations_over_onset_delays' => 'getCorrelationsOverOnsetDelays',
         'correlations_over_durations_of_action_chart_config' => 'getCorrelationsOverDurationsOfActionChartConfig',
         'correlations_over_onset_delays_chart_config' => 'getCorrelationsOverOnsetDelaysChartConfig',
         'number_of_users' => 'getNumberOfUsers',
@@ -779,6 +784,7 @@ class Correlation implements ModelInterface, ArrayAccess
         $this->container['average_pearson_correlation_coefficient_over_onset_delays'] = isset($data['average_pearson_correlation_coefficient_over_onset_delays']) ? $data['average_pearson_correlation_coefficient_over_onset_delays'] : null;
         $this->container['cause_number_of_raw_measurements'] = isset($data['cause_number_of_raw_measurements']) ? $data['cause_number_of_raw_measurements'] : null;
         $this->container['correlations_over_durations_of_action'] = isset($data['correlations_over_durations_of_action']) ? $data['correlations_over_durations_of_action'] : null;
+        $this->container['correlations_over_onset_delays'] = isset($data['correlations_over_onset_delays']) ? $data['correlations_over_onset_delays'] : null;
         $this->container['correlations_over_durations_of_action_chart_config'] = isset($data['correlations_over_durations_of_action_chart_config']) ? $data['correlations_over_durations_of_action_chart_config'] : null;
         $this->container['correlations_over_onset_delays_chart_config'] = isset($data['correlations_over_onset_delays_chart_config']) ? $data['correlations_over_onset_delays_chart_config'] : null;
         $this->container['number_of_users'] = isset($data['number_of_users']) ? $data['number_of_users'] : null;
@@ -801,170 +807,11 @@ class Correlation implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['average_daily_high_cause'] === null) {
-            $invalidProperties[] = "'average_daily_high_cause' can't be null";
-        }
-        if ($this->container['average_daily_low_cause'] === null) {
-            $invalidProperties[] = "'average_daily_low_cause' can't be null";
-        }
-        if ($this->container['average_effect'] === null) {
-            $invalidProperties[] = "'average_effect' can't be null";
-        }
-        if ($this->container['average_effect_following_high_cause'] === null) {
-            $invalidProperties[] = "'average_effect_following_high_cause' can't be null";
-        }
-        if ($this->container['average_effect_following_low_cause'] === null) {
-            $invalidProperties[] = "'average_effect_following_low_cause' can't be null";
-        }
-        if ($this->container['average_forward_pearson_correlation_over_onset_delays'] === null) {
-            $invalidProperties[] = "'average_forward_pearson_correlation_over_onset_delays' can't be null";
-        }
-        if ($this->container['average_reverse_pearson_correlation_over_onset_delays'] === null) {
-            $invalidProperties[] = "'average_reverse_pearson_correlation_over_onset_delays' can't be null";
-        }
-        if ($this->container['average_vote'] === null) {
-            $invalidProperties[] = "'average_vote' can't be null";
-        }
-        if ($this->container['cause_changes'] === null) {
-            $invalidProperties[] = "'cause_changes' can't be null";
-        }
-        if ($this->container['cause_user_variable_share_user_measurements'] === null) {
-            $invalidProperties[] = "'cause_user_variable_share_user_measurements' can't be null";
-        }
         if ($this->container['cause_variable_name'] === null) {
             $invalidProperties[] = "'cause_variable_name' can't be null";
         }
-        if ($this->container['confidence_interval'] === null) {
-            $invalidProperties[] = "'confidence_interval' can't be null";
-        }
-        if ($this->container['confidence_level'] === null) {
-            $invalidProperties[] = "'confidence_level' can't be null";
-        }
-        if ($this->container['correlation_coefficient'] === null) {
-            $invalidProperties[] = "'correlation_coefficient' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['critical_t_value'] === null) {
-            $invalidProperties[] = "'critical_t_value' can't be null";
-        }
-        if ($this->container['direction'] === null) {
-            $invalidProperties[] = "'direction' can't be null";
-        }
-        if ($this->container['duration_of_action'] === null) {
-            $invalidProperties[] = "'duration_of_action' can't be null";
-        }
-        if ($this->container['duration_of_action_in_hours'] === null) {
-            $invalidProperties[] = "'duration_of_action_in_hours' can't be null";
-        }
-        if ($this->container['effect_changes'] === null) {
-            $invalidProperties[] = "'effect_changes' can't be null";
-        }
-        if ($this->container['effect_size'] === null) {
-            $invalidProperties[] = "'effect_size' can't be null";
-        }
-        if ($this->container['effect_unit'] === null) {
-            $invalidProperties[] = "'effect_unit' can't be null";
-        }
         if ($this->container['effect_variable_name'] === null) {
             $invalidProperties[] = "'effect_variable_name' can't be null";
-        }
-        if ($this->container['experiment_end_time'] === null) {
-            $invalidProperties[] = "'experiment_end_time' can't be null";
-        }
-        if ($this->container['experiment_start_time'] === null) {
-            $invalidProperties[] = "'experiment_start_time' can't be null";
-        }
-        if ($this->container['forward_spearman_correlation_coefficient'] === null) {
-            $invalidProperties[] = "'forward_spearman_correlation_coefficient' can't be null";
-        }
-        if ($this->container['number_of_pairs'] === null) {
-            $invalidProperties[] = "'number_of_pairs' can't be null";
-        }
-        if ($this->container['onset_delay'] === null) {
-            $invalidProperties[] = "'onset_delay' can't be null";
-        }
-        if ($this->container['onset_delay_in_hours'] === null) {
-            $invalidProperties[] = "'onset_delay_in_hours' can't be null";
-        }
-        if ($this->container['onset_delay_with_strongest_pearson_correlation'] === null) {
-            $invalidProperties[] = "'onset_delay_with_strongest_pearson_correlation' can't be null";
-        }
-        if ($this->container['onset_delay_with_strongest_pearson_correlation_in_hours'] === null) {
-            $invalidProperties[] = "'onset_delay_with_strongest_pearson_correlation_in_hours' can't be null";
-        }
-        if ($this->container['optimal_pearson_product'] === null) {
-            $invalidProperties[] = "'optimal_pearson_product' can't be null";
-        }
-        if ($this->container['outcome_filling_value'] === null) {
-            $invalidProperties[] = "'outcome_filling_value' can't be null";
-        }
-        if ($this->container['pearson_correlation_with_no_onset_delay'] === null) {
-            $invalidProperties[] = "'pearson_correlation_with_no_onset_delay' can't be null";
-        }
-        if ($this->container['predictive_pearson_correlation'] === null) {
-            $invalidProperties[] = "'predictive_pearson_correlation' can't be null";
-        }
-        if ($this->container['predictive_pearson_correlation_coefficient'] === null) {
-            $invalidProperties[] = "'predictive_pearson_correlation_coefficient' can't be null";
-        }
-        if ($this->container['predictor_data_sources'] === null) {
-            $invalidProperties[] = "'predictor_data_sources' can't be null";
-        }
-        if ($this->container['predictor_filling_value'] === null) {
-            $invalidProperties[] = "'predictor_filling_value' can't be null";
-        }
-        if ($this->container['predictor_maximum_allowed_value'] === null) {
-            $invalidProperties[] = "'predictor_maximum_allowed_value' can't be null";
-        }
-        if ($this->container['predictor_minimum_allowed_value'] === null) {
-            $invalidProperties[] = "'predictor_minimum_allowed_value' can't be null";
-        }
-        if ($this->container['predicts_high_effect_change'] === null) {
-            $invalidProperties[] = "'predicts_high_effect_change' can't be null";
-        }
-        if ($this->container['predicts_low_effect_change'] === null) {
-            $invalidProperties[] = "'predicts_low_effect_change' can't be null";
-        }
-        if ($this->container['qm_score'] === null) {
-            $invalidProperties[] = "'qm_score' can't be null";
-        }
-        if ($this->container['reverse_pearson_correlation_coefficient'] === null) {
-            $invalidProperties[] = "'reverse_pearson_correlation_coefficient' can't be null";
-        }
-        if ($this->container['share_user_measurements'] === null) {
-            $invalidProperties[] = "'share_user_measurements' can't be null";
-        }
-        if ($this->container['significant_difference'] === null) {
-            $invalidProperties[] = "'significant_difference' can't be null";
-        }
-        if ($this->container['statistical_significance'] === null) {
-            $invalidProperties[] = "'statistical_significance' can't be null";
-        }
-        if ($this->container['strength_level'] === null) {
-            $invalidProperties[] = "'strength_level' can't be null";
-        }
-        if ($this->container['strongest_pearson_correlation_coefficient'] === null) {
-            $invalidProperties[] = "'strongest_pearson_correlation_coefficient' can't be null";
-        }
-        if ($this->container['t_value'] === null) {
-            $invalidProperties[] = "'t_value' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
-        }
-        if ($this->container['user_vote'] === null) {
-            $invalidProperties[] = "'user_vote' can't be null";
-        }
-        if ($this->container['value_predicting_high_outcome'] === null) {
-            $invalidProperties[] = "'value_predicting_high_outcome' can't be null";
-        }
-        if ($this->container['value_predicting_low_outcome'] === null) {
-            $invalidProperties[] = "'value_predicting_low_outcome' can't be null";
         }
         return $invalidProperties;
     }
@@ -3058,7 +2905,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets outcome_data_sources
      *
-     * @param string $outcome_data_sources original name of the cause.
+     * @param string $outcome_data_sources Sources used to collect data for the outcome variable
      *
      * @return $this
      */
@@ -3120,7 +2967,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Gets average_pearson_correlation_coefficient_over_onset_delays
      *
-     * @return string
+     * @return float
      */
     public function getAveragePearsonCorrelationCoefficientOverOnsetDelays()
     {
@@ -3130,7 +2977,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets average_pearson_correlation_coefficient_over_onset_delays
      *
-     * @param string $average_pearson_correlation_coefficient_over_onset_delays Ex:
+     * @param float $average_pearson_correlation_coefficient_over_onset_delays Ex:
      *
      * @return $this
      */
@@ -3168,7 +3015,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Gets correlations_over_durations_of_action
      *
-     * @return string
+     * @return null[]
      */
     public function getCorrelationsOverDurationsOfAction()
     {
@@ -3178,7 +3025,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets correlations_over_durations_of_action
      *
-     * @param string $correlations_over_durations_of_action Ex:
+     * @param null[] $correlations_over_durations_of_action Correlations calculated with various duration of action hyper-parameters
      *
      * @return $this
      */
@@ -3190,9 +3037,33 @@ class Correlation implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets correlations_over_onset_delays
+     *
+     * @return null[]
+     */
+    public function getCorrelationsOverOnsetDelays()
+    {
+        return $this->container['correlations_over_onset_delays'];
+    }
+
+    /**
+     * Sets correlations_over_onset_delays
+     *
+     * @param null[] $correlations_over_onset_delays Correlations calculated with various onset delay hyper-parameters
+     *
+     * @return $this
+     */
+    public function setCorrelationsOverOnsetDelays($correlations_over_onset_delays)
+    {
+        $this->container['correlations_over_onset_delays'] = $correlations_over_onset_delays;
+
+        return $this;
+    }
+
+    /**
      * Gets correlations_over_durations_of_action_chart_config
      *
-     * @return string
+     * @return object
      */
     public function getCorrelationsOverDurationsOfActionChartConfig()
     {
@@ -3202,7 +3073,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets correlations_over_durations_of_action_chart_config
      *
-     * @param string $correlations_over_durations_of_action_chart_config Ex:
+     * @param object $correlations_over_durations_of_action_chart_config Highchart config illustrating correlations calculated with various duration of action hyper-parameters
      *
      * @return $this
      */
@@ -3216,7 +3087,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Gets correlations_over_onset_delays_chart_config
      *
-     * @return string
+     * @return object
      */
     public function getCorrelationsOverOnsetDelaysChartConfig()
     {
@@ -3226,7 +3097,7 @@ class Correlation implements ModelInterface, ArrayAccess
     /**
      * Sets correlations_over_onset_delays_chart_config
      *
-     * @param string $correlations_over_onset_delays_chart_config Ex:
+     * @param object $correlations_over_onset_delays_chart_config Highchart config illustrating correlations calculated with various onset delay hyper-parameters
      *
      * @return $this
      */

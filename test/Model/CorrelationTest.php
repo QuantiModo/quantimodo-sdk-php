@@ -721,6 +721,13 @@ class CorrelationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "correlations_over_onset_delays"
+     */
+    public function testPropertyCorrelationsOverOnsetDelays()
+    {
+    }
+
+    /**
      * Test attribute "correlations_over_durations_of_action_chart_config"
      */
     public function testPropertyCorrelationsOverDurationsOfActionChartConfig()
